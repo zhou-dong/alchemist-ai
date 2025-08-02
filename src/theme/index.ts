@@ -70,8 +70,16 @@ export const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
+          borderRadius: 12,
           textTransform: 'none',
+          fontWeight: 500,
+          letterSpacing: '0.01em',
+          padding: '12px 24px',
+          fontSize: '0.875rem',
+          boxShadow: 'none',
+          '&:hover': {
+            boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+          },
         },
       },
     },

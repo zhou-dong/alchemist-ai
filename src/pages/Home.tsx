@@ -1,5 +1,4 @@
-import { Box, Typography, Card, CardContent } from '@mui/material';
-import { Button } from '../components/common/Button';
+import { Box, Typography, Card, CardContent, Button } from '@mui/material';
 
 export const Home = () => {
   return (
