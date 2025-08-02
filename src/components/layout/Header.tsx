@@ -13,7 +13,7 @@ export const Header = () => {
     <StyledAppBar position="static">
       <Toolbar>
         <Box display="flex" alignItems="center" justifyContent="space-between" width="100%">
-          <Typography variant="h6" component="h1">
+          <Typography color="primary" variant="h6" component="h1" sx={{ fontWeight: 600 }}>
             Alchemist AI
           </Typography>
           {/* Add navigation items here */}
