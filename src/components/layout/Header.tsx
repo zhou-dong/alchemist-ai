@@ -13,8 +13,12 @@ export const Header = () => (
   <HeaderContainer>
     <Stack direction="row" justifyContent="center" alignItems="center" gap={0.2} sx={{ cursor: 'pointer' }}>
       <Logo width={16} height={16} color="#6366f1" />
-      <Typography color="primary" variant="body2" component="h1">
-        alchemist
+      <Typography 
+        color="primary" 
+        variant="body2" 
+        component="h1"
+      >
+        Alchemist
       </Typography>
     </Stack>
   </HeaderContainer>
