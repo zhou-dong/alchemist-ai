@@ -1,26 +1,23 @@
-import { AppBar, Toolbar, Typography, Box } from '@mui/material';
+import { Typography, Stack, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import Logo from '../common/Logo';
 
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  color: theme.palette.text.primary,
-  boxShadow: 'none',
-  borderBottom: `1px solid ${theme.palette.divider}`,
+const HeaderContainer = styled(Box)(({ }) => ({
+  position: 'fixed',
+  top: 12,
+  left: 20,
+  zIndex: 100,
 }));
 
-export const Header = () => {
-  return (
-    <StyledAppBar position="static">
-      <Toolbar>
-        <Box display="flex" alignItems="center" justifyContent="space-between" width="100%">
-          <Typography color="primary" variant="h6" component="h1" sx={{ fontWeight: 600 }}>
-            Alchemist AI
-          </Typography>
-          {/* Add navigation items here */}
-        </Box>
-      </Toolbar>
-    </StyledAppBar>
-  );
-};
+export const Header = () => (
+  <HeaderContainer>
+    <Stack direction="row" justifyContent="center" alignItems="center" gap={0.2} sx={{ cursor: 'pointer' }}>
+      <Logo width={16} height={16} color="#6366f1" />
+      <Typography color="primary" variant="body2" component="h1">
+        alchemist
+      </Typography>
+    </Stack>
+  </HeaderContainer>
+);
 
-export default Header; 
+export default Header;
