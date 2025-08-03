@@ -37,7 +37,7 @@ const Logo: React.FC<LogoProps> = ({ width, height, color, sx }) => (
       <circle cx="12" cy="12" r="5" fill={color} />
 
       {/* Border circle around the A shape */}
-      <circle cx="0" cy="0" r="24" fill="none" stroke={color} strokeWidth="1" opacity="0.3" />
+      <circle cx="0" cy="0" r="24" fill="none" stroke={color} strokeWidth="2" opacity="0.6" />
     </g>
   </Box>
 );
