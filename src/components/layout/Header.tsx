@@ -19,7 +19,7 @@ export const Header = () => (
         component="h1"
         sx={{ fontWeight: 400 }}
       >
-        Alchemist
+        alchemist
       </Typography>
     </Stack>
   </HeaderContainer>
