@@ -1,13 +1,13 @@
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import theme from './theme';
+import { ColorModeProvider } from './theme';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <CssBaseline />
       <Router>
         <Layout>
@@ -17,7 +17,7 @@ function App() {
           </Routes>
         </Layout>
       </Router>
-    </ThemeProvider>
+    </>
   );
 }
 
