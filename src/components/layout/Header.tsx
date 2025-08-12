@@ -15,7 +15,7 @@ export const Header = () => (
       <Logo width={36} height={36} color="#6366f1" />
       <Typography
         color="primary"
-        variant="h6"
+        variant="h5"
         component="h1"
         sx={{ fontWeight: 400 }}
       >
