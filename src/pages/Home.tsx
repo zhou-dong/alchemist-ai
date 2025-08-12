@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 export const Home = () => {
   return (
     <Box sx={{ textAlign: 'center', py: 8 }}>
-      <Typography variant="h2" gutterBottom sx={{ mb: 3 }}>
+      <Typography variant="h2" color="primary" gutterBottom sx={{ mb: 3 }}>
         Welcome to Alchemist
       </Typography>
       
@@ -11,7 +11,7 @@ export const Home = () => {
         Your intelligent companion for creative and productive tasks.
       </Typography>
       
-      <Typography variant="body1" sx={{ maxWidth: 600, mx: 'auto' }}>
+      <Typography variant="body1" color="secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
         We're here to help you explore the possibilities of AI-powered creativity and productivity.
       </Typography>
     </Box>
