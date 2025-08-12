@@ -12,14 +12,14 @@ const HeaderContainer = styled(Box)(({ }) => ({
 export const Header = () => (
   <HeaderContainer>
     <Stack direction="row" justifyContent="center" alignItems="center" gap={0.5} sx={{ cursor: 'pointer' }}>
-      <Logo width={36} height={36} color="#6366f1" />
+      <Logo width={40} height={40} color="#6366f1" />
       <Typography
         color="primary"
-        variant="h5"
+        variant="h4"
         component="h1"
-        sx={{ fontWeight: 400 }}
+        sx={{ fontWeight: 300 }}
       >
-        alchemist
+        Alchemist
       </Typography>
     </Stack>
   </HeaderContainer>
