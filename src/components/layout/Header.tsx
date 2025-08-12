@@ -1,4 +1,4 @@
-import { Typography, Stack, Box } from '@mui/material';
+import { Typography, Stack, Box, useTheme } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Logo from '../common/Logo';
 
@@ -9,20 +9,33 @@ const HeaderContainer = styled(Box)(({ }) => ({
   zIndex: 100,
 }));
 
-export const Header = () => (
-  <HeaderContainer>
-    <Stack direction="row" justifyContent="center" alignItems="center" gap={0.5} sx={{ cursor: 'pointer' }}>
-      <Logo width={40} height={40} color="#6366f1" />
-      <Typography
-        color="primary"
-        variant="h4"
-        component="h1"
-        sx={{ fontWeight: 300 }}
+export const Header = () => {
+  const theme = useTheme();
+
+  const color = theme.palette.primary.main;
+
+  return (
+    <HeaderContainer>
+      <Stack
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        gap={0.5}
+        sx={{
+          cursor: 'pointer',
+        }}
       >
-        Alchemist
-      </Typography>
-    </Stack>
-  </HeaderContainer>
-);
+        <Logo width={36} height={36} color={color} />
+        <Typography
+          color={color}
+          variant="h5"
+          component="h1"
+        >
+          Alchemist
+        </Typography>
+      </Stack>
+    </HeaderContainer>
+  );
+};
 
 export default Header;
