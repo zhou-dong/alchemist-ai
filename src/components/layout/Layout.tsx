@@ -9,7 +9,7 @@ interface LayoutProps {
 
 const HeaderContainer = styled(Box)(({ }) => ({
   position: 'fixed',
-  top: 36,
+  top: 30,
   left: 36,
   zIndex: 100,
 }));
