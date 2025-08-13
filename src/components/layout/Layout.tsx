@@ -1,4 +1,4 @@
-import { Box, Container, styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import type { ReactNode } from 'react';
 import Header from './Header';
 import ThemeToggleFab from '../../theme/ThemeToggleFab';
@@ -16,15 +16,13 @@ const HeaderContainer = styled(Box)(({ }) => ({
 
 export const Layout = ({ children }: LayoutProps) => {
   return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <>
       <HeaderContainer>
         <Header />
       </HeaderContainer>
-      <Container component="main" sx={{ flex: 1, py: 3 }}>
-        {children}
-      </Container>
+      {children}
       <ThemeToggleFab />
-    </Box>
+    </>
   );
 };
 
