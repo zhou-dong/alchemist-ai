@@ -1,6 +1,84 @@
-# React + TypeScript + Vite
+# Alchemist AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application built with TypeScript and Vite, featuring Material-UI components and a modern design.
+
+## Features
+
+- React 19 with TypeScript
+- Vite for fast development and building
+- Material-UI components
+- Dark/Light theme toggle
+- Responsive design
+
+## Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Lint code
+npm run lint
+```
+
+## Deployment to GitHub Pages
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
+
+### Prerequisites
+
+1. Make sure your repository is public (or you have GitHub Pro for private repos)
+2. Ensure you have push access to the repository
+
+### Automatic Deployment
+
+The project includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically deploys to GitHub Pages whenever you push to the main branch.
+
+### Manual Deployment
+
+If you prefer to deploy manually:
+
+```bash
+# Deploy to GitHub Pages
+npm run deploy
+```
+
+### Configuration
+
+- **Base URL**: The app is configured with base path `/alchemist-ai/` for GitHub Pages
+- **Homepage**: Update the `homepage` field in `package.json` with your actual GitHub username
+- **Branch**: The site will be deployed from the `gh-pages` branch
+
+### After Deployment
+
+1. Go to your repository settings
+2. Navigate to "Pages" in the left sidebar
+3. Set the source to "Deploy from a branch"
+4. Select the `gh-pages` branch and `/ (root)` folder
+5. Click "Save"
+
+Your site will be available at: `https://yourusername.github.io/alchemist-ai`
+
+## Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── hooks/         # Custom React hooks
+├── pages/         # Page components
+├── services/      # API and external services
+├── theme/         # Material-UI theme configuration
+├── types/         # TypeScript type definitions
+└── utils/         # Utility functions
+```
 
 Currently, two official plugins are available:
 
