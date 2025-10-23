@@ -1,112 +1,27 @@
-import { 
-  Box, 
-  Typography, 
-  Button, 
-  Card, 
-  CardContent, 
+import {
+  Box,
+  Typography,
+  Button,
+  Card,
+  CardContent,
   Grid,
-  Chip, 
-  LinearProgress,
   Avatar,
-  IconButton,
   Fade,
-  useTheme,
   alpha,
   Container,
   Stack,
-  Paper,
-  Divider
 } from '@mui/material';
-import { 
-  PlayArrow, 
-  School, 
-  Psychology, 
-  AutoGraph, 
-  Code, 
-  EmojiEvents,
-  TrendingUp,
-  Lightbulb,
-  Speed,
-  Security,
+import {
+  PlayArrow,
+  Psychology,
   Rocket,
-  Star,
-  Timeline,
   Science,
   Memory,
   SmartToy,
-  PsychologyAlt,
-  Biotech
 } from '@mui/icons-material';
 import { useState, useEffect } from 'react';
 
-interface LearningModule {
-  id: string;
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
-  duration: string;
-  progress: number;
-  unlocked: boolean;
-  color: string;
-}
-
-const learningModules: LearningModule[] = [
-  {
-    id: 'neural-basics',
-    title: 'Neural Network Fundamentals',
-    description: 'Learn the building blocks of neural networks from scratch',
-    icon: <Psychology />,
-    difficulty: 'Beginner',
-    duration: '30 min',
-    progress: 0,
-    unlocked: true,
-    color: '#6366F1'
-  },
-  {
-    id: 'backpropagation',
-    title: 'Backpropagation & Training',
-    description: 'Master how neural networks learn and improve',
-    icon: <AutoGraph />,
-    difficulty: 'Intermediate',
-    duration: '45 min',
-    progress: 0,
-    unlocked: false,
-    color: '#8B5CF6'
-  },
-  {
-    id: 'deep-learning',
-    title: 'Deep Learning Architectures',
-    description: 'Explore CNNs, RNNs, and transformer models',
-    icon: <Code />,
-    difficulty: 'Advanced',
-    duration: '60 min',
-    progress: 0,
-    unlocked: false,
-    color: '#F59E0B'
-  },
-  {
-    id: 'optimization',
-    title: 'Optimization Techniques',
-    description: 'Advanced training methods and hyperparameter tuning',
-    icon: <TrendingUp />,
-    difficulty: 'Advanced',
-    duration: '50 min',
-    progress: 0,
-    unlocked: false,
-    color: '#10B981'
-  }
-];
-
-const achievements = [
-  { name: 'First Steps', description: 'Complete your first lesson', icon: <Lightbulb />, earned: true },
-  { name: 'Quick Learner', description: 'Complete 3 lessons in a day', icon: <Speed />, earned: false },
-  { name: 'Neural Master', description: 'Complete all modules', icon: <EmojiEvents />, earned: false },
-  { name: 'Code Warrior', description: 'Implement 5 neural networks', icon: <Security />, earned: false }
-];
-
 export const Home = () => {
-  const theme = useTheme();
   const [isLoaded, setIsLoaded] = useState(false);
   const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
 
@@ -117,7 +32,7 @@ export const Home = () => {
 
   const features = [
     {
-      icon: <PsychologyAlt />,
+      icon: <Psychology />,
       title: "Interactive Learning",
       description: "Hands-on neural network building",
       color: "#6366F1"
@@ -142,15 +57,8 @@ export const Home = () => {
     }
   ];
 
-  const stats = [
-    { label: "Students", value: "10K+", icon: <School /> },
-    { label: "Modules", value: "50+", icon: <Code /> },
-    { label: "Success Rate", value: "95%", icon: <TrendingUp /> },
-    { label: "Awards", value: "15+", icon: <EmojiEvents /> }
-  ];
-
   return (
-    <Box sx={{ 
+    <Box sx={{
       minHeight: '100vh',
       background: `linear-gradient(135deg, #0F0F23 0%, #1A1A2E 50%, #16213E 100%)`,
       position: 'relative',
@@ -173,8 +81,8 @@ export const Home = () => {
 
       {/* Hero Section */}
       <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
-        <Box sx={{ 
-          textAlign: 'center', 
+        <Box sx={{
+          textAlign: 'center',
           py: { xs: 8, md: 12 },
           minHeight: '100vh',
           display: 'flex',
@@ -202,7 +110,7 @@ export const Home = () => {
               >
                 NEURAL ACADEMY
               </Typography>
-              
+
               <Typography
                 variant="h4"
                 sx={{
@@ -214,7 +122,7 @@ export const Home = () => {
               >
                 Master AI Through Interactive Gaming
               </Typography>
-              
+
               <Typography
                 variant="h6"
                 sx={{
@@ -225,7 +133,7 @@ export const Home = () => {
                   fontWeight: 400
                 }}
               >
-                Build neural networks, train models, and unlock the secrets of artificial intelligence 
+                Build neural networks, train models, and unlock the secrets of artificial intelligence
                 through our revolutionary game-based learning platform.
               </Typography>
             </Box>
@@ -257,7 +165,7 @@ export const Home = () => {
               >
                 Start Your Journey
               </Button>
-              
+
               <Button
                 variant="outlined"
                 size="large"
@@ -290,7 +198,7 @@ export const Home = () => {
           <Fade in={isLoaded} timeout={2000}>
             <Grid container spacing={3} sx={{ mb: 8 }}>
               {features.map((feature, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
+                <Grid item key={index} xs={12} sm={6} md={3}>
                   <Card
                     onMouseEnter={() => setHoveredFeature(feature.title)}
                     onMouseLeave={() => setHoveredFeature(null)}
@@ -300,16 +208,16 @@ export const Home = () => {
                       backdropFilter: 'blur(10px)',
                       transition: 'all 0.3s ease',
                       transform: hoveredFeature === feature.title ? 'translateY(-8px)' : 'translateY(0)',
-                      boxShadow: hoveredFeature === feature.title 
+                      boxShadow: hoveredFeature === feature.title
                         ? `0 20px 40px ${alpha(feature.color, 0.3)}`
                         : '0 4px 20px rgba(0,0,0,0.1)',
                       cursor: 'pointer'
                     }}
                   >
                     <CardContent sx={{ textAlign: 'center', p: 3 }}>
-                      <Avatar sx={{ 
-                        bgcolor: feature.color, 
-                        mx: 'auto', 
+                      <Avatar sx={{
+                        bgcolor: feature.color,
+                        mx: 'auto',
                         mb: 2,
                         width: 64,
                         height: 64
@@ -329,47 +237,11 @@ export const Home = () => {
             </Grid>
           </Fade>
 
-          {/* Stats Section */}
-          <Fade in={isLoaded} timeout={2500}>
-            <Paper sx={{
-              background: alpha('#FFFFFF', 0.05),
-              backdropFilter: 'blur(20px)',
-              border: `1px solid ${alpha('#FFFFFF', 0.1)}`,
-              borderRadius: 4,
-              p: 4,
-              mb: 6
-            }}>
-              <Grid container spacing={4}>
-                {stats.map((stat, index) => (
-                  <Grid item xs={6} md={3} key={index}>
-                    <Box sx={{ textAlign: 'center' }}>
-                      <Avatar sx={{ 
-                        bgcolor: alpha(theme.palette.primary.main, 0.2),
-                        mx: 'auto',
-                        mb: 2,
-                        width: 56,
-                        height: 56
-                      }}>
-                        {stat.icon}
-                      </Avatar>
-                      <Typography variant="h4" fontWeight={700} sx={{ color: '#FFFFFF', mb: 0.5 }}>
-                        {stat.value}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: alpha('#FFFFFF', 0.7) }}>
-                        {stat.label}
-                      </Typography>
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid>
-            </Paper>
-          </Fade>
-
           {/* Scroll Indicator */}
           <Fade in={isLoaded} timeout={3000}>
-            <Box sx={{ 
-              display: 'flex', 
-              flexDirection: 'column', 
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
               color: alpha('#FFFFFF', 0.6)
             }}>
@@ -388,7 +260,8 @@ export const Home = () => {
       </Container>
 
       {/* CSS Animations */}
-      <style jsx>{`
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-20px) rotate(1deg); }
@@ -403,7 +276,7 @@ export const Home = () => {
           0%, 100% { opacity: 0.4; }
           50% { opacity: 1; }
         }
-      `}</style>
+      `}} />
     </Box>
   );
 };
