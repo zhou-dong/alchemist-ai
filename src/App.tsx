@@ -10,6 +10,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/alchemist-ai" element={<Home />} />
           {/* Add more routes here as your app grows */}
         </Routes>
       </Layout>
