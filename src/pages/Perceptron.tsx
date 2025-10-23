@@ -223,6 +223,7 @@ const Perceptron = () => {
                                             stroke={currentStep === 2 ? '#8B5CF6' : '#6B7280'}
                                             strokeWidth={currentStep === 2 ? '3' : '2'}
                                             strokeDasharray={currentStep === 2 ? '0' : '5,5'}
+                                            markerEnd="url(#arrowhead)"
                                             style={{
                                                 filter: currentStep === 2 ? 
                                                     'drop-shadow(0 0 8px rgba(139, 92, 246, 0.8))' : 
@@ -300,6 +301,7 @@ const Perceptron = () => {
                                     stroke={currentStep === 5 ? '#10B981' : '#6B7280'}
                                     strokeWidth={currentStep === 5 ? '3' : '2'}
                                     strokeDasharray={currentStep === 5 ? '0' : '5,5'}
+                                    markerEnd="url(#arrowheadBias)"
                                     style={{
                                         filter: currentStep === 5 ? 
                                             'drop-shadow(0 0 8px rgba(16, 185, 129, 0.8))' : 
@@ -428,6 +430,7 @@ const Perceptron = () => {
                                 y2={300}
                                 stroke={currentStep === 6 ? '#F59E0B' : '#6B7280'}
                                 strokeWidth={currentStep === 6 ? '3' : '2'}
+                                markerEnd="url(#arrowheadSum)"
                                 style={{
                                     filter: currentStep === 6 ? 
                                         'drop-shadow(0 0 8px rgba(245, 158, 11, 0.8))' : 
@@ -447,6 +450,7 @@ const Perceptron = () => {
                                     '#6B7280'
                                 }
                                 strokeWidth={currentStep === 6 ? '3' : '2'}
+                                markerEnd="url(#arrowheadOutput)"
                                 style={{
                                     filter: currentStep === 6 ? 
                                         `drop-shadow(0 0 8px ${perceptronData.activated ? 
@@ -479,6 +483,60 @@ const Perceptron = () => {
                                     <stop offset="0%" stopColor="#1a1a2e" />
                                     <stop offset="100%" stopColor="#16213e" />
                                 </linearGradient>
+                                
+                                {/* Arrow Markers */}
+                                <marker
+                                    id="arrowhead"
+                                    markerWidth="10"
+                                    markerHeight="7"
+                                    refX="9"
+                                    refY="3.5"
+                                    orient="auto"
+                                >
+                                    <polygon
+                                        points="0 0, 10 3.5, 0 7"
+                                        fill="#8B5CF6"
+                                    />
+                                </marker>
+                                <marker
+                                    id="arrowheadBias"
+                                    markerWidth="10"
+                                    markerHeight="7"
+                                    refX="9"
+                                    refY="3.5"
+                                    orient="auto"
+                                >
+                                    <polygon
+                                        points="0 0, 10 3.5, 0 7"
+                                        fill="#10B981"
+                                    />
+                                </marker>
+                                <marker
+                                    id="arrowheadSum"
+                                    markerWidth="10"
+                                    markerHeight="7"
+                                    refX="9"
+                                    refY="3.5"
+                                    orient="auto"
+                                >
+                                    <polygon
+                                        points="0 0, 10 3.5, 0 7"
+                                        fill="#F59E0B"
+                                    />
+                                </marker>
+                                <marker
+                                    id="arrowheadOutput"
+                                    markerWidth="10"
+                                    markerHeight="7"
+                                    refX="9"
+                                    refY="3.5"
+                                    orient="auto"
+                                >
+                                    <polygon
+                                        points="0 0, 10 3.5, 0 7"
+                                        fill="#EC4899"
+                                    />
+                                </marker>
                             </defs>
                         </svg>
                     </Box>
