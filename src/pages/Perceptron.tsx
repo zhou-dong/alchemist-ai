@@ -354,19 +354,18 @@ const Perceptron = () => {
                                         transition: 'all 0.3s ease'
                                     }}
                                 />
+                                {/* Step Function Symbol */}
+                                <path
+                                    d="M 670 310 L 690 310 L 690 270 L 710 270"
+                                    stroke="white"
+                                    strokeWidth="3"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
                                 <text
                                     x={690}
-                                    y={300}
-                                    textAnchor="middle"
-                                    fill="white"
-                                    fontSize="21"
-                                    fontWeight="bold"
-                                >
-                                    f(x)
-                                </text>
-                                <text
-                                    x={690}
-                                    y={330}
+                                    y={340}
                                     textAnchor="middle"
                                     fill="white"
                                     fontSize="18"
