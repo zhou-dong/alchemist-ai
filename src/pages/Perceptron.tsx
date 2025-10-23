@@ -308,8 +308,8 @@ const Perceptron = () => {
                                     }}
                                 />
                                 <text
-                                    x={562}
-                                    y={165}
+                                    x={600}
+                                    y={180}
                                     textAnchor="middle"
                                     fill={currentStep === 5 ? '#10B981' : 'rgba(255,255,255,0.7)'}
                                     fontSize="11"
