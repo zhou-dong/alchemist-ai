@@ -297,7 +297,7 @@ const Perceptron = () => {
                                     x1={600}
                                     y1={180}
                                     x2={525}
-                                    y2={300}
+                                    y2={240}
                                     stroke={currentStep === 5 ? '#10B981' : '#6B7280'}
                                     strokeWidth={currentStep === 5 ? '3' : '2'}
                                     strokeDasharray={currentStep === 5 ? '0' : '5,5'}
