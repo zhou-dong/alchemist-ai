@@ -1,13 +1,29 @@
-import {
-    Box,
-} from '@mui/material';
+import { Box } from '@mui/material';
 import { useState, useEffect } from 'react';
 
 const Welcome = () => {
     const [particles, setParticles] = useState([]);
+    const [neuralNetwork, setNeuralNetwork] = useState<{
+        nodes: Array<{
+            id: string;
+            x: number;
+            y: number;
+            layer: string;
+            size: number;
+            opacity: number;
+        }>;
+        connections: Array<{
+            id: string;
+            from: any;
+            to: any;
+            opacity: number;
+            delay: number;
+        }>;
+    }>({ nodes: [], connections: [] });
 
     useEffect(() => {
         generateParticles();
+        generateNeuralNetwork();
     }, []);
 
     const generateParticles = () => {
@@ -26,6 +42,112 @@ const Welcome = () => {
             });
         }
         setParticles(newParticles as any);
+    };
+
+    const generateNeuralNetwork = () => {
+        const nodes: Array<{
+            id: string;
+            x: number;
+            y: number;
+            layer: string;
+            size: number;
+            opacity: number;
+        }> = [];
+        const connections: Array<{
+            id: string;
+            from: any;
+            to: any;
+            opacity: number;
+            delay: number;
+        }> = [];
+
+        // Create input layer (left side)
+        for (let i = 0; i < 4; i++) {
+            nodes.push({
+                id: `input-${i}`,
+                x: 100,
+                y: 150 + i * 80,
+                layer: 'input',
+                size: 8,
+                opacity: 0.8
+            });
+        }
+
+        // Create hidden layer 1
+        for (let i = 0; i < 6; i++) {
+            nodes.push({
+                id: `hidden1-${i}`,
+                x: 300,
+                y: 120 + i * 60,
+                layer: 'hidden1',
+                size: 10,
+                opacity: 0.9
+            });
+        }
+
+        // Create hidden layer 2
+        for (let i = 0; i < 5; i++) {
+            nodes.push({
+                id: `hidden2-${i}`,
+                x: 500,
+                y: 130 + i * 70,
+                layer: 'hidden2',
+                size: 9,
+                opacity: 0.85
+            });
+        }
+
+        // Create output layer (right side)
+        for (let i = 0; i < 3; i++) {
+            nodes.push({
+                id: `output-${i}`,
+                x: 700,
+                y: 150 + i * 100,
+                layer: 'output',
+                size: 12,
+                opacity: 1
+            });
+        }
+
+        // Create connections between layers
+        nodes.forEach(node => {
+            if (node.layer === 'input') {
+                // Connect input to hidden1
+                nodes.filter(n => n.layer === 'hidden1').forEach(target => {
+                    connections.push({
+                        id: `${node.id}-${target.id}`,
+                        from: node,
+                        to: target,
+                        opacity: Math.random() * 0.6 + 0.2,
+                        delay: Math.random() * 2
+                    });
+                });
+            } else if (node.layer === 'hidden1') {
+                // Connect hidden1 to hidden2
+                nodes.filter(n => n.layer === 'hidden2').forEach(target => {
+                    connections.push({
+                        id: `${node.id}-${target.id}`,
+                        from: node,
+                        to: target,
+                        opacity: Math.random() * 0.6 + 0.2,
+                        delay: Math.random() * 2
+                    });
+                });
+            } else if (node.layer === 'hidden2') {
+                // Connect hidden2 to output
+                nodes.filter(n => n.layer === 'output').forEach(target => {
+                    connections.push({
+                        id: `${node.id}-${target.id}`,
+                        from: node,
+                        to: target,
+                        opacity: Math.random() * 0.6 + 0.2,
+                        delay: Math.random() * 2
+                    });
+                });
+            }
+        });
+
+        setNeuralNetwork({ nodes, connections });
     };
 
     useEffect(() => {
@@ -122,6 +244,104 @@ const Welcome = () => {
                 />
             ))}
 
+            {/* Neural Network */}
+            <svg
+                style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    zIndex: 2,
+                    pointerEvents: 'none'
+                }}
+            >
+                {neuralNetwork.connections.map((connection: any) => (
+                    <line
+                        key={connection.id}
+                        x1={connection.from.x}
+                        y1={connection.from.y}
+                        x2={connection.to.x}
+                        y2={connection.to.y}
+                        stroke={`url(#gradient-${connection.id})`}
+                        strokeWidth="2"
+                        opacity={connection.opacity}
+                        style={{
+                            filter: `drop-shadow(0 0 4px rgba(99, 102, 241, ${connection.opacity * 0.5}))`
+                        }}
+                    />
+                ))}
+
+                {/* Define gradients for each connection */}
+                <defs>
+                    {neuralNetwork.connections.map((connection: any) => (
+                        <linearGradient
+                            key={`gradient-${connection.id}`}
+                            id={`gradient-${connection.id}`}
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="0%"
+                        >
+                            <stop offset="0%" stopColor={`rgba(99, 102, 241, ${connection.opacity})`}>
+                                <animate
+                                    attributeName="stop-color"
+                                    values={`rgba(99, 102, 241, ${connection.opacity});rgba(139, 92, 246, ${connection.opacity});rgba(236, 72, 153, ${connection.opacity});rgba(16, 185, 129, ${connection.opacity});rgba(99, 102, 241, ${connection.opacity})`}
+                                    dur={`${3 + connection.delay}s`}
+                                    repeatCount="indefinite"
+                                />
+                            </stop>
+                            <stop offset="50%" stopColor={`rgba(139, 92, 246, ${connection.opacity * 0.8})`}>
+                                <animate
+                                    attributeName="stop-color"
+                                    values={`rgba(139, 92, 246, ${connection.opacity * 0.8});rgba(236, 72, 153, ${connection.opacity * 0.8});rgba(16, 185, 129, ${connection.opacity * 0.8});rgba(245, 158, 11, ${connection.opacity * 0.8});rgba(139, 92, 246, ${connection.opacity * 0.8})`}
+                                    dur={`${3 + connection.delay}s`}
+                                    repeatCount="indefinite"
+                                />
+                            </stop>
+                            <stop offset="100%" stopColor={`rgba(236, 72, 153, ${connection.opacity * 0.6})`}>
+                                <animate
+                                    attributeName="stop-color"
+                                    values={`rgba(236, 72, 153, ${connection.opacity * 0.6});rgba(16, 185, 129, ${connection.opacity * 0.6});rgba(245, 158, 11, ${connection.opacity * 0.6});rgba(99, 102, 241, ${connection.opacity * 0.6});rgba(236, 72, 153, ${connection.opacity * 0.6})`}
+                                    dur={`${3 + connection.delay}s`}
+                                    repeatCount="indefinite"
+                                />
+                            </stop>
+                        </linearGradient>
+                    ))}
+                </defs>
+            </svg>
+
+            {neuralNetwork.nodes.map((node: any) => (
+                <Box
+                    key={node.id}
+                    sx={{
+                        position: 'absolute',
+                        left: node.x - node.size / 2,
+                        top: node.y - node.size / 2,
+                        width: node.size,
+                        height: node.size,
+                        borderRadius: '50%',
+                        background: `radial-gradient(circle, 
+                            rgba(99, 102, 241, ${node.opacity}) 0%, 
+                            rgba(139, 92, 246, ${node.opacity * 0.8}) 30%, 
+                            rgba(236, 72, 153, ${node.opacity * 0.6}) 60%, 
+                            rgba(16, 185, 129, ${node.opacity * 0.4}) 80%, 
+                            transparent 100%
+                        )`,
+                        opacity: node.opacity,
+                        zIndex: 3,
+                        animation: `neuralPulse ${3 + Math.random() * 2}s ease-in-out infinite`,
+                        animationDelay: `${Math.random() * 2}s`,
+                        boxShadow: `
+                            0 0 ${node.size * 2}px rgba(99, 102, 241, ${node.opacity * 0.8}), 
+                            0 0 ${node.size * 4}px rgba(139, 92, 246, ${node.opacity * 0.6}),
+                            0 0 ${node.size * 6}px rgba(236, 72, 153, ${node.opacity * 0.4})
+                        `
+                    }}
+                />
+            ))}
+
             {/* CSS Animations */}
             <style dangerouslySetInnerHTML={{
                 __html: `
@@ -157,6 +377,18 @@ const Welcome = () => {
                 @keyframes typing {
                     0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
                     30% { transform: translateY(-10px); opacity: 1; }
+                }
+                @keyframes neuralPulse {
+                    0%, 100% { 
+                        opacity: 0.6; 
+                        transform: scale(1); 
+                        box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+                    }
+                    50% { 
+                        opacity: 1; 
+                        transform: scale(1.2); 
+                        box-shadow: 0 0 16px rgba(99, 102, 241, 0.8);
+                    }
                 }
             `}} />
         </Box>
