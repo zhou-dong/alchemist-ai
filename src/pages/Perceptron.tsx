@@ -329,7 +329,7 @@ const Perceptron = () => {
                             {/* Activation Function */}
                             <g>
                                 <rect
-                                    x={630}
+                                    x={720}
                                     y={240}
                                     width="120"
                                     height="120"
@@ -356,7 +356,7 @@ const Perceptron = () => {
                                 />
                                 {/* Step Function Symbol */}
                                 <path
-                                    d="M 670 310 L 690 310 L 690 270 L 710 270"
+                                    d="M 760 310 L 780 310 L 780 270 L 800 270"
                                     stroke="white"
                                     strokeWidth="3"
                                     fill="none"
@@ -364,7 +364,7 @@ const Perceptron = () => {
                                     strokeLinejoin="round"
                                 />
                                 <text
-                                    x={690}
+                                    x={780}
                                     y={340}
                                     textAnchor="middle"
                                     fill="white"
@@ -377,7 +377,7 @@ const Perceptron = () => {
                             {/* Output */}
                             <g>
                                 <circle
-                                    cx={900}
+                                    cx={1000}
                                     cy={300}
                                     r="52"
                                     fill={currentStep === 6 ? 
@@ -401,7 +401,7 @@ const Perceptron = () => {
                                     }}
                                 />
                                 <text
-                                    x={900}
+                                    x={1000}
                                     y={308}
                                     textAnchor="middle"
                                     fill="white"
@@ -411,7 +411,7 @@ const Perceptron = () => {
                                     {perceptronData.activated ? '1' : '0'}
                                 </text>
                                 <text
-                                    x={900}
+                                    x={1000}
                                     y={240}
                                     textAnchor="middle"
                                     fill="rgba(255,255,255,0.8)"
@@ -425,7 +425,7 @@ const Perceptron = () => {
                             <line
                                 x1={585}
                                 y1={300}
-                                x2={630}
+                                x2={720}
                                 y2={300}
                                 stroke={currentStep === 6 ? '#F59E0B' : '#6B7280'}
                                 strokeWidth={currentStep === 6 ? '3' : '2'}
@@ -440,9 +440,9 @@ const Perceptron = () => {
 
                             {/* Connection from Activation to Output */}
                             <line
-                                x1={750}
+                                x1={840}
                                 y1={300}
-                                x2={848}
+                                x2={948}
                                 y2={300}
                                 stroke={currentStep === 6 ? 
                                     (perceptronData.activated ? '#10B981' : '#EF4444') : 
