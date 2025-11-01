@@ -86,9 +86,6 @@ const Perceptron = () => {
         <Box
             sx={{
                 minHeight: '100vh',
-                background: `
-                    linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #000000 100%)
-                `,
                 position: 'relative',
                 overflow: 'hidden',
                 padding: 4,
