@@ -3,7 +3,6 @@ import {
   Typography,
   Button,
   Fade,
-  alpha,
 } from '@mui/material';
 import {
   PlayArrow,
@@ -68,45 +67,76 @@ export const Home = () => {
           </Box>
         </Fade>
 
-        {/* Main CTA Button - Game Style */}
+        {/* Main CTA Button - Elegant Style */}
         <Fade in={isLoaded} timeout={800}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <Button
-              variant="contained"
+              variant="text"
               size="large"
-              startIcon={<PlayArrow sx={{ fontSize: '2rem' }} />}
+              startIcon={<PlayArrow sx={{ 
+                fontSize: { xs: '2rem', md: '2.5rem' },
+                width: { xs: '2rem', md: '2.5rem' },
+                height: { xs: '2rem', md: '2.5rem' },
+                background: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
+                backgroundSize: '200% 200%',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                animation: 'gradientShift 8s ease infinite'
+              }} />}
               onClick={() => navigate('/alchemist-ai/welcome')}
               sx={{
-                py: 3,
-                px: 8,
-                fontSize: { xs: '1.3rem', md: '1.6rem' },
+                py: 2.5,
+                px: 6,
+                fontSize: { xs: '1.2rem', md: '1.5rem' },
+                '& .MuiButton-startIcon': {
+                  marginRight: { xs: 1.5, md: 2 },
+                  '& > *:nth-of-type(1)': {
+                    fontSize: { xs: '2rem', md: '2.5rem' },
+                    width: { xs: '2rem', md: '2.5rem' },
+                    height: { xs: '2rem', md: '2.5rem' },
+                  }
+                },
                 fontWeight: 700,
-                background: `linear-gradient(135deg, #6366F1, #8B5CF6)`,
-                borderRadius: 4,
+                background: 'transparent',
+                borderRadius: 2,
                 textTransform: 'none',
-                boxShadow: '0 12px 48px rgba(99, 102, 241, 0.4)',
                 position: 'relative',
-                overflow: 'hidden',
+                backgroundImage: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
+                backgroundSize: '200% 200%',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                letterSpacing: { xs: '0.05em', md: '0.1em' },
+                animation: 'glow 2s ease-in-out infinite alternate, gradientShift 8s ease infinite',
+                border: '2px solid transparent',
                 '&::before': {
                   content: '""',
                   position: 'absolute',
-                  top: 0,
-                  left: '-100%',
-                  width: '100%',
-                  height: '100%',
-                  background: `linear-gradient(90deg, transparent, ${alpha('#FFFFFF', 0.3)}, transparent)`,
-                  transition: 'left 0.5s'
+                  inset: 0,
+                  borderRadius: 2,
+                  padding: '2px',
+                  background: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
+                  backgroundSize: '200% 200%',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude',
+                  opacity: 0.5,
+                  animation: 'gradientShift 8s ease infinite',
+                  zIndex: -1
                 },
                 '&:hover': {
-                  background: `linear-gradient(135deg, #5B5BD6, #7C3AED)`,
-                  transform: 'translateY(-4px) scale(1.05)',
-                  boxShadow: '0 16px 64px rgba(99, 102, 241, 0.6)',
+                  backgroundImage: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
+                  backgroundSize: '200% 200%',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  transform: 'scale(1.05)',
                   '&::before': {
-                    left: '100%'
+                    opacity: 0.8
                   }
                 },
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                animation: 'buttonPulse 3s ease-in-out infinite'
               }}
             >
               START
