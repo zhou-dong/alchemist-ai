@@ -18,14 +18,7 @@ export const Header = () => {
       }}
       onClick={() => navigate('/')}
     >
-      <Logo width={36} height={36} color={color} />
-      <Typography
-        color={color}
-        variant="h5"
-        component="h1"
-      >
-        Alchemist
-      </Typography>
+      <Logo width={48} height={48} color={color} />
     </Stack>
   );
 };

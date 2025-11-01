@@ -1,7 +1,6 @@
 import { Box, styled } from '@mui/material';
 import type { ReactNode } from 'react';
 import Header from './Header';
-import ThemeToggleFab from '../../theme/ThemeToggleFab';
 
 interface LayoutProps {
   children: ReactNode;
@@ -21,7 +20,6 @@ export const Layout = ({ children }: LayoutProps) => {
         <Header />
       </HeaderContainer>
       {children}
-      <ThemeToggleFab />
     </>
   );
 };
