@@ -23,7 +23,7 @@ interface ColorModeProviderProps {
 }
 
 export const ColorModeProvider: React.FC<ColorModeProviderProps> = ({ children }) => {
-  const [mode, setMode] = useLocalStorage<PaletteMode>('colorMode', 'light');
+  const [mode, setMode] = useLocalStorage<PaletteMode>('colorMode', 'dark');
 
   const colorMode = useMemo(
     () => ({
