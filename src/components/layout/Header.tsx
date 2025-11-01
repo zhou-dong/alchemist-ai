@@ -1,4 +1,4 @@
-import { Typography, Stack, useTheme } from '@mui/material';
+import { Stack, useTheme } from '@mui/material';
 import Logo from '../common/Logo';
 import { useNavigate } from 'react-router-dom';
 
