@@ -4,9 +4,6 @@ import {
   Button,
   Fade,
 } from '@mui/material';
-import {
-  PlayArrow,
-} from '@mui/icons-material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -73,30 +70,11 @@ export const Home = () => {
             <Button
               variant="text"
               size="large"
-              startIcon={<PlayArrow sx={{ 
-                fontSize: { xs: '2rem', md: '2.5rem' },
-                width: { xs: '2rem', md: '2.5rem' },
-                height: { xs: '2rem', md: '2.5rem' },
-                background: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
-                backgroundSize: '200% 200%',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                animation: 'gradientShift 8s ease infinite'
-              }} />}
               onClick={() => navigate('/alchemist-ai/welcome')}
               sx={{
                 py: 2.5,
                 px: 6,
                 fontSize: { xs: '1.2rem', md: '1.5rem' },
-                '& .MuiButton-startIcon': {
-                  marginRight: { xs: 1.5, md: 2 },
-                  '& > *:nth-of-type(1)': {
-                    fontSize: { xs: '2rem', md: '2.5rem' },
-                    width: { xs: '2rem', md: '2.5rem' },
-                    height: { xs: '2rem', md: '2.5rem' },
-                  }
-                },
                 fontWeight: 700,
                 background: 'transparent',
                 borderRadius: 2,
