@@ -52,7 +52,6 @@ export const Home = () => {
     <Box sx={{
       width: '100vw',
       height: '100vh',
-      background: `linear-gradient(135deg, #0F0F23 0%, #1A1A2E 50%, #16213E 100%)`,
       position: 'fixed',
       top: 0,
       left: 0,
@@ -105,7 +104,7 @@ export const Home = () => {
         alignItems: 'center'
       }}>
         {/* Main Title with Animation */}
-        <Fade in={isLoaded} timeout={1200}>
+        <Fade in={isLoaded} timeout={800}>
           <Box sx={{ mb: 6, position: 'relative' }}>
             <Typography
               variant="h1"
@@ -125,14 +124,14 @@ export const Home = () => {
                 position: 'relative',
                 zIndex: 3
               }}
-              >
-                NEURAL QUEST
-              </Typography>
-            </Box>
+            >
+              NEURAL QUEST
+            </Typography>
+          </Box>
         </Fade>
 
         {/* Main CTA Button - Game Style */}
-        <Fade in={isLoaded} timeout={1200}>
+        <Fade in={isLoaded} timeout={800}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <Button
               variant="contained"

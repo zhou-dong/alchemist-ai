@@ -1,5 +1,6 @@
 import { CssBaseline } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
+import { ColorModeProvider } from './theme/ColorModeContext';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import Welcome from './pages/Welcome';
@@ -7,7 +8,7 @@ import Perceptron from './pages/Perceptron';
 
 function App() {
   return (
-    <>
+    <ColorModeProvider>
       <CssBaseline />
       <Layout>
         <Routes>
@@ -18,7 +19,7 @@ function App() {
           {/* Add more routes here as your app grows */}
         </Routes>
       </Layout>
-    </>
+    </ColorModeProvider>
   );
 }
 
