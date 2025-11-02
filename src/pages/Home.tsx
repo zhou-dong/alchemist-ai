@@ -1,11 +1,10 @@
 import {
   Box,
-  Button,
   Fade,
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTitle } from '../theme/theme';
+import { GradientTitle, GradientButton } from '../theme/theme';
 
 export const Home = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -57,58 +56,19 @@ export const Home = () => {
         {/* Main CTA Button - Elegant Style */}
         <Fade in={isLoaded} timeout={800}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Button
-              variant="text"
+            <GradientButton
+              variant="outlined"
               size="large"
               onClick={() => navigate('/alchemist-ai/roadmap')}
               sx={{
                 py: 2.5,
                 px: 6,
                 fontSize: { xs: '1.2rem', md: '1.5rem' },
-                fontWeight: 700,
-                background: 'transparent',
-                borderRadius: 2,
-                textTransform: 'none',
-                position: 'relative',
-                backgroundImage: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
-                backgroundSize: '200% 200%',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
                 letterSpacing: { xs: '0.05em', md: '0.1em' },
-                animation: 'glow 2s ease-in-out infinite alternate, gradientShift 8s ease infinite',
-                border: '2px solid transparent',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  inset: 0,
-                  borderRadius: 2,
-                  padding: '2px',
-                  background: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
-                  backgroundSize: '200% 200%',
-                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                  WebkitMaskComposite: 'xor',
-                  maskComposite: 'exclude',
-                  opacity: 0.5,
-                  animation: 'gradientShift 8s ease infinite',
-                  zIndex: -1
-                },
-                '&:hover': {
-                  backgroundImage: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
-                  backgroundSize: '200% 200%',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  transform: 'scale(1.05)',
-                  '&::before': {
-                    opacity: 0.8
-                  }
-                },
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
               }}
             >
               START
-            </Button>
+            </GradientButton>
           </Box>
         </Fade>
       </Box>
