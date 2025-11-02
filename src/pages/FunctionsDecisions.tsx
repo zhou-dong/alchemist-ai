@@ -71,220 +71,263 @@ export const FunctionsDecisions = () => {
               width: '100%',
               maxWidth: '800px',
               display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'center',
-              gap: { xs: 1, md: 2 },
+              gap: 2,
               my: 2,
               px: { xs: 2, md: 4 },
-              flexWrap: { xs: 'wrap', sm: 'nowrap' }
             }}
           >
-            {/* Input Box */}
-            <Box
-              sx={{
-                minWidth: { xs: '120px', md: '140px' },
-                py: 2,
-                px: 3,
-                borderRadius: 2,
-                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2))',
-                border: '2px solid rgba(99, 102, 241, 0.4)',
-                textAlign: 'center',
-                position: 'relative',
-              }}
-            >
-              <Typography
-                variant="body2"
-                sx={{
-                  fontSize: { xs: '0.75rem', md: '0.85rem' },
-                  color: 'text.secondary',
-                  mb: 0.5,
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
-                }}
-              >
-                Input
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{
-                  fontSize: { xs: '0.7rem', md: '0.8rem' },
-                  color: 'text.primary',
-                  fontFamily: 'monospace'
-                }}
-              >
-                (weather, time)
-              </Typography>
-            </Box>
-
-            {/* Arrow 1 */}
+            {/* Top row: Circles and Arrows */}
             <Box
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                flexShrink: 0
+                justifyContent: 'center',
+                gap: { xs: 1, md: 2 },
+                flexWrap: { xs: 'wrap', sm: 'nowrap' }
               }}
             >
-              <svg
-                width={40}
-                height={20}
-                viewBox="0 0 40 20"
-                style={{ overflow: 'visible' }}
-              >
-                <defs>
-                  <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#6366F1" />
-                    <stop offset="100%" stopColor="#8B5CF6" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M 0 10 L 30 10 M 25 5 L 30 10 L 25 15"
-                  stroke="url(#arrowGradient)"
-                  strokeWidth="2.5"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Box>
-
-            {/* Function/Decision Box */}
-            <Box
-              sx={{
-                minWidth: { xs: '140px', md: '180px' },
-                py: 2,
-                px: 3,
-                borderRadius: 2,
-                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3))',
-                border: '2px solid rgba(99, 102, 241, 0.6)',
-                textAlign: 'center',
-                position: 'relative',
-                boxShadow: '0 0 20px rgba(99, 102, 241, 0.3)',
-              }}
-            >
-              <Typography
-                variant="body2"
+              {/* Input Circle */}
+              <Box
                 sx={{
-                  fontSize: { xs: '0.75rem', md: '0.85rem' },
-                  color: 'text.secondary',
-                  mb: 0.5,
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
+                  width: { xs: '90px', md: '100px' },
+                  height: { xs: '90px', md: '100px' },
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                  textAlign: 'center',
+                  position: 'relative',
+                  px: 2,
                 }}
               >
-                Function/Decision
-              </Typography>
-              <Typography
-                variant="body2"
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '0.75rem', md: '0.85rem' },
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    backgroundImage: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
+                    backgroundSize: '200% 200%',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    animation: 'gradientShift 8s ease infinite',
+                  }}
+                >
+                  Input
+                </Typography>
+              </Box>
+
+              {/* Arrow 1 */}
+              <Box
                 sx={{
-                  fontSize: { xs: '0.65rem', md: '0.75rem' },
-                  color: 'text.primary',
-                  fontStyle: 'italic'
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexShrink: 0
                 }}
               >
-                "Should I bring an umbrella?"
-              </Typography>
+                <svg
+                  width={60}
+                  height={20}
+                  viewBox="0 0 60 20"
+                  style={{ overflow: 'visible' }}
+                >
+                  <defs>
+                    <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#6366F1" />
+                      <stop offset="100%" stopColor="#8B5CF6" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="M 0 10 L 50 10 M 45 5 L 50 10 L 45 15"
+                    stroke="url(#arrowGradient)"
+                    strokeWidth="2.5"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Box>
+
+              {/* Function/Decision Circle */}
+              <Box
+                sx={{
+                  width: { xs: '140px', md: '180px' },
+                  height: { xs: '140px', md: '180px' },
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                  textAlign: 'center',
+                  position: 'relative',
+                  px: 2,
+                  // boxShadow: '0 0 20px rgba(99, 102, 241, 0.2)',
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '0.75rem', md: '0.85rem' },
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    backgroundImage: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
+                    backgroundSize: '200% 200%',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    animation: 'gradientShift 8s ease infinite',
+                  }}
+                >
+                  Decision
+                </Typography>
+              </Box>
+
+              {/* Arrow 2 */}
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexShrink: 0
+                }}
+              >
+                <svg
+                  width={60}
+                  height={20}
+                  viewBox="0 0 60 20"
+                  style={{ overflow: 'visible' }}
+                >
+                  <path
+                    d="M 0 10 L 50 10 M 45 5 L 50 10 L 45 15"
+                    stroke="url(#arrowGradient)"
+                    strokeWidth="2.5"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Box>
+
+              {/* Output Circle */}
+              <Box
+                sx={{
+                  width: { xs: '90px', md: '100px' },
+                  height: { xs: '90px', md: '100px' },
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                  textAlign: 'center',
+                  position: 'relative',
+                  px: 2,
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '0.75rem', md: '0.85rem' },
+                    fontWeight: 600,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    backgroundImage: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
+                    backgroundSize: '200% 200%',
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    animation: 'gradientShift 8s ease infinite',
+                  }}
+                >
+                  Output
+                </Typography>
+              </Box>
             </Box>
 
-            {/* Arrow 2 */}
+            {/* Bottom row: Example Text Labels */}
             <Box
               sx={{
                 display: 'flex',
-                alignItems: 'center',
-                flexShrink: 0
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                gap: { xs: 1, md: 2 },
+                flexWrap: { xs: 'wrap', sm: 'nowrap' },
+                mt: 1
               }}
             >
-              <svg
-                width={40}
-                height={20}
-                viewBox="0 0 40 20"
-                style={{ overflow: 'visible' }}
-              >
-                <path
-                  d="M 0 10 L 30 10 M 25 5 L 30 10 L 25 15"
-                  stroke="url(#arrowGradient)"
-                  strokeWidth="2.5"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Box>
-
-            {/* Output Box */}
-            <Box
-              sx={{
-                minWidth: { xs: '120px', md: '140px' },
-                py: 2,
-                px: 3,
-                borderRadius: 2,
-                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2))',
-                border: '2px solid rgba(99, 102, 241, 0.4)',
-                textAlign: 'center',
-                position: 'relative',
-              }}
-            >
-              <Typography
-                variant="body2"
+              <Box
                 sx={{
-                  fontSize: { xs: '0.75rem', md: '0.85rem' },
-                  color: 'text.secondary',
-                  mb: 0.5,
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px'
+                  width: { xs: '90px', md: '100px' },
+                  display: 'flex',
+                  justifyContent: 'center'
                 }}
               >
-                Output
-              </Typography>
-              <Typography
-                variant="body2"
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '0.7rem', md: '0.8rem' },
+                    color: 'text.primary',
+                    fontFamily: 'monospace',
+                    textAlign: 'center',
+                  }}
+                >
+                  (weather, time)
+                </Typography>
+              </Box>
+
+              {/* Spacer for arrow */}
+              <Box sx={{ width: { xs: '60px', md: '60px' }, flexShrink: 0 }} />
+
+              <Box
                 sx={{
-                  fontSize: { xs: '0.7rem', md: '0.8rem' },
-                  color: 'text.primary',
-                  fontFamily: 'monospace'
+                  width: { xs: '140px', md: '180px' },
+                  display: 'flex',
+                  justifyContent: 'center'
                 }}
               >
-                Yes/No
-              </Typography>
-            </Box>
-          </Box>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '0.65rem', md: '0.75rem' },
+                    color: 'text.primary',
+                    fontStyle: 'italic',
+                    textAlign: 'center',
+                  }}
+                >
+                  "Should I bring an umbrella?"
+                </Typography>
+              </Box>
 
-          <Box
-            sx={{
-              width: '100%',
-              maxWidth: '800px',
-              p: 3,
-              mt: 1,
-              backgroundColor: 'rgba(99, 102, 241, 0.1)',
-              borderRadius: 2,
-              border: '1px solid rgba(99, 102, 241, 0.3)',
-            }}
-          >
-            <Typography
-              variant="body1"
-              sx={{
-                fontFamily: 'monospace',
-                fontSize: { xs: '0.9rem', md: '1.1rem' },
-                color: 'text.primary',
-                mb: 2,
-                textAlign: 'left',
-              }}
-            >
-              input → function → output
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{
-                fontFamily: 'monospace',
-                fontSize: { xs: '0.9rem', md: '1.1rem' },
-                color: 'text.primary',
-                textAlign: 'left',
-              }}
-            >
-              (weather, time) → "Should I bring an umbrella?" → Yes/No
-            </Typography>
+              {/* Spacer for arrow */}
+              <Box sx={{ width: { xs: '60px', md: '60px' }, flexShrink: 0 }} />
+
+              <Box
+                sx={{
+                  width: { xs: '90px', md: '100px' },
+                  display: 'flex',
+                  justifyContent: 'center'
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontSize: { xs: '0.7rem', md: '0.8rem' },
+                    color: 'text.primary',
+                    fontFamily: 'monospace',
+                    textAlign: 'center',
+                  }}
+                >
+                  Yes/No
+                </Typography>
+              </Box>
+            </Box>
           </Box>
 
           <Box sx={{ display: 'flex', gap: 2, mt: 3 }}>
