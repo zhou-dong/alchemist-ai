@@ -1,6 +1,8 @@
-import { Box, styled } from '@mui/material';
+import { Box, styled, Fab } from '@mui/material';
+import HomeIcon from '@mui/icons-material/Home';
 import type { ReactNode } from 'react';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ThemeToggleFab } from '../../theme/ThemeToggleFab';
 
 const HeaderContainer = styled(Box)(({ }) => ({
@@ -110,6 +112,7 @@ const FloatingParticles = ({ particles }: { particles: Array<Particle> }) => (
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   const [particles, setParticles] = useState<Array<Particle>>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setParticles(generateParticles());
@@ -120,6 +123,13 @@ export const Layout = ({ children }: { children: ReactNode }) => {
       <BackgroundContainer />
       <FloatingParticles particles={particles} />
       <HeaderContainer>
+        <Fab
+          color="primary"
+          onClick={() => navigate('/')}
+          aria-label="Go to home page"
+        >
+          <HomeIcon />
+        </Fab>
         {/* <Header /> */}
       </HeaderContainer>
       {children}
