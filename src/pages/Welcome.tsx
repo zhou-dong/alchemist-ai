@@ -365,11 +365,6 @@ const Welcome = () => {
                     from { opacity: 0.8; }
                     to { opacity: 1; }
                 }
-                @keyframes gradientShift {
-                    0% { background-position: 0% 50%; }
-                    50% { background-position: 100% 50%; }
-                    100% { background-position: 0% 50%; }
-                }
                 @keyframes fadeInOut {
                     0%, 100% { opacity: 0.3; }
                     50% { opacity: 1; }

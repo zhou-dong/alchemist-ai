@@ -1,6 +1,7 @@
 import { CssBaseline } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
 import { ColorModeProvider } from './theme/ColorModeContext';
+import { GlobalAnimationStyles } from './theme/GlobalAnimationStyles';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import Welcome from './pages/Welcome';
@@ -19,6 +20,7 @@ function App() {
   return (
     <ColorModeProvider>
       <CssBaseline />
+      <GlobalAnimationStyles />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
