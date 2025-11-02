@@ -96,15 +96,15 @@ const Perceptron = () => {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    background: `
-                        radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
-                        radial-gradient(circle at 50% 10%, rgba(236, 72, 153, 0.08) 0%, transparent 60%),
-                        radial-gradient(circle at 10% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 90% 30%, rgba(245, 158, 11, 0.08) 0%, transparent 50%)
-                    `,
+                    // background: `
+                    //     radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                    //     radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+                    //     radial-gradient(circle at 50% 10%, rgba(236, 72, 153, 0.08) 0%, transparent 60%),
+                    //     radial-gradient(circle at 10% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                    //     radial-gradient(circle at 90% 30%, rgba(245, 158, 11, 0.08) 0%, transparent 50%)
+                    // `,
                     zIndex: 0,
-                    animation: 'gradientShift 8s ease-in-out infinite'
+                    // animation: 'gradientShift 8s ease-in-out infinite'
                 }
             }}
         >
@@ -113,7 +113,7 @@ const Perceptron = () => {
                 <Typography 
                     variant="h2" 
                     sx={{ 
-                        background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%)',
+                        // background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%)',
                         backgroundClip: 'text',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
@@ -132,13 +132,14 @@ const Perceptron = () => {
             <Box sx={{ display: 'flex', gap: 4, position: 'relative', zIndex: 2 }}>
                 {/* Perceptron Visualization */}
                 <Paper 
-                    elevation={8}
+                    // elevation={8}
                     sx={{ 
                         flex: 1, 
                         p: 4, 
-                        background: 'rgba(255,255,255,0.05)',
-                        backdropFilter: 'blur(10px)',
-                        border: '1px solid rgba(255,255,255,0.1)',
+                        background: 'transparent',
+                        // background: 'rgba(255,255,255,0.05)',
+                        // backdropFilter: 'blur(10px)',
+                        // border: '1px solid rgba(255,255,255,0.1)',
                         borderRadius: 3
                     }}
                 >

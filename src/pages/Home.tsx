@@ -70,7 +70,7 @@ export const Home = () => {
             <Button
               variant="text"
               size="large"
-              onClick={() => navigate('/alchemist-ai/welcome')}
+              onClick={() => navigate('/alchemist-ai/roadmap')}
               sx={{
                 py: 2.5,
                 px: 6,
