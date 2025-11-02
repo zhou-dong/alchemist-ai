@@ -113,34 +113,6 @@ export const Home = () => {
         </Fade>
       </Box>
 
-      {/* CSS Animations */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(1deg); }
-        }
-        
-        @keyframes titleGlow {
-          from { 
-            opacity: 0.3;
-            transform: translate(-50%, -50%) scale(1);
-          }
-          to { 
-            opacity: 0.6;
-            transform: translate(-50%, -50%) scale(1.1);
-          }
-        }
-        
-        @keyframes buttonPulse {
-          0%, 100% { 
-            box-shadow: 0 12px 48px rgba(99, 102, 241, 0.4);
-          }
-          50% { 
-            box-shadow: 0 12px 48px rgba(99, 102, 241, 0.4), 0 0 60px rgba(99, 102, 241, 0.6);
-          }
-        }
-      `}} />
     </Box>
   );
 };
