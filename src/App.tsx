@@ -6,6 +6,14 @@ import Home from './pages/Home';
 import Welcome from './pages/Welcome';
 import Perceptron from './pages/Perceptron';
 import Roadmap from './pages/Roadmap';
+import FunctionsDecisions from './pages/FunctionsDecisions';
+import SimpleFunctions from './pages/SimpleFunctions';
+import MultiInputFunctions from './pages/MultiInputFunctions';
+import MathToNeurons from './pages/MathToNeurons';
+import LogisticRegression from './pages/LogisticRegression';
+import MultiLayerNetwork from './pages/MultiLayerNetwork';
+import Backpropagation from './pages/Backpropagation';
+import NeuralNetworks from './pages/NeuralNetworks';
 
 function App() {
   return (
@@ -18,7 +26,14 @@ function App() {
           <Route path="/alchemist-ai/welcome" element={<Welcome />} />
           <Route path="/alchemist-ai/perceptron" element={<Perceptron />} />
           <Route path="/alchemist-ai/roadmap" element={<Roadmap />} />
-          {/* Add more routes here as your app grows */}
+          <Route path="/alchemist-ai/functions-decisions" element={<FunctionsDecisions />} />
+          <Route path="/alchemist-ai/simple-functions" element={<SimpleFunctions />} />
+          <Route path="/alchemist-ai/multi-input-functions" element={<MultiInputFunctions />} />
+          <Route path="/alchemist-ai/math-to-neurons" element={<MathToNeurons />} />
+          <Route path="/alchemist-ai/logistic-regression" element={<LogisticRegression />} />
+          <Route path="/alchemist-ai/multi-layer-network" element={<MultiLayerNetwork />} />
+          <Route path="/alchemist-ai/backpropagation" element={<Backpropagation />} />
+          <Route path="/alchemist-ai/neural-networks" element={<NeuralNetworks />} />
         </Routes>
       </Layout>
     </ColorModeProvider>
