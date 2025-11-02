@@ -6,11 +6,7 @@ interface GradientTitleProps {
 }
 
 // Styled component for gradient buttons
-export const GradientButton = styled(Button)(({ theme }) => ({
-    py: 2.5,
-    px: 6,
-    fontSize: '1.2rem',
-    fontWeight: 700,
+export const GradientButton = styled(Button)(({ }) => ({
     background: 'transparent',
     borderRadius: "8px",
     textTransform: 'none',
@@ -21,10 +17,6 @@ export const GradientButton = styled(Button)(({ theme }) => ({
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     letterSpacing: '0.05em',
-    [theme.breakpoints.up('md')]: {
-        fontSize: '1.5rem',
-        letterSpacing: '0.1em',
-    },
     animation: 'glow 2s ease-in-out infinite alternate, gradientShift 8s ease infinite',
     border: '2px solid transparent',
     '&::before': {
