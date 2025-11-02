@@ -2,11 +2,10 @@ import {
   Box,
   Typography,
   Fade,
-  Button,
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTitle } from '../theme/theme';
+import { GradientTitle, GradientButton } from '../theme/theme';
 
 export const FunctionsDecisions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -330,77 +329,114 @@ export const FunctionsDecisions = () => {
             </Box>
           </Box>
 
+          {/* AI Goal Section */}
+          <Box
+            sx={{
+              mt: 4,
+              p: { xs: 3, md: 4 },
+              borderRadius: '16px',
+              backgroundColor: 'rgba(99, 102, 241, 0.05)',
+              border: '1px solid rgba(99, 102, 241, 0.2)',
+              maxWidth: '800px',
+              textAlign: 'center',
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                fontSize: { xs: '1.1rem', md: '1.3rem' },
+                fontWeight: 700,
+                mb: 2,
+                backgroundImage: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
+                backgroundSize: '200% 200%',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                animation: 'gradientShift 8s ease infinite',
+              }}
+            >
+              Our Goal: Building Intelligent AI
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: { xs: '0.95rem', md: '1.1rem' },
+                color: 'text.primary',
+                lineHeight: 1.8,
+                opacity: 0.9,
+              }}
+            >
+              We want to build an AI system that can{' '}
+              <Box component="span" sx={{ fontWeight: 600, color: 'primary.main' }}>
+                accept any input
+              </Box>
+              ,{' '}
+              <Box component="span" sx={{ fontWeight: 600, color: 'secondary.main' }}>
+                process it intelligently
+              </Box>
+              , and{' '}
+              <Box component="span" sx={{ fontWeight: 600, color: '#8B5CF6' }}>
+                produce meaningful output
+              </Box>
+              . Just like the decision-making function shown above, but at a scale that can handle complex, real-world problems.
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                fontSize: { xs: '0.95rem', md: '1.1rem' },
+                color: 'text.primary',
+                lineHeight: 1.8,
+                opacity: 0.9,
+                mt: 2,
+              }}
+            >
+              So we can treat{' '}
+              <Box component="span" sx={{ fontWeight: 700, fontStyle: 'italic' }}>
+                AI as a function
+              </Box>
+              , just like the diagram above. This AI could be a{' '}
+              <Box component="span" sx={{ fontWeight: 600, color: 'primary.light' }}>
+                simple function
+              </Box>
+              {' '}or it could be a{' '}
+              <Box component="span" sx={{ fontWeight: 600, color: '#8B5CF6' }}>
+                complex function
+              </Box>
+              , but they are all{' '}
+              <Box component="span" sx={{ fontWeight: 700, backgroundImage: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`, backgroundSize: '200% 200%', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                functions
+              </Box>
+              {' '}—mapping inputs to outputs through intelligent processing.
+            </Typography>
+          </Box>
+
           <Box sx={{ display: 'flex', gap: 2, mt: 3 }}>
-            <Button
-              variant="text"
+            <GradientButton
+              size="medium"
               onClick={() => navigate('/alchemist-ai/roadmap')}
               sx={{
                 px: 4,
                 py: 1.5,
-                fontSize: '1rem',
-                fontWeight: 600,
-                backgroundImage: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
-                backgroundSize: '200% 200%',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                animation: 'gradientShift 8s ease infinite',
-                textTransform: 'none',
-                border: '2px solid transparent',
-                position: 'relative',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  inset: 0,
-                  borderRadius: 2,
-                  padding: '2px',
-                  background: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
-                  backgroundSize: '200% 200%',
-                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                  WebkitMaskComposite: 'xor',
-                  maskComposite: 'exclude',
-                  opacity: 0.5,
-                  animation: 'gradientShift 8s ease infinite'
-                }
+                fontSize: '1.2rem',
+                fontWeight: 700,
+                letterSpacing: '0.02em',
               }}
             >
               Back to Roadmap
-            </Button>
-            <Button
-              variant="text"
+            </GradientButton>
+            <GradientButton
+              size="medium"
               onClick={() => navigate('/alchemist-ai/simple-functions')}
               sx={{
                 px: 4,
                 py: 1.5,
-                fontSize: '1rem',
-                fontWeight: 600,
-                backgroundImage: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
-                backgroundSize: '200% 200%',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                animation: 'gradientShift 8s ease infinite',
-                textTransform: 'none',
-                border: '2px solid transparent',
-                position: 'relative',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  inset: 0,
-                  borderRadius: 2,
-                  padding: '2px',
-                  background: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
-                  backgroundSize: '200% 200%',
-                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                  WebkitMaskComposite: 'xor',
-                  maskComposite: 'exclude',
-                  opacity: 0.5,
-                  animation: 'gradientShift 8s ease infinite'
-                }
+                fontSize: '1.2rem',
+                fontWeight: 700,
+                letterSpacing: '0.02em',
               }}
             >
               Next Step →
-            </Button>
+            </GradientButton>
           </Box>
         </Box>
       </Fade>
