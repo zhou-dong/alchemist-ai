@@ -57,14 +57,14 @@ export const Home = () => {
         <Fade in={isLoaded} timeout={800}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <GradientButton
-              variant="outlined"
               size="large"
               onClick={() => navigate('/alchemist-ai/roadmap')}
               sx={{
-                py: 2.5,
-                px: 6,
-                fontSize: { xs: '1.2rem', md: '1.5rem' },
-                letterSpacing: { xs: '0.05em', md: '0.1em' },
+                py: 1.5,
+                px: 4,
+                fontSize: '1.5rem',
+                fontWeight: 700,
+                letterSpacing: '0.1em',
               }}
             >
               START
