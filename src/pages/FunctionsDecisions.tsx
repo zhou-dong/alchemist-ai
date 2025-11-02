@@ -277,7 +277,7 @@ export const FunctionsDecisions = () => {
                     textAlign: 'center',
                   }}
                 >
-                  (weather, time)
+                  x
                 </Typography>
               </Box>
 
@@ -300,7 +300,7 @@ export const FunctionsDecisions = () => {
                     textAlign: 'center',
                   }}
                 >
-                  "Should I bring an umbrella?"
+                  f(x)
                 </Typography>
               </Box>
 
@@ -323,7 +323,7 @@ export const FunctionsDecisions = () => {
                     textAlign: 'center',
                   }}
                 >
-                  Yes/No
+                  y
                 </Typography>
               </Box>
             </Box>
