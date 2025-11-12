@@ -27,17 +27,94 @@ const BASE_ORBIT_RADIUS = CENTER_SPHERE_RADIUS + 3; // Closest planet starts her
 // Step sphere size (base size, will be scaled by planet)
 const BASE_SPHERE_RADIUS = 0.9; // Scaled from 90px
 
-// Get planet colors adjusted for theme mode (darker for light mode, brighter for dark mode)
-const getPlanetColors = (isDarkMode: boolean) => ({
-  Mercury: isDarkMode ? '#A68B6B' : '#8C7853', // Brighter gray-brown for dark mode
-  Venus: isDarkMode ? '#FFD966' : '#FFC649', // Brighter yellowish-white for dark mode
-  Earth: isDarkMode ? '#5BA3F5' : '#4A90E2', // Brighter blue for dark mode
-  Mars: isDarkMode ? '#E67A7A' : '#CD5C5C', // Brighter red for dark mode
-  Jupiter: isDarkMode ? '#E8D9B0' : '#D8CA9D', // Brighter orange-brown for dark mode
-  Saturn: isDarkMode ? '#FFE5B8' : '#FAD5A5', // Brighter yellow-gold for dark mode
-  Uranus: isDarkMode ? '#6FE0F7' : '#4FD0E7', // Brighter cyan for dark mode
-  Neptune: isDarkMode ? '#5B7DFF' : '#4166F5', // Brighter deep blue for dark mode
-});
+// Helper function to blend two colors
+const blendColors = (color1: string, color2: string, ratio: number): string => {
+  const hex1 = color1.replace('#', '');
+  const hex2 = color2.replace('#', '');
+
+  const r1 = parseInt(hex1.substring(0, 2), 16);
+  const g1 = parseInt(hex1.substring(2, 4), 16);
+  const b1 = parseInt(hex1.substring(4, 6), 16);
+
+  const r2 = parseInt(hex2.substring(0, 2), 16);
+  const g2 = parseInt(hex2.substring(2, 4), 16);
+  const b2 = parseInt(hex2.substring(4, 6), 16);
+
+  const r = Math.round(r1 * (1 - ratio) + r2 * ratio);
+  const g = Math.round(g1 * (1 - ratio) + g2 * ratio);
+  const b = Math.round(b1 * (1 - ratio) + b2 * ratio);
+
+  return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+};
+
+// Real planet colors
+const REAL_PLANET_COLORS = {
+  Mercury: '#8C7853', // Gray-brown
+  Venus: '#FFC649',   // Yellowish-white
+  Earth: '#4A90E2',   // Blue
+  Mars: '#CD5C5C',    // Red
+  Jupiter: '#D8CA9D', // Orange-brown
+  Saturn: '#FAD5A5',  // Yellow-gold
+  Uranus: '#4FD0E7',  // Cyan
+  Neptune: '#4166F5', // Deep blue
+};
+
+// Theme gradient colors: #6366F1 (Indigo), #8B5CF6 (Purple), #F59E0B (Amber), #10B981 (Green)
+const THEME_COLORS = {
+  Indigo: '#6366F1',
+  Purple: '#8B5CF6',
+  Amber: '#F59E0B',
+  Green: '#10B981',
+};
+
+// Helper function to lighten a color for dark mode
+const lightenColor = (color: string, amount: number): string => {
+  const hex = color.replace('#', '');
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+
+  const newR = Math.min(255, Math.round(r + (255 - r) * amount));
+  const newG = Math.min(255, Math.round(g + (255 - g) * amount));
+  const newB = Math.min(255, Math.round(b + (255 - b) * amount));
+
+  return `#${newR.toString(16).padStart(2, '0')}${newG.toString(16).padStart(2, '0')}${newB.toString(16).padStart(2, '0')}`;
+};
+
+// Get planet colors - blend real planet colors with modern AI theme colors
+// 70% real color + 30% theme color for elegant hybrid
+const getPlanetColors = (isDarkMode: boolean) => {
+  const themeBlendRatio = 0.3; // 30% theme color, 70% real color
+
+  // Base blended colors
+  // Mercury uses higher theme blend ratio for better visibility
+  const baseColors = {
+    Mercury: blendColors(REAL_PLANET_COLORS.Mercury, THEME_COLORS.Amber, isDarkMode ? 0.5 : themeBlendRatio),
+    Venus: blendColors(REAL_PLANET_COLORS.Venus, THEME_COLORS.Amber, themeBlendRatio),
+    Earth: blendColors(REAL_PLANET_COLORS.Earth, THEME_COLORS.Purple, themeBlendRatio),
+    Mars: blendColors(REAL_PLANET_COLORS.Mars, THEME_COLORS.Amber, themeBlendRatio),
+    Jupiter: blendColors(REAL_PLANET_COLORS.Jupiter, THEME_COLORS.Amber, themeBlendRatio),
+    Saturn: blendColors(REAL_PLANET_COLORS.Saturn, THEME_COLORS.Amber, themeBlendRatio),
+    Uranus: blendColors(REAL_PLANET_COLORS.Uranus, THEME_COLORS.Green, themeBlendRatio),
+    Neptune: blendColors(REAL_PLANET_COLORS.Neptune, THEME_COLORS.Green, themeBlendRatio),
+  };
+
+  // Lighten colors for dark mode
+  if (isDarkMode) {
+    return {
+      Mercury: lightenColor(baseColors.Mercury, 0.5), // Much brighter for visibility in dark mode
+      Venus: lightenColor(baseColors.Venus, 0.15),
+      Earth: lightenColor(baseColors.Earth, 0.15),
+      Mars: lightenColor(baseColors.Mars, 0.15),
+      Jupiter: lightenColor(baseColors.Jupiter, 0.15),
+      Saturn: lightenColor(baseColors.Saturn, 0.15),
+      Uranus: lightenColor(baseColors.Uranus, 0.15),
+      Neptune: lightenColor(baseColors.Neptune, 0.15),
+    };
+  }
+
+  return baseColors;
+};
 
 // Planet data - mapping each step to a planet in the solar system
 // Distance is relative to real solar system distances (normalized for visualization)
@@ -208,21 +285,21 @@ const getLearningPathData = (isDarkMode: boolean): LearningPathItem[] => {
 };
 
 // Orbit ring component - draws a circular orbit path for each planet
-function OrbitRing({ 
-  radius, 
-  color, 
-  opacity, 
-  isDarkMode 
-}: { 
-  radius: number; 
-  color: string; 
+function OrbitRing({
+  radius,
+  color,
+  opacity,
+  isDarkMode
+}: {
+  radius: number;
+  color: string;
   opacity: number;
   isDarkMode: boolean;
 }) {
   // Use ring geometry with very thin thickness to create orbit line
   const innerRadius = radius - 0.02;
   const outerRadius = radius + 0.02;
-  
+
   // Adjust opacity based on theme - higher for light mode, lower for dark mode
   const themeAdjustedOpacity = isDarkMode ? opacity : opacity * 2.5;
 
@@ -239,7 +316,35 @@ function OrbitRing({
   );
 }
 
-// Planet sphere component - solid sphere with planet color and realistic surface
+// Create elegant gradient texture using theme gradient colors
+const createGradientTexture = (baseColor: string) => {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512;
+  canvas.height = 512;
+  const ctx = canvas.getContext('2d');
+
+  if (!ctx) return null;
+
+  // Create subtle radial gradient from center to edge
+  const gradient = ctx.createRadialGradient(256, 256, 0, 256, 256, 256);
+
+  // Elegant gradient using theme colors with subtle blending
+  // Start with base color, blend through theme colors, return to base
+  gradient.addColorStop(0, baseColor); // Center: planet color
+  gradient.addColorStop(0.4, blendColors(baseColor, '#8B5CF6', 0.3)); // Subtle purple blend
+  gradient.addColorStop(0.7, blendColors(baseColor, '#F59E0B', 0.2)); // Subtle amber blend
+  gradient.addColorStop(1, baseColor); // Edge: planet color
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 512, 512);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.wrapT = THREE.RepeatWrapping;
+  return texture;
+};
+
+// Planet sphere component - solid sphere with planet color and gradient surface
 function PlanetSphere({
   radius,
   color,
@@ -255,6 +360,8 @@ function PlanetSphere({
   onPointerLeave?: () => void;
   onClick?: () => void;
 }) {
+  const gradientTexture = useMemo(() => createGradientTexture(color), [color]);
+
   return (
     <mesh
       onPointerEnter={onPointerEnter}
@@ -264,13 +371,14 @@ function PlanetSphere({
       <sphereGeometry args={[radius, 64, 64]} />
       <meshStandardMaterial
         color={color}
+        map={gradientTexture || undefined}
         transparent
         opacity={opacity}
-        metalness={0.2}
-        roughness={0.7}
+        metalness={0.4}
+        roughness={0.5}
         side={THREE.DoubleSide}
         emissive={color}
-        emissiveIntensity={0.08}
+        emissiveIntensity={0.2}
         flatShading={false}
       />
     </mesh>
@@ -326,7 +434,7 @@ function StepSphere({
   });
 
   const planetColor = planet.color;
-  const planetOpacity = isUnlocked ? 0.95 : 0.6;
+  const planetOpacity = isUnlocked ? 1.0 : 0.75;
   const textGroupRef = useRef<THREE.Group>(null);
 
   // Make text always face camera (billboard effect)
@@ -449,7 +557,7 @@ function Scene({
   isDarkMode: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
-  
+
   // Generate random initial angles once and store them (don't regenerate on theme change)
   const initialAnglesRef = useRef<number[]>(
     Array.from({ length: totalSteps }, () => Math.random() * 2 * Math.PI)
@@ -476,7 +584,7 @@ function Scene({
     <>
       {/* Sun - fixed in center, doesn't rotate */}
       <CenterSphere />
-      
+
       {/* Planets and orbits - rotate together */}
       <group ref={groupRef}>
         {/* Draw orbit rings for each planet */}
@@ -633,13 +741,19 @@ export const Roadmap = () => {
           }}
         >
           <Canvas
-            camera={{ position: [0, 40, 40], fov: 55 }}
+            camera={{ position: [0, 20, 40], fov: 60 }}
             gl={{ antialias: true, alpha: true }}
             style={{ background: 'transparent' }}
           >
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} intensity={1} />
-            <pointLight position={[-10, -10, -10]} intensity={0.5} />
+            <ambientLight intensity={0.3} />
+            {/* Sun light - positioned at the center where the sun is */}
+            <pointLight 
+              position={[0, 0, 0]} 
+              intensity={4} 
+              color="#FFD700"
+              distance={150}
+              decay={1.5}
+            />
 
             <OrbitControls
               ref={controlsRef}
