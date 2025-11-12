@@ -4,13 +4,17 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTitle, GradientButton } from '../theme/theme';
+import { GradientTitle, GradientButton } from '../../theme/theme';
+import { FloatingParticles, generateParticles, type Particle } from './FloatingParticles';
+
 
 export const Home = () => {
+  const [particles, setParticles] = useState<Array<Particle>>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setParticles(generateParticles());
     const timer = setTimeout(() => setIsLoaded(true), 500);
     return () => clearTimeout(timer);
   }, []);
@@ -24,6 +28,7 @@ export const Home = () => {
       left: 0,
       overflow: 'hidden'
     }}>
+      <FloatingParticles particles={particles} />
       {/* Hero Section */}
       <Box sx={{
         position: 'relative',

@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ColorModeProvider } from './theme/ColorModeContext';
 import { GlobalAnimationStyles } from './theme/GlobalAnimationStyles';
 import Layout from './components/layout/Layout';
-import Home from './pages/Home';
+import Home from './pages/home';
 import Welcome from './pages/Welcome';
 import Perceptron from './pages/Perceptron';
 import Roadmap from './pages/Roadmap';
