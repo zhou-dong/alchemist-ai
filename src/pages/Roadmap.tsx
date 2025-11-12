@@ -7,6 +7,7 @@ import { PlayArrow, Pause, CenterFocusStrong } from '@mui/icons-material';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GradientTitle, GlassIconButton } from '../theme/theme';
+import { useColorMode } from '../theme/ColorModeContext';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Text } from '@react-three/drei';
 import * as THREE from 'three';
@@ -25,6 +26,18 @@ const BASE_ORBIT_RADIUS = CENTER_SPHERE_RADIUS + 3; // Closest planet starts her
 
 // Step sphere size (base size, will be scaled by planet)
 const BASE_SPHERE_RADIUS = 0.9; // Scaled from 90px
+
+// Get planet colors adjusted for theme mode (darker for light mode, brighter for dark mode)
+const getPlanetColors = (isDarkMode: boolean) => ({
+  Mercury: isDarkMode ? '#A68B6B' : '#8C7853', // Brighter gray-brown for dark mode
+  Venus: isDarkMode ? '#FFD966' : '#FFC649', // Brighter yellowish-white for dark mode
+  Earth: isDarkMode ? '#5BA3F5' : '#4A90E2', // Brighter blue for dark mode
+  Mars: isDarkMode ? '#E67A7A' : '#CD5C5C', // Brighter red for dark mode
+  Jupiter: isDarkMode ? '#E8D9B0' : '#D8CA9D', // Brighter orange-brown for dark mode
+  Saturn: isDarkMode ? '#FFE5B8' : '#FAD5A5', // Brighter yellow-gold for dark mode
+  Uranus: isDarkMode ? '#6FE0F7' : '#4FD0E7', // Brighter cyan for dark mode
+  Neptune: isDarkMode ? '#5B7DFF' : '#4166F5', // Brighter deep blue for dark mode
+});
 
 // Planet data - mapping each step to a planet in the solar system
 // Distance is relative to real solar system distances (normalized for visualization)
@@ -54,137 +67,164 @@ const BASE_SPHERE_RADIUS = 0.9; // Scaled from 90px
 //   Uranus:  4.04 × Earth → size = 4.04 (scaled down to 1.5 for visualization)
 //   Neptune: 3.88 × Earth → size = 3.88 (scaled down to 1.4 for visualization)
 // Note: Gas giants are scaled down proportionally to maintain visibility
-const PLANET_DATA = [
-  {
-    name: 'Mercury',
-    color: '#6366F1', // Primary Indigo
-    size: 0.38, // Smallest planet (0.38 × Earth)
-    distance: 1.0, // Closest to sun (normalized)
-    speed: 4.15, // Fastest (orbital period 87.97 days)
-    emoji: '☿️'
-  },
-  {
-    name: 'Venus',
-    color: '#818CF8', // Light Indigo (primary.light)
-    size: 0.95, // Nearly Earth-sized (0.95 × Earth)
-    distance: 1.2, // Second closest
-    speed: 1.63, // Second fastest (orbital period 224.7 days)
-    emoji: '♀️'
-  },
-  {
-    name: 'Earth',
-    color: '#8B5CF6', // Purple (text.primary)
-    size: 1.0, // Baseline size (1.0 × Earth)
-    distance: 1.4, // Third
-    speed: 1.0, // Baseline speed (orbital period 365.26 days)
-    emoji: '🌍'
-  },
-  {
-    name: 'Mars',
-    color: '#4F46E5', // Dark Indigo (primary.dark)
-    size: 0.53, // Smaller than Earth (0.53 × Earth)
-    distance: 1.7, // Fourth
-    speed: 0.532, // Slower (orbital period 686.98 days)
-    emoji: '♂️'
-  },
-  {
-    name: 'Jupiter',
-    color: '#F59E0B', // Amber (secondary.main)
-    size: 2.5, // Largest planet (11.19 × Earth, scaled to 2.5 for visualization)
-    distance: 2.5, // Much farther out
-    speed: 0.0844, // Much slower (orbital period 11.86 years)
-    emoji: '♃'
-  },
-  {
-    name: 'Saturn',
-    color: '#FBBF24', // Light Amber (secondary.light)
-    size: 2.2, // Second largest (9.40 × Earth, scaled to 2.2 for visualization)
-    distance: 3.2, // Even farther
-    speed: 0.0340, // Very slow (orbital period 29.46 years)
-    emoji: '♄'
-  },
-  {
-    name: 'Uranus',
-    color: '#10B981', // Green (from gradient)
-    size: 1.5, // Large (4.04 × Earth, scaled to 1.5 for visualization)
-    distance: 4.0, // Outer planet
-    speed: 0.0119, // Very slow (orbital period 84.01 years)
-    emoji: '♅'
-  },
-  {
-    name: 'Neptune',
-    color: '#6366F1', // Primary Indigo (repeating for visual balance)
-    size: 1.4, // Large (3.88 × Earth, scaled to 1.4 for visualization)
-    distance: 4.8, // Farthest planet
-    speed: 0.00607, // Slowest (orbital period 164.79 years)
-    emoji: '♆'
-  },
-];
+const getPlanetData = (isDarkMode: boolean) => {
+  const colors = getPlanetColors(isDarkMode);
+  return [
+    {
+      name: 'Mercury',
+      color: colors.Mercury,
+      size: 0.38, // Smallest planet (0.38 × Earth)
+      distance: 1.0, // Closest to sun (normalized)
+      speed: 4.15, // Fastest (orbital period 87.97 days)
+      emoji: '☿️'
+    },
+    {
+      name: 'Venus',
+      color: colors.Venus,
+      size: 0.95, // Nearly Earth-sized (0.95 × Earth)
+      distance: 1.2, // Second closest
+      speed: 1.63, // Second fastest (orbital period 224.7 days)
+      emoji: '♀️'
+    },
+    {
+      name: 'Earth',
+      color: colors.Earth,
+      size: 1.0, // Baseline size (1.0 × Earth)
+      distance: 1.4, // Third
+      speed: 1.0, // Baseline speed (orbital period 365.26 days)
+      emoji: '🌍'
+    },
+    {
+      name: 'Mars',
+      color: colors.Mars,
+      size: 0.53, // Smaller than Earth (0.53 × Earth)
+      distance: 1.7, // Fourth
+      speed: 0.532, // Slower (orbital period 686.98 days)
+      emoji: '♂️'
+    },
+    {
+      name: 'Jupiter',
+      color: colors.Jupiter,
+      size: 2.5, // Largest planet (11.19 × Earth, scaled to 2.5 for visualization)
+      distance: 2.5, // Much farther out
+      speed: 0.0844, // Much slower (orbital period 11.86 years)
+      emoji: '♃'
+    },
+    {
+      name: 'Saturn',
+      color: colors.Saturn,
+      size: 2.2, // Second largest (9.40 × Earth, scaled to 2.2 for visualization)
+      distance: 3.2, // Even farther
+      speed: 0.0340, // Very slow (orbital period 29.46 years)
+      emoji: '♄'
+    },
+    {
+      name: 'Uranus',
+      color: colors.Uranus,
+      size: 1.5, // Large (4.04 × Earth, scaled to 1.5 for visualization)
+      distance: 4.0, // Outer planet
+      speed: 0.0119, // Very slow (orbital period 84.01 years)
+      emoji: '♅'
+    },
+    {
+      name: 'Neptune',
+      color: colors.Neptune,
+      size: 1.4, // Large (3.88 × Earth, scaled to 1.4 for visualization)
+      distance: 4.8, // Farthest planet
+      speed: 0.00607, // Slowest (orbital period 164.79 years)
+      emoji: '♆'
+    },
+  ];
+};
 
-const learningPathData = [
-  {
-    title: 'Functions as Decisions',
-    description: 'Every decision is a function',
-    path: '/alchemist-ai/functions-decisions',
-    unlocked: true,
-    planet: PLANET_DATA[0] // Mercury
-  },
-  {
-    title: 'Simple Functions',
-    description: 'Build the simplest function: if...else',
-    path: '/alchemist-ai/simple-functions',
-    unlocked: false,
-    planet: PLANET_DATA[1] // Venus
-  },
-  {
-    title: 'Multi-Input Functions',
-    description: 'Multiple inputs, one output function',
-    path: '/alchemist-ai/multi-input-functions',
-    unlocked: false,
-    planet: PLANET_DATA[2] // Earth
-  },
-  {
-    title: 'Math to Neurons',
-    description: 'From mathematical functions to neural networks',
-    path: '/alchemist-ai/math-to-neurons',
-    unlocked: false,
-    planet: PLANET_DATA[3] // Mars
-  },
-  {
-    title: 'Logistic Regression',
-    description: 'Understanding binary classification',
-    path: '/alchemist-ai/logistic-regression',
-    unlocked: false,
-    planet: PLANET_DATA[4] // Jupiter
-  },
-  {
-    title: 'Multi-Layer Network',
-    description: 'Stacking layers for complex patterns',
-    path: '/alchemist-ai/multi-layer-network',
-    unlocked: false,
-    planet: PLANET_DATA[5] // Saturn
-  },
-  {
-    title: 'Backpropagation',
-    description: 'The algorithm that enables deep learning',
-    path: '/alchemist-ai/backpropagation',
-    unlocked: false,
-    planet: PLANET_DATA[6] // Uranus
-  },
-  {
-    title: 'Neural Networks',
-    description: 'Master the complete neural network architecture',
-    path: '/alchemist-ai/neural-networks',
-    unlocked: false,
-    planet: PLANET_DATA[7] // Neptune
-  },
-];
+type LearningPathItem = {
+  title: string;
+  description: string;
+  path: string;
+  unlocked: boolean;
+  planet: ReturnType<typeof getPlanetData>[0];
+};
+
+const getLearningPathData = (isDarkMode: boolean): LearningPathItem[] => {
+  const planetData = getPlanetData(isDarkMode);
+  return [
+    {
+      title: 'Functions as Decisions',
+      description: 'Every decision is a function',
+      path: '/alchemist-ai/functions-decisions',
+      unlocked: true,
+      planet: planetData[0] // Mercury
+    },
+    {
+      title: 'Simple Functions',
+      description: 'Build the simplest function: if...else',
+      path: '/alchemist-ai/simple-functions',
+      unlocked: false,
+      planet: planetData[1] // Venus
+    },
+    {
+      title: 'Multi-Input Functions',
+      description: 'Multiple inputs, one output function',
+      path: '/alchemist-ai/multi-input-functions',
+      unlocked: false,
+      planet: planetData[2] // Earth
+    },
+    {
+      title: 'Math to Neurons',
+      description: 'From mathematical functions to neural networks',
+      path: '/alchemist-ai/math-to-neurons',
+      unlocked: false,
+      planet: planetData[3] // Mars
+    },
+    {
+      title: 'Logistic Regression',
+      description: 'Understanding binary classification',
+      path: '/alchemist-ai/logistic-regression',
+      unlocked: false,
+      planet: planetData[4] // Jupiter
+    },
+    {
+      title: 'Multi-Layer Network',
+      description: 'Stacking layers for complex patterns',
+      path: '/alchemist-ai/multi-layer-network',
+      unlocked: false,
+      planet: planetData[5] // Saturn
+    },
+    {
+      title: 'Backpropagation',
+      description: 'The algorithm that enables deep learning',
+      path: '/alchemist-ai/backpropagation',
+      unlocked: false,
+      planet: planetData[6] // Uranus
+    },
+    {
+      title: 'Neural Networks',
+      description: 'Master the complete neural network architecture',
+      path: '/alchemist-ai/neural-networks',
+      unlocked: false,
+      planet: planetData[7] // Neptune
+    },
+  ];
+};
 
 // Orbit ring component - draws a circular orbit path for each planet
-function OrbitRing({ radius, color, opacity }: { radius: number; color: string; opacity: number }) {
+function OrbitRing({ 
+  radius, 
+  color, 
+  opacity, 
+  isDarkMode 
+}: { 
+  radius: number; 
+  color: string; 
+  opacity: number;
+  isDarkMode: boolean;
+}) {
   // Use ring geometry with very thin thickness to create orbit line
   const innerRadius = radius - 0.02;
   const outerRadius = radius + 0.02;
+  
+  // Adjust opacity based on theme - higher for light mode, lower for dark mode
+  const themeAdjustedOpacity = isDarkMode ? opacity : opacity * 2.5;
 
   return (
     <mesh rotation={[Math.PI / 2, 0, 0]}> {/* Rotate to lie flat in X-Z plane */}
@@ -192,7 +232,7 @@ function OrbitRing({ radius, color, opacity }: { radius: number; color: string; 
       <meshBasicMaterial
         color={color}
         transparent
-        opacity={opacity}
+        opacity={themeAdjustedOpacity}
         side={THREE.DoubleSide}
       />
     </mesh>
@@ -250,7 +290,7 @@ function StepSphere({
   onClick,
   isRotationEnabled,
 }: {
-  item: typeof learningPathData[0];
+  item: LearningPathItem;
   initialAngle: number;
   orbitDistance: number;
   isActive: boolean;
@@ -399,29 +439,38 @@ function Scene({
   setHoveredIndex,
   onStepClick,
   isRotationEnabled,
+  isDarkMode,
 }: {
   activeStepIndex: number;
   hoveredIndex: number | null;
   setHoveredIndex: (index: number | null) => void;
   onStepClick: (index: number) => void;
   isRotationEnabled: boolean;
+  isDarkMode: boolean;
 }) {
   const groupRef = useRef<THREE.Group>(null);
+  
+  // Generate random initial angles once and store them (don't regenerate on theme change)
+  const initialAnglesRef = useRef<number[]>(
+    Array.from({ length: totalSteps }, () => Math.random() * 2 * Math.PI)
+  );
+
+  // Get theme-aware learning path data
+  const learningPathData = useMemo(() => getLearningPathData(isDarkMode), [isDarkMode]);
 
   // Calculate initial angles and orbit distances for each planet
-  // Use useMemo to ensure random positions are stable (calculated once)
   const learningPath = useMemo(() => {
-    return learningPathData.map((item) => {
+    return learningPathData.map((item, index) => {
       const orbitDistance = BASE_ORBIT_RADIUS * item.planet.distance;
-      // Random initial angle for each planet (0 to 2π)
-      const initialAngle = Math.random() * 2 * Math.PI;
+      // Use stored random initial angle (doesn't change on theme switch)
+      const initialAngle = initialAnglesRef.current[index];
       return {
         ...item,
         orbitDistance,
         initialAngle,
       };
     });
-  }, []); // Empty dependency array - only calculate once on mount
+  }, [learningPathData]); // Recalculate when theme changes (but keep same angles)
 
   return (
     <>
@@ -437,6 +486,7 @@ function Scene({
             radius={item.orbitDistance}
             color={item.planet.color}
             opacity={item.unlocked ? 0.15 : 0.08}
+            isDarkMode={isDarkMode}
           />
         ))}
         {/* Draw planets */}
@@ -466,6 +516,11 @@ export const Roadmap = () => {
   const [isRotationEnabled, setIsRotationEnabled] = useState(false);
   const navigate = useNavigate();
   const controlsRef = useRef<any>(null);
+  const { mode } = useColorMode();
+  const isDarkMode = mode === 'dark';
+
+  // Get theme-aware learning path data
+  const learningPathData = useMemo(() => getLearningPathData(isDarkMode), [isDarkMode]);
 
   const activeStepIndex = learningPathData.findIndex(item => item.unlocked);
 
@@ -605,6 +660,7 @@ export const Roadmap = () => {
               setHoveredIndex={setHoveredIndex}
               onStepClick={handleStepClick}
               isRotationEnabled={isRotationEnabled}
+              isDarkMode={isDarkMode}
             />
           </Canvas>
 
