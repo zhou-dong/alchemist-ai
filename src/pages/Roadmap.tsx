@@ -57,7 +57,7 @@ const BASE_SPHERE_RADIUS = 0.9; // Scaled from 90px
 const PLANET_DATA = [
   {
     name: 'Mercury',
-    color: '#8C7853', // Gray-brown
+    color: '#6366F1', // Primary Indigo
     size: 0.38, // Smallest planet (0.38 × Earth)
     distance: 1.0, // Closest to sun (normalized)
     speed: 4.15, // Fastest (orbital period 87.97 days)
@@ -65,7 +65,7 @@ const PLANET_DATA = [
   },
   {
     name: 'Venus',
-    color: '#FFC649', // Yellowish-white
+    color: '#818CF8', // Light Indigo (primary.light)
     size: 0.95, // Nearly Earth-sized (0.95 × Earth)
     distance: 1.2, // Second closest
     speed: 1.63, // Second fastest (orbital period 224.7 days)
@@ -73,7 +73,7 @@ const PLANET_DATA = [
   },
   {
     name: 'Earth',
-    color: '#4A90E2', // Blue
+    color: '#8B5CF6', // Purple (text.primary)
     size: 1.0, // Baseline size (1.0 × Earth)
     distance: 1.4, // Third
     speed: 1.0, // Baseline speed (orbital period 365.26 days)
@@ -81,7 +81,7 @@ const PLANET_DATA = [
   },
   {
     name: 'Mars',
-    color: '#CD5C5C', // Red
+    color: '#4F46E5', // Dark Indigo (primary.dark)
     size: 0.53, // Smaller than Earth (0.53 × Earth)
     distance: 1.7, // Fourth
     speed: 0.532, // Slower (orbital period 686.98 days)
@@ -89,7 +89,7 @@ const PLANET_DATA = [
   },
   {
     name: 'Jupiter',
-    color: '#D8CA9D', // Orange-brown
+    color: '#F59E0B', // Amber (secondary.main)
     size: 2.5, // Largest planet (11.19 × Earth, scaled to 2.5 for visualization)
     distance: 2.5, // Much farther out
     speed: 0.0844, // Much slower (orbital period 11.86 years)
@@ -97,7 +97,7 @@ const PLANET_DATA = [
   },
   {
     name: 'Saturn',
-    color: '#FAD5A5', // Yellow-gold
+    color: '#FBBF24', // Light Amber (secondary.light)
     size: 2.2, // Second largest (9.40 × Earth, scaled to 2.2 for visualization)
     distance: 3.2, // Even farther
     speed: 0.0340, // Very slow (orbital period 29.46 years)
@@ -105,7 +105,7 @@ const PLANET_DATA = [
   },
   {
     name: 'Uranus',
-    color: '#4FD0E7', // Cyan
+    color: '#10B981', // Green (from gradient)
     size: 1.5, // Large (4.04 × Earth, scaled to 1.5 for visualization)
     distance: 4.0, // Outer planet
     speed: 0.0119, // Very slow (orbital period 84.01 years)
@@ -113,7 +113,7 @@ const PLANET_DATA = [
   },
   {
     name: 'Neptune',
-    color: '#4166F5', // Deep blue
+    color: '#6366F1', // Primary Indigo (repeating for visual balance)
     size: 1.4, // Large (3.88 × Earth, scaled to 1.4 for visualization)
     distance: 4.8, // Farthest planet
     speed: 0.00607, // Slowest (orbital period 164.79 years)
@@ -180,22 +180,6 @@ const learningPathData = [
   },
 ];
 
-// Wireframe sphere component using Three.js built-in sphere geometry
-function WireframeSphere({ radius, color, opacity }: { radius: number; color: string; opacity: number }) {
-  return (
-    <mesh>
-      <sphereGeometry args={[radius, 32, 32]} />
-      <meshBasicMaterial
-        color={color}
-        transparent
-        opacity={opacity}
-        wireframe
-        side={THREE.DoubleSide}
-      />
-    </mesh>
-  );
-}
-
 // Orbit ring component - draws a circular orbit path for each planet
 function OrbitRing({ radius, color, opacity }: { radius: number; color: string; opacity: number }) {
   // Use ring geometry with very thin thickness to create orbit line
@@ -215,7 +199,7 @@ function OrbitRing({ radius, color, opacity }: { radius: number; color: string; 
   );
 }
 
-// Planet sphere component - solid sphere with planet color
+// Planet sphere component - solid sphere with planet color and realistic surface
 function PlanetSphere({
   radius,
   color,
@@ -237,18 +221,22 @@ function PlanetSphere({
       onPointerLeave={onPointerLeave}
       onClick={onClick}
     >
-      <sphereGeometry args={[radius, 32, 32]} />
+      <sphereGeometry args={[radius, 64, 64]} />
       <meshStandardMaterial
         color={color}
         transparent
         opacity={opacity}
-        metalness={0.1}
-        roughness={0.8}
+        metalness={0.2}
+        roughness={0.7}
         side={THREE.DoubleSide}
+        emissive={color}
+        emissiveIntensity={0.08}
+        flatShading={false}
       />
     </mesh>
   );
 }
+
 
 // Step sphere component
 function StepSphere({
@@ -298,8 +286,7 @@ function StepSphere({
   });
 
   const planetColor = planet.color;
-  const planetOpacity = isUnlocked ? 0.9 : 0.5;
-  const wireframeOpacity = isUnlocked ? 0.3 : 0.15;
+  const planetOpacity = isUnlocked ? 0.95 : 0.6;
   const textGroupRef = useRef<THREE.Group>(null);
 
   // Make text always face camera (billboard effect)
@@ -319,7 +306,7 @@ function StepSphere({
   return (
     <group ref={groupRef} position={[initialX, 0, initialZ]}>
       <group ref={meshRef}>
-        {/* Solid planet sphere */}
+        {/* Planet sphere with enhanced 3D appearance */}
         <PlanetSphere
           radius={planetRadius}
           color={planetColor}
@@ -328,8 +315,6 @@ function StepSphere({
           onPointerLeave={() => onHover(false)}
           onClick={onClick}
         />
-        {/* Wireframe overlay for visual interest */}
-        <WireframeSphere radius={planetRadius * 1.01} color={planetColor} opacity={wireframeOpacity} />
       </group>
 
       {/* Text label on sphere surface - always facing camera */}
@@ -386,15 +371,25 @@ function StepSphere({
   );
 }
 
+// Sun component - simple glowing sun
+function Sun() {
+  return (
+    <mesh>
+      <sphereGeometry args={[CENTER_SPHERE_RADIUS, 64, 64]} />
+      <meshStandardMaterial
+        color="#FFD700"
+        emissive="#FFA500"
+        emissiveIntensity={1.5}
+        metalness={0.1}
+        roughness={0.3}
+      />
+    </mesh>
+  );
+}
+
 // Center sphere component - represents the Sun
 function CenterSphere() {
-  return (
-    <group>
-      {/* Sun - glowing center */}
-      <PlanetSphere radius={CENTER_SPHERE_RADIUS} color="#FFD700" opacity={0.3} />
-      <WireframeSphere radius={CENTER_SPHERE_RADIUS} color="#FFA500" opacity={0.2} />
-    </group>
-  );
+  return <Sun />;
 }
 
 // Scene component
@@ -429,33 +424,38 @@ function Scene({
   }, []); // Empty dependency array - only calculate once on mount
 
   return (
-    <group ref={groupRef}>
+    <>
+      {/* Sun - fixed in center, doesn't rotate */}
       <CenterSphere />
-      {/* Draw orbit rings for each planet */}
-      {learningPath.map((item, index) => (
-        <OrbitRing
-          key={`orbit-${index}`}
-          radius={item.orbitDistance}
-          color={item.planet.color}
-          opacity={item.unlocked ? 0.15 : 0.08}
-        />
-      ))}
-      {/* Draw planets */}
-      {learningPath.map((item, index) => (
-        <StepSphere
-          key={index}
-          item={item}
-          initialAngle={item.initialAngle}
-          orbitDistance={item.orbitDistance}
-          isActive={index === activeStepIndex}
-          isUnlocked={item.unlocked}
-          isHovered={hoveredIndex === index}
-          onHover={(hovered) => setHoveredIndex(hovered ? index : null)}
-          onClick={() => onStepClick(index)}
-          isRotationEnabled={isRotationEnabled}
-        />
-      ))}
-    </group>
+      
+      {/* Planets and orbits - rotate together */}
+      <group ref={groupRef}>
+        {/* Draw orbit rings for each planet */}
+        {learningPath.map((item, index) => (
+          <OrbitRing
+            key={`orbit-${index}`}
+            radius={item.orbitDistance}
+            color={item.planet.color}
+            opacity={item.unlocked ? 0.15 : 0.08}
+          />
+        ))}
+        {/* Draw planets */}
+        {learningPath.map((item, index) => (
+          <StepSphere
+            key={index}
+            item={item}
+            initialAngle={item.initialAngle}
+            orbitDistance={item.orbitDistance}
+            isActive={index === activeStepIndex}
+            isUnlocked={item.unlocked}
+            isHovered={hoveredIndex === index}
+            onHover={(hovered) => setHoveredIndex(hovered ? index : null)}
+            onClick={() => onStepClick(index)}
+            isRotationEnabled={isRotationEnabled}
+          />
+        ))}
+      </group>
+    </>
   );
 }
 
