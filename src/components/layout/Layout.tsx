@@ -4,11 +4,12 @@ import type { ReactNode } from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ThemeToggleFab } from '../../theme/ThemeToggleFab';
+import { GlassIconButton } from '../../theme/theme';
 
 const HeaderContainer = styled(Box)(({ }) => ({
   position: 'fixed',
-  top: 30,
-  left: 36,
+  top: 20,
+  left: 20,
   zIndex: 100,
 }));
 
@@ -123,13 +124,12 @@ export const Layout = ({ children }: { children: ReactNode }) => {
       <BackgroundContainer />
       <FloatingParticles particles={particles} />
       <HeaderContainer>
-        <Fab
-          color="primary"
+        <GlassIconButton
           onClick={() => navigate('/')}
           aria-label="Go to home page"
         >
           <HomeIcon />
-        </Fab>
+        </GlassIconButton>
         {/* <Header /> */}
       </HeaderContainer>
       {children}

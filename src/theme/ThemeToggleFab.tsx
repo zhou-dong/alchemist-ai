@@ -13,10 +13,10 @@ export const ThemeToggleFab: React.FC<ThemeToggleFabProps> = ({
   const { mode, toggleColorMode } = useColorMode();
 
   const positionStyles = {
-    'bottom-right': { bottom: 24, right: 24 },
-    'bottom-left': { bottom: 24, left: 24 },
-    'top-right': { top: 24, right: 24 },
-    'top-left': { top: 24, left: 24 },
+    'bottom-right': { bottom: 20, right: 20 },
+    'bottom-left': { bottom: 20, left: 20 },
+    'top-right': { top: 20, right: 20 },
+    'top-left': { top: 20, left: 20 },
   };
 
   return (

@@ -1,4 +1,4 @@
-import { type PaletteMode, type PaletteOptions, type ThemeOptions, Typography, Button } from '@mui/material';
+import { type PaletteMode, type PaletteOptions, type ThemeOptions, Typography, Button, IconButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 interface GradientTitleProps {
@@ -100,6 +100,22 @@ export const GradientTitle = styled(Typography, {
         ...sizeStyles[size],
     };
 });
+
+// Styled component for glassmorphic icon buttons
+export const GlassIconButton = styled(IconButton)(({ theme }) => ({
+    background: 'rgba(99, 102, 241, 0.1)',
+    backdropFilter: 'blur(10px)',
+    border: '1px solid rgba(99, 102, 241, 0.3)',
+    color: theme.palette.primary.main,
+    width: 48,
+    height: 48,
+    transition: 'all 0.3s ease',
+    '&:hover': {
+        background: 'rgba(99, 102, 241, 0.2)',
+        border: '1px solid rgba(99, 102, 241, 0.5)',
+        transform: 'scale(1.1)',
+    },
+}));
 
 const lightMode: PaletteOptions = {
     primary: {
