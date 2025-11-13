@@ -5,11 +5,12 @@ import {
 import { PlayArrow, Pause, CenterFocusStrong } from '@mui/icons-material';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTitle, GlassIconButton } from '../theme/theme';
-import { useColorMode } from '../theme/ColorModeContext';
+import { GradientTitle, GlassIconButton } from '../../theme/theme';
+import { useColorMode } from '../../theme/ColorModeContext';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
+import { Starfield } from './Starfield';
 
 // 3D Spherical Roadmap Style using Three.js
 // Steps arranged on a sphere in 3D space
@@ -46,16 +47,16 @@ const blendColors = (color1: string, color2: string, ratio: number): string => {
   return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
 };
 
-// Real planet colors
+// Real planet colors (based on actual appearance from space)
 const REAL_PLANET_COLORS = {
-  Mercury: '#8C7853', // Gray-brown
-  Venus: '#FFC649',   // Yellowish-white
-  Earth: '#4A90E2',   // Blue
-  Mars: '#CD5C5C',    // Red
-  Jupiter: '#D8CA9D', // Orange-brown
-  Saturn: '#FAD5A5',  // Yellow-gold
-  Uranus: '#4FD0E7',  // Cyan
-  Neptune: '#4166F5', // Deep blue
+  Mercury: '#8C7853', // Gray-brown (rocky surface)
+  Venus: '#FFC649',   // Yellowish-white (thick cloud cover)
+  Earth: '#7BB3FF',   // Light blue (oceans from space)
+  Mars: '#C1440E',    // Reddish-orange (rust/iron oxide surface)
+  Jupiter: '#C88A65', // Orange-brown (gas giant with storm bands)
+  Saturn: '#FAD5A5',  // Pale yellow-gold (gas giant with rings)
+  Uranus: '#4FD0E7',  // Cyan (methane atmosphere)
+  Neptune: '#4166F5', // Deep blue (methane atmosphere)
 };
 
 // Theme gradient colors: #6366F1 (Indigo), #8B5CF6 (Purple), #F59E0B (Amber), #10B981 (Green)
@@ -66,31 +67,17 @@ const THEME_COLORS = {
   Green: '#10B981',
 };
 
-// Helper function to lighten a color for dark mode
-const lightenColor = (color: string, amount: number): string => {
-  const hex = color.replace('#', '');
-  const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
-
-  const newR = Math.min(255, Math.round(r + (255 - r) * amount));
-  const newG = Math.min(255, Math.round(g + (255 - g) * amount));
-  const newB = Math.min(255, Math.round(b + (255 - b) * amount));
-
-  return `#${newR.toString(16).padStart(2, '0')}${newG.toString(16).padStart(2, '0')}${newB.toString(16).padStart(2, '0')}`;
-};
-
 // Get planet colors - blend real planet colors with modern AI theme colors
 // 70% real color + 30% theme color for elegant hybrid
-const getPlanetColors = (isDarkMode: boolean) => {
-  const themeBlendRatio = 0.3; // 30% theme color, 70% real color
+const getPlanetColors = (_isDarkMode: boolean) => {
+  const themeBlendRatio = 0.1; // 10% theme color, 90% real color
 
   // Base blended colors
   // Mercury uses higher theme blend ratio for better visibility
   const baseColors = {
-    Mercury: blendColors(REAL_PLANET_COLORS.Mercury, THEME_COLORS.Amber, isDarkMode ? 0.5 : themeBlendRatio),
+    Mercury: blendColors(REAL_PLANET_COLORS.Mercury, THEME_COLORS.Amber, themeBlendRatio),
     Venus: blendColors(REAL_PLANET_COLORS.Venus, THEME_COLORS.Amber, themeBlendRatio),
-    Earth: blendColors(REAL_PLANET_COLORS.Earth, THEME_COLORS.Purple, themeBlendRatio),
+    Earth: blendColors(REAL_PLANET_COLORS.Earth, THEME_COLORS.Indigo, themeBlendRatio),
     Mars: blendColors(REAL_PLANET_COLORS.Mars, THEME_COLORS.Amber, themeBlendRatio),
     Jupiter: blendColors(REAL_PLANET_COLORS.Jupiter, THEME_COLORS.Amber, themeBlendRatio),
     Saturn: blendColors(REAL_PLANET_COLORS.Saturn, THEME_COLORS.Amber, themeBlendRatio),
@@ -98,20 +85,7 @@ const getPlanetColors = (isDarkMode: boolean) => {
     Neptune: blendColors(REAL_PLANET_COLORS.Neptune, THEME_COLORS.Green, themeBlendRatio),
   };
 
-  // Lighten colors for dark mode
-  if (isDarkMode) {
-    return {
-      Mercury: lightenColor(baseColors.Mercury, 0.5), // Much brighter for visibility in dark mode
-      Venus: lightenColor(baseColors.Venus, 0.15),
-      Earth: lightenColor(baseColors.Earth, 0.15),
-      Mars: lightenColor(baseColors.Mars, 0.15),
-      Jupiter: lightenColor(baseColors.Jupiter, 0.15),
-      Saturn: lightenColor(baseColors.Saturn, 0.15),
-      Uranus: lightenColor(baseColors.Uranus, 0.15),
-      Neptune: lightenColor(baseColors.Neptune, 0.15),
-    };
-  }
-
+  // Return real planet colors without lightening
   return baseColors;
 };
 
@@ -422,11 +396,9 @@ function PlanetSphere({
         map={gradientTexture || undefined}
         transparent
         opacity={opacity}
-        metalness={0.4}
-        roughness={0.5}
+        metalness={0.2}
+        roughness={0.3}
         side={THREE.DoubleSide}
-        // emissive={"red"}
-        // emissiveIntensity={0.02}
         flatShading={false}
       />
     </mesh>
@@ -677,6 +649,9 @@ export const Roadmap = () => {
         background: 'transparent',
       }}
     >
+      {/* Starfield Background */}
+      <Starfield />
+
       {/* Hero Section */}
       <Box sx={{
         position: 'relative',
@@ -735,8 +710,8 @@ export const Roadmap = () => {
               position={[0, 0, 0]}
               intensity={4}
               color="#FFD700"
-              distance={150}
-              decay={1.5}
+              // distance={200}
+              decay={0.4}
             />
 
             <OrbitControls
@@ -798,3 +773,4 @@ export const Roadmap = () => {
 };
 
 export default Roadmap;
+

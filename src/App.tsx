@@ -6,7 +6,7 @@ import Layout from './components/layout/Layout';
 import Home from './pages/home';
 import Welcome from './pages/Welcome';
 import Perceptron from './pages/Perceptron';
-import Roadmap from './pages/Roadmap';
+import Roadmap from './pages/roadmap';
 import FunctionsDecisions from './pages/FunctionsDecisions';
 import SimpleFunctions from './pages/SimpleFunctions';
 import MultiInputFunctions from './pages/MultiInputFunctions';
