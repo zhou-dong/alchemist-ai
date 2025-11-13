@@ -1,6 +1,5 @@
 import {
   Box,
-  Typography,
   Fade,
 } from '@mui/material';
 import { PlayArrow, Pause, CenterFocusStrong } from '@mui/icons-material';
@@ -9,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { GradientTitle, GlassIconButton } from '../theme/theme';
 import { useColorMode } from '../theme/ColorModeContext';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Text } from '@react-three/drei';
+import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 
 // 3D Spherical Roadmap Style using Three.js
@@ -150,6 +149,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Mercury',
       color: colors.Mercury,
+      textColor: '#00D4FF', // Bright cyan - contrasts with gray-brown
+      emojiColor: '#FFD700', // Gold - contrasts with gray-brown
       size: 0.38, // Smallest planet (0.38 × Earth)
       distance: 1.0, // Closest to sun (normalized)
       speed: 4.15, // Fastest (orbital period 87.97 days)
@@ -158,6 +159,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Venus',
       color: colors.Venus,
+      textColor: '#8B00FF', // Purple - contrasts with yellowish-white
+      emojiColor: '#00FF88', // Green - contrasts with yellowish-white
       size: 0.95, // Nearly Earth-sized (0.95 × Earth)
       distance: 1.2, // Second closest
       speed: 1.63, // Second fastest (orbital period 224.7 days)
@@ -166,6 +169,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Earth',
       color: colors.Earth,
+      textColor: '#FF6B35', // Orange-red - contrasts with blue
+      emojiColor: '#FFD93D', // Yellow - contrasts with blue
       size: 1.0, // Baseline size (1.0 × Earth)
       distance: 1.4, // Third
       speed: 1.0, // Baseline speed (orbital period 365.26 days)
@@ -174,6 +179,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Mars',
       color: colors.Mars,
+      textColor: '#00E5FF', // Cyan - contrasts with red
+      emojiColor: '#90EE90', // Light green - contrasts with red
       size: 0.53, // Smaller than Earth (0.53 × Earth)
       distance: 1.7, // Fourth
       speed: 0.532, // Slower (orbital period 686.98 days)
@@ -182,6 +189,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Jupiter',
       color: colors.Jupiter,
+      textColor: '#4169E1', // Royal blue - contrasts with orange-brown
+      emojiColor: '#FF1493', // Deep pink - contrasts with orange-brown
       size: 2.5, // Largest planet (11.19 × Earth, scaled to 2.5 for visualization)
       distance: 2.5, // Much farther out
       speed: 0.0844, // Much slower (orbital period 11.86 years)
@@ -190,6 +199,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Saturn',
       color: colors.Saturn,
+      textColor: '#9370DB', // Medium purple - contrasts with yellow-gold
+      emojiColor: '#00CED1', // Dark turquoise - contrasts with yellow-gold
       size: 2.2, // Second largest (9.40 × Earth, scaled to 2.2 for visualization)
       distance: 3.2, // Even farther
       speed: 0.0340, // Very slow (orbital period 29.46 years)
@@ -198,6 +209,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Uranus',
       color: colors.Uranus,
+      textColor: '#FF4500', // Orange-red - contrasts with cyan
+      emojiColor: '#FFD700', // Gold - contrasts with cyan
       size: 1.5, // Large (4.04 × Earth, scaled to 1.5 for visualization)
       distance: 4.0, // Outer planet
       speed: 0.0119, // Very slow (orbital period 84.01 years)
@@ -206,6 +219,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Neptune',
       color: colors.Neptune,
+      textColor: '#FFA500', // Orange - contrasts with deep blue
+      emojiColor: '#FF69B4', // Hot pink - contrasts with deep blue
       size: 1.4, // Large (3.88 × Earth, scaled to 1.4 for visualization)
       distance: 4.8, // Farthest planet
       speed: 0.00607, // Slowest (orbital period 164.79 years)
@@ -316,8 +331,8 @@ function OrbitRing({
   );
 }
 
-// Create elegant gradient texture using theme gradient colors
-const createGradientTexture = (baseColor: string) => {
+// Create elegant gradient texture with planet name and emoji mapped directly on sphere surface
+const createGradientTexture = (baseColor: string, planetName: string, emoji: string, textColor: string, emojiColor: string) => {
   const canvas = document.createElement('canvas');
   canvas.width = 512;
   canvas.height = 512;
@@ -338,9 +353,34 @@ const createGradientTexture = (baseColor: string) => {
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, 512, 512);
 
+  // Draw emoji on the texture at the very top of sphere
+  ctx.font = '48px Arial';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+
+  // Draw emoji with outline for better visibility
+  ctx.strokeStyle = 'rgba(0, 0, 0, 0.8)';
+  ctx.lineWidth = 8;
+  ctx.strokeText(emoji, 256, 20); // Very top of texture = very top of sphere
+  // Use brightened planet color for emoji
+  ctx.fillStyle = emojiColor;
+  ctx.fillText(emoji, 256, 20);
+
+  // Draw planet name on the texture below emoji, at very top of sphere
+  ctx.font = 'bold 48px Arial';
+  ctx.textBaseline = 'top';
+
+  // Draw text with outline for better visibility
+  ctx.strokeStyle = 'rgba(0, 0, 0, 0.9)';
+  ctx.lineWidth = 8;
+  ctx.strokeText(planetName, 256, 80); // Very top of texture = very top of sphere
+  // Use planet color (slightly brightened) for text
+  ctx.fillStyle = textColor;
+  ctx.fillText(planetName, 256, 80);
+
   const texture = new THREE.CanvasTexture(canvas);
-  texture.wrapS = THREE.RepeatWrapping;
-  texture.wrapT = THREE.RepeatWrapping;
+  texture.wrapS = THREE.ClampToEdgeWrapping;
+  texture.wrapT = THREE.ClampToEdgeWrapping;
   return texture;
 };
 
@@ -349,6 +389,10 @@ function PlanetSphere({
   radius,
   color,
   opacity,
+  name,
+  emoji,
+  textColor,
+  emojiColor,
   onPointerEnter,
   onPointerLeave,
   onClick
@@ -356,11 +400,15 @@ function PlanetSphere({
   radius: number;
   color: string;
   opacity: number;
+  name: string;
+  emoji: string;
+  textColor: string;
+  emojiColor: string;
   onPointerEnter?: () => void;
   onPointerLeave?: () => void;
   onClick?: () => void;
 }) {
-  const gradientTexture = useMemo(() => createGradientTexture(color), [color]);
+  const gradientTexture = useMemo(() => createGradientTexture(color, name, emoji, textColor, emojiColor), [color, name, emoji, textColor, emojiColor]);
 
   return (
     <mesh
@@ -377,8 +425,8 @@ function PlanetSphere({
         metalness={0.4}
         roughness={0.5}
         side={THREE.DoubleSide}
-        emissive={color}
-        emissiveIntensity={0.2}
+        // emissive={"red"}
+        // emissiveIntensity={0.02}
         flatShading={false}
       />
     </mesh>
@@ -435,17 +483,6 @@ function StepSphere({
 
   const planetColor = planet.color;
   const planetOpacity = isUnlocked ? 1.0 : 0.75;
-  const textGroupRef = useRef<THREE.Group>(null);
-
-  // Make text always face camera (billboard effect)
-  useFrame(({ camera }) => {
-    if (textGroupRef.current) {
-      textGroupRef.current.lookAt(camera.position);
-    }
-  });
-
-  // Position text on sphere surface (at radius distance from center)
-  const textOffset = planetRadius + 0.3; // Slightly above the surface
 
   // Initial position based on initial angle
   const initialX = orbitDistance * Math.cos(initialAngle);
@@ -459,61 +496,14 @@ function StepSphere({
           radius={planetRadius}
           color={planetColor}
           opacity={planetOpacity}
+          name={planet.name}
+          emoji={planet.emoji}
+          textColor={planet.textColor}
+          emojiColor={planet.emojiColor}
           onPointerEnter={() => onHover(true)}
           onPointerLeave={() => onHover(false)}
           onClick={onClick}
         />
-      </group>
-
-      {/* Text label on sphere surface - always facing camera */}
-      <group ref={textGroupRef} position={[0, 0, textOffset]}>
-        {/* Planet name - centered at top */}
-        <Text
-          position={[0, 0.3, 0]}
-          fontSize={0.12}
-          color={planetColor}
-          anchorX="center"
-          anchorY="middle"
-          maxWidth={2.5}
-          textAlign="center"
-          outlineWidth={0.02}
-          outlineColor="#000000"
-          lineHeight={1.2}
-        >
-          {planet.emoji} {planet.name}
-        </Text>
-
-        {/* Title - centered */}
-        <Text
-          position={[0, 0.1, 0]}
-          fontSize={0.13}
-          color={isUnlocked ? '#FFFFFF' : '#AAAAAA'}
-          anchorX="center"
-          anchorY="middle"
-          maxWidth={2.5}
-          textAlign="center"
-          outlineWidth={0.02}
-          outlineColor="#000000"
-          lineHeight={1.2}
-        >
-          {item.title}
-        </Text>
-
-        {/* Description - centered below title */}
-        <Text
-          position={[0, -0.1, 0]}
-          fontSize={0.09}
-          color={isUnlocked ? '#CCCCCC' : '#888888'}
-          anchorX="center"
-          anchorY="middle"
-          maxWidth={2.5}
-          textAlign="center"
-          outlineWidth={0.015}
-          outlineColor="#000000"
-          lineHeight={1.2}
-        >
-          {isUnlocked ? item.description : 'Complete previous steps to unlock'}
-        </Text>
       </group>
     </group>
   );
@@ -620,7 +610,6 @@ function Scene({
 export const Roadmap = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [showHint, setShowHint] = useState(true);
   const [isRotationEnabled, setIsRotationEnabled] = useState(false);
   const navigate = useNavigate();
   const controlsRef = useRef<any>(null);
@@ -634,11 +623,6 @@ export const Roadmap = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 500);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowHint(false), 5000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -741,15 +725,15 @@ export const Roadmap = () => {
           }}
         >
           <Canvas
-            camera={{ position: [0, 20, 40], fov: 60 }}
+            camera={{ position: [0, 25, 55], fov: 60 }}
             gl={{ antialias: true, alpha: true }}
             style={{ background: 'transparent' }}
           >
             <ambientLight intensity={0.3} />
             {/* Sun light - positioned at the center where the sun is */}
-            <pointLight 
-              position={[0, 0, 0]} 
-              intensity={4} 
+            <pointLight
+              position={[0, 0, 0]}
+              intensity={4}
               color="#FFD700"
               distance={150}
               decay={1.5}
@@ -760,7 +744,7 @@ export const Roadmap = () => {
               enablePan={false}
               enableZoom={true}
               enableRotate={true}
-              minDistance={30}
+              minDistance={10}
               maxDistance={50}
               minPolarAngle={Math.PI / 6} // Allow viewing from above (30 degrees from top)
               maxPolarAngle={Math.PI / 2 + Math.PI / 6} // Allow 30 degrees below horizontal
@@ -807,33 +791,6 @@ export const Roadmap = () => {
             </GlassIconButton>
           </Box>
 
-          {/* Hint Text */}
-          {showHint && (
-            <Fade in={showHint} timeout={1000}>
-              <Typography
-                variant="body2"
-                sx={{
-                  position: 'absolute',
-                  bottom: 20,
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  color: 'text.secondary',
-                  fontSize: { xs: '0.75rem', md: '0.85rem' },
-                  textAlign: 'center',
-                  px: 2,
-                  py: 1,
-                  background: 'rgba(0, 0, 0, 0.3)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius: '8px',
-                  border: '1px solid rgba(99, 102, 241, 0.2)',
-                  pointerEvents: 'none',
-                  zIndex: 10
-                }}
-              >
-                Drag to rotate • Scroll to zoom • Click to explore
-              </Typography>
-            </Fade>
-          )}
         </Box>
       </Box>
     </Box>
