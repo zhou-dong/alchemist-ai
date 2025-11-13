@@ -710,7 +710,6 @@ export const Roadmap = () => {
               position={[0, 0, 0]}
               intensity={4}
               color="#FFD700"
-              // distance={200}
               decay={0.4}
             />
 
