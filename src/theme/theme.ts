@@ -1,10 +1,6 @@
 import { type PaletteMode, type PaletteOptions, type ThemeOptions, Typography, Button, IconButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-interface GradientTitleProps {
-    size?: 'large' | 'medium' | 'small';
-}
-
 // Styled component for gradient buttons
 export const GradientButton = styled(Button)(({ }) => ({
     background: 'transparent',
@@ -49,57 +45,16 @@ export const GradientButton = styled(Button)(({ }) => ({
 }));
 
 // Styled component for gradient titles
-export const GradientTitle = styled(Typography, {
-    shouldForwardProp: (prop) => prop !== 'size',
-})<GradientTitleProps>(({ theme, size = 'medium' }) => {
-    const sizeStyles: Record<'large' | 'medium' | 'small', any> = {
-        large: {
-            fontSize: '4rem',
-            letterSpacing: '0.05em',
-            [theme.breakpoints.up('md')]: {
-                fontSize: '6rem',
-                letterSpacing: '0.1em',
-            },
-            [theme.breakpoints.up('lg')]: {
-                fontSize: '8rem',
-            },
-        },
-        medium: {
-            fontSize: '3rem',
-            letterSpacing: '0.05em',
-            [theme.breakpoints.up('md')]: {
-                fontSize: '5rem',
-                letterSpacing: '0.1em',
-            },
-            [theme.breakpoints.up('lg')]: {
-                fontSize: '6rem',
-            },
-        },
-        small: {
-            fontSize: '2rem',
-            letterSpacing: '0.05em',
-            [theme.breakpoints.up('md')]: {
-                fontSize: '3rem',
-                letterSpacing: '0.08em',
-            },
-            [theme.breakpoints.up('lg')]: {
-                fontSize: '3.5rem',
-            },
-        },
-    };
-
-    return {
-        fontWeight: 900,
-        background: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
-        backgroundSize: '200% 200%',
-        backgroundClip: 'text',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        textShadow: '0 0 30px rgba(99, 102, 241, 0.3)',
-        animation: 'glow 2s ease-in-out infinite alternate, gradientShift 8s ease infinite',
-        ...sizeStyles[size],
-    };
-});
+export const GradientTypography = styled(Typography)(() => ({
+    fontWeight: 900,
+    background: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
+    backgroundSize: '200% 200%',
+    backgroundClip: 'text',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    textShadow: '0 0 30px rgba(99, 102, 241, 0.3)',
+    animation: 'glow 2s ease-in-out infinite alternate, gradientShift 8s ease infinite',
+}));
 
 // Styled component for glassmorphic icon buttons
 export const GlassIconButton = styled(IconButton)(({ theme }) => ({

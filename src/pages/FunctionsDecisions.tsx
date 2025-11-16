@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTitle, GradientButton } from '../theme/theme';
+import { GradientTypography, GradientButton } from '../theme/theme';
 
 export const FunctionsDecisions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -39,15 +39,14 @@ export const FunctionsDecisions = () => {
           alignItems: 'center',
           gap: 3
         }}>
-          <GradientTitle
-            variant="h1"
-            size="small"
+          <GradientTypography
+            variant="h4"
             sx={{
               mb: 1,
             }}
           >
             Every decision is a function
-          </GradientTitle>
+          </GradientTypography>
 
           <Typography
             variant="h5"

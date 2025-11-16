@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTitle } from '../theme/theme';
+import { GradientTypography } from '../theme/theme';
 
 export const SimpleFunctions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -40,15 +40,14 @@ export const SimpleFunctions = () => {
           alignItems: 'center',
           gap: 4
         }}>
-          <GradientTitle
-            variant="h1"
-            size="medium"
+          <GradientTypography
+            variant="h4"
             sx={{
               mb: 2,
             }}
           >
             SIMPLE FUNCTIONS
-          </GradientTitle>
+          </GradientTypography>
 
           <Typography
             variant="h5"

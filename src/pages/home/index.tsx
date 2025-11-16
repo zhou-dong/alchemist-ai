@@ -4,9 +4,8 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTitle, GradientButton } from '../../theme/theme';
+import { GradientTypography, GradientButton } from '../../theme/theme';
 import { FloatingParticles, generateParticles, type Particle } from './FloatingParticles';
-
 
 export const Home = () => {
   const [particles, setParticles] = useState<Array<Particle>>([]);
@@ -44,9 +43,8 @@ export const Home = () => {
         {/* Main Title with Animation */}
         <Fade in={isLoaded} timeout={800}>
           <Box sx={{ mb: 6, position: 'relative' }}>
-            <GradientTitle
+            <GradientTypography
               variant="h1"
-              size="large"
               sx={{
                 mb: 3,
                 position: 'relative',
@@ -54,7 +52,7 @@ export const Home = () => {
               }}
             >
               NEURAL QUEST
-            </GradientTitle>
+            </GradientTypography>
           </Box>
         </Fade>
 
@@ -62,7 +60,6 @@ export const Home = () => {
         <Fade in={isLoaded} timeout={800}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <GradientButton
-              size="large"
               onClick={() => navigate('/alchemist-ai/roadmap')}
               sx={{
                 py: 1.5,

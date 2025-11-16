@@ -1,11 +1,12 @@
 import {
   Box,
   Fade,
+  Typography,
 } from '@mui/material';
-import { PlayArrow, Pause, CenterFocusStrong } from '@mui/icons-material';
+import { PlayArrow, Pause, CenterFocusStrong, Lock, LockOpen, CheckCircle } from '@mui/icons-material';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTitle, GlassIconButton } from '../../theme/theme';
+import { GradientTypography, GlassIconButton } from '../../theme/theme';
 import { useColorMode } from '../../theme/ColorModeContext';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -49,7 +50,7 @@ const blendColors = (color1: string, color2: string, ratio: number): string => {
 
 // Real planet colors (based on actual appearance from space)
 const REAL_PLANET_COLORS = {
-  Mercury: '#8C7853', // Gray-brown (rocky surface)
+  Mercury: '#B8A082', // Lighter gray-brown (rocky surface) - lightened for better visibility
   Venus: '#FFC649',   // Yellowish-white (thick cloud cover)
   Earth: '#7BB3FF',   // Light blue (oceans from space)
   Mars: '#C1440E',    // Reddish-orange (rust/iron oxide surface)
@@ -123,8 +124,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Mercury',
       color: colors.Mercury,
-      textColor: '#00D4FF', // Bright cyan - contrasts with gray-brown
-      emojiColor: '#FFD700', // Gold - contrasts with gray-brown
+      textColor: '#FFFFFF',
+      emojiColor: '#FFFFFF',
       size: 0.38, // Smallest planet (0.38 × Earth)
       distance: 1.0, // Closest to sun (normalized)
       speed: 4.15, // Fastest (orbital period 87.97 days)
@@ -133,8 +134,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Venus',
       color: colors.Venus,
-      textColor: '#8B00FF', // Purple - contrasts with yellowish-white
-      emojiColor: '#00FF88', // Green - contrasts with yellowish-white
+      textColor: '#FFFFFF',
+      emojiColor: '#FFFFFF',
       size: 0.95, // Nearly Earth-sized (0.95 × Earth)
       distance: 1.2, // Second closest
       speed: 1.63, // Second fastest (orbital period 224.7 days)
@@ -143,8 +144,9 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Earth',
       color: colors.Earth,
-      textColor: '#FF6B35', // Orange-red - contrasts with blue
-      emojiColor: '#FFD93D', // Yellow - contrasts with blue
+      // textColor: '#FF6B35', // Orange-red - contrasts with blue
+      textColor: '#FFFFFF',
+      emojiColor: '#FFFFFF',
       size: 1.0, // Baseline size (1.0 × Earth)
       distance: 1.4, // Third
       speed: 1.0, // Baseline speed (orbital period 365.26 days)
@@ -153,8 +155,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Mars',
       color: colors.Mars,
-      textColor: '#00E5FF', // Cyan - contrasts with red
-      emojiColor: '#90EE90', // Light green - contrasts with red
+      textColor: '#FFFFFF',
+      emojiColor: '#FFFFFF',
       size: 0.53, // Smaller than Earth (0.53 × Earth)
       distance: 1.7, // Fourth
       speed: 0.532, // Slower (orbital period 686.98 days)
@@ -163,8 +165,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Jupiter',
       color: colors.Jupiter,
-      textColor: '#4169E1', // Royal blue - contrasts with orange-brown
-      emojiColor: '#FF1493', // Deep pink - contrasts with orange-brown
+      textColor: '#FFFFFF',
+      emojiColor: '#FFFFFF',
       size: 2.5, // Largest planet (11.19 × Earth, scaled to 2.5 for visualization)
       distance: 2.5, // Much farther out
       speed: 0.0844, // Much slower (orbital period 11.86 years)
@@ -173,8 +175,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Saturn',
       color: colors.Saturn,
-      textColor: '#9370DB', // Medium purple - contrasts with yellow-gold
-      emojiColor: '#00CED1', // Dark turquoise - contrasts with yellow-gold
+      textColor: '#FFFFFF',
+      emojiColor: '#FFFFFF',
       size: 2.2, // Second largest (9.40 × Earth, scaled to 2.2 for visualization)
       distance: 3.2, // Even farther
       speed: 0.0340, // Very slow (orbital period 29.46 years)
@@ -183,8 +185,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Uranus',
       color: colors.Uranus,
-      textColor: '#FF4500', // Orange-red - contrasts with cyan
-      emojiColor: '#FFD700', // Gold - contrasts with cyan
+      textColor: '#FFFFFF',
+      emojiColor: '#FFFFFF',
       size: 1.5, // Large (4.04 × Earth, scaled to 1.5 for visualization)
       distance: 4.0, // Outer planet
       speed: 0.0119, // Very slow (orbital period 84.01 years)
@@ -193,8 +195,8 @@ const getPlanetData = (isDarkMode: boolean) => {
     {
       name: 'Neptune',
       color: colors.Neptune,
-      textColor: '#FFA500', // Orange - contrasts with deep blue
-      emojiColor: '#FF69B4', // Hot pink - contrasts with deep blue
+      textColor: '#FFFFFF',
+      emojiColor: '#FFFFFF',
       size: 1.4, // Large (3.88 × Earth, scaled to 1.4 for visualization)
       distance: 4.8, // Farthest planet
       speed: 0.00607, // Slowest (orbital period 164.79 years)
@@ -203,11 +205,20 @@ const getPlanetData = (isDarkMode: boolean) => {
   ];
 };
 
+// Step status type
+export type StepStatus = 'locked' | 'unlocked' | 'finished';
+
+// Helper functions to check status
+const isLocked = (status: StepStatus): boolean => status === 'locked';
+const isUnlocked = (status: StepStatus): boolean => status === 'unlocked';
+const isFinished = (status: StepStatus): boolean => status === 'finished';
+const isAccessible = (status: StepStatus): boolean => status === 'unlocked' || status === 'finished';
+
 type LearningPathItem = {
   title: string;
   description: string;
   path: string;
-  unlocked: boolean;
+  status: StepStatus; // Changed from unlocked: boolean
   planet: ReturnType<typeof getPlanetData>[0];
 };
 
@@ -218,56 +229,56 @@ const getLearningPathData = (isDarkMode: boolean): LearningPathItem[] => {
       title: 'Functions as Decisions',
       description: 'Every decision is a function',
       path: '/alchemist-ai/functions-decisions',
-      unlocked: true,
+      status: 'finished', // Example: first step is finished
       planet: planetData[0] // Mercury
     },
     {
       title: 'Simple Functions',
       description: 'Build the simplest function: if...else',
       path: '/alchemist-ai/simple-functions',
-      unlocked: false,
+      status: 'unlocked', // Example: second step is unlocked
       planet: planetData[1] // Venus
     },
     {
       title: 'Multi-Input Functions',
       description: 'Multiple inputs, one output function',
       path: '/alchemist-ai/multi-input-functions',
-      unlocked: false,
+      status: 'locked', // Example: third step is locked
       planet: planetData[2] // Earth
     },
     {
       title: 'Math to Neurons',
       description: 'From mathematical functions to neural networks',
       path: '/alchemist-ai/math-to-neurons',
-      unlocked: false,
+      status: 'locked',
       planet: planetData[3] // Mars
     },
     {
       title: 'Logistic Regression',
       description: 'Understanding binary classification',
       path: '/alchemist-ai/logistic-regression',
-      unlocked: false,
+      status: 'locked',
       planet: planetData[4] // Jupiter
     },
     {
       title: 'Multi-Layer Network',
       description: 'Stacking layers for complex patterns',
       path: '/alchemist-ai/multi-layer-network',
-      unlocked: false,
+      status: 'locked',
       planet: planetData[5] // Saturn
     },
     {
       title: 'Backpropagation',
       description: 'The algorithm that enables deep learning',
       path: '/alchemist-ai/backpropagation',
-      unlocked: false,
+      status: 'locked',
       planet: planetData[6] // Uranus
     },
     {
       title: 'Neural Networks',
       description: 'Master the complete neural network architecture',
       path: '/alchemist-ai/neural-networks',
-      unlocked: false,
+      status: 'locked',
       planet: planetData[7] // Neptune
     },
   ];
@@ -367,6 +378,7 @@ function PlanetSphere({
   emoji,
   textColor,
   emojiColor,
+  status,
   onPointerEnter,
   onPointerLeave,
   onClick
@@ -378,26 +390,116 @@ function PlanetSphere({
   emoji: string;
   textColor: string;
   emojiColor: string;
+  status: StepStatus;
   onPointerEnter?: () => void;
   onPointerLeave?: () => void;
   onClick?: () => void;
 }) {
   const gradientTexture = useMemo(() => createGradientTexture(color, name, emoji, textColor, emojiColor), [color, name, emoji, textColor, emojiColor]);
+  const pointerDownRef = useRef<{ x: number; y: number; time: number } | null>(null);
+  const hasMovedRef = useRef(false);
+  const DRAG_THRESHOLD = 3; // Pixels in 3D space - if mouse moves more than this, it's a drag
+
+  const handlePointerDown = (e: any) => {
+    // Store the initial mouse position and time
+    const point = e.point || { x: 0, y: 0, z: 0 };
+    pointerDownRef.current = {
+      x: point.x,
+      y: point.y,
+      time: Date.now(),
+    };
+    hasMovedRef.current = false;
+  };
+
+  const handlePointerMove = (e: any) => {
+    if (pointerDownRef.current) {
+      // Check if mouse has moved significantly in 3D space
+      const point = e.point || { x: 0, y: 0, z: 0 };
+      const dx = point.x - pointerDownRef.current.x;
+      const dy = point.y - pointerDownRef.current.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      if (distance > DRAG_THRESHOLD) {
+        hasMovedRef.current = true;
+      }
+    }
+  };
+
+  const handlePointerUp = () => {
+    if (pointerDownRef.current && onClick && !hasMovedRef.current) {
+      // Also check time - if held too long, it's probably a drag
+      const timeHeld = Date.now() - pointerDownRef.current.time;
+      if (timeHeld < 500) { // Only click if released within 500ms
+        onClick();
+      }
+    }
+    pointerDownRef.current = null;
+    hasMovedRef.current = false;
+  };
+
+  const handlePointerLeave = () => {
+    pointerDownRef.current = null;
+    hasMovedRef.current = false;
+    if (onPointerLeave) {
+      onPointerLeave();
+    }
+  };
+
+  // Adjust material properties and color based on status
+  let finalColor: THREE.Color;
+  let materialProps: {
+    metalness: number;
+    roughness: number;
+    emissive: string;
+    emissiveIntensity: number;
+  };
+
+  if (isLocked(status)) {
+    // Locked: dark grayscale
+    const baseColor = new THREE.Color(color);
+    const gray = baseColor.r * 0.299 + baseColor.g * 0.587 + baseColor.b * 0.114;
+    finalColor = new THREE.Color(gray * 0.25, gray * 0.25, gray * 0.25);
+    materialProps = {
+      metalness: 0.05,
+      roughness: 0.8,
+      emissive: '#000000',
+      emissiveIntensity: 0,
+    };
+  } else if (isFinished(status)) {
+    // Finished: full color with subtle glow
+    finalColor = new THREE.Color(color);
+    materialProps = {
+      metalness: 0.5,
+      roughness: 0.1,
+      emissive: color,
+      emissiveIntensity: 0.2, // Subtle glow
+    };
+  } else {
+    // Unlocked: full color
+    finalColor = new THREE.Color(color);
+    materialProps = {
+      metalness: 0.4,
+      roughness: 0.2,
+      emissive: '#000000',
+      emissiveIntensity: 0,
+    };
+  }
 
   return (
     <mesh
       onPointerEnter={onPointerEnter}
-      onPointerLeave={onPointerLeave}
-      onClick={onClick}
+      onPointerLeave={handlePointerLeave}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
     >
       <sphereGeometry args={[radius, 64, 64]} />
       <meshStandardMaterial
-        color={color}
-        map={gradientTexture || undefined}
+        color={finalColor}
+        map={isLocked(status) ? undefined : gradientTexture}
         transparent
         opacity={opacity}
-        metalness={0.2}
-        roughness={0.3}
+        {...materialProps}
         side={THREE.DoubleSide}
         flatShading={false}
       />
@@ -412,7 +514,7 @@ function StepSphere({
   initialAngle,
   orbitDistance,
   isActive,
-  isUnlocked,
+  status,
   isHovered,
   onHover,
   onClick,
@@ -422,7 +524,7 @@ function StepSphere({
   initialAngle: number;
   orbitDistance: number;
   isActive: boolean;
-  isUnlocked: boolean;
+  status: StepStatus;
   isHovered: boolean;
   onHover: (hovered: boolean) => void;
   onClick: () => void;
@@ -448,13 +550,23 @@ function StepSphere({
     }
 
     if (meshRef.current) {
-      const scale = isHovered && isUnlocked ? 1.15 : (isActive ? 1.1 : 1); // Slightly larger if active
+      // Scale all planets to the same size when hovered for consistent viewing experience
+      // Target size: 3.5 (all planets will have radius = BASE_SPHERE_RADIUS * 3.5 when hovered)
+      // Formula: scale = targetSize / planetSize
+      let scale = 1;
+      if (isHovered) {
+        const targetSize = 15; // Target size for all planets when hovered
+        scale = targetSize / planet.size;
+      } else if (isActive) {
+        scale = 1.1;
+      }
       meshRef.current.scale.setScalar(scale);
     }
+
   });
 
   const planetColor = planet.color;
-  const planetOpacity = isUnlocked ? 1.0 : 0.75;
+  const planetOpacity = isLocked(status) ? 0.4 : 1.0;
 
   // Initial position based on initial angle
   const initialX = orbitDistance * Math.cos(initialAngle);
@@ -472,6 +584,7 @@ function StepSphere({
           emoji={planet.emoji}
           textColor={planet.textColor}
           emojiColor={planet.emojiColor}
+          status={status}
           onPointerEnter={() => onHover(true)}
           onPointerLeave={() => onHover(false)}
           onClick={onClick}
@@ -510,6 +623,7 @@ function Scene({
   onStepClick,
   isRotationEnabled,
   isDarkMode,
+  learningPathData,
 }: {
   activeStepIndex: number;
   hoveredIndex: number | null;
@@ -517,6 +631,7 @@ function Scene({
   onStepClick: (index: number) => void;
   isRotationEnabled: boolean;
   isDarkMode: boolean;
+  learningPathData: LearningPathItem[];
 }) {
   const groupRef = useRef<THREE.Group>(null);
 
@@ -524,9 +639,6 @@ function Scene({
   const initialAnglesRef = useRef<number[]>(
     Array.from({ length: totalSteps }, () => Math.random() * 2 * Math.PI)
   );
-
-  // Get theme-aware learning path data
-  const learningPathData = useMemo(() => getLearningPathData(isDarkMode), [isDarkMode]);
 
   // Calculate initial angles and orbit distances for each planet
   const learningPath = useMemo(() => {
@@ -555,7 +667,7 @@ function Scene({
             key={`orbit-${index}`}
             radius={item.orbitDistance}
             color={item.planet.color}
-            opacity={item.unlocked ? 0.15 : 0.08}
+            opacity={isLocked(item.status) ? 0.08 : isFinished(item.status) ? 0.2 : 0.15}
             isDarkMode={isDarkMode}
           />
         ))}
@@ -567,7 +679,7 @@ function Scene({
             initialAngle={item.initialAngle}
             orbitDistance={item.orbitDistance}
             isActive={index === activeStepIndex}
-            isUnlocked={item.unlocked}
+            status={item.status}
             isHovered={hoveredIndex === index}
             onHover={(hovered) => setHoveredIndex(hovered ? index : null)}
             onClick={() => onStepClick(index)}
@@ -583,15 +695,55 @@ export const Roadmap = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isRotationEnabled, setIsRotationEnabled] = useState(false);
+  const [statusOverrides, setStatusOverrides] = useState<Map<number, StepStatus>>(new Map());
   const navigate = useNavigate();
   const controlsRef = useRef<any>(null);
   const { mode } = useColorMode();
   const isDarkMode = mode === 'dark';
 
   // Get theme-aware learning path data
-  const learningPathData = useMemo(() => getLearningPathData(isDarkMode), [isDarkMode]);
+  const baseLearningPathData = useMemo(() => getLearningPathData(isDarkMode), [isDarkMode]);
 
-  const activeStepIndex = learningPathData.findIndex(item => item.unlocked);
+  // Apply manual status overrides
+  const learningPathData = useMemo(() => {
+    return baseLearningPathData.map((item, index) => ({
+      ...item,
+      status: statusOverrides.has(index) ? statusOverrides.get(index)! : item.status
+    }));
+  }, [baseLearningPathData, statusOverrides]);
+
+  const activeStepIndex = learningPathData.findIndex(item => isUnlocked(item.status));
+
+  // Keyboard shortcut to cycle through statuses (press 'L' key when hovering over a sphere)
+  // Cycles: locked -> unlocked -> finished -> locked
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      // Only trigger if not typing in an input field
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      if (event.key.toLowerCase() === 'l' && hoveredIndex !== null) {
+        event.preventDefault();
+        setStatusOverrides(prev => {
+          const newMap = new Map(prev);
+          // Get current status (from override or base data)
+          const currentStatus = prev.has(hoveredIndex)
+            ? prev.get(hoveredIndex)!
+            : baseLearningPathData[hoveredIndex].status;
+          // Cycle: locked -> unlocked -> finished -> locked
+          const nextStatus: StepStatus = 
+            currentStatus === 'locked' ? 'unlocked' :
+            currentStatus === 'unlocked' ? 'finished' : 'locked';
+          newMap.set(hoveredIndex, nextStatus);
+          return newMap;
+        });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [hoveredIndex, baseLearningPathData]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 500);
@@ -632,8 +784,18 @@ export const Roadmap = () => {
 
   const handleStepClick = (index: number) => {
     const item = learningPathData[index];
-    if (item.path && item.unlocked) {
-      navigate(item.path);
+    if (isAccessible(item.status)) {
+      // If unlocked or finished, navigate to the path
+      if (item.path) {
+        navigate(item.path);
+      }
+    } else if (isLocked(item.status)) {
+      // If locked, unlock it
+      setStatusOverrides(prev => {
+        const newMap = new Map(prev);
+        newMap.set(index, 'unlocked');
+        return newMap;
+      });
     }
   };
 
@@ -672,16 +834,15 @@ export const Roadmap = () => {
             transform: 'translateX(-50%)',
             zIndex: 3
           }}>
-            <GradientTitle
+            <GradientTypography
               variant="h1"
-              size="medium"
               sx={{
                 fontSize: { xs: '2.5rem', md: '4rem', lg: '5rem' },
                 textAlign: 'center'
               }}
             >
               LEARNING PATH
-            </GradientTitle>
+            </GradientTypography>
           </Box>
         </Fade>
 
@@ -693,9 +854,9 @@ export const Roadmap = () => {
             left: 0,
             width: '100%',
             height: '100%',
-            cursor: 'grab',
+            cursor: hoveredIndex !== null ? 'pointer' : 'grab',
             '&:active': {
-              cursor: 'grabbing'
+              cursor: hoveredIndex !== null ? 'pointer' : 'grabbing'
             }
           }}
         >
@@ -733,8 +894,186 @@ export const Roadmap = () => {
               onStepClick={handleStepClick}
               isRotationEnabled={isRotationEnabled}
               isDarkMode={isDarkMode}
+              learningPathData={learningPathData}
             />
           </Canvas>
+
+          {/* Floating Info Card - appears on hover */}
+          {hoveredIndex !== null && (() => {
+            const item = learningPathData[hoveredIndex];
+            return (
+              <Fade in={true} timeout={300}>
+                <Box
+                  onClick={() => handleStepClick(hoveredIndex)}
+                  sx={{
+                    position: 'absolute',
+                    right: 40,
+                    top: { xs: 100, md: 120 },
+                    zIndex: 1000,
+                    padding: 3.5,
+                    width: { xs: 300, md: 380 },
+                    borderRadius: '20px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'flex-start',
+                    textAlign: 'center',
+                    cursor: isAccessible(item.status) ? 'pointer' : 'default',
+                    background: 'transparent',
+                    transition: 'all 0.3s ease',
+                    opacity: isLocked(item.status) ? 0.7 : 1,
+                    filter: isLocked(item.status) ? 'grayscale(0.3)' : 'none',
+                    '&:hover': {
+                      transform: isLocked(item.status) ? 'scale(1.01)' : isFinished(item.status) ? 'scale(1.03)' : 'scale(1.02)',
+                    },
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      inset: 0,
+                      borderRadius: '20px',
+                      padding: '2px',
+                      background: isLocked(item.status)
+                        ? 'linear-gradient(135deg, #6B7280, #9CA3AF, #D1D5DB)'
+                        : 'linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)',
+                      backgroundSize: '200% 200%',
+                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                      WebkitMaskComposite: 'xor',
+                      maskComposite: 'exclude',
+                      opacity: isLocked(item.status) ? 0.4 : isFinished(item.status) ? 0.8 : 0.6,
+                      animation: isLocked(item.status) ? 'none' : 'gradientShift 8s ease infinite',
+                      zIndex: -1,
+                    }
+                  }}
+                >
+                  {/* Planet Name and Emoji - Top Left */}
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      top: 16,
+                      left: 16,
+                      zIndex: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 0.75,
+                      opacity: isLocked(item.status) ? 0.6 : 1,
+                    }}
+                  >
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        fontSize: '1.5rem',
+                        fontWeight: 600,
+                        lineHeight: 1,
+                        opacity: isLocked(item.status) ? 0.6 : 1,
+                        filter: isLocked(item.status) ? 'grayscale(0.5)' : 'none',
+                      }}
+                    >
+                      {item.planet.emoji}
+                    </Typography>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontSize: '1.1rem',
+                        lineHeight: 1,
+                        fontWeight: 600,
+                      }}
+                    >
+                      {item.planet.name}
+                    </Typography>
+                  </Box>
+
+                  {/* Status Icon - Top Right */}
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      top: 16,
+                      right: 16,
+                      zIndex: 1,
+                      opacity: isLocked(item.status) ? 0.7 : 0.8,
+                    }}
+                  >
+                    {isLocked(item.status) ? (
+                      <Lock sx={{
+                        fontSize: '1.5rem',
+                        color: 'text.disabled',
+                      }} />
+                    ) : isFinished(item.status) ? (
+                      <Box sx={{ display: 'inline-flex', position: 'relative' }}>
+                        <svg width={0} height={0} style={{ position: 'absolute' }}>
+                          <defs>
+                            <linearGradient id="checkCircleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="#6366F1" />
+                              <stop offset="33%" stopColor="#8B5CF6" />
+                              <stop offset="66%" stopColor="#F59E0B" />
+                              <stop offset="100%" stopColor="#10B981" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                        <CheckCircle
+                          sx={{
+                            fontSize: '1.5rem',
+                            fill: 'url(#checkCircleGradient)',
+                          }}
+                        />
+                      </Box>
+                    ) : (
+                      <Box sx={{ display: 'inline-flex', position: 'relative' }}>
+                        <svg width={0} height={0} style={{ position: 'absolute' }}>
+                          <defs>
+                            <linearGradient id="lockOpenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="#6366F1" />
+                              <stop offset="33%" stopColor="#8B5CF6" />
+                              <stop offset="66%" stopColor="#F59E0B" />
+                              <stop offset="100%" stopColor="#10B981" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                        <LockOpen
+                          sx={{
+                            fontSize: '1.5rem',
+                            fill: 'url(#lockOpenGradient)',
+                          }}
+                        />
+                      </Box>
+                    )}
+                  </Box>
+
+                  {/* Main Content - Centered */}
+                  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', mt: 3.5, mb: 2, px: 2 }}>
+                    <GradientTypography
+                      variant="h5"
+                      sx={{
+                        fontSize: '1.5rem',
+                        mb: 2,
+                        fontWeight: 700,
+                        textAlign: 'center',
+                        lineHeight: 1.3,
+                        opacity: isLocked(item.status) ? 0.65 : 1,
+                        wordBreak: 'break-word',
+                      }}
+                    >
+                      {item.title}
+                    </GradientTypography>
+
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: 'text.secondary',
+                        lineHeight: 1.7,
+                        opacity: isLocked(item.status) ? 0.6 : 0.9,
+                        fontSize: '1rem',
+                        textAlign: 'center',
+                        fontWeight: 400,
+                        wordBreak: 'break-word',
+                      }}
+                    >
+                      {item.description}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Fade>
+            );
+          })()}
 
           {/* Control Buttons */}
           <Box
@@ -772,4 +1111,3 @@ export const Roadmap = () => {
 };
 
 export default Roadmap;
-
