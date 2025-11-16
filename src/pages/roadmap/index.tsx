@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Fade,
   Slide,
@@ -659,7 +660,7 @@ export const Roadmap = () => {
           }}
         >
           <Canvas
-            camera={{ position: [0, 25, 55], fov: 60 }}
+            camera={{ position: [0, 25, 45], fov: 60 }}
             gl={{ antialias: true, alpha: true }}
             style={{ background: 'transparent' }}
           >
@@ -677,8 +678,8 @@ export const Roadmap = () => {
               enablePan={false}
               enableZoom={true}
               enableRotate={true}
-              minDistance={10}
-              maxDistance={50}
+              minDistance={30}
+              maxDistance={60}
               minPolarAngle={Math.PI / 6} // Allow viewing from above (30 degrees from top)
               maxPolarAngle={Math.PI / 2 + Math.PI / 6} // Allow 30 degrees below horizontal
               autoRotate={false}
@@ -926,7 +927,33 @@ export const Roadmap = () => {
                   py: 1.2,
                   px: 3,
                   fontSize: '1.2rem',
+                  '& .MuiButton-startIcon': {
+                    WebkitTextFillColor: 'initial',
+                    color: 'initial',
+                  },
                 }}
+                startIcon={
+                  <Avatar
+                    sx={{
+                      backgroundColor: learningPathData[targetStepIndex].planet.color,
+                      width: 32,
+                      height: 32,
+                    }}
+                  >
+                    <Box
+                      component="span"
+                      sx={{
+                        fontSize: '1.5rem',
+                        lineHeight: 1,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {learningPathData[targetStepIndex].planet.emoji}
+                    </Box>
+                  </Avatar>
+                }
                 endIcon={<ArrowForward sx={{ fontSize: '1.2rem', ml: 1 }} />}
               >
                 {learningPathData[targetStepIndex].planet.name}
