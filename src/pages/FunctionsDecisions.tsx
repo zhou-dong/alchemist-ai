@@ -412,7 +412,7 @@ export const FunctionsDecisions = () => {
           <Box sx={{ display: 'flex', gap: 2, mt: 3 }}>
             <GradientButton
               size="medium"
-              onClick={() => navigate('/alchemist-ai/roadmap')}
+              onClick={() => navigate('/alchemist-ai/roadmap?step=0')}
               sx={{
                 px: 4,
                 py: 1.5,
