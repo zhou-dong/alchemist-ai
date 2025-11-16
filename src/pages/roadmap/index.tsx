@@ -1,12 +1,13 @@
 import {
   Box,
   Fade,
+  Stack,
   Typography,
 } from '@mui/material';
-import { PlayArrow, Pause, CenterFocusStrong, Lock, LockOpen, CheckCircle } from '@mui/icons-material';
+import { PlayArrow, Pause, CenterFocusStrong, Lock, LockOpen, CheckCircle, ArrowForward } from '@mui/icons-material';
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { GradientTypography, GlassIconButton } from '../../theme/theme';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { GradientTypography, GlassIconButton, GradientButton } from '../../theme/theme';
 import { useColorMode } from '../../theme/ColorModeContext';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -448,14 +449,77 @@ export const Roadmap = () => {
   const controlsRef = useRef<any>(null);
   const { mode } = useColorMode();
   const isDarkMode = mode === 'dark';
+  const [searchParams] = useSearchParams();
 
   // Get theme-aware learning path data
   const baseLearningPathData = useMemo(() => getLearningPathData(isDarkMode), [isDarkMode]);
 
   // Use the step status hook for localStorage persistence
-  const { learningPathData, updateStepStatus, savedStatuses } = useStepStatus(baseLearningPathData);
+  const { learningPathData: baseLearningPathDataWithStatus, updateStepStatus } = useStepStatus(baseLearningPathData);
+
+  // Parse URL parameters for step
+  // URL parameter: ?step=2 (0-indexed, so 2 means the 3rd step)
+  const urlStep = useMemo(() => {
+    const stepParam = searchParams.get('step');
+    if (stepParam !== null) {
+      const stepIndex = parseInt(stepParam, 10);
+      // Validate: must be a valid number between 0 and TOTAL_STEPS - 1
+      if (!isNaN(stepIndex) && stepIndex >= 0 && stepIndex < TOTAL_STEPS) {
+        return stepIndex;
+      }
+    }
+    return null;
+  }, [searchParams]);
+
+  // Apply URL parameter overrides to learning path data
+  // If step is provided in URL:
+  // - Only the specified step is set to 'unlocked'
+  // - All other steps use their localStorage/base statuses
+  // - Steps after the URL step remain locked (unless already unlocked/finished in localStorage)
+  const learningPathData = useMemo(() => {
+    if (urlStep !== null) {
+      return baseLearningPathDataWithStatus.map((item, index) => {
+        if (index === urlStep) {
+          // URL step: always unlocked
+          return {
+            ...item,
+            status: 'unlocked' as StepStatus,
+          };
+        } else if (index > urlStep) {
+          // Steps after URL step: locked (unless already unlocked/finished in localStorage)
+          // Only override if current status is locked
+          if (isLocked(item.status)) {
+            return {
+              ...item,
+              status: 'locked' as StepStatus,
+            };
+          }
+          // Keep existing unlocked/finished status from localStorage
+          return item;
+        } else {
+          // Steps before URL step: use localStorage/base status (don't override)
+          return item;
+        }
+      });
+    }
+    // No URL parameter, use localStorage/base statuses
+    return baseLearningPathDataWithStatus;
+  }, [baseLearningPathDataWithStatus, urlStep]);
 
   const activeStepIndex = learningPathData.findIndex(item => isUnlocked(item.status));
+
+  // Determine which step the button should navigate to
+  // If URL has step parameter, use that; otherwise use the active step
+  const targetStepIndex = urlStep !== null ? urlStep : activeStepIndex;
+
+  const handleNextStep = () => {
+    if (targetStepIndex >= 0 && targetStepIndex < learningPathData.length) {
+      const targetItem = learningPathData[targetStepIndex];
+      if (targetItem.path) {
+        navigate(targetItem.path);
+      }
+    }
+  };
 
   // Keyboard shortcut to cycle through statuses (press 'L' key when hovering over a sphere)
   // Cycles: locked -> unlocked -> finished -> locked
@@ -468,10 +532,8 @@ export const Roadmap = () => {
 
       if (event.key.toLowerCase() === 'l' && hoveredIndex !== null) {
         event.preventDefault();
-        // Get current status (from saved or base data)
-        const currentStatus = savedStatuses[hoveredIndex] !== undefined
-          ? savedStatuses[hoveredIndex]!
-          : baseLearningPathData[hoveredIndex].status;
+        // Get current status from the actual learningPathData (which includes URL overrides)
+        const currentStatus = learningPathData[hoveredIndex].status;
         // Cycle: locked -> unlocked -> finished -> locked
         const nextStatus: StepStatus =
           currentStatus === 'locked' ? 'unlocked' :
@@ -482,7 +544,7 @@ export const Roadmap = () => {
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [hoveredIndex, baseLearningPathData, savedStatuses, updateStepStatus]);
+  }, [hoveredIndex, learningPathData, updateStepStatus]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 500);
@@ -642,17 +704,16 @@ export const Roadmap = () => {
                   onClick={() => handleStepClick(hoveredIndex)}
                   sx={{
                     position: 'absolute',
-                    right: 40,
-                    top: { xs: 100, md: 120 },
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    bottom: { xs: 100, md: 120 },
                     zIndex: 1000,
-                    padding: 3.5,
-                    width: { xs: 300, md: 380 },
                     borderRadius: '20px',
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'flex-start',
-                    textAlign: 'center',
+                    alignItems: 'flex-start',
+                    justifyContent: 'center',
+                    padding: 3,
                     cursor: isAccessible(item.status) ? 'pointer' : 'default',
                     background: 'transparent',
                     transition: 'all 0.3s ease',
@@ -680,109 +741,51 @@ export const Roadmap = () => {
                     }
                   }}
                 >
-                  {/* Planet Name and Emoji - Top Left */}
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      top: 16,
-                      left: 16,
-                      zIndex: 1,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 0.75,
-                      opacity: isLocked(item.status) ? 0.6 : 1,
-                    }}
-                  >
-                    <Typography
-                      variant="h4"
+
+                  {/* Main Content - Left Aligned */}
+                  <Stack direction="row" spacing={2} alignItems="center" justifyContent="flex-start">
+
+                    {/* Planet Name and Emoji */}
+                    <Box
                       sx={{
-                        fontSize: '1.5rem',
-                        fontWeight: 600,
-                        lineHeight: 1,
+                        zIndex: 1,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 0.75,
                         opacity: isLocked(item.status) ? 0.6 : 1,
-                        filter: isLocked(item.status) ? 'grayscale(0.5)' : 'none',
                       }}
                     >
-                      {item.planet.emoji}
-                    </Typography>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontSize: '1.1rem',
-                        lineHeight: 1,
-                        fontWeight: 600,
-                      }}
-                    >
-                      {item.planet.name}
-                    </Typography>
-                  </Box>
+                      <Typography
+                        variant="h4"
+                        sx={{
+                          fontSize: '1.5rem',
+                          fontWeight: 600,
+                          lineHeight: 1,
+                          opacity: isLocked(item.status) ? 0.6 : 1,
+                          filter: isLocked(item.status) ? 'grayscale(0.5)' : 'none',
+                        }}
+                      >
+                        {item.planet.emoji}
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          fontSize: '1.1rem',
+                          lineHeight: 1,
+                          fontWeight: 600,
+                        }}
+                      >
+                        {item.planet.name}
+                      </Typography>
+                    </Box>
 
-                  {/* Status Icon - Top Right */}
-                  <Box
-                    sx={{
-                      position: 'absolute',
-                      top: 16,
-                      right: 16,
-                      zIndex: 1,
-                      opacity: isLocked(item.status) ? 0.7 : 0.8,
-                    }}
-                  >
-                    {isLocked(item.status) ? (
-                      <Lock sx={{
-                        fontSize: '1.5rem',
-                        color: 'text.disabled',
-                      }} />
-                    ) : isFinished(item.status) ? (
-                      <Box sx={{ display: 'inline-flex', position: 'relative' }}>
-                        <svg width={0} height={0} style={{ position: 'absolute' }}>
-                          <defs>
-                            <linearGradient id="checkCircleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#6366F1" />
-                              <stop offset="33%" stopColor="#8B5CF6" />
-                              <stop offset="66%" stopColor="#F59E0B" />
-                              <stop offset="100%" stopColor="#10B981" />
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                        <CheckCircle
-                          sx={{
-                            fontSize: '1.5rem',
-                            fill: 'url(#checkCircleGradient)',
-                          }}
-                        />
-                      </Box>
-                    ) : (
-                      <Box sx={{ display: 'inline-flex', position: 'relative' }}>
-                        <svg width={0} height={0} style={{ position: 'absolute' }}>
-                          <defs>
-                            <linearGradient id="lockOpenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                              <stop offset="0%" stopColor="#6366F1" />
-                              <stop offset="33%" stopColor="#8B5CF6" />
-                              <stop offset="66%" stopColor="#F59E0B" />
-                              <stop offset="100%" stopColor="#10B981" />
-                            </linearGradient>
-                          </defs>
-                        </svg>
-                        <LockOpen
-                          sx={{
-                            fontSize: '1.5rem',
-                            fill: 'url(#lockOpenGradient)',
-                          }}
-                        />
-                      </Box>
-                    )}
-                  </Box>
-
-                  {/* Main Content - Centered */}
-                  <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', mt: 3.5, mb: 2, px: 2 }}>
                     <GradientTypography
                       variant="h5"
                       sx={{
                         fontSize: '1.5rem',
-                        mb: 2,
                         fontWeight: 700,
                         textAlign: 'center',
-                        lineHeight: 1.3,
+                        lineHeight: 1.7,
                         opacity: isLocked(item.status) ? 0.65 : 1,
                         wordBreak: 'break-word',
                       }}
@@ -804,7 +807,60 @@ export const Roadmap = () => {
                     >
                       {item.description}
                     </Typography>
-                  </Box>
+
+                    {/* Status Icon */}
+                    <Box
+                      sx={{
+                        zIndex: 1,
+                        opacity: isLocked(item.status) ? 0.7 : 0.8,
+                      }}
+                    >
+                      {isLocked(item.status) ? (
+                        <Lock sx={{
+                          fontSize: '1.5rem',
+                          color: 'text.disabled',
+                        }} />
+                      ) : isFinished(item.status) ? (
+                        <Box sx={{ display: 'inline-flex', position: 'relative' }}>
+                          <svg width={0} height={0} style={{ position: 'absolute' }}>
+                            <defs>
+                              <linearGradient id="checkCircleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#6366F1" />
+                                <stop offset="33%" stopColor="#8B5CF6" />
+                                <stop offset="66%" stopColor="#F59E0B" />
+                                <stop offset="100%" stopColor="#10B981" />
+                              </linearGradient>
+                            </defs>
+                          </svg>
+                          <CheckCircle
+                            sx={{
+                              fontSize: '1.5rem',
+                              fill: 'url(#checkCircleGradient)',
+                            }}
+                          />
+                        </Box>
+                      ) : (
+                        <Box sx={{ display: 'inline-flex', position: 'relative' }}>
+                          <svg width={0} height={0} style={{ position: 'absolute' }}>
+                            <defs>
+                              <linearGradient id="lockOpenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stopColor="#6366F1" />
+                                <stop offset="33%" stopColor="#8B5CF6" />
+                                <stop offset="66%" stopColor="#F59E0B" />
+                                <stop offset="100%" stopColor="#10B981" />
+                              </linearGradient>
+                            </defs>
+                          </svg>
+                          <LockOpen
+                            sx={{
+                              fontSize: '1.5rem',
+                              fill: 'url(#lockOpenGradient)',
+                            }}
+                          />
+                        </Box>
+                      )}
+                    </Box>
+                  </Stack>
                 </Box>
               </Fade>
             );
@@ -838,6 +894,32 @@ export const Roadmap = () => {
               {isRotationEnabled ? <Pause /> : <PlayArrow />}
             </GlassIconButton>
           </Box>
+
+          {/* Next Step Button */}
+          {targetStepIndex >= 0 && (
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                right: 20,
+                transform: 'translateY(-50%)',
+                zIndex: 20,
+              }}
+            >
+              <GradientButton
+                onClick={handleNextStep}
+                aria-label={`Go to step: ${learningPathData[targetStepIndex].title}`}
+                sx={{
+                  py: 1.2,
+                  px: 3,
+                  fontSize: '1.2rem',
+                }}
+                endIcon={<ArrowForward sx={{ fontSize: '1.2rem', ml: 1 }} />}
+              >
+                {learningPathData[targetStepIndex].planet.name}
+              </GradientButton>
+            </Box>
+          )}
 
         </Box>
       </Box>
