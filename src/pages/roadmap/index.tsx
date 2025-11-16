@@ -1,6 +1,7 @@
 import {
   Box,
   Fade,
+  Slide,
   Stack,
   Typography,
 } from '@mui/material';
@@ -699,170 +700,182 @@ export const Roadmap = () => {
           {hoveredIndex !== null && (() => {
             const item = learningPathData[hoveredIndex];
             return (
-              <Fade in={true} timeout={300}>
-                <Box
-                  onClick={() => handleStepClick(hoveredIndex)}
-                  sx={{
-                    position: 'absolute',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    bottom: { xs: 100, md: 120 },
-                    zIndex: 1000,
-                    borderRadius: '20px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    justifyContent: 'center',
-                    padding: 3,
-                    cursor: isAccessible(item.status) ? 'pointer' : 'default',
-                    background: 'transparent',
-                    transition: 'all 0.3s ease',
-                    opacity: isLocked(item.status) ? 0.7 : 1,
-                    filter: isLocked(item.status) ? 'grayscale(0.3)' : 'none',
-                    '&:hover': {
-                      transform: isLocked(item.status) ? 'scale(1.01)' : isFinished(item.status) ? 'scale(1.03)' : 'scale(1.02)',
-                    },
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      inset: 0,
-                      borderRadius: '20px',
-                      padding: '2px',
-                      background: isLocked(item.status)
-                        ? 'linear-gradient(135deg, #6B7280, #9CA3AF, #D1D5DB)'
-                        : 'linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)',
-                      backgroundSize: '200% 200%',
-                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                      WebkitMaskComposite: 'xor',
-                      maskComposite: 'exclude',
-                      opacity: isLocked(item.status) ? 0.4 : isFinished(item.status) ? 0.8 : 0.6,
-                      animation: isLocked(item.status) ? 'none' : 'gradientShift 8s ease infinite',
-                      zIndex: -1,
-                    }
-                  }}
-                >
-
-                  {/* Main Content - Left Aligned */}
-                  <Stack direction="row" spacing={2} alignItems="center" justifyContent="flex-start">
-
-                    {/* Planet Name and Emoji */}
+              <Box
+                sx={{
+                  position: 'absolute',
+                  left: { xs: 20, md: 40 },
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  zIndex: 1000,
+                }}
+              >
+                <Slide direction="right" in={true} timeout={400} mountOnEnter unmountOnExit>
+                  <Fade in={true} timeout={400}>
                     <Box
+                      onClick={() => handleStepClick(hoveredIndex)}
                       sx={{
-                        zIndex: 1,
+                        borderRadius: '20px',
                         display: 'flex',
-                        alignItems: 'center',
-                        gap: 0.75,
-                        opacity: isLocked(item.status) ? 0.6 : 1,
+                        flexDirection: 'column',
+                        alignItems: 'flex-start',
+                        justifyContent: 'center',
+                        padding: 3,
+                        cursor: isAccessible(item.status) ? 'pointer' : 'default',
+                        background: 'transparent',
+                        transition: 'all 0.3s ease',
+                        opacity: isLocked(item.status) ? 0.7 : 1,
+                        filter: isLocked(item.status) ? 'grayscale(0.3)' : 'none',
+                        '&:hover': {
+                          transform: isLocked(item.status)
+                            ? 'scale(1.01)'
+                            : isFinished(item.status)
+                              ? 'scale(1.03)'
+                              : 'scale(1.02)',
+                        },
+                        '&::before': {
+                          content: '""',
+                          position: 'absolute',
+                          inset: 0,
+                          borderRadius: '20px',
+                          padding: '2px',
+                          background: isLocked(item.status)
+                            ? 'linear-gradient(135deg, #6B7280, #9CA3AF, #D1D5DB)'
+                            : 'linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)',
+                          backgroundSize: '200% 200%',
+                          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                          WebkitMaskComposite: 'xor',
+                          maskComposite: 'exclude',
+                          opacity: isLocked(item.status) ? 0.4 : isFinished(item.status) ? 0.8 : 0.6,
+                          animation: isLocked(item.status) ? 'none' : 'gradientShift 8s ease infinite',
+                          zIndex: -1,
+                        }
                       }}
                     >
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          fontSize: '1.5rem',
-                          fontWeight: 600,
-                          lineHeight: 1,
-                          opacity: isLocked(item.status) ? 0.6 : 1,
-                          filter: isLocked(item.status) ? 'grayscale(0.5)' : 'none',
-                        }}
-                      >
-                        {item.planet.emoji}
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          fontSize: '1.1rem',
-                          lineHeight: 1,
-                          fontWeight: 600,
-                        }}
-                      >
-                        {item.planet.name}
-                      </Typography>
-                    </Box>
 
-                    <GradientTypography
-                      variant="h5"
-                      sx={{
-                        fontSize: '1.5rem',
-                        fontWeight: 700,
-                        textAlign: 'center',
-                        lineHeight: 1.7,
-                        opacity: isLocked(item.status) ? 0.65 : 1,
-                        wordBreak: 'break-word',
-                      }}
-                    >
-                      {item.title}
-                    </GradientTypography>
+                      {/* Main Content - Column Layout */}
+                      <Stack direction="column" spacing={2} alignItems="flex-start" justifyContent="flex-start" sx={{ width: '100%' }}>
 
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        color: 'text.secondary',
-                        lineHeight: 1.7,
-                        opacity: isLocked(item.status) ? 0.6 : 0.9,
-                        fontSize: '1rem',
-                        textAlign: 'center',
-                        fontWeight: 400,
-                        wordBreak: 'break-word',
-                      }}
-                    >
-                      {item.description}
-                    </Typography>
-
-                    {/* Status Icon */}
-                    <Box
-                      sx={{
-                        zIndex: 1,
-                        opacity: isLocked(item.status) ? 0.7 : 0.8,
-                      }}
-                    >
-                      {isLocked(item.status) ? (
-                        <Lock sx={{
-                          fontSize: '1.5rem',
-                          color: 'text.disabled',
-                        }} />
-                      ) : isFinished(item.status) ? (
-                        <Box sx={{ display: 'inline-flex', position: 'relative' }}>
-                          <svg width={0} height={0} style={{ position: 'absolute' }}>
-                            <defs>
-                              <linearGradient id="checkCircleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stopColor="#6366F1" />
-                                <stop offset="33%" stopColor="#8B5CF6" />
-                                <stop offset="66%" stopColor="#F59E0B" />
-                                <stop offset="100%" stopColor="#10B981" />
-                              </linearGradient>
-                            </defs>
-                          </svg>
-                          <CheckCircle
+                        {/* Planet Name and Emoji */}
+                        <Box
+                          sx={{
+                            zIndex: 1,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 0.75,
+                            opacity: isLocked(item.status) ? 0.6 : 1,
+                          }}
+                        >
+                          <Typography
+                            variant="h4"
                             sx={{
                               fontSize: '1.5rem',
-                              fill: 'url(#checkCircleGradient)',
+                              fontWeight: 600,
+                              lineHeight: 1,
+                              opacity: isLocked(item.status) ? 0.6 : 1,
+                              filter: isLocked(item.status) ? 'grayscale(0.5)' : 'none',
                             }}
-                          />
-                        </Box>
-                      ) : (
-                        <Box sx={{ display: 'inline-flex', position: 'relative' }}>
-                          <svg width={0} height={0} style={{ position: 'absolute' }}>
-                            <defs>
-                              <linearGradient id="lockOpenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stopColor="#6366F1" />
-                                <stop offset="33%" stopColor="#8B5CF6" />
-                                <stop offset="66%" stopColor="#F59E0B" />
-                                <stop offset="100%" stopColor="#10B981" />
-                              </linearGradient>
-                            </defs>
-                          </svg>
-                          <LockOpen
+                          >
+                            {item.planet.emoji}
+                          </Typography>
+                          <Typography
+                            variant="h6"
                             sx={{
-                              fontSize: '1.5rem',
-                              fill: 'url(#lockOpenGradient)',
+                              fontSize: '1.1rem',
+                              lineHeight: 1,
+                              fontWeight: 600,
                             }}
-                          />
+                          >
+                            {item.planet.name}
+                          </Typography>
                         </Box>
-                      )}
+
+                        <GradientTypography
+                          variant="h5"
+                          sx={{
+                            fontSize: '1.5rem',
+                            fontWeight: 700,
+                            textAlign: 'left',
+                            lineHeight: 1.3,
+                            opacity: isLocked(item.status) ? 0.65 : 1,
+                            wordBreak: 'break-word',
+                          }}
+                        >
+                          {item.title}
+                        </GradientTypography>
+
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            color: 'text.secondary',
+                            lineHeight: 1.7,
+                            opacity: isLocked(item.status) ? 0.6 : 0.9,
+                            fontSize: '1rem',
+                            textAlign: 'left',
+                            fontWeight: 400,
+                            wordBreak: 'break-word',
+                          }}
+                        >
+                          {item.description}
+                        </Typography>
+
+                        {/* Status Icon */}
+                        <Box
+                          sx={{
+                            zIndex: 1,
+                            opacity: isLocked(item.status) ? 0.7 : 0.8,
+                            mt: 1,
+                          }}
+                        >
+                          {isLocked(item.status) ? (
+                            <Lock sx={{
+                              fontSize: '1.5rem',
+                              color: 'text.disabled',
+                            }} />
+                          ) : isFinished(item.status) ? (
+                            <Box sx={{ display: 'inline-flex', position: 'relative' }}>
+                              <svg width={0} height={0} style={{ position: 'absolute' }}>
+                                <defs>
+                                  <linearGradient id="checkCircleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stopColor="#6366F1" />
+                                    <stop offset="33%" stopColor="#8B5CF6" />
+                                    <stop offset="66%" stopColor="#F59E0B" />
+                                    <stop offset="100%" stopColor="#10B981" />
+                                  </linearGradient>
+                                </defs>
+                              </svg>
+                              <CheckCircle
+                                sx={{
+                                  fontSize: '1.5rem',
+                                  fill: 'url(#checkCircleGradient)',
+                                }}
+                              />
+                            </Box>
+                          ) : (
+                            <Box sx={{ display: 'inline-flex', position: 'relative' }}>
+                              <svg width={0} height={0} style={{ position: 'absolute' }}>
+                                <defs>
+                                  <linearGradient id="lockOpenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stopColor="#6366F1" />
+                                    <stop offset="33%" stopColor="#8B5CF6" />
+                                    <stop offset="66%" stopColor="#F59E0B" />
+                                    <stop offset="100%" stopColor="#10B981" />
+                                  </linearGradient>
+                                </defs>
+                              </svg>
+                              <LockOpen
+                                sx={{
+                                  fontSize: '1.5rem',
+                                  fill: 'url(#lockOpenGradient)',
+                                }}
+                              />
+                            </Box>
+                          )}
+                        </Box>
+                      </Stack>
                     </Box>
-                  </Stack>
-                </Box>
-              </Fade>
+                  </Fade>
+                </Slide>
+              </Box>
             );
           })()}
 
