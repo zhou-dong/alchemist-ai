@@ -443,7 +443,7 @@ function Scene({
 export const Roadmap = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [isRotationEnabled, setIsRotationEnabled] = useState(false);
+  const [isRotationEnabled, setIsRotationEnabled] = useState(true);
   const navigate = useNavigate();
   const controlsRef = useRef<any>(null);
   const { mode } = useColorMode();
@@ -473,9 +473,9 @@ export const Roadmap = () => {
           ? savedStatuses[hoveredIndex]!
           : baseLearningPathData[hoveredIndex].status;
         // Cycle: locked -> unlocked -> finished -> locked
-        const nextStatus: StepStatus = 
+        const nextStatus: StepStatus =
           currentStatus === 'locked' ? 'unlocked' :
-          currentStatus === 'unlocked' ? 'finished' : 'locked';
+            currentStatus === 'unlocked' ? 'finished' : 'locked';
         updateStepStatus(hoveredIndex, nextStatus);
       }
     };
