@@ -60,7 +60,7 @@ export const Home = () => {
         <Fade in={isLoaded} timeout={800}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
             <GradientButton
-              onClick={() => navigate('/alchemist-ai/roadmap')}
+              onClick={() => navigate('/alchemist-ai/roadmap?step=0')}
               sx={{
                 py: 1.5,
                 px: 4,
