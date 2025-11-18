@@ -7,7 +7,7 @@ import Home from './pages/home';
 import Welcome from './pages/Welcome';
 import Perceptron from './pages/Perceptron';
 import Roadmap from './pages/roadmap';
-import FunctionsDecisions from './pages/FunctionsDecisions';
+import FunctionsDecisions from './pages/functions-decisions';
 import SimpleFunctions from './pages/SimpleFunctions';
 import MultiInputFunctions from './pages/MultiInputFunctions';
 import MathToNeurons from './pages/MathToNeurons';

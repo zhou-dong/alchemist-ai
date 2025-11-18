@@ -5,7 +5,8 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTypography, GradientButton } from '../theme/theme';
+import { GradientTypography, GradientButton } from '../../theme/theme';
+import { MercuryBackground } from './MercuryBackground';
 
 export const FunctionsDecisions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -28,8 +29,10 @@ export const FunctionsDecisions = () => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      px: { xs: 2, md: 4 }
+      px: { xs: 2, md: 4 },
     }}>
+      <MercuryBackground />
+
       <Fade in={isLoaded} timeout={800}>
         <Box sx={{
           maxWidth: '900px',
@@ -37,7 +40,9 @@ export const FunctionsDecisions = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: 3
+          gap: 3,
+          position: 'relative',
+          zIndex: 1
         }}>
           <GradientTypography
             variant="h4"
