@@ -48,7 +48,8 @@ export const Home = () => {
               sx={{
                 mb: 3,
                 position: 'relative',
-                zIndex: 3
+                zIndex: 3,
+                fontWeight: 900,
               }}
             >
               NEURAL QUEST
