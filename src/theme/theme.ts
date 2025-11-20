@@ -46,7 +46,6 @@ export const GradientButton = styled(Button)(({ }) => ({
 
 // Styled component for gradient titles
 export const GradientTypography = styled(Typography)(() => ({
-    fontWeight: 900,
     background: `linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)`,
     backgroundSize: '200% 200%',
     backgroundClip: 'text',
@@ -58,7 +57,6 @@ export const GradientTypography = styled(Typography)(() => ({
 
 // Styled component for glassmorphic icon buttons
 export const GlassIconButton = styled(IconButton)(({ theme }) => ({
-    background: 'rgba(99, 102, 241, 0.1)',
     backdropFilter: 'blur(10px)',
     border: '1px solid rgba(99, 102, 241, 0.3)',
     color: theme.palette.primary.main,
