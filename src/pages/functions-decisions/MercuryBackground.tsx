@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import { useTheme } from '@mui/material';
+import { useMemo, useEffect } from 'react';
 
 export const MercuryBackground = () => {
   const theme = useTheme();
@@ -13,7 +14,7 @@ export const MercuryBackground = () => {
     shadow: isDarkMode
       ? { inset: 'rgba(180, 160, 140, 0.25)', outer: 'rgba(200, 180, 160, 0.2)', deep: 'rgba(180, 160, 140, 0.2)' }
       : { inset: 'rgba(180, 160, 140, 0.12)', outer: 'rgba(200, 180, 160, 0.1)', deep: 'rgba(180, 160, 140, 0.1)' },
-    opacity: isDarkMode ? 0.65 : 0.4,
+    opacity: isDarkMode ? 0.4 : 0.25,
   };
 
   const scarpColors = {
@@ -51,6 +52,39 @@ export const MercuryBackground = () => {
         color5: 'rgba(190, 170, 150, 0.05)',
       };
 
+  // Generate stars for the dark sky
+  const stars = useMemo(() => {
+    return Array.from({ length: 150 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      size: Math.random() * 2 + 0.5,
+      opacity: Math.random() * 0.6 + 0.3,
+      animationDelay: Math.random() * 3,
+      animationDuration: Math.random() * 2 + 2,
+    }));
+  }, []);
+
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes starTwinkle {
+        0%, 100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.9);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   return (
     <Box
       sx={{
@@ -59,10 +93,22 @@ export const MercuryBackground = () => {
         left: 0,
         width: '100%',
         height: '100%',
-        // Mercury-themed background - theme aware
+        // Dark space sky blending into Mercury surface
         background: isDarkMode
-          ? `linear-gradient(135deg, #C8B89C 0%, #D4C4A8 25%, #C8B89C 50%, #B8A88C 75%, #C8B89C 100%)`
-          : `linear-gradient(135deg, #D4C4A8 0%, #E0D0B4 25%, #D4C4A8 50%, #C8B89C 75%, #D4C4A8 100%)`,
+          ? `linear-gradient(to bottom, 
+              #000000 0%, 
+              #0a0a0a 20%, 
+              #1a1a1a 40%, 
+              #2a2a1f 60%, 
+              #3a3a2f 80%, 
+              #4a4a3f 100%)`
+          : `linear-gradient(to bottom, 
+              #0a0a0a 0%, 
+              #1a1a1a 20%, 
+              #2a2a2a 40%, 
+              #3a3a2f 60%, 
+              #5a5a4f 80%, 
+              #C8B89C 100%)`,
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -70,22 +116,19 @@ export const MercuryBackground = () => {
           left: 0,
           right: 0,
           bottom: 0,
+          // Subtle light sources and Mercury surface glow blending from bottom
           background: isDarkMode
             ? `
-              radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.18) 0%, transparent 50%),
-              radial-gradient(circle at 80% 70%, rgba(200, 180, 160, 0.22) 0%, transparent 50%),
-              radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.12) 0%, transparent 60%),
-              radial-gradient(circle at 10% 80%, rgba(200, 180, 160, 0.18) 0%, transparent 50%),
-              radial-gradient(circle at 90% 20%, rgba(245, 158, 11, 0.15) 0%, transparent 50%)
+              radial-gradient(ellipse at 50% 80%, rgba(200, 180, 160, 0.25) 0%, transparent 50%),
+              radial-gradient(ellipse at 30% 70%, rgba(245, 158, 11, 0.15) 0%, transparent 40%),
+              radial-gradient(ellipse at 70% 75%, rgba(200, 180, 160, 0.2) 0%, transparent 45%)
             `
             : `
-              radial-gradient(circle at 20% 30%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 80% 70%, rgba(212, 196, 168, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.06) 0%, transparent 60%),
-              radial-gradient(circle at 10% 80%, rgba(212, 196, 168, 0.08) 0%, transparent 50%),
-              radial-gradient(circle at 90% 20%, rgba(245, 158, 11, 0.07) 0%, transparent 50%)
+              radial-gradient(ellipse at 50% 80%, rgba(200, 180, 160, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 30% 70%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
+              radial-gradient(ellipse at 70% 75%, rgba(212, 196, 168, 0.12) 0%, transparent 45%)
             `,
-          zIndex: 0,
+          zIndex: 0.2,
           animation: 'gradientShift 12s ease-in-out infinite'
         },
         '&::after': {
@@ -95,27 +138,51 @@ export const MercuryBackground = () => {
           left: 0,
           right: 0,
           bottom: 0,
+          // Additional Mercury surface texture blending
           background: isDarkMode
             ? `
-              radial-gradient(ellipse at 30% 40%, rgba(200, 180, 160, 0.35) 0%, transparent 40%),
-              radial-gradient(ellipse at 70% 60%, rgba(220, 200, 180, 0.28) 0%, transparent 40%)
+              radial-gradient(ellipse at 40% 85%, rgba(200, 180, 160, 0.2) 0%, transparent 35%),
+              radial-gradient(ellipse at 60% 90%, rgba(220, 200, 180, 0.18) 0%, transparent 35%)
             `
             : `
-              radial-gradient(ellipse at 30% 40%, rgba(212, 196, 168, 0.15) 0%, transparent 40%),
-              radial-gradient(ellipse at 70% 60%, rgba(220, 200, 180, 0.12) 0%, transparent 40%)
+              radial-gradient(ellipse at 40% 85%, rgba(212, 196, 168, 0.12) 0%, transparent 35%),
+              radial-gradient(ellipse at 60% 90%, rgba(220, 200, 180, 0.1) 0%, transparent 35%)
             `,
-          zIndex: 0,
-          opacity: isDarkMode ? 0.65 : 0.4,
+          zIndex: 0.1,
+          opacity: isDarkMode ? 0.3 : 0.2,
           animation: 'gradientShift 15s ease-in-out infinite reverse'
         }
       }}
     >
+      {/* Stars in the dark sky */}
+      {stars.map((star) => (
+        <Box
+          key={star.id}
+          sx={{
+            position: 'absolute',
+            left: `${star.left}%`,
+            top: `${star.top}%`,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            backgroundColor: isDarkMode ? '#FFFFFF' : '#E0E0E0',
+            borderRadius: '50%',
+            opacity: star.opacity,
+            boxShadow: isDarkMode 
+              ? `0 0 ${star.size * 2}px rgba(255, 255, 255, 0.6)`
+              : `0 0 ${star.size * 2}px rgba(224, 224, 224, 0.4)`,
+            animation: `starTwinkle ${star.animationDuration}s ease-in-out infinite`,
+            animationDelay: `${star.animationDelay}s`,
+            zIndex: 0.3,
+          }}
+        />
+      ))}
+
       {/* Mercury Surface Features - Craters and Scarps */}
       {/* Large Craters */}
       <Box
         sx={{
           position: 'absolute',
-          top: '15%',
+          top: '55%',
           left: '10%',
           width: '120px',
           height: '120px',
@@ -133,7 +200,7 @@ export const MercuryBackground = () => {
       <Box
         sx={{
           position: 'absolute',
-          top: '25%',
+          top: '60%',
           left: '10%',
           width: '80px',
           height: '80px',
@@ -187,7 +254,7 @@ export const MercuryBackground = () => {
       <Box
         sx={{
           position: 'absolute',
-          top: '40%',
+          top: '55%',
           right: '25%',
           width: '60px',
           height: '60px',
@@ -223,7 +290,7 @@ export const MercuryBackground = () => {
       <Box
         sx={{
           position: 'absolute',
-          top: '10%',
+          top: '52%',
           right: '40%',
           width: '70px',
           height: '70px',
@@ -261,7 +328,7 @@ export const MercuryBackground = () => {
       <Box
         sx={{
           position: 'absolute',
-          top: '30%',
+          top: '58%',
           left: '45%',
           width: '50px',
           height: '50px',
@@ -317,7 +384,7 @@ export const MercuryBackground = () => {
       <Box
         sx={{
           position: 'absolute',
-          top: '50%',
+          top: '55%',
           left: '15%',
           width: '30px',
           height: '30px',
@@ -353,7 +420,7 @@ export const MercuryBackground = () => {
       <Box
         sx={{
           position: 'absolute',
-          top: '20%',
+          top: '62%',
           left: '60%',
           width: '25px',
           height: '25px',
@@ -419,22 +486,22 @@ export const MercuryBackground = () => {
           </linearGradient>
         </defs>
 
-        {/* Scarp 1 - Curved from top-left to center */}
+        {/* Scarp 1 - Curved from left to center (bottom half) */}
         {/* Shadow side (below the scarp) */}
         <path
-          d="M 0 100 Q 200 150, 400 120 T 600 100 L 600 150 Q 400 180, 200 200 T 0 150 Z"
+          d="M 0 540 Q 200 590, 400 560 T 600 540 L 600 590 Q 400 620, 200 640 T 0 590 Z"
           fill="url(#scarpShadow)"
           opacity={scarpColors.shadowOpacity}
         />
         {/* Cliff face */}
         <path
-          d="M 0 100 Q 200 150, 400 120 T 600 100 L 600 120 Q 400 140, 200 130 T 0 110 Z"
+          d="M 0 540 Q 200 590, 400 560 T 600 540 L 600 560 Q 400 580, 200 570 T 0 550 Z"
           fill="url(#scarpFace)"
           opacity={scarpColors.faceOpacity}
         />
         {/* Top edge highlight */}
         <path
-          d="M 0 100 Q 200 150, 400 120 T 600 100"
+          d="M 0 540 Q 200 590, 400 560 T 600 540"
           stroke={scarpColors.highlight}
           strokeWidth="3"
           fill="none"
@@ -443,7 +510,7 @@ export const MercuryBackground = () => {
         />
         {/* Bottom edge shadow */}
         <path
-          d="M 0 110 Q 200 160, 400 130 T 600 110"
+          d="M 0 550 Q 200 600, 400 570 T 600 550"
           stroke={scarpColors.edgeShadow}
           strokeWidth="2"
           fill="none"
@@ -454,19 +521,19 @@ export const MercuryBackground = () => {
         {/* Scarp 2 - Curved from center-right to bottom */}
         {/* Shadow side */}
         <path
-          d="M 800 200 Q 900 400, 1000 600 T 1200 800 L 1250 800 Q 1050 620, 950 420 T 850 200 Z"
+          d="M 800 640 Q 900 740, 1000 840 T 1200 1000 L 1250 1000 Q 1050 860, 950 760 T 850 640 Z"
           fill="url(#scarpShadow)"
           opacity={scarpColors.shadowOpacity}
         />
         {/* Cliff face */}
         <path
-          d="M 800 200 Q 900 400, 1000 600 T 1200 800 L 1200 820 Q 1000 640, 900 440 T 800 220 Z"
+          d="M 800 640 Q 900 740, 1000 840 T 1200 1000 L 1200 1020 Q 1000 880, 900 780 T 800 660 Z"
           fill="url(#scarpFace)"
           opacity={scarpColors.faceOpacity}
         />
         {/* Top edge highlight */}
         <path
-          d="M 800 200 Q 900 400, 1000 600 T 1200 800"
+          d="M 800 640 Q 900 740, 1000 840 T 1200 1000"
           stroke={scarpColors.highlight}
           strokeWidth="3"
           fill="none"
@@ -475,7 +542,7 @@ export const MercuryBackground = () => {
         />
         {/* Bottom edge shadow */}
         <path
-          d="M 810 210 Q 910 410, 1010 610 T 1210 810"
+          d="M 810 650 Q 910 750, 1010 850 T 1210 1010"
           stroke={scarpColors.edgeShadow}
           strokeWidth="2"
           fill="none"
@@ -483,22 +550,22 @@ export const MercuryBackground = () => {
           opacity={scarpColors.edgeShadowOpacity}
         />
 
-        {/* Scarp 3 - Horizontal curved scarp */}
+        {/* Scarp 3 - Horizontal curved scarp (bottom half) */}
         {/* Shadow side (below) */}
         <path
-          d="M 300 500 Q 500 480, 700 500 T 1100 520 L 1100 570 Q 700 550, 500 530 T 300 550 Z"
+          d="M 300 740 Q 500 720, 700 740 T 1100 760 L 1100 810 Q 700 790, 500 770 T 300 790 Z"
           fill="url(#scarpShadow)"
           opacity={scarpColors.shadowOpacity}
         />
         {/* Cliff face */}
         <path
-          d="M 300 500 Q 500 480, 700 500 T 1100 520 L 1100 540 Q 700 520, 500 500 T 300 520 Z"
+          d="M 300 740 Q 500 720, 700 740 T 1100 760 L 1100 780 Q 700 760, 500 740 T 300 760 Z"
           fill="url(#scarpFace)"
           opacity={scarpColors.faceOpacity}
         />
         {/* Top edge highlight */}
         <path
-          d="M 300 500 Q 500 480, 700 500 T 1100 520"
+          d="M 300 740 Q 500 720, 700 740 T 1100 760"
           stroke={scarpColors.highlight}
           strokeWidth="3"
           fill="none"
@@ -507,7 +574,7 @@ export const MercuryBackground = () => {
         />
         {/* Bottom edge shadow */}
         <path
-          d="M 310 510 Q 510 490, 710 510 T 1110 530"
+          d="M 310 750 Q 510 730, 710 750 T 1110 770"
           stroke={scarpColors.edgeShadow}
           strokeWidth="2"
           fill="none"
@@ -547,22 +614,22 @@ export const MercuryBackground = () => {
           opacity={scarpColors.edgeShadowOpacity}
         />
 
-        {/* Scarp 5 - Vertical curved scarp */}
+        {/* Scarp 5 - Vertical curved scarp (bottom half) */}
         {/* Shadow side (left) */}
         <path
-          d="M 1620 0 Q 1570 200, 1620 400 T 1620 800 L 1570 800 Q 1520 400, 1570 200 T 1570 0 Z"
+          d="M 1620 540 Q 1570 740, 1620 940 T 1620 1080 L 1570 1080 Q 1520 940, 1570 740 T 1570 540 Z"
           fill="url(#scarpShadow)"
           opacity={scarpColors.shadowOpacity}
         />
         {/* Cliff face */}
         <path
-          d="M 1620 0 Q 1570 200, 1620 400 T 1620 800 L 1600 800 Q 1550 400, 1600 200 T 1600 0 Z"
+          d="M 1620 540 Q 1570 740, 1620 940 T 1620 1080 L 1600 1080 Q 1550 940, 1600 740 T 1600 540 Z"
           fill="url(#scarpFace)"
           opacity={scarpColors.faceOpacity}
         />
         {/* Top edge highlight */}
         <path
-          d="M 1620 0 Q 1570 200, 1620 400 T 1620 800"
+          d="M 1620 540 Q 1570 740, 1620 940 T 1620 1080"
           stroke={scarpColors.highlight}
           strokeWidth="3"
           fill="none"
@@ -571,7 +638,7 @@ export const MercuryBackground = () => {
         />
         {/* Bottom edge shadow */}
         <path
-          d="M 1610 10 Q 1560 210, 1610 410 T 1610 810"
+          d="M 1610 550 Q 1560 750, 1610 950 T 1610 1090"
           stroke={scarpColors.edgeShadow}
           strokeWidth="2"
           fill="none"
@@ -589,14 +656,14 @@ export const MercuryBackground = () => {
           right: 0,
           bottom: 0,
           background: `
-            radial-gradient(circle at 25% 35%, ${textureColors.color1} 0%, transparent 35%),
-            radial-gradient(circle at 75% 65%, ${textureColors.color2} 0%, transparent 35%),
-            radial-gradient(circle at 45% 80%, ${textureColors.color3} 0%, transparent 30%),
-            radial-gradient(circle at 15% 60%, ${textureColors.color4} 0%, transparent 25%),
-            radial-gradient(circle at 85% 25%, ${textureColors.color3} 0%, transparent 30%),
-            radial-gradient(circle at 60% 15%, ${textureColors.color4} 0%, transparent 25%),
-            radial-gradient(circle at 35% 50%, ${textureColors.color5} 0%, transparent 20%),
-            radial-gradient(circle at 65% 70%, ${textureColors.color1} 0%, transparent 22%)
+            radial-gradient(circle at 25% 75%, ${textureColors.color1} 0%, transparent 35%),
+            radial-gradient(circle at 75% 85%, ${textureColors.color2} 0%, transparent 35%),
+            radial-gradient(circle at 45% 90%, ${textureColors.color3} 0%, transparent 30%),
+            radial-gradient(circle at 15% 80%, ${textureColors.color4} 0%, transparent 25%),
+            radial-gradient(circle at 85% 75%, ${textureColors.color3} 0%, transparent 30%),
+            radial-gradient(circle at 60% 70%, ${textureColors.color4} 0%, transparent 25%),
+            radial-gradient(circle at 35% 85%, ${textureColors.color5} 0%, transparent 20%),
+            radial-gradient(circle at 65% 90%, ${textureColors.color1} 0%, transparent 22%)
           `,
           zIndex: 0.4,
           opacity: isDarkMode ? 0.7 : 0.5,
