@@ -637,7 +637,8 @@ export const Roadmap = () => {
               variant="h1"
               sx={{
                 fontSize: { xs: '2.5rem', md: '4rem', lg: '5rem' },
-                textAlign: 'center'
+                textAlign: 'center',
+                fontWeight: 900,
               }}
             >
               LEARNING PATH
