@@ -107,8 +107,8 @@ const darkMode: PaletteOptions = {
         contrastText: '#FFFFFF',
     },
     text: {
-        primary: '#8B5CF6', // Google AI Purple
-        secondary: '#F59E0B', // Amber
+        primary: '#00BFA5',
+        secondary: '#00BFA5', // Match primary color
     },
     background: {
         default: '#121212',
