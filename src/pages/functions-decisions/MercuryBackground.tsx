@@ -184,32 +184,14 @@ export const MercuryBackground = () => {
           position: 'absolute',
           top: '55%',
           left: '10%',
-          width: '120px',
-          height: '120px',
+          width: '240px',
+          height: '240px',
           borderRadius: '50%',
-          border: `5px solid ${craterColors.border.large}`,
+          border: `10px solid ${craterColors.border.large}`,
           boxShadow: `
-            inset 0 0 60px ${craterColors.shadow.inset},
-            0 0 30px ${craterColors.shadow.outer},
-            inset 0 0 100px ${craterColors.shadow.deep}
-          `,
-          zIndex: 0.5,
-          opacity: craterColors.opacity,
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '60%',
-          left: '10%',
-          width: '80px',
-          height: '80px',
-          borderRadius: '50%',
-          border: `4px solid ${craterColors.border.medium}`,
-          boxShadow: `
-            inset 0 0 45px ${craterColors.shadow.inset},
-            0 0 20px ${craterColors.shadow.outer},
-            inset 0 0 70px ${craterColors.shadow.deep}
+            inset 0 0 120px ${craterColors.shadow.inset},
+            0 0 60px ${craterColors.shadow.outer},
+            inset 0 0 200px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -220,50 +202,14 @@ export const MercuryBackground = () => {
           position: 'absolute',
           top: '60%',
           right: '15%',
-          width: '150px',
-          height: '150px',
+          width: '300px',
+          height: '300px',
           borderRadius: '50%',
-          border: `6px solid ${craterColors.border.large}`,
+          border: `12px solid ${craterColors.border.large}`,
           boxShadow: `
-            inset 0 0 70px ${craterColors.shadow.inset},
-            0 0 35px ${craterColors.shadow.outer},
-            inset 0 0 120px ${craterColors.shadow.deep}
-          `,
-          zIndex: 0.5,
-          opacity: craterColors.opacity,
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          bottom: '20%',
-          left: '20%',
-          width: '100px',
-          height: '100px',
-          borderRadius: '50%',
-          border: `5px solid ${craterColors.border.large}`,
-          boxShadow: `
-            inset 0 0 50px ${craterColors.shadow.inset},
-            0 0 25px ${craterColors.shadow.outer},
-            inset 0 0 85px ${craterColors.shadow.deep}
-          `,
-          zIndex: 0.5,
-          opacity: craterColors.opacity,
-        }}
-      />
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '55%',
-          right: '25%',
-          width: '60px',
-          height: '60px',
-          borderRadius: '50%',
-          border: `3px solid ${craterColors.border.medium}`,
-          boxShadow: `
-            inset 0 0 30px ${craterColors.shadow.inset},
-            0 0 15px ${craterColors.shadow.outer},
-            inset 0 0 50px ${craterColors.shadow.deep}
+            inset 0 0 140px ${craterColors.shadow.inset},
+            0 0 70px ${craterColors.shadow.outer},
+            inset 0 0 240px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -274,14 +220,14 @@ export const MercuryBackground = () => {
           position: 'absolute',
           bottom: '35%',
           right: '10%',
-          width: '90px',
-          height: '90px',
+          width: '180px',
+          height: '180px',
           borderRadius: '50%',
-          border: `4px solid ${craterColors.border.medium}`,
+          border: `8px solid ${craterColors.border.medium}`,
           boxShadow: `
-            inset 0 0 45px ${craterColors.shadow.inset},
-            0 0 22px ${craterColors.shadow.outer},
-            inset 0 0 75px ${craterColors.shadow.deep}
+            inset 0 0 90px ${craterColors.shadow.inset},
+            0 0 44px ${craterColors.shadow.outer},
+            inset 0 0 150px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -292,14 +238,14 @@ export const MercuryBackground = () => {
           position: 'absolute',
           top: '52%',
           right: '40%',
-          width: '70px',
-          height: '70px',
+          width: '140px',
+          height: '140px',
           borderRadius: '50%',
-          border: `3px solid ${craterColors.border.medium}`,
+          border: `6px solid ${craterColors.border.medium}`,
           boxShadow: `
-            inset 0 0 35px ${craterColors.shadow.inset},
-            0 0 18px ${craterColors.shadow.outer},
-            inset 0 0 60px ${craterColors.shadow.deep}
+            inset 0 0 70px ${craterColors.shadow.inset},
+            0 0 36px ${craterColors.shadow.outer},
+            inset 0 0 120px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -310,14 +256,14 @@ export const MercuryBackground = () => {
           position: 'absolute',
           bottom: '15%',
           left: '50%',
-          width: '110px',
-          height: '110px',
+          width: '220px',
+          height: '220px',
           borderRadius: '50%',
-          border: `5px solid ${craterColors.border.large}`,
+          border: `10px solid ${craterColors.border.large}`,
           boxShadow: `
-            inset 0 0 55px ${craterColors.shadow.inset},
-            0 0 28px ${craterColors.shadow.outer},
-            inset 0 0 95px ${craterColors.shadow.deep}
+            inset 0 0 110px ${craterColors.shadow.inset},
+            0 0 56px ${craterColors.shadow.outer},
+            inset 0 0 190px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -330,14 +276,14 @@ export const MercuryBackground = () => {
           position: 'absolute',
           top: '58%',
           left: '45%',
-          width: '50px',
-          height: '50px',
+          width: '100px',
+          height: '100px',
           borderRadius: '50%',
-          border: `3px solid ${craterColors.border.medium}`,
+          border: `6px solid ${craterColors.border.medium}`,
           boxShadow: `
-            inset 0 0 25px ${craterColors.shadow.inset},
-            0 0 12px ${craterColors.shadow.outer},
-            inset 0 0 40px ${craterColors.shadow.deep}
+            inset 0 0 50px ${craterColors.shadow.inset},
+            0 0 24px ${craterColors.shadow.outer},
+            inset 0 0 80px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -348,14 +294,14 @@ export const MercuryBackground = () => {
           position: 'absolute',
           top: '70%',
           left: '30%',
-          width: '45px',
-          height: '45px',
+          width: '90px',
+          height: '90px',
           borderRadius: '50%',
-          border: `2.5px solid ${craterColors.border.medium}`,
+          border: `5px solid ${craterColors.border.medium}`,
           boxShadow: `
-            inset 0 0 20px ${craterColors.shadow.inset},
-            0 0 10px ${craterColors.shadow.outer},
-            inset 0 0 35px ${craterColors.shadow.deep}
+            inset 0 0 40px ${craterColors.shadow.inset},
+            0 0 20px ${craterColors.shadow.outer},
+            inset 0 0 70px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -366,14 +312,14 @@ export const MercuryBackground = () => {
           position: 'absolute',
           bottom: '40%',
           right: '35%',
-          width: '55px',
-          height: '55px',
+          width: '110px',
+          height: '110px',
           borderRadius: '50%',
-          border: `3px solid ${craterColors.border.medium}`,
+          border: `6px solid ${craterColors.border.medium}`,
           boxShadow: `
-            inset 0 0 28px ${craterColors.shadow.inset},
-            0 0 14px ${craterColors.shadow.outer},
-            inset 0 0 45px ${craterColors.shadow.deep}
+            inset 0 0 56px ${craterColors.shadow.inset},
+            0 0 28px ${craterColors.shadow.outer},
+            inset 0 0 90px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -386,14 +332,14 @@ export const MercuryBackground = () => {
           position: 'absolute',
           top: '55%',
           left: '15%',
-          width: '30px',
-          height: '30px',
+          width: '60px',
+          height: '60px',
           borderRadius: '50%',
-          border: `2px solid ${craterColors.border.small}`,
+          border: `4px solid ${craterColors.border.small}`,
           boxShadow: `
-            inset 0 0 15px ${craterColors.shadow.inset},
-            0 0 8px ${craterColors.shadow.outer},
-            inset 0 0 25px ${craterColors.shadow.deep}
+            inset 0 0 30px ${craterColors.shadow.inset},
+            0 0 16px ${craterColors.shadow.outer},
+            inset 0 0 50px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -404,14 +350,14 @@ export const MercuryBackground = () => {
           position: 'absolute',
           top: '75%',
           right: '20%',
-          width: '35px',
-          height: '35px',
+          width: '70px',
+          height: '70px',
           borderRadius: '50%',
-          border: `2px solid ${craterColors.border.small}`,
+          border: `4px solid ${craterColors.border.small}`,
           boxShadow: `
-            inset 0 0 18px ${craterColors.shadow.inset},
-            0 0 10px ${craterColors.shadow.outer},
-            inset 0 0 30px ${craterColors.shadow.deep}
+            inset 0 0 36px ${craterColors.shadow.inset},
+            0 0 20px ${craterColors.shadow.outer},
+            inset 0 0 60px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -422,14 +368,14 @@ export const MercuryBackground = () => {
           position: 'absolute',
           top: '62%',
           left: '60%',
-          width: '25px',
-          height: '25px',
+          width: '50px',
+          height: '50px',
           borderRadius: '50%',
-          border: `1.5px solid ${craterColors.border.small}`,
+          border: `3px solid ${craterColors.border.small}`,
           boxShadow: `
-            inset 0 0 12px ${craterColors.shadow.inset},
-            0 0 6px ${craterColors.shadow.outer},
-            inset 0 0 20px ${craterColors.shadow.deep}
+            inset 0 0 24px ${craterColors.shadow.inset},
+            0 0 12px ${craterColors.shadow.outer},
+            inset 0 0 40px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -440,14 +386,146 @@ export const MercuryBackground = () => {
           position: 'absolute',
           bottom: '25%',
           left: '35%',
-          width: '28px',
-          height: '28px',
+          width: '56px',
+          height: '56px',
           borderRadius: '50%',
-          border: `2px solid ${craterColors.border.small}`,
+          border: `4px solid ${craterColors.border.small}`,
           boxShadow: `
-            inset 0 0 14px ${craterColors.shadow.inset},
-            0 0 7px ${craterColors.shadow.outer},
-            inset 0 0 23px ${craterColors.shadow.deep}
+            inset 0 0 28px ${craterColors.shadow.inset},
+            0 0 14px ${craterColors.shadow.outer},
+            inset 0 0 46px ${craterColors.shadow.deep}
+          `,
+          zIndex: 0.5,
+          opacity: craterColors.opacity,
+        }}
+      />
+
+      {/* Additional Large Craters */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '72%',
+          left: '25%',
+          width: '180px',
+          height: '180px',
+          borderRadius: '50%',
+          border: `8px solid ${craterColors.border.medium}`,
+          boxShadow: `
+            inset 0 0 90px ${craterColors.shadow.inset},
+            0 0 44px ${craterColors.shadow.outer},
+            inset 0 0 150px ${craterColors.shadow.deep}
+          `,
+          zIndex: 0.5,
+          opacity: craterColors.opacity,
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '64%',
+          right: '30%',
+          width: '160px',
+          height: '160px',
+          borderRadius: '50%',
+          border: `8px solid ${craterColors.border.medium}`,
+          boxShadow: `
+            inset 0 0 90px ${craterColors.shadow.inset},
+            0 0 40px ${craterColors.shadow.outer},
+            inset 0 0 140px ${craterColors.shadow.deep}
+          `,
+          zIndex: 0.5,
+          opacity: craterColors.opacity,
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '30%',
+          right: '5%',
+          width: '200px',
+          height: '200px',
+          borderRadius: '50%',
+          border: `10px solid ${craterColors.border.large}`,
+          boxShadow: `
+            inset 0 0 100px ${craterColors.shadow.inset},
+            0 0 50px ${craterColors.shadow.outer},
+            inset 0 0 170px ${craterColors.shadow.deep}
+          `,
+          zIndex: 0.5,
+          opacity: craterColors.opacity,
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '12%',
+          right: '20%',
+          width: '180px',
+          height: '180px',
+          borderRadius: '50%',
+          border: `8px solid ${craterColors.border.medium}`,
+          boxShadow: `
+            inset 0 0 90px ${craterColors.shadow.inset},
+            0 0 44px ${craterColors.shadow.outer},
+            inset 0 0 150px ${craterColors.shadow.deep}
+          `,
+          zIndex: 0.5,
+          opacity: craterColors.opacity,
+        }}
+      />
+
+      {/* Additional Medium Craters */}
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '35%',
+          left: '60%',
+          width: '110px',
+          height: '110px',
+          borderRadius: '50%',
+          border: `6px solid ${craterColors.border.medium}`,
+          boxShadow: `
+            inset 0 0 56px ${craterColors.shadow.inset},
+            0 0 28px ${craterColors.shadow.outer},
+            inset 0 0 90px ${craterColors.shadow.deep}
+          `,
+          zIndex: 0.5,
+          opacity: craterColors.opacity,
+        }}
+      />
+
+      {/* Additional Small Craters */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: '70%',
+          right: '45%',
+          width: '50px',
+          height: '50px',
+          borderRadius: '50%',
+          border: `3px solid ${craterColors.border.small}`,
+          boxShadow: `
+            inset 0 0 24px ${craterColors.shadow.inset},
+            0 0 12px ${craterColors.shadow.outer},
+            inset 0 0 40px ${craterColors.shadow.deep}
+          `,
+          zIndex: 0.5,
+          opacity: craterColors.opacity,
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: '18%',
+          left: '70%',
+          width: '56px',
+          height: '56px',
+          borderRadius: '50%',
+          border: `4px solid ${craterColors.border.small}`,
+          boxShadow: `
+            inset 0 0 28px ${craterColors.shadow.inset},
+            0 0 14px ${craterColors.shadow.outer},
+            inset 0 0 46px ${craterColors.shadow.deep}
           `,
           zIndex: 0.5,
           opacity: craterColors.opacity,
@@ -489,19 +567,19 @@ export const MercuryBackground = () => {
         {/* Scarp 1 - Curved from left to center (bottom half) */}
         {/* Shadow side (below the scarp) */}
         <path
-          d="M 0 540 Q 200 590, 400 560 T 600 540 L 600 590 Q 400 620, 200 640 T 0 590 Z"
+          d="M 0 640 Q 200 690, 400 660 T 600 640 L 600 690 Q 400 720, 200 740 T 0 690 Z"
           fill="url(#scarpShadow)"
           opacity={scarpColors.shadowOpacity}
         />
         {/* Cliff face */}
         <path
-          d="M 0 540 Q 200 590, 400 560 T 600 540 L 600 560 Q 400 580, 200 570 T 0 550 Z"
+          d="M 0 640 Q 200 690, 400 660 T 600 640 L 600 660 Q 400 680, 200 670 T 0 650 Z"
           fill="url(#scarpFace)"
           opacity={scarpColors.faceOpacity}
         />
         {/* Top edge highlight */}
         <path
-          d="M 0 540 Q 200 590, 400 560 T 600 540"
+          d="M 0 640 Q 200 690, 400 660 T 600 640"
           stroke={scarpColors.highlight}
           strokeWidth="3"
           fill="none"
@@ -510,7 +588,7 @@ export const MercuryBackground = () => {
         />
         {/* Bottom edge shadow */}
         <path
-          d="M 0 550 Q 200 600, 400 570 T 600 550"
+          d="M 0 650 Q 200 700, 400 670 T 600 650"
           stroke={scarpColors.edgeShadow}
           strokeWidth="2"
           fill="none"
@@ -575,38 +653,6 @@ export const MercuryBackground = () => {
         {/* Bottom edge shadow */}
         <path
           d="M 310 750 Q 510 730, 710 750 T 1110 770"
-          stroke={scarpColors.edgeShadow}
-          strokeWidth="2"
-          fill="none"
-          strokeLinecap="round"
-          opacity={scarpColors.edgeShadowOpacity}
-        />
-
-        {/* Scarp 4 - Diagonal scarp */}
-        {/* Shadow side */}
-        <path
-          d="M 100 600 Q 300 650, 500 700 T 900 750 L 950 780 Q 550 730, 350 680 T 150 630 Z"
-          fill="url(#scarpShadow)"
-          opacity={scarpColors.shadowOpacity}
-        />
-        {/* Cliff face */}
-        <path
-          d="M 100 600 Q 300 650, 500 700 T 900 750 L 900 770 Q 500 720, 300 670 T 100 620 Z"
-          fill="url(#scarpFace)"
-          opacity={scarpColors.faceOpacity}
-        />
-        {/* Top edge highlight */}
-        <path
-          d="M 100 600 Q 300 650, 500 700 T 900 750"
-          stroke={scarpColors.highlight}
-          strokeWidth="3"
-          fill="none"
-          strokeLinecap="round"
-          opacity={scarpColors.highlightOpacity}
-        />
-        {/* Bottom edge shadow */}
-        <path
-          d="M 110 610 Q 310 660, 510 710 T 910 760"
           stroke={scarpColors.edgeShadow}
           strokeWidth="2"
           fill="none"
