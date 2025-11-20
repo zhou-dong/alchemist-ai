@@ -215,7 +215,7 @@ export const FunctionsDecisions = () => {
               >
                 {currentSection >= SECTIONS.HEADING && (
                   <TypingText
-                    text="Every decision is a function"
+                    text="EVERY DECISION IS A FUNCTION"
                     speed={0.4}
                     onComplete={() => setTypingComplete(prev => ({ ...prev, [SECTIONS.HEADING]: true }))}
                   />
@@ -841,6 +841,24 @@ export const FunctionsDecisions = () => {
                   fontSize: '1.2rem',
                   fontWeight: 700,
                   letterSpacing: '0.02em',
+                  background: isDarkMode 
+                    ? 'rgba(155, 126, 222, 0.15)' 
+                    : 'rgba(155, 126, 222, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.2)'}`,
+                  backgroundClip: 'border-box',
+                  WebkitBackgroundClip: 'border-box',
+                  color: theme.palette.text.primary,
+                  WebkitTextFillColor: theme.palette.text.primary,
+                  '&:hover': {
+                    background: isDarkMode 
+                      ? 'rgba(155, 126, 222, 0.25)' 
+                      : 'rgba(155, 126, 222, 0.15)',
+                    backgroundClip: 'border-box',
+                    WebkitBackgroundClip: 'border-box',
+                    color: theme.palette.text.primary,
+                    WebkitTextFillColor: theme.palette.text.primary,
+                  },
                 }}
               >
                 Back to Roadmap
@@ -854,6 +872,24 @@ export const FunctionsDecisions = () => {
                   fontSize: '1.2rem',
                   fontWeight: 700,
                   letterSpacing: '0.02em',
+                  background: isDarkMode 
+                    ? 'rgba(155, 126, 222, 0.15)' 
+                    : 'rgba(155, 126, 222, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.2)'}`,
+                  backgroundClip: 'border-box',
+                  WebkitBackgroundClip: 'border-box',
+                  color: theme.palette.text.primary,
+                  WebkitTextFillColor: theme.palette.text.primary,
+                  '&:hover': {
+                    background: isDarkMode 
+                      ? 'rgba(155, 126, 222, 0.25)' 
+                      : 'rgba(155, 126, 222, 0.15)',
+                    backgroundClip: 'border-box',
+                    WebkitBackgroundClip: 'border-box',
+                    color: theme.palette.text.primary,
+                    WebkitTextFillColor: theme.palette.text.primary,
+                  },
                 }}
               >
                 Next Step →
@@ -919,6 +955,34 @@ export const FunctionsDecisions = () => {
                 borderRadius: '20px',
                 px: 3,
                 py: 1.5,
+                background: isDarkMode 
+                  ? 'rgba(155, 126, 222, 0.15)' 
+                  : 'rgba(155, 126, 222, 0.1)',
+                backdropFilter: 'blur(10px)',
+                border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.2)'}`,
+                backgroundClip: 'border-box',
+                WebkitBackgroundClip: 'border-box',
+                color: theme.palette.text.primary,
+                WebkitTextFillColor: theme.palette.text.primary,
+                '&:hover': {
+                  background: isDarkMode 
+                    ? 'rgba(155, 126, 222, 0.25)' 
+                    : 'rgba(155, 126, 222, 0.15)',
+                  backgroundClip: 'border-box',
+                  WebkitBackgroundClip: 'border-box',
+                  color: theme.palette.text.primary,
+                  WebkitTextFillColor: theme.palette.text.primary,
+                },
+                '&:disabled': {
+                  background: isDarkMode 
+                    ? 'rgba(155, 126, 222, 0.05)' 
+                    : 'rgba(155, 126, 222, 0.05)',
+                  border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.1)' : 'rgba(155, 126, 222, 0.1)'}`,
+                  backgroundClip: 'border-box',
+                  WebkitBackgroundClip: 'border-box',
+                  color: theme.palette.text.primary,
+                  WebkitTextFillColor: theme.palette.text.primary,
+                },
               }}
               startIcon={<ArrowBackIcon />}
             >
@@ -936,6 +1000,34 @@ export const FunctionsDecisions = () => {
                 borderRadius: '20px',
                 px: 3,
                 py: 1.5,
+                background: isDarkMode 
+                  ? 'rgba(155, 126, 222, 0.15)' 
+                  : 'rgba(155, 126, 222, 0.1)',
+                backdropFilter: 'blur(10px)',
+                border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.2)'}`,
+                backgroundClip: 'border-box',
+                WebkitBackgroundClip: 'border-box',
+                color: theme.palette.text.primary,
+                WebkitTextFillColor: theme.palette.text.primary,
+                '&:hover': {
+                  background: isDarkMode 
+                    ? 'rgba(155, 126, 222, 0.25)' 
+                    : 'rgba(155, 126, 222, 0.15)',
+                  backgroundClip: 'border-box',
+                  WebkitBackgroundClip: 'border-box',
+                  color: theme.palette.text.primary,
+                  WebkitTextFillColor: theme.palette.text.primary,
+                },
+                '&:disabled': {
+                  background: isDarkMode 
+                    ? 'rgba(155, 126, 222, 0.05)' 
+                    : 'rgba(155, 126, 222, 0.05)',
+                  border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.1)' : 'rgba(155, 126, 222, 0.1)'}`,
+                  backgroundClip: 'border-box',
+                  WebkitBackgroundClip: 'border-box',
+                  color: theme.palette.text.primary,
+                  WebkitTextFillColor: theme.palette.text.primary,
+                },
               }}
               endIcon={<ArrowForwardIcon />}
             >
