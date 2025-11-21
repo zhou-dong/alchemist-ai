@@ -367,7 +367,20 @@ export const FunctionsDecisions = () => {
               >
                 {'●'}
               </Box>
-              <Box component="span">{currentSection + 1} / {totalSections}</Box>
+              <Box
+                component="span"
+                sx={{
+                  color: aiColors.softTeal,
+                  fontSize: '1.2rem',
+                  fontWeight: 300,
+                  letterSpacing: '0.05em',
+                }}
+              >
+                <TypingText
+                  text={`${currentSection + 1} / ${totalSections}`}
+                  speed={1.1}
+                />
+              </Box>
             </Box>
             <GradientButton
               onClick={handlePrevious}
