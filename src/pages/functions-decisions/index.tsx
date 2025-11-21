@@ -3,7 +3,6 @@ import {
   Typography,
   Fade,
   useTheme,
-  Avatar,
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +11,6 @@ import { MercuryBackground } from './MercuryBackground';
 import { FunctionFlowDiagram } from './FunctionFlowDiagram';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForward from '@mui/icons-material/ArrowForward';
 import { TypingText } from './TypingText';
 import { FunctionExamples } from './FunctionExamples';
 import SimplestFunction from './SimplestFunction';
