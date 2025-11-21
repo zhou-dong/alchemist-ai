@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { PlayArrow, Pause, CenterFocusStrong, Lock, LockOpen, CheckCircle, ArrowForward } from '@mui/icons-material';
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { GradientTypography, GlassIconButton, GradientButton } from '../../theme/theme';
 import { useColorMode } from '../../theme/ColorModeContext';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -451,65 +451,15 @@ export const Roadmap = () => {
   const controlsRef = useRef<any>(null);
   const { mode } = useColorMode();
   const isDarkMode = mode === 'dark';
-  const [searchParams] = useSearchParams();
-
   // Use the step status context for localStorage persistence
-  const { learningPathData: baseLearningPathDataWithStatus, updateStepStatus } = useStepStatusContext();
-
-  // Parse URL parameters for step
-  // URL parameter: ?step=2 (0-indexed, so 2 means the 3rd step)
-  const urlStep = useMemo(() => {
-    const stepParam = searchParams.get('step');
-    if (stepParam !== null) {
-      const stepIndex = parseInt(stepParam, 10);
-      // Validate: must be a valid number between 0 and TOTAL_STEPS - 1
-      if (!isNaN(stepIndex) && stepIndex >= 0 && stepIndex < TOTAL_STEPS) {
-        return stepIndex;
-      }
-    }
-    return null;
-  }, [searchParams]);
-
-  // Apply URL parameter overrides to learning path data
-  // If step is provided in URL:
-  // - Only the specified step is set to 'unlocked'
-  // - All other steps use their localStorage/base statuses
-  // - Steps after the URL step remain locked (unless already unlocked/finished in localStorage)
-  const learningPathData = useMemo(() => {
-    if (urlStep !== null) {
-      return baseLearningPathDataWithStatus.map((item, index) => {
-        if (index === urlStep) {
-          // URL step: always unlocked
-          return {
-            ...item,
-            status: 'unlocked' as StepStatus,
-          };
-        } else if (index > urlStep) {
-          // Steps after URL step: locked (unless already unlocked/finished in localStorage)
-          // Only override if current status is locked
-          if (isLocked(item.status)) {
-            return {
-              ...item,
-              status: 'locked' as StepStatus,
-            };
-          }
-          // Keep existing unlocked/finished status from localStorage
-          return item;
-        } else {
-          // Steps before URL step: use localStorage/base status (don't override)
-          return item;
-        }
-      });
-    }
-    // No URL parameter, use localStorage/base statuses
-    return baseLearningPathDataWithStatus;
-  }, [baseLearningPathDataWithStatus, urlStep]);
+  // Steps are only unlocked through localStorage or manual updates, not via URL parameters
+  const { learningPathData, updateStepStatus } = useStepStatusContext();
 
   const activeStepIndex = learningPathData.findIndex(item => isUnlocked(item.status));
 
   // Determine which step the button should navigate to
-  // If URL has step parameter, use that; otherwise use the active step
-  const targetStepIndex = urlStep !== null ? urlStep : activeStepIndex;
+  // Use the active step (first unlocked step)
+  const targetStepIndex = activeStepIndex;
 
   const handleNextStep = () => {
     if (targetStepIndex >= 0 && targetStepIndex < learningPathData.length) {
