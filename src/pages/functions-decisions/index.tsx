@@ -389,32 +389,23 @@ export const FunctionsDecisions = () => {
                 cursor: currentSection === 0 ? 'not-allowed' : 'pointer',
                 fontWeight: 800,
                 letterSpacing: '0.05em',
-                borderRadius: '20px',
                 px: 3,
                 py: 1.5,
-                background: isDarkMode
-                  ? 'rgba(155, 126, 222, 0.15)'
-                  : 'rgba(155, 126, 222, 0.1)',
+                background: 'transparent',
                 backdropFilter: 'blur(10px)',
-                border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.2)'}`,
                 backgroundClip: 'border-box',
                 WebkitBackgroundClip: 'border-box',
                 color: theme.palette.text.primary,
                 WebkitTextFillColor: theme.palette.text.primary,
                 '&:hover': {
-                  background: isDarkMode
-                    ? 'rgba(155, 126, 222, 0.25)'
-                    : 'rgba(155, 126, 222, 0.15)',
+                  background: 'transparent',
                   backgroundClip: 'border-box',
                   WebkitBackgroundClip: 'border-box',
                   color: theme.palette.text.primary,
                   WebkitTextFillColor: theme.palette.text.primary,
                 },
                 '&:disabled': {
-                  background: isDarkMode
-                    ? 'rgba(155, 126, 222, 0.05)'
-                    : 'rgba(155, 126, 222, 0.05)',
-                  border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.1)' : 'rgba(155, 126, 222, 0.1)'}`,
+                  background: 'transparent',
                   backgroundClip: 'border-box',
                   WebkitBackgroundClip: 'border-box',
                   color: theme.palette.text.primary,
@@ -435,36 +426,27 @@ export const FunctionsDecisions = () => {
                 cursor: currentSection >= totalSections - 1 ? 'not-allowed' : 'pointer',
                 fontWeight: 800,
                 letterSpacing: '0.05em',
-                borderRadius: '20px',
                 px: 3,
                 py: 1.5,
-                background: isDarkMode
-                  ? 'rgba(155, 126, 222, 0.15)'
-                  : 'rgba(155, 126, 222, 0.1)',
+                background: 'transparent',
                 backdropFilter: 'blur(10px)',
-                border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.2)'}`,
                 backgroundClip: 'border-box',
                 WebkitBackgroundClip: 'border-box',
                 color: theme.palette.text.primary,
                 WebkitTextFillColor: theme.palette.text.primary,
                 '&:hover': {
-                  background: isDarkMode
-                    ? 'rgba(155, 126, 222, 0.25)'
-                    : 'rgba(155, 126, 222, 0.15)',
+                  background: 'transparent',
                   backgroundClip: 'border-box',
                   WebkitBackgroundClip: 'border-box',
                   color: theme.palette.text.primary,
                   WebkitTextFillColor: theme.palette.text.primary,
                 },
                 '&:disabled': {
-                  background: isDarkMode
-                    ? 'rgba(155, 126, 222, 0.05)'
-                    : 'rgba(155, 126, 222, 0.05)',
-                  border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.1)' : 'rgba(155, 126, 222, 0.1)'}`,
+                  background: 'transparent',
                   backgroundClip: 'border-box',
                   WebkitBackgroundClip: 'border-box',
-                  color: theme.palette.text.primary,
-                  WebkitTextFillColor: theme.palette.text.primary,
+                  color: aiColors.textSecondary,
+                  WebkitTextFillColor: aiColors.textSecondary,
                 },
               }}
               endIcon={<ArrowForwardIcon />}
@@ -480,4 +462,3 @@ export const FunctionsDecisions = () => {
 };
 
 export default FunctionsDecisions;
-
