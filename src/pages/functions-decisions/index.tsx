@@ -376,10 +376,7 @@ export const FunctionsDecisions = () => {
                   letterSpacing: '0.05em',
                 }}
               >
-                <TypingText
-                  text={`${currentSection + 1} / ${totalSections}`}
-                  speed={1.1}
-                />
+                {currentSection + 1} / {totalSections}
               </Box>
             </Box>
             <GradientButton
