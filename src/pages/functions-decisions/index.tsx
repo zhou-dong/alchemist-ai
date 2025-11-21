@@ -14,6 +14,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { TypingText } from './TypingText';
 import { FunctionExamples } from './FunctionExamples';
 import SimplestFunction from './SimplestFunction';
+import { useStepStatusContext } from '../../contexts/StepStatusContext';
 
 export const FunctionsDecisions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,6 +22,7 @@ export const FunctionsDecisions = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
+  const { updateMultipleStepStatuses } = useStepStatusContext();
 
   // Section indices
   const SECTIONS = {
@@ -63,6 +65,15 @@ export const FunctionsDecisions = () => {
   }, []);
 
   const handleNext = () => {
+
+    if (currentSection === totalSections - 2) {
+      // Update both steps in a single state update to avoid React batching issues
+      updateMultipleStepStatuses([
+        { index: 0, status: 'finished' }, // Finish the first step
+        { index: 1, status: 'unlocked' }, // Unlock the second step
+      ]);
+    }
+
     if (currentSection < totalSections - 1) {
       setCurrentSection(prev => prev + 1);
     }
