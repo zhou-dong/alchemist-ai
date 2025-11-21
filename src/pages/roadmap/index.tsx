@@ -17,8 +17,8 @@ import * as THREE from 'three';
 import { Starfield } from './Starfield';
 import { isLocked, isUnlocked, isFinished, isAccessible } from '../../data/types';
 import type { StepStatus } from '../../data/types';
-import { getLearningPathData, TOTAL_STEPS, blendColors, type LearningPathItem } from '../../data/planets';
-import { useStepStatus } from './useStepStatus';
+import { TOTAL_STEPS, blendColors, type LearningPathItem } from '../../data/planets';
+import { useStepStatusContext } from '../../contexts/StepStatusContext';
 
 // 3D Spherical Roadmap Style using Three.js
 // Steps arranged on a sphere in 3D space
@@ -453,11 +453,8 @@ export const Roadmap = () => {
   const isDarkMode = mode === 'dark';
   const [searchParams] = useSearchParams();
 
-  // Get theme-aware learning path data
-  const baseLearningPathData = useMemo(() => getLearningPathData(isDarkMode), [isDarkMode]);
-
-  // Use the step status hook for localStorage persistence
-  const { learningPathData: baseLearningPathDataWithStatus, updateStepStatus } = useStepStatus(baseLearningPathData);
+  // Use the step status context for localStorage persistence
+  const { learningPathData: baseLearningPathDataWithStatus, updateStepStatus } = useStepStatusContext();
 
   // Parse URL parameters for step
   // URL parameter: ?step=2 (0-indexed, so 2 means the 3rd step)
