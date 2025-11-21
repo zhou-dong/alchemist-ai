@@ -337,14 +337,16 @@ export const FunctionsDecisions = () => {
           {/* Navigation Controls - "Her" Style */}
           <Box sx={{
             position: 'fixed',
-            bottom: 32,
+            bottom: '10%',
             left: '50%',
             transform: 'translateX(-50%)',
             display: 'flex',
-            gap: 2,
+            gap: 2.5,
             zIndex: 1000,
             flexDirection: { xs: 'column', sm: 'row' },
             alignItems: 'center',
+            width: '100%',
+            justifyContent: 'center',
           }}>
             <Box
               sx={{
