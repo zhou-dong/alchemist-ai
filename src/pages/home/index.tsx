@@ -1,82 +1,72 @@
-import {
-  Box,
-  Fade,
-} from '@mui/material';
-import { useState, useEffect } from 'react';
+import { Box, Fade } from '@mui/material';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GradientTypography, GradientButton } from '../../theme/theme';
 import { FloatingParticles, generateParticles, type Particle } from './FloatingParticles';
+import { useStepStatusContext } from '../../contexts/StepStatusContext';
+
+const DisplayFloatingParticles = () => {
+  const particleCount = 60;
+  const particles: Array<Particle> = useMemo(() => generateParticles(particleCount), [particleCount]);
+  return <FloatingParticles particles={particles} />;
+};
 
 export const Home = () => {
-  const [particles, setParticles] = useState<Array<Particle>>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
   const navigate = useNavigate();
+  const [isLoaded, setIsLoaded] = useState(false);
+  const { updateStepStatus } = useStepStatusContext();
 
   useEffect(() => {
-    setParticles(generateParticles());
+    updateStepStatus(0, 'unlocked'); // Unlock the first step for new users
     const timer = setTimeout(() => setIsLoaded(true), 500);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <Box sx={{
-      width: '100vw',
-      height: '100vh',
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      overflow: 'hidden'
-    }}>
-      <FloatingParticles particles={particles} />
-      {/* Hero Section */}
+    <>
+      <DisplayFloatingParticles />
       <Box sx={{
-        position: 'relative',
-        zIndex: 2,
-        width: '100%',
-        height: '100%',
+        width: '100vw',
+        height: '100vh',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        overflow: 'hidden',
         textAlign: 'center',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        zIndex: 2,
       }}>
-        {/* Main Title with Animation */}
         <Fade in={isLoaded} timeout={800}>
-          <Box sx={{ mb: 6, position: 'relative' }}>
-            <GradientTypography
-              variant="h1"
-              sx={{
-                mb: 3,
-                position: 'relative',
-                zIndex: 3,
-                fontWeight: 900,
-              }}
-            >
-              NEURAL QUEST
-            </GradientTypography>
-          </Box>
+          <GradientTypography
+            variant="h1"
+            sx={{
+              mb: 10,
+              fontWeight: 900,
+            }}
+          >
+            NEURAL QUEST
+          </GradientTypography>
         </Fade>
 
-        {/* Main CTA Button - Elegant Style */}
         <Fade in={isLoaded} timeout={800}>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <GradientButton
-              onClick={() => navigate('/alchemist-ai/roadmap?step=0')}
-              sx={{
-                py: 1.5,
-                px: 4,
-                fontSize: '1.5rem',
-                fontWeight: 700,
-                letterSpacing: '0.1em',
-              }}
-            >
-              START
-            </GradientButton>
-          </Box>
+          <GradientButton
+            onClick={() => navigate('/alchemist-ai/roadmap?step=0')}
+            sx={{
+              py: 1.5,
+              px: 4,
+              fontSize: '1.5rem',
+              fontWeight: 700,
+              letterSpacing: '0.1em',
+            }}
+          >
+            START
+          </GradientButton>
         </Fade>
       </Box>
-
-    </Box>
+    </>
   );
 };
 
