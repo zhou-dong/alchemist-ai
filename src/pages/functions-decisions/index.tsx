@@ -404,7 +404,7 @@ export const FunctionsDecisions = () => {
               }}
               startIcon={<ArrowBackIcon />}
             >
-              Previous
+              PREVIOUS
             </GradientButton>
             <GradientButton
               onClick={handleNext}
@@ -418,7 +418,7 @@ export const FunctionsDecisions = () => {
               }}
               endIcon={<ArrowForwardIcon />}
             >
-              Next
+              NEXT
             </GradientButton>
           </Box>
         </Box>
