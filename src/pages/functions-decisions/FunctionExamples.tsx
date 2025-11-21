@@ -7,6 +7,7 @@ import {
 import { TypingText } from './TypingText';
 
 export const FunctionExamples = ({ isVisible, isDarkMode }: { isVisible: boolean, isDarkMode: boolean }) => {
+
   const aiColors = {
     warmAmber: isDarkMode ? '#FFB84D' : '#FFC966',
     softTeal: isDarkMode ? '#4ECDC4' : '#5EDDD6',

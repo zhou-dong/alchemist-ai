@@ -2,7 +2,6 @@ import {
   Box,
   Typography,
   Fade,
-  Slide,
   useTheme,
   Avatar,
 } from '@mui/material';
@@ -16,14 +15,11 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForward from '@mui/icons-material/ArrowForward';
 import { TypingText } from './TypingText';
 import { FunctionExamples } from './FunctionExamples';
-
-// "Her" style typing effect - smooth, warm, conversational
-// speed: higher value = faster typing (1.0 = default speed, 2.0 = 2x faster, 0.5 = 2x slower)
+import SimplestFunction from './SimplestFunction';
 
 export const FunctionsDecisions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
-  const [typingComplete, setTypingComplete] = useState<{ [key: number]: boolean }>({});
   const navigate = useNavigate();
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
@@ -35,12 +31,11 @@ export const FunctionsDecisions = () => {
     EXAMPLES_TITLE: 2,
     EXAMPLES: 3,
     SUBTITLE2: 4,
-    GOAL: 5,
-    SIMPLEST_FUNCTION: 6,
-    BUTTONS: 7,
+    SIMPLEST_FUNCTION: 5,
+    // BUTTONS: 7,
   };
 
-  const totalSections = Object.keys(SECTIONS).length + 1;
+  const totalSections = Object.keys(SECTIONS).length;
 
   // Gender-neutral AI colors - warm, organic, human-like
   const aiColors = {
@@ -183,7 +178,6 @@ export const FunctionsDecisions = () => {
                   <TypingText
                     text="Every decision we make — whether by a person, an animal, or a computer — is a function: it takes inputs, applies rules, and produces an output (a decision)."
                     speed={0.9}
-                    onComplete={() => setTypingComplete(prev => ({ ...prev, [SECTIONS.SUBTITLE1]: true }))}
                   />
                 </Typography>
               )}
@@ -234,13 +228,11 @@ export const FunctionsDecisions = () => {
                   <TypingText
                     text="So let's start from the smallest building block — the function — and grow it step by step until we build a neural network."
                     speed={1.1}
-                    onComplete={() => setTypingComplete(prev => ({ ...prev, [SECTIONS.SUBTITLE2]: true }))}
                   />
                 </Typography>
               )}
             </Box>
           </Fade>
-
 
           <Fade in={currentSection === SECTIONS.EXAMPLES_TITLE} timeout={1000}>
             <Box
@@ -286,7 +278,6 @@ export const FunctionsDecisions = () => {
                   <TypingText
                     text="Here are some examples of functions:"
                     speed={1.1}
-                    onComplete={() => setTypingComplete(prev => ({ ...prev, [SECTIONS.EXAMPLES_TITLE]: true }))}
                   />
                 </Typography>
               )}
@@ -304,189 +295,34 @@ export const FunctionsDecisions = () => {
             isDarkMode={isDarkMode}
           />
 
+          <SimplestFunction
+            isVisible={currentSection === SECTIONS.SIMPLEST_FUNCTION}
+            isDarkMode={isDarkMode}
+          />
+
           {/* Back to Roadmap Button - Always visible on left middle */}
           <Box sx={{
             position: 'fixed',
             top: '50%',
-            left: { xs: 16, md: 32 },
+            right: { xs: 16, md: 32 },
             transform: 'translateY(-50%)',
             zIndex: 10,
           }}>
             <GradientButton
               size="medium"
-              onClick={() => navigate('/alchemist-ai/roadmap?step=0')}
-              startIcon={<ArrowBackIcon />}
+              onClick={() => navigate('/alchemist-ai/roadmap?step=1')}
+              endIcon={<ArrowForwardIcon />}
               sx={{
                 px: 3,
                 py: 1.2,
                 fontSize: '1.2rem',
 
               }}
+              disabled={currentSection !== totalSections - 1}
             >
               Roadmap
             </GradientButton>
           </Box>
-
-          {/* Simplest Function Section */}
-          <Fade in={currentSection === SECTIONS.SIMPLEST_FUNCTION} timeout={1000}>
-            <Box
-              sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '90%',
-                maxWidth: '800px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 3,
-                px: { xs: 2, md: 4 },
-              }}
-            >
-              <Slide direction="up" in={currentSection === SECTIONS.SIMPLEST_FUNCTION} timeout={800}>
-                <Box>
-                  <GradientTypography
-                    variant="h5"
-                    sx={{
-                      fontSize: { xs: '1.3rem', md: '1.6rem' },
-                      fontWeight: 700,
-                      mb: 2,
-                      textAlign: 'center',
-                    }}
-                  >
-                    The Simplest Function
-                  </GradientTypography>
-                </Box>
-              </Slide>
-
-              <Slide direction="up" in={currentSection === SECTIONS.SIMPLEST_FUNCTION} timeout={800} style={{ transitionDelay: '200ms' }}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: { xs: '1rem', md: '1.2rem' },
-                    lineHeight: 1.8,
-                    fontWeight: 300,
-                    textAlign: 'center',
-                    mb: 2,
-                  }}
-                >
-                  The simplest function is: <strong>if...else</strong>
-                </Typography>
-              </Slide>
-
-              <Slide direction="up" in={currentSection === SECTIONS.SIMPLEST_FUNCTION} timeout={800} style={{ transitionDelay: '400ms' }}>
-                <Box
-                  sx={{
-                    width: '100%',
-                    p: { xs: 3, md: 4 },
-                    borderRadius: '20px',
-                    background: isDarkMode
-                      ? 'rgba(155, 126, 222, 0.1)'
-                      : 'rgba(155, 126, 222, 0.08)',
-                    border: `2px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.25)'}`,
-                    backdropFilter: 'blur(10px)',
-                  }}
-                >
-                  <Box
-                    sx={{
-                      fontSize: { xs: '1.1rem', md: '1.3rem' },
-                      fontWeight: 400,
-                      textAlign: 'center',
-                      fontFamily: 'monospace',
-                      lineHeight: 2,
-                      color: aiColors.text,
-                    }}
-                  >
-                    <Box component="span" sx={{ color: aiColors.warmPurple, fontWeight: 600 }}>
-                      if
-                    </Box>
-                    <Box component="span" sx={{ color: aiColors.text, mx: 1 }}>
-                      {' '}(condition){' '}
-                    </Box>
-                    <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
-                      {'{'}
-                    </Box>
-                    <br />
-                    <Box component="span" sx={{ ml: 3, color: aiColors.softTeal }}>
-                      return value1;
-                    </Box>
-                    <br />
-                    <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
-                      {'}'}
-                    </Box>
-                    <Box component="span" sx={{ color: aiColors.warmPurple, fontWeight: 600, mx: 1 }}>
-                      else
-                    </Box>
-                    <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
-                      {'{'}
-                    </Box>
-                    <br />
-                    <Box component="span" sx={{ ml: 3, color: aiColors.softTeal }}>
-                      return value2;
-                    </Box>
-                    <br />
-                    <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
-                      {'}'}
-                    </Box>
-                  </Box>
-                </Box>
-              </Slide>
-
-              <Slide direction="up" in={currentSection === SECTIONS.SIMPLEST_FUNCTION} timeout={800} style={{ transitionDelay: '600ms' }}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: { xs: '1rem', md: '1.2rem' },
-                    lineHeight: 1.8,
-                    fontWeight: 300,
-                    textAlign: 'center',
-                    mt: 2,
-                  }}
-                >
-                  This simple pattern — <strong>if condition, then result A, else result B</strong> —
-                  is the foundation of all decision-making, from basic programming to neural networks.
-                </Typography>
-              </Slide>
-            </Box>
-          </Fade>
-
-          <Fade in={currentSection === SECTIONS.BUTTONS} timeout={800}>
-            <Box sx={{
-              position: 'absolute',
-              top: '50%',
-              left: '50%',
-              transform: 'translate(-50%, -50%)',
-            }}>
-              <GradientButton
-                size="medium"
-                onClick={() => navigate('/alchemist-ai/simple-functions')}
-                sx={{
-                  py: 1.2,
-                  px: 3,
-                  fontSize: '1.2rem',
-                  '& .MuiButton-startIcon': {
-                    WebkitTextFillColor: 'initial',
-                    color: 'initial',
-                  },
-                }}
-                startIcon={
-                  <Avatar
-                    sx={{
-                      backgroundColor: 'transparent',
-                      width: 32,
-                      height: 32
-                    }}>
-                    <Box component="span" sx={{ fontSize: '1.5rem', lineHeight: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      {'♀️'}
-                    </Box>
-                  </Avatar>}
-                endIcon={<ArrowForward sx={{ fontSize: '1.2rem', ml: 1 }} />}
-              >
-                Venus
-              </GradientButton>
-            </Box>
-          </Fade>
 
           {/* Navigation Controls - "Her" Style */}
           <Box sx={{
@@ -512,7 +348,7 @@ export const FunctionsDecisions = () => {
                 backdropFilter: 'blur(10px)',
                 border: `1px solid ${aiColors.warmPurple}40`,
                 color: aiColors.text,
-                fontSize: '0.9rem',
+                fontSize: '1rem',
                 fontWeight: 300,
                 letterSpacing: '0.05em',
                 boxShadow: `0 4px 20px ${aiColors.warmPurple}20`,
@@ -538,10 +374,11 @@ export const FunctionsDecisions = () => {
               onClick={handlePrevious}
               disabled={currentSection === 0}
               sx={{
+                fontSize: '1rem',
                 minWidth: '140px',
                 opacity: currentSection === 0 ? 0.4 : 1,
                 cursor: currentSection === 0 ? 'not-allowed' : 'pointer',
-                fontWeight: 300,
+                fontWeight: 800,
                 letterSpacing: '0.05em',
                 borderRadius: '20px',
                 px: 3,
@@ -583,10 +420,11 @@ export const FunctionsDecisions = () => {
               onClick={handleNext}
               disabled={currentSection >= totalSections - 1}
               sx={{
+                fontSize: '1rem',
                 minWidth: '140px',
                 opacity: currentSection >= totalSections - 1 ? 0.4 : 1,
                 cursor: currentSection >= totalSections - 1 ? 'not-allowed' : 'pointer',
-                fontWeight: 300,
+                fontWeight: 800,
                 letterSpacing: '0.05em',
                 borderRadius: '20px',
                 px: 3,
