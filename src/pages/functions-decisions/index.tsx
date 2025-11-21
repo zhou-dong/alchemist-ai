@@ -6,7 +6,7 @@ import {
   useTheme,
   Avatar,
 } from '@mui/material';
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GradientButton, GradientTypography } from '../../theme/theme';
 import { MercuryBackground } from './MercuryBackground';
@@ -14,94 +14,11 @@ import { FunctionFlowDiagram } from './FunctionFlowDiagram';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForward from '@mui/icons-material/ArrowForward';
+import { TypingText } from './TypingText';
+import { FunctionExamples } from './FunctionExamples';
 
 // "Her" style typing effect - smooth, warm, conversational
 // speed: higher value = faster typing (1.0 = default speed, 2.0 = 2x faster, 0.5 = 2x slower)
-const TypingText = ({ text, speed = 1.0, onComplete, shouldStart = true }: { text: string; speed?: number; onComplete?: () => void; shouldStart?: boolean }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const onCompleteRef = useRef(onComplete);
-  const currentIndexRef = useRef(0);
-
-  // Update ref when onComplete changes
-  useEffect(() => {
-    onCompleteRef.current = onComplete;
-  }, [onComplete]);
-
-  // Base delay in milliseconds
-  // speed 1.0 = 30ms (default), speed 2.0 = 15ms (2x faster), speed 0.5 = 60ms (2x slower)
-  const baseDelay = 30;
-  const delay = useMemo(() => {
-    const calculatedDelay = baseDelay / (speed || 1.0);
-    return Math.max(5, Math.min(100, Math.round(calculatedDelay)));
-  }, [speed]);
-
-  useEffect(() => {
-    // Clear any existing timeout
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
-    }
-
-    if (!shouldStart || !text) {
-      setDisplayedText('');
-      currentIndexRef.current = 0;
-      return;
-    }
-
-    // Reset when text changes
-    setDisplayedText('');
-    currentIndexRef.current = 0;
-
-    const typeNextChar = () => {
-      if (currentIndexRef.current < text.length) {
-        currentIndexRef.current += 1;
-        setDisplayedText(text.slice(0, currentIndexRef.current));
-        timeoutRef.current = setTimeout(typeNextChar, delay);
-      } else {
-        if (onCompleteRef.current) {
-          onCompleteRef.current();
-        }
-      }
-    };
-
-    // Start typing
-    timeoutRef.current = setTimeout(typeNextChar, delay);
-
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-        timeoutRef.current = null;
-      }
-    };
-  }, [text, delay, shouldStart]);
-
-  if (!shouldStart) return null;
-
-  return (
-    <span>
-      {displayedText}
-      {displayedText.length < text.length && (
-        <Box
-          component="span"
-          sx={{
-            display: 'inline-block',
-            width: '3px',
-            height: '1.2em',
-            bgcolor: 'currentColor',
-            ml: 0.5,
-            borderRadius: '2px',
-            animation: 'softBlink 1.2s ease-in-out infinite',
-            '@keyframes softBlink': {
-              '0%, 50%': { opacity: 0.8 },
-              '51%, 100%': { opacity: 0.3 },
-            },
-          }}
-        />
-      )}
-    </span>
-  );
-};
 
 export const FunctionsDecisions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -115,10 +32,12 @@ export const FunctionsDecisions = () => {
   const SECTIONS = {
     DIAGRAM: 0,
     SUBTITLE1: 1,
-    EXAMPLES: 2,
-    SUBTITLE2: 3,
-    GOAL: 4,
-    BUTTONS: 5,
+    EXAMPLES_TITLE: 2,
+    EXAMPLES: 3,
+    SUBTITLE2: 4,
+    GOAL: 5,
+    SIMPLEST_FUNCTION: 6,
+    BUTTONS: 7,
   };
 
   const totalSections = Object.keys(SECTIONS).length + 1;
@@ -321,195 +240,69 @@ export const FunctionsDecisions = () => {
               )}
             </Box>
           </Fade>
-          {/* Flow Diagram */}
-          <FunctionFlowDiagram
-            isVisible={currentSection === SECTIONS.DIAGRAM}
-            isDarkMode={isDarkMode}
-          />
 
-          {/* Function Examples Section */}
-          {currentSection === SECTIONS.EXAMPLES && (
+
+          <Fade in={currentSection === SECTIONS.EXAMPLES_TITLE} timeout={1000}>
             <Box
               sx={{
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
+                maxWidth: '700px',
                 width: '90%',
-                maxWidth: '800px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 3,
+                fontSize: { xs: '1.1rem', md: '1.3rem' },
+                lineHeight: 1.8,
+                p: { xs: 3, md: 4 },
+                borderRadius: '24px',
+                background: isDarkMode
+                  ? `linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(107, 207, 127, 0.1))`
+                  : `linear-gradient(135deg, rgba(94, 221, 214, 0.2), rgba(123, 223, 143, 0.15))`,
+                backdropFilter: 'blur(10px)',
+                border: `1px solid ${isDarkMode ? 'rgba(78, 205, 196, 0.3)' : 'rgba(94, 221, 214, 0.4)'}`,
+                boxShadow: `0 8px 32px ${isDarkMode ? 'rgba(78, 205, 196, 0.2)' : 'rgba(94, 221, 214, 0.25)'}`,
+                overflow: 'hidden',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '2px',
+                  background: `linear-gradient(90deg, ${aiColors.softTeal}, ${aiColors.softGreen}, ${aiColors.softCyan})`,
+                  backgroundSize: '200% 100%',
+                  animation: 'gradientShift 3s ease infinite',
+                },
               }}
             >
-              <Fade in={currentSection === SECTIONS.EXAMPLES} timeout={1000}>
-                <Box
+              {currentSection === SECTIONS.EXAMPLES_TITLE && (
+                <Typography
                   sx={{
-                    fontSize: { xs: '1.3rem', md: '1.6rem' },
-                    fontWeight: 300,
-                    textAlign: 'center',
-                    mb: 3,
-                    letterSpacing: '0.05em',
+                    fontWeight: 400,
+                    letterSpacing: '0.02em',
+                    fontSize: { xs: '1.1rem', md: '1.3rem' },
                   }}
                 >
-                  {currentSection === SECTIONS.EXAMPLES && (
-                    <TypingText
-                      text="Here are some examples of functions:"
-                      speed={0.5}
-                      onComplete={() => setTypingComplete(prev => ({ ...prev, [SECTIONS.EXAMPLES]: true }))}
-                    />
-                  )}
-                </Box>
-              </Fade>
-
-              {/* Example 1 */}
-              <Slide direction="right" in={currentSection === SECTIONS.EXAMPLES} timeout={800}>
-                <Box
-                  sx={{
-                    p: { xs: 2, md: 3 },
-                    borderRadius: '12px',
-                    backgroundColor: isDarkMode ? 'rgba(99, 102, 241, 0.05)' : 'rgba(99, 102, 241, 0.03)',
-                    transition: 'all 0.3s ease',
-                  }}
-                >
-                  <Box sx={{ mb: 2 }}>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontSize: { xs: '1rem', md: '1.2rem' },
-                        lineHeight: 1.8,
-                        fontWeight: 300,
-                        mb: 2,
-                      }}
-                    >
-                      {currentSection === SECTIONS.EXAMPLES && typingComplete[SECTIONS.EXAMPLES] && (
-                        <TypingText
-                          text="If it's raining (input), I take an umbrella (output)."
-                          speed={1.0}
-                        />
-                      )}
-                    </Typography>
-                    <Box
-                      sx={{
-                        fontSize: { xs: '1rem', md: '1.1rem' },
-                        fontWeight: 300,
-                        textAlign: 'center',
-                        p: 2.5,
-                        borderRadius: '16px',
-                        background: `linear-gradient(135deg, ${aiColors.warmOrange}20, ${aiColors.warmAmber}15)`,
-                        border: `1px solid ${aiColors.warmOrange}40`,
-                        boxShadow: `0 4px 20px ${aiColors.warmOrange}20`,
-                        letterSpacing: '0.03em',
-                      }}
-                    >
-                      <Box component="span" sx={{ color: aiColors.warmOrange, fontWeight: 400 }}>{'f('}</Box>
-                      <Box component="span" sx={{ color: aiColors.warmAmber, fontWeight: 400 }}>{'rain'}</Box>
-                      <Box component="span" sx={{ color: aiColors.warmOrange, fontWeight: 400 }}>{') = '}</Box>
-                      <Box component="span" sx={{ color: aiColors.softCyan, fontWeight: 400 }}>{'umbrella or not'}</Box>
-                    </Box>
-                  </Box>
-                </Box>
-              </Slide>
-
-              {/* Example 2 */}
-              <Slide direction="right" in={currentSection === SECTIONS.EXAMPLES} timeout={800} style={{ transitionDelay: '300ms' }}>
-                <Box
-                  sx={{
-                    p: { xs: 2, md: 3 },
-                    borderRadius: '12px',
-                    backgroundColor: isDarkMode ? 'rgba(99, 102, 241, 0.05)' : 'rgba(99, 102, 241, 0.03)',
-                    transition: 'all 0.3s ease',
-                  }}
-                >
-                  <Box sx={{ mb: 2 }}>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontSize: { xs: '1rem', md: '1.2rem' },
-                        lineHeight: 1.8,
-                        fontWeight: 300,
-                        mb: 2,
-                      }}
-                    >
-                      {currentSection === SECTIONS.EXAMPLES && typingComplete[SECTIONS.EXAMPLES] && (
-                        <TypingText
-                          text="If score > 60, pass, else fail."
-                          speed={1.0}
-                        />
-                      )}
-                    </Typography>
-                    <Box
-                      sx={{
-                        fontSize: { xs: '1rem', md: '1.1rem' },
-                        fontWeight: 300,
-                        textAlign: 'center',
-                        p: 2.5,
-                        borderRadius: '16px',
-                        background: `linear-gradient(135deg, ${aiColors.warmPurple}35, ${aiColors.softBlue}28)`,
-                        border: `2px solid ${aiColors.warmPurple}70`,
-                        boxShadow: `0 4px 20px ${aiColors.warmPurple}35`,
-                        letterSpacing: '0.03em',
-                      }}
-                    >
-                      <Box component="span" sx={{ color: isDarkMode ? '#7B5FCF' : '#6B4FBF', fontWeight: 600 }}>{'f('}</Box>
-                      <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>{'score'}</Box>
-                      <Box component="span" sx={{ color: isDarkMode ? '#7B5FCF' : '#6B4FBF', fontWeight: 600 }}>{') = '}</Box>
-                      <Box component="span" sx={{ color: isDarkMode ? '#E89D2D' : '#D88D1D', fontWeight: 600 }}>{'pass or fail'}</Box>
-                    </Box>
-                  </Box>
-                </Box>
-              </Slide>
-
-              {/* Example 3 */}
-              <Slide direction="right" in={currentSection === SECTIONS.EXAMPLES} timeout={800} style={{ transitionDelay: '600ms' }}>
-                <Box
-                  sx={{
-                    p: { xs: 2, md: 3 },
-                    borderRadius: '12px',
-                    backgroundColor: isDarkMode ? 'rgba(99, 102, 241, 0.05)' : 'rgba(99, 102, 241, 0.03)',
-                    transition: 'all 0.3s ease',
-                  }}
-                >
-                  <Box sx={{ mb: 2 }}>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontSize: { xs: '1rem', md: '1.2rem' },
-                        lineHeight: 1.8,
-                        fontWeight: 300,
-                        mb: 2,
-                      }}
-                    >
-                      {currentSection === SECTIONS.EXAMPLES && typingComplete[SECTIONS.EXAMPLES] && (
-                        <TypingText
-                          text="In sports: if distance < 3 meters, shoot; else pass."
-                          speed={1.0}
-                        />
-                      )}
-                    </Typography>
-                    <Box
-                      sx={{
-                        fontSize: { xs: '1rem', md: '1.1rem' },
-                        fontWeight: 300,
-                        textAlign: 'center',
-                        p: 2.5,
-                        borderRadius: '16px',
-                        background: `linear-gradient(135deg, ${aiColors.softTeal}20, ${aiColors.softGreen}15)`,
-                        border: `1px solid ${aiColors.softTeal}40`,
-                        boxShadow: `0 4px 20px ${aiColors.softTeal}20`,
-                        letterSpacing: '0.03em',
-                      }}
-                    >
-                      <Box component="span" sx={{ color: aiColors.softTeal, fontWeight: 400 }}>{'f('}</Box>
-                      <Box component="span" sx={{ color: aiColors.softGreen, fontWeight: 400 }}>{'distance'}</Box>
-                      <Box component="span" sx={{ color: aiColors.softTeal, fontWeight: 400 }}>{') = '}</Box>
-                      <Box component="span" sx={{ color: aiColors.warmAmber, fontWeight: 400 }}>{'action'}</Box>
-                    </Box>
-                  </Box>
-                </Box>
-              </Slide>
+                  <TypingText
+                    text="Here are some examples of functions:"
+                    speed={1.1}
+                    onComplete={() => setTypingComplete(prev => ({ ...prev, [SECTIONS.EXAMPLES_TITLE]: true }))}
+                  />
+                </Typography>
+              )}
             </Box>
-          )}
+          </Fade>
+
+          {/* Flow Diagram */}
+          <FunctionFlowDiagram
+            isVisible={currentSection === SECTIONS.DIAGRAM}
+            isDarkMode={isDarkMode}
+          />
+
+          <FunctionExamples
+            isVisible={currentSection === SECTIONS.EXAMPLES}
+            isDarkMode={isDarkMode}
+          />
 
           {/* Back to Roadmap Button - Always visible on left middle */}
           <Box sx={{
@@ -533,6 +326,130 @@ export const FunctionsDecisions = () => {
               Roadmap
             </GradientButton>
           </Box>
+
+          {/* Simplest Function Section */}
+          <Fade in={currentSection === SECTIONS.SIMPLEST_FUNCTION} timeout={1000}>
+            <Box
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '90%',
+                maxWidth: '800px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 3,
+                px: { xs: 2, md: 4 },
+              }}
+            >
+              <Slide direction="up" in={currentSection === SECTIONS.SIMPLEST_FUNCTION} timeout={800}>
+                <Box>
+                  <GradientTypography
+                    variant="h5"
+                    sx={{
+                      fontSize: { xs: '1.3rem', md: '1.6rem' },
+                      fontWeight: 700,
+                      mb: 2,
+                      textAlign: 'center',
+                    }}
+                  >
+                    The Simplest Function
+                  </GradientTypography>
+                </Box>
+              </Slide>
+
+              <Slide direction="up" in={currentSection === SECTIONS.SIMPLEST_FUNCTION} timeout={800} style={{ transitionDelay: '200ms' }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: { xs: '1rem', md: '1.2rem' },
+                    lineHeight: 1.8,
+                    fontWeight: 300,
+                    textAlign: 'center',
+                    mb: 2,
+                  }}
+                >
+                  The simplest function is: <strong>if...else</strong>
+                </Typography>
+              </Slide>
+
+              <Slide direction="up" in={currentSection === SECTIONS.SIMPLEST_FUNCTION} timeout={800} style={{ transitionDelay: '400ms' }}>
+                <Box
+                  sx={{
+                    width: '100%',
+                    p: { xs: 3, md: 4 },
+                    borderRadius: '20px',
+                    background: isDarkMode
+                      ? 'rgba(155, 126, 222, 0.1)'
+                      : 'rgba(155, 126, 222, 0.08)',
+                    border: `2px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.25)'}`,
+                    backdropFilter: 'blur(10px)',
+                  }}
+                >
+                  <Box
+                    sx={{
+                      fontSize: { xs: '1.1rem', md: '1.3rem' },
+                      fontWeight: 400,
+                      textAlign: 'center',
+                      fontFamily: 'monospace',
+                      lineHeight: 2,
+                      color: aiColors.text,
+                    }}
+                  >
+                    <Box component="span" sx={{ color: aiColors.warmPurple, fontWeight: 600 }}>
+                      if
+                    </Box>
+                    <Box component="span" sx={{ color: aiColors.text, mx: 1 }}>
+                      {' '}(condition){' '}
+                    </Box>
+                    <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
+                      {'{'}
+                    </Box>
+                    <br />
+                    <Box component="span" sx={{ ml: 3, color: aiColors.softTeal }}>
+                      return value1;
+                    </Box>
+                    <br />
+                    <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
+                      {'}'}
+                    </Box>
+                    <Box component="span" sx={{ color: aiColors.warmPurple, fontWeight: 600, mx: 1 }}>
+                      else
+                    </Box>
+                    <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
+                      {'{'}
+                    </Box>
+                    <br />
+                    <Box component="span" sx={{ ml: 3, color: aiColors.softTeal }}>
+                      return value2;
+                    </Box>
+                    <br />
+                    <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
+                      {'}'}
+                    </Box>
+                  </Box>
+                </Box>
+              </Slide>
+
+              <Slide direction="up" in={currentSection === SECTIONS.SIMPLEST_FUNCTION} timeout={800} style={{ transitionDelay: '600ms' }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: { xs: '1rem', md: '1.2rem' },
+                    lineHeight: 1.8,
+                    fontWeight: 300,
+                    textAlign: 'center',
+                    mt: 2,
+                  }}
+                >
+                  This simple pattern — <strong>if condition, then result A, else result B</strong> —
+                  is the foundation of all decision-making, from basic programming to neural networks.
+                </Typography>
+              </Slide>
+            </Box>
+          </Fade>
 
           <Fade in={currentSection === SECTIONS.BUTTONS} timeout={800}>
             <Box sx={{
