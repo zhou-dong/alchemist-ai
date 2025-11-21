@@ -49,7 +49,7 @@ const SimplestFunction = ({ isVisible, isDarkMode }: { isVisible: boolean, isDar
                 <Slide direction="up" in={isVisible} timeout={800} style={{ transitionDelay: '200ms' }}>
                     <Box
                         sx={{
-                            width: '60%',
+                            width: '400px',
                             p: { xs: 3, md: 4 },
                             borderRadius: '20px',
                             background: isDarkMode
@@ -72,15 +72,15 @@ const SimplestFunction = ({ isVisible, isDarkMode }: { isVisible: boolean, isDar
                             <Box component="span" sx={{ color: aiColors.warmPurple, fontWeight: 600 }}>
                                 if
                             </Box>
-                            <Box component="span" sx={{ color: aiColors.text, mx: 1 }}>
+                            <Box component="span" sx={{ color: aiColors.softTeal, fontWeight: 600, mx: 1 }}>
                                 {' '}(condition){' '}
                             </Box>
                             <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
                                 {'{'}
                             </Box>
                             <br />
-                            <Box component="span" sx={{ ml: 3, color: aiColors.softTeal }}>
-                                return value1;
+                            <Box component="span" sx={{ ml: 3, color: aiColors.softTeal, fontWeight: 600 }}>
+                                return a;
                             </Box>
                             <br />
                             <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
@@ -93,8 +93,8 @@ const SimplestFunction = ({ isVisible, isDarkMode }: { isVisible: boolean, isDar
                                 {'{'}
                             </Box>
                             <br />
-                            <Box component="span" sx={{ ml: 3, color: aiColors.softTeal }}>
-                                return value2;
+                            <Box component="span" sx={{ ml: 3, color: aiColors.softTeal, fontWeight: 600 }}>
+                                return b;
                             </Box>
                             <br />
                             <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
