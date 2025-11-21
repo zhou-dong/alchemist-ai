@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { PlayArrow, Pause, CenterFocusStrong, Lock, LockOpen, CheckCircle, ArrowForward } from '@mui/icons-material';
 import { useState, useEffect, useRef, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { GradientTypography, GlassIconButton, GradientButton } from '../../theme/theme';
 import { useColorMode } from '../../theme/ColorModeContext';
 import { Canvas, useFrame } from '@react-three/fiber';
@@ -451,15 +451,32 @@ export const Roadmap = () => {
   const controlsRef = useRef<any>(null);
   const { mode } = useColorMode();
   const isDarkMode = mode === 'dark';
+
   // Use the step status context for localStorage persistence
   // Steps are only unlocked through localStorage or manual updates, not via URL parameters
   const { learningPathData, updateStepStatus } = useStepStatusContext();
 
-  const activeStepIndex = learningPathData.findIndex(item => isUnlocked(item.status));
+
+  const [searchParams] = useSearchParams();
+
+  // Parse URL parameter for step index (for navigation/focus purposes only, not for unlocking)
+  const urlStepIndex = useMemo(() => {
+    const stepParam = searchParams.get('step');
+    if (stepParam !== null) {
+      const stepIndex = parseInt(stepParam, 10);
+      // Validate: must be a valid number between 0 and TOTAL_STEPS - 1
+      if (!isNaN(stepIndex) && stepIndex >= 0 && stepIndex < TOTAL_STEPS) {
+        return stepIndex;
+      }
+    }
+    return null;
+  }, [searchParams]);
+
+  const currentStepIndex = urlStepIndex ?? -1;
 
   // Determine which step the button should navigate to
   // Use the active step (first unlocked step)
-  const targetStepIndex = activeStepIndex;
+  const targetStepIndex = currentStepIndex;
 
   const handleNextStep = () => {
     if (targetStepIndex >= 0 && targetStepIndex < learningPathData.length) {
@@ -505,8 +522,8 @@ export const Roadmap = () => {
   };
 
   const centerActiveStep = () => {
-    if (controlsRef.current && activeStepIndex >= 0) {
-      const stepAngle = ((activeStepIndex / totalSteps) * 2 * Math.PI) - (Math.PI / 2);
+    if (controlsRef.current && currentStepIndex >= 0) {
+      const stepAngle = ((currentStepIndex / totalSteps) * 2 * Math.PI) - (Math.PI / 2);
       const targetRotation = -stepAngle;
 
       // Animate camera to center the active step
@@ -635,7 +652,7 @@ export const Roadmap = () => {
             />
 
             <Scene
-              activeStepIndex={activeStepIndex}
+              activeStepIndex={currentStepIndex}
               hoveredIndex={hoveredIndex}
               setHoveredIndex={setHoveredIndex}
               onStepClick={handleStepClick}
