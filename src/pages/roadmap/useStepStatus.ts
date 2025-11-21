@@ -1,7 +1,7 @@
 import { useMemo, useCallback } from 'react';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-import type { StepStatus } from './types';
-import { TOTAL_STEPS, type LearningPathItem } from './data';
+import type { StepStatus } from '../../data/types';
+import { TOTAL_STEPS, type LearningPathItem } from '../../data/planets';
 
 /**
  * Custom hook to manage step statuses with localStorage persistence

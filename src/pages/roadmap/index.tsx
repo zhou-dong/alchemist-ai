@@ -15,9 +15,9 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { Starfield } from './Starfield';
-import { isLocked, isUnlocked, isFinished, isAccessible } from './types';
-import type { StepStatus } from './types';
-import { getLearningPathData, TOTAL_STEPS, blendColors, type LearningPathItem } from './data';
+import { isLocked, isUnlocked, isFinished, isAccessible } from '../../data/types';
+import type { StepStatus } from '../../data/types';
+import { getLearningPathData, TOTAL_STEPS, blendColors, type LearningPathItem } from '../../data/planets';
 import { useStepStatus } from './useStepStatus';
 
 // 3D Spherical Roadmap Style using Three.js

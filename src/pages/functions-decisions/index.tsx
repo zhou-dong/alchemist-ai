@@ -3,15 +3,17 @@ import {
   Typography,
   Fade,
   Slide,
-  Grow,
   useTheme,
+  Avatar,
 } from '@mui/material';
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GradientButton, GradientTypography } from '../../theme/theme';
 import { MercuryBackground } from './MercuryBackground';
+import { FunctionFlowDiagram } from './FunctionFlowDiagram';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForward from '@mui/icons-material/ArrowForward';
 
 // "Her" style typing effect - smooth, warm, conversational
 // speed: higher value = faster typing (1.0 = default speed, 2.0 = 2x faster, 0.5 = 2x slower)
@@ -113,8 +115,8 @@ export const FunctionsDecisions = () => {
   const SECTIONS = {
     DIAGRAM: 0,
     SUBTITLE1: 1,
-    SUBTITLE2: 2,
-    EXAMPLES: 3,
+    EXAMPLES: 2,
+    SUBTITLE2: 3,
     GOAL: 4,
     BUTTONS: 5,
   };
@@ -320,336 +322,10 @@ export const FunctionsDecisions = () => {
             </Box>
           </Fade>
           {/* Flow Diagram */}
-          <Fade in={currentSection === SECTIONS.DIAGRAM} timeout={1000}>
-            <Box
-              sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '90%',
-                maxWidth: '800px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 2,
-                px: { xs: 2, md: 4 },
-              }}
-            >
-              {/* Top row: Circles and Arrows */}
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: { xs: 1, md: 2 },
-                  flexWrap: { xs: 'wrap', sm: 'nowrap' }
-                }}
-              >
-                {/* Input Circle */}
-                <Grow in={currentSection === SECTIONS.DIAGRAM} timeout={800} style={{ transitionDelay: '200ms' }}>
-                  <Box
-                    sx={{
-                      width: { xs: '120px', md: '140px' },
-                      height: { xs: '120px', md: '140px' },
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      borderRadius: '50%',
-                      border: `3px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.6)' : 'rgba(99, 102, 241, 0.5)'}`,
-                      textAlign: 'center',
-                      position: 'relative',
-                      px: 2,
-                      transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                      cursor: 'pointer',
-                      '&:hover': {
-                        transform: 'scale(1.15) rotate(5deg)',
-                        border: `4px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.9)' : 'rgba(99, 102, 241, 0.8)'}`,
-                        boxShadow: `0 0 20px ${isDarkMode ? 'rgba(139, 92, 246, 0.4)' : 'rgba(99, 102, 241, 0.3)'}`,
-                      },
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        inset: -2,
-                        borderRadius: '50%',
-                        padding: '2px',
-                        background: 'linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)',
-                        backgroundSize: '200% 200%',
-                        WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                        WebkitMaskComposite: 'xor',
-                        maskComposite: 'exclude',
-                        opacity: 0,
-                        transition: 'opacity 0.3s ease',
-                        zIndex: -1,
-                        animation: 'gradientShift 8s ease infinite',
-                      },
-                      '&:hover::before': {
-                        opacity: 0.6,
-                      },
-                    }}
-                  >
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        fontSize: { xs: '1rem', md: '1.2rem' },
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.5px',
-                      }}
-                    >
-                      Input
-                    </Typography>
-                  </Box>
-                </Grow>
-
-                {/* Arrow 1 */}
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexShrink: 0
-                  }}
-                >
-                  <svg
-                    width={60}
-                    height={20}
-                    viewBox="0 0 60 20"
-                    style={{ overflow: 'visible' }}
-                  >
-                    <defs>
-                      <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor={aiColors.warmPurple} />
-                        <stop offset="100%" stopColor={aiColors.softBlue} />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M 0 10 L 50 10 M 45 5 L 50 10 L 45 15"
-                      stroke="url(#arrowGradient)"
-                      strokeWidth="2.5"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Box>
-
-                {/* Function/Decision Circle */}
-                <Grow in={currentSection === SECTIONS.DIAGRAM} timeout={800} style={{ transitionDelay: '400ms' }}>
-                  <Box
-                    sx={{
-                      width: { xs: '220px', md: '280px' },
-                      height: { xs: '220px', md: '280px' },
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      borderRadius: '50%',
-                      border: `3px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.6)' : 'rgba(99, 102, 241, 0.5)'}`,
-                      textAlign: 'center',
-                      position: 'relative',
-                      px: 2,
-                      transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                      cursor: 'pointer',
-                      '&:hover': {
-                        transform: 'scale(1.2) rotate(-5deg)',
-                        border: `4px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.9)' : 'rgba(99, 102, 241, 0.8)'}`,
-                        boxShadow: `0 0 30px ${isDarkMode ? 'rgba(139, 92, 246, 0.5)' : 'rgba(99, 102, 241, 0.4)'}`,
-                      },
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        inset: -2,
-                        borderRadius: '50%',
-                        padding: '2px',
-                        background: 'linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)',
-                        backgroundSize: '200% 200%',
-                        WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                        WebkitMaskComposite: 'xor',
-                        maskComposite: 'exclude',
-                        opacity: 0,
-                        transition: 'opacity 0.3s ease',
-                        zIndex: -1,
-                        animation: 'gradientShift 8s ease infinite',
-                      },
-                      '&:hover::before': {
-                        opacity: 0.8,
-                      },
-                    }}
-                  >
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        fontSize: { xs: '1rem', md: '1.2rem' },
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.5px',
-                      }}
-                    >
-                      Decision
-                    </Typography>
-                  </Box>
-                </Grow>
-
-                {/* Arrow 2 */}
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexShrink: 0
-                  }}
-                >
-                  <svg
-                    width={60}
-                    height={20}
-                    viewBox="0 0 60 20"
-                    style={{ overflow: 'visible' }}
-                  >
-                    <path
-                      d="M 0 10 L 50 10 M 45 5 L 50 10 L 45 15"
-                      stroke="url(#arrowGradient)"
-                      strokeWidth="2.5"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Box>
-
-                {/* Output Circle */}
-                <Grow in={currentSection === SECTIONS.DIAGRAM} timeout={800} style={{ transitionDelay: '600ms' }}>
-                  <Box
-                    sx={{
-                      width: { xs: '120px', md: '140px' },
-                      height: { xs: '120px', md: '140px' },
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      borderRadius: '50%',
-                      border: `3px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.6)' : 'rgba(99, 102, 241, 0.5)'}`,
-                      textAlign: 'center',
-                      position: 'relative',
-                      px: 2,
-                      transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-                      cursor: 'pointer',
-                      '&:hover': {
-                        transform: 'scale(1.15) rotate(5deg)',
-                        border: `4px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.9)' : 'rgba(99, 102, 241, 0.8)'}`,
-                        boxShadow: `0 0 20px ${isDarkMode ? 'rgba(139, 92, 246, 0.4)' : 'rgba(99, 102, 241, 0.3)'}`,
-                      },
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        inset: -2,
-                        borderRadius: '50%',
-                        padding: '2px',
-                        background: 'linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)',
-                        backgroundSize: '200% 200%',
-                        WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                        WebkitMaskComposite: 'xor',
-                        maskComposite: 'exclude',
-                        opacity: 0,
-                        transition: 'opacity 0.3s ease',
-                        zIndex: -1,
-                        animation: 'gradientShift 8s ease infinite',
-                      },
-                      '&:hover::before': {
-                        opacity: 0.6,
-                      },
-                    }}
-                  >
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        fontSize: { xs: '1rem', md: '1.2rem' },
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.5px',
-                      }}
-                    >
-                      Output
-                    </Typography>
-                  </Box>
-                </Grow>
-              </Box>
-
-              {/* Bottom row: Example Text Labels */}
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  justifyContent: 'center',
-                  gap: { xs: 1, md: 2 },
-                  flexWrap: { xs: 'wrap', sm: 'nowrap' },
-                  mt: 1
-                }}
-              >
-                <Box
-                  sx={{
-                    width: { xs: '120px', md: '140px' },
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      fontSize: { xs: '1rem', md: '1.2rem' },
-                      fontFamily: 'monospace',
-                      textAlign: 'center',
-                    }}
-                  >
-                    x
-                  </Typography>
-                </Box>
-
-                {/* Spacer for arrow */}
-                <Box sx={{ width: { xs: '60px', md: '60px' }, flexShrink: 0 }} />
-
-                <Box
-                  sx={{
-                    width: { xs: '220px', md: '280px' },
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      fontSize: { xs: '1rem', md: '1.2rem' },
-                      fontStyle: 'italic',
-                      textAlign: 'center',
-                    }}
-                  >
-                    f(x)
-                  </Typography>
-                </Box>
-
-                {/* Spacer for arrow */}
-                <Box sx={{ width: { xs: '60px', md: '60px' }, flexShrink: 0 }} />
-
-                <Box
-                  sx={{
-                    width: { xs: '120px', md: '140px' },
-                    display: 'flex',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      fontSize: { xs: '1rem', md: '1.2rem' },
-                      fontFamily: 'monospace',
-                      textAlign: 'center',
-                    }}
-                  >
-                    y
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Fade>
+          <FunctionFlowDiagram
+            isVisible={currentSection === SECTIONS.DIAGRAM}
+            isDarkMode={isDarkMode}
+          />
 
           {/* Function Examples Section */}
           {currentSection === SECTIONS.EXAMPLES && (
@@ -672,14 +348,13 @@ export const FunctionsDecisions = () => {
                     fontSize: { xs: '1.3rem', md: '1.6rem' },
                     fontWeight: 300,
                     textAlign: 'center',
-                    color: aiColors.warmPurple,
                     mb: 3,
                     letterSpacing: '0.05em',
                   }}
                 >
                   {currentSection === SECTIONS.EXAMPLES && (
                     <TypingText
-                      text="Examples"
+                      text="Here are some examples of functions:"
                       speed={0.5}
                       onComplete={() => setTypingComplete(prev => ({ ...prev, [SECTIONS.EXAMPLES]: true }))}
                     />
@@ -704,7 +379,6 @@ export const FunctionsDecisions = () => {
                         fontSize: { xs: '1rem', md: '1.2rem' },
                         lineHeight: 1.8,
                         fontWeight: 300,
-                        color: aiColors.text,
                         mb: 2,
                       }}
                     >
@@ -722,16 +396,16 @@ export const FunctionsDecisions = () => {
                         textAlign: 'center',
                         p: 2.5,
                         borderRadius: '16px',
-                        background: `linear-gradient(135deg, ${aiColors.warmPurple}20, ${aiColors.softBlue}15)`,
-                        border: `1px solid ${aiColors.warmPurple}40`,
-                        boxShadow: `0 4px 20px ${aiColors.warmPurple}20`,
+                        background: `linear-gradient(135deg, ${aiColors.warmOrange}20, ${aiColors.warmAmber}15)`,
+                        border: `1px solid ${aiColors.warmOrange}40`,
+                        boxShadow: `0 4px 20px ${aiColors.warmOrange}20`,
                         letterSpacing: '0.03em',
                       }}
                     >
-                      <Box component="span" sx={{ color: aiColors.warmPurple, fontWeight: 400 }}>{'f('}</Box>
-                      <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 400 }}>{'rain'}</Box>
-                      <Box component="span" sx={{ color: aiColors.warmPurple, fontWeight: 400 }}>{') = '}</Box>
-                      <Box component="span" sx={{ color: aiColors.warmAmber, fontWeight: 400 }}>{'umbrella'}</Box>
+                      <Box component="span" sx={{ color: aiColors.warmOrange, fontWeight: 400 }}>{'f('}</Box>
+                      <Box component="span" sx={{ color: aiColors.warmAmber, fontWeight: 400 }}>{'rain'}</Box>
+                      <Box component="span" sx={{ color: aiColors.warmOrange, fontWeight: 400 }}>{') = '}</Box>
+                      <Box component="span" sx={{ color: aiColors.softCyan, fontWeight: 400 }}>{'umbrella'}</Box>
                     </Box>
                   </Box>
                 </Box>
@@ -754,7 +428,6 @@ export const FunctionsDecisions = () => {
                         fontSize: { xs: '1rem', md: '1.2rem' },
                         lineHeight: 1.8,
                         fontWeight: 300,
-                        color: aiColors.text,
                         mb: 2,
                       }}
                     >
@@ -772,16 +445,16 @@ export const FunctionsDecisions = () => {
                         textAlign: 'center',
                         p: 2.5,
                         borderRadius: '16px',
-                        background: `linear-gradient(135deg, ${aiColors.softTeal}20, ${aiColors.softGreen}15)`,
-                        border: `1px solid ${aiColors.softTeal}40`,
-                        boxShadow: `0 4px 20px ${aiColors.softTeal}20`,
+                        background: `linear-gradient(135deg, ${aiColors.warmPurple}35, ${aiColors.softBlue}28)`,
+                        border: `2px solid ${aiColors.warmPurple}70`,
+                        boxShadow: `0 4px 20px ${aiColors.warmPurple}35`,
                         letterSpacing: '0.03em',
                       }}
                     >
-                      <Box component="span" sx={{ color: aiColors.softTeal, fontWeight: 400 }}>{'f('}</Box>
-                      <Box component="span" sx={{ color: aiColors.softGreen, fontWeight: 400 }}>{'score'}</Box>
-                      <Box component="span" sx={{ color: aiColors.softTeal, fontWeight: 400 }}>{') = '}</Box>
-                      <Box component="span" sx={{ color: aiColors.warmAmber, fontWeight: 400 }}>{'pass or fail'}</Box>
+                      <Box component="span" sx={{ color: isDarkMode ? '#7B5FCF' : '#6B4FBF', fontWeight: 600 }}>{'f('}</Box>
+                      <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>{'score'}</Box>
+                      <Box component="span" sx={{ color: isDarkMode ? '#7B5FCF' : '#6B4FBF', fontWeight: 600 }}>{') = '}</Box>
+                      <Box component="span" sx={{ color: isDarkMode ? '#E89D2D' : '#D88D1D', fontWeight: 600 }}>{'pass or fail'}</Box>
                     </Box>
                   </Box>
                 </Box>
@@ -804,7 +477,6 @@ export const FunctionsDecisions = () => {
                         fontSize: { xs: '1rem', md: '1.2rem' },
                         lineHeight: 1.8,
                         fontWeight: 300,
-                        color: aiColors.text,
                         mb: 2,
                       }}
                     >
@@ -822,16 +494,16 @@ export const FunctionsDecisions = () => {
                         textAlign: 'center',
                         p: 2.5,
                         borderRadius: '16px',
-                        background: `linear-gradient(135deg, ${aiColors.warmOrange}20, ${aiColors.warmAmber}15)`,
-                        border: `1px solid ${aiColors.warmOrange}40`,
-                        boxShadow: `0 4px 20px ${aiColors.warmOrange}20`,
+                        background: `linear-gradient(135deg, ${aiColors.softTeal}20, ${aiColors.softGreen}15)`,
+                        border: `1px solid ${aiColors.softTeal}40`,
+                        boxShadow: `0 4px 20px ${aiColors.softTeal}20`,
                         letterSpacing: '0.03em',
                       }}
                     >
-                      <Box component="span" sx={{ color: aiColors.warmOrange, fontWeight: 400 }}>{'f('}</Box>
-                      <Box component="span" sx={{ color: aiColors.warmAmber, fontWeight: 400 }}>{'distance'}</Box>
-                      <Box component="span" sx={{ color: aiColors.warmOrange, fontWeight: 400 }}>{') = '}</Box>
-                      <Box component="span" sx={{ color: aiColors.softCyan, fontWeight: 400 }}>{'action'}</Box>
+                      <Box component="span" sx={{ color: aiColors.softTeal, fontWeight: 400 }}>{'f('}</Box>
+                      <Box component="span" sx={{ color: aiColors.softGreen, fontWeight: 400 }}>{'distance'}</Box>
+                      <Box component="span" sx={{ color: aiColors.softTeal, fontWeight: 400 }}>{') = '}</Box>
+                      <Box component="span" sx={{ color: aiColors.warmAmber, fontWeight: 400 }}>{'action'}</Box>
                     </Box>
                   </Box>
                 </Box>
@@ -839,77 +511,62 @@ export const FunctionsDecisions = () => {
             </Box>
           )}
 
+          {/* Back to Roadmap Button - Always visible on left middle */}
+          <Box sx={{
+            position: 'fixed',
+            top: '50%',
+            left: { xs: 16, md: 32 },
+            transform: 'translateY(-50%)',
+            zIndex: 10,
+          }}>
+            <GradientButton
+              size="medium"
+              onClick={() => navigate('/alchemist-ai/roadmap?step=0')}
+              startIcon={<ArrowBackIcon />}
+              sx={{
+                px: 3,
+                py: 1.2,
+                fontSize: '1.2rem',
+
+              }}
+            >
+              Roadmap
+            </GradientButton>
+          </Box>
+
           <Fade in={currentSection === SECTIONS.BUTTONS} timeout={800}>
             <Box sx={{
               position: 'absolute',
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)',
-              display: 'flex',
-              gap: 2,
-              flexDirection: { xs: 'column', sm: 'row' },
             }}>
-              <GradientButton
-                size="medium"
-                onClick={() => navigate('/alchemist-ai/roadmap?step=0')}
-                sx={{
-                  px: 4,
-                  py: 1.5,
-                  fontSize: '1.2rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.02em',
-                  background: isDarkMode
-                    ? 'rgba(155, 126, 222, 0.15)'
-                    : 'rgba(155, 126, 222, 0.1)',
-                  backdropFilter: 'blur(10px)',
-                  border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.2)'}`,
-                  backgroundClip: 'border-box',
-                  WebkitBackgroundClip: 'border-box',
-                  color: theme.palette.text.primary,
-                  WebkitTextFillColor: theme.palette.text.primary,
-                  '&:hover': {
-                    background: isDarkMode
-                      ? 'rgba(155, 126, 222, 0.25)'
-                      : 'rgba(155, 126, 222, 0.15)',
-                    backgroundClip: 'border-box',
-                    WebkitBackgroundClip: 'border-box',
-                    color: theme.palette.text.primary,
-                    WebkitTextFillColor: theme.palette.text.primary,
-                  },
-                }}
-              >
-                Back to Roadmap
-              </GradientButton>
               <GradientButton
                 size="medium"
                 onClick={() => navigate('/alchemist-ai/simple-functions')}
                 sx={{
-                  px: 4,
-                  py: 1.5,
+                  py: 1.2,
+                  px: 3,
                   fontSize: '1.2rem',
-                  fontWeight: 700,
-                  letterSpacing: '0.02em',
-                  background: isDarkMode
-                    ? 'rgba(155, 126, 222, 0.15)'
-                    : 'rgba(155, 126, 222, 0.1)',
-                  backdropFilter: 'blur(10px)',
-                  border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.2)'}`,
-                  backgroundClip: 'border-box',
-                  WebkitBackgroundClip: 'border-box',
-                  color: theme.palette.text.primary,
-                  WebkitTextFillColor: theme.palette.text.primary,
-                  '&:hover': {
-                    background: isDarkMode
-                      ? 'rgba(155, 126, 222, 0.25)'
-                      : 'rgba(155, 126, 222, 0.15)',
-                    backgroundClip: 'border-box',
-                    WebkitBackgroundClip: 'border-box',
-                    color: theme.palette.text.primary,
-                    WebkitTextFillColor: theme.palette.text.primary,
+                  '& .MuiButton-startIcon': {
+                    WebkitTextFillColor: 'initial',
+                    color: 'initial',
                   },
                 }}
+                startIcon={
+                  <Avatar
+                    sx={{
+                      backgroundColor: 'transparent',
+                      width: 32,
+                      height: 32
+                    }}>
+                    <Box component="span" sx={{ fontSize: '1.5rem', lineHeight: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      {'♀️'}
+                    </Box>
+                  </Avatar>}
+                endIcon={<ArrowForward sx={{ fontSize: '1.2rem', ml: 1 }} />}
               >
-                Next Step →
+                Venus
               </GradientButton>
             </Box>
           </Fade>
