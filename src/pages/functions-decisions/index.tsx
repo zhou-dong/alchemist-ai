@@ -369,7 +369,7 @@ export const FunctionsDecisions = () => {
               <Box
                 component="span"
                 sx={{
-                  color: aiColors.softTeal,
+                  color: theme.palette.text.primary,
                   fontSize: '1.2rem',
                   animation: 'pulse 2s ease-in-out infinite',
                   '@keyframes pulse': {
@@ -383,7 +383,7 @@ export const FunctionsDecisions = () => {
               <Box
                 component="span"
                 sx={{
-                  color: aiColors.softTeal,
+                  color: theme.palette.text.primary,
                   fontSize: '1.2rem',
                   fontWeight: 300,
                   letterSpacing: '0.05em',
@@ -397,33 +397,10 @@ export const FunctionsDecisions = () => {
               disabled={currentSection === 0}
               sx={{
                 fontSize: '1rem',
-                minWidth: '140px',
-                opacity: currentSection === 0 ? 0.4 : 1,
-                cursor: currentSection === 0 ? 'not-allowed' : 'pointer',
-                fontWeight: 800,
+                fontWeight: 700,
                 letterSpacing: '0.05em',
-                px: 3,
+                px: 4,
                 py: 1.5,
-                background: 'transparent',
-                backdropFilter: 'blur(10px)',
-                backgroundClip: 'border-box',
-                WebkitBackgroundClip: 'border-box',
-                color: theme.palette.text.primary,
-                WebkitTextFillColor: theme.palette.text.primary,
-                '&:hover': {
-                  background: 'transparent',
-                  backgroundClip: 'border-box',
-                  WebkitBackgroundClip: 'border-box',
-                  color: theme.palette.text.primary,
-                  WebkitTextFillColor: theme.palette.text.primary,
-                },
-                '&:disabled': {
-                  background: 'transparent',
-                  backgroundClip: 'border-box',
-                  WebkitBackgroundClip: 'border-box',
-                  color: theme.palette.text.primary,
-                  WebkitTextFillColor: theme.palette.text.primary,
-                },
               }}
               startIcon={<ArrowBackIcon />}
             >
@@ -434,33 +411,10 @@ export const FunctionsDecisions = () => {
               disabled={currentSection >= totalSections - 1}
               sx={{
                 fontSize: '1rem',
-                minWidth: '140px',
-                opacity: currentSection >= totalSections - 1 ? 0.4 : 1,
-                cursor: currentSection >= totalSections - 1 ? 'not-allowed' : 'pointer',
-                fontWeight: 800,
+                fontWeight: 700,
                 letterSpacing: '0.05em',
-                px: 3,
+                px: 4,
                 py: 1.5,
-                background: 'transparent',
-                backdropFilter: 'blur(10px)',
-                backgroundClip: 'border-box',
-                WebkitBackgroundClip: 'border-box',
-                color: theme.palette.text.primary,
-                WebkitTextFillColor: theme.palette.text.primary,
-                '&:hover': {
-                  background: 'transparent',
-                  backgroundClip: 'border-box',
-                  WebkitBackgroundClip: 'border-box',
-                  color: theme.palette.text.primary,
-                  WebkitTextFillColor: theme.palette.text.primary,
-                },
-                '&:disabled': {
-                  background: 'transparent',
-                  backgroundClip: 'border-box',
-                  WebkitBackgroundClip: 'border-box',
-                  color: aiColors.textSecondary,
-                  WebkitTextFillColor: aiColors.textSecondary,
-                },
               }}
               endIcon={<ArrowForwardIcon />}
             >
