@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { GradientTypography, GradientButton } from '../../theme/theme';
 import { FloatingParticles, generateParticles, type Particle } from './FloatingParticles';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
+import { isLocked } from '../../data/types';
 
 const DisplayFloatingParticles = () => {
   const particleCount = 60;
@@ -14,10 +15,13 @@ const DisplayFloatingParticles = () => {
 export const Home = () => {
   const navigate = useNavigate();
   const [isLoaded, setIsLoaded] = useState(false);
-  const { updateStepStatus } = useStepStatusContext();
+  const { learningPathData, updateStepStatus } = useStepStatusContext();
 
   useEffect(() => {
-    updateStepStatus(0, 'unlocked'); // Unlock the first step for new users
+    if (isLocked(learningPathData[0].status)) {
+      updateStepStatus(0, 'unlocked'); // Unlock the first step for new users
+    }
+
     const timer = setTimeout(() => setIsLoaded(true), 500);
     return () => clearTimeout(timer);
   }, []);
