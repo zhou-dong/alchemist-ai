@@ -405,7 +405,7 @@ export const FunctionsDecisions = () => {
                       <Box component="span" sx={{ color: aiColors.warmOrange, fontWeight: 400 }}>{'f('}</Box>
                       <Box component="span" sx={{ color: aiColors.warmAmber, fontWeight: 400 }}>{'rain'}</Box>
                       <Box component="span" sx={{ color: aiColors.warmOrange, fontWeight: 400 }}>{') = '}</Box>
-                      <Box component="span" sx={{ color: aiColors.softCyan, fontWeight: 400 }}>{'umbrella'}</Box>
+                      <Box component="span" sx={{ color: aiColors.softCyan, fontWeight: 400 }}>{'umbrella or not'}</Box>
                     </Box>
                   </Box>
                 </Box>
