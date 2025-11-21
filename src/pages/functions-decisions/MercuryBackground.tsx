@@ -8,7 +8,7 @@ export const MercuryBackground = () => {
 
   // Theme-aware colors for Mercury surface features
   const craterColors = {
-    border: isDarkMode 
+    border: isDarkMode
       ? { large: 'rgba(200, 180, 160, 0.35)', medium: 'rgba(200, 180, 160, 0.3)', small: 'rgba(200, 180, 160, 0.25)' }
       : { large: 'rgba(200, 180, 160, 0.2)', medium: 'rgba(200, 180, 160, 0.18)', small: 'rgba(200, 180, 160, 0.15)' },
     shadow: isDarkMode
@@ -35,22 +35,6 @@ export const MercuryBackground = () => {
     highlightOpacity: isDarkMode ? 0.65 : 0.4,
     edgeShadowOpacity: isDarkMode ? 0.45 : 0.25,
   };
-
-  const textureColors = isDarkMode
-    ? {
-        color1: 'rgba(200, 180, 160, 0.2)',
-        color2: 'rgba(220, 200, 180, 0.15)',
-        color3: 'rgba(200, 180, 160, 0.15)',
-        color4: 'rgba(220, 200, 180, 0.12)',
-        color5: 'rgba(190, 170, 150, 0.12)',
-      }
-    : {
-        color1: 'rgba(200, 180, 160, 0.08)',
-        color2: 'rgba(220, 200, 180, 0.06)',
-        color3: 'rgba(200, 180, 160, 0.06)',
-        color4: 'rgba(220, 200, 180, 0.05)',
-        color5: 'rgba(190, 170, 150, 0.05)',
-      };
 
   // Generate stars for the dark sky
   const stars = useMemo(() => {
@@ -109,49 +93,6 @@ export const MercuryBackground = () => {
               #3a3a2f 60%, 
               #5a5a4f 80%, 
               #C8B89C 100%)`,
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          // Subtle light sources and Mercury surface glow blending from bottom
-          background: isDarkMode
-            ? `
-              radial-gradient(ellipse at 50% 80%, rgba(200, 180, 160, 0.25) 0%, transparent 50%),
-              radial-gradient(ellipse at 30% 70%, rgba(245, 158, 11, 0.15) 0%, transparent 40%),
-              radial-gradient(ellipse at 70% 75%, rgba(200, 180, 160, 0.2) 0%, transparent 45%)
-            `
-            : `
-              radial-gradient(ellipse at 50% 80%, rgba(200, 180, 160, 0.15) 0%, transparent 50%),
-              radial-gradient(ellipse at 30% 70%, rgba(245, 158, 11, 0.08) 0%, transparent 40%),
-              radial-gradient(ellipse at 70% 75%, rgba(212, 196, 168, 0.12) 0%, transparent 45%)
-            `,
-          zIndex: 0.2,
-          animation: 'gradientShift 12s ease-in-out infinite'
-        },
-        '&::after': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          // Additional Mercury surface texture blending
-          background: isDarkMode
-            ? `
-              radial-gradient(ellipse at 40% 85%, rgba(200, 180, 160, 0.2) 0%, transparent 35%),
-              radial-gradient(ellipse at 60% 90%, rgba(220, 200, 180, 0.18) 0%, transparent 35%)
-            `
-            : `
-              radial-gradient(ellipse at 40% 85%, rgba(212, 196, 168, 0.12) 0%, transparent 35%),
-              radial-gradient(ellipse at 60% 90%, rgba(220, 200, 180, 0.1) 0%, transparent 35%)
-            `,
-          zIndex: 0.1,
-          opacity: isDarkMode ? 0.3 : 0.2,
-          animation: 'gradientShift 15s ease-in-out infinite reverse'
-        }
       }}
     >
       {/* Stars in the dark sky */}
@@ -167,7 +108,7 @@ export const MercuryBackground = () => {
             backgroundColor: isDarkMode ? '#FFFFFF' : '#E0E0E0',
             borderRadius: '50%',
             opacity: star.opacity,
-            boxShadow: isDarkMode 
+            boxShadow: isDarkMode
               ? `0 0 ${star.size * 2}px rgba(255, 255, 255, 0.6)`
               : `0 0 ${star.size * 2}px rgba(224, 224, 224, 0.4)`,
             animation: `starTwinkle ${star.animationDuration}s ease-in-out infinite`,
@@ -692,29 +633,6 @@ export const MercuryBackground = () => {
           opacity={scarpColors.edgeShadowOpacity}
         />
       </svg>
-
-      {/* Additional Texture Layer - Small surface variations */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: `
-            radial-gradient(circle at 25% 75%, ${textureColors.color1} 0%, transparent 35%),
-            radial-gradient(circle at 75% 85%, ${textureColors.color2} 0%, transparent 35%),
-            radial-gradient(circle at 45% 90%, ${textureColors.color3} 0%, transparent 30%),
-            radial-gradient(circle at 15% 80%, ${textureColors.color4} 0%, transparent 25%),
-            radial-gradient(circle at 85% 75%, ${textureColors.color3} 0%, transparent 30%),
-            radial-gradient(circle at 60% 70%, ${textureColors.color4} 0%, transparent 25%),
-            radial-gradient(circle at 35% 85%, ${textureColors.color5} 0%, transparent 20%),
-            radial-gradient(circle at 65% 90%, ${textureColors.color1} 0%, transparent 22%)
-          `,
-          zIndex: 0.4,
-          opacity: isDarkMode ? 0.7 : 0.5,
-        }}
-      />
     </Box>
   );
 };
