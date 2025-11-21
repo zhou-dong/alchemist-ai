@@ -15,7 +15,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { Starfield } from './Starfield';
-import { isLocked, isUnlocked, isFinished, isAccessible } from '../../data/types';
+import { isLocked, isFinished, isAccessible } from '../../data/types';
 import type { StepStatus } from '../../data/types';
 import { TOTAL_STEPS, blendColors, type LearningPathItem } from '../../data/planets';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
@@ -456,11 +456,10 @@ export const Roadmap = () => {
   // Steps are only unlocked through localStorage or manual updates, not via URL parameters
   const { learningPathData, updateStepStatus } = useStepStatusContext();
 
-
   const [searchParams] = useSearchParams();
 
-  // Parse URL parameter for step index (for navigation/focus purposes only, not for unlocking)
-  const urlStepIndex = useMemo(() => {
+  // Parse URL parameter for target step index
+  const urlStepIndex: number | null = useMemo(() => {
     const stepParam = searchParams.get('step');
     if (stepParam !== null) {
       const stepIndex = parseInt(stepParam, 10);
@@ -472,11 +471,7 @@ export const Roadmap = () => {
     return null;
   }, [searchParams]);
 
-  const currentStepIndex = urlStepIndex ?? -1;
-
-  // Determine which step the button should navigate to
-  // Use the active step (first unlocked step)
-  const targetStepIndex = currentStepIndex;
+  const targetStepIndex: number = urlStepIndex ?? -1;
 
   const handleNextStep = () => {
     if (targetStepIndex >= 0 && targetStepIndex < learningPathData.length) {
@@ -522,8 +517,8 @@ export const Roadmap = () => {
   };
 
   const centerActiveStep = () => {
-    if (controlsRef.current && currentStepIndex >= 0) {
-      const stepAngle = ((currentStepIndex / totalSteps) * 2 * Math.PI) - (Math.PI / 2);
+    if (controlsRef.current && targetStepIndex >= 0) {
+      const stepAngle = ((targetStepIndex / totalSteps) * 2 * Math.PI) - (Math.PI / 2);
       const targetRotation = -stepAngle;
 
       // Animate camera to center the active step
@@ -652,7 +647,7 @@ export const Roadmap = () => {
             />
 
             <Scene
-              activeStepIndex={currentStepIndex}
+              activeStepIndex={targetStepIndex}
               hoveredIndex={hoveredIndex}
               setHoveredIndex={setHoveredIndex}
               onStepClick={handleStepClick}
@@ -919,7 +914,12 @@ export const Roadmap = () => {
                     </Box>
                   </Avatar>
                 }
-                endIcon={<ArrowForward sx={{ fontSize: '1.2rem', ml: 1 }} />}
+                endIcon={
+                  <ArrowForward sx={{ fontSize: '1.2rem', ml: 1 }} />
+                }
+                disabled={
+                  targetStepIndex < 0 || targetStepIndex >= learningPathData.length || isLocked(learningPathData[targetStepIndex].status)
+                }
               >
                 {learningPathData[targetStepIndex].planet.name}
               </GradientButton>
