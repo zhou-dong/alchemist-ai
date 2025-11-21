@@ -7,6 +7,7 @@ import { useColorMode } from '../theme/ColorModeContext';
 interface StepStatusContextType {
     stepStatuses: Array<StepStatus | undefined>;
     updateStepStatus: (index: number, newStatus: StepStatus) => void;
+    updateMultipleStepStatuses: (updates: Array<{ index: number; status: StepStatus }>) => void;
     getStepStatus: (index: number) => StepStatus | undefined;
     learningPathData: LearningPathItem[];
 }
@@ -82,6 +83,22 @@ export const StepStatusProvider: React.FC<StepStatusProviderProps> = ({ children
         });
     }, [setSavedStatuses]);
 
+    // Helper function to update multiple step statuses in a single state update
+    // This prevents React batching from overwriting updates when called multiple times
+    const updateMultipleStepStatuses = useCallback((updates: Array<{ index: number; status: StepStatus }>) => {
+        setSavedStatuses(prev => {
+            const updated = [...prev];
+            updates.forEach(({ index, status }) => {
+                if (index >= 0 && index < TOTAL_STEPS) {
+                    updated[index] = status;
+                } else {
+                    console.warn(`Invalid step index: ${index}. Must be between 0 and ${TOTAL_STEPS - 1}`);
+                }
+            });
+            return updated;
+        });
+    }, [setSavedStatuses]);
+
     // Helper function to get status for a specific step
     const getStepStatus = useCallback((index: number): StepStatus | undefined => {
         if (index < 0 || index >= TOTAL_STEPS) {
@@ -95,10 +112,11 @@ export const StepStatusProvider: React.FC<StepStatusProviderProps> = ({ children
         () => ({
             stepStatuses: savedStatuses,
             updateStepStatus,
+            updateMultipleStepStatuses,
             getStepStatus,
             learningPathData,
         }),
-        [savedStatuses, updateStepStatus, getStepStatus, learningPathData]
+        [savedStatuses, updateStepStatus, updateMultipleStepStatuses, getStepStatus, learningPathData]
     );
 
     return (
