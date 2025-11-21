@@ -2,7 +2,7 @@ import { type PaletteMode, type PaletteOptions, type ThemeOptions, Typography, B
 import { styled } from '@mui/material/styles';
 
 // Styled component for gradient buttons
-export const GradientButton = styled(Button)(({ }) => ({
+export const GradientButton = styled(Button)(({ theme }) => ({
     background: 'transparent',
     borderRadius: "8px",
     textTransform: 'none',
@@ -40,6 +40,15 @@ export const GradientButton = styled(Button)(({ }) => ({
         '&::before': {
             opacity: 0.8
         }
+    },
+    '&:disabled': {
+        opacity: 0.5,
+        cursor: 'not-allowed',
+        background: 'transparent',
+        backgroundClip: 'border-box',
+        WebkitBackgroundClip: 'border-box',
+        color: theme.palette.text.secondary,
+        WebkitTextFillColor: theme.palette.text.secondary,
     },
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
 }));
