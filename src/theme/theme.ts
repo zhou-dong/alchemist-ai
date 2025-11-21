@@ -47,8 +47,8 @@ export const GradientButton = styled(Button)(({ theme }) => ({
         background: 'transparent',
         backgroundClip: 'border-box',
         WebkitBackgroundClip: 'border-box',
-        color: theme.palette.text.secondary,
-        WebkitTextFillColor: theme.palette.text.secondary,
+        color: theme.palette.text.primary,
+        WebkitTextFillColor: theme.palette.text.primary,
     },
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
 }));
