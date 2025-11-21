@@ -73,7 +73,7 @@ const SimplestFunction = ({ isVisible, isDarkMode }: { isVisible: boolean, isDar
                                 if
                             </Box>
                             <Box component="span" sx={{ color: aiColors.softTeal, fontWeight: 600, mx: 1 }}>
-                                {' '}(condition){' '}
+                                {'(condition)'}
                             </Box>
                             <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 600 }}>
                                 {'{'}
