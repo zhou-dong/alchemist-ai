@@ -30,7 +30,6 @@ export const FunctionsDecisions = () => {
     EXAMPLES: 3,
     SUBTITLE2: 4,
     SIMPLEST_FUNCTION: 5,
-    // BUTTONS: 7,
   };
 
   const totalSections = Object.keys(SECTIONS).length;
@@ -298,29 +297,31 @@ export const FunctionsDecisions = () => {
             isDarkMode={isDarkMode}
           />
 
-          {/* Back to Roadmap Button - Always visible on left middle */}
-          <Box sx={{
-            position: 'fixed',
-            top: '50%',
-            right: { xs: 16, md: 32 },
-            transform: 'translateY(-50%)',
-            zIndex: 10,
-          }}>
-            <GradientButton
-              size="medium"
-              onClick={() => navigate('/alchemist-ai/roadmap?step=1')}
-              endIcon={<ArrowForwardIcon />}
-              sx={{
-                px: 3,
-                py: 1.2,
-                fontSize: '1.2rem',
-
-              }}
-              disabled={currentSection !== totalSections - 1}
-            >
-              Roadmap
-            </GradientButton>
-          </Box>
+          {
+            (currentSection === totalSections - 1) &&
+            <Box sx={{
+              position: 'fixed',
+              top: '50%',
+              right: { xs: 16, md: 32 },
+              transform: 'translateY(-50%)',
+              zIndex: 10,
+            }}>
+              <GradientButton
+                size="medium"
+                onClick={() => {
+                  navigate('/alchemist-ai/roadmap?step=1')
+                }}
+                endIcon={<ArrowForwardIcon />}
+                sx={{
+                  px: 3,
+                  py: 1.2,
+                  fontSize: '1.2rem',
+                }}
+              >
+                Roadmap
+              </GradientButton>
+            </Box>
+          }
 
           {/* Navigation Controls - "Her" Style */}
           <Box sx={{
