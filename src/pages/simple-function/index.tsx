@@ -48,21 +48,21 @@ export const SimpleFunctions = () => {
       >
         <svg width="0" height="0">
           <defs>
-            {/* Clip path for Venus background - matches the curved horizon line */}
+            {/* Clip path for Venus background - covers bottom 1/4 (25%) of the page */}
             {/* Using objectBoundingBox: 0,0 is top-left, 1,1 is bottom-right */}
-            {/* Curve: starts at (0, 0.67), peaks at (0.5, ~0.52), ends at (1, 0.67) - positioned at 1/3 from bottom */}
+            {/* Split at 0.75 (75% from top = 25% from bottom) */}
             <clipPath id="venusHorizonClip" clipPathUnits="objectBoundingBox">
-              <path d="M 0 0.67 Q 0.25 0.52, 0.5 0.52 T 1 0.67 L 1 1 L 0 1 Z" />
+              <path d="M 0 0.75 Q 0.25 0.62, 0.5 0.62 T 1 0.75 L 1 1 L 0 1 Z" />
             </clipPath>
-            {/* Inverse clip path for Starfield - shows only above the curved horizon */}
-            <clipPath id="venusStarfieldClip" clipPathUnits="objectBoundingBox">
-              <path d="M 0 0 L 1 0 L 1 0.67 Q 0.75 0.52, 0.5 0.52 T 0 0.67 Z" />
+            {/* Clip path for Starfield - covers top 3/4 (75%) of the page */}
+            <clipPath id="starfieldHorizonClip" clipPathUnits="objectBoundingBox">
+              <path d="M 0 0 L 1 0 L 1 0.75 Q 0.75 0.62, 0.5 0.62 T 0 0.75 Z" />
             </clipPath>
           </defs>
         </svg>
       </Box>
-      <Starfield clipPath="url(#venusStarfieldClip)" />
-      <VenusBackground />
+      <Starfield clipPath="url(#starfieldHorizonClip)" />
+      <VenusBackground clipPath="url(#venusHorizonClip)" />
 
       <Fade in={isLoaded} timeout={800}>
         <Box sx={{
