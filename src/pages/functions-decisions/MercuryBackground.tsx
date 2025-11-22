@@ -29,16 +29,16 @@ const MERCURY_CONFIG = {
 // Particles are distributed across the entire viewBox, the clipPath will show only the visible portion
 const generateDustParticles = (count: number, sizeRange: [number, number], opacityRange: [number, number]) => {
   const particles = [];
-  
+
   for (let i = 0; i < count; i++) {
     const x = Math.random() * 100; // Full width (0-100%)
     const y = Math.random() * 100; // Full height (0-100%) - covers entire background
     const size = Math.random() * (sizeRange[1] - sizeRange[0]) + sizeRange[0];
     const opacity = Math.random() * (opacityRange[1] - opacityRange[0]) + opacityRange[0];
-    
+
     particles.push({ x, y, size, opacity });
   }
-  
+
   return particles;
 };
 
@@ -49,7 +49,7 @@ export const MercuryBackground = ({ clipPath }: { clipPath: string }) => {
   // Theme-aware colors derived from config
   const baseColor = MERCURY_CONFIG.surface.base;
   const opacity = MERCURY_CONFIG.surface.opacity[isDarkMode ? 'dark' : 'light'];
-  
+
   const surfaceColors = {
     primary: `rgba(${baseColor.r}, ${baseColor.g}, ${baseColor.b}, ${opacity})`,
     secondary: `rgba(${baseColor.r - 20}, ${baseColor.g - 20}, ${baseColor.b - 20}, ${opacity * 0.8})`,
@@ -61,7 +61,7 @@ export const MercuryBackground = ({ clipPath }: { clipPath: string }) => {
 
   // Dust particle colors - Mercury's gray-brown dust
   const dustColors = {
-    primary: isDarkMode 
+    primary: isDarkMode
       ? 'rgba(184, 160, 130, 1)' // Mercury's characteristic gray-brown
       : 'rgba(200, 180, 150, 1)',
     secondary: isDarkMode
@@ -152,7 +152,7 @@ export const MercuryBackground = ({ clipPath }: { clipPath: string }) => {
               yChannelSelector="G"
             />
           </filter>
-          
+
           {/* Fine grain texture for surface detail */}
           <filter id="mercuryFineTexture" x="0%" y="0%" width="100%" height="100%">
             <feTurbulence
@@ -169,14 +169,14 @@ export const MercuryBackground = ({ clipPath }: { clipPath: string }) => {
               yChannelSelector="G"
             />
           </filter>
-          
+
           {/* Surface lighting gradient - simulates sunlight */}
           <radialGradient id="surfaceLighting" cx="30%" cy="30%">
             <stop offset="0%" stopColor={surfaceColors.highlight} stopOpacity="0.3" />
             <stop offset="40%" stopColor={surfaceColors.primary} stopOpacity="0.15" />
             <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </radialGradient>
-          
+
           {/* Horizon atmospheric glow */}
           <linearGradient id="horizonGlow" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="transparent" stopOpacity="0" />
@@ -192,7 +192,7 @@ export const MercuryBackground = ({ clipPath }: { clipPath: string }) => {
             <stop offset="60%" stopColor={dustColors.secondary} stopOpacity="0.8" />
             <stop offset="100%" stopColor={dustColors.dark} stopOpacity="0.6" />
           </radialGradient>
-          
+
           {/* Subtle scarp shadow - reduced opacity */}
           <linearGradient id="scarpDeepShadow" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stopColor={scarpColors.edgeShadow} stopOpacity="0.25" />
@@ -219,7 +219,7 @@ export const MercuryBackground = ({ clipPath }: { clipPath: string }) => {
           opacity="0.12"
           filter="url(#mercuryTexture)"
         />
-        
+
         {/* Fine grain texture overlay */}
         <rect
           width="100%"
@@ -228,14 +228,14 @@ export const MercuryBackground = ({ clipPath }: { clipPath: string }) => {
           opacity="0.08"
           filter="url(#mercuryFineTexture)"
         />
-        
+
         {/* Surface lighting simulation */}
         <rect
           width="100%"
           height="100%"
           fill="url(#surfaceLighting)"
         />
-        
+
         {/* Horizon atmospheric glow */}
         <rect
           width="100%"
@@ -250,15 +250,15 @@ export const MercuryBackground = ({ clipPath }: { clipPath: string }) => {
           const x = (particle.x / 100) * viewBoxWidth;
           const y = (particle.y / 100) * viewBoxHeight;
           const size = particle.size;
-          
+
           // Randomly choose dust color for variation
           const colorIndex = Math.floor(Math.random() * 3);
-          const dustColor = colorIndex === 0 
-            ? dustColors.primary 
-            : colorIndex === 1 
-            ? dustColors.secondary 
-            : dustColors.dark;
-          
+          const dustColor = colorIndex === 0
+            ? dustColors.primary
+            : colorIndex === 1
+              ? dustColors.secondary
+              : dustColors.dark;
+
           return (
             <circle
               key={`dust-${index}`}
@@ -347,6 +347,29 @@ export const MercuryBackground = ({ clipPath }: { clipPath: string }) => {
           />
         </g>
       </svg>
+
+      {/* Mercury Symbol - Bottom Left */}
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: { xs: 20 },
+          left: { xs: 20 },
+          fontSize: { xs: '1.5rem', md: '2rem' },
+          color: isDarkMode
+            ? 'rgba(184, 160, 130, 0.6)'
+            : 'rgba(160, 140, 110, 0.7)',
+          fontFamily: 'serif',
+          lineHeight: 1,
+          zIndex: 1,
+          userSelect: 'none',
+          pointerEvents: 'none',
+          textShadow: isDarkMode
+            ? '0 2px 8px rgba(0, 0, 0, 0.3)'
+            : '0 2px 8px rgba(255, 255, 255, 0.3)',
+        }}
+      >
+        ☿
+      </Box>
     </Box>
   );
 };

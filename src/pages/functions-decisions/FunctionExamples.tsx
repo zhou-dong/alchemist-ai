@@ -2,186 +2,168 @@ import {
   Box,
   Typography,
   Fade,
-  Slide,
+  useTheme,
 } from '@mui/material';
 import { TypingText } from './TypingText';
 
 export const FunctionExamples = ({ isVisible, isDarkMode }: { isVisible: boolean, isDarkMode: boolean }) => {
-
-  const aiColors = {
-    warmAmber: isDarkMode ? '#FFB84D' : '#FFC966',
-    softTeal: isDarkMode ? '#4ECDC4' : '#5EDDD6',
-    warmPurple: isDarkMode ? '#9B7EDE' : '#AB8EEE',
-    softGreen: isDarkMode ? '#6BCF7F' : '#7BDF8F',
-    warmOrange: isDarkMode ? '#FF8C42' : '#FF9C52',
-    softBlue: isDarkMode ? '#6BA3D8' : '#7BB3E8',
-    softCyan: isDarkMode ? '#5BC8D8' : '#6BD8E8',
-    text: isDarkMode ? '#F5F5F5' : '#2C2C2C',
-  };
+  const theme = useTheme();
+  // Warm, organic AI colors - "Her" style
+  const warmPurple = isDarkMode ? '#9B7EDE' : '#AB8EEE';
+  const softBlue = isDarkMode ? '#6BA3D8' : '#7BB3E8';
 
   return (
     <Fade in={isVisible} timeout={800}>
       <Box sx={{
-        width: '100%',
-        height: '100%',
-        textAlign: 'center',
+        position: 'absolute',
+        top: '45%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '90%',
+        maxWidth: '700px',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        gap: 3,
-        position: 'relative',
-        zIndex: 1
+        gap: 4,
+        zIndex: 1,
       }}>
-
-        <Box
+        {/* Title */}
+        <Typography
           sx={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '90%',
-            maxWidth: '800px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 3,
+            fontSize: { xs: '1.1rem', md: '1.3rem' },
+            fontWeight: 400,
+            letterSpacing: '0.05em',
+            background: `linear-gradient(135deg, ${warmPurple}, ${softBlue})`,
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            textAlign: 'center',
+            mb: 1,
           }}
         >
+          Examples of Functions
+        </Typography>
 
-          {/* Example 1 */}
-          <Slide direction="right" in={isVisible} timeout={800}>
-            <Box
-              sx={{
-                p: { xs: 2, md: 3 },
-                transition: 'all 0.3s ease',
-              }}
-            >
-              <Box sx={{ mb: 2 }}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: { xs: '1rem', md: '1.2rem' },
-                    lineHeight: 1.8,
-                    fontWeight: 300,
-                    mb: 2,
-                  }}
-                >
-                  <TypingText
-                    text="If score > 60, pass, else fail."
-                    speed={1.0}
-                  />
-                </Typography>
-                <Box
-                  sx={{
-                    fontSize: { xs: '1rem', md: '1.1rem' },
-                    fontWeight: 300,
-                    textAlign: 'center',
-                    p: 2.5,
-                    borderRadius: '16px',
-                    background: `linear-gradient(135deg, ${aiColors.warmPurple}45, ${aiColors.softBlue}38)`,
-                    border: `2px solid ${aiColors.warmPurple}80`,
-                    boxShadow: `0 4px 20px ${aiColors.warmPurple}45`,
-                    letterSpacing: '0.03em',
-                  }}
-                >
-                  <Box component="span" sx={{ color: isDarkMode ? '#6B4FBF' : '#5B3FAF', fontWeight: 700 }}>{'f('}</Box>
-                  <Box component="span" sx={{ color: aiColors.softBlue, fontWeight: 700 }}>{'score'}</Box>
-                  <Box component="span" sx={{ color: isDarkMode ? '#6B4FBF' : '#5B3FAF', fontWeight: 700 }}>{') = '}</Box>
-                  <Box component="span" sx={{ color: isDarkMode ? '#D88D1D' : '#C87D0D', fontWeight: 700 }}>{'pass or fail'}</Box>
-                </Box>
-              </Box>
-            </Box>
-          </Slide>
+        {/* Example 1 */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: { xs: '1rem', md: '1.1rem' },
+              fontWeight: 300,
+              lineHeight: 1.6,
+              color: theme.palette.text.primary,
+            }}
+          >
+            <TypingText
+              text="If score > 60, pass, else fail."
+              speed={1.0}
+            />
+          </Typography>
+          <Box
+            sx={{
+              p: 3,
+              borderRadius: '12px',
+              background: isDarkMode
+                ? `linear-gradient(135deg, rgba(155, 126, 222, 0.08), rgba(107, 163, 216, 0.05))`
+                : `linear-gradient(135deg, rgba(171, 142, 238, 0.1), rgba(123, 179, 232, 0.08))`,
+              border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.2)' : 'rgba(171, 142, 238, 0.3)'}`,
+              backdropFilter: 'blur(8px)',
+              fontSize: { xs: '0.9rem', md: '1rem' },
+              textAlign: 'left',
+              transition: 'all 0.3s ease',
+              position: 'relative',
+            }}
+          >
+            <Box component="span" sx={{ color: warmPurple, fontWeight: 500 }}>{'f('}</Box>
+            <Box component="span" sx={{ color: theme.palette.text.primary }}>{'score'}</Box>
+            <Box component="span" sx={{ color: warmPurple, fontWeight: 500 }}>{') = '}</Box>
+            <Box component="span" sx={{ color: theme.palette.text.secondary }}>{'pass or fail'}</Box>
+          </Box>
+        </Box>
 
-          {/* Example 2 */}
-          <Slide direction="right" in={isVisible} timeout={800} style={{ transitionDelay: '300ms' }}>
-            <Box
-              sx={{
-                p: { xs: 2, md: 3 },
-                transition: 'all 0.3s ease',
-              }}
-            >
-              <Box sx={{ mb: 2 }}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: { xs: '1rem', md: '1.2rem' },
-                    lineHeight: 1.8,
-                    fontWeight: 300,
-                    mb: 2,
-                  }}
-                >
-                  <TypingText
-                    text="If it's raining (input), I take an umbrella (output)."
-                    speed={1.0}
-                  />
-                </Typography>
-                <Box
-                  sx={{
-                    fontSize: { xs: '1rem', md: '1.1rem' },
-                    fontWeight: 300,
-                    textAlign: 'center',
-                    p: 2.5,
-                    borderRadius: '16px',
-                    background: `linear-gradient(135deg, ${aiColors.warmOrange}20, ${aiColors.warmAmber}15)`,
-                    border: `1px solid ${aiColors.warmOrange}40`,
-                    boxShadow: `0 4px 20px ${aiColors.warmOrange}20`,
-                    letterSpacing: '0.03em',
-                  }}
-                >
-                  <Box component="span" sx={{ color: aiColors.warmOrange, fontWeight: 400 }}>{'f('}</Box>
-                  <Box component="span" sx={{ color: aiColors.warmAmber, fontWeight: 400 }}>{'rain'}</Box>
-                  <Box component="span" sx={{ color: aiColors.warmOrange, fontWeight: 400 }}>{') = '}</Box>
-                  <Box component="span" sx={{ color: aiColors.softCyan, fontWeight: 400 }}>{'umbrella or not'}</Box>
-                </Box>
-              </Box>
-            </Box>
-          </Slide>
+        {/* Example 2 */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: { xs: '1rem', md: '1.1rem' },
+              fontWeight: 300,
+              lineHeight: 1.6,
+              color: theme.palette.text.primary,
+            }}
+          >
+            <TypingText
+              text="If it's raining (input), I take an umbrella (output)."
+              speed={1.0}
+            />
+          </Typography>
+          <Box
+            sx={{
+              p: 3,
+              borderRadius: '12px',
+              background: isDarkMode
+                ? 'rgba(255, 255, 255, 0.03)'
+                : 'rgba(0, 0, 0, 0.02)',
+              border: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+              fontSize: { xs: '0.9rem', md: '1rem' },
+              textAlign: 'left',
+            }}
+          >
+            <Box component="span" sx={{ color: warmPurple, fontWeight: 500 }}>{'f('}</Box>
+            <Box component="span" sx={{ color: theme.palette.text.primary }}>{'rain'}</Box>
+            <Box component="span" sx={{ color: warmPurple, fontWeight: 500 }}>{') = '}</Box>
+            <Box component="span" sx={{ color: theme.palette.text.secondary }}>{'umbrella or not'}</Box>
+          </Box>
+        </Box>
 
-          {/* Example 3 */}
-          <Slide direction="right" in={isVisible} timeout={800} style={{ transitionDelay: '600ms' }}>
-            <Box
-              sx={{
-                p: { xs: 2, md: 3 },
-                transition: 'all 0.3s ease',
-              }}
-            >
-              <Box sx={{ mb: 2 }}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: { xs: '1rem', md: '1.2rem' },
-                    lineHeight: 1.8,
-                    fontWeight: 300,
-                    mb: 2,
-                  }}
-                >
-                  <TypingText
-                    text="In sports: if distance < 3 meters, shoot; else pass."
-                    speed={1.0}
-                  />
-                </Typography>
-                <Box
-                  sx={{
-                    fontSize: { xs: '1rem', md: '1.1rem' },
-                    fontWeight: 300,
-                    textAlign: 'center',
-                    p: 2.5,
-                    borderRadius: '16px',
-                    background: `linear-gradient(135deg, ${aiColors.softTeal}20, ${aiColors.softGreen}15)`,
-                    border: `1px solid ${aiColors.softTeal}40`,
-                    boxShadow: `0 4px 20px ${aiColors.softTeal}20`,
-                    letterSpacing: '0.03em',
-                  }}
-                >
-                  <Box component="span" sx={{ color: aiColors.softTeal, fontWeight: 400 }}>{'f('}</Box>
-                  <Box component="span" sx={{ color: aiColors.softGreen, fontWeight: 400 }}>{'distance'}</Box>
-                  <Box component="span" sx={{ color: aiColors.softTeal, fontWeight: 400 }}>{') = '}</Box>
-                  <Box component="span" sx={{ color: aiColors.warmAmber, fontWeight: 400 }}>{'action'}</Box>
-                </Box>
-              </Box>
-            </Box>
-          </Slide>
-
+        {/* Example 3 */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: { xs: '1rem', md: '1.1rem' },
+              fontWeight: 300,
+              lineHeight: 1.6,
+              color: theme.palette.text.primary,
+            }}
+          >
+            <TypingText
+              text="In sports: if distance < 3 meters, shoot; else pass."
+              speed={1.0}
+            />
+          </Typography>
+          <Box
+            sx={{
+              p: 3,
+              borderRadius: '12px',
+              background: isDarkMode
+                ? 'rgba(255, 255, 255, 0.03)'
+                : 'rgba(0, 0, 0, 0.02)',
+              border: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+              fontSize: { xs: '0.9rem', md: '1rem' },
+              textAlign: 'left',
+            }}
+          >
+            <Box component="span" sx={{ color: warmPurple, fontWeight: 500 }}>{'f('}</Box>
+            <Box component="span" sx={{ color: theme.palette.text.primary }}>{'distance'}</Box>
+            <Box component="span" sx={{ color: warmPurple, fontWeight: 500 }}>{') = '}</Box>
+            <Box component="span" sx={{ color: theme.palette.text.secondary }}>{'action'}</Box>
+          </Box>
         </Box>
       </Box>
     </Fade>

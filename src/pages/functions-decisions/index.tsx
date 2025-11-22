@@ -3,6 +3,7 @@ import {
   Typography,
   Fade,
   useTheme,
+  styled,
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -13,9 +14,25 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { TypingText } from './TypingText';
 import { FunctionExamples } from './FunctionExamples';
-import SimplestFunction from './SimplestFunction';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
 import { Starfield } from '../../components/common/Starfield';
+
+const DialogBox = styled(Box)<{ isDarkMode: boolean }>(({ isDarkMode, theme }) => ({
+  position: 'absolute',
+  top: '45%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  borderRadius: '24px',
+  lineHeight: 1.8,
+  p: { xs: 3, md: 4 },
+  textAlign: 'left',
+  background: isDarkMode
+    ? `linear-gradient(135deg, rgba(155, 126, 222, 0.08), rgba(107, 163, 216, 0.05))`
+    : `linear-gradient(135deg, rgba(171, 142, 238, 0.12), rgba(123, 179, 232, 0.08))`,
+  backdropFilter: 'blur(5px)',
+  border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(171, 142, 238, 0.4)'}`,
+  boxShadow: `0 8px 32px ${isDarkMode ? 'rgba(155, 126, 222, 0.2)' : 'rgba(171, 142, 238, 0.25)'}`,
+}));
 
 export const FunctionsDecisions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,10 +46,8 @@ export const FunctionsDecisions = () => {
   const SECTIONS = {
     DIAGRAM: 0,
     SUBTITLE1: 1,
-    EXAMPLES_TITLE: 2,
-    EXAMPLES: 3,
-    SUBTITLE2: 4,
-    SIMPLEST_FUNCTION: 5,
+    EXAMPLES: 2,
+    SUBTITLE2: 3,
   };
 
   const totalSections = Object.keys(SECTIONS).length;
@@ -114,15 +129,15 @@ export const FunctionsDecisions = () => {
       >
         <svg width="0" height="0">
           <defs>
-            {/* Clip path for Mercury background - matches the curved horizon line */}
+            {/* Clip path for Mercury background - covers bottom 1/4 (25%) of the page */}
             {/* Using objectBoundingBox: 0,0 is top-left, 1,1 is bottom-right */}
-            {/* Curve: starts at (0, 0.67), peaks at (0.5, ~0.52), ends at (1, 0.67) - positioned at 1/3 from bottom */}
+            {/* Split at 0.75 (75% from top = 25% from bottom) */}
             <clipPath id="mercuryHorizonClip" clipPathUnits="objectBoundingBox">
-              <path d="M 0 0.67 Q 0.25 0.52, 0.5 0.52 T 1 0.67 L 1 1 L 0 1 Z" />
+              <path d="M 0 0.75 Q 0.25 0.62, 0.5 0.62 T 1 0.75 L 1 1 L 0 1 Z" />
             </clipPath>
-            {/* Inverse clip path for Starfield - shows only above the curved horizon */}
+            {/* Clip path for Starfield - covers top 3/4 (75%) of the page */}
             <clipPath id="starfieldHorizonClip" clipPathUnits="objectBoundingBox">
-              <path d="M 0 0 L 1 0 L 1 0.67 Q 0.75 0.52, 0.5 0.52 T 0 0.67 Z" />
+              <path d="M 0 0 L 1 0 L 1 0.75 Q 0.75 0.62, 0.5 0.62 T 0 0.75 Z" />
             </clipPath>
           </defs>
         </svg>
@@ -148,7 +163,7 @@ export const FunctionsDecisions = () => {
 
           <Box sx={{
             position: 'absolute',
-            top: { xs: 40, md: 60 },
+            top: '10%',
             left: '50%',
             transform: 'translateX(-50%)',
             zIndex: 3,
@@ -173,42 +188,17 @@ export const FunctionsDecisions = () => {
           </Box>
 
           <Fade in={currentSection === SECTIONS.SUBTITLE1} timeout={1000}>
-            <Box
+            <DialogBox
+              isDarkMode={isDarkMode}
               sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                maxWidth: '700px',
-                width: '90%',
-                fontSize: { xs: '1.1rem', md: '1.3rem' },
-                lineHeight: 1.8,
+
                 p: { xs: 3, md: 4 },
-                borderRadius: '24px',
-                background: isDarkMode
-                  ? `linear-gradient(135deg, rgba(155, 126, 222, 0.15), rgba(107, 163, 216, 0.1))`
-                  : `linear-gradient(135deg, rgba(171, 142, 238, 0.2), rgba(123, 179, 232, 0.15))`,
-                backdropFilter: 'blur(10px)',
-                border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(171, 142, 238, 0.4)'}`,
-                boxShadow: `0 8px 32px ${isDarkMode ? 'rgba(155, 126, 222, 0.2)' : 'rgba(171, 142, 238, 0.25)'}`,
-                overflow: 'hidden',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '2px',
-                  background: `linear-gradient(90deg, ${aiColors.warmPurple}, ${aiColors.softBlue}, ${aiColors.softTeal})`,
-                  backgroundSize: '200% 100%',
-                  animation: 'gradientShift 3s ease infinite',
-                },
               }}
             >
               {currentSection === SECTIONS.SUBTITLE1 && (
                 <Typography
                   sx={{
-                    fontWeight: 400,
+                    fontWeight: 300,
                     fontSize: { xs: '1.1rem', md: '1.3rem' },
                     letterSpacing: '0.02em',
                   }}
@@ -219,107 +209,51 @@ export const FunctionsDecisions = () => {
                   />
                 </Typography>
               )}
-            </Box>
+            </DialogBox>
           </Fade>
 
           <Fade in={currentSection === SECTIONS.SUBTITLE2} timeout={1000}>
-            <Box
-              sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                maxWidth: '700px',
-                width: '90%',
-                fontSize: { xs: '1.1rem', md: '1.3rem' },
-                lineHeight: 1.8,
-                p: { xs: 3, md: 4 },
-                borderRadius: '24px',
-                background: isDarkMode
-                  ? `linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(107, 207, 127, 0.1))`
-                  : `linear-gradient(135deg, rgba(94, 221, 214, 0.2), rgba(123, 223, 143, 0.15))`,
-                backdropFilter: 'blur(10px)',
-                border: `1px solid ${isDarkMode ? 'rgba(78, 205, 196, 0.3)' : 'rgba(94, 221, 214, 0.4)'}`,
-                boxShadow: `0 8px 32px ${isDarkMode ? 'rgba(78, 205, 196, 0.2)' : 'rgba(94, 221, 214, 0.25)'}`,
-                overflow: 'hidden',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '2px',
-                  background: `linear-gradient(90deg, ${aiColors.softTeal}, ${aiColors.softGreen}, ${aiColors.softCyan})`,
-                  backgroundSize: '200% 100%',
-                  animation: 'gradientShift 3s ease infinite',
-                },
-              }}
-            >
-              {currentSection === SECTIONS.SUBTITLE2 && (
-                <Typography
-                  sx={{
-                    fontWeight: 400,
-                    letterSpacing: '0.02em',
-                    fontSize: { xs: '1.1rem', md: '1.3rem' },
-                  }}
-                >
-                  <TypingText
-                    text="So let's start from the smallest building block — the function — and grow it step by step until we build a neural network."
-                    speed={1.1}
-                  />
-                </Typography>
-              )}
-            </Box>
-          </Fade>
+            <Box>
 
-          <Fade in={currentSection === SECTIONS.EXAMPLES_TITLE} timeout={1000}>
-            <Box
-              sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                maxWidth: '700px',
-                width: '90%',
-                fontSize: { xs: '1.1rem', md: '1.3rem' },
-                lineHeight: 1.8,
-                p: { xs: 3, md: 4 },
-                borderRadius: '24px',
-                background: isDarkMode
-                  ? `linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(107, 207, 127, 0.1))`
-                  : `linear-gradient(135deg, rgba(94, 221, 214, 0.2), rgba(123, 223, 143, 0.15))`,
-                backdropFilter: 'blur(10px)',
-                border: `1px solid ${isDarkMode ? 'rgba(78, 205, 196, 0.3)' : 'rgba(94, 221, 214, 0.4)'}`,
-                boxShadow: `0 8px 32px ${isDarkMode ? 'rgba(78, 205, 196, 0.2)' : 'rgba(94, 221, 214, 0.25)'}`,
-                overflow: 'hidden',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '2px',
-                  background: `linear-gradient(90deg, ${aiColors.softTeal}, ${aiColors.softGreen}, ${aiColors.softCyan})`,
-                  backgroundSize: '200% 100%',
-                  animation: 'gradientShift 3s ease infinite',
-                },
-              }}
-            >
-              {currentSection === SECTIONS.EXAMPLES_TITLE && (
-                <Typography
-                  sx={{
-                    fontWeight: 400,
-                    letterSpacing: '0.02em',
-                    fontSize: { xs: '1.1rem', md: '1.3rem' },
-                  }}
-                >
-                  <TypingText
-                    text="Here are some examples of functions:"
-                    speed={1.1}
-                  />
-                </Typography>
-              )}
+              <DialogBox
+                isDarkMode={isDarkMode}
+                sx={{
+                  p: { xs: 3, md: 4 },
+                }}
+              >
+                {currentSection === SECTIONS.SUBTITLE2 && (
+                  <Typography
+                    sx={{
+                      fontWeight: 300,
+                      letterSpacing: '0.02em',
+                      fontSize: { xs: '1.1rem', md: '1.3rem' },
+                    }}
+                  >
+                    <TypingText
+                      text="So let's start from the smallest building block — the function — and grow it step by step until we build a neural network."
+                      speed={1.1}
+                    />
+                  </Typography>
+                )}
+              </DialogBox>
+
+              <GradientButton
+                size="medium"
+                onClick={() => {
+                  navigate('/alchemist-ai/roadmap?step=1')
+                }}
+                endIcon={<ArrowForwardIcon />}
+                sx={{
+                  mt: 20,
+                  px: 3,
+                  py: 1.2,
+                  fontSize: '1.2rem',
+                }}
+              >
+                NEXT
+              </GradientButton>
             </Box>
+
           </Fade>
 
           {/* Flow Diagram */}
@@ -333,36 +267,91 @@ export const FunctionsDecisions = () => {
             isDarkMode={isDarkMode}
           />
 
-          <SimplestFunction
-            isVisible={currentSection === SECTIONS.SIMPLEST_FUNCTION}
-            isDarkMode={isDarkMode}
-          />
+          {/* Progress Indicator - Upper Right Corner */}
+          <Box sx={{
+            position: 'fixed',
+            top: { xs: 20, },
+            right: { xs: 20, },
+            zIndex: 1000,
+          }}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 1,
+                px: { xs: 2.5, },
+                py: { xs: 1.5, },
+                borderRadius: '16px',
+                backdropFilter: 'blur(1px)',
+                border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(171, 142, 238, 0.4)'}`,
+                boxShadow: `0 8px 32px ${isDarkMode ? 'rgba(155, 126, 222, 0.2)' : 'rgba(171, 142, 238, 0.25)'}`,
 
-          {
-            (currentSection === totalSections - 1) &&
-            <Box sx={{
-              position: 'fixed',
-              top: '50%',
-              right: { xs: 16, md: 32 },
-              transform: 'translateY(-50%)',
-              zIndex: 10,
-            }}>
-              <GradientButton
-                size="medium"
-                onClick={() => {
-                  navigate('/alchemist-ai/roadmap?step=1')
-                }}
-                endIcon={<ArrowForwardIcon />}
+              }}
+            >
+              {/* Progress Text */}
+              <Box
                 sx={{
-                  px: 3,
-                  py: 1.2,
-                  fontSize: '1.2rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: 1.5,
                 }}
               >
-                Roadmap
-              </GradientButton>
+                <Box
+                  component="span"
+                  sx={{
+                    color: theme.palette.text.primary,
+                    fontSize: { xs: '1rem', md: '1.125rem' },
+                    fontWeight: 600,
+                    letterSpacing: '0.05em',
+                    fontFamily: 'monospace',
+                  }}
+                >
+                  {currentSection + 1} / {totalSections}
+                </Box>
+              </Box>
+
+              {/* Progress Bar */}
+              <Box
+                sx={{
+                  width: '100%',
+                  height: '4px',
+                  borderRadius: '2px',
+                  background: isDarkMode
+                    ? 'rgba(255, 255, 255, 0.1)'
+                    : 'rgba(0, 0, 0, 0.1)',
+                  overflow: 'hidden',
+                  position: 'relative',
+                }}
+              >
+                <Box
+                  sx={{
+                    height: '100%',
+                    width: `${((currentSection + 1) / totalSections) * 100}%`,
+                    background: `linear-gradient(90deg, ${aiColors.warmPurple}, ${aiColors.softBlue})`,
+                    borderRadius: '2px',
+                    transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                    boxShadow: `0 0 8px ${aiColors.warmPurple}60`,
+                    position: 'relative',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)',
+                      animation: 'shimmer 2s ease-in-out infinite',
+                      '@keyframes shimmer': {
+                        '0%': { transform: 'translateX(-100%)' },
+                        '100%': { transform: 'translateX(100%)' },
+                      },
+                    },
+                  }}
+                />
+              </Box>
             </Box>
-          }
+          </Box>
 
           {/* Navigation Controls - "Her" Style */}
           <Box sx={{
@@ -378,50 +367,6 @@ export const FunctionsDecisions = () => {
             width: '100%',
             justifyContent: 'center',
           }}>
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 1.5,
-                px: 3,
-                py: 1.5,
-                borderRadius: '8px',
-                background: `linear-gradient(135deg, ${aiColors.warmPurple}10, ${aiColors.softBlue}5)`,
-                backdropFilter: 'blur(10px)',
-                border: `1px solid ${aiColors.warmPurple}40`,
-                color: aiColors.text,
-                fontSize: '1rem',
-                fontWeight: 300,
-                letterSpacing: '0.05em',
-                boxShadow: `0 4px 20px ${aiColors.warmPurple}20`,
-              }}
-            >
-              <Box
-                component="span"
-                sx={{
-                  color: theme.palette.text.primary,
-                  fontSize: '1.2rem',
-                  animation: 'pulse 2s ease-in-out infinite',
-                  '@keyframes pulse': {
-                    '0%, 100%': { opacity: 0.8 },
-                    '50%': { opacity: 1 },
-                  },
-                }}
-              >
-                {'●'}
-              </Box>
-              <Box
-                component="span"
-                sx={{
-                  color: theme.palette.text.primary,
-                  fontSize: '1.2rem',
-                  fontWeight: 300,
-                  letterSpacing: '0.05em',
-                }}
-              >
-                {currentSection + 1} / {totalSections}
-              </Box>
-            </Box>
             <GradientButton
               onClick={handlePrevious}
               disabled={currentSection === 0}

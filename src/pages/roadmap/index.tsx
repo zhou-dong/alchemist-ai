@@ -14,7 +14,7 @@ import { useColorMode } from '../../theme/ColorModeContext';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
-import { Starfield } from './Starfield';
+import { Starfield } from '../../components/common/Starfield';
 import { isLocked, isFinished, isAccessible } from '../../data/types';
 import type { StepStatus } from '../../data/types';
 import { TOTAL_STEPS, blendColors, type LearningPathItem } from '../../data/planets';
@@ -34,7 +34,6 @@ const BASE_ORBIT_RADIUS = CENTER_SPHERE_RADIUS + 3; // Closest planet starts her
 
 // Step sphere size (base size, will be scaled by planet)
 const BASE_SPHERE_RADIUS = 0.9; // Scaled from 90px
-
 
 // Orbit ring component - draws a circular orbit path for each planet
 function OrbitRing({
@@ -587,7 +586,7 @@ export const Roadmap = () => {
         <Fade in={isLoaded} timeout={800}>
           <Box sx={{
             position: 'absolute',
-            top: { xs: 40, md: 60 },
+            top: "10%",
             left: '50%',
             transform: 'translateX(-50%)',
             zIndex: 3
