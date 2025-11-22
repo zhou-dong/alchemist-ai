@@ -41,7 +41,7 @@ const SimplestFunction = ({ isVisible, isDarkMode }: { isVisible: boolean, isDar
                             mb: 2,
                         }}
                     >
-                        The simplest function is: <strong>if...else...</strong>
+                        The simplest function is: <strong>if...else</strong>
                     </Typography>
                 </Slide>
 
