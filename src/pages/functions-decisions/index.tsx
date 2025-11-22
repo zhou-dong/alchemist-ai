@@ -15,6 +15,7 @@ import { TypingText } from './TypingText';
 import { FunctionExamples } from './FunctionExamples';
 import SimplestFunction from './SimplestFunction';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
+import { Starfield } from '../../components/common/Starfield';
 
 export const FunctionsDecisions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -98,7 +99,36 @@ export const FunctionsDecisions = () => {
       overflowY: 'hidden',
       overflowX: 'hidden',
     }}>
-      <MercuryBackground />
+      {/* SVG definitions for clip-path and gradients */}
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: 0,
+          height: 0,
+          zIndex: -1,
+          pointerEvents: 'none',
+          overflow: 'hidden',
+        }}
+      >
+        <svg width="0" height="0">
+          <defs>
+            {/* Clip path for Mercury background - matches the curved horizon line */}
+            {/* Using objectBoundingBox: 0,0 is top-left, 1,1 is bottom-right */}
+            {/* Curve: starts at (0, 0.67), peaks at (0.5, ~0.52), ends at (1, 0.67) - positioned at 1/3 from bottom */}
+            <clipPath id="mercuryHorizonClip" clipPathUnits="objectBoundingBox">
+              <path d="M 0 0.67 Q 0.25 0.52, 0.5 0.52 T 1 0.67 L 1 1 L 0 1 Z" />
+            </clipPath>
+            {/* Inverse clip path for Starfield - shows only above the curved horizon */}
+            <clipPath id="starfieldHorizonClip" clipPathUnits="objectBoundingBox">
+              <path d="M 0 0 L 1 0 L 1 0.67 Q 0.75 0.52, 0.5 0.52 T 0 0.67 Z" />
+            </clipPath>
+          </defs>
+        </svg>
+      </Box>
+      <Starfield clipPath="url(#starfieldHorizonClip)" />
+      <MercuryBackground clipPath="url(#mercuryHorizonClip)" />
 
       <Fade in={isLoaded} timeout={800}>
         <Box sx={{
