@@ -407,7 +407,29 @@ export const VenusBackground = () => {
           filter="blur(18px)"
         />
       </svg>
+
+      {/* Venus Symbol - Bottom Left */}
+      <Box
+        sx={{
+          position: 'absolute',
+          bottom: { xs: 20, md: 32 },
+          left: { xs: 20, md: 32 },
+          fontSize: { xs: '1.5rem', md: '2rem' },
+          color: isDarkMode
+            ? 'rgba(255, 198, 73, 0.6)'
+            : 'rgba(255, 165, 0, 0.7)',
+          fontFamily: 'serif',
+          lineHeight: 1,
+          zIndex: 1,
+          userSelect: 'none',
+          pointerEvents: 'none',
+          textShadow: isDarkMode
+            ? '0 2px 8px rgba(0, 0, 0, 0.3)'
+            : '0 2px 8px rgba(255, 255, 255, 0.3)',
+        }}
+      >
+        ♀
+      </Box>
     </Box>
   );
 };
-
