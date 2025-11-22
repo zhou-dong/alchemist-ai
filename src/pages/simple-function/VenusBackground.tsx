@@ -2,36 +2,36 @@ import { Box } from '@mui/material';
 import { useTheme } from '@mui/material';
 import { useMemo, useEffect } from 'react';
 
-export const VenusBackground = () => {
+export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
   const theme = useTheme();
   const isDarkMode = theme.palette.mode === 'dark';
 
   // Theme-aware colors for Venus cloud features
   const cloudColors = {
     primary: isDarkMode
-      ? { light: 'rgba(255, 198, 73, 0.4)', medium: 'rgba(255, 198, 73, 0.3)', dark: 'rgba(255, 198, 73, 0.25)' }
-      : { light: 'rgba(255, 198, 73, 0.25)', medium: 'rgba(255, 198, 73, 0.2)', dark: 'rgba(255, 198, 73, 0.15)' },
+      ? { light: 'rgba(255, 198, 73, 0.6)', medium: 'rgba(255, 198, 73, 0.5)', dark: 'rgba(255, 198, 73, 0.4)' }
+      : { light: 'rgba(255, 198, 73, 0.4)', medium: 'rgba(255, 198, 73, 0.35)', dark: 'rgba(255, 198, 73, 0.28)' },
     secondary: isDarkMode
-      ? { light: 'rgba(255, 220, 140, 0.35)', medium: 'rgba(255, 220, 140, 0.28)', dark: 'rgba(255, 220, 140, 0.22)' }
-      : { light: 'rgba(255, 220, 140, 0.22)', medium: 'rgba(255, 220, 140, 0.18)', dark: 'rgba(255, 220, 140, 0.12)' },
+      ? { light: 'rgba(255, 220, 140, 0.55)', medium: 'rgba(255, 220, 140, 0.45)', dark: 'rgba(255, 220, 140, 0.35)' }
+      : { light: 'rgba(255, 220, 140, 0.38)', medium: 'rgba(255, 220, 140, 0.3)', dark: 'rgba(255, 220, 140, 0.22)' },
     accent: isDarkMode
-      ? { light: 'rgba(255, 165, 0, 0.3)', medium: 'rgba(255, 165, 0, 0.25)', dark: 'rgba(255, 165, 0, 0.2)' }
-      : { light: 'rgba(255, 165, 0, 0.2)', medium: 'rgba(255, 165, 0, 0.15)', dark: 'rgba(255, 165, 0, 0.1)' },
+      ? { light: 'rgba(255, 165, 0, 0.5)', medium: 'rgba(255, 165, 0, 0.4)', dark: 'rgba(255, 165, 0, 0.3)' }
+      : { light: 'rgba(255, 165, 0, 0.35)', medium: 'rgba(255, 165, 0, 0.28)', dark: 'rgba(255, 165, 0, 0.2)' },
     shadow: isDarkMode
-      ? { deep: 'rgba(200, 150, 50, 0.3)', medium: 'rgba(200, 150, 50, 0.25)', light: 'rgba(200, 150, 50, 0.2)' }
-      : { deep: 'rgba(200, 150, 50, 0.15)', medium: 'rgba(200, 150, 50, 0.12)', light: 'rgba(200, 150, 50, 0.08)' },
+      ? { deep: 'rgba(200, 150, 50, 0.5)', medium: 'rgba(200, 150, 50, 0.4)', light: 'rgba(200, 150, 50, 0.3)' }
+      : { deep: 'rgba(200, 150, 50, 0.28)', medium: 'rgba(200, 150, 50, 0.22)', light: 'rgba(200, 150, 50, 0.15)' },
     highlight: isDarkMode
-      ? 'rgba(255, 240, 200, 0.4)'
-      : 'rgba(255, 240, 200, 0.25)',
+      ? 'rgba(255, 240, 200, 0.6)'
+      : 'rgba(255, 240, 200, 0.4)',
   };
 
   const atmosphericColors = {
     glow: isDarkMode
-      ? { outer: 'rgba(255, 198, 73, 0.15)', inner: 'rgba(255, 220, 140, 0.1)' }
-      : { outer: 'rgba(255, 198, 73, 0.1)', inner: 'rgba(255, 220, 140, 0.06)' },
+      ? { outer: 'rgba(255, 198, 73, 0.25)', inner: 'rgba(255, 220, 140, 0.18)' }
+      : { outer: 'rgba(255, 198, 73, 0.18)', inner: 'rgba(255, 220, 140, 0.12)' },
     haze: isDarkMode
-      ? 'rgba(255, 198, 73, 0.08)'
-      : 'rgba(255, 198, 73, 0.05)',
+      ? 'rgba(255, 198, 73, 0.15)'
+      : 'rgba(255, 198, 73, 0.1)',
   };
 
   // Generate cloud formations - only in bottom half (top: 50-100%)
@@ -45,7 +45,7 @@ export const VenusBackground = () => {
       opacity: Math.random() * 0.3 + 0.2,
       animationDelay: Math.random() * 5,
       animationDuration: Math.random() * 20 + 15,
-      blur: Math.random() * 40 + 20,
+      blur: Math.random() * 30 + 15,
     }));
   }, []);
 
@@ -96,8 +96,8 @@ export const VenusBackground = () => {
         width: '100%',
         height: '100%',
         overflow: 'hidden',
-        clipPath: 'url(#venusHorizonClip)',
-        WebkitClipPath: 'url(#venusHorizonClip)',
+        clipPath: clipPath,
+        WebkitClipPath: clipPath,
       }}
     >
       {/* Atmospheric glow layers - positioned in bottom half */}
@@ -144,7 +144,7 @@ export const VenusBackground = () => {
             0 0 80px ${cloudColors.shadow.medium},
             inset -50px -30px 120px ${cloudColors.shadow.light}
           `,
-          filter: `blur(30px)`,
+          filter: `blur(20px)`,
           zIndex: 0.4,
           opacity: cloudColors.primary.medium,
           animation: 'cloudDrift 25s ease-in-out infinite',
@@ -165,7 +165,7 @@ export const VenusBackground = () => {
             0 0 90px ${cloudColors.shadow.medium},
             inset 50px 30px 130px ${cloudColors.shadow.light}
           `,
-          filter: `blur(35px)`,
+          filter: `blur(17px)`,
           zIndex: 0.4,
           opacity: cloudColors.secondary.medium,
           animation: 'cloudDrift 30s ease-in-out infinite',
@@ -186,7 +186,7 @@ export const VenusBackground = () => {
             0 0 75px ${cloudColors.shadow.medium},
             inset -40px 20px 115px ${cloudColors.shadow.light}
           `,
-          filter: `blur(32px)`,
+          filter: `blur(22px)`,
           zIndex: 0.4,
           opacity: cloudColors.accent.medium,
           animation: 'cloudDrift 28s ease-in-out infinite',
@@ -207,7 +207,7 @@ export const VenusBackground = () => {
             0 0 85px ${cloudColors.shadow.medium},
             inset 35px -25px 125px ${cloudColors.shadow.light}
           `,
-          filter: `blur(33px)`,
+          filter: `blur(23px)`,
           zIndex: 0.4,
           opacity: cloudColors.primary.medium,
           animation: 'cloudDrift 27s ease-in-out infinite',
@@ -228,7 +228,7 @@ export const VenusBackground = () => {
             0 0 70px ${cloudColors.shadow.medium},
             inset -45px 25px 110px ${cloudColors.shadow.light}
           `,
-          filter: `blur(28px)`,
+          filter: `blur(20px)`,
           zIndex: 0.4,
           opacity: cloudColors.secondary.medium,
           animation: 'cloudDrift 26s ease-in-out infinite',
@@ -250,7 +250,7 @@ export const VenusBackground = () => {
             inset 0 0 70px ${cloudColors.shadow.medium},
             0 0 60px ${cloudColors.shadow.light}
           `,
-          filter: `blur(25px)`,
+          filter: `blur(18px)`,
           zIndex: 0.4,
           opacity: cloudColors.accent.medium,
           animation: 'cloudDrift 24s ease-in-out infinite',
@@ -270,7 +270,7 @@ export const VenusBackground = () => {
             inset 0 0 75px ${cloudColors.shadow.medium},
             0 0 65px ${cloudColors.shadow.light}
           `,
-          filter: `blur(27px)`,
+          filter: `blur(19px)`,
           zIndex: 0.4,
           opacity: cloudColors.primary.medium,
           animation: 'cloudDrift 23s ease-in-out infinite',
@@ -290,7 +290,7 @@ export const VenusBackground = () => {
             inset 0 0 65px ${cloudColors.shadow.medium},
             0 0 55px ${cloudColors.shadow.light}
           `,
-          filter: `blur(24px)`,
+          filter: `blur(17px)`,
           zIndex: 0.4,
           opacity: cloudColors.secondary.medium,
           animation: 'cloudDrift 22s ease-in-out infinite',
@@ -315,7 +315,7 @@ export const VenusBackground = () => {
               inset 0 0 ${cloud.blur}px ${cloudColors.shadow.light},
               0 0 ${cloud.blur * 0.8}px ${cloudColors.shadow.light}
             `,
-            filter: `blur(${cloud.blur * 0.6}px)`,
+            filter: `blur(${cloud.blur * 0.4}px)`,
             zIndex: 0.4,
             opacity: cloud.opacity,
             animation: `cloudDrift ${cloud.animationDuration}s ease-in-out infinite`,
@@ -382,7 +382,7 @@ export const VenusBackground = () => {
           fill="none"
           strokeLinecap="round"
           opacity="0.4"
-          filter="blur(20px)"
+          filter="blur(12px)"
         />
 
         {/* Cloud swirl 2 - adjusted for bottom half */}
@@ -393,7 +393,7 @@ export const VenusBackground = () => {
           fill="none"
           strokeLinecap="round"
           opacity="0.35"
-          filter="blur(25px)"
+          filter="blur(15px)"
         />
 
         {/* Cloud swirl 3 - Vertical (in bottom half) */}
@@ -404,7 +404,7 @@ export const VenusBackground = () => {
           fill="none"
           strokeLinecap="round"
           opacity="0.3"
-          filter="blur(18px)"
+          filter="blur(11px)"
         />
       </svg>
 
@@ -412,8 +412,8 @@ export const VenusBackground = () => {
       <Box
         sx={{
           position: 'absolute',
-          bottom: { xs: 20, md: 32 },
-          left: { xs: 20, md: 32 },
+          bottom: { xs: 20 },
+          left: { xs: 20 },
           fontSize: { xs: '1.5rem', md: '2rem' },
           color: isDarkMode
             ? 'rgba(255, 198, 73, 0.6)'
