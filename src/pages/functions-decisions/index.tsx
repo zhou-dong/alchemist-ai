@@ -3,11 +3,9 @@ import {
   Typography,
   Fade,
   useTheme,
-  styled,
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientButton, GradientTypography } from '../../theme/theme';
 import { MercuryBackground } from './MercuryBackground';
 import { FunctionFlowDiagram } from './FunctionFlowDiagram';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -16,23 +14,8 @@ import { TypingText } from './TypingText';
 import { FunctionExamples } from './FunctionExamples';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
 import { Starfield } from '../../components/common/Starfield';
-
-const DialogBox = styled(Box)<{ isDarkMode: boolean }>(({ isDarkMode }) => ({
-  position: 'absolute',
-  top: '45%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  borderRadius: '24px',
-  lineHeight: 1.8,
-  p: { xs: 3, md: 4 },
-  textAlign: 'left',
-  background: isDarkMode
-    ? `linear-gradient(135deg, rgba(155, 126, 222, 0.08), rgba(107, 163, 216, 0.05))`
-    : `linear-gradient(135deg, rgba(171, 142, 238, 0.12), rgba(123, 179, 232, 0.08))`,
-  backdropFilter: 'blur(5px)',
-  border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(171, 142, 238, 0.4)'}`,
-  boxShadow: `0 8px 32px ${isDarkMode ? 'rgba(155, 126, 222, 0.2)' : 'rgba(171, 142, 238, 0.25)'}`,
-}));
+import { MercuryDialogBox, MercuryGradientButton, MercuryGradientTypography, mercuryPrimary, mercurySecondary, mercuryShadow, mercuryBorder, mercuryBoxShadow } from './MercuryTheme';
+import { Progress } from '../../components/common/Progress';
 
 export const FunctionsDecisions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -51,29 +34,6 @@ export const FunctionsDecisions = () => {
   };
 
   const totalSections = Object.keys(SECTIONS).length;
-
-  // Gender-neutral AI colors - warm, organic, human-like
-  const aiColors = {
-    // Warm, neutral colors - organic and inviting
-    warmAmber: isDarkMode ? '#FFB84D' : '#FFC966',
-    softTeal: isDarkMode ? '#4ECDC4' : '#5EDDD6',
-    warmPurple: isDarkMode ? '#9B7EDE' : '#AB8EEE',
-    softGreen: isDarkMode ? '#6BCF7F' : '#7BDF8F',
-    warmOrange: isDarkMode ? '#FF8C42' : '#FF9C52',
-    softBlue: isDarkMode ? '#6BA3D8' : '#7BB3E8',
-    warmIndigo: isDarkMode ? '#7B8FD8' : '#8B9FE8',
-    softCyan: isDarkMode ? '#5BC8D8' : '#6BD8E8',
-    // Text colors - warm and readable
-    text: isDarkMode ? '#F5F5F5' : '#2C2C2C',
-    textSecondary: isDarkMode ? '#E0E0E0' : '#4A4A4A',
-    textLight: isDarkMode ? '#E8F4F8' : '#6BA3D8',
-    textAccent: isDarkMode ? '#FFB84D' : '#FF8C42',
-    // Gradient colors - soft, warm, organic, neutral
-    gradientStart: isDarkMode ? '#9B7EDE' : '#AB8EEE',
-    gradientMid: isDarkMode ? '#6BA3D8' : '#7BB3E8',
-    gradientEnd: isDarkMode ? '#4ECDC4' : '#5EDDD6',
-    gradientSoft: isDarkMode ? '#FFB84D' : '#FFC966',
-  };
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 300);
@@ -139,8 +99,44 @@ export const FunctionsDecisions = () => {
             <clipPath id="starfieldHorizonClip" clipPathUnits="objectBoundingBox">
               <path d="M 0 0 L 1 0 L 1 0.75 Q 0.75 0.62, 0.5 0.62 T 0 0.75 Z" />
             </clipPath>
+            {/* Mercury color gradient for horizon line */}
+            <linearGradient id="mercuryHorizonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(184, 160, 130, 0.4)" />
+              <stop offset="50%" stopColor="rgba(184, 160, 130, 0.5)" />
+              <stop offset="100%" stopColor="rgba(184, 160, 130, 0.4)" />
+            </linearGradient>
           </defs>
         </svg>
+        {/* Visible horizon line in Mercury colors */}
+        <Box
+          sx={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 0.3,
+            pointerEvents: 'none',
+            overflow: 'hidden',
+          }}
+        >
+          <svg
+            width="100%"
+            height="100%"
+            viewBox="0 0 1920 1080"
+            preserveAspectRatio="none"
+            style={{ position: 'absolute', top: 0, left: 0 }}
+          >
+            {/* Horizon line following the same curve as the clipPath */}
+            <path
+              d="M 0 810 Q 480 670, 960 670 T 1920 810"
+              stroke="url(#mercuryHorizonGradient)"
+              strokeWidth="2"
+              fill="none"
+              opacity={isDarkMode ? 0.6 : 0.5}
+            />
+          </svg>
+        </Box>
       </Box>
       <Starfield clipPath="url(#starfieldHorizonClip)" />
       <MercuryBackground clipPath="url(#mercuryHorizonClip)" />
@@ -169,29 +165,20 @@ export const FunctionsDecisions = () => {
             zIndex: 3,
             textAlign: 'center',
           }}>
-            <GradientTypography
+            <MercuryGradientTypography
               variant="h2"
               sx={{
                 fontSize: { xs: '1.5rem', md: '2rem', lg: '3rem' },
-                textAlign: 'center',
-                fontWeight: 900,
-                backgroundSize: '200% 200%',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                animation: 'gradientShift 8s ease infinite',
-                filter: 'drop-shadow(0 0 20px rgba(155, 126, 222, 0.3))',
               }}
             >
               EVERY DECISION IS A FUNCTION
-            </GradientTypography>
+            </MercuryGradientTypography>
           </Box>
 
           <Fade in={currentSection === SECTIONS.SUBTITLE1} timeout={1000}>
-            <DialogBox
+            <MercuryDialogBox
               isDarkMode={isDarkMode}
               sx={{
-
                 p: { xs: 3, md: 4 },
               }}
             >
@@ -201,6 +188,7 @@ export const FunctionsDecisions = () => {
                     fontWeight: 300,
                     fontSize: { xs: '1.1rem', md: '1.3rem' },
                     letterSpacing: '0.02em',
+                    color: mercuryPrimary,
                   }}
                 >
                   <TypingText
@@ -209,13 +197,12 @@ export const FunctionsDecisions = () => {
                   />
                 </Typography>
               )}
-            </DialogBox>
+            </MercuryDialogBox>
           </Fade>
 
           <Fade in={currentSection === SECTIONS.SUBTITLE2} timeout={1000}>
             <Box>
-
-              <DialogBox
+              <MercuryDialogBox
                 isDarkMode={isDarkMode}
                 sx={{
                   p: { xs: 3, md: 4 },
@@ -227,6 +214,7 @@ export const FunctionsDecisions = () => {
                       fontWeight: 300,
                       letterSpacing: '0.02em',
                       fontSize: { xs: '1.1rem', md: '1.3rem' },
+                      color: mercuryPrimary,
                     }}
                   >
                     <TypingText
@@ -235,9 +223,9 @@ export const FunctionsDecisions = () => {
                     />
                   </Typography>
                 )}
-              </DialogBox>
+              </MercuryDialogBox>
 
-              <GradientButton
+              <MercuryGradientButton
                 size="medium"
                 onClick={() => {
                   navigate('/alchemist-ai/roadmap?step=1')
@@ -247,11 +235,10 @@ export const FunctionsDecisions = () => {
                   mt: 20,
                   px: 3,
                   py: 1.2,
-                  fontSize: '1.2rem',
                 }}
               >
                 NEXT
-              </GradientButton>
+              </MercuryGradientButton>
             </Box>
 
           </Fade>
@@ -274,86 +261,18 @@ export const FunctionsDecisions = () => {
             right: { xs: 20, },
             zIndex: 1000,
           }}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 1,
-                px: { xs: 2.5, },
-                py: { xs: 1.5, },
-                borderRadius: '16px',
-                backdropFilter: 'blur(1px)',
-                border: `1px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(171, 142, 238, 0.4)'}`,
-                boxShadow: `0 8px 32px ${isDarkMode ? 'rgba(155, 126, 222, 0.2)' : 'rgba(171, 142, 238, 0.25)'}`,
-
-              }}
-            >
-              {/* Progress Text */}
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: 1.5,
-                }}
-              >
-                <Box
-                  component="span"
-                  sx={{
-                    color: theme.palette.text.primary,
-                    fontSize: { xs: '1rem', md: '1.125rem' },
-                    fontWeight: 600,
-                    letterSpacing: '0.05em',
-                    fontFamily: 'monospace',
-                  }}
-                >
-                  {currentSection + 1} / {totalSections}
-                </Box>
-              </Box>
-
-              {/* Progress Bar */}
-              <Box
-                sx={{
-                  width: '100%',
-                  height: '4px',
-                  borderRadius: '2px',
-                  background: isDarkMode
-                    ? 'rgba(255, 255, 255, 0.1)'
-                    : 'rgba(0, 0, 0, 0.1)',
-                  overflow: 'hidden',
-                  position: 'relative',
-                }}
-              >
-                <Box
-                  sx={{
-                    height: '100%',
-                    width: `${((currentSection + 1) / totalSections) * 100}%`,
-                    background: `linear-gradient(90deg, ${aiColors.warmPurple}, ${aiColors.softBlue})`,
-                    borderRadius: '2px',
-                    transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                    boxShadow: `0 0 8px ${aiColors.warmPurple}60`,
-                    position: 'relative',
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)',
-                      animation: 'shimmer 2s ease-in-out infinite',
-                      '@keyframes shimmer': {
-                        '0%': { transform: 'translateX(-100%)' },
-                        '100%': { transform: 'translateX(100%)' },
-                      },
-                    },
-                  }}
-                />
-              </Box>
-            </Box>
+            <Progress
+              isDarkMode={isDarkMode}
+              currentSection={currentSection}
+              totalSections={totalSections}
+              colorPrimary={mercuryPrimary}
+              colorSecondary={mercurySecondary}
+              colorShadow={{ dark: mercuryShadow, light: mercuryShadow }}
+              colorBorder={{ dark: mercuryBorder.dark, light: mercuryBorder.light }}
+              colorBoxShadow={{ dark: mercuryBoxShadow.dark, light: mercuryBoxShadow.light }}
+            />
           </Box>
 
-          {/* Navigation Controls - "Her" Style */}
           <Box sx={{
             position: 'fixed',
             bottom: '10%',
@@ -367,12 +286,11 @@ export const FunctionsDecisions = () => {
             width: '100%',
             justifyContent: 'center',
           }}>
-            <GradientButton
+            <MercuryGradientButton
               onClick={handlePrevious}
               disabled={currentSection === 0}
               sx={{
                 fontSize: '1rem',
-                fontWeight: 700,
                 letterSpacing: '0.05em',
                 px: 4,
                 py: 1.5,
@@ -380,13 +298,12 @@ export const FunctionsDecisions = () => {
               startIcon={<ArrowBackIcon />}
             >
               PREVIOUS
-            </GradientButton>
-            <GradientButton
+            </MercuryGradientButton>
+            <MercuryGradientButton
               onClick={handleNext}
               disabled={currentSection >= totalSections - 1}
               sx={{
                 fontSize: '1rem',
-                fontWeight: 700,
                 letterSpacing: '0.05em',
                 px: 4,
                 py: 1.5,
@@ -394,7 +311,7 @@ export const FunctionsDecisions = () => {
               endIcon={<ArrowForwardIcon />}
             >
               NEXT
-            </GradientButton>
+            </MercuryGradientButton>
           </Box>
         </Box>
       </Fade>

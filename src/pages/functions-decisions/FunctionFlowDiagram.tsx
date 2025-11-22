@@ -8,11 +8,25 @@ interface FunctionFlowDiagramProps {
     isVisible: boolean;
     isDarkMode: boolean;
 }
+import { mercuryBaseColor as baseColor } from './MercuryTheme';
 
 export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagramProps) => {
-    // Define colors locally
-    const warmPurple = isDarkMode ? '#9B7EDE' : '#AB8EEE';
-    const softBlue = isDarkMode ? '#6BA3D8' : '#7BB3E8';
+    // Mercury's characteristic gray-brown colors
+    const mercuryPrimary = isDarkMode
+        ? `rgba(${baseColor.r}, ${baseColor.g}, ${baseColor.b}, 0.6)`
+        : `rgba(${baseColor.r}, ${baseColor.g}, ${baseColor.b}, 0.5)`;
+    const mercurySecondary = isDarkMode
+        ? `rgba(${baseColor.r - 20}, ${baseColor.g - 20}, ${baseColor.b - 20}, 0.5)`
+        : `rgba(${baseColor.r - 20}, ${baseColor.g - 20}, ${baseColor.b - 20}, 0.4)`;
+    const mercuryAccent = isDarkMode
+        ? `rgba(${baseColor.r + 15}, ${baseColor.g + 15}, ${baseColor.b + 15}, 0.5)`
+        : `rgba(${baseColor.r + 15}, ${baseColor.g + 15}, ${baseColor.b + 15}, 0.4)`;
+    const mercuryShadow = isDarkMode
+        ? `rgba(${baseColor.r - 40}, ${baseColor.g - 40}, ${baseColor.b - 40}, 0.4)`
+        : `rgba(${baseColor.r - 40}, ${baseColor.g - 40}, ${baseColor.b - 40}, 0.3)`;
+    const mercuryHighlight = isDarkMode
+        ? `rgba(${baseColor.r + 25}, ${baseColor.g + 25}, ${baseColor.b + 25}, 0.5)`
+        : `rgba(${baseColor.r + 25}, ${baseColor.g + 25}, ${baseColor.b + 25}, 0.4)`;
 
     return (
         <Fade in={isVisible} timeout={1000}>
@@ -51,7 +65,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                             justifyContent: 'center',
                             alignItems: 'center',
                             borderRadius: '50%',
-                            border: `2px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.6)' : 'rgba(99, 102, 241, 0.5)'}`,
+                            border: `2px solid ${mercuryPrimary}`,
                             textAlign: 'center',
                             position: 'relative',
                             px: 2,
@@ -65,8 +79,8 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                             '&:hover': {
                                 transform: 'scale(1.15)',
                                 transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border 0.3s ease, boxShadow 0.3s ease',
-                                border: `4px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.9)' : 'rgba(99, 102, 241, 0.8)'}`,
-                                boxShadow: `0 0 20px ${isDarkMode ? 'rgba(139, 92, 246, 0.4)' : 'rgba(99, 102, 241, 0.3)'}`,
+                                border: `4px solid ${mercuryPrimary}`,
+                                boxShadow: `0 0 20px ${mercuryShadow}`,
                             },
                             '&::before': {
                                 content: '""',
@@ -74,7 +88,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                                 inset: -2,
                                 borderRadius: '50%',
                                 padding: '2px',
-                                background: 'linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)',
+                                background: `linear-gradient(135deg, ${mercuryPrimary}, ${mercurySecondary}, ${mercuryAccent}, ${mercuryHighlight})`,
                                 backgroundSize: '200% 200%',
                                 WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                                 WebkitMaskComposite: 'xor',
@@ -96,6 +110,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                                 fontWeight: 600,
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.5px',
+                                color: mercuryPrimary,
                             }}
                         >
                             Input
@@ -118,8 +133,8 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                         >
                             <defs>
                                 <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" stopColor={warmPurple} />
-                                    <stop offset="100%" stopColor={softBlue} />
+                                    <stop offset="0%" stopColor={mercuryPrimary} />
+                                    <stop offset="100%" stopColor={mercurySecondary} />
                                 </linearGradient>
                             </defs>
                             <path
@@ -143,7 +158,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                             justifyContent: 'center',
                             alignItems: 'center',
                             borderRadius: '50%',
-                            border: `2px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.6)' : 'rgba(99, 102, 241, 0.5)'}`,
+                            border: `2px solid ${mercuryPrimary}`,
                             textAlign: 'center',
                             position: 'relative',
                             px: 2,
@@ -157,8 +172,8 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                             '&:hover': {
                                 transform: 'scale(1.2)',
                                 transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border 0.3s ease, boxShadow 0.3s ease',
-                                border: `4px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.9)' : 'rgba(99, 102, 241, 0.8)'}`,
-                                boxShadow: `0 0 30px ${isDarkMode ? 'rgba(139, 92, 246, 0.5)' : 'rgba(99, 102, 241, 0.4)'}`,
+                                border: `4px solid ${mercuryPrimary}`,
+                                boxShadow: `0 0 30px ${mercuryShadow}`,
                             },
                             '&::before': {
                                 content: '""',
@@ -166,7 +181,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                                 inset: -2,
                                 borderRadius: '50%',
                                 padding: '2px',
-                                background: 'linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)',
+                                background: `linear-gradient(135deg, ${mercuryPrimary}, ${mercurySecondary}, ${mercuryAccent}, ${mercuryHighlight})`,
                                 backgroundSize: '200% 200%',
                                 WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                                 WebkitMaskComposite: 'xor',
@@ -188,6 +203,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                                 fontWeight: 600,
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.5px',
+                                color: mercuryPrimary,
                             }}
                         >
                             Decision
@@ -229,7 +245,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                             justifyContent: 'center',
                             alignItems: 'center',
                             borderRadius: '50%',
-                            border: `2px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.6)' : 'rgba(99, 102, 241, 0.5)'}`,
+                            border: `2px solid ${mercuryPrimary}`,
                             textAlign: 'center',
                             position: 'relative',
                             px: 2,
@@ -243,8 +259,8 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                             '&:hover': {
                                 transform: 'scale(1.15)',
                                 transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border 0.3s ease, boxShadow 0.3s ease',
-                                border: `4px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.9)' : 'rgba(99, 102, 241, 0.8)'}`,
-                                boxShadow: `0 0 20px ${isDarkMode ? 'rgba(139, 92, 246, 0.4)' : 'rgba(99, 102, 241, 0.3)'}`,
+                                border: `4px solid ${mercuryPrimary}`,
+                                boxShadow: `0 0 20px ${mercuryShadow}`,
                             },
                             '&::before': {
                                 content: '""',
@@ -252,7 +268,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                                 inset: -2,
                                 borderRadius: '50%',
                                 padding: '2px',
-                                background: 'linear-gradient(135deg, #6366F1, #8B5CF6, #F59E0B, #10B981)',
+                                background: `linear-gradient(135deg, ${mercuryPrimary}, ${mercurySecondary}, ${mercuryAccent}, ${mercuryHighlight})`,
                                 backgroundSize: '200% 200%',
                                 WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
                                 WebkitMaskComposite: 'xor',
@@ -274,6 +290,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                                 fontWeight: 600,
                                 textTransform: 'uppercase',
                                 letterSpacing: '0.5px',
+                                color: mercuryPrimary,
                             }}
                         >
                             Output
@@ -305,6 +322,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                                 fontSize: { xs: '1.2rem', md: '1.4rem' },
                                 fontFamily: 'monospace',
                                 textAlign: 'center',
+                                color: mercuryPrimary,
                             }}
                         >
                             x
@@ -327,6 +345,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                                 fontSize: { xs: '1.2rem', md: '1.4rem' },
                                 fontStyle: 'italic',
                                 textAlign: 'center',
+                                color: mercuryPrimary,
                             }}
                         >
                             f(x)
@@ -349,6 +368,7 @@ export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagr
                                 fontSize: { xs: '1.2rem', md: '1.4rem' },
                                 fontFamily: 'monospace',
                                 textAlign: 'center',
+                                color: mercuryPrimary,
                             }}
                         >
                             y

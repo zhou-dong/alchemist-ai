@@ -104,21 +104,7 @@ export const MercuryBackground = ({ clipPath }: { clipPath: string }) => {
         overflow: 'hidden',
         clipPath: clipPath,
         WebkitClipPath: clipPath,
-        // Mercury surface base background - enhanced with more depth
-        background: `radial-gradient(ellipse at 30% 40%, 
-          ${surfaceColors.highlight} 0%, 
-          ${surfaceColors.primary} 20%, 
-          ${surfaceColors.secondary} 40%, 
-          ${surfaceColors.accent} 60%, 
-          ${surfaceColors.secondary} 80%, 
-          ${surfaceColors.shadow} 100%
-        ), linear-gradient(135deg, 
-          ${surfaceColors.primary} 0%, 
-          ${surfaceColors.secondary} 25%, 
-          ${surfaceColors.accent} 50%, 
-          ${surfaceColors.secondary} 75%, 
-          ${surfaceColors.shadow} 100%
-        )`,
+        background: 'transparent',
       }}
     >
       {/* Realistic Mercury Surface - SVG based */}

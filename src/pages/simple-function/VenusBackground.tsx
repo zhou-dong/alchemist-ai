@@ -48,6 +48,57 @@ const VENUS_CONFIG = {
   ],
 };
 
+// Generate organic cloud-like SVG path using multiple overlapping circles/ellipses
+// This creates a more realistic cloud shape by combining multiple blobs
+const generateCloudPath = (width: number, height: number, seed: number = Math.random()) => {
+  // Simple seeded random number generator
+  let currentSeed = seed;
+  const rng = (min: number, max: number) => {
+    currentSeed = (currentSeed * 9301 + 49297) % 233280;
+    return min + (max - min) * (currentSeed / 233280);
+  };
+  
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const numBlobs = Math.floor(rng(5, 9)); // 5-8 blobs per cloud for more organic shape
+  const paths: string[] = [];
+
+  // Generate multiple overlapping blobs to create organic cloud shape
+  // Larger blobs in center, smaller ones around edges for wispy effect
+  for (let i = 0; i < numBlobs; i++) {
+    const distanceFromCenter = rng(0, 0.5); // How far from center
+    const angle = rng(0, Math.PI * 2);
+    const blobX = centerX + Math.cos(angle) * width * distanceFromCenter * 0.4;
+    const blobY = centerY + Math.sin(angle) * height * distanceFromCenter * 0.4;
+    
+    // Larger blobs in center, smaller at edges
+    const sizeFactor = 1 - distanceFromCenter;
+    const blobWidth = width * rng(0.25, 0.5) * sizeFactor;
+    const blobHeight = height * rng(0.25, 0.5) * sizeFactor;
+    
+    // Create organic blob using ellipse with some variation
+    const rx = blobWidth / 2;
+    const ry = blobHeight / 2;
+    
+    // Add some irregularity to make it more cloud-like
+    const irregularity = rng(0.85, 1.15);
+    const rxVaried = rx * irregularity;
+    const ryVaried = ry * irregularity;
+    
+    // Create ellipse path with slight variations
+    const path = `M ${blobX},${blobY - ryVaried}
+      A ${rxVaried},${ryVaried} 0 0,1 ${blobX + rxVaried},${blobY}
+      A ${rxVaried},${ryVaried} 0 0,1 ${blobX},${blobY + ryVaried}
+      A ${rxVaried},${ryVaried} 0 0,1 ${blobX - rxVaried},${blobY}
+      A ${rxVaried},${ryVaried} 0 0,1 ${blobX},${blobY - ryVaried}
+      Z`;
+    
+    paths.push(path);
+  }
+
+  return paths;
+};
+
 // Generate random cloud formations
 // All coordinates are in percentage (0-100) for responsive scaling
 const generateCloudFormations = (
@@ -60,6 +111,7 @@ const generateCloudFormations = (
   const formations = [];
 
   for (let i = 0; i < count; i++) {
+    const seed = Math.random();
     const left = Math.random() * 100;
     const top = Math.random() * (topRange[1] - topRange[0]) + topRange[0];
     const width = Math.random() * (sizeRange[1] - sizeRange[0]) + sizeRange[0];
@@ -69,7 +121,18 @@ const generateCloudFormations = (
     const animationDuration = Math.random() * 20 + 15;
     const blur = Math.random() * 30 + 15;
 
-    formations.push({ id: i, left, top, width, height, opacity, animationDelay, animationDuration, blur });
+    formations.push({ 
+      id: i, 
+      left, 
+      top, 
+      width, 
+      height, 
+      opacity, 
+      animationDelay, 
+      animationDuration, 
+      blur,
+      seed, // Store seed for consistent path generation
+    });
   }
 
   return formations;
@@ -366,7 +429,7 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
         ))}
       </svg>
 
-      {/* Large cloud formations */}
+      {/* Large cloud formations - SVG-based organic shapes */}
       {largeClouds.map((cloud, index) => {
         const colorVariant = index % 3;
         const cloudColor = colorVariant === 0
@@ -374,6 +437,8 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
           : colorVariant === 1
             ? cloudColors.secondary
             : cloudColors.accent;
+
+        const cloudPaths = generateCloudPath(cloud.width, cloud.height, cloud.seed);
 
         return (
           <Box
@@ -384,25 +449,43 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
               top: `${cloud.top}%`,
               width: `${cloud.width}px`,
               height: `${cloud.height}px`,
-              borderRadius: `${Math.random() * 30 + 40}% ${Math.random() * 30 + 30}% ${Math.random() * 30 + 50}% ${Math.random() * 30 + 25}%`,
-              background: `radial-gradient(ellipse at ${Math.random() * 100}% ${Math.random() * 100}%, 
-                ${cloudColor.light}, ${cloudColor.medium})`,
-              boxShadow: `
-                inset 0 0 ${cloud.blur}px ${cloudColors.shadow.deep},
-                0 0 ${cloud.blur * 0.8}px ${cloudColors.shadow.medium},
-                inset -${cloud.blur * 0.5}px -${cloud.blur * 0.3}px ${cloud.blur * 1.2}px ${cloudColors.shadow.light}
-              `,
-              filter: `blur(${cloud.blur * 0.4}px)`,
               zIndex: 0.4,
               opacity: cloud.opacity,
               animation: `cloudDrift ${cloud.animationDuration}s ease-in-out infinite`,
               animationDelay: `${cloud.animationDelay}s`,
+              filter: `blur(${cloud.blur * 0.4}px)`,
             }}
-          />
+          >
+            <svg
+              width={cloud.width}
+              height={cloud.height}
+              style={{ position: 'absolute', top: 0, left: 0 }}
+            >
+              <defs>
+                <radialGradient id={`largeCloudGrad-${cloud.id}`} cx="50%" cy="50%">
+                  <stop offset="0%" stopColor={cloudColor.light} />
+                  <stop offset="70%" stopColor={cloudColor.medium} />
+                  <stop offset="100%" stopColor={cloudColor.dark} />
+                </radialGradient>
+                <filter id={`largeCloudFilter-${cloud.id}`}>
+                  <feGaussianBlur in="SourceGraphic" stdDeviation={cloud.blur * 0.2} />
+                </filter>
+              </defs>
+              {cloudPaths.map((path, pathIndex) => (
+                <path
+                  key={`path-${pathIndex}`}
+                  d={path}
+                  fill={`url(#largeCloudGrad-${cloud.id})`}
+                  filter={`url(#largeCloudFilter-${cloud.id})`}
+                  opacity={0.9 - pathIndex * 0.1}
+                />
+              ))}
+            </svg>
+          </Box>
         );
       })}
 
-      {/* Medium cloud formations */}
+      {/* Medium cloud formations - SVG-based organic shapes */}
       {mediumClouds.map((cloud, index) => {
         const colorVariant = index % 3;
         const cloudColor = colorVariant === 0
@@ -410,6 +493,8 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
           : colorVariant === 1
             ? cloudColors.secondary
             : cloudColors.accent;
+
+        const cloudPaths = generateCloudPath(cloud.width, cloud.height, cloud.seed);
 
         return (
           <Box
@@ -420,31 +505,52 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
               top: `${cloud.top}%`,
               width: `${cloud.width}px`,
               height: `${cloud.height}px`,
-              borderRadius: `${Math.random() * 30 + 35}% ${Math.random() * 30 + 40}% ${Math.random() * 30 + 45}% ${Math.random() * 30 + 30}%`,
-              background: `radial-gradient(ellipse at ${Math.random() * 100}% ${Math.random() * 100}%, 
-                ${cloudColor.medium}, ${cloudColor.dark})`,
-              boxShadow: `
-                inset 0 0 ${cloud.blur * 0.7}px ${cloudColors.shadow.medium},
-                0 0 ${cloud.blur * 0.6}px ${cloudColors.shadow.light}
-              `,
-              filter: `blur(${cloud.blur * 0.35}px)`,
               zIndex: 0.4,
               opacity: cloud.opacity,
               animation: `cloudDrift ${cloud.animationDuration}s ease-in-out infinite`,
               animationDelay: `${cloud.animationDelay}s`,
+              filter: `blur(${cloud.blur * 0.35}px)`,
             }}
-          />
+          >
+            <svg
+              width={cloud.width}
+              height={cloud.height}
+              style={{ position: 'absolute', top: 0, left: 0 }}
+            >
+              <defs>
+                <radialGradient id={`mediumCloudGrad-${cloud.id}`} cx="50%" cy="50%">
+                  <stop offset="0%" stopColor={cloudColor.medium} />
+                  <stop offset="70%" stopColor={cloudColor.dark} />
+                  <stop offset="100%" stopColor={cloudColors.shadow.medium} />
+                </radialGradient>
+                <filter id={`mediumCloudFilter-${cloud.id}`}>
+                  <feGaussianBlur in="SourceGraphic" stdDeviation={cloud.blur * 0.15} />
+                </filter>
+              </defs>
+              {cloudPaths.map((path, pathIndex) => (
+                <path
+                  key={`path-${pathIndex}`}
+                  d={path}
+                  fill={`url(#mediumCloudGrad-${cloud.id})`}
+                  filter={`url(#mediumCloudFilter-${cloud.id})`}
+                  opacity={0.85 - pathIndex * 0.1}
+                />
+              ))}
+            </svg>
+          </Box>
         );
       })}
 
-      {/* Small cloud formations */}
+      {/* Small cloud formations - SVG-based organic shapes */}
       {smallClouds.map((cloud) => {
-        const colorVariant = Math.floor(Math.random() * 3);
+        const colorVariant = Math.floor(cloud.seed * 3);
         const cloudColor = colorVariant === 0
           ? cloudColors.primary
           : colorVariant === 1
             ? cloudColors.secondary
             : cloudColors.accent;
+
+        const cloudPaths = generateCloudPath(cloud.width, cloud.height, cloud.seed);
 
         return (
           <Box
@@ -455,20 +561,38 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
               top: `${cloud.top}%`,
               width: `${cloud.width}px`,
               height: `${cloud.height}px`,
-              borderRadius: `${Math.random() * 30 + 40}% ${Math.random() * 30 + 30}% ${Math.random() * 30 + 50}% ${Math.random() * 30 + 25}%`,
-              background: `radial-gradient(ellipse at ${Math.random() * 100}% ${Math.random() * 100}%, 
-                ${cloudColor.medium}, ${cloudColor.dark})`,
-              boxShadow: `
-                inset 0 0 ${cloud.blur}px ${cloudColors.shadow.light},
-                0 0 ${cloud.blur * 0.8}px ${cloudColors.shadow.light}
-              `,
-              filter: `blur(${cloud.blur * 0.4}px)`,
               zIndex: 0.4,
               opacity: cloud.opacity,
               animation: `cloudDrift ${cloud.animationDuration}s ease-in-out infinite`,
               animationDelay: `${cloud.animationDelay}s`,
+              filter: `blur(${cloud.blur * 0.4}px)`,
             }}
-          />
+          >
+            <svg
+              width={cloud.width}
+              height={cloud.height}
+              style={{ position: 'absolute', top: 0, left: 0 }}
+            >
+              <defs>
+                <radialGradient id={`smallCloudGrad-${cloud.id}`} cx="50%" cy="50%">
+                  <stop offset="0%" stopColor={cloudColor.medium} />
+                  <stop offset="100%" stopColor={cloudColor.dark} />
+                </radialGradient>
+                <filter id={`smallCloudFilter-${cloud.id}`}>
+                  <feGaussianBlur in="SourceGraphic" stdDeviation={cloud.blur * 0.1} />
+                </filter>
+              </defs>
+              {cloudPaths.map((path, pathIndex) => (
+                <path
+                  key={`path-${pathIndex}`}
+                  d={path}
+                  fill={`url(#smallCloudGrad-${cloud.id})`}
+                  filter={`url(#smallCloudFilter-${cloud.id})`}
+                  opacity={0.8 - pathIndex * 0.1}
+                />
+              ))}
+            </svg>
+          </Box>
         );
       })}
 
