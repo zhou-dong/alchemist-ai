@@ -9,7 +9,7 @@ import Welcome from './pages/Welcome';
 import Perceptron from './pages/Perceptron';
 import Roadmap from './pages/roadmap';
 import FunctionsDecisions from './pages/functions-decisions';
-import SimpleFunctions from './pages/SimpleFunctions';
+import SimpleFunctions from './pages/simple-function';
 import MultiInputFunctions from './pages/MultiInputFunctions';
 import MathToNeurons from './pages/MathToNeurons';
 import LogisticRegression from './pages/LogisticRegression';
