@@ -65,6 +65,36 @@ export const SimpleFunctions = () => {
       <VenusBackground clipPath="url(#venusHorizonClip)" />
 
       <Fade in={isLoaded} timeout={800}>
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '10%',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 3,
+            textAlign: 'center',
+          }}
+        >
+          <GradientTypography
+            variant="h2"
+            sx={{
+              fontSize: { xs: '1.5rem', md: '2rem', lg: '3rem' },
+              textAlign: 'center',
+              fontWeight: 900,
+              backgroundSize: '200% 200%',
+              backgroundClip: 'text',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              animation: 'gradientShift 8s ease infinite',
+              filter: 'drop-shadow(0 0 20px rgba(155, 126, 222, 0.3))',
+            }}
+          >
+            SIMPLE FUNCTIONS
+          </GradientTypography>
+        </Box>
+      </Fade>
+
+      <Fade in={isLoaded} timeout={800}>
         <Box sx={{
           maxWidth: '900px',
           textAlign: 'center',
@@ -75,15 +105,6 @@ export const SimpleFunctions = () => {
           position: 'relative',
           zIndex: 1,
         }}>
-          <GradientTypography
-            variant="h4"
-            sx={{
-              mb: 2,
-            }}
-          >
-            SIMPLE FUNCTIONS
-          </GradientTypography>
-
           <Typography
             variant="h5"
             sx={{
