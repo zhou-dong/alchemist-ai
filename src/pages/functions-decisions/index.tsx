@@ -17,7 +17,7 @@ import { FunctionExamples } from './FunctionExamples';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
 import { Starfield } from '../../components/common/Starfield';
 
-const DialogBox = styled(Box)<{ isDarkMode: boolean }>(({ isDarkMode, theme }) => ({
+const DialogBox = styled(Box)<{ isDarkMode: boolean }>(({ isDarkMode }) => ({
   position: 'absolute',
   top: '45%',
   left: '50%',
