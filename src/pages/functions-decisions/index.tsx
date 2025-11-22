@@ -27,8 +27,8 @@ export const FunctionsDecisions = () => {
 
   // Section indices
   const SECTIONS = {
-    DIAGRAM: 0,
-    SUBTITLE1: 1,
+    SUBTITLE1: 0,
+    DIAGRAM: 1,
     EXAMPLES: 2,
     SUBTITLE2: 3,
   };
@@ -36,7 +36,7 @@ export const FunctionsDecisions = () => {
   const totalSections = Object.keys(SECTIONS).length;
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 300);
+    const timer = setTimeout(() => setIsLoaded(true), 500);
     return () => clearTimeout(timer);
   }, []);
 
