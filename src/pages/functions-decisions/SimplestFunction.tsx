@@ -11,7 +11,6 @@ const SimplestFunction = ({ isVisible, isDarkMode }: { isVisible: boolean, isDar
         warmOrange: isDarkMode ? '#FF8C42' : '#FF9C52',
         softBlue: isDarkMode ? '#6BA3D8' : '#7BB3E8',
         softCyan: isDarkMode ? '#5BC8D8' : '#6BD8E8',
-        text: isDarkMode ? '#F5F5F5' : '#2C2C2C',
     };
 
     return (
@@ -33,30 +32,28 @@ const SimplestFunction = ({ isVisible, isDarkMode }: { isVisible: boolean, isDar
             >
                 <Slide direction="up" in={isVisible} timeout={800} style={{ transitionDelay: '0ms' }}>
                     <Typography
-                        variant="body1"
+                        variant="subtitle1"
                         sx={{
-                            fontSize: { xs: '1rem', md: '1.2rem' },
+                            fontSize: { xs: '1.5rem', md: '2rem' },
                             lineHeight: 1.8,
-                            fontWeight: 300,
+                            fontWeight: 400,
                             textAlign: 'center',
                             mb: 2,
                         }}
                     >
-                        The simplest function is: <strong>if...else</strong>
+                        The simplest function is: <strong>if...else...</strong>
                     </Typography>
                 </Slide>
 
                 <Slide direction="up" in={isVisible} timeout={800} style={{ transitionDelay: '200ms' }}>
                     <Box
                         sx={{
-                            width: '400px',
+                            width: '500px',
                             p: { xs: 3, md: 4 },
                             borderRadius: '20px',
-                            background: isDarkMode
-                                ? 'rgba(155, 126, 222, 0.1)'
-                                : 'rgba(155, 126, 222, 0.08)',
-                            border: `2px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.25)'}`,
+                            background: `linear-gradient(135deg, ${aiColors.warmPurple}10, ${aiColors.softBlue}5)`,
                             backdropFilter: 'blur(10px)',
+                            border: `2px solid ${isDarkMode ? 'rgba(155, 126, 222, 0.3)' : 'rgba(155, 126, 222, 0.25)'}`,
                         }}
                     >
                         <Box
@@ -66,7 +63,6 @@ const SimplestFunction = ({ isVisible, isDarkMode }: { isVisible: boolean, isDar
                                 textAlign: 'left',
                                 fontFamily: 'monospace',
                                 lineHeight: 2,
-                                color: aiColors.text,
                             }}
                         >
                             <Box component="span" sx={{ color: aiColors.warmPurple, fontWeight: 600 }}>

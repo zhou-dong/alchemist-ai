@@ -127,7 +127,7 @@ export const FunctionsDecisions = () => {
             <GradientTypography
               variant="h2"
               sx={{
-                fontSize: { xs: '2.5rem', md: '4rem', lg: '5rem' },
+                fontSize: { xs: '1.5rem', md: '2rem', lg: '3rem' },
                 textAlign: 'center',
                 fontWeight: 900,
                 backgroundSize: '200% 200%',
@@ -355,8 +355,8 @@ export const FunctionsDecisions = () => {
                 gap: 1.5,
                 px: 3,
                 py: 1.5,
-                borderRadius: '20px',
-                background: `linear-gradient(135deg, ${aiColors.warmPurple}20, ${aiColors.softBlue}15)`,
+                borderRadius: '8px',
+                background: `linear-gradient(135deg, ${aiColors.warmPurple}10, ${aiColors.softBlue}5)`,
                 backdropFilter: 'blur(10px)',
                 border: `1px solid ${aiColors.warmPurple}40`,
                 color: aiColors.text,

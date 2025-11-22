@@ -77,22 +77,6 @@ export const MercuryBackground = () => {
         left: 0,
         width: '100%',
         height: '100%',
-        // Dark space sky blending into Mercury surface
-        background: isDarkMode
-          ? `linear-gradient(to bottom, 
-              #000000 0%, 
-              #0a0a0a 20%, 
-              #1a1a1a 40%, 
-              #2a2a1f 60%, 
-              #3a3a2f 80%, 
-              #4a4a3f 100%)`
-          : `linear-gradient(to bottom, 
-              #0a0a0a 0%, 
-              #1a1a1a 20%, 
-              #2a2a2a 40%, 
-              #3a3a2f 60%, 
-              #5a5a4f 80%, 
-              #C8B89C 100%)`,
       }}
     >
       {/* Stars in the dark sky */}
