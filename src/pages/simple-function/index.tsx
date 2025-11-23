@@ -6,9 +6,9 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTypography } from '../../theme/theme';
 import { VenusBackground } from './VenusBackground';
 import { Starfield } from '../../components/common/Starfield';
+import { VenusGradientTypography } from './VenusTheme';
 
 export const SimpleFunctions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -75,22 +75,15 @@ export const SimpleFunctions = () => {
             textAlign: 'center',
           }}
         >
-          <GradientTypography
+          <VenusGradientTypography
             variant="h2"
             sx={{
               fontSize: { xs: '1.5rem', md: '2rem', lg: '3rem' },
-              textAlign: 'center',
               fontWeight: 900,
-              backgroundSize: '200% 200%',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              animation: 'gradientShift 8s ease infinite',
-              filter: 'drop-shadow(0 0 20px rgba(155, 126, 222, 0.3))',
             }}
           >
             SIMPLE FUNCTIONS
-          </GradientTypography>
+          </VenusGradientTypography>
         </Box>
       </Fade>
 

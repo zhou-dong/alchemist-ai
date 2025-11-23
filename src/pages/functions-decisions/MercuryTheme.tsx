@@ -69,7 +69,6 @@ export const MercuryGradientButton = styled(GradientButton)({
 
 export const MercuryGradientTypography = styled(GradientTypography)({
     textAlign: 'center',
-    fontWeight: 900,
     background: `linear-gradient(135deg, ${mercuryPrimary}, ${mercurySecondary}, ${mercuryAccent}, ${mercuryHighlight})`,
     backgroundSize: '200% 200%',
     backgroundClip: 'text',

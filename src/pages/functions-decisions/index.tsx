@@ -169,6 +169,7 @@ export const FunctionsDecisions = () => {
               variant="h2"
               sx={{
                 fontSize: { xs: '1.5rem', md: '2rem', lg: '3rem' },
+                fontWeight: 900,
               }}
             >
               EVERY DECISION IS A FUNCTION

@@ -1,30 +1,17 @@
 import { Box } from '@mui/material';
 import { useTheme } from '@mui/material';
-import { useMemo, useEffect } from 'react';
+import { useMemo } from 'react';
 
 // Configuration - Easy to update and maintain
 const VENUS_CONFIG = {
-  // Cloud colors (real Venus: yellow-orange sulfuric acid clouds, muted for starfield compatibility)
+  // Cloud colors (reddish-brown volcanic surface colors)
   clouds: {
-    base: { r: 180, g: 140, b: 50 }, // Darker, muted yellow-orange
-    secondary: { r: 200, g: 160, b: 90 }, // Muted yellow
-    accent: { r: 160, g: 110, b: 30 }, // Darker orange accent
-    shadow: { r: 120, g: 90, b: 40 }, // Dark shadow for contrast with stars
-    opacity: { dark: 0.4, light: 0.3 },
-  },
-  // Atmospheric glow configuration
-  atmosphere: {
-    glow: {
-      inner: { r: 200, g: 160, b: 100 },
-      outer: { r: 180, g: 140, b: 60 },
-      opacity: { dark: 0.15, light: 0.1 },
-    },
-    haze: {
-      r: 160,
-      g: 120,
-      b: 50,
-      opacity: { dark: 0.12, light: 0.08 },
-    },
+    base: { r: 139, g: 69, b: 19 }, // Reddish-brown (SaddleBrown)
+    secondary: { r: 160, g: 82, b: 45 }, // Lighter reddish-brown (Sienna)
+    accent: { r: 101, g: 50, b: 14 }, // Darker reddish-brown
+    shadow: { r: 80, g: 40, b: 10 }, // Dark shadow for contrast with stars
+    variation: { r: 20, g: 20, b: 20 }, // Color variation range
+    opacity: { dark: 0.2, light: 0.15 },
   },
   // Cloud formations configuration
   cloudFormations: {
@@ -40,11 +27,6 @@ const VENUS_CONFIG = {
     { path: 'M 200 0 Q 400 -50, 600 0 T 1000 0 Q 1200 -20, 1400 0 T 1800 0', position: 'top' },
     { path: 'M 100 400 Q 500 350, 900 400 T 1700 400 Q 1900 380, 1920 400', position: 'middle' },
     { path: 'M 300 -440 Q 350 -140, 300 160 T 300 540', position: 'vertical' },
-  ],
-  // Atmospheric bands configuration
-  atmosphericBands: [
-    { cx: '50%', cy: '20%', rx: '60%', ry: '8%', opacity: 0.4 },
-    { cx: '50%', cy: '60%', rx: '55%', ry: '10%', opacity: 0.35 },
   ],
 };
 
@@ -117,8 +99,6 @@ const generateCloudFormations = (
     const width = Math.random() * (sizeRange[1] - sizeRange[0]) + sizeRange[0];
     const height = Math.random() * (heightRange[1] - heightRange[0]) + heightRange[0];
     const opacity = Math.random() * (opacityRange[1] - opacityRange[0]) + opacityRange[0];
-    const animationDelay = Math.random() * 5;
-    const animationDuration = Math.random() * 20 + 15;
     const blur = Math.random() * 30 + 15;
 
     formations.push({ 
@@ -128,8 +108,6 @@ const generateCloudFormations = (
       width, 
       height, 
       opacity, 
-      animationDelay, 
-      animationDuration, 
       blur,
       seed, // Store seed for consistent path generation
     });
@@ -171,23 +149,26 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
       light: `rgba(${shadowColor.r}, ${shadowColor.g}, ${shadowColor.b}, ${opacity * 0.6})`,
     },
     highlight: isDarkMode
-      ? 'rgba(220, 200, 160, 0.4)'
-      : 'rgba(240, 220, 180, 0.3)',
+      ? 'rgba(180, 100, 50, 0.4)'
+      : 'rgba(200, 120, 70, 0.3)',
+    // Simple variants for texture layers
+    primarySimple: `rgba(${baseColor.r}, ${baseColor.g}, ${baseColor.b}, ${opacity})`,
+    secondarySimple: `rgba(${baseColor.r - 20}, ${baseColor.g - 20}, ${baseColor.b - 20}, ${opacity * 0.8})`,
+    accentSimple: `rgba(${baseColor.r + 15}, ${baseColor.g + 15}, ${baseColor.b + 15}, ${opacity * 0.7})`,
+    shadowSimple: `rgba(${baseColor.r - 40}, ${baseColor.g - 40}, ${baseColor.b - 40}, ${opacity * 0.6})`,
+    highlightSimple: `rgba(${baseColor.r + 25}, ${baseColor.g + 25}, ${baseColor.b + 25}, ${opacity * 0.5})`,
   };
 
-  // Atmospheric colors derived from config
-  const glowInner = VENUS_CONFIG.atmosphere.glow.inner;
-  const glowOuter = VENUS_CONFIG.atmosphere.glow.outer;
-  const glowOpacity = VENUS_CONFIG.atmosphere.glow.opacity[isDarkMode ? 'dark' : 'light'];
-  const hazeColor = VENUS_CONFIG.atmosphere.haze;
-  const hazeOpacity = VENUS_CONFIG.atmosphere.haze.opacity[isDarkMode ? 'dark' : 'light'];
-
-  const atmosphericColors = {
-    glow: {
-      outer: `rgba(${glowOuter.r}, ${glowOuter.g}, ${glowOuter.b}, ${glowOpacity * 1.39})`,
-      inner: `rgba(${glowInner.r}, ${glowInner.g}, ${glowInner.b}, ${glowOpacity})`,
-    },
-    haze: `rgba(${hazeColor.r}, ${hazeColor.g}, ${hazeColor.b}, ${hazeOpacity})`,
+  // Subtle cloud swirl colors - reduced opacity for better blending
+  const swirlColors = {
+    shadow: isDarkMode
+      ? { start: 'rgba(101, 50, 14, 0.15)', end: 'rgba(101, 50, 14, 0.08)' }
+      : { start: 'rgba(101, 50, 14, 0.08)', end: 'rgba(101, 50, 14, 0.04)' },
+    face: isDarkMode
+      ? { top: 'rgba(160, 82, 45, 0.18)', bottom: 'rgba(139, 69, 19, 0.2)' }
+      : { top: 'rgba(160, 82, 45, 0.1)', bottom: 'rgba(150, 75, 35, 0.12)' },
+    highlight: isDarkMode ? 'rgba(180, 100, 50, 0.2)' : 'rgba(200, 120, 70, 0.12)',
+    edgeShadow: isDarkMode ? 'rgba(80, 40, 10, 0.15)' : 'rgba(101, 50, 14, 0.08)',
   };
 
   // Generate cloud formations
@@ -221,44 +202,6 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
     );
   }, []);
 
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes cloudDrift {
-        0%, 100% {
-          transform: translateX(0) translateY(0);
-          opacity: 1;
-        }
-        25% {
-          transform: translateX(20px) translateY(-10px);
-          opacity: 0.9;
-        }
-        50% {
-          transform: translateX(-15px) translateY(15px);
-          opacity: 0.85;
-        }
-        75% {
-          transform: translateX(10px) translateY(-5px);
-          opacity: 0.95;
-        }
-      }
-      @keyframes atmosphericGlow {
-        0%, 100% {
-          opacity: 0.5;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.65;
-          transform: scale(1.05);
-        }
-      }
-    `;
-    document.head.appendChild(style);
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
-
   return (
     <Box
       sx={{
@@ -270,22 +213,7 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
         overflow: 'hidden',
         clipPath: clipPath,
         WebkitClipPath: clipPath,
-        // Venus atmospheric base background - darker for starfield compatibility
-        background: `radial-gradient(ellipse at 30% 40%, 
-          ${atmosphericColors.glow.inner} 0%, 
-          ${atmosphericColors.glow.outer} 20%, 
-          ${atmosphericColors.haze} 40%, 
-          ${cloudColors.primary.medium} 60%, 
-          ${cloudColors.secondary.medium} 80%, 
-          ${cloudColors.shadow.medium} 100%
-        ), linear-gradient(135deg, 
-          ${atmosphericColors.glow.outer} 0%, 
-          ${cloudColors.primary.light} 25%, 
-          ${cloudColors.secondary.light} 50%, 
-          ${cloudColors.accent.medium} 75%, 
-          ${cloudColors.shadow.deep} 100%
-        ), 
-        radial-gradient(circle at 50% 50%, rgba(20, 15, 10, 0.3) 0%, transparent 70%)`,
+        background: 'transparent',
       }}
     >
       {/* Realistic Venus Atmosphere - SVG based */}
@@ -303,44 +231,44 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
         }}
       >
         <defs>
-          {/* Cloud texture filter - simulates cloud turbulence */}
-          <filter id="venusCloudTexture" x="0%" y="0%" width="100%" height="100%">
+          {/* Enhanced cloud texture filter - multiple layers */}
+          <filter id="venusTexture" x="0%" y="0%" width="100%" height="100%">
             <feTurbulence
               type="fractalNoise"
-              baseFrequency="0.7"
-              numOctaves="3"
-              result="cloudNoise"
+              baseFrequency="0.9"
+              numOctaves="4"
+              result="noise"
             />
             <feDisplacementMap
               in="SourceGraphic"
-              in2="cloudNoise"
-              scale="2"
+              in2="noise"
+              scale="3"
               xChannelSelector="R"
               yChannelSelector="G"
             />
           </filter>
 
-          {/* Fine cloud texture for atmospheric detail */}
+          {/* Fine grain texture for cloud detail */}
           <filter id="venusFineTexture" x="0%" y="0%" width="100%" height="100%">
             <feTurbulence
               type="fractalNoise"
-              baseFrequency="2.0"
+              baseFrequency="2.5"
               numOctaves="2"
               result="fineNoise"
             />
             <feDisplacementMap
               in="SourceGraphic"
               in2="fineNoise"
-              scale="0.8"
+              scale="1"
               xChannelSelector="R"
               yChannelSelector="G"
             />
           </filter>
 
-          {/* Atmospheric lighting gradient - simulates sunlight through clouds */}
-          <radialGradient id="atmosphericLighting" cx="30%" cy="30%">
-            <stop offset="0%" stopColor={cloudColors.highlight} stopOpacity="0.25" />
-            <stop offset="40%" stopColor={cloudColors.primary.light} stopOpacity="0.12" />
+          {/* Cloud lighting gradient - simulates sunlight */}
+          <radialGradient id="cloudLighting" cx="30%" cy="30%">
+            <stop offset="0%" stopColor={cloudColors.highlightSimple} stopOpacity="0.3" />
+            <stop offset="40%" stopColor={cloudColors.primarySimple} stopOpacity="0.15" />
             <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </radialGradient>
 
@@ -348,50 +276,52 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
           <linearGradient id="horizonGlow" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="transparent" stopOpacity="0" />
             <stop offset="60%" stopColor="transparent" stopOpacity="0" />
-            <stop offset="67%" stopColor={cloudColors.primary.medium} stopOpacity="0.08" />
-            <stop offset="75%" stopColor={cloudColors.accent.medium} stopOpacity="0.12" />
-            <stop offset="100%" stopColor={cloudColors.shadow.medium} stopOpacity="0.15" />
+            <stop offset="67%" stopColor={cloudColors.primarySimple} stopOpacity="0.1" />
+            <stop offset="75%" stopColor={cloudColors.accentSimple} stopOpacity="0.15" />
+            <stop offset="100%" stopColor={cloudColors.shadowSimple} stopOpacity="0.2" />
           </linearGradient>
 
-          {/* Cloud gradient definitions */}
-          <linearGradient id="venusCloudGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor={cloudColors.primary.light} stopOpacity="0.25" />
-            <stop offset="50%" stopColor={cloudColors.secondary.medium} stopOpacity="0.2" />
-            <stop offset="100%" stopColor={cloudColors.accent.dark} stopOpacity="0.15" />
+          {/* Subtle cloud swirl shadow - reduced opacity */}
+          <linearGradient id="swirlDeepShadow" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor={swirlColors.edgeShadow} stopOpacity="0.25" />
+            <stop offset="50%" stopColor={swirlColors.shadow.start} stopOpacity="0.15" />
+            <stop offset="100%" stopColor={swirlColors.shadow.end} stopOpacity="0.1" />
           </linearGradient>
-          <linearGradient id="venusCloudGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor={cloudColors.highlight} stopOpacity="0.2" />
-            <stop offset="100%" stopColor={cloudColors.primary.medium} stopOpacity="0.12" />
+
+          {/* Subtle cloud swirl gradients */}
+          <linearGradient id="swirlShadow" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor={swirlColors.shadow.start} />
+            <stop offset="100%" stopColor={swirlColors.shadow.end} />
           </linearGradient>
-          <radialGradient id="venusAtmosphericBand" cx="50%" cy="50%">
-            <stop offset="0%" stopColor={atmosphericColors.glow.inner} stopOpacity="0.3" />
-            <stop offset="100%" stopColor={atmosphericColors.glow.outer} stopOpacity="0.1" />
-          </radialGradient>
+          <linearGradient id="swirlFace" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor={swirlColors.face.top} />
+            <stop offset="100%" stopColor={swirlColors.face.bottom} />
+          </linearGradient>
         </defs>
 
         {/* Base cloud texture layer */}
         <rect
           width="100%"
           height="100%"
-          fill={cloudColors.primary.medium}
-          opacity="0.1"
-          filter="url(#venusCloudTexture)"
+          fill={cloudColors.primarySimple}
+          opacity="0.12"
+          filter="url(#venusTexture)"
         />
 
         {/* Fine grain texture overlay */}
         <rect
           width="100%"
           height="100%"
-          fill={cloudColors.secondary.medium}
-          opacity="0.06"
+          fill={cloudColors.secondarySimple}
+          opacity="0.08"
           filter="url(#venusFineTexture)"
         />
 
-        {/* Atmospheric lighting simulation */}
+        {/* Cloud lighting simulation */}
         <rect
           width="100%"
           height="100%"
-          fill="url(#atmosphericLighting)"
+          fill="url(#cloudLighting)"
         />
 
         {/* Horizon atmospheric glow */}
@@ -401,32 +331,81 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
           fill="url(#horizonGlow)"
         />
 
-        {/* Atmospheric bands */}
-        {VENUS_CONFIG.atmosphericBands.map((band, index) => (
-          <ellipse
-            key={`band-${index}`}
-            cx={band.cx}
-            cy={band.cy}
-            rx={band.rx}
-            ry={band.ry}
-            fill="url(#venusAtmosphericBand)"
-            opacity={band.opacity}
-          />
-        ))}
-
-        {/* Cloud swirls */}
-        {VENUS_CONFIG.swirls.map((swirl, index) => (
+        {/* Cloud Swirls (Atmospheric Bands) - subtle and blended */}
+        {/* Swirl 1 - Curved from left to center */}
+        <g>
+          {/* Subtle shadow layer */}
           <path
-            key={`swirl-${index}`}
-            d={swirl.path}
-            stroke={index === 1 ? 'url(#venusCloudGradient2)' : 'url(#venusCloudGradient1)'}
-            strokeWidth={index === 1 ? 100 : index === 0 ? 80 : 70}
+            d="M 200 0 Q 400 -50, 600 0 T 1000 0 Q 1200 -20, 1400 0 T 1800 0 L 1800 50 Q 1400 30, 1000 50 T 200 50 Z"
+            fill="url(#swirlShadow)"
+            opacity={isDarkMode ? 0.25 : 0.15}
+          />
+          {/* Subtle face */}
+          <path
+            d="M 200 0 Q 400 -50, 600 0 T 1000 0 Q 1200 -20, 1400 0 T 1800 0 L 1800 25 Q 1400 15, 1000 25 T 200 25 Z"
+            fill="url(#swirlFace)"
+            opacity={isDarkMode ? 0.3 : 0.18}
+          />
+          {/* Subtle highlight edge */}
+          <path
+            d="M 200 0 Q 400 -50, 600 0 T 1000 0 Q 1200 -20, 1400 0 T 1800 0"
+            stroke={swirlColors.highlight}
+            strokeWidth="2"
             fill="none"
             strokeLinecap="round"
-            opacity={index === 1 ? 0.25 : index === 0 ? 0.3 : 0.2}
-            filter="blur(12px)"
+            opacity={isDarkMode ? 0.3 : 0.2}
           />
-        ))}
+        </g>
+
+        {/* Swirl 2 - Curved from center-right to middle */}
+        <g>
+          {/* Subtle shadow */}
+          <path
+            d="M 100 400 Q 500 350, 900 400 T 1700 400 Q 1900 380, 1920 400 L 1920 450 Q 1900 430, 1700 450 T 900 450 Q 500 400, 100 450 Z"
+            fill="url(#swirlShadow)"
+            opacity={isDarkMode ? 0.25 : 0.15}
+          />
+          {/* Subtle face */}
+          <path
+            d="M 100 400 Q 500 350, 900 400 T 1700 400 Q 1900 380, 1920 400 L 1920 425 Q 1900 410, 1700 425 T 900 425 Q 500 375, 100 425 Z"
+            fill="url(#swirlFace)"
+            opacity={isDarkMode ? 0.3 : 0.18}
+          />
+          {/* Subtle highlight edge */}
+          <path
+            d="M 100 400 Q 500 350, 900 400 T 1700 400 Q 1900 380, 1920 400"
+            stroke={swirlColors.highlight}
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+            opacity={isDarkMode ? 0.3 : 0.2}
+          />
+        </g>
+
+        {/* Swirl 3 - Vertical curved swirl */}
+        <g>
+          {/* Subtle shadow */}
+          <path
+            d="M 300 -440 Q 350 -140, 300 160 T 300 540 L 250 540 Q 250 160, 300 -140 T 250 -440 Z"
+            fill="url(#swirlShadow)"
+            opacity={isDarkMode ? 0.25 : 0.15}
+          />
+          {/* Subtle face */}
+          <path
+            d="M 300 -440 Q 350 -140, 300 160 T 300 540 L 275 540 Q 275 160, 300 -140 T 275 -440 Z"
+            fill="url(#swirlFace)"
+            opacity={isDarkMode ? 0.3 : 0.18}
+          />
+          {/* Subtle highlight edge */}
+          <path
+            d="M 300 -440 Q 350 -140, 300 160 T 300 540"
+            stroke={swirlColors.highlight}
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+            opacity={isDarkMode ? 0.3 : 0.2}
+          />
+        </g>
       </svg>
 
       {/* Large cloud formations - SVG-based organic shapes */}
@@ -451,8 +430,6 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
               height: `${cloud.height}px`,
               zIndex: 0.4,
               opacity: cloud.opacity,
-              animation: `cloudDrift ${cloud.animationDuration}s ease-in-out infinite`,
-              animationDelay: `${cloud.animationDelay}s`,
               filter: `blur(${cloud.blur * 0.4}px)`,
             }}
           >
@@ -507,8 +484,6 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
               height: `${cloud.height}px`,
               zIndex: 0.4,
               opacity: cloud.opacity,
-              animation: `cloudDrift ${cloud.animationDuration}s ease-in-out infinite`,
-              animationDelay: `${cloud.animationDelay}s`,
               filter: `blur(${cloud.blur * 0.35}px)`,
             }}
           >
@@ -563,8 +538,6 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
               height: `${cloud.height}px`,
               zIndex: 0.4,
               opacity: cloud.opacity,
-              animation: `cloudDrift ${cloud.animationDuration}s ease-in-out infinite`,
-              animationDelay: `${cloud.animationDelay}s`,
               filter: `blur(${cloud.blur * 0.4}px)`,
             }}
           >
@@ -596,22 +569,6 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
         );
       })}
 
-      {/* Atmospheric glow layer - positioned in bottom half */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '120%',
-          height: '120%',
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${atmosphericColors.glow.inner} 0%, ${atmosphericColors.glow.outer} 40%, transparent 70%)`,
-          animation: 'atmosphericGlow 8s ease-in-out infinite',
-          zIndex: 0.1,
-        }}
-      />
-
       {/* Venus Symbol - Bottom Left */}
       <Box
         sx={{
@@ -620,8 +577,8 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
           left: { xs: 20 },
           fontSize: { xs: '1.5rem', md: '2rem' },
           color: isDarkMode
-            ? 'rgba(180, 140, 50, 0.6)'
-            : 'rgba(200, 160, 90, 0.7)',
+            ? 'rgba(139, 69, 19, 0.6)'
+            : 'rgba(160, 82, 45, 0.7)',
           fontFamily: 'serif',
           lineHeight: 1,
           zIndex: 1,
