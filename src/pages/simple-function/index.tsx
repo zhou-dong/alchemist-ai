@@ -1,8 +1,6 @@
 import {
   Box,
-  Typography,
   Fade,
-  Button,
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -65,6 +63,35 @@ export const SimpleFunctions = () => {
       </Box>
       <Starfield clipPath="url(#starfieldHorizonClip)" />
       <VenusBackground clipPath="url(#venusHorizonClip)" />
+      
+      {/* Horizon line - decorative line at the boundary */}
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 2,
+          pointerEvents: 'none',
+        }}
+      >
+        <svg
+          width="100%"
+          height="100%"
+          preserveAspectRatio="none"
+          viewBox="0 0 1920 1080"
+          style={{ position: 'absolute', top: 0, left: 0 }}
+        >
+          <path
+            d="M 0 810 Q 480 669, 960 669 T 1920 810"
+            stroke="rgba(139, 69, 19, 0.4)"
+            strokeWidth="2"
+            fill="none"
+            strokeLinecap="round"
+          />
+        </svg>
+      </Box>
 
       <Fade in={isLoaded} timeout={800}>
         <Box
