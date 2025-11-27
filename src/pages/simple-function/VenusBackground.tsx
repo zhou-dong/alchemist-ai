@@ -22,9 +22,9 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
         clipPath: clipPath,
         WebkitClipPath: clipPath,
         background: `radial-gradient(ellipse at 50% 70%, 
-          rgba(${venusBaseColor.r}, ${venusBaseColor.g}, ${venusBaseColor.b}, ${isDarkMode ? 0.10 : 0.08}) 0%, 
-          rgba(${venusSecondaryColor.r}, ${venusSecondaryColor.g}, ${venusSecondaryColor.b}, ${isDarkMode ? 0.12 : 0.10}) 50%, 
-          rgba(${venusAccentColor.r}, ${venusAccentColor.g}, ${venusAccentColor.b}, ${isDarkMode ? 0.15 : 0.12}) 100%
+          rgba(${venusAccentColor.r}, ${venusAccentColor.g}, ${venusAccentColor.b}, ${isDarkMode ? 0.09 : 0.07}) 0%, 
+          rgba(${venusSecondaryColor.r}, ${venusSecondaryColor.g}, ${venusSecondaryColor.b}, ${isDarkMode ? 0.07 : 0.06}) 50%, 
+          rgba(${venusBaseColor.r}, ${venusBaseColor.g}, ${venusBaseColor.b}, ${isDarkMode ? 0.06 : 0.05}) 100%
         )`,
       }}
     >
@@ -125,40 +125,54 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
           opacity={isDarkMode ? 0.4 : 0.3}
         />
 
-        {/* Triangular rock formations - distributed across width */}
-        <polygon
-          points="300,850 350,800 400,850"
-          fill="url(#surfaceTexture)"
+        {/* V-shape rock formations - distributed across width */}
+        <path
+          d="M 300 850 L 350 800 L 400 850"
+          stroke={`rgba(${venusBaseColor.r}, ${venusBaseColor.g}, ${venusBaseColor.b}, ${isDarkMode ? 0.4 : 0.3})`}
+          strokeWidth="3"
+          fill="none"
           opacity={isDarkMode ? 0.4 : 0.3}
         />
-        <polygon
-          points="600,880 650,830 700,880"
-          fill="url(#surfaceTexture)"
+        <path
+          d="M 600 880 L 650 830 L 700 880"
+          stroke={`rgba(${venusBaseColor.r}, ${venusBaseColor.g}, ${venusBaseColor.b}, ${isDarkMode ? 0.4 : 0.3})`}
+          strokeWidth="3"
+          fill="none"
           opacity={isDarkMode ? 0.4 : 0.3}
         />
-        <polygon
-          points="1200,870 1250,820 1300,870"
-          fill="url(#surfaceTexture)"
+        <path
+          d="M 1200 870 L 1250 820 L 1300 870"
+          stroke={`rgba(${venusBaseColor.r}, ${venusBaseColor.g}, ${venusBaseColor.b}, ${isDarkMode ? 0.4 : 0.3})`}
+          strokeWidth="3"
+          fill="none"
           opacity={isDarkMode ? 0.4 : 0.3}
         />
-        <polygon
-          points="1600,890 1650,840 1700,890"
-          fill="url(#surfaceTexture)"
+        <path
+          d="M 1600 890 L 1650 840 L 1700 890"
+          stroke={`rgba(${venusBaseColor.r}, ${venusBaseColor.g}, ${venusBaseColor.b}, ${isDarkMode ? 0.4 : 0.3})`}
+          strokeWidth="3"
+          fill="none"
           opacity={isDarkMode ? 0.4 : 0.3}
         />
-        <polygon
-          points="2000,910 2050,860 2100,910"
-          fill="url(#surfaceTexture)"
+        <path
+          d="M 2000 910 L 2050 860 L 2100 910"
+          stroke={`rgba(${venusBaseColor.r}, ${venusBaseColor.g}, ${venusBaseColor.b}, ${isDarkMode ? 0.4 : 0.3})`}
+          strokeWidth="3"
+          fill="none"
           opacity={isDarkMode ? 0.4 : 0.3}
         />
-        <polygon
-          points="2800,930 2850,880 2900,930"
-          fill="url(#surfaceTexture)"
+        <path
+          d="M 2800 930 L 2850 880 L 2900 930"
+          stroke={`rgba(${venusBaseColor.r}, ${venusBaseColor.g}, ${venusBaseColor.b}, ${isDarkMode ? 0.4 : 0.3})`}
+          strokeWidth="3"
+          fill="none"
           opacity={isDarkMode ? 0.4 : 0.3}
         />
-        <polygon
-          points="3400,950 3450,900 3500,950"
-          fill="url(#surfaceTexture)"
+        <path
+          d="M 3400 950 L 3450 900 L 3500 950"
+          stroke={`rgba(${venusBaseColor.r}, ${venusBaseColor.g}, ${venusBaseColor.b}, ${isDarkMode ? 0.4 : 0.3})`}
+          strokeWidth="3"
+          fill="none"
           opacity={isDarkMode ? 0.4 : 0.3}
         />
         <polygon

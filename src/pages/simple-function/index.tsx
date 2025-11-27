@@ -127,21 +127,21 @@ export const SimpleFunctions = () => {
           position: 'relative',
           zIndex: 1,
         }}>
-          <VenusGradientTypography
+          {/* <VenusGradientTypography
             variant="h5"
             sx={{
               fontSize: { xs: '1.1rem', md: '1.5rem' },
               color: 'text.secondary',
               maxWidth: '700px',
               lineHeight: 1.8,
-              // opacity: 0.9
+              opacity: 0.9
             }}
           >
             The simplest function: if...else. Learn how conditional logic forms
             the foundation of decision-making in both programming and neural networks.
             Every neural activation is essentially an if...else decision.
-          </VenusGradientTypography>
-
+          </VenusGradientTypography> */}
+{/* 
           <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
             <VenusGradientButton
               onClick={() => navigate('/alchemist-ai/roadmap')}
@@ -163,7 +163,7 @@ export const SimpleFunctions = () => {
             >
               NEXT
             </VenusGradientButton>
-          </Box>
+          </Box> */}
         </Box>
       </Fade>
 

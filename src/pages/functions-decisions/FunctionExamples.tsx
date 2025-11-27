@@ -3,7 +3,7 @@ import {
   Typography,
   Fade,
 } from '@mui/material';
-import { TypingText } from './TypingText';
+import { TypingText } from '../../components/common/TypingText';
 import { mercuryBaseColor } from './MercuryTheme';
 
 export const FunctionExamples = ({ isVisible, isDarkMode }: { isVisible: boolean, isDarkMode: boolean }) => {

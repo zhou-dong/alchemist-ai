@@ -10,7 +10,7 @@ import { MercuryBackground } from './MercuryBackground';
 import { FunctionFlowDiagram } from './FunctionFlowDiagram';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { TypingText } from './TypingText';
+import { TypingText } from '../../components/common/TypingText';
 import { FunctionExamples } from './FunctionExamples';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
 import { Starfield } from '../../components/common/Starfield';
