@@ -14,8 +14,23 @@ import { TypingText } from '../../components/common/TypingText';
 import { FunctionExamples } from './FunctionExamples';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
 import { Starfield } from '../../components/common/Starfield';
-import { MercuryDialogBox, MercuryGradientButton, MercuryGradientTypography, mercuryPrimary, mercurySecondary, mercuryShadow, mercuryBorder, mercuryBoxShadow } from '../../theme/mercury/MercuryTheme';
+import { mercuryThemeProps } from '../../theme/mercury';
+import { buildRgba } from '../../theme/PlanetTheme';
+
 import { Progress } from '../../components/common/Progress';
+import { PlanetThemeBuilder } from '../../theme/PlanetTheme';
+
+const mercuryThemeBuilder = new PlanetThemeBuilder(mercuryThemeProps);
+
+const MercuryDialogBox = mercuryThemeBuilder.DialogBox;
+const MercuryGradientButton = mercuryThemeBuilder.GradientButton;
+const MercuryGradientTypography = mercuryThemeBuilder.GradientTypography;
+// RgbaColor objects for components that need them
+const mercuryPrimaryColor = mercuryThemeProps.primary;
+const mercurySecondaryColor = mercuryThemeProps.secondary;
+// String version for sx props
+const mercuryPrimary = buildRgba(mercuryPrimaryColor);
+
 
 export const FunctionsDecisions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -266,11 +281,8 @@ export const FunctionsDecisions = () => {
               isDarkMode={isDarkMode}
               currentSection={currentSection}
               totalSections={totalSections}
-              colorPrimary={mercuryPrimary}
-              colorSecondary={mercurySecondary}
-              colorShadow={{ dark: mercuryShadow, light: mercuryShadow }}
-              colorBorder={{ dark: mercuryBorder.dark, light: mercuryBorder.light }}
-              colorBoxShadow={{ dark: mercuryBoxShadow.dark, light: mercuryBoxShadow.light }}
+              colorPrimary={mercuryPrimaryColor}
+              colorSecondary={mercurySecondaryColor}
             />
           </Box>
 

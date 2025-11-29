@@ -8,7 +8,8 @@ interface FunctionFlowDiagramProps {
     isVisible: boolean;
     isDarkMode: boolean;
 }
-import { mercuryBaseColor as baseColor } from '../../theme/mercury/MercuryTheme';
+import { mercuryThemeProps } from '../../theme/mercury';
+const { baseColor } = mercuryThemeProps;
 
 export const FunctionFlowDiagram = ({ isVisible, isDarkMode }: FunctionFlowDiagramProps) => {
     // Mercury's characteristic gray-brown colors

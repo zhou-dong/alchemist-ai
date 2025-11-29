@@ -6,9 +6,18 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { VenusBackground } from '../../theme/venus/VenusBackground';
 import { Starfield } from '../../components/common/Starfield';
-import { VenusGradientButton, VenusGradientTypography } from '../../theme/venus/VenusTheme';
-import { ArrowForward } from '@mui/icons-material';
-import { ArrowBack } from '@mui/icons-material';
+import { venusThemeProps } from '../../theme/venus';
+import { buildRgba, PlanetThemeBuilder } from '../../theme/PlanetTheme';
+
+const venusThemeBuilder = new PlanetThemeBuilder(venusThemeProps);
+const GradientTypography = venusThemeBuilder.GradientTypography;
+// RgbaColor objects for components that need them
+const venusPrimaryColor = venusThemeProps.primary;
+const venusSecondaryColor = venusThemeProps.secondary;
+// String version for sx props
+const venusPrimary = buildRgba(venusPrimaryColor);
+const venusSecondary = buildRgba(venusSecondaryColor);
+
 
 export const SimpleFunctions = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -63,7 +72,7 @@ export const SimpleFunctions = () => {
       </Box>
       <Starfield clipPath="url(#starfieldHorizonClip)" />
       <VenusBackground clipPath="url(#venusHorizonClip)" />
-      
+
       {/* Horizon line - decorative line at the boundary */}
       <Box
         sx={{
@@ -104,7 +113,7 @@ export const SimpleFunctions = () => {
             textAlign: 'center',
           }}
         >
-          <VenusGradientTypography
+          <GradientTypography
             variant="h2"
             sx={{
               fontSize: { xs: '1.5rem', md: '2rem', lg: '3rem' },
@@ -112,7 +121,7 @@ export const SimpleFunctions = () => {
             }}
           >
             SIMPLE FUNCTIONS
-          </VenusGradientTypography>
+          </GradientTypography>
         </Box>
       </Fade>
 
@@ -141,7 +150,7 @@ export const SimpleFunctions = () => {
             the foundation of decision-making in both programming and neural networks.
             Every neural activation is essentially an if...else decision.
           </VenusGradientTypography> */}
-{/* 
+          {/* 
           <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
             <VenusGradientButton
               onClick={() => navigate('/alchemist-ai/roadmap')}

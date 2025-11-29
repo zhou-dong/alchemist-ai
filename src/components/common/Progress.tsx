@@ -1,21 +1,27 @@
 import { Box } from "@mui/material";
+import { buildRgba, type RgbaColor } from "../../theme/PlanetTheme";
 
 export interface ProgressProps {
     isDarkMode: boolean,
     currentSection: number,
     totalSections: number,
-    colorPrimary: string,
-    colorSecondary: string,
-    colorShadow: { dark: string; light: string },
-    colorBorder: { dark: string; light: string },
-    colorBoxShadow: { dark: string; light: string },
+    colorPrimary: RgbaColor,
+    colorSecondary: RgbaColor,
 }
 
-export const Progress = ({
-    isDarkMode, currentSection, totalSections, colorPrimary, colorSecondary, colorShadow, colorBorder, colorBoxShadow }: ProgressProps) => {
-    const shadowColor = isDarkMode ? colorShadow.dark : colorShadow.light;
-    const borderColor = isDarkMode ? colorBorder.dark : colorBorder.light;
-    const boxShadowColor = isDarkMode ? colorBoxShadow.dark : colorBoxShadow.light;
+export const Progress = ({ isDarkMode, currentSection, totalSections, colorPrimary, colorSecondary }: ProgressProps) => {
+
+    const shadowDark: RgbaColor = { ...colorPrimary, a: 0.6 };
+    const shadowLight: RgbaColor = { ...colorPrimary, a: 0.6 };
+    const borderDark: RgbaColor = { ...colorPrimary, a: 0.3 };
+    const borderLight: RgbaColor = { ...colorPrimary, a: 0.4 };
+    const boxShadowDark: RgbaColor = { ...colorPrimary, a: 0.2 };
+    const boxShadowLight: RgbaColor = { ...colorPrimary, a: 0.25 };
+
+    const shadowColor = isDarkMode ? buildRgba(shadowDark) : buildRgba(shadowLight);
+    const borderColor = isDarkMode ? buildRgba(borderDark) : buildRgba(borderLight);
+    const boxShadowColor = isDarkMode ? buildRgba(boxShadowDark) : buildRgba(boxShadowLight);
+
     return (
         <Box
             sx={{
@@ -42,7 +48,7 @@ export const Progress = ({
                 <Box
                     component="span"
                     sx={{
-                        color: colorPrimary,
+                        color: buildRgba(colorPrimary),
                         fontSize: { xs: '1rem', md: '1.125rem' },
                         fontWeight: 600,
                         letterSpacing: '0.05em',
