@@ -11,16 +11,23 @@ export interface ProgressProps {
 
 export const Progress = ({ isDarkMode, currentSection, totalSections, colorPrimary, colorSecondary }: ProgressProps) => {
 
-    const shadowDark: RgbaColor = { ...colorPrimary, a: 0.6 };
-    const shadowLight: RgbaColor = { ...colorPrimary, a: 0.6 };
+    // Shadow colors for progress bar glow (different opacity for dark/light modes)
+    const shadowDark: RgbaColor = { ...colorPrimary, a: 0.4 };
+    const shadowLight: RgbaColor = { ...colorPrimary, a: 0.3 };
+    // Border colors
     const borderDark: RgbaColor = { ...colorPrimary, a: 0.3 };
     const borderLight: RgbaColor = { ...colorPrimary, a: 0.4 };
+    // Box shadow colors
     const boxShadowDark: RgbaColor = { ...colorPrimary, a: 0.2 };
     const boxShadowLight: RgbaColor = { ...colorPrimary, a: 0.25 };
 
     const shadowColor = isDarkMode ? buildRgba(shadowDark) : buildRgba(shadowLight);
     const borderColor = isDarkMode ? buildRgba(borderDark) : buildRgba(borderLight);
     const boxShadowColor = isDarkMode ? buildRgba(boxShadowDark) : buildRgba(boxShadowLight);
+    
+    // Convert colors to strings for gradient
+    const primaryColorString = buildRgba(colorPrimary);
+    const secondaryColorString = buildRgba(colorSecondary);
 
     return (
         <Box
@@ -76,10 +83,10 @@ export const Progress = ({ isDarkMode, currentSection, totalSections, colorPrima
                     sx={{
                         height: '100%',
                         width: `${((currentSection + 1) / totalSections) * 100}%`,
-                        background: `linear-gradient(90deg, ${colorPrimary}, ${colorSecondary})`,
+                        background: `linear-gradient(90deg, ${primaryColorString}, ${secondaryColorString})`,
                         borderRadius: '2px',
                         transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                        boxShadow: `0 0 8px ${shadowColor}60`,
+                        boxShadow: `0 0 8px ${shadowColor}`,
                         position: 'relative',
                         '&::after': {
                             content: '""',
