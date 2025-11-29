@@ -4,7 +4,7 @@ import {
   Fade,
 } from '@mui/material';
 import { TypingText } from '../../components/common/TypingText';
-import { mercuryBaseColor } from './MercuryTheme';
+import { mercuryBaseColor } from '../../theme/mercury/MercuryTheme';
 
 export const FunctionExamples = ({ isVisible, isDarkMode }: { isVisible: boolean, isDarkMode: boolean }) => {
   // Mercury's characteristic gray-brown colors derived from MercuryTheme

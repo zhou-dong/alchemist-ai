@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MercuryBackground } from './MercuryBackground';
+import { MercuryBackground } from '../../theme/mercury/MercuryBackground';
 import { FunctionFlowDiagram } from './FunctionFlowDiagram';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -14,7 +14,7 @@ import { TypingText } from '../../components/common/TypingText';
 import { FunctionExamples } from './FunctionExamples';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
 import { Starfield } from '../../components/common/Starfield';
-import { MercuryDialogBox, MercuryGradientButton, MercuryGradientTypography, mercuryPrimary, mercurySecondary, mercuryShadow, mercuryBorder, mercuryBoxShadow } from './MercuryTheme';
+import { MercuryDialogBox, MercuryGradientButton, MercuryGradientTypography, mercuryPrimary, mercurySecondary, mercuryShadow, mercuryBorder, mercuryBoxShadow } from '../../theme/mercury/MercuryTheme';
 import { Progress } from '../../components/common/Progress';
 
 export const FunctionsDecisions = () => {

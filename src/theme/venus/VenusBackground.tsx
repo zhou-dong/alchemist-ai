@@ -221,3 +221,4 @@ export const VenusBackground = ({ clipPath }: { clipPath: string }) => {
     </Box>
   );
 };
+

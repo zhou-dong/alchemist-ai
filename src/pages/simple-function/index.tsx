@@ -4,9 +4,9 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { VenusBackground } from './VenusBackground';
+import { VenusBackground } from '../../theme/venus/VenusBackground';
 import { Starfield } from '../../components/common/Starfield';
-import { VenusGradientButton, VenusGradientTypography } from './VenusTheme';
+import { VenusGradientButton, VenusGradientTypography } from '../../theme/venus/VenusTheme';
 import { ArrowForward } from '@mui/icons-material';
 import { ArrowBack } from '@mui/icons-material';
 

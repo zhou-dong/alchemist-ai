@@ -1,5 +1,5 @@
 import { Box, styled } from '@mui/material';
-import { GradientButton, GradientTypography } from '../../theme/theme';
+import { GradientButton, GradientTypography } from '../theme';
 
 // Venus's characteristic reddish-brown colors
 export const venusBaseColor = { r: 139, g: 69, b: 19 };
@@ -76,3 +76,4 @@ export const VenusGradientTypography = styled(GradientTypography)({
     WebkitTextFillColor: 'transparent',
     filter: `drop-shadow(0 0 20px ${venusShadow})`,
 });
+

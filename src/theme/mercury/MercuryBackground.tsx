@@ -359,3 +359,4 @@ export const MercuryBackground = ({ clipPath }: { clipPath: string }) => {
     </Box>
   );
 };
+
