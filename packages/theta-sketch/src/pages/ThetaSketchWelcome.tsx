@@ -1,23 +1,24 @@
-import { Box, Typography, keyframes } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GradientTypography, GradientButton, FloatingParticles, useSpeech } from '@alchemist/shared';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 
-// Keyframe animations
-const fadeIn = keyframes`
-  from { opacity: 0; }
-  to { opacity: 1; }
-`;
-
 // Narration script - each segment syncs with a visual phase
 const NARRATION_SEGMENTS = [
-    "Welcome to Theta Sketch.",
-    "A powerful probabilistic data structure for counting unique elements.",
-    "Imagine counting billions of items using only kilobytes of memory.",
-    "Let's explore how it works.",
+    "Welcome to the math behind Theta Sketch.",
+    "Actually, we are going to explore what is KMV, K minimum values.",
+    "Theta Sketch is a practical application of KMV, a probabilistic data structure for counting unique elements.",
+    "As long as you know what is KMV, you will understand Theta Sketch.",
+    "We will explore the sub concepts of KMV step by step.",
+    "First, we will explore the order statistics.",
+    "Then, we will explore the k_th smallest estimation.",
+    "Then, we will explore the KMV algorithm.",
+    "Finally, we will explore Theta Sketch.",
+    "Please do not be intimidated by the math, actually the ideas behind them are quite straightforward.",
+    "We will just need elementary math knowledge to understand them.",
+    "when you are ready, please click the button below to start the journey.",
 ];
 
 interface AnimationPhase {
@@ -142,7 +143,7 @@ export const ThetaSketchWelcome = () => {
                 The Math Behind THETA SKETCH
             </GradientTypography>
 
-            <Typography
+            <GradientTypography
                 variant="h5"
                 sx={{
                     color: 'text.primary',
@@ -156,7 +157,7 @@ export const ThetaSketchWelcome = () => {
                 <PsychologyIcon fontSize="inherit" sx={{ color: 'secondary.main' }} />
                 The Road to Theta Sketch: A Journey Through Order Statistics,
                 K-th Smallest Estimation, KMV, and Beyond.
-            </Typography>
+            </GradientTypography>
 
             <GradientButton
                 onClick={handleStart}
@@ -165,7 +166,7 @@ export const ThetaSketchWelcome = () => {
                     px: 4,
                     py: 1.5,
                     fontSize: '1.2rem',
-                    //   animation: `${pulse} 2s ease-in-out infinite`,
+                    letterSpacing: '0.2px',
                 }}
             >
                 Dive In
