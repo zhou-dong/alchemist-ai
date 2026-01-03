@@ -2,15 +2,9 @@ import { Box, Fade } from '@mui/material';
 import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GradientTypography, GradientButton } from '@alchemist/shared';
-import { FloatingParticles, generateParticles, type Particle } from './FloatingParticles';
+import { FloatingParticles } from '../../../../../packages/shared/src/components/common/FloatingParticles';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
 import { isLocked } from '../../data/types';
-
-const DisplayFloatingParticles = () => {
-  const particleCount = 60;
-  const particles: Array<Particle> = useMemo(() => generateParticles(particleCount), [particleCount]);
-  return <FloatingParticles particles={particles} />;
-};
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -28,7 +22,7 @@ export const Home = () => {
 
   return (
     <>
-      <DisplayFloatingParticles />
+      <FloatingParticles particleCount={60} />
       <Box sx={{
         width: '100vw',
         height: '100vh',

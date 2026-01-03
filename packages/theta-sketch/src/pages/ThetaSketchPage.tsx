@@ -1,9 +1,28 @@
 import { Box, Typography, Fade } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTypography, GradientButton, Starfield } from '@alchemist/shared';
+import { GradientTypography, GradientButton, Starfield, VoiceNarration } from '@alchemist/shared';
 import { ThetaSketchDemo } from '../components/ThetaSketchDemo';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
+// Content for voice narration
+const NARRATION_CONTENT = `
+Welcome to Theta Sketch.
+
+A Theta Sketch, also known as K Minimum Values or KMV, is a probabilistic data structure designed to estimate the cardinality, or number of distinct elements, of a dataset.
+
+Unlike exact counting methods, Theta Sketches use a sampling approach that provides accurate estimates with bounded memory.
+
+The key insight is that hash values are uniformly distributed between 0 and 1. By keeping only elements whose hash values fall below a threshold called theta, we can estimate the total cardinality as: n approximately equals k divided by theta, where k is the number of elements in the sketch.
+
+Key properties include:
+- Bounded memory, using O of k space where k is the maximum sketch size
+- Support for set operations like union, intersection, and difference
+- Mergeable across distributed systems
+- Relative error decreases as theta decreases
+
+Try the interactive demo below to see how Theta Sketches work in practice.
+`.trim();
 
 /**
  * ThetaSketchPage - Main page for the Theta Sketch module
@@ -32,6 +51,9 @@ export const ThetaSketchPage = () => {
     >
       {/* Starfield Background */}
       <Starfield />
+
+      {/* Voice Narration Button */}
+      <VoiceNarration content={NARRATION_CONTENT} position="top-right" />
 
       {/* Content */}
       <Box

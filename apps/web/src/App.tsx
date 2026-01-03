@@ -15,7 +15,7 @@ import MultiLayerNetwork from './pages/MultiLayerNetwork';
 import Backpropagation from './pages/Backpropagation';
 import NeuralNetworks from './pages/NeuralNetworks';
 // Import theta-sketch module
-import { ThetaSketchPage } from '@alchemist/theta-sketch';
+import { ThetaSketchPage, ThetaSketchWelcome } from '@alchemist/theta-sketch';
 
 function App() {
   return (
@@ -38,8 +38,9 @@ function App() {
             <Route path="/alchemist-sketches/multi-layer-network" element={<MultiLayerNetwork />} />
             <Route path="/alchemist-sketches/backpropagation" element={<Backpropagation />} />
             <Route path="/alchemist-sketches/neural-networks" element={<NeuralNetworks />} />
-            {/* Theta Sketch module route */}
-            <Route path="/alchemist-sketches/theta-sketch" element={<ThetaSketchPage />} />
+            {/* Theta Sketch module routes */}
+            <Route path="/alchemist-sketches/theta-sketch" element={<ThetaSketchWelcome />} />
+            <Route path="/alchemist-sketches/theta-sketch/learn" element={<ThetaSketchPage />} />
           </Routes>
         </Layout>
       </StepStatusProvider>

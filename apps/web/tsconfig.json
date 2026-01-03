@@ -6,7 +6,7 @@
     "outDir": "./dist",
     "rootDir": "./src"
   },
-  "include": ["src"],
+  "include": ["src", "../../packages/shared/src/components/common/FloatingParticles.tsx"],
   "references": [
     { "path": "../../packages/shared" },
     { "path": "../../packages/theta-sketch" }
