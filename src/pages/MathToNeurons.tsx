@@ -77,7 +77,7 @@ export const MathToNeurons = () => {
           <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
             <Button
               variant="text"
-              onClick={() => navigate('/alchemist-ai/roadmap')}
+              onClick={() => navigate('/alchemist-sketches/roadmap')}
               sx={{
                 px: 4,
                 py: 1.5,
@@ -112,7 +112,7 @@ export const MathToNeurons = () => {
             </Button>
             <Button
               variant="text"
-              onClick={() => navigate('/alchemist-ai/logistic-regression')}
+              onClick={() => navigate('/alchemist-sketches/logistic-regression')}
               sx={{
                 px: 4,
                 py: 1.5,

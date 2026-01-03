@@ -77,7 +77,7 @@ export const Backpropagation = () => {
           <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
             <Button
               variant="text"
-              onClick={() => navigate('/alchemist-ai/roadmap')}
+              onClick={() => navigate('/alchemist-sketches/roadmap')}
               sx={{
                 px: 4,
                 py: 1.5,
@@ -112,7 +112,7 @@ export const Backpropagation = () => {
             </Button>
             <Button
               variant="text"
-              onClick={() => navigate('/alchemist-ai/neural-networks')}
+              onClick={() => navigate('/alchemist-sketches/neural-networks')}
               sx={{
                 px: 4,
                 py: 1.5,

@@ -206,56 +206,56 @@ export const getLearningPathData = (isDarkMode: boolean): LearningPathItem[] => 
     {
       title: 'Functions as Decisions',
       description: 'Every decision is a function',
-      path: '/alchemist-ai/functions-decisions',
+      path: '/alchemist-sketches/functions-decisions',
       status: 'unlocked', // First step unlocked for new users
       planet: planetData[0] // Mercury
     },
     {
       title: 'Simple Functions',
       description: 'Build the simplest function: if...else',
-      path: '/alchemist-ai/simple-functions',
+      path: '/alchemist-sketches/simple-functions',
       status: 'locked', // All other steps locked for new users
       planet: planetData[1] // Venus
     },
     {
       title: 'Multi-Input Functions',
       description: 'Multiple inputs, one output function',
-      path: '/alchemist-ai/multi-input-functions',
+      path: '/alchemist-sketches/multi-input-functions',
       status: 'locked',
       planet: planetData[2] // Earth
     },
     {
       title: 'Math to Neurons',
       description: 'From mathematical functions to neural networks',
-      path: '/alchemist-ai/math-to-neurons',
+      path: '/alchemist-sketches/math-to-neurons',
       status: 'locked',
       planet: planetData[3] // Mars
     },
     {
       title: 'Logistic Regression',
       description: 'Understanding binary classification',
-      path: '/alchemist-ai/logistic-regression',
+      path: '/alchemist-sketches/logistic-regression',
       status: 'locked',
       planet: planetData[4] // Jupiter
     },
     {
       title: 'Multi-Layer Network',
       description: 'Stacking layers for complex patterns',
-      path: '/alchemist-ai/multi-layer-network',
+      path: '/alchemist-sketches/multi-layer-network',
       status: 'locked',
       planet: planetData[5] // Saturn
     },
     {
       title: 'Backpropagation',
       description: 'The algorithm that enables deep learning',
-      path: '/alchemist-ai/backpropagation',
+      path: '/alchemist-sketches/backpropagation',
       status: 'locked',
       planet: planetData[6] // Uranus
     },
     {
       title: 'Neural Networks',
       description: 'Master the complete neural network architecture',
-      path: '/alchemist-ai/neural-networks',
+      path: '/alchemist-sketches/neural-networks',
       status: 'locked',
       planet: planetData[7] // Neptune
     },

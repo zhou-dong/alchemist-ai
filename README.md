@@ -53,7 +53,7 @@ npm run deploy
 
 ### Configuration
 
-- **Base URL**: The app is configured with base path `/alchemist-ai/` for GitHub Pages
+- **Base URL**: The app is configured with base path `/alchemist-sketches/` for GitHub Pages
 - **Homepage**: Update the `homepage` field in `package.json` with your actual GitHub username
 - **Branch**: The site will be deployed from the `gh-pages` branch
 
@@ -65,7 +65,7 @@ npm run deploy
 4. Select the `gh-pages` branch and `/ (root)` folder
 5. Click "Save"
 
-Your site will be available at: `https://yourusername.github.io/alchemist-ai`
+Your site will be available at: `https://yourusername.github.io/alchemist-sketches`
 
 ## Project Structure
 

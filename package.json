@@ -1,9 +1,9 @@
 {
-  "name": "alchemist-ai",
+  "name": "alchemist-sketches",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://yourusername.github.io/alchemist-ai",
+  "homepage": "https://yourusername.github.io/alchemist-sketches",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

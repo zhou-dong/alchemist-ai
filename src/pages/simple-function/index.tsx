@@ -153,7 +153,7 @@ export const SimpleFunctions = () => {
           {/* 
           <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
             <VenusGradientButton
-              onClick={() => navigate('/alchemist-ai/roadmap')}
+              onClick={() => navigate('/alchemist-sketches/roadmap')}
               sx={{
                 px: 4,
                 py: 1.5,
@@ -163,7 +163,7 @@ export const SimpleFunctions = () => {
               BACK TO ROADMAP
             </VenusGradientButton>
             <VenusGradientButton
-              onClick={() => navigate('/alchemist-ai/multi-input-functions')}
+              onClick={() => navigate('/alchemist-sketches/multi-input-functions')}
               sx={{
                 px: 4,
                 py: 1.5,

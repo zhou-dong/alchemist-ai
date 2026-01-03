@@ -244,7 +244,7 @@ export const FunctionsDecisions = () => {
               <MercuryGradientButton
                 size="medium"
                 onClick={() => {
-                  navigate('/alchemist-ai/roadmap?step=1')
+                  navigate('/alchemist-sketches/roadmap?step=1')
                 }}
                 endIcon={<ArrowForwardIcon />}
                 sx={{

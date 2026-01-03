@@ -77,7 +77,7 @@ export const MultiInputFunctions = () => {
           <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
             <Button
               variant="text"
-              onClick={() => navigate('/alchemist-ai/roadmap')}
+              onClick={() => navigate('/alchemist-sketches/roadmap')}
               sx={{
                 px: 4,
                 py: 1.5,
@@ -112,7 +112,7 @@ export const MultiInputFunctions = () => {
             </Button>
             <Button
               variant="text"
-              onClick={() => navigate('/alchemist-ai/math-to-neurons')}
+              onClick={() => navigate('/alchemist-sketches/math-to-neurons')}
               sx={{
                 px: 4,
                 py: 1.5,

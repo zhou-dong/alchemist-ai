@@ -26,18 +26,18 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/alchemist-ai" element={<Home />} />
-            <Route path="/alchemist-ai/welcome" element={<Welcome />} />
-            <Route path="/alchemist-ai/perceptron" element={<Perceptron />} />
-            <Route path="/alchemist-ai/roadmap" element={<Roadmap />} />
-            <Route path="/alchemist-ai/functions-decisions" element={<FunctionsDecisions />} />
-            <Route path="/alchemist-ai/simple-functions" element={<SimpleFunctions />} />
-            <Route path="/alchemist-ai/multi-input-functions" element={<MultiInputFunctions />} />
-            <Route path="/alchemist-ai/math-to-neurons" element={<MathToNeurons />} />
-            <Route path="/alchemist-ai/logistic-regression" element={<LogisticRegression />} />
-            <Route path="/alchemist-ai/multi-layer-network" element={<MultiLayerNetwork />} />
-            <Route path="/alchemist-ai/backpropagation" element={<Backpropagation />} />
-            <Route path="/alchemist-ai/neural-networks" element={<NeuralNetworks />} />
+            <Route path="/alchemist-sketches" element={<Home />} />
+            <Route path="/alchemist-sketches/welcome" element={<Welcome />} />
+            <Route path="/alchemist-sketches/perceptron" element={<Perceptron />} />
+            <Route path="/alchemist-sketches/roadmap" element={<Roadmap />} />
+            <Route path="/alchemist-sketches/functions-decisions" element={<FunctionsDecisions />} />
+            <Route path="/alchemist-sketches/simple-functions" element={<SimpleFunctions />} />
+            <Route path="/alchemist-sketches/multi-input-functions" element={<MultiInputFunctions />} />
+            <Route path="/alchemist-sketches/math-to-neurons" element={<MathToNeurons />} />
+            <Route path="/alchemist-sketches/logistic-regression" element={<LogisticRegression />} />
+            <Route path="/alchemist-sketches/multi-layer-network" element={<MultiLayerNetwork />} />
+            <Route path="/alchemist-sketches/backpropagation" element={<Backpropagation />} />
+            <Route path="/alchemist-sketches/neural-networks" element={<NeuralNetworks />} />
           </Routes>
         </Layout>
       </StepStatusProvider>
