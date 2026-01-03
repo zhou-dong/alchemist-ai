@@ -51,7 +51,7 @@ export const Home = () => {
               fontWeight: 900,
             }}
           >
-            NEURAL QUEST
+            SKETCH ATLAS
           </GradientTypography>
         </Fade>
 

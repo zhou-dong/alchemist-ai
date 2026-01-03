@@ -1,6 +1,6 @@
-# Alchemist AI
+# Sketch Atlas
 
-A React application built with TypeScript and Vite, featuring Material-UI components and a modern design.
+An interactive learning platform for probabilistic data structures and streaming algorithms (HyperLogLog, Theta Sketch, Count-Min Sketch, and more). Built with React, TypeScript, and Vite.
 
 ## Features
 
