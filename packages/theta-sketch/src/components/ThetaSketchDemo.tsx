@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Typography, Slider, Paper, Chip } from '@mui/material';
+import { Box, Button, Typography, Paper, Chip } from '@mui/material';
 import { ThetaSketchVisualization } from './ThetaSketchVisualization';
 
 interface ThetaSketchState {

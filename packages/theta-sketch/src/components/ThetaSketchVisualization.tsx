@@ -135,7 +135,7 @@ export const ThetaSketchVisualization = ({
           </text>
 
           {/* Element points */}
-          {elementData.map(({ element, hash, x, y, index }) => (
+          {elementData.map(({ element, hash, x, y }) => (
             <g key={element}>
               <circle
                 cx={x}
