@@ -1,117 +1,61 @@
-import { Box, Typography } from '@mui/material';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { Box, Typography, IconButton, Tooltip } from '@mui/material';
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GradientTypography, GradientButton, FloatingParticles, useSpeech } from '@alchemist/shared';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import PsychologyIcon from '@mui/icons-material/Psychology';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import PauseIcon from '@mui/icons-material/Pause';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
-// Narration script - each segment syncs with a visual phase
-const NARRATION_SEGMENTS = [
-    "Welcome to the math behind Theta Sketch.",
-    "Actually, we are going to explore what is KMV, K minimum values.",
-    "Theta Sketch is a practical application of KMV, a probabilistic data structure for counting unique elements.",
-    "As long as you know what is KMV, you will understand Theta Sketch.",
-    "We will explore the sub concepts of KMV step by step.",
-    "First, we will explore the order statistics.",
-    "Then, we will explore the k_th smallest estimation.",
-    "Then, we will explore the KMV algorithm.",
-    "Finally, we will explore Theta Sketch.",
-    "Please do not be intimidated by the math, actually the ideas behind them are quite straightforward.",
-    "We will just need elementary math knowledge to understand them.",
-    "when you are ready, please click the button below to start the journey.",
-];
+// Narration content for voice synthesis
+const NARRATION_CONTENT = `
+Welcome to the math behind Theta Sketch. We'll explore KMV, or K Minimum Values, the foundation that makes Theta Sketch work. Once you understand KMV, Theta Sketch becomes intuitive.
 
-interface AnimationPhase {
-    id: string;
-    delay: number; // delay in ms from start
-}
+We'll build up step by step: first, Order Statistics, then K-th Smallest Estimation, followed by the KMV algorithm, and finally, Theta Sketch itself.
 
-const ANIMATION_PHASES: AnimationPhase[] = [
-    { id: 'theta-symbol', delay: 0 },
-    { id: 'title', delay: 800 },
-    { id: 'subtitle', delay: 1600 },
-    { id: 'features', delay: 2400 },
-    { id: 'cta', delay: 3200 },
-];
+Don't be intimidated by the math. The ideas are surprisingly straightforward, requiring only elementary math knowledge. When you're ready, click below to begin the journey.
+`.trim();
 
 /**
- * ThetaSketchWelcome - Animated welcome/intro page for Theta Sketch
+ * ThetaSketchWelcome - Welcome/intro page for Theta Sketch
  */
 export const ThetaSketchWelcome = () => {
     const navigate = useNavigate();
-    const [currentPhase, setCurrentPhase] = useState(-1);
-    const [hasStarted, setHasStarted] = useState(false);
-    const segmentIndexRef = useRef(0);
+    const { speak, stop, pause, resume, isSpeaking, isPaused, isSupported } = useSpeech({ rate: 0.95 });
 
-    const { stop, isSpeaking, isSupported } = useSpeech({ rate: 0.95 });
-
-    // Reveal phases progressively
-    useEffect(() => {
-        if (!hasStarted) return;
-
-        const timers: ReturnType<typeof setTimeout>[] = [];
-        ANIMATION_PHASES.forEach((phase, index) => {
-            const timer = setTimeout(() => {
-                setCurrentPhase(index);
-            }, phase.delay);
-            timers.push(timer);
-        });
-
-        return () => timers.forEach(clearTimeout);
-    }, [hasStarted]);
-
-    // Speak next segment
-    const speakNextSegment = useCallback(() => {
-        if (segmentIndexRef.current < NARRATION_SEGMENTS.length) {
-            const text = NARRATION_SEGMENTS[segmentIndexRef.current];
-            segmentIndexRef.current += 1;
-
-            // Create utterance with onend handler for chaining
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.rate = 0.95;
-
-            // Get best voice
-            const voices = speechSynthesis.getVoices();
-            const googleVoice = voices.find(v => v.name.includes('Google US English'));
-            if (googleVoice) {
-                utterance.voice = googleVoice;
-            }
-
-            utterance.onend = () => {
-                // Small pause between segments
-                setTimeout(() => {
-                    if (segmentIndexRef.current < NARRATION_SEGMENTS.length) {
-                        speakNextSegment();
-                    }
-                }, 500);
-            };
-
-            speechSynthesis.speak(utterance);
+    // Toggle voice narration (play/pause)
+    const handleVoiceToggle = useCallback(() => {
+        if (isSpeaking && !isPaused) {
+            // Currently playing -> pause
+            pause();
+        } else if (isPaused) {
+            // Currently paused -> resume
+            resume();
+        } else {
+            // Not started -> start speaking
+            speak(NARRATION_CONTENT);
         }
-    }, []);
+    }, [isSpeaking, isPaused, speak, pause, resume]);
 
-    // Start the experience
+    // Start the learning journey
     const handleStart = useCallback(() => {
-        setHasStarted(true);
-        segmentIndexRef.current = 0;
-
-        // Start narration after a brief delay
-        setTimeout(() => {
-            speakNextSegment();
-        }, 500);
-    }, [speakNextSegment]);
-
-    // Skip to main content
-    const handleSkip = useCallback(() => {
-        stop();
+        stop(); // Stop any ongoing narration
         navigate('/alchemist-sketches/theta-sketch/learn');
-    }, [navigate, stop]);
+    }, [stop, navigate]);
 
-    // Continue to learn page
-    const handleContinue = useCallback(() => {
-        stop();
-        navigate('/alchemist-sketches/theta-sketch/learn');
-    }, [navigate, stop]);
+    // Determine button icon and tooltip
+    const getVoiceButtonState = () => {
+        if (isSpeaking && !isPaused) {
+            return { icon: <PauseIcon />, tooltip: 'Pause narration' };
+        } else if (isPaused) {
+            return { icon: <PlayArrowIcon />, tooltip: 'Resume narration' };
+        } else {
+            return { icon: <VolumeUpIcon />, tooltip: 'Listen to introduction' };
+        }
+    };
+
+    const voiceButtonState = getVoiceButtonState();
 
     return (
         <Box
@@ -159,18 +103,46 @@ export const ThetaSketchWelcome = () => {
                 K-th Smallest Estimation, KMV, and Beyond.
             </GradientTypography>
 
-            <GradientButton
-                onClick={handleStart}
-                size="medium"
-                sx={{
-                    px: 4,
-                    py: 1.5,
-                    fontSize: '1.2rem',
-                    letterSpacing: '0.2px',
-                }}
-            >
-                Dive In
-            </GradientButton>
+            {/* Action Buttons */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                {/* Voice Narration Button */}
+                {isSupported && (
+                    <Tooltip title={voiceButtonState.tooltip}>
+                        <IconButton
+                            onClick={handleVoiceToggle}
+                            sx={{
+                                width: 56,
+                                height: 56,
+                                bgcolor: isSpeaking 
+                                    ? 'rgba(99, 102, 241, 0.25)' 
+                                    : 'rgba(99, 102, 241, 0.15)',
+                                border: '1px solid rgba(99, 102, 241, 0.3)',
+                                color: 'primary.light',
+                                '&:hover': {
+                                    bgcolor: 'rgba(99, 102, 241, 0.35)',
+                                },
+                                transition: 'all 0.2s ease',
+                            }}
+                        >
+                            {voiceButtonState.icon}
+                        </IconButton>
+                    </Tooltip>
+                )}
+
+                {/* Dive In Button */}
+                <GradientButton
+                    onClick={handleStart}
+                    size="medium"
+                    sx={{
+                        px: 4,
+                        py: 1.5,
+                        fontSize: '1.2rem',
+                        letterSpacing: '0.2px',
+                    }}
+                >
+                    Dive In
+                </GradientButton>
+            </Box>
 
             {!isSupported && (
                 <Typography
