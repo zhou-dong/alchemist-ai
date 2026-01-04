@@ -29,8 +29,7 @@ export const Home = () => {
         overflow: 'hidden',
       }}
     >
-      {/* Floating particles for data/sketch feel */}
-      <FloatingParticles particleCount={50} />
+      <FloatingParticles particleCount={60} />
 
       {/* Main content */}
       <Box
