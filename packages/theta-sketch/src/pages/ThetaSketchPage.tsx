@@ -144,7 +144,7 @@ export const ThetaSketchPage = () => {
             {/* Navigation */}
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
               <Button
-                onClick={() => navigate('/alchemist-sketches/roadmap')}
+                onClick={() => navigate('/sketches')}
                 startIcon={<ArrowBackIcon />}
                 sx={{ px: 4, py: 1.5 }}
               >
