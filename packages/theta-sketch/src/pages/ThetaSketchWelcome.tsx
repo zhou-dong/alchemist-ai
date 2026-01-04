@@ -88,7 +88,7 @@ export const ThetaSketchWelcome = () => {
 
     const handleDiveIn = useCallback(() => {
         speechSynthesis.cancel();
-        navigate('/alchemist-sketches/theta-sketch/learn');
+        navigate('/theta-sketch/learn');
     }, [navigate]);
 
     const hasAutoStarted = useRef(false);
