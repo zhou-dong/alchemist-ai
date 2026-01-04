@@ -179,56 +179,56 @@ export const getLearningPathData = (isDarkMode: boolean): LearningPathItem[] => 
     {
       title: 'Functions as Decisions',
       description: 'Every decision is a function',
-      path: '/alchemist-sketches/functions-decisions',
+      path: '/functions-decisions',
       status: 'unlocked',
       planet: planetData[0]
     },
     {
       title: 'Simple Functions',
       description: 'Build the simplest function: if...else',
-      path: '/alchemist-sketches/simple-functions',
+      path: '/simple-functions',
       status: 'locked',
       planet: planetData[1]
     },
     {
       title: 'Multi-Input Functions',
       description: 'Multiple inputs, one output function',
-      path: '/alchemist-sketches/multi-input-functions',
+      path: '/multi-input-functions',
       status: 'locked',
       planet: planetData[2]
     },
     {
       title: 'Math to Neurons',
       description: 'From mathematical functions to neural networks',
-      path: '/alchemist-sketches/math-to-neurons',
+      path: '/math-to-neurons',
       status: 'locked',
       planet: planetData[3]
     },
     {
       title: 'Logistic Regression',
       description: 'Understanding binary classification',
-      path: '/alchemist-sketches/logistic-regression',
+      path: '/logistic-regression',
       status: 'locked',
       planet: planetData[4]
     },
     {
       title: 'Multi-Layer Network',
       description: 'Stacking layers for complex patterns',
-      path: '/alchemist-sketches/multi-layer-network',
+      path: '/multi-layer-network',
       status: 'locked',
       planet: planetData[5]
     },
     {
       title: 'Backpropagation',
       description: 'The algorithm that enables deep learning',
-      path: '/alchemist-sketches/backpropagation',
+      path: '/backpropagation',
       status: 'locked',
       planet: planetData[6]
     },
     {
       title: 'Neural Networks',
       description: 'Master the complete neural network architecture',
-      path: '/alchemist-sketches/neural-networks',
+      path: '/neural-networks',
       status: 'locked',
       planet: planetData[7]
     },
