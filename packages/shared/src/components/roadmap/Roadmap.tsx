@@ -15,9 +15,9 @@ import { useColorMode, Starfield } from '@alchemist/shared';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
-import { isLocked, isFinished, isAccessible } from '../data/types';
-import { TOTAL_STEPS, blendColors } from '../data/planets';
-import { useStepStatusContext } from '../contexts/StepStatusContext';
+import { isLocked, isFinished, isAccessible } from './data/types';
+import { TOTAL_STEPS, blendColors } from './data/planets';
+import { useStepStatusContext } from './contexts/StepStatusContext';
 
 const totalSteps = TOTAL_STEPS;
 const CENTER_SPHERE_RADIUS = 3;

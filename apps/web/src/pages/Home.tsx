@@ -3,8 +3,8 @@ import EastIcon from '@mui/icons-material/East';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FloatingParticles } from '../../../../packages/shared/src/components/common/FloatingParticles';
-import { useStepStatusContext } from '../contexts/StepStatusContext';
-import { isLocked } from '../data/types';
+import { useStepStatusContext } from '../../../../packages/shared/src/components/roadmap/contexts/StepStatusContext';
+import { isLocked } from '../../../../packages/shared/src/components/roadmap/data/types';
 
 export const Home = () => {
   const navigate = useNavigate();

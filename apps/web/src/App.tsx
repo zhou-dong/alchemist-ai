@@ -1,9 +1,9 @@
 import { CssBaseline } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
 import { ThemeContextProvider, GlobalAnimationStyles, Layout } from '@alchemist/shared';
-import { StepStatusProvider } from './contexts/StepStatusContext';
+import { StepStatusProvider } from '../../../packages/shared/src/components/roadmap/contexts/StepStatusContext';
 import Home from './pages/Home';
-import Roadmap from './pages/Roadmap';
+// import Roadmap from './roadmap/Roadmap';
 // Import theta-sketch module
 import { ThetaSketchPage, ThetaSketchWelcome } from '@alchemist/theta-sketch';
 
@@ -17,7 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/alchemist-sketches" element={<Home />} />
-            <Route path="/alchemist-sketches/roadmap" element={<Roadmap />} />
+            {/* <Route path="/alchemist-sketches/roadmap" element={<Roadmap />} /> */}
             {/* Theta Sketch module routes */}
             <Route path="/alchemist-sketches/theta-sketch" element={<ThetaSketchWelcome />} />
             <Route path="/alchemist-sketches/theta-sketch/learn" element={<ThetaSketchPage />} />
