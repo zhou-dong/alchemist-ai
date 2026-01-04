@@ -16,12 +16,11 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/alchemist-sketches" element={<Home />} />
             {/* Sketches list */}
-            <Route path="/alchemist-sketches/sketches" element={<Sketches />} />
+            <Route path="/sketches" element={<Sketches />} />
             {/* Theta Sketch module routes */}
-            <Route path="/alchemist-sketches/theta-sketch" element={<ThetaSketchWelcome />} />
-            <Route path="/alchemist-sketches/theta-sketch/learn" element={<ThetaSketchPage />} />
+            <Route path="/theta-sketch" element={<ThetaSketchWelcome />} />
+            <Route path="/theta-sketch/learn" element={<ThetaSketchPage />} />
           </Routes>
         </Layout>
       </StepStatusProvider>
