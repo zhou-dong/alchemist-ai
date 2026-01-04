@@ -8,7 +8,7 @@ import {
   Button,
   IconButton,
 } from '@mui/material';
-import { PlayArrow, Pause, CenterFocusStrong, Lock, LockOpen, CheckCircle, ArrowForward } from '@mui/icons-material';
+import { PlayArrow, Pause, Lock, LockOpen, CheckCircle, ArrowForward } from '@mui/icons-material';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useColorMode, Starfield } from '@alchemist/shared';
@@ -16,8 +16,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { isLocked, isFinished, isAccessible } from '../../data/types';
-import type { StepStatus } from '../../data/types';
-import { TOTAL_STEPS, blendColors, type LearningPathItem } from '../../data/planets';
+import { TOTAL_STEPS, blendColors } from '../../data/planets';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
 
 const totalSteps = TOTAL_STEPS;
