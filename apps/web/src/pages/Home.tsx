@@ -2,9 +2,9 @@ import { Box, Typography, Button, Fade } from '@mui/material';
 import EastIcon from '@mui/icons-material/East';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FloatingParticles } from '../../../../../packages/shared/src/components/common/FloatingParticles';
-import { useStepStatusContext } from '../../contexts/StepStatusContext';
-import { isLocked } from '../../data/types';
+import { FloatingParticles } from '../../../../packages/shared/src/components/common/FloatingParticles';
+import { useStepStatusContext } from '../contexts/StepStatusContext';
+import { isLocked } from '../data/types';
 
 export const Home = () => {
   const navigate = useNavigate();
