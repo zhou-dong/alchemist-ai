@@ -3,7 +3,6 @@ import EastIcon from '@mui/icons-material/East';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FloatingParticles } from '../../../../../packages/shared/src/components/common/FloatingParticles';
-import { GlowOrbs } from '@alchemist/shared';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
 import { isLocked } from '../../data/types';
 
@@ -30,9 +29,6 @@ export const Home = () => {
         overflow: 'hidden',
       }}
     >
-      {/* Ambient glow orbs background */}
-      {/* <GlowOrbs preset="vibrant" /> */}
-
       {/* Floating particles for data/sketch feel */}
       <FloatingParticles particleCount={50} />
 
