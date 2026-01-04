@@ -1,8 +1,7 @@
-import { Box } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import type { ComponentType } from 'react';
 import type { TypographyProps, BoxProps, ButtonProps } from '@mui/material';
-import { GradientButton, GradientTypography } from './theme';
 
 // Base color structure
 export interface RgbColor {
@@ -75,7 +74,7 @@ const buildGradientButton = ({ primary, secondary, accent, highlight }: PlanetTh
   const accentRgba = buildRgba(accent);
   const highlightRgba = buildRgba(highlight);
 
-  return styled(GradientButton)({
+  return styled(Button)({
     fontSize: '1.2rem',
     backgroundImage: `linear-gradient(135deg, ${primaryRgba}, ${secondaryRgba}, ${accentRgba}, ${highlightRgba})`,
     '&::before': {
@@ -118,7 +117,7 @@ const buildGradientTypography = ({ baseColor, primary, secondary, accent, highli
   const highlightRgba = buildRgba(highlight);
   const shadowRgba = buildRgba({ r: baseColor.r, g: baseColor.g, b: baseColor.b, a: 0.4 }); // 0.4 is the default shadow opacity
 
-  return styled(GradientTypography)({
+  return styled(Typography)({
     textAlign: 'center',
     background: `linear-gradient(135deg, ${primaryRgba}, ${secondaryRgba}, ${accentRgba}, ${highlightRgba})`,
     backgroundSize: '200% 200%',

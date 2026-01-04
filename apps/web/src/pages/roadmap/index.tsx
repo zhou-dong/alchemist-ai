@@ -5,11 +5,13 @@ import {
   Slide,
   Stack,
   Typography,
+  Button,
+  IconButton,
 } from '@mui/material';
 import { PlayArrow, Pause, CenterFocusStrong, Lock, LockOpen, CheckCircle, ArrowForward } from '@mui/icons-material';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { GradientTypography, GlassIconButton, GradientButton, useColorMode, Starfield } from '@alchemist/shared';
+import { useColorMode, Starfield } from '@alchemist/shared';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
@@ -235,9 +237,9 @@ export const Roadmap = () => {
       <Box sx={{ position: 'relative', zIndex: 2, width: '100%', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         <Fade in={isLoaded} timeout={800}>
           <Box sx={{ position: 'absolute', top: "10%", left: '50%', transform: 'translateX(-50%)', zIndex: 3 }}>
-            <GradientTypography variant="h1" sx={{ fontSize: { xs: '2.5rem', md: '4rem', lg: '5rem' }, textAlign: 'center', fontWeight: 900 }}>
+            <Typography variant="h1" sx={{ fontSize: { xs: '2.5rem', md: '4rem', lg: '5rem' }, textAlign: 'center', fontWeight: 900 }}>
               LEARNING PATH
-            </GradientTypography>
+            </Typography>
           </Box>
         </Fade>
 
@@ -261,7 +263,7 @@ export const Roadmap = () => {
                           <Typography variant="h4" sx={{ fontSize: '1.5rem' }}>{item.planet.emoji}</Typography>
                           <Typography variant="h6" sx={{ fontSize: '1.1rem', fontWeight: 600 }}>{item.planet.name}</Typography>
                         </Box>
-                        <GradientTypography variant="h5" sx={{ fontSize: '1.5rem', fontWeight: 700 }}>{item.title}</GradientTypography>
+                        <Typography variant="h5" sx={{ fontSize: '1.5rem', fontWeight: 700 }}>{item.title}</Typography>
                         <Typography variant="body1" sx={{ color: 'text.secondary' }}>{item.description}</Typography>
                         <Box sx={{ mt: 1 }}>
                           {isLocked(item.status) ? <Lock sx={{ fontSize: '1.5rem', color: 'text.disabled' }} /> : isFinished(item.status) ? <CheckCircle sx={{ fontSize: '1.5rem', color: 'success.main' }} /> : <LockOpen sx={{ fontSize: '1.5rem', color: 'primary.main' }} />}
@@ -275,16 +277,16 @@ export const Roadmap = () => {
           })()}
 
           <Box sx={{ position: 'absolute', bottom: 20, left: 20, zIndex: 20, display: 'flex', flexDirection: 'column', gap: 1 }}>
-            <GlassIconButton onClick={() => setIsRotationEnabled(prev => !prev)} aria-label="Toggle rotation">
+            <IconButton onClick={() => setIsRotationEnabled(prev => !prev)} aria-label="Toggle rotation">
               {isRotationEnabled ? <Pause /> : <PlayArrow />}
-            </GlassIconButton>
+            </IconButton>
           </Box>
 
           {targetStepIndex >= 0 && (
             <Box sx={{ position: 'absolute', top: '50%', right: 20, transform: 'translateY(-50%)', zIndex: 20 }}>
-              <GradientButton onClick={handleNextStep} disabled={targetStepIndex < 0 || isLocked(learningPathData[targetStepIndex]?.status)} startIcon={<Avatar sx={{ backgroundColor: learningPathData[targetStepIndex]?.planet.color, width: 32, height: 32 }}><Box component="span" sx={{ fontSize: '1.5rem' }}>{learningPathData[targetStepIndex]?.planet.emoji}</Box></Avatar>} endIcon={<ArrowForward />} sx={{ py: 1.2, px: 3, fontSize: '1.2rem' }}>
+              <Button onClick={handleNextStep} disabled={targetStepIndex < 0 || isLocked(learningPathData[targetStepIndex]?.status)} startIcon={<Avatar sx={{ backgroundColor: learningPathData[targetStepIndex]?.planet.color, width: 32, height: 32 }}><Box component="span" sx={{ fontSize: '1.5rem' }}>{learningPathData[targetStepIndex]?.planet.emoji}</Box></Avatar>} endIcon={<ArrowForward />} sx={{ py: 1.2, px: 3, fontSize: '1.2rem' }}>
                 {learningPathData[targetStepIndex]?.planet.name}
-              </GradientButton>
+              </Button>
             </Box>
           )}
         </Box>

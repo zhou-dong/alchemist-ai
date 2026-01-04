@@ -1,7 +1,7 @@
-import { Box, Typography, Fade } from '@mui/material';
+import { Box, Typography, Fade, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTypography, GradientButton, Starfield, VoiceNarration } from '@alchemist/shared';
+import { Starfield, VoiceNarration } from '@alchemist/shared';
 import { ThetaSketchDemo } from '../components/ThetaSketchDemo';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
@@ -68,7 +68,7 @@ export const ThetaSketchPage = () => {
           <Box sx={{ maxWidth: 1200, mx: 'auto' }}>
             {/* Header */}
             <Box sx={{ textAlign: 'center', mb: 6 }}>
-              <GradientTypography
+              <Typography
                 variant="h1"
                 sx={{
                   fontSize: { xs: '2rem', md: '3rem', lg: '4rem' },
@@ -77,7 +77,7 @@ export const ThetaSketchPage = () => {
                 }}
               >
                 THETA SKETCH
-              </GradientTypography>
+              </Typography>
               <Typography
                 variant="h5"
                 sx={{
@@ -106,15 +106,15 @@ export const ThetaSketchPage = () => {
                 What is a Theta Sketch?
               </Typography>
               <Typography variant="body1" sx={{ lineHeight: 1.8, mb: 2 }}>
-                A <strong>Theta Sketch</strong> (also known as KMV - K Minimum Values) is a 
-                probabilistic data structure designed to estimate the cardinality (number of 
-                distinct elements) of a dataset. Unlike exact counting methods, Theta Sketches 
+                A <strong>Theta Sketch</strong> (also known as KMV - K Minimum Values) is a
+                probabilistic data structure designed to estimate the cardinality (number of
+                distinct elements) of a dataset. Unlike exact counting methods, Theta Sketches
                 use a sampling approach that provides accurate estimates with bounded memory.
               </Typography>
               <Typography variant="body1" sx={{ lineHeight: 1.8, mb: 2 }}>
-                The key insight is that hash values are uniformly distributed between 0 and 1. 
-                By keeping only elements whose hash values fall below a threshold θ (theta), 
-                we can estimate the total cardinality as: <code>n ≈ k / θ</code>, where k is 
+                The key insight is that hash values are uniformly distributed between 0 and 1.
+                By keeping only elements whose hash values fall below a threshold θ (theta),
+                we can estimate the total cardinality as: <code>n ≈ k / θ</code>, where k is
                 the number of elements in the sketch.
               </Typography>
               <Typography variant="body1" sx={{ lineHeight: 1.8 }}>
@@ -143,13 +143,13 @@ export const ThetaSketchPage = () => {
 
             {/* Navigation */}
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
-              <GradientButton
+              <Button
                 onClick={() => navigate('/alchemist-sketches/roadmap')}
                 startIcon={<ArrowBackIcon />}
                 sx={{ px: 4, py: 1.5 }}
               >
                 Back to Roadmap
-              </GradientButton>
+              </Button>
             </Box>
           </Box>
         </Fade>

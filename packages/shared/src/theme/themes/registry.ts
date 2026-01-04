@@ -8,6 +8,7 @@ import { neoGlassTheme } from './neo-glass/neoGlassTheme';
 import { cyberTheme } from './cyber';
 import { minimalTheme } from './minimal';
 import { oceanTheme } from './ocean';
+import { cosmicGradientTheme } from './cosmic-gradient';
 
 // =============================================================================
 // THEME REGISTRY
@@ -18,6 +19,7 @@ export const themeRegistry: Record<string, SketchThemeDefinition> = {
   'cyber': cyberTheme,
   'minimal': minimalTheme,
   'ocean': oceanTheme,
+  'cosmic-gradient': cosmicGradientTheme,
 };
 
 // =============================================================================

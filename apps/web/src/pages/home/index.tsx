@@ -1,7 +1,6 @@
-import { Box, Fade } from '@mui/material';
-import { useState, useEffect, useMemo } from 'react';
+import { Box, Typography, Button, Fade } from '@mui/material';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GradientTypography, GradientButton } from '@alchemist/shared';
 import { FloatingParticles } from '../../../../../packages/shared/src/components/common/FloatingParticles';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
 import { isLocked } from '../../data/types';
@@ -38,30 +37,32 @@ export const Home = () => {
         zIndex: 2,
       }}>
         <Fade in={isLoaded} timeout={800}>
-          <GradientTypography
+          <Typography
             variant="h1"
             sx={{
               mb: 10,
-              fontWeight: 900,
+              fontSize: { xs: '2.5rem', md: '4rem', lg: '5rem' },
+              fontWeight: 700,
+              letterSpacing: '0.05em',
             }}
           >
             SKETCH ATLAS
-          </GradientTypography>
+          </Typography>
         </Fade>
 
         <Fade in={isLoaded} timeout={800}>
-          <GradientButton
+          <Button
+            variant="contained"
+            size="large"
+            color="primary"
             onClick={() => navigate('/alchemist-sketches/roadmap?step=0')}
             sx={{
-              py: 1.5,
-              px: 4,
               fontSize: '1.5rem',
-              fontWeight: 700,
               letterSpacing: '0.1em',
             }}
           >
             START
-          </GradientButton>
+          </Button>
         </Fade>
       </Box>
     </>
