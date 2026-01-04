@@ -1,7 +1,9 @@
 import { Box, Typography, Button, Fade } from '@mui/material';
+import EastIcon from '@mui/icons-material/East';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FloatingParticles } from '../../../../../packages/shared/src/components/common/FloatingParticles';
+import { GlowOrbs } from '@alchemist/shared';
 import { useStepStatusContext } from '../../contexts/StepStatusContext';
 import { isLocked } from '../../data/types';
 
@@ -20,52 +22,99 @@ export const Home = () => {
   }, []);
 
   return (
-    <>
-      <FloatingParticles particleCount={60} />
-      <Box sx={{
+    <Box
+      sx={{
         width: '100vw',
         height: '100vh',
-        position: 'fixed',
-        top: 0,
-        left: 0,
+        position: 'relative',
         overflow: 'hidden',
-        textAlign: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 2,
-      }}>
+      }}
+    >
+      {/* Ambient glow orbs background */}
+      <GlowOrbs preset="vibrant" />
+
+      {/* Floating particles for data/sketch feel */}
+      <FloatingParticles particleCount={50} />
+
+      {/* Main content */}
+      <Box
+        sx={{
+          width: '100%',
+          height: '100%',
+          position: 'relative',
+          textAlign: 'center',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 10,
+        }}
+      >
+        {/* Subtitle */}
+        <Fade in={isLoaded} timeout={600}>
+          <Typography
+            variant="overline"
+            sx={{
+              mb: 2,
+              fontSize: { xs: '0.75rem', md: '0.9rem' },
+              letterSpacing: '0.3em',
+              opacity: 0.7,
+            }}
+          >
+            EXPLORE PROBABILISTIC DATA STRUCTURES
+          </Typography>
+        </Fade>
+
+        {/* Main title */}
         <Fade in={isLoaded} timeout={800}>
           <Typography
             variant="h1"
             sx={{
-              mb: 10,
-              fontSize: { xs: '2.5rem', md: '4rem', lg: '5rem' },
-              fontWeight: 700,
-              letterSpacing: '0.05em',
+              mb: 4,
+              fontSize: { xs: '3rem', md: '5rem', lg: '6rem' },
+              fontWeight: 800,
+              letterSpacing: '0.08em',
+              lineHeight: 1.1,
             }}
           >
             SKETCH ATLAS
           </Typography>
         </Fade>
 
-        <Fade in={isLoaded} timeout={800}>
+        {/* Description */}
+        <Fade in={isLoaded} timeout={1000}>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{
+              mb: 6,
+              maxWidth: 500,
+              fontSize: { xs: '1rem', md: '1.1rem' },
+              lineHeight: 1.7,
+              px: 3,
+            }}
+          >
+            Master HyperLogLog, Theta Sketch, Bloom Filters, and more through
+            interactive visualizations and guided learning.
+          </Typography>
+        </Fade>
+
+        {/* CTA Button */}
+        <Fade in={isLoaded} timeout={1200}>
           <Button
             variant="contained"
             size="large"
-            color="primary"
             onClick={() => navigate('/alchemist-sketches/roadmap?step=0')}
+            endIcon={<EastIcon />}
             sx={{
-              fontSize: '1.5rem',
-              letterSpacing: '0.1em',
+              fontSize: '1.2rem',
             }}
           >
-            START
+            BEGIN JOURNEY
           </Button>
         </Fade>
       </Box>
-    </>
+    </Box>
   );
 };
 
