@@ -26,7 +26,7 @@ const sketches: SketchInfo[] = [
     description: 'Estimate unique counts with set operations for counting distinct elements.',
     category: 'cardinality',
     status: 'available',
-    route: '/alchemist-sketches/theta-sketch',
+    route: '/theta-sketch',
   },
   {
     id: 'hyperloglog',
