@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ThemeContextProvider, GlobalAnimationStyles, Layout } from '@alchemist/shared';
 import { StepStatusProvider } from './contexts/StepStatusContext';
 import Home from './pages/Home';
-import Roadmap from './pages/roadmap';
+import Roadmap from './pages/Roadmap';
 // Import theta-sketch module
 import { ThetaSketchPage, ThetaSketchWelcome } from '@alchemist/theta-sketch';
 
