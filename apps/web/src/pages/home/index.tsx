@@ -31,7 +31,7 @@ export const Home = () => {
       }}
     >
       {/* Ambient glow orbs background */}
-      <GlowOrbs preset="vibrant" />
+      {/* <GlowOrbs preset="vibrant" /> */}
 
       {/* Floating particles for data/sketch feel */}
       <FloatingParticles particleCount={50} />
