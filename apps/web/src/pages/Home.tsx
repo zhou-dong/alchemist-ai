@@ -94,7 +94,7 @@ export const Home = () => {
           <Button
             variant="contained"
             size="large"
-            onClick={() => navigate('/alchemist-sketches/sketches')}
+            onClick={() => navigate('/sketches')}
             endIcon={<EastIcon />}
             sx={{
               fontSize: '1.2rem',
