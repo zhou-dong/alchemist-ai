@@ -88,7 +88,7 @@ export const ThetaSketchWelcome = () => {
 
     const handleDiveIn = useCallback(() => {
         speechSynthesis.cancel();
-        navigate('/theta-sketch/learn');
+        navigate('/theta-sketch/roadmap');
     }, [navigate]);
 
     // Auto-start disabled - user clicks play button to start narration

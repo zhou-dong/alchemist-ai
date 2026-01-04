@@ -5,7 +5,7 @@ import { StepStatusProvider } from '../../../packages/shared/src/components/road
 import Home from './pages/Home';
 import Sketches from './pages/Sketches';
 // Import theta-sketch module
-import { ThetaSketchPage, ThetaSketchWelcome } from '@alchemist/theta-sketch';
+import { ThetaSketchPage, ThetaSketchWelcome, ThetaSketchRoadmap } from '@alchemist/theta-sketch';
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
             <Route path="/sketches" element={<Sketches />} />
             {/* Theta Sketch module routes */}
             <Route path="/theta-sketch" element={<ThetaSketchWelcome />} />
+            <Route path="/theta-sketch/roadmap" element={<ThetaSketchRoadmap />} />
             <Route path="/theta-sketch/learn" element={<ThetaSketchPage />} />
           </Routes>
         </Layout>
