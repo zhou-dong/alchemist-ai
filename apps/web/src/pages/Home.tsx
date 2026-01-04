@@ -2,20 +2,13 @@ import { Box, Typography, Button, Fade } from '@mui/material';
 import EastIcon from '@mui/icons-material/East';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FloatingParticles } from '../../../../packages/shared/src/components/common/FloatingParticles';
-import { useStepStatusContext } from '../../../../packages/shared/src/components/roadmap/contexts/StepStatusContext';
-import { isLocked } from '../../../../packages/shared/src/components/roadmap/data/types';
+import { FloatingParticles, GlowOrbs } from '@alchemist/shared';
 
 export const Home = () => {
   const navigate = useNavigate();
   const [isLoaded, setIsLoaded] = useState(false);
-  const { learningPathData, updateStepStatus } = useStepStatusContext();
 
   useEffect(() => {
-    if (isLocked(learningPathData[0].status)) {
-      updateStepStatus(0, 'unlocked'); // Unlock the first step for new users
-    }
-
     const timer = setTimeout(() => setIsLoaded(true), 500);
     return () => clearTimeout(timer);
   }, []);
@@ -29,7 +22,9 @@ export const Home = () => {
         overflow: 'hidden',
       }}
     >
-      <FloatingParticles particleCount={60} />
+      {/* Background effects */}
+      <GlowOrbs preset="vibrant" />
+      <FloatingParticles particleCount={50} />
 
       {/* Main content */}
       <Box
@@ -99,7 +94,7 @@ export const Home = () => {
           <Button
             variant="contained"
             size="large"
-            onClick={() => navigate('/alchemist-sketches/roadmap?step=0')}
+            onClick={() => navigate('/alchemist-sketches/sketches')}
             endIcon={<EastIcon />}
             sx={{
               fontSize: '1.2rem',
