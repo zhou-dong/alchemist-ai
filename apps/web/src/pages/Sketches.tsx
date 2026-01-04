@@ -1,7 +1,7 @@
 import { Box, Typography, Card, CardActionArea, Chip, Fade, Grid } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GlowOrbs } from '@alchemist/shared';
+import { FloatingParticles, GlowOrbs } from '@alchemist/shared';
 import EastIcon from '@mui/icons-material/East';
 
 // =============================================================================
@@ -109,6 +109,8 @@ const SketchCard = ({ sketch, index, onNavigate }: SketchCardProps) => {
           opacity: isPlanned ? 0.5 : 1,
           transition: 'all 0.25s ease',
           cursor: isAvailable ? 'pointer' : 'default',
+          backgroundColor: 'transparent',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
           '&:hover': isAvailable ? {
             transform: 'translateY(-6px)',
           } : {},
@@ -252,6 +254,7 @@ export const Sketches = () => {
     >
       {/* Background */}
       <GlowOrbs preset="minimal" />
+      <FloatingParticles particleCount={50} />
 
       {/* Content */}
       <Box
