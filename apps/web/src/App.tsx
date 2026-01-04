@@ -1,6 +1,6 @@
 import { CssBaseline } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
-import { ColorModeProvider, GlobalAnimationStyles, Layout } from '@alchemist/shared';
+import { ThemeContextProvider, GlobalAnimationStyles, Layout } from '@alchemist/shared';
 import { StepStatusProvider } from './contexts/StepStatusContext';
 import Home from './pages/home';
 import Welcome from './pages/Welcome';
@@ -19,7 +19,7 @@ import { ThetaSketchPage, ThetaSketchWelcome } from '@alchemist/theta-sketch';
 
 function App() {
   return (
-    <ColorModeProvider>
+    <ThemeContextProvider defaultTheme="neo-glass" defaultMode="dark">
       <StepStatusProvider>
         <CssBaseline />
         <GlobalAnimationStyles />
@@ -44,7 +44,7 @@ function App() {
           </Routes>
         </Layout>
       </StepStatusProvider>
-    </ColorModeProvider>
+    </ThemeContextProvider>
   );
 }
 

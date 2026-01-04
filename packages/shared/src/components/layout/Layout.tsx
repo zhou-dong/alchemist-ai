@@ -1,9 +1,9 @@
-import { Box, styled } from '@mui/material';
+import { Box, styled, IconButton } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import type { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ThemeToggleFab } from '../../theme/ThemeToggleFab';
-import { GlassIconButton } from '../../theme/theme';
+import { ThemePicker } from '../common/ThemePicker';
 
 const HeaderContainer = styled(Box)(() => ({
   position: 'fixed',
@@ -12,16 +12,25 @@ const HeaderContainer = styled(Box)(() => ({
   zIndex: 100,
 }));
 
+const ThemePickerContainer = styled(Box)(() => ({
+  position: 'fixed',
+  top: 20,
+  right: 20,
+  zIndex: 100,
+}));
+
 const LayoutHeader = () => {
   const navigate = useNavigate();
   return (
     <HeaderContainer>
-      <GlassIconButton
+      <IconButton
         onClick={() => navigate('/')}
         aria-label="Go to home page"
+        color="primary"
+        size="large"
       >
         <HomeIcon />
-      </GlassIconButton>
+      </IconButton>
     </HeaderContainer>
   );
 };
@@ -43,6 +52,9 @@ export const Layout = ({ children }: { children: ReactNode }) => {
     <>
       <Background />
       <LayoutHeader />
+      <ThemePickerContainer>
+        <ThemePicker />
+      </ThemePickerContainer>
       {children}
       <ThemeToggleFab />
     </>

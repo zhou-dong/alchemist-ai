@@ -1,7 +1,7 @@
 import { Fab } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useColorMode } from './ColorModeContext';
+import { useTheme } from './ThemeContext';
 
 interface ThemeToggleFabProps {
   position?: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';
@@ -10,7 +10,7 @@ interface ThemeToggleFabProps {
 export const ThemeToggleFab: React.FC<ThemeToggleFabProps> = ({ 
   position = 'bottom-right' 
 }) => {
-  const { mode, toggleColorMode } = useColorMode();
+  const { mode, toggleMode } = useTheme();
 
   const positionStyles = {
     'bottom-right': { bottom: 20, right: 20 },
@@ -23,7 +23,7 @@ export const ThemeToggleFab: React.FC<ThemeToggleFabProps> = ({
     <Fab
       color="primary"
       aria-label="toggle theme"
-      onClick={toggleColorMode}
+      onClick={toggleMode}
       sx={{
         position: 'fixed',
         ...positionStyles[position],
