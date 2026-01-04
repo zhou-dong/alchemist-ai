@@ -1,5 +1,5 @@
 import { Box, Typography, Tooltip, IconButton, Button } from '@mui/material';
-import { useCallback, useState, useEffect, useRef } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSpeech, GlowOrbs, slideUp, fadeIn } from '@alchemist/shared';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
@@ -91,20 +91,7 @@ export const ThetaSketchWelcome = () => {
         navigate('/theta-sketch/learn');
     }, [navigate]);
 
-    const hasAutoStarted = useRef(false);
-
-    useEffect(() => {
-        if (hasAutoStarted.current) return;
-
-        const timer = setTimeout(() => {
-            if (!hasAutoStarted.current && !speechSynthesis.speaking) {
-                hasAutoStarted.current = true;
-                speakWithTracking();
-            }
-        }, 2000);
-
-        return () => clearTimeout(timer);
-    }, [speakWithTracking]);
+    // Auto-start disabled - user clicks play button to start narration
 
     useEffect(() => {
         return () => {
