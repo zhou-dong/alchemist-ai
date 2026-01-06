@@ -25,7 +25,7 @@ const roadmapSteps: RoadmapStep[] = [
         description: 'Understanding sorted values and their properties. The foundation for minimum-based estimation.',
         duration: '~5 min',
         status: 'current',
-        route: '/theta-sketch/learn/order-statistics',
+        route: '/theta-sketch/order-statistics',
     },
     {
         id: 'kth-smallest',
@@ -33,7 +33,7 @@ const roadmapSteps: RoadmapStep[] = [
         description: 'How the k-th smallest value relates to the total count. The key insight behind KMV.',
         duration: '~8 min',
         status: 'locked',
-        route: '/theta-sketch/learn/kth-smallest',
+        route: '/theta-sketch/kth-smallest',
     },
     {
         id: 'kmv',
@@ -41,7 +41,7 @@ const roadmapSteps: RoadmapStep[] = [
         description: 'K Minimum Values - tracking the k smallest hashed values to estimate cardinality.',
         duration: '~10 min',
         status: 'locked',
-        route: '/theta-sketch/learn/kmv',
+        route: '/theta-sketch/kmv',
     },
     {
         id: 'set-operations',
@@ -49,7 +49,7 @@ const roadmapSteps: RoadmapStep[] = [
         description: 'Union, intersection, and difference. Combining sketches while preserving accuracy.',
         duration: '~8 min',
         status: 'locked',
-        route: '/theta-sketch/learn/set-operations',
+        route: '/theta-sketch/set-operations',
     },
     {
         id: 'theta-sketch',
@@ -57,7 +57,7 @@ const roadmapSteps: RoadmapStep[] = [
         description: 'The complete algorithm - combining KMV with theta for efficient set operations.',
         duration: '~12 min',
         status: 'locked',
-        route: '/theta-sketch/learn/theta-sketch',
+        route: '/theta-sketch/theta-sketch-overview',
     },
 ];
 

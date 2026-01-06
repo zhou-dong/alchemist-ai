@@ -26,8 +26,10 @@
     "typescript-eslint": "^8.35.1"
   },
   "dependencies": {
+    "gsap": "^3.14.2",
     "obelus": "^0.0.10",
     "obelus-gsap-player": "^0.0.4",
-    "obelus-three-render": "^0.0.4"
+    "obelus-three-render": "^0.0.4",
+    "three": "^0.182.0"
   }
 }

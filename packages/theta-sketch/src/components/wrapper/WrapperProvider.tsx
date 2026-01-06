@@ -3,8 +3,8 @@ import { createContext, useContext } from 'react';
 import GoToWelcome from './GoToWelcome';
 import ProgressStepper from '../stepper/ProgressStepper';
 import StepperToggleFab from '../stepper/ProgressStepperToggleFab';
-import { ColorModeProvider } from '../../../../../../theme/ColorModeContext';
-import ThemeToggleFab from '../../../../../../theme/ThemeToggleFab';
+import { ColorModeProvider } from '../../theme/ColorModeContext';
+import ThemeToggleFab from '../../theme/ThemeToggleFab';
 
 const Title = ({ title }: { title: string }) => (
     <Box sx={{

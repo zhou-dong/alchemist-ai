@@ -1,13 +1,13 @@
 import React from 'react';
 import gsap from 'gsap';
 import { at } from 'obelus';
-import { clearScene, createDualRenderer, createOrthographicCamera } from "../../../../../../utils/threeUtils";
+import { clearScene, createDualRenderer, createOrthographicCamera } from "../../utils/threeUtils";
 import { WrapperProvider } from '../../components/wrapper/WrapperProvider';
 import { buildAnimateTimeline } from 'obelus-gsap-player';
-import { useThreeContainer } from "../../../../../../hooks/useThreeContainer";
-import { useThreeAutoResize } from "../../../../../../hooks/useThreeAutoResize";
+import { useThreeContainer } from "../../hooks/useThreeContainer";
+import { useThreeAutoResize } from "../../hooks/useThreeAutoResize";
 import { DualScene, type TimelineSceneThree, render, axis, text, circle, defaultTheme, latex, line } from 'obelus-three-render';
-import { AnimationController } from "../../../../../../utils/animation-controller";
+import { AnimationController } from "../../utils/animation-controller";
 import KseToKmv from './KseToKmv';
 import TimelinePlayer from '../../components/TimelinePlayer';
 import { Container, Tooltip, Fab } from '@mui/material';
@@ -319,7 +319,7 @@ function ThetaSketchPageContent({
                 />
             </Container>
 
-            {showNextPageButton && <NextPageButton nextPagePath="/algorithms/statistics/sketches/theta/steps/set-operations" title="Go to Set Operations" />}
+            {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/set-operations" title="Go to Set Operations" />}
 
             <div ref={containerRef} style={{ width: '100vw', height: '100vh', }} />
         </>

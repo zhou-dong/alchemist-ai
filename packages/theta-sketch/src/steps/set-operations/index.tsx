@@ -1,12 +1,12 @@
 import React from 'react';
 import * as THREE from 'three';
 import { WrapperProvider } from '../../components/wrapper/WrapperProvider';
-import { clearScene, createDualRenderer, createOrthographicCamera } from "../../../../../../utils/threeUtils";
+import { clearScene, createDualRenderer, createOrthographicCamera } from "../../utils/threeUtils";
 import { animate, parallel } from 'obelus';
 import { axis, circle, DualScene, latex, line, render, text, type StepSceneThree } from 'obelus-three-render';
-import { AnimationController } from "../../../../../../utils/animation-controller";
-import { useThreeContainer } from "../../../../../../hooks/useThreeContainer";
-import { useThreeAutoResize } from "../../../../../../hooks/useThreeAutoResize";
+import { AnimationController } from "../../utils/animation-controller";
+import { useThreeContainer } from "../../hooks/useThreeContainer";
+import { useThreeAutoResize } from "../../hooks/useThreeAutoResize";
 import { buildAnimateSteps, type PlayableStep } from 'obelus-gsap-player';
 import NextPageButton from '../../components/NextPageButton';
 import StartButton from '../../components/StartButton';
@@ -14,7 +14,7 @@ import KmvConfigDialogComponent from './KmvConfigDialog';
 import { Fab, Tooltip } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PlayButton from '../../components/PlayButton';
-import { axisStyle, lineStyle, textStyle } from '../../../../../../theme/obelusTheme';
+import { axisStyle, lineStyle, textStyle } from '../../theme/obelusTheme';
 
 const renderer = createDualRenderer();
 const camera = createOrthographicCamera();
@@ -491,7 +491,7 @@ function SetOperationsPageContent({
             <KmvSettingsToggle />
             <KmvConfigDialog />
             {showStepper && <StartButton onStart={handleStart} />}
-            {showNextPageButton && <NextPageButton nextPagePath="/algorithms/statistics/sketches/theta/steps/theta-sketch" title="Go to Theta Sketch" />}
+            {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/theta-sketch-overview" title="Go to Theta Sketch" />}
             {showPlayerButton && <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} />}
             <div ref={containerRef} style={{ width: '100vw', height: '100vh', }} />
         </>
