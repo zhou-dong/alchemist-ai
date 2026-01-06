@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { GlowOrbs } from '@alchemist/shared';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import EastIcon from '@mui/icons-material/East';
 
 // =============================================================================
 // ROADMAP DATA
@@ -307,27 +306,9 @@ export const ThetaSketchRoadmap = () => {
                         />
                     ))}
                 </Box>
-
-                {/* Start Button */}
-                {currentStep && (
-                    <Fade in={isLoaded} timeout={800}>
-                        <Box sx={{ mt: 6, textAlign: 'center' }}>
-                            <Button
-                                variant="contained"
-                                size="large"
-                                endIcon={<EastIcon />}
-                                onClick={() => handleStart(currentStep)}
-                                sx={{ px: 4 }}
-                            >
-                                Start: {currentStep.title}
-                            </Button>
-                        </Box>
-                    </Fade>
-                )}
             </Box>
         </Box>
     );
 };
 
 export default ThetaSketchRoadmap;
-
