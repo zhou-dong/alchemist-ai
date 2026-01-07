@@ -187,7 +187,6 @@ export const ThetaSketchRoadmap = () => {
 
     const completedCount = roadmapSteps.filter(s => s.status === 'completed').length;
     const totalCount = roadmapSteps.length;
-    const currentStep = roadmapSteps.find(s => s.status === 'current');
 
     const handleStart = (step: RoadmapStep) => {
         if (step.route) {
