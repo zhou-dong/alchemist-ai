@@ -1,7 +1,6 @@
 import { Box, Typography, Card, CardActionArea, Chip, Fade, Grid } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FloatingParticles, GlowOrbs } from '@alchemist/shared';
 import EastIcon from '@mui/icons-material/East';
 
 // =============================================================================
@@ -252,10 +251,6 @@ export const Sketches = () => {
         px: { xs: 3, md: 6 },
       }}
     >
-      {/* Background */}
-      <GlowOrbs preset="minimal" />
-      <FloatingParticles particleCount={50} />
-
       {/* Content */}
       <Box
         sx={{
