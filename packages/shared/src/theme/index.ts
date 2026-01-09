@@ -4,9 +4,6 @@ export * from './ThemeContext';
 // Legacy Color Mode Context (backwards compatibility) - only export useColorMode
 export { useColorMode as useColorModeLegacy } from './ColorModeContext';
 
-// Theme toggle components
-export * from './ThemeToggleFab';
-
 // Base theme utilities
 export * from './theme';
 

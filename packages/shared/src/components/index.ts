@@ -50,7 +50,3 @@ export {
   CoralOrb,
 } from './common/GlowOrbs';
 export type { GlowOrbsProps, OrbConfig, OrbColor, OrbPosition } from './common/GlowOrbs';
-
-// Theme Picker
-export { ThemePicker, ThemeModeToggle } from './common/ThemePicker';
-

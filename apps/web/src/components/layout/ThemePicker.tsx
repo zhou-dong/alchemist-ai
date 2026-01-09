@@ -18,7 +18,7 @@ import PaletteIcon from '@mui/icons-material/Palette';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import CheckIcon from '@mui/icons-material/Check';
-import { useTheme } from '../../theme/ThemeContext';
+import { useTheme } from '@alchemist/shared/theme/ThemeContext';
 
 // =============================================================================
 // THEME CARD
@@ -91,7 +91,7 @@ const ThemeCard: React.FC<ThemeCardProps> = ({
         </Typography>
         <Typography
           variant="caption"
-          sx={{ 
+          sx={{
             color: 'text.secondary',
             display: 'block',
             overflow: 'hidden',
@@ -115,11 +115,7 @@ const ThemeCard: React.FC<ThemeCardProps> = ({
 // THEME PICKER
 // =============================================================================
 
-interface ThemePickerProps {
-  variant?: 'icon' | 'button';
-}
-
-export const ThemePicker: React.FC<ThemePickerProps> = ({ variant = 'icon' }) => {
+export const ThemePicker: React.FC = () => {
   const { themeId, mode, availableThemes, setTheme, toggleMode } = useTheme();
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
@@ -139,10 +135,7 @@ export const ThemePicker: React.FC<ThemePickerProps> = ({ variant = 'icon' }) =>
         <IconButton
           onClick={handleOpen}
           color="primary"
-          sx={{
-            width: 40,
-            height: 40,
-          }}
+          size="large"
         >
           <PaletteIcon />
         </IconButton>

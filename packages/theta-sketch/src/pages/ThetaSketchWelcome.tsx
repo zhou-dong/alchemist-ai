@@ -40,7 +40,7 @@ export const ThetaSketchWelcome = () => {
         setCurrentSentence(text);
 
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 0.95;
+        utterance.rate = 1.05;
 
         if (currentVoice) {
             utterance.voice = currentVoice;
@@ -53,7 +53,7 @@ export const ThetaSketchWelcome = () => {
         }
 
         utterance.onend = () => {
-            setTimeout(() => speakSentence(index + 1), 400);
+            setTimeout(() => speakSentence(index + 1), 100);
         };
 
         utterance.onerror = () => {

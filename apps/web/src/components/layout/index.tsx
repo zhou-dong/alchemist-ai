@@ -2,21 +2,26 @@ import { Box, styled, IconButton } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import type { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ThemeToggleFab } from '@alchemist/shared/theme/ThemeToggleFab';
-import { ThemePicker } from '@alchemist/shared/components/common/ThemePicker';
+import { ThemeToggle } from './ThemeToggle';
+import { ThemePicker } from './ThemePicker';
 import { FloatingParticles, GlowOrbs } from '@alchemist/shared';
 
-const HeaderContainer = styled(Box)(() => ({
-    position: 'fixed',
-    top: 20,
-    left: 20,
-    zIndex: 100,
-}));
+const placementStyles = {
+    'bottom-right': { bottom: 20, right: 20 },
+    'bottom-left': { bottom: 20, left: 20 },
+    'top-right': { top: 20, right: 20 },
+    'top-left': { top: 20, left: 20 },
+};
 
-const ThemePickerContainer = styled(Box)(() => ({
+interface ButtonContainerProps {
+    placement: keyof typeof placementStyles;
+}
+
+const ButtonContainer = styled(Box, {
+    shouldForwardProp: (prop) => prop !== 'placement',
+})<ButtonContainerProps>(({ placement }) => ({
     position: 'fixed',
-    top: 20,
-    right: 20,
+    ...placementStyles[placement],
     zIndex: 100,
 }));
 
@@ -46,15 +51,17 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         <>
             <Background />
 
-            <HeaderContainer>
+            <ButtonContainer placement="top-left">
                 <Header />
-            </HeaderContainer>
+            </ButtonContainer>
 
-            <ThemePickerContainer>
+            <ButtonContainer placement="top-right">
                 <ThemePicker />
-            </ThemePickerContainer>
+            </ButtonContainer>
 
-            <ThemeToggleFab />
+            <ButtonContainer placement="bottom-right">
+                <ThemeToggle />
+            </ButtonContainer>
 
             {children}
         </>
