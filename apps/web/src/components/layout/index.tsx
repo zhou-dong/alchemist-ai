@@ -2,8 +2,8 @@ import { Box, styled, IconButton } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import type { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ThemeToggleFab } from '../../theme/ThemeToggleFab';
-import { ThemePicker } from '../common/ThemePicker';
+import { ThemeToggleFab } from '@alchemist/shared/theme/ThemeToggleFab';
+import { ThemePicker } from '@alchemist/shared/components/common/ThemePicker';
 
 const HeaderContainer = styled(Box)(() => ({
   position: 'fixed',
@@ -62,4 +62,3 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 };
 
 export default Layout;
-

@@ -1,5 +1,4 @@
 // Layout components
-export { Layout } from './layout/Layout';
 export { Header } from './layout/Header';
 
 // Common components

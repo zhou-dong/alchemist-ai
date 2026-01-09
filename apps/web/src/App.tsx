@@ -1,6 +1,7 @@
 import { CssBaseline } from '@mui/material';
 import { Routes, Route } from 'react-router-dom';
-import { ThemeContextProvider, GlobalAnimationStyles, Layout } from '@alchemist/shared';
+import { ThemeContextProvider, GlobalAnimationStyles } from '@alchemist/shared';
+import { Layout } from './components/layout';
 import { StepStatusProvider } from '../../../packages/shared/src/components/roadmap/contexts/StepStatusContext';
 import Home from './pages/Home';
 import Sketches from './pages/Sketches';
