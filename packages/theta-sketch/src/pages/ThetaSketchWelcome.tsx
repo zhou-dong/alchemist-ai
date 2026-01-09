@@ -1,7 +1,7 @@
 import { Box, Typography, Tooltip, IconButton, Button } from '@mui/material';
 import { useCallback, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSpeech, GlowOrbs, slideUp, fadeIn } from '@alchemist/shared';
+import { useSpeech, slideUp, fadeIn } from '@alchemist/shared';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import PauseIcon from '@mui/icons-material/Pause';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -122,9 +122,6 @@ export const ThetaSketchWelcome = () => {
                 position: 'relative',
             }}
         >
-            {/* Background Orbs - Uses theme colors automatically */}
-            <GlowOrbs preset="default" />
-
             {/* Main Content - Centered */}
             <Box
                 sx={{
