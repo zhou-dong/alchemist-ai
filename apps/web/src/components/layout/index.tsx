@@ -20,35 +20,43 @@ const ThemePickerContainer = styled(Box)(() => ({
     zIndex: 100,
 }));
 
-const LayoutHeader = () => {
+const Header = () => {
     const navigate = useNavigate();
     return (
-        <HeaderContainer>
-            <IconButton
-                onClick={() => navigate('/')}
-                aria-label="Go to home page"
-                color="primary"
-                size="large"
-            >
-                <HomeIcon />
-            </IconButton>
-        </HeaderContainer>
+        <IconButton
+            onClick={() => navigate('/')}
+            aria-label="Go to home page"
+            color="primary"
+            size="large"
+        >
+            <HomeIcon />
+        </IconButton>
     );
 };
+
+const Background = () => (
+    <>
+        <GlowOrbs preset="vibrant" />
+        <FloatingParticles particleCount={100} />
+    </>
+);
 
 export const Layout = ({ children }: { children: ReactNode }) => {
     return (
         <>
-            {/* Background effects */}
-            <GlowOrbs preset="vibrant" />
-            <FloatingParticles particleCount={100} />
-            {/* <Background /> */}
-            <LayoutHeader />
+            <Background />
+
+            <HeaderContainer>
+                <Header />
+            </HeaderContainer>
+
             <ThemePickerContainer>
                 <ThemePicker />
             </ThemePickerContainer>
-            {children}
+
             <ThemeToggleFab />
+
+            {children}
         </>
     );
 };
