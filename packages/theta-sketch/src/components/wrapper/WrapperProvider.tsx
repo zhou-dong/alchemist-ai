@@ -1,10 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { createContext, useContext } from 'react';
-import GoToWelcome from './GoToWelcome';
 import ProgressStepper from '../stepper/ProgressStepper';
 import StepperToggleFab from '../stepper/ProgressStepperToggleFab';
-import { ColorModeProvider } from '../../theme/ColorModeContext';
-import ThemeToggleFab from '../../theme/ThemeToggleFab';
 
 const Title = ({ title }: { title: string }) => (
     <Box sx={{
@@ -44,17 +41,15 @@ export function WrapperProvider({
 }) {
     return (
         <WrapperContext.Provider value={{ activeStep, title, showStepper, setShowStepper }}>
-            <ColorModeProvider>
+            <>
                 {children}
                 {showStepper && <ProgressStepper activeStep={activeStep} />}
                 <Title title={title} />
-                <GoToWelcome />
                 <StepperToggleFab
                     visible={showStepper}
                     onToggle={() => setShowStepper((prev) => !prev)}
                 />
-                <ThemeToggleFab />
-            </ColorModeProvider>
+            </>
         </WrapperContext.Provider>
     );
 }
