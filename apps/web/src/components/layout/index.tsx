@@ -41,7 +41,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         <>
             {/* Background effects */}
             <GlowOrbs preset="vibrant" />
-            <FloatingParticles particleCount={50} />
+            <FloatingParticles particleCount={100} />
             {/* <Background /> */}
             <LayoutHeader />
             <ThemePickerContainer>
