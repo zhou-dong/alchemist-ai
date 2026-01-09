@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ThemeToggleFab } from '@alchemist/shared/theme/ThemeToggleFab';
 import { ThemePicker } from '@alchemist/shared/components/common/ThemePicker';
-import { FloatingParticles } from '@alchemist/shared';
+import { FloatingParticles, GlowOrbs } from '@alchemist/shared';
 
 const HeaderContainer = styled(Box)(() => ({
     position: 'fixed',
@@ -36,23 +36,13 @@ const LayoutHeader = () => {
     );
 };
 
-const Background = styled(Box)(({ theme }) => ({
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    zIndex: -1,
-    ...(theme.palette.mode === 'dark' && {
-        background: `linear-gradient(135deg, #0F0F23 0%, #1A1A2E 50%, #16213E 100%)`,
-    }),
-}));
-
 export const Layout = ({ children }: { children: ReactNode }) => {
     return (
         <>
+            {/* Background effects */}
+            <GlowOrbs preset="vibrant" />
             <FloatingParticles particleCount={50} />
-            <Background />
+            {/* <Background /> */}
             <LayoutHeader />
             <ThemePickerContainer>
                 <ThemePicker />
