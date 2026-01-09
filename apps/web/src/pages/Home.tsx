@@ -2,7 +2,6 @@ import { Box, Typography, Button, Fade } from '@mui/material';
 import EastIcon from '@mui/icons-material/East';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FloatingParticles, GlowOrbs } from '@alchemist/shared';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -22,9 +21,6 @@ export const Home = () => {
         overflow: 'hidden',
       }}
     >
-      {/* Background effects */}
-      <GlowOrbs preset="vibrant" />
-      <FloatingParticles particleCount={50} />
 
       {/* Main content */}
       <Box
