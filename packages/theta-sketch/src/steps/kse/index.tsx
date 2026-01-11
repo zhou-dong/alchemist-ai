@@ -4,14 +4,13 @@ import { createDualRenderer, createOrthographicCamera } from "../../utils/threeU
 import { buildAnimateSteps, type PlayableStep } from 'obelus-gsap-player';
 import { useThreeContainer } from "../../hooks/useThreeContainer";
 import { useThreeAutoResize } from "../../hooks/useThreeAutoResize";
-import { DualScene, defaultTheme, latex, type StepSceneThree, render, axis, text } from 'obelus-three-render';
+import { DualScene, latex, type StepSceneThree, render, axis, text } from 'obelus-three-render';
 import PlayButton from '../../components/PlayButton';
 import { AnimationController } from "../../utils/animation-controller";
 import { ORDER_STATISTICS_TO_KMV_FORMULAS } from './order-statistics-to-kth-smallest-estimation-latex';
 import NextPageButton from '../../components/NextPageButton';
 import StepTitle from '@alchemist/theta-sketch/components/StepTitle';
-
-const { axisStyle, textStyle } = defaultTheme;
+import { axisStyle, textStyle, useSyncObelusTheme } from '../../theme/obelusTheme';
 
 const latexes = ORDER_STATISTICS_TO_KMV_FORMULAS.map((formula, index) => {
     const top = window.innerHeight / 4 - window.innerHeight;
@@ -106,6 +105,9 @@ let componentLevelShowNextPageButton: boolean = false;
 function KmvPageContent() {
     const [disabled, setDisabled] = React.useState(false);
     const [showNextPageButton, setShowNextPageButton] = React.useState(false);
+
+    // Sync Three.js materials with the current global theme
+    useSyncObelusTheme();
 
     const { containerRef } = useThreeContainer(renderer);
     useThreeAutoResize(containerRef, renderer, scene, camera);
