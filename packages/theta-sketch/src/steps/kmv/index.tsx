@@ -5,7 +5,7 @@ import { clearScene, createDualRenderer, createOrthographicCamera } from "../../
 import { buildAnimateTimeline } from 'obelus-gsap-player';
 import { useThreeContainer } from "../../hooks/useThreeContainer";
 import { useThreeAutoResize } from "../../hooks/useThreeAutoResize";
-import { DualScene, type TimelineSceneThree, render, axis, text, circle, defaultTheme, latex, line } from 'obelus-three-render';
+import { DualScene, type TimelineSceneThree, render, axis, text, circle, latex, line } from 'obelus-three-render';
 import { AnimationController } from "../../utils/animation-controller";
 import KseToKmv from './KseToKmv';
 import TimelinePlayer from '../../components/TimelinePlayer';
@@ -18,12 +18,11 @@ import * as SportsEsports from '@mui/icons-material/SportsEsports';
 import NextPageButton from '../../components/NextPageButton';
 import StartButton from '../../components/StartButton';
 import StepTitle from '@alchemist/theta-sketch/components/StepTitle';
+import { axisStyle, textStyle, circleStyle, lineStyle, useSyncObelusTheme } from '../../theme/obelusTheme';
 
 const SettingsIcon = Settings.default as unknown as React.ElementType;
 const TipsAndUpdatesIcon = TipsAndUpdates.default as unknown as React.ElementType;
 const SportsEsportsIcon = SportsEsports.default as unknown as React.ElementType;
-
-const { axisStyle, textStyle, circleStyle, lineStyle } = defaultTheme;
 
 const axisWidth = window.innerWidth / 2;
 const xAlign = -axisWidth / 2;
@@ -145,6 +144,9 @@ const animationController = new AnimationController(renderer, scene, camera);
 let componentLevelShowNextPageButton: boolean = false;
 
 function ThetaSketchPageContent() {
+    // Sync Three.js materials with the current global theme
+    useSyncObelusTheme();
+
     const defaultK = 10;
     const defaultStreamSize = 50;
     const [k, setK] = React.useState(defaultK);
