@@ -74,7 +74,6 @@ export const Home = () => {
             color="text.secondary"
             sx={{
               mb: 6,
-              maxWidth: 500,
               fontSize: { xs: '1rem', md: '1.1rem' },
               lineHeight: 1.7,
               px: 3,
