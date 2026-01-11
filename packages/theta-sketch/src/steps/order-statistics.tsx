@@ -262,7 +262,7 @@ function OrderStatisticsPageContent() {
         <>
             {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/kth-smallest" title="Go to Kth Smallest Estimation" />}
             <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} />
-            <div ref={containerRef} style={{ width: '100vw', height: '100vh', zIndex: 0 }} />
+            <div ref={containerRef} style={{ width: '100vw', height: '100vh' }} />
         </>
     );
 }
