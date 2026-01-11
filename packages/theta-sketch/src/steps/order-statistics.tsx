@@ -1,7 +1,6 @@
 import React from 'react';
 import { animate, parallel, } from 'obelus';
 import { createDualRenderer, createOrthographicCamera } from "../utils/threeUtils";
-import { WrapperProvider } from '../components/wrapper/WrapperProvider';
 import { buildAnimateSteps, type PlayableStep } from 'obelus-gsap-player';
 import { useThreeContainer } from "../hooks/useThreeContainer";
 import { useThreeAutoResize } from "../hooks/useThreeAutoResize";
@@ -9,6 +8,7 @@ import { type StepSceneThree, render, axis, latex, defaultTheme, ring, text, Dua
 import { AnimationController } from "../utils/animation-controller";
 import PlayButton from '../components/PlayButton';
 import NextPageButton from '../components/NextPageButton';
+import StepTitle from '../components/StepTitle';
 
 const { axisStyle, textStyle, ringStyle } = defaultTheme;
 
@@ -260,6 +260,7 @@ function OrderStatisticsPageContent() {
 
     return (
         <>
+            <StepTitle title="Order Statistics" />
             {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/kth-smallest" title="Go to Kth Smallest Estimation" />}
             <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} />
             <div ref={containerRef} style={{ width: '100vw', height: '100vh' }} />
@@ -267,11 +268,4 @@ function OrderStatisticsPageContent() {
     );
 }
 
-export default function OrderStatisticsPage() {
-
-    return (
-        <WrapperProvider title="Order Statistics">
-            <OrderStatisticsPageContent />
-        </WrapperProvider>
-    );
-}
+export default OrderStatisticsPageContent;

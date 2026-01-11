@@ -1,6 +1,5 @@
 import React from 'react';
 import * as THREE from 'three';
-import { WrapperProvider } from '../../components/wrapper/WrapperProvider';
 import { clearScene, createDualRenderer, createOrthographicCamera } from "../../utils/threeUtils";
 import { animate, parallel } from 'obelus';
 import { axis, circle, DualScene, latex, line, render, text, type StepSceneThree } from 'obelus-three-render';
@@ -15,13 +14,13 @@ import { Fab, Tooltip } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PlayButton from '../../components/PlayButton';
 import { axisStyle, lineStyle, textStyle } from '../../theme/obelusTheme';
+import StepTitle from '@alchemist/theta-sketch/components/StepTitle';
 
 const renderer = createDualRenderer();
 const camera = createOrthographicCamera();
 const scene = new DualScene();
 const animationController = new AnimationController(renderer, scene, camera);
 
-let componentLevelShowStepper: boolean = true;
 let componentLevelShowNextPageButton: boolean = false;
 
 const unionFormula = (k: number, theta: number) => {
@@ -153,13 +152,7 @@ const buildHashes = (size: number, max: number, align: number): { value: number,
     return result;
 };
 
-function SetOperationsPageContent({
-    showStepper,
-    setShowStepper,
-}: {
-    showStepper: boolean;
-    setShowStepper: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+function SetOperationsPageContent() {
 
     const defaultK = 25;
     const defaultStreamASize = 60;
@@ -181,12 +174,11 @@ function SetOperationsPageContent({
     const [steps, setSteps] = React.useState<PlayableStep[]>([]);
 
     React.useEffect(() => {
-        setShowStepper(componentLevelShowStepper);
         setShowNextPageButton(componentLevelShowNextPageButton);
         return () => {
             animationController.stopAnimation();
         };
-    }, [setShowStepper, setShowNextPageButton]);
+    }, [setShowNextPageButton]);
 
     const buildScene = (): StepSceneThree => {
         animationController.stopAnimation();
@@ -423,6 +415,7 @@ function SetOperationsPageContent({
     }
 
     const handleStart = () => {
+
         setOpenKmvConfigDialog(true);
     }
 
@@ -486,9 +479,10 @@ function SetOperationsPageContent({
 
     return (
         <>
+            <StepTitle title="Set Operations" />
             <KmvSettingsToggle />
             <KmvConfigDialog />
-            {showStepper && <StartButton onStart={handleStart} />}
+            <StartButton onStart={handleStart} />
             {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/theta-sketch-overview" title="Go to Theta Sketch" />}
             {showPlayerButton && <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} />}
             <div ref={containerRef} style={{ width: '100vw', height: '100vh', }} />
@@ -496,12 +490,4 @@ function SetOperationsPageContent({
     );
 };
 
-export default function SetOperationsPage() {
-    const [showStepper, setShowStepper] = React.useState(true);
-
-    return (
-        <WrapperProvider title="Set Operations">
-            <SetOperationsPageContent showStepper={showStepper} setShowStepper={setShowStepper} />
-        </WrapperProvider>
-    );
-};
+export default SetOperationsPageContent;

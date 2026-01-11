@@ -2,7 +2,6 @@ import React from 'react';
 import gsap from 'gsap';
 import { at } from 'obelus';
 import { clearScene, createDualRenderer, createOrthographicCamera } from "../../utils/threeUtils";
-import { WrapperProvider } from '../../components/wrapper/WrapperProvider';
 import { buildAnimateTimeline } from 'obelus-gsap-player';
 import { useThreeContainer } from "../../hooks/useThreeContainer";
 import { useThreeAutoResize } from "../../hooks/useThreeAutoResize";
@@ -18,6 +17,7 @@ import * as TipsAndUpdates from '@mui/icons-material/TipsAndUpdates';
 import * as SportsEsports from '@mui/icons-material/SportsEsports';
 import NextPageButton from '../../components/NextPageButton';
 import StartButton from '../../components/StartButton';
+import StepTitle from '@alchemist/theta-sketch/components/StepTitle';
 
 const SettingsIcon = Settings.default as unknown as React.ElementType;
 const TipsAndUpdatesIcon = TipsAndUpdates.default as unknown as React.ElementType;
@@ -142,16 +142,9 @@ const camera = createOrthographicCamera();
 const scene = new DualScene();
 const animationController = new AnimationController(renderer, scene, camera);
 
-let componentLevelShowStepper: boolean = true;
 let componentLevelShowNextPageButton: boolean = false;
 
-function ThetaSketchPageContent({
-    showStepper,
-    setShowStepper,
-}: {
-    showStepper: boolean;
-    setShowStepper: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+function ThetaSketchPageContent() {
     const defaultK = 10;
     const defaultStreamSize = 50;
     const [k, setK] = React.useState(defaultK);
@@ -168,7 +161,6 @@ function ThetaSketchPageContent({
     useThreeAutoResize(containerRef, renderer, scene, camera);
 
     React.useEffect(() => {
-        setShowStepper(componentLevelShowStepper);
         setShowNextPageButton(componentLevelShowNextPageButton);
         return () => {
             animationController.stopAnimation();
@@ -282,13 +274,12 @@ function ThetaSketchPageContent({
     );
 
     const handleStart = () => {
-        setShowStepper(false);
-        componentLevelShowStepper = false;
         setDisplayIntroduction(true);
     }
 
     return (
         <>
+            <StepTitle title="K Minimum Value (KMV)" />
             {displayIntroduction && <KseToKmv onClose={() => {
                 setDisplayIntroduction(false);
                 setOpenKmvConfigDialog(true);
@@ -298,7 +289,7 @@ function ThetaSketchPageContent({
             <TimelinePlayerToggle />
             <IntroductionToggle />
 
-            {showStepper && <StartButton onStart={handleStart} />}
+            <StartButton onStart={handleStart} />
 
             <Container maxWidth="xs">
                 <KmvConfigDialog
@@ -326,12 +317,4 @@ function ThetaSketchPageContent({
     );
 }
 
-export default function ThetaSketchPage() {
-    const [showStepper, setShowStepper] = React.useState(true);
-
-    return (
-        <WrapperProvider title="K Minimum Value (KMV)">
-            <ThetaSketchPageContent setShowStepper={setShowStepper} showStepper={showStepper} />
-        </WrapperProvider>
-    );
-};
+export default ThetaSketchPageContent;

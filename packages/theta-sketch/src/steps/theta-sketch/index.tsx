@@ -1,6 +1,7 @@
-import { WrapperProvider } from '../../components/wrapper/WrapperProvider';
+
 import ThetaSketchOverview from './ThetaSketchOverview';
 import StartButton from '../../components/StartButton';
+import StepTitle from '@alchemist/theta-sketch/components/StepTitle';
 
 function ThetaSketchPageContent({
 }) {
@@ -11,16 +12,11 @@ function ThetaSketchPageContent({
 
     return (
         <>
+            <StepTitle title="Theta Sketch: KMV Evolution" />
             <StartButton onStart={handleStart} />
             <ThetaSketchOverview />
         </>
     );
 }
 
-export default function ThetaSketchPage() {
-    return (
-        <WrapperProvider title="Theta Sketch: KMV Evolution">
-            <ThetaSketchPageContent />
-        </WrapperProvider>
-    );
-}
+export default ThetaSketchPageContent;

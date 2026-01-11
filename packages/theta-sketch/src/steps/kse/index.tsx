@@ -1,7 +1,6 @@
 import React from 'react';
 import { animate, parallel, } from 'obelus';
 import { createDualRenderer, createOrthographicCamera } from "../../utils/threeUtils";
-import { WrapperProvider } from '../../components/wrapper/WrapperProvider';
 import { buildAnimateSteps, type PlayableStep } from 'obelus-gsap-player';
 import { useThreeContainer } from "../../hooks/useThreeContainer";
 import { useThreeAutoResize } from "../../hooks/useThreeAutoResize";
@@ -10,6 +9,7 @@ import PlayButton from '../../components/PlayButton';
 import { AnimationController } from "../../utils/animation-controller";
 import { ORDER_STATISTICS_TO_KMV_FORMULAS } from './order-statistics-to-kth-smallest-estimation-latex';
 import NextPageButton from '../../components/NextPageButton';
+import StepTitle from '@alchemist/theta-sketch/components/StepTitle';
 
 const { axisStyle, textStyle } = defaultTheme;
 
@@ -139,6 +139,7 @@ function KmvPageContent() {
 
     return (
         <>
+            <StepTitle title="K-th Smallest Estimation" />
             {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/kmv" title="Go to KMV" />}
             <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} />
             <div ref={containerRef} style={{ width: '100vw', height: '100vh', }} />
@@ -146,11 +147,4 @@ function KmvPageContent() {
     );
 }
 
-export default function KthSmallestEstimationPage() {
-
-    return (
-        <WrapperProvider title="K-th Smallest Estimation">
-            <KmvPageContent />
-        </WrapperProvider>
-    );
-}
+export default KmvPageContent;
