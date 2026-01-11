@@ -423,8 +423,6 @@ function SetOperationsPageContent({
     }
 
     const handleStart = () => {
-        setShowStepper(false);
-        componentLevelShowStepper = false;
         setOpenKmvConfigDialog(true);
     }
 
@@ -502,7 +500,7 @@ export default function SetOperationsPage() {
     const [showStepper, setShowStepper] = React.useState(true);
 
     return (
-        <WrapperProvider title="Set Operations" activeStep={3} showStepper={showStepper} setShowStepper={setShowStepper}>
+        <WrapperProvider title="Set Operations">
             <SetOperationsPageContent showStepper={showStepper} setShowStepper={setShowStepper} />
         </WrapperProvider>
     );

@@ -14,7 +14,6 @@ const NextPageButton = ({ nextPagePath, title }: { nextPagePath: string, title: 
                     position: 'fixed',
                     top: '50%',
                     right: 24,
-                    transform: 'translateY(-50%)',
                     zIndex: 1300,
                 }}
                 onClick={() => {

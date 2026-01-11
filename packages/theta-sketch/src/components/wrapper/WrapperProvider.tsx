@@ -1,7 +1,5 @@
 import { Box, Typography } from '@mui/material';
 import { createContext, useContext } from 'react';
-import ProgressStepper from '../stepper/ProgressStepper';
-import StepperToggleFab from '../stepper/ProgressStepperToggleFab';
 
 const Title = ({ title }: { title: string }) => (
     <Box sx={{
@@ -9,7 +7,7 @@ const Title = ({ title }: { title: string }) => (
         top: 30,
         width: '100vw',
         textAlign: 'center',
-        zIndex: 100,
+        zIndex: 0,
     }}>
         <Typography variant="h4" gutterBottom>
             {title}
@@ -18,37 +16,23 @@ const Title = ({ title }: { title: string }) => (
 );
 
 type WrapperContextType = {
-    activeStep: number;
     title: string;
-    showStepper: boolean;
-    setShowStepper: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const WrapperContext = createContext<WrapperContextType | undefined>(undefined);
 
 export function WrapperProvider({
     title,
-    activeStep,
     children,
-    showStepper,
-    setShowStepper,
 }: {
     title: string;
-    activeStep: number;
     children: React.ReactNode;
-    showStepper: boolean;
-    setShowStepper: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
     return (
-        <WrapperContext.Provider value={{ activeStep, title, showStepper, setShowStepper }}>
+        <WrapperContext.Provider value={{ title }}>
             <>
-                {children}
-                {showStepper && <ProgressStepper activeStep={activeStep} />}
                 <Title title={title} />
-                <StepperToggleFab
-                    visible={showStepper}
-                    onToggle={() => setShowStepper((prev) => !prev)}
-                />
+                {children}
             </>
         </WrapperContext.Provider>
     );

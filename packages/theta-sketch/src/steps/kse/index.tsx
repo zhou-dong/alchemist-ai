@@ -10,7 +10,6 @@ import PlayButton from '../../components/PlayButton';
 import { AnimationController } from "../../utils/animation-controller";
 import { ORDER_STATISTICS_TO_KMV_FORMULAS } from './order-statistics-to-kth-smallest-estimation-latex';
 import NextPageButton from '../../components/NextPageButton';
-import StartButton from '../../components/StartButton';
 
 const { axisStyle, textStyle } = defaultTheme;
 
@@ -102,27 +101,16 @@ let steps: PlayableStep[] = buildAnimateSteps(
 );
 
 let index = 0;
-let componentLevelShowStepper: boolean = true;
 let componentLevelShowNextPageButton: boolean = false;
 
-function KmvPageContent(
-    {
-        showStepper,
-        setShowStepper,
-    }: {
-        showStepper: boolean;
-        setShowStepper: React.Dispatch<React.SetStateAction<boolean>>;
-    }
-) {
+function KmvPageContent() {
     const [disabled, setDisabled] = React.useState(false);
     const [showNextPageButton, setShowNextPageButton] = React.useState(false);
-    const [showPlayerButton, setShowPlayerButton] = React.useState(false);
 
     const { containerRef } = useThreeContainer(renderer);
     useThreeAutoResize(containerRef, renderer, scene, camera);
 
     React.useEffect(() => {
-        setShowStepper(componentLevelShowStepper);
         setShowNextPageButton(componentLevelShowNextPageButton);
         return () => {
             animationController.stopAnimation();
@@ -147,28 +135,22 @@ function KmvPageContent(
         index = index + 1;
     };
 
-    const handleStart = () => {
-        setShowStepper(false);
-        componentLevelShowStepper = false;
-        setShowPlayerButton(true);
-    };
+
 
     return (
         <>
-            {showStepper && <StartButton onStart={handleStart} />}
             {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/kmv" title="Go to KMV" />}
-            {showPlayerButton && <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} />}
+            <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} />
             <div ref={containerRef} style={{ width: '100vw', height: '100vh', }} />
         </>
     );
 }
 
 export default function KthSmallestEstimationPage() {
-    const [showStepper, setShowStepper] = React.useState(true);
 
     return (
-        <WrapperProvider title="K-th Smallest Estimation" activeStep={1} showStepper={showStepper} setShowStepper={setShowStepper}>
-            <KmvPageContent showStepper={showStepper} setShowStepper={setShowStepper} />
+        <WrapperProvider title="K-th Smallest Estimation">
+            <KmvPageContent />
         </WrapperProvider>
     );
 }

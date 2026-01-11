@@ -330,7 +330,7 @@ export default function ThetaSketchPage() {
     const [showStepper, setShowStepper] = React.useState(true);
 
     return (
-        <WrapperProvider title="K Minimum Value (KMV)" activeStep={2} showStepper={showStepper} setShowStepper={setShowStepper}>
+        <WrapperProvider title="K Minimum Value (KMV)">
             <ThetaSketchPageContent setShowStepper={setShowStepper} showStepper={showStepper} />
         </WrapperProvider>
     );

@@ -21,7 +21,6 @@ const PlayButton = ({ index, steps, disabled, onClick }: PlayButtonProps) => (
             position: 'fixed',
             bottom: 100,
             left: '50%',
-            transform: 'translateX(-50%)',
             zIndex: 1300,
         }}
         startIcon={index === steps.length ? <DoneIcon /> : <MouseIcon />}

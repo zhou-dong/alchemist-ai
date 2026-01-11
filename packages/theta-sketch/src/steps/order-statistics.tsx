@@ -9,7 +9,6 @@ import { type StepSceneThree, render, axis, latex, defaultTheme, ring, text, Dua
 import { AnimationController } from "../utils/animation-controller";
 import PlayButton from '../components/PlayButton';
 import NextPageButton from '../components/NextPageButton';
-import StartButton from '../components/StartButton';
 
 const { axisStyle, textStyle, ringStyle } = defaultTheme;
 
@@ -224,25 +223,16 @@ let steps: PlayableStep[] = buildAnimateSteps(
 );
 
 let index = 0;
-let componentLevelShowStepper: boolean = true;
 let componentLevelShowNextPageButton: boolean = false;
 
-function OrderStatisticsPageContent({
-    showStepper,
-    setShowStepper,
-}: {
-    showStepper: boolean;
-    setShowStepper: React.Dispatch<React.SetStateAction<boolean>>
-}) {
+function OrderStatisticsPageContent() {
     const [disabled, setDisabled] = React.useState(false);
     const [showNextPageButton, setShowNextPageButton] = React.useState(false);
-    const [showPlayerButton, setShowPlayerButton] = React.useState(false);
 
     const { containerRef } = useThreeContainer(renderer);
     useThreeAutoResize(containerRef, renderer, scene, camera);
 
     React.useEffect(() => {
-        setShowStepper(componentLevelShowStepper);
         setShowNextPageButton(componentLevelShowNextPageButton);
         return () => {
             animationController.stopAnimation();
@@ -267,28 +257,21 @@ function OrderStatisticsPageContent({
         index = index + 1;
     };
 
-    const handleStart = () => {
-        setShowStepper(false);
-        componentLevelShowStepper = false;
-        setShowPlayerButton(true);
-    };
 
     return (
         <>
-            {showStepper && <StartButton onStart={handleStart} />}
             {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/kth-smallest" title="Go to Kth Smallest Estimation" />}
-            {showPlayerButton && <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} />}
-            <div ref={containerRef} style={{ width: '100vw', height: '100vh', }} />
+            <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} />
+            <div ref={containerRef} style={{ width: '100vw', height: '100vh', zIndex: 0 }} />
         </>
     );
 }
 
 export default function OrderStatisticsPage() {
-    const [showStepper, setShowStepper] = React.useState(true);
 
     return (
-        <WrapperProvider title="Order Statistics" activeStep={0} showStepper={showStepper} setShowStepper={setShowStepper}>
-            <OrderStatisticsPageContent showStepper={showStepper} setShowStepper={setShowStepper} />
+        <WrapperProvider title="Order Statistics">
+            <OrderStatisticsPageContent />
         </WrapperProvider>
     );
 }

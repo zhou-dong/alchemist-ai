@@ -11,7 +11,6 @@ const StartButton = ({ onStart }: { onStart: () => void }) => (
             position: 'fixed',
             bottom: 100,
             left: '50%',
-            transform: 'translateX(-50%)',
             zIndex: 1300,
         }}
         startIcon={<RocketLaunchIcon />}
