@@ -1,29 +1,30 @@
-import { Fab, Tooltip } from "@mui/material"
-import * as ArrowForward from '@mui/icons-material/ArrowForward';
+import { Box, IconButton, Tooltip } from "@mui/material"
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useNavigate } from "react-router-dom";
-
-const ArrowForwardIcon = ArrowForward.default as unknown as React.ElementType;
 
 const NextPageButton = ({ nextPagePath, title }: { nextPagePath: string, title: string }) => {
     const navigate = useNavigate();
     return (
-        <Tooltip title={title} placement="left">
-            <Fab
-                color='secondary'
-                sx={{
-                    position: 'fixed',
-                    top: '50%',
-                    right: 24,
-                    zIndex: 1300,
-                }}
-                onClick={() => {
-                    navigate(nextPagePath);
-                }}
-            >
-                <ArrowForwardIcon />
-            </Fab>
-        </Tooltip>
-    )
+        <Box sx={{
+            position: 'fixed',
+            top: '50%',
+            right: 20,
+            transform: 'translateY(-50%)',
+            zIndex: 1000,
+        }}>
+            <Tooltip title={title} placement="left">
+                <IconButton
+                    color='secondary'
+                    size="large"
+                    onClick={() => {
+                        navigate(nextPagePath);
+                    }}
+                >
+                    <ArrowForwardIcon />
+                </IconButton>
+            </Tooltip>
+        </Box>
+    );
 };
 
 export default NextPageButton;
