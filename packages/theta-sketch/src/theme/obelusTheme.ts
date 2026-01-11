@@ -1,31 +1,255 @@
+import { useMemo } from 'react';
 import * as THREE from "three";
 import type { AxisProps } from 'obelus-three-render';
+import { neoGlassColors, typography, useTheme } from '@alchemist/shared';
 
-export const lineStyle: THREE.LineBasicMaterial = new THREE.LineBasicMaterial({ color: '#9C27B0' });
+// =============================================================================
+// THEME COLOR TOKENS (Default fallback)
+// =============================================================================
+
+/**
+ * Default obelus theme colors (used when outside of theme context)
+ */
+export const obelusColors = {
+    // Primary color for lines, axes
+    primary: neoGlassColors.violet.main,
+    // Secondary color for dots, circles, highlights
+    secondary: neoGlassColors.teal.main,
+    // Accent color for special elements
+    accent: neoGlassColors.coral.main,
+    // Text color
+    text: neoGlassColors.teal.main,
+} as const;
+
+// =============================================================================
+// THREE.JS MATERIAL FACTORIES
+// =============================================================================
+
+/**
+ * Create a line material with the theme's primary color
+ */
+export const createLineMaterial = (color: string = obelusColors.primary) =>
+    new THREE.LineBasicMaterial({ color });
+
+/**
+ * Create a mesh material with the theme's secondary color
+ */
+export const createMeshMaterial = (color: string = obelusColors.secondary) =>
+    new THREE.MeshBasicMaterial({ color });
+
+// =============================================================================
+// PRE-CONFIGURED STYLES
+// =============================================================================
+
+export const lineStyle: THREE.LineBasicMaterial = createLineMaterial();
 
 export const axisStyle: AxisProps = {
     dotCount: 3,
     lineWidth: 1.5,
-    lineMaterial: new THREE.LineBasicMaterial({ color: '#9C27B0' }) as unknown as THREE.Material,
-    dotMaterial: new THREE.MeshBasicMaterial({ color: '#4285F4' }) as unknown as THREE.Material,
+    lineMaterial: createLineMaterial() as unknown as THREE.Material,
+    dotMaterial: createMeshMaterial() as unknown as THREE.Material,
     dotRadius: 4
-}
+};
 
 export const textStyle: Partial<CSSStyleDeclaration> = {
-    color: '#4285F4',
+    color: obelusColors.text,
     fontSize: '16px',
     fontWeight: 'normal',
-    fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, sans-serif',
+    fontFamily: typography.fontFamily.primary,
+};
+
+export const ringStyle: THREE.MeshBasicMaterial = createMeshMaterial();
+
+export const circleStyle: THREE.MeshBasicMaterial = createMeshMaterial();
+
+// =============================================================================
+// OBELUS THEME FACTORY
+// =============================================================================
+
+export interface ObelusThemeConfig {
+    primaryColor?: string;
+    secondaryColor?: string;
+    textColor?: string;
+    fontFamily?: string;
 }
 
-export const ringStyle: THREE.MeshBasicMaterial = new THREE.MeshBasicMaterial({ color: '#4285F4' });
+/**
+ * Create a customized obelus theme with specific colors
+ */
+export function createObelusTheme(config: ObelusThemeConfig = {}) {
+    const {
+        primaryColor = obelusColors.primary,
+        secondaryColor = obelusColors.secondary,
+        textColor = obelusColors.text,
+        fontFamily = typography.fontFamily.primary,
+    } = config;
 
-export const circleStyle: THREE.MeshBasicMaterial = new THREE.MeshBasicMaterial({ color: '#4285F4' });
+    return {
+        lineStyle: createLineMaterial(primaryColor),
+        axisStyle: {
+            dotCount: 3,
+            lineWidth: 1.5,
+            lineMaterial: createLineMaterial(primaryColor) as unknown as THREE.Material,
+            dotMaterial: createMeshMaterial(secondaryColor) as unknown as THREE.Material,
+            dotRadius: 4
+        } as AxisProps,
+        textStyle: {
+            color: textColor,
+            fontSize: '16px',
+            fontWeight: 'normal',
+            fontFamily,
+        } as Partial<CSSStyleDeclaration>,
+        ringStyle: createMeshMaterial(secondaryColor),
+        circleStyle: createMeshMaterial(secondaryColor),
+    };
+}
+
+// =============================================================================
+// REACT HOOK FOR DYNAMIC THEME
+// =============================================================================
+
+export interface ObelusThemeStyles {
+    lineStyle: THREE.LineBasicMaterial;
+    axisStyle: AxisProps;
+    textStyle: Partial<CSSStyleDeclaration>;
+    ringStyle: THREE.MeshBasicMaterial;
+    circleStyle: THREE.MeshBasicMaterial;
+    colors: {
+        primary: string;
+        secondary: string;
+        accent: string;
+        text: string;
+    };
+}
+
+/**
+ * React hook that provides Three.js materials based on the current global theme.
+ * Materials are recreated when the theme or mode changes.
+ */
+export function useObelusTheme(): ObelusThemeStyles {
+    const { currentTheme, mode } = useTheme();
+
+    return useMemo(() => {
+        const isDark = mode === 'dark';
+
+        // Extract colors from the current theme, adjusted for light/dark mode
+        // Dots and text use white in dark mode, black in light mode
+        const dotAndTextColor = isDark ? '#FFFFFF' : '#000000';
+
+        const colors = {
+            primary: isDark
+                ? currentTheme.colors.secondary.main
+                : currentTheme.colors.secondary.dark,
+            secondary: dotAndTextColor,
+            accent: currentTheme.colors.tertiary?.main || currentTheme.colors.secondary.light,
+            text: dotAndTextColor,
+        };
+
+        const fontFamily = currentTheme.typography.fontFamily.primary;
+
+        return {
+            lineStyle: createLineMaterial(colors.primary),
+            axisStyle: {
+                dotCount: 3,
+                lineWidth: 1.5,
+                lineMaterial: createLineMaterial(colors.primary) as unknown as THREE.Material,
+                dotMaterial: createMeshMaterial(colors.secondary) as unknown as THREE.Material,
+                dotRadius: 4
+            } as AxisProps,
+            textStyle: {
+                color: colors.text,
+                fontSize: '16px',
+                fontWeight: 'normal',
+                fontFamily,
+            } as Partial<CSSStyleDeclaration>,
+            ringStyle: createMeshMaterial(colors.secondary),
+            circleStyle: createMeshMaterial(colors.secondary),
+            colors,
+        };
+    }, [currentTheme, mode]);
+}
+
+/**
+ * Hook that syncs module-level materials with the current theme.
+ * Call this in your component to keep the static materials updated.
+ */
+export function useSyncObelusTheme(): void {
+    const { currentTheme, mode } = useTheme();
+
+    useMemo(() => {
+        // Extract colors from the current theme, adjusted for light/dark mode
+        const isDark = mode === 'dark';
+
+        // Use different shades based on mode for better visibility
+        const primaryColor = isDark
+            ? currentTheme.colors.secondary.main
+            : currentTheme.colors.secondary.dark;
+        // Dots and text: white in dark mode, black in light mode
+        const dotAndTextColor = isDark ? '#FFFFFF' : '#000000';
+        const secondaryColor = dotAndTextColor;
+        const textColor = dotAndTextColor;
+        const fontFamily = currentTheme.typography.fontFamily.primary;
+
+        // Update the module-level materials in place
+        lineStyle.color.set(primaryColor);
+        lineStyle.needsUpdate = true;
+
+        // Update axis materials
+        (axisStyle.lineMaterial as THREE.LineBasicMaterial).color.set(primaryColor);
+        (axisStyle.lineMaterial as THREE.LineBasicMaterial).needsUpdate = true;
+        (axisStyle.dotMaterial as THREE.MeshBasicMaterial).color.set(secondaryColor);
+        (axisStyle.dotMaterial as THREE.MeshBasicMaterial).needsUpdate = true;
+
+        // Update other materials
+        ringStyle.color.set(secondaryColor);
+        ringStyle.needsUpdate = true;
+        circleStyle.color.set(secondaryColor);
+        circleStyle.needsUpdate = true;
+
+        // Update text style object (for future creations)
+        textStyle.color = textColor;
+        textStyle.fontFamily = fontFamily;
+
+        // Update existing CSS3D text elements in the DOM
+        // CSS3D renderer creates elements with transform-style: preserve-3d
+        setTimeout(() => {
+            // Target CSS3D rendered elements (they have 3D transforms)
+            const allElements = document.querySelectorAll('[style*="translate3d"], [style*="matrix3d"]');
+            allElements.forEach(el => {
+                const htmlEl = el as HTMLElement;
+                // Update color if it's a text element
+                if (htmlEl.style.color) {
+                    htmlEl.style.color = textColor;
+                }
+                if (htmlEl.style.fontFamily) {
+                    htmlEl.style.fontFamily = fontFamily;
+                }
+            });
+
+            // Also update MathJax/KaTeX elements if present
+            const mathElements = document.querySelectorAll('.MathJax, .katex, mjx-container');
+            mathElements.forEach(el => {
+                const htmlEl = el as HTMLElement;
+                htmlEl.style.color = textColor;
+            });
+        }, 0); // Use setTimeout to ensure DOM is updated
+    }, [currentTheme, mode]);
+}
+
+// =============================================================================
+// DEFAULT EXPORT
+// =============================================================================
 
 export const obelusTheme = {
+    colors: obelusColors,
     lineStyle,
     axisStyle,
     textStyle,
     ringStyle,
-    circleStyle
-}
+    circleStyle,
+    // Factory for custom themes
+    create: createObelusTheme,
+    // React hooks for dynamic theming
+    useObelusTheme,
+    useSyncObelusTheme,
+};
