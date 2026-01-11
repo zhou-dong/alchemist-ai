@@ -4,13 +4,12 @@ import { createDualRenderer, createOrthographicCamera } from "../utils/threeUtil
 import { buildAnimateSteps, type PlayableStep } from 'obelus-gsap-player';
 import { useThreeContainer } from "../hooks/useThreeContainer";
 import { useThreeAutoResize } from "../hooks/useThreeAutoResize";
-import { type StepSceneThree, render, axis, latex, defaultTheme, ring, text, DualScene } from 'obelus-three-render';
+import { type StepSceneThree, render, axis, latex, ring, text, DualScene } from 'obelus-three-render';
 import { AnimationController } from "../utils/animation-controller";
 import PlayButton from '../components/PlayButton';
 import NextPageButton from '../components/NextPageButton';
 import StepTitle from '../components/StepTitle';
-
-const { axisStyle, textStyle, ringStyle } = defaultTheme;
+import { axisStyle, textStyle, ringStyle, useSyncObelusTheme } from '../theme/obelusTheme';
 
 const y = 0 - window.innerHeight / 2 - 30;
 const axisStart = () => ({ x: 0 - window.innerWidth / 4, y, z: 0, });
@@ -229,6 +228,9 @@ function OrderStatisticsPageContent() {
     const [disabled, setDisabled] = React.useState(false);
     const [showNextPageButton, setShowNextPageButton] = React.useState(false);
 
+    // Sync Three.js materials with the current global theme
+    useSyncObelusTheme();
+
     const { containerRef } = useThreeContainer(renderer);
     useThreeAutoResize(containerRef, renderer, scene, camera);
 
@@ -268,4 +270,4 @@ function OrderStatisticsPageContent() {
     );
 }
 
-export default OrderStatisticsPageContent;
+export default OrderStatisticsPageContent
