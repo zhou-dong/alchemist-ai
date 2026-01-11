@@ -210,7 +210,7 @@ export const ThetaSketchRoadmap = () => {
             {/* Content */}
             <Box
                 sx={{
-                    maxWidth: '80%',
+                    maxWidth: 1000,
                     mx: 'auto',
                     position: 'relative',
                     zIndex: 10,
