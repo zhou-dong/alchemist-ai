@@ -1,16 +1,17 @@
 import React from 'react';
-import { animate, parallel, } from 'obelus';
+import { at, type TimelineEvent } from 'obelus';
 import { createDualRenderer, createOrthographicCamera } from "../../utils/threeUtils";
-import { buildAnimateSteps, type PlayableStep } from 'obelus-gsap-player';
+import { buildAnimateTimeline } from 'obelus-gsap-player';
 import { useThreeContainer } from "../../hooks/useThreeContainer";
-import { useThreeAutoResize } from "../../hooks/useThreeAutoResize";
-import { DualScene, latex, type StepSceneThree, render, axis, text } from 'obelus-three-render';
-import PlayButton from '../../components/PlayButton';
+import { DualScene, latex, type TimelineSceneThree, render, axis, text } from 'obelus-three-render';
 import { AnimationController } from "../../utils/animation-controller";
 import { ORDER_STATISTICS_TO_KMV_FORMULAS } from './order-statistics-to-kth-smallest-estimation-latex';
 import NextPageButton from '../../components/NextPageButton';
 import StepTitle from '@alchemist/theta-sketch/components/StepTitle';
 import { axisStyle, textStyle, useSyncObelusTheme } from '../../theme/obelusTheme';
+import TimelinePlayer from '@alchemist/theta-sketch/components/TimelinePlayer';
+import { Container } from '@mui/material';
+import { useTheme } from '@alchemist/shared';
 
 const latexes = ORDER_STATISTICS_TO_KMV_FORMULAS.map((formula, index) => {
     const top = window.innerHeight / 4 - window.innerHeight;
@@ -19,13 +20,14 @@ const latexes = ORDER_STATISTICS_TO_KMV_FORMULAS.map((formula, index) => {
     return latex(`formula_${index}`, formula, { y }, textStyle);
 });
 
-const displayLatexesSteps = latexes.map((_, index) => {
-    return animate(`formula_${index}`, { position: { y: `+=${window.innerHeight}` } }, { duration: 1 });
+const displayLatexesSteps: TimelineEvent[] = latexes.map((_, index) => {
+    return at(index + 1).animate(`formula_${index}`, { position: { y: `+=${window.innerHeight}` } }, { duration: 1 });
 });
 
-const moveLatexesToLeftSteps = latexes.map((_, index) => {
+const moveLatexesToLeftSteps: TimelineEvent[] = latexes.map((_, index) => {
+    const start = latexes.length;
     const distance = window.innerWidth / 4;
-    return animate(`formula_${index}`, { position: { x: `-=${distance}` } }, { duration: 1 });
+    return at(start + 1).animate(`formula_${index}`, { position: { x: `-=${distance}` } }, { duration: 1 });
 });
 
 const ONE_THIRD_N_LATEX = `
@@ -64,25 +66,26 @@ const buildAxis = () => {
     return [axisLine, axisStart, axisEnd, oneThird, twoThirds, oneThirdK, oneThirdTheta, oneThirdN, twoThirdsK, twoThirdsTheta, twoThirdsN];
 }
 
-const moveAxisSteps = () => {
-    const ids = ["axis", "axis_start", "axis_end", "one_third", "two_thirds"];
-    return ids.map(id => animate(id, { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }));
+const axisStepIds = ["axis", "axis_start", "axis_end", "one_third", "two_thirds"];
+const moveAxisSteps = (start: number): TimelineEvent[] => {
+    return axisStepIds.map((id, index) => at(start + index + 1).animate(id, { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }));
 };
 
-const moveMarks = () => {
+const moveMarks = (start: number): TimelineEvent[] => {
     const ids = ["one_third_k", "one_third_theta", "one_third_n", "two_thirds_k", "two_thirds_theta", "two_thirds_n"];
-    return ids.map(id => animate(id, { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }));
+    return ids.map((id, index) => at(start + index + 1).animate(id, { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }));
 };
 
-const stepScene: StepSceneThree = {
+const stepScene: TimelineSceneThree = {
     objects: [
         ...latexes,
         ...buildAxis(),
     ],
-    steps: [
+    timeline: [
         ...displayLatexesSteps,
-        parallel([...moveLatexesToLeftSteps, ...moveAxisSteps()]),
-        ...moveMarks(),
+        ...moveLatexesToLeftSteps,
+        ...moveAxisSteps(latexes.length),
+        ...moveMarks(latexes.length + axisStepIds.length + 1),
     ],
 }
 
@@ -92,25 +95,22 @@ const scene = new DualScene();
 const animationController = new AnimationController(renderer, scene, camera);
 
 const record = render(stepScene.objects, scene as any);
-let steps: PlayableStep[] = buildAnimateSteps(
-    stepScene.steps,
+let timeline = buildAnimateTimeline(
+    stepScene.timeline,
     record,
     animationController.startAnimation,
     animationController.stopAnimation
 );
 
-let index = 0;
 let componentLevelShowNextPageButton: boolean = false;
 
 function KmvPageContent() {
-    const [disabled, setDisabled] = React.useState(false);
     const [showNextPageButton, setShowNextPageButton] = React.useState(false);
-
+    const { mode } = useTheme();
     // Sync Three.js materials with the current global theme
     useSyncObelusTheme();
 
     const { containerRef } = useThreeContainer(renderer);
-    useThreeAutoResize(containerRef, renderer, scene, camera);
 
     React.useEffect(() => {
         setShowNextPageButton(componentLevelShowNextPageButton);
@@ -119,23 +119,28 @@ function KmvPageContent() {
         };
     }, []);
 
-    const onClick = async () => {
-        if (index === steps.length) {
-            return;
-        }
+    // Re-render the scene when mode changes to apply new colors
+    React.useEffect(() => {
+        animationController.renderAnimationOnce();
+    }, [mode]);
 
-        setDisabled(true);
-        await steps[index].play();
+    // const onClick = async () => {
+    //     if (index === steps.length) {
+    //         return;
+    //     }
 
-        if (index === steps.length - 1) {
-            setShowNextPageButton(true);
-            componentLevelShowNextPageButton = true;
-        } else {
-            setDisabled(false);
-        }
+    //     setDisabled(true);
+    //     await steps[index].play();
 
-        index = index + 1;
-    };
+    //     if (index === steps.length - 1) {
+    //         setShowNextPageButton(true);
+    //         componentLevelShowNextPageButton = true;
+    //     } else {
+    //         setDisabled(false);
+    //     }
+
+    //     index = index + 1;
+    // };
 
 
 
@@ -143,7 +148,33 @@ function KmvPageContent() {
         <>
             <StepTitle title="K-th Smallest Estimation" />
             {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/kmv" title="Go to KMV" />}
-            <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} />
+
+            <Container
+                maxWidth="md"
+                sx={{
+                    position: 'fixed',
+                    bottom: window.innerHeight / 12,
+                    left: 0,
+                    right: 0,
+                    zIndex: 1000,
+                }}
+            >
+                <TimelinePlayer
+                    timeline={timeline}
+                    onStart={() => {
+                        animationController.startAnimation();
+                    }}
+                    onPause={() => {
+                        animationController.stopAnimation();
+                    }}
+                    onComplete={() => {
+                        setShowNextPageButton(true);
+                        componentLevelShowNextPageButton = true;
+                        animationController.stopAnimation();
+                    }}
+                />
+            </Container>
+
             <div ref={containerRef} style={{ width: '100vw', height: '100vh', }} />
         </>
     );
