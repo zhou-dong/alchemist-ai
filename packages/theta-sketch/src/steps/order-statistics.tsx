@@ -19,16 +19,16 @@ const scaleDenominatorYAdjector = scaleYAdjector - 13;
 
 const z = 0;
 const height = window.innerHeight / 6;
-const width = window.innerWidth / 4;
+const width = Math.min(window.innerWidth / 4, 2000 / 4);
 const scale0 = (y: number) => ({ x: -width, y, z });
 const scale1 = (y: number) => ({ x: width, y, z });
 
 function scaleK(dotCount: number, k: number) {
-    const startX = 0 - window.innerWidth / 4;
-    const endX = window.innerWidth / 4;
+    const startX = 0 - width;
+    const endX = width;
 
-    const width = endX - startX;
-    const step = width / (dotCount + 1);
+    const axisWidth = endX - startX;
+    const step = axisWidth / (dotCount + 1);
     const x = startX + step * k;
     return x;
 }
