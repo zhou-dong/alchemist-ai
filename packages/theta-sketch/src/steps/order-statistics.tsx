@@ -1,15 +1,18 @@
 import React from 'react';
-import { animate, parallel, } from 'obelus';
+import { animate, parallel, at } from 'obelus';
 import { createDualRenderer, createOrthographicCamera } from "../utils/threeUtils";
-import { buildAnimateSteps, type PlayableStep } from 'obelus-gsap-player';
+import { buildAnimateSteps, buildAnimateTimeline, type PlayableStep } from 'obelus-gsap-player';
 import { useThreeContainer } from "../hooks/useThreeContainer";
 import { useThreeAutoResize } from "../hooks/useThreeAutoResize";
-import { type StepSceneThree, render, axis, latex, ring, text, DualScene } from 'obelus-three-render';
+import { useSceneReposition } from "../hooks/useSceneReposition";
+import { type StepSceneThree, render, axis, latex, ring, text, DualScene, type TimelineSceneThree } from 'obelus-three-render';
 import { AnimationController } from "../utils/animation-controller";
 import PlayButton from '../components/PlayButton';
 import NextPageButton from '../components/NextPageButton';
 import StepTitle from '../components/StepTitle';
 import { axisStyle, textStyle, ringStyle, useSyncObelusTheme } from '../theme/obelusTheme';
+import { Container } from '@mui/material';
+import TimelinePlayer from '../components/TimelinePlayer';
 
 const y = 0 - window.innerHeight / 2 - 30;
 const axisStart = () => ({ x: 0 - window.innerWidth / 4, y, z: 0, });
@@ -208,6 +211,88 @@ const stepScene: StepSceneThree = {
     ],
 };
 
+const timelineSteps = [
+    at(0).animate("axis_1", { position: { y: `+=${computeAxisXDistance(4, 1)}` } }, { duration: 1 }),
+    at(0).animate("axis_1_start", { position: { y: `+=${computeAxisXDistance(4, 1) + 20}` } }, { duration: 1 }),
+    at(0).animate("axis_1_end", { position: { y: `+=${computeAxisXDistance(4, 1) + 20}` } }, { duration: 1 }),
+
+    at(1).animate("axis_1_k_1", { position: { y: `+=${computeAxisXDistance(4, 1) - 35}` } }, { duration: 1 }),
+
+    at(2).animate("axis_2", { position: { y: `+=${computeAxisXDistance(4, 2)}` } }, { duration: 1 }),
+    at(2).animate("axis_2_start", { position: { y: `+=${computeAxisXDistance(4, 2) + 20}` } }, { duration: 1 }),
+    at(2).animate("axis_2_end", { position: { y: `+=${computeAxisXDistance(4, 2) + 20}` } }, { duration: 1 }),
+
+    at(3).animate("axis_2_k_1", { position: { y: `+=${computeAxisXDistance(4, 2) - 35}` } }, { duration: 1 }),
+    at(4).animate("axis_2_k_2", { position: { y: `+=${computeAxisXDistance(4, 2) - 35}` } }, { duration: 1 }),
+
+    at(5).animate("axis_3", { position: { y: `+=${computeAxisXDistance(4, 3)}` } }, { duration: 1 }),
+    at(5).animate("axis_3_start", { position: { y: `+=${computeAxisXDistance(4, 3) + 20}` } }, { duration: 1 }),
+    at(5).animate("axis_3_end", { position: { y: `+=${computeAxisXDistance(4, 3) + 20}` } }, { duration: 1 }),
+
+    at(6).animate("axis_3_k_1", { position: { y: `+=${computeAxisXDistance(4, 3) - 35}` } }, { duration: 1 }),
+    at(7).animate("axis_3_k_2", { position: { y: `+=${computeAxisXDistance(4, 3) - 35}` } }, { duration: 1 }),
+    at(8).animate("axis_3_k_3", { position: { y: `+=${computeAxisXDistance(4, 3) - 35}` } }, { duration: 1 }),
+
+    // expression
+    at(9).animate("axis_1_k_1_expression_1", { position: { y: `+=${computeAxisXDistance(4, 1) - 35}` } }, { duration: 1 }),
+    at(10).animate("axis_2_k_1_expression_1", { position: { y: `+=${computeAxisXDistance(4, 2) - 35}` } }, { duration: 1 }),
+    at(11).animate("axis_2_k_2_expression_1", { position: { y: `+=${computeAxisXDistance(4, 2) - 35}` } }, { duration: 1 }),
+    at(12).animate("axis_3_k_1_expression_1", { position: { y: `+=${computeAxisXDistance(4, 3) - 35}` } }, { duration: 1 }),
+    at(13).animate("axis_3_k_2_expression_1", { position: { y: `+=${computeAxisXDistance(4, 3) - 35}` } }, { duration: 1 }),
+    at(14).animate("axis_3_k_3_expression_1", { position: { y: `+=${computeAxisXDistance(4, 3) - 35}` } }, { duration: 1 }),
+
+    // rings axis_1
+
+    at(15).animate("axis_1_k_1_ring_1", { position: { y: `+=${computeAxisXDistance(4, 1) - 48}` } }, { duration: 1 }),
+    at(15).animate("axis_1_k_1_ring_1_k", { position: { y: `+=${computeAxisXDistance(4, 1) - 48}` } }, { duration: 1 }),
+
+    at(16).animate("axis_1_k_1_ring_2", { position: { y: `+=${computeAxisXDistance(4, 1) - 21}` } }, { duration: 1 }),
+    at(16).animate("axis_1_k_1_ring_2_k", { position: { y: `+=${computeAxisXDistance(4, 1) - 21}` } }, { duration: 1 }),
+
+    // rings axis_2
+    at(17).animate("axis_2_k_1_ring_1", { position: { y: `+=${computeAxisXDistance(4, 2) - 48}` } }, { duration: 1 }),
+    at(17).animate("axis_2_k_1_ring_1_k", { position: { y: `+=${computeAxisXDistance(4, 2) - 48}` } }, { duration: 1 }),
+
+    at(18).animate("axis_2_k_1_ring_2", { position: { y: `+=${computeAxisXDistance(4, 2) - 21}` } }, { duration: 1 }),
+    at(18).animate("axis_2_k_1_ring_2_k", { position: { y: `+=${computeAxisXDistance(4, 2) - 21}` } }, { duration: 1 }),
+
+    at(19).animate("axis_2_k_2_ring_1", { position: { y: `+=${computeAxisXDistance(4, 2) - 48}` } }, { duration: 1 }),
+    at(19).animate("axis_2_k_2_ring_1_k", { position: { y: `+=${computeAxisXDistance(4, 2) - 48}` } }, { duration: 1 }),
+
+    at(20).animate("axis_2_k_2_ring_2", { position: { y: `+=${computeAxisXDistance(4, 2) - 21}` } }, { duration: 1 }),
+    at(20).animate("axis_2_k_2_ring_2_k", { position: { y: `+=${computeAxisXDistance(4, 2) - 21}` } }, { duration: 1 }),
+
+    // rings axis_3
+
+    at(21).animate("axis_3_k_1_ring_1", { position: { y: `+=${computeAxisXDistance(4, 3) - 48}` } }, { duration: 1 }),
+    at(21).animate("axis_3_k_1_ring_1_k", { position: { y: `+=${computeAxisXDistance(4, 3) - 48}` } }, { duration: 1 }),
+
+    at(22).animate("axis_3_k_1_ring_2", { position: { y: `+=${computeAxisXDistance(4, 3) - 21}` } }, { duration: 1 }),
+    at(22).animate("axis_3_k_1_ring_2_k", { position: { y: `+=${computeAxisXDistance(4, 3) - 21}` } }, { duration: 1 }),
+
+    at(23).animate("axis_3_k_2_ring_1", { position: { y: `+=${computeAxisXDistance(4, 3) - 48}` } }, { duration: 1 }),
+    at(23).animate("axis_3_k_2_ring_1_k", { position: { y: `+=${computeAxisXDistance(4, 3) - 48}` } }, { duration: 1 }),
+
+    at(24).animate("axis_3_k_2_ring_2", { position: { y: `+=${computeAxisXDistance(4, 3) - 21}` } }, { duration: 1 }),
+    at(24).animate("axis_3_k_2_ring_2_k", { position: { y: `+=${computeAxisXDistance(4, 3) - 21}` } }, { duration: 1 }),
+
+    at(25).animate("axis_3_k_3_ring_1", { position: { y: `+=${computeAxisXDistance(4, 3) - 48}` } }, { duration: 1 }),
+    at(25).animate("axis_3_k_3_ring_1_k", { position: { y: `+=${computeAxisXDistance(4, 3) - 48}` } }, { duration: 1 }),
+
+    at(26).animate("axis_3_k_3_ring_2", { position: { y: `+=${computeAxisXDistance(4, 3) - 21}` } }, { duration: 1 }),
+    at(26).animate("axis_3_k_3_ring_2_k", { position: { y: `+=${computeAxisXDistance(4, 3) - 21}` } }, { duration: 1 }),
+
+    at(27).animate("order_statistics_expression", { position: { y: `+=${computeAxisXDistance(4, 1) + 80}` } }, { duration: 1 }),
+
+    at(28).animate("beta_distribution_expected_value_expression", { position: { y: `+=${computeAxisXDistance(4, 4) + 60}` } }, { duration: 1 }),
+];
+
+
+const timeline: TimelineSceneThree = {
+    objects: [...stepScene.objects],
+    timeline: timelineSteps,
+}
+
 const renderer = createDualRenderer();
 const scene = new DualScene();
 const camera = createOrthographicCamera();
@@ -216,6 +301,13 @@ const animationController = new AnimationController(renderer, scene, camera);
 const record = render(stepScene.objects, scene as any);
 let steps: PlayableStep[] = buildAnimateSteps(
     stepScene.steps,
+    record,
+    animationController.startAnimation,
+    animationController.stopAnimation
+);
+
+let timelinePlayer = buildAnimateTimeline(
+    timelineSteps,
     record,
     animationController.startAnimation,
     animationController.stopAnimation
@@ -260,11 +352,42 @@ function OrderStatisticsPageContent() {
     };
 
 
+    const TimelinePlayerContainer = () => (
+        <Container
+            maxWidth="sm"
+            sx={{
+                position: 'fixed',
+                bottom: 100,
+                left: 0,
+                right: 0,
+                zIndex: 1000,
+            }}
+        >
+            <TimelinePlayer
+                timeline={timelinePlayer}
+                onStart={() => {
+                    animationController.startAnimation();
+                }}
+                onPause={() => {
+                    animationController.stopAnimation();
+                }}
+                onComplete={() => {
+                    setShowNextPageButton(true);
+                    componentLevelShowNextPageButton = true;
+                    animationController.stopAnimation();
+                }}
+            />
+        </Container>
+    );
+
     return (
         <>
             <StepTitle title="Order Statistics" />
             {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/kth-smallest" title="Go to Kth Smallest Estimation" />}
-            <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} />
+            {/* <PlayButton index={index} steps={steps} disabled={disabled} onClick={onClick} /> */}
+
+            <TimelinePlayerContainer />
+
             <div ref={containerRef} style={{ width: '100vw', height: '100vh' }} />
         </>
     );
