@@ -9,6 +9,7 @@ import { AnimationController } from "../utils/animation-controller";
 import NextPageButton from '../components/NextPageButton';
 import StepTitle from '../components/StepTitle';
 import { axisStyle, textStyle, ringStyle, useSyncObelusTheme } from '../theme/obelusTheme';
+import { useTheme } from '@alchemist/shared';
 import { Container } from '@mui/material';
 import TimelinePlayer from '../components/TimelinePlayer';
 import { Object3D } from 'three';
@@ -143,11 +144,17 @@ let componentLevelShowNextPageButton: boolean = false;
 
 function OrderStatisticsPageContent() {
     const [showNextPageButton, setShowNextPageButton] = React.useState(false);
+    const { mode } = useTheme();
 
     // Sync Three.js materials with the current global theme
     useSyncObelusTheme();
 
     const { containerRef } = useThreeContainer(renderer);
+
+    // Re-render the scene when mode changes to apply new colors
+    React.useEffect(() => {
+        animationController.renderAnimationOnce();
+    }, [mode]);
 
     React.useEffect(() => {
         setShowNextPageButton(componentLevelShowNextPageButton);
