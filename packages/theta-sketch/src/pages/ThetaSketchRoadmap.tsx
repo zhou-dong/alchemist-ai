@@ -1,7 +1,6 @@
 import { Box, Typography, Card, CardActionArea, Fade, Button } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { GlowOrbs } from '@alchemist/shared';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
@@ -204,9 +203,6 @@ export const ThetaSketchRoadmap = () => {
                 px: { xs: 3, md: 6 },
             }}
         >
-            {/* Background */}
-            <GlowOrbs preset="minimal" />
-
             {/* Content */}
             <Box
                 sx={{
