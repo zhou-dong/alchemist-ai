@@ -132,17 +132,14 @@ export function useObelusTheme(): ObelusThemeStyles {
     return useMemo(() => {
         const isDark = mode === 'dark';
 
-        // Extract colors from the current theme, adjusted for light/dark mode
-        // Dots and text use white in dark mode, black in light mode
-        const dotAndTextColor = isDark ? '#FFFFFF' : '#000000';
+        // All elements use white in dark mode, black in light mode
+        const themeColor = isDark ? '#FFFFFF' : '#000000';
 
         const colors = {
-            primary: isDark
-                ? currentTheme.colors.secondary.main
-                : currentTheme.colors.secondary.dark,
-            secondary: dotAndTextColor,
+            primary: themeColor,
+            secondary: themeColor,
             accent: currentTheme.colors.tertiary?.main || currentTheme.colors.secondary.light,
-            text: dotAndTextColor,
+            text: themeColor,
         };
 
         const fontFamily = currentTheme.typography.fontFamily.primary;
@@ -177,17 +174,12 @@ export function useSyncObelusTheme(): void {
     const { currentTheme, mode } = useTheme();
 
     useMemo(() => {
-        // Extract colors from the current theme, adjusted for light/dark mode
+        // All elements: white in dark mode, black in light mode
         const isDark = mode === 'dark';
-
-        // Use different shades based on mode for better visibility
-        const primaryColor = isDark
-            ? currentTheme.colors.secondary.main
-            : currentTheme.colors.secondary.dark;
-        // Dots and text: white in dark mode, black in light mode
-        const dotAndTextColor = isDark ? '#FFFFFF' : '#000000';
-        const secondaryColor = dotAndTextColor;
-        const textColor = dotAndTextColor;
+        const themeColor = isDark ? '#FFFFFF' : '#000000';
+        const primaryColor = themeColor;
+        const secondaryColor = themeColor;
+        const textColor = themeColor;
         const fontFamily = currentTheme.typography.fontFamily.primary;
 
         // Update the module-level materials in place
