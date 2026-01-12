@@ -19,6 +19,7 @@ import NextPageButton from '../../components/NextPageButton';
 import StartButton from '../../components/StartButton';
 import StepTitle from '@alchemist/theta-sketch/components/StepTitle';
 import { axisStyle, textStyle, circleStyle, lineStyle, useSyncObelusTheme } from '../../theme/obelusTheme';
+import { useThetaSketchProgress } from '../../contexts/ThetaSketchProgressContext';
 
 const SettingsIcon = Settings.default as unknown as React.ElementType;
 const TipsAndUpdatesIcon = TipsAndUpdates.default as unknown as React.ElementType;
@@ -144,6 +145,7 @@ const animationController = new AnimationController(renderer, scene, camera);
 let componentLevelShowNextPageButton: boolean = false;
 
 function ThetaSketchPageContent() {
+    const { completeStep } = useThetaSketchProgress();
     // Sync Three.js materials with the current global theme
     useSyncObelusTheme();
 
@@ -270,6 +272,7 @@ function ThetaSketchPageContent() {
                     setShowNextPageButton(true);
                     componentLevelShowNextPageButton = true;
                     animationController.stopAnimation();
+                    completeStep('kmv');
                 }}
             />
         </Container>

@@ -13,6 +13,7 @@ import { useTheme } from '@alchemist/shared';
 import { Container } from '@mui/material';
 import TimelinePlayer from '../components/TimelinePlayer';
 import { Object3D } from 'three';
+import { useThetaSketchProgress } from '../contexts/ThetaSketchProgressContext';
 
 const scaleYAdjector = -35;
 const scaleNumeratorYAdjector = scaleYAdjector + 15;
@@ -143,6 +144,7 @@ let timelinePlayer = buildAnimateTimeline(
 let componentLevelShowNextPageButton: boolean = false;
 
 function OrderStatisticsPageContent() {
+    const { completeStep } = useThetaSketchProgress();
     const [showNextPageButton, setShowNextPageButton] = React.useState(false);
     const { mode } = useTheme();
 
@@ -190,6 +192,7 @@ function OrderStatisticsPageContent() {
                         setShowNextPageButton(true);
                         componentLevelShowNextPageButton = true;
                         animationController.stopAnimation();
+                        completeStep('order-statistics');
                     }}
                 />
             </Container>

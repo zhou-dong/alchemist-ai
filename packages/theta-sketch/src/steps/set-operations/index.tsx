@@ -15,6 +15,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import PlayButton from '../../components/PlayButton';
 import { axisStyle, lineStyle, textStyle } from '../../theme/obelusTheme';
 import StepTitle from '@alchemist/theta-sketch/components/StepTitle';
+import { useThetaSketchProgress } from '../../contexts/ThetaSketchProgressContext';
 
 const renderer = createDualRenderer();
 const camera = createOrthographicCamera();
@@ -153,7 +154,7 @@ const buildHashes = (size: number, max: number, align: number): { value: number,
 };
 
 function SetOperationsPageContent() {
-
+    const { completeStep } = useThetaSketchProgress();
     const defaultK = 25;
     const defaultStreamASize = 60;
     const defaultStreamBSize = 80;
@@ -470,6 +471,7 @@ function SetOperationsPageContent() {
         if (index === steps.length - 1) {
             setShowNextPageButton(true);
             componentLevelShowNextPageButton = true;
+            completeStep('set-operations');
         } else {
             setDisabled(false);
         }

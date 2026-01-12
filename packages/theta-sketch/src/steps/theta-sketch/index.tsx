@@ -2,12 +2,13 @@
 import ThetaSketchOverview from './ThetaSketchOverview';
 import StartButton from '../../components/StartButton';
 import StepTitle from '@alchemist/theta-sketch/components/StepTitle';
+import { useThetaSketchProgress } from '../../contexts/ThetaSketchProgressContext';
 
-function ThetaSketchPageContent({
-}) {
-
+function ThetaSketchPageContent() {
+    const { completeStep } = useThetaSketchProgress();
 
     const handleStart = () => {
+        completeStep('theta-sketch');
     }
 
     return (

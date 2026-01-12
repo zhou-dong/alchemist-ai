@@ -3,69 +3,14 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-
-// =============================================================================
-// ROADMAP DATA
-// =============================================================================
-
-interface RoadmapStep {
-    id: string;
-    title: string;
-    description: string;
-    duration: string;
-    status: 'completed' | 'current' | 'locked';
-    route?: string;
-}
-
-const roadmapSteps: RoadmapStep[] = [
-    {
-        id: 'order-statistics',
-        title: 'Order Statistics',
-        description: 'Understanding sorted values and their properties. The foundation for minimum-based estimation.',
-        duration: '~5 min',
-        status: 'current',
-        route: '/theta-sketch/order-statistics',
-    },
-    {
-        id: 'kth-smallest',
-        title: 'K-th Smallest Estimation',
-        description: 'How the k-th smallest value relates to the total count. The key insight behind KMV.',
-        duration: '~8 min',
-        status: 'locked',
-        route: '/theta-sketch/kth-smallest',
-    },
-    {
-        id: 'kmv',
-        title: 'KMV Algorithm',
-        description: 'K Minimum Values - tracking the k smallest hashed values to estimate cardinality.',
-        duration: '~10 min',
-        status: 'locked',
-        route: '/theta-sketch/kmv',
-    },
-    {
-        id: 'set-operations',
-        title: 'Set Operations',
-        description: 'Union, intersection, and difference. Combining sketches while preserving accuracy.',
-        duration: '~8 min',
-        status: 'locked',
-        route: '/theta-sketch/set-operations',
-    },
-    {
-        id: 'theta-sketch',
-        title: 'Theta Sketch',
-        description: 'The complete algorithm - combining KMV with theta for efficient set operations.',
-        duration: '~12 min',
-        status: 'locked',
-        route: '/theta-sketch/theta-sketch-overview',
-    },
-];
+import { useThetaSketchProgress, type StepStatus, type RoadmapStep } from '../contexts/ThetaSketchProgressContext';
 
 // =============================================================================
 // STEP CARD COMPONENT
 // =============================================================================
 
 interface StepCardProps {
-    step: RoadmapStep;
+    step: RoadmapStep & { status: StepStatus };
     index: number;
     onStart: () => void;
 }
@@ -178,6 +123,10 @@ const StepCard = ({ step, index, onStart }: StepCardProps) => {
 export const ThetaSketchRoadmap = () => {
     const navigate = useNavigate();
     const [isLoaded, setIsLoaded] = useState(false);
+    const { getStepsWithStatus } = useThetaSketchProgress();
+
+    // Get steps with dynamic status
+    const roadmapSteps = getStepsWithStatus();
 
     useEffect(() => {
         const timer = setTimeout(() => setIsLoaded(true), 200);
@@ -187,7 +136,7 @@ export const ThetaSketchRoadmap = () => {
     const completedCount = roadmapSteps.filter(s => s.status === 'completed').length;
     const totalCount = roadmapSteps.length;
 
-    const handleStart = (step: RoadmapStep) => {
+    const handleStart = (step: RoadmapStep & { status: StepStatus }) => {
         if (step.route) {
             navigate(step.route);
         }

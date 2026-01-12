@@ -12,6 +12,7 @@ import { axisStyle, textStyle, useSyncObelusTheme } from '../../theme/obelusThem
 import TimelinePlayer from '@alchemist/theta-sketch/components/TimelinePlayer';
 import { Container } from '@mui/material';
 import { useTheme } from '@alchemist/shared';
+import { useThetaSketchProgress } from '../../contexts/ThetaSketchProgressContext';
 
 const latexes = ORDER_STATISTICS_TO_KMV_FORMULAS.map((formula, index) => {
     const top = window.innerHeight / 4 - window.innerHeight;
@@ -105,6 +106,7 @@ let timeline = buildAnimateTimeline(
 let componentLevelShowNextPageButton: boolean = false;
 
 function KmvPageContent() {
+    const { completeStep } = useThetaSketchProgress();
     const [showNextPageButton, setShowNextPageButton] = React.useState(false);
     const { mode } = useTheme();
     // Sync Three.js materials with the current global theme
@@ -123,25 +125,6 @@ function KmvPageContent() {
     React.useEffect(() => {
         animationController.renderAnimationOnce();
     }, [mode]);
-
-    // const onClick = async () => {
-    //     if (index === steps.length) {
-    //         return;
-    //     }
-
-    //     setDisabled(true);
-    //     await steps[index].play();
-
-    //     if (index === steps.length - 1) {
-    //         setShowNextPageButton(true);
-    //         componentLevelShowNextPageButton = true;
-    //     } else {
-    //         setDisabled(false);
-    //     }
-
-    //     index = index + 1;
-    // };
-
 
 
     return (
@@ -171,6 +154,7 @@ function KmvPageContent() {
                         setShowNextPageButton(true);
                         componentLevelShowNextPageButton = true;
                         animationController.stopAnimation();
+                        completeStep('kth-smallest');
                     }}
                 />
             </Container>

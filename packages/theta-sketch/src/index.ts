@@ -12,3 +12,11 @@ export { default as KmvPage } from './steps/kmv';
 export { default as SetOperationsPage } from './steps/set-operations';
 export { default as ThetaSketchOverviewPage } from './steps/theta-sketch';
 
+// Progress context
+export {
+    ThetaSketchProgressProvider,
+    useThetaSketchProgress,
+    THETA_SKETCH_STEPS,
+    type StepStatus,
+    type RoadmapStep,
+} from './contexts/ThetaSketchProgressContext';

@@ -10,6 +10,7 @@ import {
   ThetaSketchPage,
   ThetaSketchWelcome,
   ThetaSketchRoadmap,
+  ThetaSketchProgressProvider,
   OrderStatisticsPage,
   KthSmallestPage,
   KmvPage,
@@ -21,26 +22,28 @@ function App() {
   return (
     <ThemeContextProvider defaultTheme="neo-glass" defaultMode="dark">
       <StepStatusProvider>
-        <CssBaseline />
-        <GlobalAnimationStyles />
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* Sketches list */}
-            <Route path="/sketches" element={<Sketches />} />
-            {/* Theta Sketch module routes */}
-            <Route path="/theta-sketch" element={<ThetaSketchWelcome />} />
-            <Route path="/theta-sketch/roadmap" element={<ThetaSketchRoadmap />} />
-            <Route path="/theta-sketch/learn" element={<ThetaSketchPage />} />
+        <ThetaSketchProgressProvider>
+          <CssBaseline />
+          <GlobalAnimationStyles />
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              {/* Sketches list */}
+              <Route path="/sketches" element={<Sketches />} />
+              {/* Theta Sketch module routes */}
+              <Route path="/theta-sketch" element={<ThetaSketchWelcome />} />
+              <Route path="/theta-sketch/roadmap" element={<ThetaSketchRoadmap />} />
+              <Route path="/theta-sketch/learn" element={<ThetaSketchPage />} />
 
-            <Route path="/theta-sketch/order-statistics" element={<OrderStatisticsPage />} />
-            <Route path="/theta-sketch/kth-smallest" element={<KthSmallestPage />} />
-            <Route path="/theta-sketch/kmv" element={<KmvPage />} />
-            <Route path="/theta-sketch/set-operations" element={<SetOperationsPage />} />
-            <Route path="/theta-sketch/theta-sketch-overview" element={<ThetaSketchOverviewPage />} />
+              <Route path="/theta-sketch/order-statistics" element={<OrderStatisticsPage />} />
+              <Route path="/theta-sketch/kth-smallest" element={<KthSmallestPage />} />
+              <Route path="/theta-sketch/kmv" element={<KmvPage />} />
+              <Route path="/theta-sketch/set-operations" element={<SetOperationsPage />} />
+              <Route path="/theta-sketch/theta-sketch-overview" element={<ThetaSketchOverviewPage />} />
 
-          </Routes>
-        </Layout>
+            </Routes>
+          </Layout>
+        </ThetaSketchProgressProvider>
       </StepStatusProvider>
     </ThemeContextProvider>
   );
