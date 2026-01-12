@@ -24,7 +24,7 @@ const SettingsIcon = Settings.default as unknown as React.ElementType;
 const TipsAndUpdatesIcon = TipsAndUpdates.default as unknown as React.ElementType;
 const SportsEsportsIcon = SportsEsports.default as unknown as React.ElementType;
 
-const axisWidth = window.innerWidth / 2;
+const axisWidth = Math.min(window.innerWidth / 2, 1000);
 const xAlign = -axisWidth / 2;
 
 const axisY = window.innerHeight / 10 - window.innerHeight;
