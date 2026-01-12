@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import ReplayIcon from '@mui/icons-material/Replay';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { useThetaSketchProgress, type StepStatus, type RoadmapStep } from '../contexts/ThetaSketchProgressContext';
@@ -277,7 +277,7 @@ const StepCard = ({ step, index, onStart }: StepCardProps) => {
                                 />
                             )}
                             {isCompleted && (
-                                <ReplayIcon
+                                <VisibilityIcon
                                     sx={{
                                         color: 'success.main',
                                         fontSize: 22,
