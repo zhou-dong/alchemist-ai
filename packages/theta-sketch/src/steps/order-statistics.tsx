@@ -172,7 +172,7 @@ function OrderStatisticsPageContent() {
                 maxWidth="md"
                 sx={{
                     position: 'fixed',
-                    bottom: `${100 / 12}%`,
+                    bottom: window.innerHeight / 12,
                     left: 0,
                     right: 0,
                     zIndex: 1000,
