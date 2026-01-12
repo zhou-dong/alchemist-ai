@@ -3,7 +3,7 @@ import { Box, Typography } from "@mui/material";
 const StepTitle = ({ title }: { title: string }) => (
     <Box sx={{
         position: 'fixed',
-        top: 30,
+        top: window.innerHeight / 12,
         textAlign: 'center',
         width: '100%',
         zIndex: 0,
