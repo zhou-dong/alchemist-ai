@@ -1,11 +1,176 @@
-import { Box, Typography, Card, CardActionArea, Fade, Button } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { Box, Typography, Card, CardActionArea, Fade, Button, keyframes } from '@mui/material';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import ReplayIcon from '@mui/icons-material/Replay';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { useThetaSketchProgress, type StepStatus, type RoadmapStep } from '../contexts/ThetaSketchProgressContext';
+
+// =============================================================================
+// CONFETTI ANIMATION
+// =============================================================================
+
+const confettiFall = keyframes`
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+`;
+
+const celebratePulse = keyframes`
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+`;
+
+const shimmer = keyframes`
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+`;
+
+const CONFETTI_COLORS = ['#FFD700', '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD', '#98D8C8'];
+
+interface ConfettiPieceProps {
+    delay: number;
+    left: number;
+    color: string;
+    size: number;
+    duration: number;
+}
+
+const ConfettiPiece = ({ delay, left, color, size, duration }: ConfettiPieceProps) => (
+    <Box
+        sx={{
+            position: 'fixed',
+            top: 0,
+            left: `${left}%`,
+            width: size,
+            height: size * 1.5,
+            bgcolor: color,
+            borderRadius: '2px',
+            animation: `${confettiFall} ${duration}s ease-in-out ${delay}s infinite`,
+            zIndex: 9999,
+            pointerEvents: 'none',
+        }}
+    />
+);
+
+const Confetti = () => {
+    const pieces = useMemo(() =>
+        Array.from({ length: 50 }, (_, i) => ({
+            id: i,
+            delay: Math.random() * 3,
+            left: Math.random() * 100,
+            color: CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
+            size: 6 + Math.random() * 8,
+            duration: 3 + Math.random() * 2,
+        })),
+        []);
+
+    return (
+        <>
+            {pieces.map(piece => (
+                <ConfettiPiece key={piece.id} {...piece} />
+            ))}
+        </>
+    );
+};
+
+// =============================================================================
+// CELEBRATION BANNER
+// =============================================================================
+
+interface CelebrationBannerProps {
+    onClose: () => void;
+}
+
+const CelebrationBanner = ({ onClose }: CelebrationBannerProps) => (
+    <Fade in timeout={800}>
+        <Box
+            sx={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 9998,
+                bgcolor: 'rgba(0, 0, 0, 0.5)',
+                backdropFilter: 'blur(4px)',
+            }}
+            onClick={onClose}
+        >
+            <Card
+                sx={{
+                    p: 5,
+                    maxWidth: 500,
+                    mx: 2,
+                    textAlign: 'center',
+                    background: theme => theme.palette.mode === 'dark'
+                        ? 'linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 107, 107, 0.2) 50%, rgba(78, 205, 196, 0.2) 100%)'
+                        : 'linear-gradient(135deg, rgba(255, 215, 0, 0.3) 0%, rgba(255, 107, 107, 0.3) 50%, rgba(78, 205, 196, 0.3) 100%)',
+                    border: '2px solid',
+                    borderColor: 'warning.main',
+                    animation: `${celebratePulse} 2s ease-in-out infinite`,
+                    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+                }}
+                onClick={e => e.stopPropagation()}
+            >
+                <EmojiEventsIcon
+                    sx={{
+                        fontSize: 80,
+                        color: 'warning.main',
+                        mb: 2,
+                    }}
+                />
+                <Typography
+                    variant="h4"
+                    sx={{
+                        fontWeight: 700,
+                        mb: 1,
+                        background: 'linear-gradient(90deg, #FFD700, #FF6B6B, #4ECDC4, #FFD700)',
+                        backgroundSize: '200% auto',
+                        backgroundClip: 'text',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        animation: `${shimmer} 3s linear infinite`,
+                    }}
+                >
+                    🎉 Congratulations! 🎉
+                </Typography>
+                <Typography variant="h6" color="text.primary" sx={{ mb: 2 }}>
+                    You&apos;ve mastered all the concepts behind Theta Sketch!
+                </Typography>
+                <Typography variant="body1" color="text.primary" sx={{ mb: 3, lineHeight: 1.6 }}>
+                    You now understand order statistics, k-th smallest estimation, KMV algorithm,
+                    set operations, and the complete Theta Sketch algorithm.
+                </Typography>
+                <Button
+                    variant="contained"
+                    onClick={onClose}
+                    sx={{ mt: 1 }}
+                >
+                    Continue
+                </Button>
+            </Card>
+        </Box>
+    </Fade>
+);
 
 // =============================================================================
 // STEP CARD COMPONENT
@@ -134,18 +299,27 @@ const StepCard = ({ step, index, onStart }: StepCardProps) => {
 export const ThetaSketchRoadmap = () => {
     const navigate = useNavigate();
     const [isLoaded, setIsLoaded] = useState(false);
+    const [showCelebration, setShowCelebration] = useState(false);
     const { getStepsWithStatus, resetProgress } = useThetaSketchProgress();
 
     // Get steps with dynamic status
     const roadmapSteps = getStepsWithStatus();
+
+    const completedCount = roadmapSteps.filter(s => s.status === 'completed').length;
+    const totalCount = roadmapSteps.length;
+    const isAllCompleted = completedCount === totalCount;
 
     useEffect(() => {
         const timer = setTimeout(() => setIsLoaded(true), 200);
         return () => clearTimeout(timer);
     }, []);
 
-    const completedCount = roadmapSteps.filter(s => s.status === 'completed').length;
-    const totalCount = roadmapSteps.length;
+    // Show celebration when all steps are completed
+    useEffect(() => {
+        if (isAllCompleted) {
+            setShowCelebration(true);
+        }
+    }, [isAllCompleted]);
 
     const handleStart = (step: RoadmapStep & { status: StepStatus }) => {
         if (step.route) {
@@ -163,6 +337,12 @@ export const ThetaSketchRoadmap = () => {
                 px: { xs: 3, md: 6 },
             }}
         >
+            {/* Confetti when celebration is shown */}
+            {showCelebration && <Confetti />}
+
+            {/* Celebration Banner (floating overlay) */}
+            {showCelebration && <CelebrationBanner onClose={() => setShowCelebration(false)} />}
+
             {/* Content */}
             <Box
                 sx={{
@@ -172,6 +352,7 @@ export const ThetaSketchRoadmap = () => {
                     zIndex: 10,
                 }}
             >
+
                 {/* Header */}
                 <Fade in={isLoaded} timeout={400}>
                     <Box sx={{ mb: 6 }}>
