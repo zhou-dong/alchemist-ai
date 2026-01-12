@@ -6,6 +6,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useThetaSketchProgress, type StepStatus, type RoadmapStep } from '../contexts/ThetaSketchProgressContext';
 
 // =============================================================================
@@ -308,6 +309,7 @@ export const ThetaSketchRoadmap = () => {
     const completedCount = roadmapSteps.filter(s => s.status === 'completed').length;
     const totalCount = roadmapSteps.length;
     const isAllCompleted = completedCount === totalCount;
+    const currentStep = roadmapSteps.find(s => s.status === 'current');
 
     useEffect(() => {
         const timer = setTimeout(() => setIsLoaded(true), 200);
@@ -332,9 +334,8 @@ export const ThetaSketchRoadmap = () => {
             sx={{
                 minHeight: '100vh',
                 position: 'relative',
-                pt: { xs: 10, md: 12 },
-                pb: 8,
-                px: { xs: 3, md: 6 },
+                pt: { xs: 5, md: 5 },
+                px: { xs: 2, md: 4 },
             }}
         >
             {/* Confetti when celebration is shown */}
@@ -346,7 +347,7 @@ export const ThetaSketchRoadmap = () => {
             {/* Content */}
             <Box
                 sx={{
-                    maxWidth: 1000,
+                    maxWidth: 1200,
                     mx: 'auto',
                     position: 'relative',
                     zIndex: 10,
@@ -457,6 +458,25 @@ export const ThetaSketchRoadmap = () => {
                         />
                     ))}
                 </Box>
+
+                {/* Current Step Button */}
+                {currentStep && (
+                    <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
+                        <Button
+                            variant="contained"
+                            size="large"
+                            endIcon={<ArrowForwardIcon />}
+                            onClick={() => navigate(currentStep.route)}
+                            sx={{
+                                px: 4,
+                                py: 1.5,
+                                fontWeight: 600,
+                            }}
+                        >
+                            Continue: {currentStep.title}
+                        </Button>
+                    </Box>
+                )}
             </Box>
         </Box>
     );
