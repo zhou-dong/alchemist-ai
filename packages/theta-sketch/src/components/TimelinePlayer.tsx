@@ -36,7 +36,7 @@ interface TimelinePlayerProps {
 export default function TimelinePlayer({
   timeline,
   showSpeed = true,
-  size = 'medium',
+  size = 'large',
   onStart,
   onPause,
   onComplete,
@@ -111,7 +111,7 @@ export default function TimelinePlayer({
   };
 
   const iconSize = size === 'small' ? 20 : size === 'large' ? 28 : 24;
-  const buttonSize = size === 'small' ? 'small' : size === 'large' ? 'large' : 'medium';
+  const buttonSize = size === 'small' ? 'small' : size === 'medium' ? 'medium' : 'large';
 
   const ProgressBar = () => {
     return (
