@@ -168,7 +168,7 @@ function OrderStatisticsPageContent() {
     return (
         <>
             <StepTitle title="Order Statistics" />
-            {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/kth-smallest" title="Go to Kth Smallest Estimation" />}
+            {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/roadmap" title="Go to Roadmap" />}
 
             <Container
                 maxWidth="md"

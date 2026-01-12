@@ -315,7 +315,7 @@ function ThetaSketchPageContent() {
                 />
             </Container>
 
-            {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/set-operations" title="Go to Set Operations" />}
+            {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/roadmap" title="Go to Roadmap" />}
 
             <div ref={containerRef} style={{ width: '100vw', height: '100vh', }} />
         </>

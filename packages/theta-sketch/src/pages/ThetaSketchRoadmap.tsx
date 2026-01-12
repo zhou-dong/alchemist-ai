@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import ReplayIcon from '@mui/icons-material/Replay';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { useThetaSketchProgress, type StepStatus, type RoadmapStep } from '../contexts/ThetaSketchProgressContext';
 
 // =============================================================================
@@ -19,6 +21,7 @@ const StepCard = ({ step, index, onStart }: StepCardProps) => {
     const isCompleted = step.status === 'completed';
     const isCurrent = step.status === 'current';
     const isLocked = step.status === 'locked';
+    const isAccessible = isCompleted || isCurrent;
 
     return (
         <Fade in timeout={300 + index * 100}>
@@ -26,15 +29,15 @@ const StepCard = ({ step, index, onStart }: StepCardProps) => {
                 sx={{
                     opacity: isLocked ? 0.5 : 1,
                     transition: 'all 0.25s ease',
-                    cursor: isCurrent ? 'pointer' : 'default',
-                    '&:hover': isCurrent ? {
+                    cursor: isAccessible ? 'pointer' : 'default',
+                    '&:hover': isAccessible ? {
                         transform: 'translateX(8px)',
                     } : {},
                 }}
             >
                 <CardActionArea
-                    onClick={isCurrent ? onStart : undefined}
-                    disabled={!isCurrent}
+                    onClick={isAccessible ? onStart : undefined}
+                    disabled={!isAccessible}
                     sx={{ p: 0 }}
                 >
                     <Box sx={{ display: 'flex', alignItems: 'stretch' }}>
@@ -108,6 +111,14 @@ const StepCard = ({ step, index, onStart }: StepCardProps) => {
                                     }}
                                 />
                             )}
+                            {isCompleted && (
+                                <ReplayIcon
+                                    sx={{
+                                        color: 'success.main',
+                                        fontSize: 22,
+                                    }}
+                                />
+                            )}
                         </Box>
                     </Box>
                 </CardActionArea>
@@ -123,7 +134,7 @@ const StepCard = ({ step, index, onStart }: StepCardProps) => {
 export const ThetaSketchRoadmap = () => {
     const navigate = useNavigate();
     const [isLoaded, setIsLoaded] = useState(false);
-    const { getStepsWithStatus } = useThetaSketchProgress();
+    const { getStepsWithStatus, resetProgress } = useThetaSketchProgress();
 
     // Get steps with dynamic status
     const roadmapSteps = getStepsWithStatus();
@@ -235,6 +246,21 @@ export const ThetaSketchRoadmap = () => {
                             <Typography variant="caption" color="text.secondary">
                                 {completedCount} / {totalCount} completed
                             </Typography>
+                            {completedCount > 0 && (
+                                <Button
+                                    variant="text"
+                                    size="small"
+                                    startIcon={<RestartAltIcon sx={{ fontSize: 16 }} />}
+                                    onClick={resetProgress}
+                                    sx={{
+                                        color: 'text.secondary',
+                                        fontSize: '0.75rem',
+                                        '&:hover': { color: 'error.main' },
+                                    }}
+                                >
+                                    Reset
+                                </Button>
+                            )}
                         </Box>
                     </Box>
                 </Fade>

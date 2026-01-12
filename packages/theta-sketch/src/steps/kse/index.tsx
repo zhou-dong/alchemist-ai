@@ -130,7 +130,7 @@ function KmvPageContent() {
     return (
         <>
             <StepTitle title="K-th Smallest Estimation" />
-            {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/kmv" title="Go to KMV" />}
+            {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/roadmap" title="Go to Roadmap" />}
 
             <Container
                 maxWidth="md"
