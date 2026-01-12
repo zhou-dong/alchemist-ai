@@ -8,7 +8,7 @@ const StepTitle = ({ title }: { title: string }) => (
         width: '100%',
         zIndex: 0,
     }}>
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h3" gutterBottom>
             {title}
         </Typography>
     </Box>
