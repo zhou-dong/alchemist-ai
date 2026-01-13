@@ -65,8 +65,24 @@ const glow = {
 
 const createComponents = (mode: PaletteMode): Components => {
   const isDark = mode === 'dark';
-  const glassBg = isDark ? glassEffects.dark : glassEffects.light;
-  const border = isDark ? glassEffects.border.dark : glassEffects.border.light;
+  
+  // Apple-style glass: more transparent backgrounds with stronger blur
+  const appleGlassBg = {
+    subtle: isDark ? 'rgba(255, 255, 255, 0.02)' : 'rgba(255, 255, 255, 0.4)',
+    light: isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(255, 255, 255, 0.5)',
+    medium: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(255, 255, 255, 0.6)',
+    strong: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.7)',
+  };
+  
+  const appleGlassBorder = {
+    subtle: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)',
+    light: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
+    medium: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.1)',
+  };
+  
+  // Light blur for subtle frosted effect
+  const appleBlur = 'blur(3px)';
+  const appleBlurStrong = 'blur(5px)';
 
   // Mode-aware glow effects
   const buttonGlow = isDark ? glow.primary : {
@@ -187,11 +203,16 @@ const createComponents = (mode: PaletteMode): Components => {
       defaultProps: { elevation: 0 },
       styleOverrides: {
         root: {
-          background: glassBg.medium,
-          backdropFilter: glassEffects.blur.md,
-          border: `1px solid ${border.light}`,
+          // background: appleGlassBg.medium,
+          background: 'transparent',
+          backdropFilter: appleBlur,
+          WebkitBackdropFilter: appleBlur, // Safari support
+          border: `1px solid ${appleGlassBorder.light}`,
           borderRadius: neoSpacing.borderRadius.lg,
           transition: neoAnimations.transition.normal,
+          boxShadow: isDark 
+            ? '0 4px 24px rgba(0, 0, 0, 0.2)' 
+            : '0 4px 24px rgba(0, 0, 0, 0.08)',
         },
       },
     },
@@ -200,23 +221,39 @@ const createComponents = (mode: PaletteMode): Components => {
       styleOverrides: {
         root: { backgroundImage: 'none' },
         elevation1: {
-          background: glassBg.light,
-          backdropFilter: glassEffects.blur.md,
-          border: `1px solid ${border.subtle}`,
+          background: appleGlassBg.light,
+          backdropFilter: appleBlur,
+          WebkitBackdropFilter: appleBlur,
+          border: `1px solid ${appleGlassBorder.subtle}`,
         },
         elevation2: {
-          background: glassBg.medium,
-          backdropFilter: glassEffects.blur.md,
-          border: `1px solid ${border.light}`,
+          background: appleGlassBg.medium,
+          backdropFilter: appleBlur,
+          WebkitBackdropFilter: appleBlur,
+          border: `1px solid ${appleGlassBorder.light}`,
+        },
+        elevation3: {
+          background: appleGlassBg.strong,
+          backdropFilter: appleBlurStrong,
+          WebkitBackdropFilter: appleBlurStrong,
+          border: `1px solid ${appleGlassBorder.medium}`,
         },
       },
     },
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          background: isDark ? colors.neutral[800] : colors.neutral[700],
-          backdropFilter: glassEffects.blur.md,
+          background: isDark 
+            ? 'rgba(24, 24, 27, 0.85)' 
+            : 'rgba(255, 255, 255, 0.9)',
+          backdropFilter: appleBlur,
+          WebkitBackdropFilter: appleBlur,
           borderRadius: neoSpacing.borderRadius.md,
+          border: `1px solid ${appleGlassBorder.subtle}`,
+          color: isDark ? colors.neutral[100] : colors.neutral[900],
+          boxShadow: isDark 
+            ? '0 4px 16px rgba(0, 0, 0, 0.3)' 
+            : '0 4px 16px rgba(0, 0, 0, 0.1)',
         },
       },
     },
