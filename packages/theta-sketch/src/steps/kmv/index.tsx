@@ -2,7 +2,7 @@ import React from 'react';
 import gsap from 'gsap';
 import { at } from 'obelus';
 import { clearScene, createDualRenderer, createOrthographicCamera } from "../../utils/threeUtils";
-import { buildAnimateTimeline } from 'obelus-gsap-player';
+import { buildAnimateTimeline } from 'obelus-gsap-animator';
 import { useThreeContainer } from "../../hooks/useThreeContainer";
 import { useThreeAutoResize } from "../../hooks/useThreeAutoResize";
 import { DualScene, type TimelineSceneThree, render, axis, text, circle, latex, line } from 'obelus-three-render';

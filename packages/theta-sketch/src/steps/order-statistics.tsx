@@ -1,7 +1,7 @@
 import React from 'react';
 import { at } from 'obelus';
 import { createDualRenderer, createOrthographicCamera } from "../utils/threeUtils";
-import { buildAnimateTimeline } from 'obelus-gsap-player';
+import { buildAnimateTimeline } from 'obelus-gsap-animator';
 import { useThreeContainer } from "../hooks/useThreeContainer";
 import { render, axis, latex, ring, text, DualScene } from 'obelus-three-render';
 import { type Animatable } from "obelus";
