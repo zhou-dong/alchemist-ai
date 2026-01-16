@@ -271,7 +271,7 @@ export const ThetaSketchWelcome = () => {
             </Box>
 
             {/* Speaking Indicator */}
-            {isPlaying && (
+            {isPlaying && !isPaused && (
                 <Box
                     sx={{
                         position: 'fixed',
