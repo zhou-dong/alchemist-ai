@@ -1,5 +1,4 @@
 // Main entry point for @alchemist/theta-sketch package
-export { ThetaSketchPage } from './pages/ThetaSketchPage';
 export { ThetaSketchWelcome } from './pages/ThetaSketchWelcome';
 export { ThetaSketchRoadmap } from './pages/ThetaSketchRoadmap';
 export { ThetaSketchDemo } from './components/ThetaSketchDemo';
