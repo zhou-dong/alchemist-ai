@@ -193,10 +193,9 @@ let timelinePlayer = buildAnimateTimeline(
 );
 
 function OrderStatisticsPageContent() {
-    const { completeStep } = useThetaSketchProgress();
+    const { completeStep, isStepCompleted } = useThetaSketchProgress();
     const [currentNarration, setCurrentNarration] = React.useState<string>('');
     const { mode } = useTheme();
-    const [enableNextButton, setEnableNextButton] = React.useState(false); // Enable next button when all steps are completed
 
     const lastSpokenStepRef = useRef<number>(-1);
 
@@ -302,7 +301,7 @@ function OrderStatisticsPageContent() {
                     showNextButton={true}
                     nextPagePath="/theta-sketch/roadmap"
                     nextPageTitle="Go to Roadmap"
-                    enableNextButton={enableNextButton}
+                    enableNextButton={isStepCompleted('order-statistics')}
                     onStart={() => {
                         animationController.startAnimation();
                     }}
@@ -313,7 +312,6 @@ function OrderStatisticsPageContent() {
                     onComplete={() => {
                         animationController.stopAnimation();
                         completeStep('order-statistics');
-                        setEnableNextButton(true);
                     }}
                 />
             </Container>
