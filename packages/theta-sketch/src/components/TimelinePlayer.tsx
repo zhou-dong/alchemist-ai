@@ -199,7 +199,9 @@ export default function TimelinePlayer({
     >
       <Stack spacing={1.5}>
         {/* Progress Bar */}
-        <ProgressBar />
+        <Box sx={{ width: '100%', maxWidth: '50vw' }}>
+          <ProgressBar />
+        </Box>
 
         {/* Control Buttons */}
         <Stack direction="row" spacing={1} justifyContent="center" alignItems="center" sx={{ py: 0.5 }}>
