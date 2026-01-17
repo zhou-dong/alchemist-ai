@@ -195,14 +195,9 @@ export default function TimelinePlayer({
         background: 'transparent',
         color: theme.palette.text.primary
       }}
-    // variant="outlined"
     >
       <Stack spacing={1.5}>
-        {/* Progress Bar */}
-        <Box sx={{ width: '100%', maxWidth: '50vw' }}>
-          <ProgressBar />
-        </Box>
-
+        <ProgressBar />
         {/* Control Buttons */}
         <Stack direction="row" spacing={1} justifyContent="center" alignItems="center" sx={{ py: 0.5 }}>
           <Tooltip title="Restart">
