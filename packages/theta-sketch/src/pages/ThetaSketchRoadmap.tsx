@@ -197,7 +197,7 @@ const StepCard = ({ step, index, onStart }: StepCardProps) => {
                     transition: 'all 0.25s ease',
                     cursor: isAccessible ? 'pointer' : 'default',
                     '&:hover': isAccessible ? {
-                        transform: 'translateX(8px)',
+                        transform: 'translateX(10px)',
                     } : {},
                 }}
             >
