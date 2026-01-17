@@ -6,7 +6,7 @@ export { ThetaSketchDemo } from './components/ThetaSketchDemo';
 export { ThetaSketchVisualization } from './components/ThetaSketchVisualization';
 
 // Step pages
-export { default as OrderStatisticsPage } from './steps/order-statistics';
+export { default as OrderStatisticsPage } from './steps/OrderStatistics';
 export { default as KthSmallestPage } from './steps/kse';
 export { default as KmvPage } from './steps/kmv';
 export { default as SetOperationsPage } from './steps/set-operations';

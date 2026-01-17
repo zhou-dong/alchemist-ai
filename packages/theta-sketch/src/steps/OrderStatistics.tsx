@@ -9,7 +9,7 @@ import { AnimationController } from "../utils/animation-controller";
 import NextPageButton from '../components/NextPageButton';
 import StepTitle from '../components/StepTitle';
 import { axisStyle, textStyle, ringStyle, useSyncObelusTheme } from '../theme/obelusTheme';
-import { useTheme, useSpeech } from '@alchemist/shared';
+import { useTheme } from '@alchemist/shared';
 import { Container, Box, Typography, Fade } from '@mui/material';
 import TimelinePlayer from '../components/TimelinePlayer';
 import { Object3D } from 'three';
@@ -200,7 +200,6 @@ function OrderStatisticsPageContent() {
     const [showNextPageButton, setShowNextPageButton] = React.useState(false);
     const [currentNarration, setCurrentNarration] = React.useState<string>('');
     const { mode } = useTheme();
-    const { currentVoice } = useSpeech({ rate: 1.0 });
 
     const lastSpokenStepRef = useRef<number>(-1);
 
@@ -226,15 +225,12 @@ function OrderStatisticsPageContent() {
             }
 
             utterance.rate = 1.0;
-            if (currentVoice) {
-                utterance.voice = currentVoice;
-            }
             utterance.onend = () => {
                 setCurrentNarration('');
             };
             speechSynthesis.speak(utterance);
         }
-    }, [currentVoice]);
+    }, []);
 
     // Add callbacks to timeline for each step
     useEffect(() => {

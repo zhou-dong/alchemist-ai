@@ -44,7 +44,7 @@ export default function NarrationPlayer({
   subtitleMaxWidth = 600,
 }: NarrationPlayerProps) {
   const theme = useTheme();
-  const { isSupported, currentVoice } = useSpeech({ rate });
+  const { isSupported } = useSpeech({ rate });
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -140,14 +140,10 @@ export default function NarrationPlayer({
     utterance.rate = rate;
     utteranceRef.current = utterance;
 
-    if (currentVoice) {
-      utterance.voice = currentVoice;
-    } else {
-      const voices = speechSynthesis.getVoices();
-      const googleVoice = voices.find(v => v.name.includes('Google US English'));
-      if (googleVoice) {
-        utterance.voice = googleVoice;
-      }
+    const voices = speechSynthesis.getVoices();
+    const googleVoice = voices.find(v => v.name.includes('Google US English'));
+    if (googleVoice) {
+      utterance.voice = googleVoice;
     }
 
     // Set initial subtitle to first sentence
@@ -186,7 +182,7 @@ export default function NarrationPlayer({
     onPlayingChange?.(true);
 
     speechSynthesis.speak(utterance);
-  }, [content, rate, currentVoice, onComplete, onPlayingChange, estimateDuration, startProgressTracking, stopProgressTracking]);
+  }, [content, rate, onComplete, onPlayingChange, estimateDuration, startProgressTracking, stopProgressTracking]);
 
   // Play/Pause toggle
   const handlePlayPause = useCallback(() => {
