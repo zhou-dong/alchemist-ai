@@ -137,7 +137,7 @@ export const ThetaSketchWelcome = () => {
             }}>
                 <NarrationPlayer
                     content={NARRATION_CONTENT}
-                    rate={1.05}
+                    rate={1}
                     showSubtitles
                     subtitleMaxWidth={600}
                 />
