@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useRef, useEffect } from 'react';
 import { at } from 'obelus';
 import { createDualRenderer, createOrthographicCamera } from "../utils/threeUtils";
 import { buildAnimateTimeline } from 'obelus-gsap-animator';
@@ -9,11 +9,59 @@ import { AnimationController } from "../utils/animation-controller";
 import NextPageButton from '../components/NextPageButton';
 import StepTitle from '../components/StepTitle';
 import { axisStyle, textStyle, ringStyle, useSyncObelusTheme } from '../theme/obelusTheme';
-import { useTheme } from '@alchemist/shared';
-import { Container } from '@mui/material';
+import { useTheme, useSpeech } from '@alchemist/shared';
+import { Container, Box, Typography, Fade } from '@mui/material';
 import TimelinePlayer from '../components/TimelinePlayer';
 import { Object3D } from 'three';
 import { useThetaSketchProgress } from '../contexts/ThetaSketchProgressContext';
+
+// Narration for each timeline step
+const STEP_NARRATIONS: Record<number, string> = {
+    0: "Let's start with a simple case: if we want to split a line into two equal parts, we can use one node to do it.",
+    1: "The expected value of that node is one half.",
+    2: "Similarly, if we want to split a line into three equal parts, we will need two nodes.",
+    3: "The first node's value is one third.",
+    4: "The second node's value is two thirds.",
+    5: "We can rewrite the first node's value as 1 over 1 plus 1.",
+    6: "Similarly, one-third can be rewritten as 1 over 2 plus 1.",
+    7: "And two-thirds can be rewritten as 2 over 2 plus 1.",
+    8: "What does this mean? In 1 over 1 plus 1, the total number of nodes is 1.",
+    9: "And the index of the node is 1.",
+    10: "In 1 over 2 plus 1, the total number of nodes is 2.",
+    11: "And the index of the node is 1.",
+    12: "In 2 over 2 plus 1, the total number of nodes is also 2.",
+    13: "And the index of the node is 2.",
+    14: "What does this mean? We can generalize the formula as k over n plus 1, which gives the expected value of the k-th node out of n nodes. This is called order statistics.",
+    15: "This can be proven using the Beta distribution. However, the Beta distribution is beyond the scope of this sketch, so we'll skip the proof.",
+    16: "On the next page, we'll see how to use order statistics to estimate the k-th smallest estimation.",
+};
+
+// Estimate speaking duration based on word count
+// Average: ~150 words per minute at rate 1.0
+const WORDS_PER_SECOND = 150 / 60; // ~2.5 words per second
+
+function estimateNarrationDuration(text: string, rate: number = 1.0): number {
+    // Remove punctuation and count only actual words
+    const cleanedText = text.replace(/[.,!?;:'"()\-]/g, '');
+    const wordCount = cleanedText.split(/\s+/).filter(w => w.length > 0).length;
+    return wordCount / (WORDS_PER_SECOND * rate);
+}
+
+// Calculate step durations and cumulative start times
+const STEP_DURATIONS: Record<number, number> = {};
+const STEP_START_TIMES: Record<number, number> = {};
+
+let cumulativeTime = 0;
+Object.entries(STEP_NARRATIONS).forEach(([key, narration]) => {
+    const stepIndex = parseInt(key);
+    const duration = estimateNarrationDuration(narration);
+    STEP_DURATIONS[stepIndex] = duration;
+    STEP_START_TIMES[stepIndex] = cumulativeTime;
+    cumulativeTime += duration;
+});
+
+// Animation duration is shorter than narration - animations complete while speaking continues
+const ANIMATION_DURATION = 0.8;
 
 const scaleYAdjector = -35;
 const scaleNumeratorYAdjector = scaleYAdjector + 15;
@@ -85,47 +133,51 @@ const stepSceneObjects: Animatable<Object3D>[] = [
     latex("beta_distribution_expected_value_expression", BetaDistributionExpectedValueExpression, { x: scaleK(1, 1), y: 0 - height - window.innerHeight, z }, { ...textStyle })
 ];
 
+// Helper to get step start time
+const t = (step: number) => STEP_START_TIMES[step] ?? 0;
+const d = ANIMATION_DURATION;
+
 const timelineSteps = [
-    at(0).animate("axis_1", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(0).animate("axis_1_start", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(0).animate("axis_1_end", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(0)).animate("axis_1", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(0)).animate("axis_1_start", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(0)).animate("axis_1_end", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
 
-    at(1).animate("axis_1_k_1", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(1)).animate("axis_1_k_1", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
 
-    at(2).animate("axis_2", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(2).animate("axis_2_start", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(2).animate("axis_2_end", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(2)).animate("axis_2", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(2)).animate("axis_2_start", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(2)).animate("axis_2_end", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
 
-    at(3).animate("axis_2_k_1", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(4).animate("axis_2_k_2", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(3)).animate("axis_2_k_1", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(4)).animate("axis_2_k_2", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
     // expression
-    at(5).animate("axis_1_k_1_expression_1", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(6).animate("axis_2_k_1_expression_1", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(7).animate("axis_2_k_2_expression_1", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(5)).animate("axis_1_k_1_expression_1", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(6)).animate("axis_2_k_1_expression_1", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(7)).animate("axis_2_k_2_expression_1", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
 
     // rings axis_1
-    at(8).animate("axis_1_k_1_ring_1", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(8).animate("axis_1_k_1_ring_1_k", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(8)).animate("axis_1_k_1_ring_1", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(8)).animate("axis_1_k_1_ring_1_k", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
 
-    at(9).animate("axis_1_k_1_ring_2", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(9).animate("axis_1_k_1_ring_2_k", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(9)).animate("axis_1_k_1_ring_2", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(9)).animate("axis_1_k_1_ring_2_k", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
 
     // rings axis_2
-    at(10).animate("axis_2_k_1_ring_1", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(10).animate("axis_2_k_1_ring_1_k", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(10)).animate("axis_2_k_1_ring_1", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(10)).animate("axis_2_k_1_ring_1_k", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
 
-    at(11).animate("axis_2_k_1_ring_2", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(11).animate("axis_2_k_1_ring_2_k", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(11)).animate("axis_2_k_1_ring_2", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(11)).animate("axis_2_k_1_ring_2_k", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
 
-    at(12).animate("axis_2_k_2_ring_1", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(12).animate("axis_2_k_2_ring_1_k", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(12)).animate("axis_2_k_2_ring_1", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(12)).animate("axis_2_k_2_ring_1_k", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
 
-    at(13).animate("axis_2_k_2_ring_2", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(13).animate("axis_2_k_2_ring_2_k", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(13)).animate("axis_2_k_2_ring_2", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(13)).animate("axis_2_k_2_ring_2_k", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
 
     // equations
-    at(14).animate("order_statistics_expression", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
-    at(15).animate("beta_distribution_expected_value_expression", { position: { y: `+=${window.innerHeight}` } }, { duration: 1 }),
+    at(t(14)).animate("order_statistics_expression", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
+    at(t(15)).animate("beta_distribution_expected_value_expression", { position: { y: `+=${window.innerHeight}` } }, { duration: d }),
 ];
 
 const renderer = createDualRenderer();
@@ -146,12 +198,59 @@ let componentLevelShowNextPageButton: boolean = false;
 function OrderStatisticsPageContent() {
     const { completeStep } = useThetaSketchProgress();
     const [showNextPageButton, setShowNextPageButton] = React.useState(false);
+    const [currentNarration, setCurrentNarration] = React.useState<string>('');
     const { mode } = useTheme();
+    const { currentVoice } = useSpeech({ rate: 1.0 });
+
+    const lastSpokenStepRef = useRef<number>(-1);
 
     // Sync Three.js materials with the current global theme
     useSyncObelusTheme();
 
     const { containerRef } = useThreeContainer(renderer);
+
+    // Speak narration for a step
+    const speakStep = useCallback((stepIndex: number) => {
+        const narration = STEP_NARRATIONS[stepIndex];
+        if (narration && stepIndex !== lastSpokenStepRef.current) {
+            lastSpokenStepRef.current = stepIndex;
+            setCurrentNarration(narration);
+
+            // Use Web Speech API directly for better control
+            speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(narration);
+
+            const googleVoice = speechSynthesis.getVoices().find(v => v.name.includes('Google US English'));
+            if (googleVoice) {
+                utterance.voice = googleVoice;
+            }
+
+            utterance.rate = 1.0;
+            if (currentVoice) {
+                utterance.voice = currentVoice;
+            }
+            utterance.onend = () => {
+                setCurrentNarration('');
+            };
+            speechSynthesis.speak(utterance);
+        }
+    }, [currentVoice]);
+
+    // Add callbacks to timeline for each step
+    useEffect(() => {
+        if (!timelinePlayer) return;
+
+        // Add labels and callbacks for each step at their calculated start times
+        Object.keys(STEP_NARRATIONS).forEach((stepKey) => {
+            const stepIndex = parseInt(stepKey);
+            const startTime = STEP_START_TIMES[stepIndex] ?? 0;
+            timelinePlayer.call(() => speakStep(stepIndex), [], startTime);
+        });
+
+        return () => {
+            speechSynthesis.cancel();
+        };
+    }, [speakStep]);
 
     // Re-render the scene when mode changes to apply new colors
     React.useEffect(() => {
@@ -162,6 +261,7 @@ function OrderStatisticsPageContent() {
         setShowNextPageButton(componentLevelShowNextPageButton);
         return () => {
             animationController.stopAnimation();
+            speechSynthesis.cancel();
         };
     }, []);
 
@@ -169,6 +269,32 @@ function OrderStatisticsPageContent() {
         <>
             <StepTitle title="Order Statistics" />
             {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/roadmap" title="Go to Roadmap" />}
+
+            {/* Subtitle Display */}
+            <Fade in={!!currentNarration}>
+                <Box
+                    sx={{
+                        position: 'fixed',
+                        bottom: window.innerHeight / 12 + 140,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        maxWidth: '80%',
+                        zIndex: 1001,
+                        textAlign: 'center',
+                    }}
+                >
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            color: 'text.primary',
+                            px: 3,
+                            py: 1.5,
+                        }}
+                    >
+                        {currentNarration}
+                    </Typography>
+                </Box>
+            </Fade>
 
             <Container
                 maxWidth="md"
@@ -187,6 +313,7 @@ function OrderStatisticsPageContent() {
                     }}
                     onPause={() => {
                         animationController.stopAnimation();
+                        speechSynthesis.pause();
                     }}
                     onComplete={() => {
                         setShowNextPageButton(true);
