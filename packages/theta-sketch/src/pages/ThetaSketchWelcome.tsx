@@ -1,11 +1,9 @@
-import { Box, Typography, Tooltip, IconButton, Button } from '@mui/material';
-import { useCallback, useState, useEffect } from 'react';
+import { Box, Typography, Button, Stack } from '@mui/material';
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSpeech, slideUp, fadeIn } from '@alchemist/shared';
-import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import PauseIcon from '@mui/icons-material/Pause';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { slideUp } from '@alchemist/shared';
 import EastIcon from '@mui/icons-material/East';
+import NarrationPlayer from '../components/NarrationPlayer';
 
 // Narration content
 const NARRATION_CONTENT = `
@@ -18,98 +16,11 @@ Don't be intimidated by the math, the ideas are surprisingly straightforward, re
 
 export const ThetaSketchWelcome = () => {
     const navigate = useNavigate();
-    const { isSupported, currentVoice } = useSpeech({ rate: 0.95 });
-
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [isPaused, setIsPaused] = useState(false);
-    const [currentSentence, setCurrentSentence] = useState<string>('');
-    const [showSubtitles, setShowSubtitles] = useState(false);
-
-    const sentences = NARRATION_CONTENT.split(/(?<=[.!?])\s+/).filter(s => s.trim());
-
-    const speakSentence = useCallback((index: number) => {
-        if (index >= sentences.length) {
-            setIsPlaying(false);
-            setIsPaused(false);
-            setShowSubtitles(false);
-            setCurrentSentence('');
-            return;
-        }
-
-        const text = sentences[index];
-        setCurrentSentence(text);
-
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 1.05;
-
-        if (currentVoice) {
-            utterance.voice = currentVoice;
-        } else {
-            const voices = speechSynthesis.getVoices();
-            const googleVoice = voices.find(v => v.name.includes('Google US English'));
-            if (googleVoice) {
-                utterance.voice = googleVoice;
-            }
-        }
-
-        utterance.onend = () => {
-            setTimeout(() => speakSentence(index + 1), 100);
-        };
-
-        utterance.onerror = () => {
-            setIsPlaying(false);
-            setIsPaused(false);
-            setShowSubtitles(false);
-            setCurrentSentence('');
-        };
-
-        speechSynthesis.speak(utterance);
-    }, [sentences, currentVoice]);
-
-    const speakWithTracking = useCallback(() => {
-        speechSynthesis.cancel();
-        setIsPlaying(true);
-        setIsPaused(false);
-        setShowSubtitles(true);
-        speakSentence(0);
-    }, [speakSentence]);
-
-    const handleVoiceToggle = useCallback(() => {
-        if (isPlaying && !isPaused) {
-            speechSynthesis.pause();
-            setIsPaused(true);
-        } else if (isPaused) {
-            speechSynthesis.resume();
-            setIsPaused(false);
-        } else {
-            speakWithTracking();
-        }
-    }, [isPlaying, isPaused, speakWithTracking]);
 
     const handleDiveIn = useCallback(() => {
         speechSynthesis.cancel();
         navigate('/theta-sketch/roadmap');
     }, [navigate]);
-
-    // Auto-start disabled - user clicks play button to start narration
-
-    useEffect(() => {
-        return () => {
-            speechSynthesis.cancel();
-        };
-    }, []);
-
-    const getVoiceButtonState = () => {
-        if (isPlaying && !isPaused) {
-            return { icon: <PauseIcon />, tooltip: 'Pause' };
-        } else if (isPaused) {
-            return { icon: <PlayArrowIcon />, tooltip: 'Resume' };
-        } else {
-            return { icon: <VolumeUpIcon />, tooltip: 'Listen' };
-        }
-    };
-
-    const voiceButtonState = getVoiceButtonState();
 
     return (
         <Box
@@ -122,7 +33,7 @@ export const ThetaSketchWelcome = () => {
                 position: 'relative',
             }}
         >
-            {/* Main Content - Centered */}
+            {/* Main Content - Slightly above center for better visual balance */}
             <Box
                 sx={{
                     flex: 1,
@@ -131,6 +42,7 @@ export const ThetaSketchWelcome = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     px: 4,
+                    pb: 25, // Push content upward
                     position: 'relative',
                     zIndex: 10,
                 }}
@@ -190,65 +102,16 @@ export const ThetaSketchWelcome = () => {
                         fontWeight: 400,
                         textAlign: 'center',
                         lineHeight: 1.8,
-                        mb: 8,
+                        mb: 10,
                         animation: `${slideUp} 1s ease-out 0.5s both`,
                     }}
                 >
                     A journey through Order Statistics, K-th Smallest Estimation, KMV, and beyond.
                 </Typography>
 
-                {/* Narration Display */}
-                <Box
-                    sx={{
-                        maxWidth: 600,
-                        minHeight: 100,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mb: 6,
-                        px: 4,
-                        animation: `${slideUp} 1s ease-out 0.7s both`,
-                    }}
-                >
-                    <Typography
-                        sx={{
-                            fontSize: { xs: '1.1rem', md: '1.25rem' },
-                            fontWeight: 300,
-                            lineHeight: 2,
-                            textAlign: 'center',
-                            color: showSubtitles && currentSentence ? 'text.primary' : 'text.secondary',
-                            fontStyle: showSubtitles && currentSentence ? 'normal' : 'italic',
-                            transition: 'all 0.5s ease',
-                        }}
-                    >
-                        {currentSentence}
-                    </Typography>
-                </Box>
-
-                {/* Controls */}
-                <Box
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 4,
-                        animation: `${slideUp} 1s ease-out 0.9s both`,
-                    }}
-                >
-                    {/* Play/Pause - Standard MUI IconButton with theme styling */}
-                    {isSupported && (
-                        <Tooltip title={voiceButtonState.tooltip}>
-                            <IconButton
-                                onClick={handleVoiceToggle}
-                                color="primary"
-                                size="large"
-                                sx={{ width: 52, height: 52 }}
-                            >
-                                {voiceButtonState.icon}
-                            </IconButton>
-                        </Tooltip>
-                    )}
-
-                    {/* Begin Button - Standard MUI Button */}
+                {/* Controls with built-in subtitles */}
+                <Box sx={{ animation: `${slideUp} 1s ease-out 0.7s both` }}>
+                    {/* Begin Button */}
                     <Button
                         variant="contained"
                         size="large"
@@ -258,62 +121,27 @@ export const ThetaSketchWelcome = () => {
                         Begin
                     </Button>
                 </Box>
-
-                {!isSupported && (
-                    <Typography
-                        variant="caption"
-                        color="text.secondary"
-                        sx={{ mt: 4 }}
-                    >
-                        Voice narration requires a supported browser
-                    </Typography>
-                )}
             </Box>
 
-            {/* Speaking Indicator */}
-            {isPlaying && !isPaused && (
-                <Box
-                    sx={{
-                        position: 'fixed',
-                        bottom: 30,
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 2,
-                        animation: `${fadeIn} 0.5s ease-out`,
-                    }}
-                >
-                    {/* Sound wave visualization */}
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.4 }}>
-                        {[0, 1, 2, 3, 4].map((i) => (
-                            <Box
-                                key={i}
-                                sx={{
-                                    width: 2,
-                                    height: 16,
-                                    bgcolor: 'primary.main',
-                                    borderRadius: 1,
-                                    opacity: 0.7,
-                                    animation: `soundWave 1s ease-in-out infinite`,
-                                    animationDelay: `${i * 0.1}s`,
-                                    '@keyframes soundWave': {
-                                        '0%, 100%': { transform: 'scaleY(0.3)' },
-                                        '50%': { transform: 'scaleY(1)' },
-                                    },
-                                }}
-                            />
-                        ))}
-                    </Box>
-                    <Typography
-                        variant="caption"
-                        color="text.secondary"
-                        sx={{ letterSpacing: '0.1em' }}
-                    >
-                        listening
-                    </Typography>
-                </Box>
-            )}
+            <Box sx={{
+                position: 'fixed',
+                bottom: window.innerHeight / 12,
+                left: 0,
+                right: 0,
+                zIndex: 1000,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+
+                animation: `${slideUp} 1s ease-out 1s both`,
+            }}>
+                <NarrationPlayer
+                    content={NARRATION_CONTENT}
+                    rate={1.05}
+                    showSubtitles
+                    subtitleMaxWidth={600}
+                />
+            </Box>
         </Box>
     );
 };
