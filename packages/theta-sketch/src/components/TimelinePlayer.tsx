@@ -17,34 +17,43 @@ import * as PlayArrow from '@mui/icons-material/PlayArrow';
 import * as Pause from '@mui/icons-material/Pause';
 import * as RestartAlt from '@mui/icons-material/RestartAlt';
 import * as Speed from '@mui/icons-material/Speed';
+import * as VolumeUp from '@mui/icons-material/VolumeUp';
+import * as VolumeOff from '@mui/icons-material/VolumeOff';
 
 const PlayIcon = PlayArrow.default as unknown as React.ElementType;
 const PauseIcon = Pause.default as unknown as React.ElementType;
 const RestartIcon = RestartAlt.default as unknown as React.ElementType;
 const SpeedIcon = Speed.default as unknown as React.ElementType;
+const VolumeUpIcon = VolumeUp.default as unknown as React.ElementType;
+const VolumeOffIcon = VolumeOff.default as unknown as React.ElementType;
 
 interface TimelinePlayerProps {
   timeline: any; // GSAP Timeline
   showProgress?: boolean;
   showSpeed?: boolean;
+  showMuteButton?: boolean;
   size?: 'small' | 'medium' | 'large';
   onStart: () => void;
   onPause: () => void;
   onComplete: () => void;
+  onMuteChange?: (isMuted: boolean) => void;
 }
 
 export default function TimelinePlayer({
   timeline,
-  showSpeed = true,
+  showSpeed = false,
+  showMuteButton = false,
   size = 'large',
   onStart,
   onPause,
   onComplete,
+  onMuteChange,
 }: TimelinePlayerProps) {
   const theme = useTheme();
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [speed, setSpeed] = useState(1);
+  const [isMuted, setIsMuted] = useState(false);
   const [speedMenuAnchor, setSpeedMenuAnchor] = useState<null | HTMLElement>(null);
 
   // Speed options
@@ -108,6 +117,12 @@ export default function TimelinePlayer({
 
   const handleSpeedMenuClose = () => {
     setSpeedMenuAnchor(null);
+  };
+
+  const handleMuteToggle = () => {
+    const newMuted = !isMuted;
+    setIsMuted(newMuted);
+    onMuteChange?.(newMuted);
   };
 
   const iconSize = size === 'small' ? 20 : size === 'large' ? 28 : 24;
@@ -235,6 +250,22 @@ export default function TimelinePlayer({
                 ))}
               </Menu>
             </>
+          )}
+
+          {showMuteButton && (
+            <Tooltip title={isMuted ? 'Enable narration' : 'Mute narration'}>
+              <IconButton
+                onClick={handleMuteToggle}
+                size={buttonSize}
+                sx={{ color: theme.palette.text.secondary }}
+              >
+                {isMuted ? (
+                  <VolumeOffIcon sx={{ fontSize: iconSize }} />
+                ) : (
+                  <VolumeUpIcon sx={{ fontSize: iconSize }} />
+                )}
+              </IconButton>
+            </Tooltip>
           )}
 
         </Stack>
