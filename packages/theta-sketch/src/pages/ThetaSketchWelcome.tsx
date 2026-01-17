@@ -132,7 +132,6 @@ export const ThetaSketchWelcome = () => {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-
                 animation: `${slideUp} 1s ease-out 1s both`,
             }}>
                 <NarrationPlayer
