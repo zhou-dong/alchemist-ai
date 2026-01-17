@@ -6,7 +6,6 @@ import { useThreeContainer } from "../hooks/useThreeContainer";
 import { render, axis, latex, ring, text, DualScene } from 'obelus-three-render';
 import { type Animatable } from "obelus";
 import { AnimationController } from "../utils/animation-controller";
-import NextPageButton from '../components/NextPageButton';
 import StepTitle from '../components/StepTitle';
 import { axisStyle, textStyle, ringStyle, useSyncObelusTheme } from '../theme/obelusTheme';
 import { useTheme } from '@alchemist/shared';
@@ -193,13 +192,11 @@ let timelinePlayer = buildAnimateTimeline(
     animationController.stopAnimation
 );
 
-let componentLevelShowNextPageButton: boolean = false;
-
 function OrderStatisticsPageContent() {
     const { completeStep } = useThetaSketchProgress();
-    const [showNextPageButton, setShowNextPageButton] = React.useState(false);
     const [currentNarration, setCurrentNarration] = React.useState<string>('');
     const { mode } = useTheme();
+    const [enableNextButton, setEnableNextButton] = React.useState(false); // Enable next button when all steps are completed
 
     const lastSpokenStepRef = useRef<number>(-1);
 
@@ -254,7 +251,6 @@ function OrderStatisticsPageContent() {
     }, [mode]);
 
     React.useEffect(() => {
-        setShowNextPageButton(componentLevelShowNextPageButton);
         return () => {
             animationController.stopAnimation();
             speechSynthesis.cancel();
@@ -264,7 +260,6 @@ function OrderStatisticsPageContent() {
     return (
         <>
             <StepTitle title="Order Statistics" />
-            {showNextPageButton && <NextPageButton nextPagePath="/theta-sketch/roadmap" title="Go to Roadmap" />}
 
             {/* Subtitle Display */}
             <Fade in={!!currentNarration}>
@@ -304,6 +299,10 @@ function OrderStatisticsPageContent() {
             >
                 <TimelinePlayer
                     timeline={timelinePlayer}
+                    showNextButton={true}
+                    nextPagePath="/theta-sketch/roadmap"
+                    nextPageTitle="Go to Roadmap"
+                    enableNextButton={enableNextButton}
                     onStart={() => {
                         animationController.startAnimation();
                     }}
@@ -312,10 +311,9 @@ function OrderStatisticsPageContent() {
                         speechSynthesis.pause();
                     }}
                     onComplete={() => {
-                        setShowNextPageButton(true);
-                        componentLevelShowNextPageButton = true;
                         animationController.stopAnimation();
                         completeStep('order-statistics');
+                        setEnableNextButton(true);
                     }}
                 />
             </Container>
