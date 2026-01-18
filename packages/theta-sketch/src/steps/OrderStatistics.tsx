@@ -13,6 +13,7 @@ import { Container, Box, Typography, Fade } from '@mui/material';
 import TimelinePlayer from '../components/TimelinePlayer';
 import { Object3D } from 'three';
 import { useThetaSketchProgress } from '../contexts/ThetaSketchProgressContext';
+import { calculateStepTimings } from '../utils/narration';
 
 // Narration for each timeline step
 const STEP_NARRATIONS: Record<number, string> = {
@@ -35,29 +36,8 @@ const STEP_NARRATIONS: Record<number, string> = {
     16: "On the next page, we'll see how to use order statistics to estimate the k-th smallest estimation.",
 };
 
-// Estimate speaking duration based on word count
-// Average: ~150 words per minute at rate 1.0
-const WORDS_PER_SECOND = 150 / 60; // ~2.5 words per second
-
-function estimateNarrationDuration(text: string, rate: number = 1.0): number {
-    // Remove punctuation and count only actual words
-    const cleanedText = text.replace(/[.,!?;:'"()\-]/g, '');
-    const wordCount = cleanedText.split(/\s+/).filter(w => w.length > 0).length;
-    return wordCount / (WORDS_PER_SECOND * rate);
-}
-
 // Calculate step durations and cumulative start times
-const STEP_DURATIONS: Record<number, number> = {};
-const STEP_START_TIMES: Record<number, number> = {};
-
-let cumulativeTime = 0;
-Object.entries(STEP_NARRATIONS).forEach(([key, narration]) => {
-    const stepIndex = parseInt(key);
-    const duration = estimateNarrationDuration(narration);
-    STEP_DURATIONS[stepIndex] = duration;
-    STEP_START_TIMES[stepIndex] = cumulativeTime;
-    cumulativeTime += duration;
-});
+const { startTimes: STEP_START_TIMES } = calculateStepTimings(STEP_NARRATIONS);
 
 // Animation duration is shorter than narration - animations complete while speaking continues
 const ANIMATION_DURATION = 0.8;
