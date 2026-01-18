@@ -71,7 +71,7 @@ n = \\frac{k}{\\theta} - 1
 
 const buildAxis = () => {
     const halfWidth = Math.min(window.innerWidth / 4, 800);
-    const y = window.innerHeight / 16 * 3 - window.innerHeight;
+    const y = window.innerHeight / 16 * 2 - window.innerHeight;
     const start = { x: -halfWidth, y: y, z: 0, };
     const end = { x: halfWidth, y: y, z: 0, };
     const axisLine = axis("axis", start, end, { ...axisStyle, dotCount: 4 });
@@ -114,7 +114,7 @@ const moveLatexesToLeftSteps: TimelineEvent[] = latexes.map((_, index) => {
 const stepScene: TimelineSceneThree = {
     objects: [
         ...latexes,
-        latex("kse_formula", "n = \\frac{k}{\\theta} - 1", { x: 0, y: window.innerHeight / 16 * 4 - window.innerHeight, z: 0 }, textStyle),
+        latex("kse_formula", "n = \\frac{k}{\\theta} - 1", { x: 0, y: window.innerHeight / 16 * 3 - window.innerHeight, z: 0 }, textStyle),
         ...buildAxis(),
     ],
     timeline: [
