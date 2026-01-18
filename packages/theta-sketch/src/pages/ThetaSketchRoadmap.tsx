@@ -232,7 +232,6 @@ const StepCard = ({ step, index, onStart }: StepCardProps) => {
                         {/* Middle: Content */}
                         <Box sx={{ flex: 1, p: 3, }}>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
-                                {/* Title */}
                                 <Typography variant="h6" sx={{ fontWeight: 500, fontSize: '1.1rem' }}>
                                     {step.title}
                                 </Typography>
