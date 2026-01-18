@@ -9,10 +9,10 @@
 
 import type { ThemeOptions, PaletteMode, Components } from '@mui/material';
 import type { SketchThemeDefinition } from '../types';
-import { 
-  neoGlassColors, 
-  glassEffects, 
-  glowEffects, 
+import {
+  neoGlassColors,
+  glassEffects,
+  glowEffects,
   typography as neoTypography,
   spacing as neoSpacing,
   animations as neoAnimations,
@@ -65,7 +65,7 @@ const glow = {
 
 const createComponents = (mode: PaletteMode): Components => {
   const isDark = mode === 'dark';
-  
+
   // Apple-style glass: more transparent backgrounds with stronger blur
   const appleGlassBg = {
     subtle: isDark ? 'rgba(255, 255, 255, 0.02)' : 'rgba(255, 255, 255, 0.4)',
@@ -73,13 +73,13 @@ const createComponents = (mode: PaletteMode): Components => {
     medium: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(255, 255, 255, 0.6)',
     strong: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.7)',
   };
-  
+
   const appleGlassBorder = {
     subtle: isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)',
     light: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)',
     medium: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.1)',
   };
-  
+
   // Light blur for subtle frosted effect
   const appleBlur = 'blur(1px)';
   const appleBlurStrong = 'blur(3px)';
@@ -100,17 +100,17 @@ const createComponents = (mode: PaletteMode): Components => {
   };
 
   // Mode-aware icon button styles
-  const iconButtonBg = isDark 
-    ? glassEffects.tinted.teal(0.08) 
+  const iconButtonBg = isDark
+    ? glassEffects.tinted.teal(0.08)
     : 'rgba(0, 191, 165, 0.1)';
-  const iconButtonHoverBg = isDark 
-    ? glassEffects.tinted.teal(0.15) 
+  const iconButtonHoverBg = isDark
+    ? glassEffects.tinted.teal(0.15)
     : 'rgba(0, 191, 165, 0.18)';
-  const iconButtonBorder = isDark 
-    ? 'rgba(0, 191, 165, 0.3)' 
+  const iconButtonBorder = isDark
+    ? 'rgba(0, 191, 165, 0.3)'
     : 'rgba(0, 191, 165, 0.4)';
-  const iconButtonHoverBorder = isDark 
-    ? 'rgba(0, 191, 165, 0.5)' 
+  const iconButtonHoverBorder = isDark
+    ? 'rgba(0, 191, 165, 0.5)'
     : 'rgba(0, 191, 165, 0.6)';
 
   return {
@@ -134,7 +134,7 @@ const createComponents = (mode: PaletteMode): Components => {
         containedPrimary: {
           background: isDark ? colors.primary.main : colors.primary.dark,
           color: '#FFFFFF',
-          '&:hover': { 
+          '&:hover': {
             background: isDark ? colors.primary.dark : colors.primary.main,
           },
         },
@@ -210,8 +210,8 @@ const createComponents = (mode: PaletteMode): Components => {
           border: `1px solid ${appleGlassBorder.light}`,
           borderRadius: neoSpacing.borderRadius.lg,
           transition: neoAnimations.transition.normal,
-          boxShadow: isDark 
-            ? '0 4px 24px rgba(0, 0, 0, 0.2)' 
+          boxShadow: isDark
+            ? '0 4px 24px rgba(0, 0, 0, 0.2)'
             : '0 4px 24px rgba(0, 0, 0, 0.08)',
         },
       },
@@ -243,16 +243,16 @@ const createComponents = (mode: PaletteMode): Components => {
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          background: isDark 
-            ? 'rgba(24, 24, 27, 0.85)' 
+          background: isDark
+            ? 'rgba(24, 24, 27, 0.85)'
             : 'rgba(255, 255, 255, 0.9)',
           backdropFilter: appleBlur,
           WebkitBackdropFilter: appleBlur,
           borderRadius: neoSpacing.borderRadius.md,
           border: `1px solid ${appleGlassBorder.subtle}`,
           color: isDark ? colors.neutral[100] : colors.neutral[900],
-          boxShadow: isDark 
-            ? '0 4px 16px rgba(0, 0, 0, 0.3)' 
+          boxShadow: isDark
+            ? '0 4px 16px rgba(0, 0, 0, 0.3)'
             : '0 4px 16px rgba(0, 0, 0, 0.1)',
         },
       },
@@ -278,25 +278,25 @@ export const neoGlassTheme: SketchThemeDefinition = {
   name: 'Neo Glass',
   description: 'Modern glassmorphism with teal and violet accents',
   category: 'glass',
-  
+
   colors,
   glass,
   glow,
-  
+
   typography: {
     fontFamily: neoTypography.fontFamily,
     letterSpacing: neoTypography.letterSpacing,
   },
-  
+
   borderRadius: neoSpacing.borderRadius,
-  
+
   animations: {
     fast: neoAnimations.duration.fast,
     normal: neoAnimations.duration.normal,
     slow: neoAnimations.duration.slow,
     easing: neoAnimations.easing.smooth,
   },
-  
+
   orbPresets: {
     default: [
       { color: 'primary', position: { top: '10%', right: '5%' }, size: 400, opacity: 0.15, blur: 60, animationDuration: 8 },
@@ -311,7 +311,7 @@ export const neoGlassTheme: SketchThemeDefinition = {
       { color: 'tertiary', position: { top: '60%', right: '20%' }, size: 250, opacity: 0.1, blur: 40, animationDuration: 11, animationDelay: 4 },
     ],
   },
-  
+
   getMuiTheme: (mode: PaletteMode): ThemeOptions => ({
     palette: {
       mode,
