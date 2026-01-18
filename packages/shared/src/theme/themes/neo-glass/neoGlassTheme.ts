@@ -81,8 +81,8 @@ const createComponents = (mode: PaletteMode): Components => {
   };
   
   // Light blur for subtle frosted effect
-  const appleBlur = 'blur(3px)';
-  const appleBlurStrong = 'blur(5px)';
+  const appleBlur = 'blur(1px)';
+  const appleBlurStrong = 'blur(3px)';
 
   // Mode-aware glow effects
   const buttonGlow = isDark ? glow.primary : {
