@@ -12,6 +12,7 @@ import TimelinePlayer from '@alchemist/theta-sketch/components/TimelinePlayer';
 import { Container, Box, Typography, Fade } from '@mui/material';
 import { useTheme } from '@alchemist/shared';
 import { useThetaSketchProgress } from '../../contexts/ThetaSketchProgressContext';
+import { calculateStepTimings } from '../../utils/narration';
 
 // Narration for each timeline step
 const STEP_NARRATIONS: Record<number, string> = {
@@ -36,27 +37,8 @@ const STEP_NARRATIONS: Record<number, string> = {
     18: "Again, n equals 2 divided by two-thirds, minus 1, which also equals 2. Both estimates correctly tell us there are 2 samples!",
 };
 
-// Estimate speaking duration based on word count
-const WORDS_PER_SECOND = 150 / 60;
-
-function estimateNarrationDuration(text: string, rate: number = 1.0): number {
-    const cleanedText = text.replace(/[.,!?;:'"()\-]/g, '');
-    const wordCount = cleanedText.split(/\s+/).filter(w => w.length > 0).length;
-    return wordCount / (WORDS_PER_SECOND * rate);
-}
-
 // Calculate step durations and cumulative start times
-const STEP_DURATIONS: Record<number, number> = {};
-const STEP_START_TIMES: Record<number, number> = {};
-
-let cumulativeTime = 0;
-Object.entries(STEP_NARRATIONS).forEach(([key, narration]) => {
-    const stepIndex = parseInt(key);
-    const duration = estimateNarrationDuration(narration);
-    STEP_DURATIONS[stepIndex] = duration;
-    STEP_START_TIMES[stepIndex] = cumulativeTime;
-    cumulativeTime += duration;
-});
+const { startTimes: STEP_START_TIMES } = calculateStepTimings(STEP_NARRATIONS);
 
 const ANIMATION_DURATION = 0.8;
 
@@ -72,14 +54,12 @@ const t = (step: number) => STEP_START_TIMES[step] ?? 0;
 const d = ANIMATION_DURATION;
 
 const displayLatexesSteps: TimelineEvent[] = latexes.map((_, index) => {
-    // Steps 1-7 for displaying formulas
-    return at(t(index + 1)).animate(`formula_${index}`, { position: { y: `+=${window.innerHeight}` } }, { duration: d });
+    return at(t(index)).animate(`formula_${index}`, { position: { y: `+=${window.innerHeight}` } }, { duration: d });
 });
 
 const moveLatexesToLeftSteps: TimelineEvent[] = latexes.map((_, index) => {
-    // Step 8 - move all formulas to the left
     const distance = window.innerWidth / 4;
-    return at(t(8)).animate(`formula_${index}`, { position: { x: `-=${distance}` } }, { duration: d });
+    return at(t(displayLatexesSteps.length - 1)).animate(`formula_${index}`, { position: { x: `-=${distance}` } }, { duration: d });
 });
 
 const ONE_THIRD_N_LATEX = `
@@ -103,8 +83,8 @@ const buildAxis = () => {
     const start = { x: 0, y: y, z: 0, };
     const end = { x: window.innerWidth / 8 * 3, y: y, z: 0, };
     const axisLine = axis("axis", start, end, { ...axisStyle, dotCount: 4 });
-    const axisStart = text("axis_start", "0", { ...start, y: y - 15 }, textStyle);
-    const axisEnd = text("axis_end", "1", { ...end, y: y - 15 }, textStyle);
+    const axisStart = text("axis_start", "0", { ...start, y: y - 25 }, textStyle);
+    const axisEnd = text("axis_end", "1", { ...end, y: y - 25 }, textStyle);
 
     const oneThird = latex("one_third", "\\frac{1}{3}", { ...start, x: window.innerWidth / 8, y: y - 35 }, textStyle);
     const oneThirdK = latex("one_third_k", "k = 1", { ...start, x: window.innerWidth / 8, y: y - 80 }, textStyle);
@@ -120,14 +100,13 @@ const buildAxis = () => {
 
 const axisStepIds = ["axis", "axis_start", "axis_end", "one_third", "two_thirds"];
 const moveAxisSteps = (): TimelineEvent[] => {
-    // Steps 8-12: Show axis and first samples
-    return axisStepIds.map((id, index) => at(t(8 + index)).animate(id, { position: { y: `+=${window.innerHeight}` } }, { duration: d }));
+    return axisStepIds.map((id) => at(t(displayLatexesSteps.length - 1)).animate(id, { position: { y: `+=${window.innerHeight}` } }, { duration: d }));
 };
 
 const moveMarks = (): TimelineEvent[] => {
     // Steps 13-18: Show k, theta, and n calculations
     const ids = ["one_third_k", "one_third_theta", "one_third_n", "two_thirds_k", "two_thirds_theta", "two_thirds_n"];
-    return ids.map((id, index) => at(t(13 + index)).animate(id, { position: { y: `+=${window.innerHeight}` } }, { duration: d }));
+    return ids.map((id, index) => at(t(displayLatexesSteps.length - 1 + index)).animate(id, { position: { y: `+=${window.innerHeight}` } }, { duration: d }));
 };
 
 const stepScene: TimelineSceneThree = {
@@ -160,7 +139,7 @@ function KmvPageContent() {
     const { completeStep, isStepCompleted } = useThetaSketchProgress();
     const [currentNarration, setCurrentNarration] = React.useState<string>('');
     const { mode } = useTheme();
-    
+
     const lastSpokenStepRef = useRef<number>(-1);
 
     // Sync Three.js materials with the current global theme
