@@ -1,8 +1,8 @@
-**Chapter 5 — When Vera Learns to Choose**
+# Chapter 5 — When Vera Learns to Choose
 
 *Full structure document — developed in session, April 2026*
 
-# **Overview**
+## Overview
 
 Chapter 4 left Vera with something extraordinary: a nervous system that could perceive the structure of the world. A predator was not a gradient getting stronger — it was a large fast-moving object approaching from above. The world had become a place of things, not just signals. But perception alone is not action. Recognising a predator is not the same as knowing what to do about it. Vera could see the world deeply. She could not yet decide deliberately what to do about what she saw.
 
@@ -18,9 +18,9 @@ Chapter 5 also confronts honestly what basic RL cannot do. The long-horizon cred
 
 *“Everything Bila and Vera discovered across four chapters — the sensor, the weight, the perceptron, the network, the error signal, the trace, the hierarchy — was always, piece by piece, the components of one unified thing. Reinforcement Learning is what life invented to survive in a complex, uncertain, time-extended world. And it is what AI researchers spent decades rediscovering, one algorithm at a time, without always realising that evolution had already solved it.”*
 
-# **Key Scientific ****&**** AI Concepts Introduced in Chapter 5**
+## Key Scientific & AI Concepts Introduced in Chapter 5
 
-## **5.1 The Four Components of Reinforcement Learning**
+### 5.1 The Four Components of Reinforcement Learning
 
 RL has four essential components. Every RL system ever built, from the simplest maze-solver to AlphaGo, contains all four.
 
@@ -32,7 +32,7 @@ RL has four essential components. Every RL system ever built, from the simplest 
 
 **The Policy: **The agent’s strategy. Its mapping from situations to actions. Given where I am, what do I do? At the start the policy is uninformed. The entire purpose of RL is to improve the policy through experience until it produces good decisions reliably.
 
-## **5.2 The RL Loop**
+### 5.2 The RL Loop
 
 The four components connect into a continuous feedback loop:
 
@@ -60,7 +60,7 @@ repeat
 
 Every iteration, the policy gets slightly better. Over thousands or millions of iterations, it can become extraordinarily capable.
 
-## **5.3 The Critic — The Evaluator**
+### 5.3 The Critic — The Evaluator
 
 The critic already existed. It has been running since Chapter 3 under a different name: the TD Learning mechanism. Its job is to maintain a value estimate for every situation Vera might encounter:
 
@@ -74,7 +74,7 @@ Positive TD error: things went better than predicted. Negative TD error: things 
 
 The critic never decides what to do. It only evaluates how good a situation is. That is its entire job.
 
-## **5.4 The Actor — The Decision-Maker**
+### 5.4 The Actor — The Decision-Maker
 
 The actor is what Chapter 5 adds that nothing before it had. It maintains a policy — a set of action tendencies, one for each situation, expressing how likely Vera is to take each possible action from that situation.
 
@@ -90,7 +90,7 @@ TD error is negative → the action I just took contributed to a worse-than-expe
 
 The actor never evaluates situations itself. It only adjusts its action tendencies based on what the critic reports. The critic provides the signal. The actor uses it to shape behavior.
 
-## **5.5 The Actor-Critic Feedback Loop**
+### 5.5 The Actor-Critic Feedback Loop
 
 Neither component works without the other. The complete loop at every step:
 
@@ -110,7 +110,7 @@ Neither component works without the other. The complete loop at every step:
 
 The actor needs the critic’s TD error to know whether its choices are working. The critic needs the actor to keep generating new experiences to keep updating its estimates from. They are mutually dependent.
 
-## **5.6 Trial and Error — The Exploration-Exploitation Tradeoff**
+### 5.6 Trial and Error — The Exploration-Exploitation Tradeoff
 
 There is a fundamental problem the actor faces that the critic cannot solve alone. If Vera only ever does what her current policy says is best, she will never discover that something else might be better. This is the exploration-exploitation tradeoff:
 
@@ -126,7 +126,7 @@ This maps cleanly onto Bila's run-and-tumble from Chapter 0. The tumble was neve
 
 **The ceiling of curiosity — **Curiosity refines exploration but does not resolve the tradeoff. The fundamental tension — when to stop exploring and commit to exploiting what is already known — remains real. A too-curious agent can become trapped by novelty itself, endlessly drawn toward unfamiliar states without ever exploiting what it has learned. This failure mode has a name: the noisy TV problem. An agent rewarded for novelty discovers an unpredictable signal — a screen of flickering static, a patch of ocean where chemical gradients shift chaotically — and fixates on it indefinitely. The signal is always novel. The agent never moves on. Curiosity made exploration smarter. It did not make the tradeoff disappear.
 
-## **5.7 The Long-Horizon Problem — What Basic RL Cannot Do**
+### 5.7 The Long-Horizon Problem — What Basic RL Cannot Do
 
 Basic actor-critic RL inherits the temporal limitations of TD Learning from Chapter 3. The critic’s TD error only looks one step ahead. Discount factor gamma causes distant rewards to shrink toward zero. Eligibility traces have a fixed decay window. Credit assignment dilutes over long sequences.
 
@@ -144,9 +144,9 @@ The solutions built on top of basic RL each extend the horizon but reveal a new 
 
 **Monte Carlo Tree Search: **Explicitly search forward through possible future sequences as a tree of possibilities. AlphaGo combines this with a neural network trained by RL to look many moves ahead. Ceiling: tree search scales poorly with branching factor. Real environments have near-infinite branching. Sampling the tree can never be dense enough to guarantee finding the best path in highly complex environments.
 
-# **Chapter 5 — Full Act Structure**
+## Chapter 5 — Full Act Structure
 
-## **Act 1 — The Missing Piece**
+### Act 1 — The Missing Piece
 
 *Vera can perceive the world with extraordinary depth. But perception is not action. The cost of seeing without choosing is revealed.*
 
@@ -160,7 +160,7 @@ The solutions built on top of basic RL each extend the horizon but reveal a new 
 
 **The radiatan contrast — **Nearby, a radiatan sits motionless. It has no perceptual hierarchy. It has no TD error signal. It has no policy. It simply waits. It has never needed to choose between a predator and food simultaneously because it has never moved toward either. The world comes to it or it does not. Vera chose to engage with the world. And the world keeps demanding more sophisticated answers to that engagement.
 
-## **Act 2 — The Actor Arrives**
+### Act 2 — The Actor Arrives
 
 *The critic already exists. Chapter 5 adds the actor. The feedback loop forms. Reaction becomes strategy.*
 
@@ -208,7 +208,7 @@ repeat
 
 **The moment of insight — **Everything that came before was always heading here. The good/bad sensor from Chapter 0 is the reward signal. The weights from Chapter 1 are the policy parameters. Backpropagation from Chapter 2 is how both critic and actor update their network weights. TD Learning from Chapter 3 is the critic’s engine. Hierarchical features from Chapter 4 are how the agent reads its situation. RL is not a new thing. It is the name for what all of that becomes when assembled.
 
-## **Act 3 — The Horizon and Its Limits**
+### Act 3 — The Horizon and Its Limits
 
 *The actor-critic system works. It is extraordinary. And then — quietly, honestly — its ceiling is revealed. The long-horizon problem returns. Each solution extends the horizon and reveals a new ceiling above it.*
 
@@ -228,7 +228,7 @@ repeat
 
 **The radiatan’s quiet answer — **The radiatan is still there. It never needed to plan. It never needed a hierarchy of sub-goals or an internal model of the world. It never needed to explore or exploit, to estimate value or assign credit. It simply waited. It will outlast every complexity Vera is navigating, by never attempting to navigate any of it. Vera’s system is extraordinary. It is still not enough. And the radiatan is fine.
 
-# **The Human Parallel — The Rediscovery of Agency**
+## The Human Parallel — The Rediscovery of Agency
 
 *Not an act — a named layer of context sitting between Vera’s story and the philosophical thread. The same framework Vera’s nervous system discovered in the ancient ocean was formalised by human researchers across the twentieth century — and then found, unmistakably, inside the human brain. This is that story.*
 
@@ -248,7 +248,7 @@ repeat
 
 *The algorithms did not appear from nowhere. They are the same logic that life discovered hundreds of millions of years ago — just running on silicon instead of cells.*
 
-# **Philosophical Thread — The Emergence of Agency**
+## Philosophical Thread — The Emergence of Agency
 
 *A quiet moment at the end of Chapter 5. Not an act — a question left in the water, continuing the thread from Chapters 1 through 4.*
 
@@ -266,9 +266,9 @@ repeat
 
 *This question will return.*
 
-# **Updated Overall Chapter Arc**
+## Updated Overall Chapter Arc
 
-## **Conceptual Layer**
+### Conceptual Layer
 
 - Chapter 0 — if/else, run and tumble, good/bad sensor, weight
 
@@ -284,7 +284,7 @@ repeat
 
 - Chapter 6 — Deep RL, TD Learning + CNN unified, Bila and Vera’s legacies converge, AlphaGo, modern AI
 
-## **Narrative Layer**
+### Narrative Layer
 
 - Radiatans as recurring contrast — unchanged, unbothered, surviving without any of this, present at the end of every chapter
 
@@ -296,7 +296,7 @@ repeat
 
 - The horizon ceiling — each solution to the long-horizon problem is shown as a genuine advance and a genuine new limitation, not a failure but a frontier
 
-## **Philosophical Layer**
+### Philosophical Layer
 
 - A steering signal is born — Chapter 0
 
@@ -312,7 +312,7 @@ repeat
 
 - When does a policy become a will? When does acting because the numbers said so become genuinely choosing?
 
-# **Key Narrative ****&**** Pedagogical Decisions for Chapter 5**
+## Key Narrative & Pedagogical Decisions for Chapter 5
 
 - The critic is revealed as already present — the key pedagogical move of Act 1 is recognising that Vera already has the critic from Chapter 3. The actor is introduced as the missing piece, not RL as an entirely new system. This preserves the cumulative structure of the whole project.
 
