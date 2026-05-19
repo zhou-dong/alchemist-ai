@@ -1,0 +1,3 @@
+export const FPS = 30;
+export const ACT_DURATION_FRAMES = 150;
+export const CHAPTER_DURATION_FRAMES = ACT_DURATION_FRAMES * 3;
