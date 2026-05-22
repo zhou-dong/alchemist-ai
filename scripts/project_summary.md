@@ -39,27 +39,15 @@ Each protagonist is chosen because their biology embodies the algorithm being ta
 
 ## 5. Chapter Arc
 
-Chapters are cumulative both biologically (each evolutionary breakthrough builds on the last) and algorithmically (each algorithm composes on top of the previous).
+Chapters are cumulative both biologically (each evolutionary breakthrough builds on the last) and algorithmically (each algorithm composes on top of the previous). Vocabulary and intuitions introduced in earlier chapters are reused or bridged in later ones rather than restated from scratch — a concept may be *felt* in one chapter and *named* in the next, or introduced in service of an algorithm that only arrives later.
 
-Currently planned:
-
-- **Chapter 0** — if/else, run and tumble, good/bad sensor, weight
-- **Chapter 1** — external conflict, the perceptron, internal state, arousal
-- **Chapter 2+** — TBD (a candidate: predation introducing reactive decision trees)
-
-Cross-chapter pedagogical decisions (about how concepts bridge between chapters):
-
-- Run-and-tumble is the unifying biological behavior introduced in Chapter 0 and reused throughout
-- "Weight" is introduced in Chapter 0 specifically to bridge naturally into the perceptron in Chapter 1
-- Arousal is felt in Chapter 0 as intensity difference, then named and explained in Chapter 1
-
-Chapter-internal staging decisions (which scene comes before which, how reveals are ordered within a single chapter) belong in that chapter's script, not here.
+The current list of chapters lives in `scripts/README.md`. Specific chapter contents, the specific cross-chapter bridges between them, and chapter-internal staging all live in each chapter's `chN-*.md` script — they are expected to evolve as the scripts are written, and are not pinned down here.
 
 ## 6. The Philosophical Thread
 
 Running quietly through the whole project is a single question:
 
-- A steering signal is born in Chapter 0
+- A steering signal is born — the first bias toward "better" or "worse"
 - It will one day become emotion
 - When exactly does that happen?
 - Does AI face the same question?
