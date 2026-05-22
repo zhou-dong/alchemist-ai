@@ -35,9 +35,7 @@ The pedagogical contract: **show behavior first, name the concept second.** The 
 
 The project does not have a single protagonist across all chapters. Each major evolutionary leap brings a new creature into focus — the right organism for the algorithm being introduced. As evolutionary time moves forward, the baton is passed.
 
-- **Bila** is the first protagonist: a fictional early bilaterian, ~1cm long, living in the Ediacaran ocean (~555 million years ago). Her bilateral body plan gives her direction, and direction means choice. She has no eyes — only chemical sensors that detect changes in signal concentration over time. She cannot aim at food or danger; she only knows whether things are getting better or worse moment to moment. Bila carries the early chapters and returns when relevant.
-- **Future protagonists** will be introduced as evolution progresses. Each is chosen because their biology embodies the algorithm being taught.
-- **Radiatans** (radially symmetric creatures) appear as a recurring contrast in the early chapters — passive survival vs. active choice.
+Each protagonist is chosen because their biology embodies the algorithm being taught. The specifics of any individual creature (anatomy, era, sensory world, contrasting neighbors) belong in that chapter's script, not here.
 
 ## 5. Chapter Arc
 
@@ -49,13 +47,13 @@ Currently planned:
 - **Chapter 1** — external conflict, the perceptron, internal state, arousal
 - **Chapter 2+** — TBD (a candidate: predation introducing reactive decision trees)
 
-Key pedagogical decisions baked into the early chapters:
+Cross-chapter pedagogical decisions (about how concepts bridge between chapters):
 
 - Run-and-tumble is the unifying biological behavior introduced in Chapter 0 and reused throughout
 - "Weight" is introduced in Chapter 0 specifically to bridge naturally into the perceptron in Chapter 1
 - Arousal is felt in Chapter 0 as intensity difference, then named and explained in Chapter 1
-- The perceptron is introduced as the solution to external conflict before internal state is added
-- Internal state and arousal are revealed together in Act 3 of Chapter 1 as a unified "inner world" concept
+
+Chapter-internal staging decisions (which scene comes before which, how reveals are ordered within a single chapter) belong in that chapter's script, not here.
 
 ## 6. The Philosophical Thread
 
