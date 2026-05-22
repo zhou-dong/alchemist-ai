@@ -1,14 +1,14 @@
-# Project Summary: AI Algorithms Through Ancient Life
+# Project Summary: A Brief History of Intelligence, in Algorithms
 
 *Context document for continuing development across chat sessions*
 
 ## 1. Project Concept
 
-A series of animated chapter videos that introduces AI algorithms to a general audience by following the evolutionary history of intelligence. Each chapter pairs a real evolutionary leap with the AI algorithm whose logic was first discovered by that biological breakthrough.
+A series of animated chapter videos that introduces AI algorithms to a general audience by following the evolutionary history of intelligence. Each chapter pairs a real evolutionary leap with the AI algorithm whose logic life first stumbled upon there.
 
 The core thesis:
 
-*"The algorithms powering modern AI did not appear from nowhere. They are the same logic that life discovered hundreds of millions of years ago — just running on silicon instead of cells."*
+*"The algorithms powering modern AI did not appear from nowhere. They are the same logic that life stumbled upon hundreds of millions of years ago — just running on silicon instead of cells."*
 
 The narrative frame is inspired by Max Bennett's *A Brief History of Intelligence*; the algorithm explanations aim for the rigor and visual clarity of 3Blue1Brown.
 
@@ -39,7 +39,7 @@ Each protagonist is chosen because their biology embodies the algorithm being ta
 
 ## 5. Chapter Arc
 
-Chapters are cumulative both biologically (each evolutionary breakthrough builds on the last) and algorithmically (each algorithm composes on top of the previous). Vocabulary and intuitions introduced in earlier chapters are reused or bridged in later ones rather than restated from scratch — a concept may be *felt* in one chapter and *named* in the next, or introduced in service of an algorithm that only arrives later.
+Chapters are cumulative both biologically (each evolutionary breakthrough builds on the last) and algorithmically (each algorithm composes on top of the previous). Vocabulary and intuitions introduced in earlier chapters are reused or bridged in later ones rather than restated from scratch.
 
 The current list of chapters lives in `scripts/README.md`. Specific chapter contents, the specific cross-chapter bridges between them, and chapter-internal staging all live in each chapter's `chN-*.md` script — they are expected to evolve as the scripts are written, and are not pinned down here.
 
