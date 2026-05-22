@@ -4,7 +4,7 @@ Source material for the alchemist-ai video series. **Not code** — these files 
 
 ## What's here
 
-- `project_summary.md` — project-level scope: concept, format, storytelling methodology, chapter beats, protagonists, chapter arc, philosophical thread
+- `series_bible.md` — the series bible: concept, format, storytelling methodology, chapter beats, protagonists, chapter arc, philosophical thread
 - `ch0-the-simple-world.md` — Chapter 0: if/else, run-and-tumble, good/bad sensor, weight
 - `ch1-when-simple-rules-break.md` — Chapter 1: perceptron, internal state, arousal
 - `ch2-when-weights-learn.md` — Chapter 2: neural net, loss, backprop, implicit association
@@ -16,9 +16,9 @@ Chapter 6 (Deep RL convergence) is planned but not yet written.
 
 ## Scope: what goes in which file
 
-`project_summary.md` holds only **project-level** facts and **cross-chapter** principles. Chapter-specific details belong in that chapter's `chN-*.md` file, not in the summary.
+`series_bible.md` holds only **project-level** facts and **cross-chapter** principles. Chapter-specific details belong in that chapter's `chN-*.md` file, not in the bible.
 
-**Belongs in the summary:**
+**Belongs in the bible:**
 
 - Narrative frame, audience, format, tone
 - The principle of how protagonists work (hand-off across evolutionary time; each chosen for the algorithm they embody)
