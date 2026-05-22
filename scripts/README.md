@@ -4,7 +4,7 @@ Source material for the alchemist-ai video series. **Not code** — these files 
 
 ## What's here
 
-- `project_summary.md` — project-level scope: concept, protagonist, overall chapter arc, pedagogical decisions
+- `project_summary.md` — project-level scope: concept, format, storytelling methodology, protagonists, chapter arc, philosophical thread
 - `ch0-the-simple-world.md` — Chapter 0: if/else, run-and-tumble, good/bad sensor, weight
 - `ch1-when-simple-rules-break.md` — Chapter 1: perceptron, internal state, arousal
 - `ch2-when-weights-learn.md` — Chapter 2: neural net, loss, backprop, implicit association
