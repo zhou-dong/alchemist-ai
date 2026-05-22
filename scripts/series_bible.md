@@ -1,6 +1,6 @@
-# Project Summary: A Brief History of Intelligence, in Algorithms
+# Series Bible: A Brief History of Intelligence, in Algorithms
 
-*Context document for continuing development across chat sessions*
+*The series' creative reference — concept, format, methodology, protagonists, arc.*
 
 ## 1. Project Concept
 
