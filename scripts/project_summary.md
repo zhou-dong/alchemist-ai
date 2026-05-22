@@ -17,7 +17,7 @@ The narrative frame is inspired by Max Bennett's *A Brief History of Intelligenc
 - **Medium**: animated explainer videos, built in Remotion
 - **Structure**: a series of chapter videos, cumulative — each chapter assumes the previous, both biologically and algorithmically
 - **Audience**: general public, no prior AI or biology background assumed
-- **Narration**: an omniscient documentary narrator (Attenborough-style)
+- **Narration**: an omniscient documentary narrator (Attenborough-style). The voice stays simple and accessible — aims for the feel of an easy book or an easy watch, not a textbook. Technical vocabulary is allowed when necessary, but not the default. Inner voice (projecting states onto a protagonist vs. describing them from outside) is a chapter-by-chapter judgment, not a project-level rule.
 - **Visual style**: each evolutionary era has its own visual signature; chapters within the same era share a style. The shift between eras itself signals that time has moved forward.
 - **Duration per chapter**: TBD
 - **Tone**: TBD. Confirmed ingredient: a thread of humor woven through, to keep it attractive without sliding into hype or jokes-per-minute
