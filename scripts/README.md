@@ -14,6 +14,24 @@ Source material for the alchemist-ai video series. **Not code** — these files 
 
 Chapter 6 (Deep RL convergence) is planned but not yet written.
 
+## Scope: what goes in which file
+
+`project_summary.md` holds only **project-level** facts and **cross-chapter** principles. Chapter-specific details belong in that chapter's `chN-*.md` file, not in the summary.
+
+**Belongs in the summary:**
+
+- Narrative frame, audience, format, tone
+- The principle of how protagonists work (hand-off across evolutionary time; each chosen for the algorithm they embody)
+- Cross-chapter pedagogical bridges — e.g. "weight" is introduced in Ch0 specifically to set up the perceptron in Ch1
+
+**Belongs in the chapter script:**
+
+- A protagonist's specific anatomy, era, body plan, sensory apparatus
+- Contrasting characters that only appear in certain chapters (e.g. radiatans)
+- Scene order, act-level staging, within-chapter reveal sequencing
+
+When in doubt, ask: *is this true across the whole project, or only inside one chapter?* If only inside one chapter, it goes in that chapter's script.
+
 ## File naming
 
 Chapter scripts: `chN-kebab-case-title.md` (e.g. `ch2-when-weights-learn.md`). Project-level docs use plain `snake_case.md`.
