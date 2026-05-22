@@ -17,6 +17,8 @@ The narrative frame is inspired by Max Bennett's *A Brief History of Intelligenc
 - **Medium**: animated explainer videos, built in Remotion
 - **Structure**: a series of chapter videos, cumulative — each chapter assumes the previous, both biologically and algorithmically
 - **Audience**: general public, no prior AI or biology background assumed
+- **Narration**: an omniscient documentary narrator (Attenborough-style)
+- **Visual style**: each evolutionary era has its own visual signature; chapters within the same era share a style. The shift between eras itself signals that time has moved forward.
 - **Duration per chapter**: TBD
 - **Tone**: TBD. Confirmed ingredient: a thread of humor woven through, to keep it attractive without sliding into hype or jokes-per-minute
 
@@ -24,26 +26,39 @@ The narrative frame is inspired by Max Bennett's *A Brief History of Intelligenc
 
 Each chapter alternates between two visual and narrative registers:
 
-- **Evolutionary register** — the biology. Answers *why this algorithm had to exist*: life faced a survival problem, and here's how a creature solved it. Naturalistic, like a nature documentary.
-- **Algorithm register** — the math. Answers *how the algorithm actually works*. Patient, visual, rigorous — diagrams, weights, decision boundaries, gradients.
+- **Evolutionary register** — the biology. Answers *why this algorithm had to exist*: life faced a survival problem, and here's how a creature solved it. Naturalistic, like a nature documentary. Uses biology vocabulary (chemical sensors, swimming, predator-avoidance).
+- **Algorithm register** — the math. Answers *how the algorithm actually works*. Patient, visual, rigorous — diagrams, weights, decision boundaries, gradients. Uses modern AI vocabulary (weight, perceptron, gradient).
 
 The biology motivates; the math mechanizes. The two registers are not separated into halves of a video — they interleave, each handing off to the other as the chapter progresses.
 
 The pedagogical contract: **show behavior first, name the concept second.** The audience builds intuition before they receive vocabulary.
 
-## 4. Protagonists
+**Vocabulary rule:** each register stays in its own language. The biology register uses biology terms; the algorithm register uses AI terms. The handoff between registers is where one translates into the other — that's how modern AI vocabulary earns its place without anachronism in the biology.
+
+## 4. Chapter Beats
+
+Each chapter is built from four kinds of content beats:
+
+1. **Biology beat** — the creature, its world, its survival problem. *(Core — always present.)*
+2. **Algorithm beat** — the math made visual. *(Core — always present.)*
+3. **Human-history beat** — when and who rediscovered this in AI (e.g., Rosenblatt and the perceptron, 1958). *(Recommended default; optional when no clean human story fits.)*
+4. **Real-world example beat** — where this algorithm lives today (e.g., the iRobot Roomba running the bacterial run-and-tumble strategy). *(Recommended default; content can be filled in later.)*
+
+Beats 1 and 2 map to the two registers in Section 3. Beats 3 and 4 build on the algorithm register's visual language.
+
+## 5. Protagonists
 
 The project does not have a single protagonist across all chapters. Each major evolutionary leap brings a new creature into focus — the right organism for the algorithm being introduced. As evolutionary time moves forward, the baton is passed.
 
 Each protagonist is chosen because their biology embodies the algorithm being taught. The specifics of any individual creature (anatomy, era, sensory world, contrasting neighbors) belong in that chapter's script, not here.
 
-## 5. Chapter Arc
+## 6. Chapter Arc
 
 Chapters are cumulative both biologically (each evolutionary breakthrough builds on the last) and algorithmically (each algorithm composes on top of the previous). Vocabulary and intuitions introduced in earlier chapters are reused or bridged in later ones rather than restated from scratch.
 
 The current list of chapters lives in `scripts/README.md`. Specific chapter contents, the specific cross-chapter bridges between them, and chapter-internal staging all live in each chapter's `chN-*.md` script — they are expected to evolve as the scripts are written, and are not pinned down here.
 
-## 6. The Philosophical Thread
+## 7. The Philosophical Thread
 
 Running quietly through the whole project is a single question:
 
