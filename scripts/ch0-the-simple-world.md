@@ -40,9 +40,11 @@ The *bias* is the baseline activity of the central integrating enzyme (CheA in r
 
 #### Beat 1 — The First Oceans
 
-**Visual:** An ancient ocean, far older than the Ediacaran world we'll see later — warm, shallow, sunlit from above. The seabed is covered in vast, slimy microbial mats: layers of pink, green, and deep purple. No fish. No worms. No plants. No movement except the slow currents. The mood is alien, primordial. The visual style is distinct from later chapters — abstract, almost geological.
+**Visual:** The Archean ocean, around 3.5 billion years ago — warm, shallow, sunlit from above. The seabed is covered in vast, slimy microbial mats: layers of pink, green, and deep purple. No fish. No worms. No plants. No movement except the slow currents. The mood is alien, primordial. The visual style is distinct from later chapters — abstract, almost geological. A soft caption can fade in early: *Earth — 3.5 billion years ago.*
 
 **Narration:** Long before there were animals — long before there were plants, long before there was anything you'd call a creature — there was the ocean. And there was something in it.
+
+Three and a half billion years ago.
 
 Something so small you'd need a microscope to see it. So simple, you wouldn't call it intelligent. You might not even call it alive. But it was. Just barely. In the most basic way anything has ever been alive.
 
