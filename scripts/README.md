@@ -5,8 +5,8 @@ Source material for the alchemist-ai video series. **Not code** — these files 
 ## What's here
 
 - `series_bible.md` — the series bible: concept, format, storytelling methodology, chapter beats, protagonists, chapter arc, philosophical thread
-- `ch0-the-simple-world.md` — Chapter 0: if/else, run-and-tumble, good/bad sensor, weight
-- `ch1-when-simple-rules-break.md` — Chapter 1: perceptron, internal state, arousal
+- `ch0-the-simple-world.md` — Chapter 0: bacteria, run-and-tumble, if/else as raw mechanism (before intelligence)
+- `ch1-when-simple-rules-break.md` — Chapter 1: Bila enters; the perceptron, internal state, arousal
 - `ch2-when-weights-learn.md` — Chapter 2: neural net, loss, backprop, implicit association
 - `ch3-when-time-becomes-a-teacher.md` — Chapter 3: eligibility traces, STDP, TD Learning
 - `ch4-when-structure-becomes-visible.md` — Chapter 4: hierarchy, invariance, CNN (introduces Vera)
