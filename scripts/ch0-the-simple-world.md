@@ -32,7 +32,7 @@ When attractants and repellents arrive together, the cell handles the conflict a
 
 > decision = Σ ( signal × hidden weight ) + hidden bias
 
-The *bias* is the baseline activity of the central integrating enzyme (CheA in real bacteria) — what determines the default tumbling rate when no signals are arriving. This is **the same shape as the perceptron formula**. What's missing in bacteria is not the math — it's the *architecture*: no central neuron, no tunable parameters, no internal-state input. That architectural distinction is what Chapter 1 will deliver.
+The *bias* is the baseline activity of the central integrating enzyme (CheA in real bacteria) — what determines the default tumbling rate when no signals are arriving. This shape — weighted sum plus bias — is the same math the next chapter will name and explain. What's missing in bacteria is not the math but the *architecture*: no central place where signals meet, no parameters that can change, no signals from inside the body. That architectural distinction is what Chapter 1 will deliver.
 
 ## Part 1 — The Story
 
@@ -210,21 +210,19 @@ And the reason that decision is running — the reason this exact rule, this exa
 
 #### Beat 10 — The Limit
 
-**Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, to a black sky. Soft text appears: *Billions of years pass.* The image fades. When it returns, the ocean has changed. The water is colder, dimmer. Microbial mats are still there — but among them, for the first time, something larger. Something with a front and a back. A small, soft creature drifts in the distance, just out of focus.
+**Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, holding the sense of an enormous, ancient, persistent world. Soft text appears: *Three and a half billion years. And counting.* The image holds.
 
 **Narration:** And so it worked.
 
 For an unimaginably long time, it worked.
 
-Three and a half billion years — almost the entire history of the planet — under the same simple rule, in the same kind of body. No brains. No nervous systems. No decisions, in the sense we mean it. Just chemistry. And it was enough. The ocean was full.
+Three and a half billion years — almost the entire history of the planet — under the same simple rule, in the same kind of body. No brains. No nervous systems. No decisions, in the sense we mean it. Just chemistry. And it was enough.
 
-But every story has an edge. A point where the simple stops being enough.
+The ocean was full. The bacteria thrived — and they still thrive today. By any honest measure, they remain the most successful kind of life that has ever existed on this planet.
 
-For three and a half billion years, the cell did everything it would ever do, with whatever it was born with. The world stayed outside. The cell stayed inside. They met only at the gates — and even then, only in chemistry.
+That is the story of the simple world. A rule that worked. A body that needed nothing more.
 
-That is about to change.
-
-The ocean is about to grow something larger. Something that will not stay the way it was born. Something where the inside of the body — finally — has a voice. And from it, something new in the world: a real choice.
+It is, in its way, complete.
 
 ## Part 2 — The Math
 
@@ -275,11 +273,11 @@ Then — almost as an afterthought — a single new term fades in at the end of 
 
 The bias term highlights, and a small label points to the inside of the cell: *baseline activity*. The see-saw shifts slightly in its starting position — visualizing the default tendency before any signals arrive.
 
-Below the full formula, smaller text appears, each line emphasized in turn: *no central neuron. no tunable parameters. no internal-state input.*
+Below the full formula, smaller text appears, each line emphasized in turn: *no central place to weigh. no parameters that can change. no signals from inside the body.*
 
 The image holds. A slow fade-out at the very end, into the dark water that opens Chapter 1.
 
-**Narration:** There is one more thing — the part that, if you know about neural networks, will already sound familiar.
+**Narration:** There is one more thing.
 
 When the cell faced food and danger at the same time, watch what was *actually* happening, in math.
 
@@ -297,16 +295,40 @@ So the math, written out fully, is:
 
 A *bias.*
 
-If you have ever seen the formula for a perceptron — the smallest unit of a neural network — this is the exact same equation. *Signal times weight, plus bias.* Which means — three billion years before Rosenblatt drew the perceptron on paper — the cell was, in some sense, already running one.
+This shape — weighted sum, plus bias — is the simplest possible model of a decision-making cell. And the bacterium has been running it, in chemistry, for three billion years.
 
-But — and this is the catch — only the *math* was there. Not the *machine.*
-
-There was no central neuron where signals met. The weights couldn't be changed during the cell's life — they were fixed in the receptors at birth. The bias couldn't be tuned. And no signal from *inside* the body could join the sum, because there was no inside-the-body signal to join with.
-
-The math, on paper, was identical. But the *meaning* was not.
+The arithmetic was real. Hidden in molecules. Three billion years of weighted sums, every moment of every day, without anyone to know that's what they were.
 
 In the cell, the sum was an accident — many tiny if/else mechanisms pushing on the same molecule, the total emerging from the physics. There was no place anywhere in the cell whose *job* was to weigh.
 
-That place is what is about to be born. A part of a body whose only purpose is to gather signals and weigh them against each other. And once a body has such a place — a place whose job is to weigh — something new becomes possible. Something we will, eventually, learn to call *intelligence.*
+That is the math of the simple world.
 
-And later still — much later — those weights will start to change themselves. Learning from what worked, what didn't, what to do next time. But that is a story for another chapter.
+## Closing — The Threshold
+
+*A final moment, after both story and math. The point where the simple world ends, and something larger begins.*
+
+#### Beat C1 — What's About to Arrive
+
+**Visual:** Cut to black. A single quiet image: the microbial ocean, vast and ancient. Soft text appears: *Three and a half billion years pass.* The image fades. When it returns, the ocean has changed. The water is colder, dimmer. Microbial mats are still there — but among them, for the first time, something larger. Something with a front and a back. A small, soft creature drifts in the distance, just out of focus. The image holds.
+
+**Narration:** Take a step back for a moment, and look at what we have seen.
+
+A simple world. A simple rule. And, hidden inside that simple rule, real math — a weighted sum plus a bias, running silently in chemistry for three and a half billion years.
+
+But limits.
+
+In the cell, there was no place inside the body whose only job was to weigh. The weights could not change during a single cell's life — they were set when it was born. The bias could not be tuned. And nothing from *inside* the body could speak.
+
+The math existed. The machinery did not.
+
+That is what is about to arrive.
+
+The ocean is about to grow something larger. A body with a front, and a back, and somewhere in the middle — for the first time — a place where signals can actually meet. A place where signals can be weighed deliberately. A place where the inside of the body can have a voice in the decision.
+
+And once a body has such a place — a place whose only job is to weigh — something new becomes possible.
+
+Something we will, eventually, learn to call *intelligence.*
+
+And later still — much later — those weights themselves will start to change. Learning from what worked, what didn't, what to try next time. But that is a story for another chapter.
+
+For now: the threshold. A simple world, complete. Something more, just about to begin.
