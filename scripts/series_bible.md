@@ -24,20 +24,21 @@ The narrative frame is inspired by Max Bennett's *A Brief History of Intelligenc
 - **Duration per chapter**: TBD
 - **Tone**: TBD. Confirmed ingredient: a thread of humor woven through, to keep it attractive without sliding into hype or jokes-per-minute
 
-## 3. Storytelling Approach — Two Registers, Two Parts
+## 3. Storytelling Approach — Two Registers, Two Parts, Plus Closing
 
-Each chapter is built from two visual and narrative registers, structured as **two distinct parts**:
+Each chapter is built from two visual and narrative registers, structured as **two main parts plus a Closing**:
 
-- **Part 1 — The Story** (evolutionary register, biology). Answers *why this algorithm had to exist*: life faced a survival problem, and here's how a creature solved it. Naturalistic, like a nature documentary. Uses biology vocabulary (chemical sensors, swimming, predator-avoidance). No algorithm framing, no formulas, no code.
-- **Part 2 — The Math** (algorithm register). Answers *how the algorithm actually works*. Patient, visual, rigorous — diagrams, weights, decision boundaries, gradients, code. Uses modern AI vocabulary (weight, perceptron, gradient). Explicitly translates the story we just saw into formal terms.
+- **Part 1 — The Story** (evolutionary register, biology). Answers *why this algorithm had to exist*: life faced a survival problem, and here's how a creature solved it. Naturalistic, like a nature documentary. Uses biology vocabulary (chemical sensors, swimming, predator-avoidance). No algorithm framing, no formulas, no code. **Lands internally** — Part 1 ends with a story-side resolution, no forward-pointing.
+- **Part 2 — The Math** (algorithm register). Answers *how the algorithm actually works*. Patient, visual, rigorous — diagrams, weights, decision boundaries, gradients, code. Uses modern AI vocabulary (weight, perceptron, gradient). Explicitly translates the story we just saw into formal terms. **Lands internally** — Part 2 ends with a math-side resolution, no forward-pointing.
+- **Closing** (varies by chapter). The chapter's reflective coda. May be a bridge to the next chapter (Ch0's *The Threshold*), a philosophical thread (Ch1's *The Seed of Feeling*), or another kind of reflection — whatever fits the chapter's deeper meaning. Always the final structural section, after Part 1 and Part 2.
 
-The biology motivates; the math mechanizes. **The two parts are separate sections within each chapter, not interleaved.** Part 1 plays first — the full narrative arc, pure storytelling, the audience experiences the discovery emotionally. Part 2 follows — retelling key moments through the algorithm's lens, with code, formulas, and diagrams.
+The biology motivates; the math mechanizes; the Closing reflects. **The three sections are separate — not interleaved.** Part 1 plays first: the full narrative arc, pure storytelling, the audience experiences the discovery emotionally. Part 2 follows: retelling key moments through the algorithm's lens. The Closing comes last, after both — the only place where the chapter looks beyond itself.
 
 The pedagogical contract: **show behavior first, name the concept second.** The audience builds full intuition through Part 1's story before receiving vocabulary in Part 2's math.
 
-**Vocabulary rule:** each part stays in its own language. Part 1 uses biology terms only; Part 2 uses AI/CS terms. The transition from Part 1 to Part 2 is the chapter's central handoff — where the story we just saw gets translated into algorithm form.
+**Vocabulary rule:** each part stays in its own language. Part 1 uses biology terms only; Part 2 uses AI/CS terms (but only the terms *this* chapter owns — earlier chapters don't preview later chapters' named concepts, even when describing the underlying logic).
 
-**Chapter bridge:** the setup for the next chapter lives at the end of Part 2 — the algorithm framing naturally points to what the next chapter will add (architecture, learning, internal state, etc.).
+**Chapter bridge:** when relevant, the setup for the next chapter lives in the **Closing** section — never inside Part 1 or Part 2. Each part lands internally so the chapter feels resolved before the bridge arrives.
 
 ## 4. Chapter Beats
 
