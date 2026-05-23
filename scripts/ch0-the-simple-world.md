@@ -38,17 +38,29 @@ The *bias* is the baseline activity of the central integrating enzyme (CheA in r
 
 ### Act 1 — A Simpler World
 
-#### Beat 1 — The First Oceans
+#### Beat 1 — The Young Earth
+
+**Visual:** Wide shot from space. The early Earth — a different Earth. Volcanically active, mostly ocean, with smaller proto-continents poking up. The sky is hazy, orange-pink with methane. The Moon hangs visibly closer and larger. The Sun is dimmer. Slow montage: a meteor strikes, lava flows, steam rises, the steam cools and falls as rain, the first oceans form. Soft caption: *Earth — 4 billion years ago.* Visual style: abstract, geological, slow.
+
+**Narration:** Earth is younger than we tend to feel.
+
+Four and a half billion years ago, our planet formed — a hot ball of rock, struck by other rocks, surrounded by debris. For half a billion years, it was a place no living thing could have survived. Bombarded by asteroids. Wrapped in steam. With a Moon, just then forming, hanging huge and close in the sky.
+
+Then it cooled. The steam fell back to the surface as rain. The first oceans came into existence. The sky was a hazy pink — from methane — and the Sun, still dim, shone through it.
+
+A new chapter in the planet's history begins. Geologists call it the *Archean.*
+
+And in those warm, shallow Archean seas, something happens.
+
+#### Beat 2 — The First Oceans
 
 **Visual:** The Archean ocean, around 3.5 billion years ago — warm, shallow, sunlit from above. The seabed is covered in vast, slimy microbial mats: layers of pink, green, and deep purple. No fish. No worms. No plants. No movement except the slow currents. The mood is alien, primordial. The visual style is distinct from later chapters — abstract, almost geological. A soft caption can fade in early: *Earth — 3.5 billion years ago.*
 
 **Narration:** Long before there were animals — long before there were plants, long before there was anything you'd call a creature — there was the ocean. And there was something in it.
 
-Three and a half billion years ago. The Archean era.
-
 Something so small you'd need a microscope to see it. So simple, you wouldn't call it intelligent. You might not even call it alive. But it was. Just barely. In the most basic way anything has ever been alive.
 
-#### Beat 2 — Meet the Cell
+#### Beat 3 — Meet the Cell
 
 **Visual:** Zoom in. Past the surface of the water, through a drop, into a microscope's view. A single bacterial cell — rod-shaped, transparent, ringed by long whip-like flagella. Inside it, vague shapes drift: molecules, machinery. No nucleus, no nervous system, no organs. Just a small bag of chemistry.
 
@@ -62,7 +74,7 @@ That is the whole story for the next three billion years. One cell, alone in the
 
 ### Act 2 — Two Behaviors, One Mechanism
 
-#### Beat 3 — Finding Food
+#### Beat 4 — Finding Food
 
 **Visual:** Close on the cell's outer membrane. A small attractant receptor sits on the surface. Faint glowing dots of sugar molecules drift through the water. One bumps the receptor — the receptor changes shape, a pulse travels inward. Pull back to the cell's path: when the sugar gradient rises, the flagella bundle together and the cell swims forward in a straight line. When the gradient drops, the flagella unbundle, the cell spins in place, randomly reorienting, then settles, pointing somewhere new. Over many cycles, the cell climbs the gradient toward the food.
 
@@ -80,7 +92,7 @@ Forward. Spin. Forward. Spin.
 
 And — somehow — over thousands of these forwards-and-spins — it finds its way to the food. Not gracefully. Not knowingly. Just — eventually. The way water finds its way down.
 
-#### Beat 4 — Avoiding Danger
+#### Beat 5 — Avoiding Danger
 
 **Visual:** A different scene. The water is darker. A toxic chemical drifts in from one side — visualized as a sickly green cloud. On the cell's surface, a *different* receptor — a repellent receptor — picks up the toxin. The cell's behavior: when the toxic concentration rises (the cloud getting closer), the cell spins chaotically in place, with no committed direction. When the concentration falls (the cloud receding), the cell swims forward in a straight line. Over many cycles, the cell escapes the toxic zone.
 
@@ -102,7 +114,7 @@ A completely different strategy for a completely different problem.
 
 Or so it would seem.
 
-#### Beat 5 — Same Two Moves
+#### Beat 6 — Same Two Moves
 
 **Visual:** Split screen, slowed down. Left: the cell in the sugar gradient — long, gentle forward swims, punctuated by tight spins. Right: the cell in the toxin cloud — tight spins, punctuated by long, urgent forward swims. The two scenes play in parallel for several beats. Then they fade away. And underneath, in empty black space, two stripped-down motion diagrams emerge: a straight forward arrow, and a chaotic spin. Unlabeled. The same two shapes, identical, sitting beneath both behaviors. A long held silence. Then, slowly — as the narration names them — soft labels fade in: *Run* (beneath the arrow), *Tumble* (beneath the spin).
 
@@ -118,9 +130,7 @@ Two stories. Two completely different problems. The same two moves.
 
 *Swim. Spin.* That is all. The cell's entire vocabulary. Two motions, used for every problem it has ever faced, for three billion years. Biologists have a name for the swim. They call it a *run.* They have a name for the spin too. They call it a *tumble.* Together — *run and tumble.* The oldest dance in the world.
 
-### Act 3 — The Limit of Mechanism
-
-#### Beat 6 — The Simple Rule
+#### Beat 7 — The Simple Rule
 
 **Visual:** On screen, the cell continues its journey — run, tumble, run, tumble. To the side, soft natural-language text fades in, capturing what the cell is doing in plain words:
 
@@ -146,7 +156,9 @@ When the world gets worse — change direction.
 
 Two lines. Two rules. One little body, drifting through the deep ancient ocean, following them blindly, since long before there was anything alive that could think.
 
-#### Beat 7 — When Food and Danger Collide
+### Act 3 — The Limit of Mechanism
+
+#### Beat 8 — When Food and Danger Collide
 
 **Visual:** A new scene. The cell drifts in water where both an attractant and a repellent are arriving from the same direction — a sugar molecule and a toxin appearing together. On the cell's surface, both receptor types fire at once. Inside the cell, the molecular switch is shown as a see-saw — the attractant signal pushes it one way (toward *run*), the repellent signal pushes it the other (toward *tumble*). The see-saw tips. Whichever side is heavier wins. The cell either runs toward the food (if the attractant pull is stronger) or tumbles away (if the repellent push is stronger).
 
@@ -168,7 +180,7 @@ The cell doesn't freeze. It just — somehow — works it out.
 
 Quietly, inside this tiny body, something is happening. Some kind of contest between the signals. Some kind of resolution. The cell *handles* the conflict. It just doesn't know that is what it's doing.
 
-#### Beat 8 — No One Is Deciding
+#### Beat 9 — No One Is Deciding
 
 **Visual:** Close on the cell. The pace slows further. A side panel opens, showing the molecular cascade — events as dominoes falling, one triggering the next, with no gap, no chooser. The molecules don't know what they're doing. They just react. Inside the cell, no person, no eye, no central seat — just chemistry, all the way down.
 
@@ -186,7 +198,7 @@ The cell does not make a decision. The cell *is* a decision — running, on auto
 
 And the reason that decision is running — the reason this exact rule, this exact way of doing things, is alive in the ocean today — is just because, a very long time ago, the cells that did it this way lived. And the ones that did it any other way did not.
 
-#### Beat 9 — The Limit
+#### Beat 10 — The Limit
 
 **Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, to a black sky. Soft text appears: *Billions of years pass.* The image fades. When it returns, the ocean has changed. The water is colder, dimmer. Microbial mats are still there — but among them, for the first time, something larger. Something with a front and a back. A small, soft creature drifts in the distance, just out of focus.
 
@@ -208,7 +220,7 @@ The ocean is about to grow something larger. Something that will not stay the wa
 
 #### Algorithm Beat A1 — The If/Else
 
-**Visual:** Black background. The cell from earlier scenes appears small and centered, almost iconic. Around it, the rule we saw in Beat 6 reappears in plain English:
+**Visual:** Black background. The cell from earlier scenes appears small and centered, almost iconic. Around it, the rule we saw in Beat 7 reappears in plain English:
 
 > When the world gets better — keep going.
 >
@@ -239,7 +251,7 @@ In proteins. In silicon. The shape doesn't care.
 
 #### Algorithm Beat A2 — The Implicit Weighted Sum
 
-**Visual:** Cut to the conflict scene from Beat 7: the cell with both attractant and repellent arriving from the same direction. The molecular see-saw is shown again, but this time alongside a formula appearing in clean, mathematical text. The formula builds in stages.
+**Visual:** Cut to the conflict scene from Beat 8: the cell with both attractant and repellent arriving from the same direction. The molecular see-saw is shown again, but this time alongside a formula appearing in clean, mathematical text. The formula builds in stages.
 
 First, the weighted sum appears:
 
