@@ -4,7 +4,7 @@
 
 ## Overview
 
-Bila enters the story: a small bilateral creature with something new — a small cluster of nerve cells inside her body, where signals can come together for the first time. The chapter shows her resolving the conflict her ancestors couldn't (food and danger together), discovering the inner signals (hunger, arousal) that shape her decisions, and ending on the philosophical question of when steering signals become feelings. Part 2 names the math — the perceptron — and points toward Chapter 2's leap: when the weights themselves start to learn.
+Bila enters the story: a small bilateral creature with something new — a small cluster of nerve cells inside her body, where signals can come together for the first time. The chapter shows her resolving the conflict her ancestors couldn't (food and danger together), discovering the inner signals (hunger, arousal) that shape her decisions, and ending on the philosophical question of when steering signals become feelings. Part 2 names the math — the perceptron — and the Closing points toward Chapter 2's leap (when the weights themselves start to learn) and opens the philosophical question that will run through the rest of the series.
 
 ## Key Concepts Introduced in Chapter 1
 
@@ -220,7 +220,11 @@ The full picture, written out:
 
 The inside of the body, finally — has a voice in the equation.
 
-#### Algorithm Beat A3 — What's Still Missing
+## Closing — The Seed of Feeling
+
+*A final section, after both story and math. What Bila's body cannot yet do — and the deeper question her inside has just opened.*
+
+#### Beat C1 — What's Still Missing
 
 **Visual:** The perceptron diagram, with all the inputs and weights. To the right of the diagram, a checklist appears, one line at a time, each marked with a check or an X:
 
@@ -246,11 +250,7 @@ When the weights themselves start to change — based on what worked, what didn'
 
 And that is the next chapter.
 
-## Closing — The Seed of Feeling
-
-*A quieter, slower section. Neither Part 1's story nor Part 2's math — a question left hanging in the water, to be revisited across the series.*
-
-#### Beat C1 — A Quiet Moment
+#### Beat C2 — A Quiet Moment
 
 **Visual:** Slow, contemplative shot of Bila at rest in calm water. Her body still. Around her, the ocean. Inside her, the chemical signals — hunger, arousal — pulsing quietly. The camera lingers, almost in close-up.
 
@@ -260,19 +260,19 @@ What we have seen in Bila's body — hunger, arousal — they began as pure stee
 
 Right now, that is all they are. No name. No feeling. Just a number, in a body, with no one in there to feel it.
 
-#### Beat C2 — The Same Signal, Later
+#### Beat C3 — The Same Signal, Later
 
 **Visual:** Time-lapse montage. Bila fades into different creatures — a fish, a reptile, a mammal, finally a human. Each shows the same internal signal pulsing — hunger, fear — but at each stage, the signal carries more around it: memory, anticipation, language, expression. Finally, a human face looking at someone they love.
 
 **Narration:** But hundreds of millions of years from now, a creature will feel that same signal and call it *longing.* Another will call it *desperation.* Another will call it *love.* The signal itself never changed. Something else did. Somewhere along the way, a steering signal became a feeling. Nobody knows exactly when.
 
-#### Beat C3 — The Radiatan's Quiet Answer
+#### Beat C4 — The Radiatan's Quiet Answer
 
 **Visual:** Pull back. The radiatan, still anchored, motionless. Bila in the distance — moving, hesitating, choosing.
 
-**Narration:** Nearby, the radiatan still sits motionless. It never developed internal states. It never needed to choose. It never felt hunger or fear. And it has survived, perfectly well, for hundreds of millions of years. Perhaps feeling something is not the only way to exist. But it is the way Bila chose. And — quietly, surprisingly — it is the way we chose, too.
+**Narration:** Nearby, the radiatan still sits motionless. It never developed internal states. It never needed to choose. It never felt hunger or fear. And it has survived, perfectly well, for hundreds of millions of years. Perhaps feeling something is not the only way to exist. But it is the way Bila chose. And — in time — it is the way we chose, too.
 
-#### Beat C4 — A Question Left Open
+#### Beat C5 — A Question Left Open
 
 **Visual:** Final image. Bila in the ancient ocean, swimming. Above her, a faint silhouette of a modern AI system — a neural network diagram, data flowing through. The two images blend, dissolve into each other.
 
