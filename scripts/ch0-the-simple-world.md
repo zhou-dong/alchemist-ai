@@ -166,8 +166,6 @@ When the world gets worse — change direction.
 
 Two lines. Two rules. One little body, drifting through the deep ancient ocean, following them blindly, since long before there was anything alive that could think.
 
-### Act 3 — The Limit of Mechanism
-
 #### Beat 8 — When Food and Danger Collide
 
 **Visual:** A new scene. The cell drifts in water where both an attractant and a repellent are arriving from the same direction — a sugar molecule and a toxin appearing together. On the cell's surface, both receptor types fire at once. Inside the cell, the molecular switch is shown as a see-saw — the attractant signal pushes it one way (toward *run*), the repellent signal pushes it the other (toward *tumble*). The see-saw tips. Whichever side is heavier wins. The cell either runs toward the food (if the attractant pull is stronger) or tumbles away (if the repellent push is stronger).
@@ -189,40 +187,6 @@ Inside the cell, two receptors fire at once. One pushes the molecular switch one
 The cell doesn't freeze. It just — somehow — works it out.
 
 Quietly, inside this tiny body, something is happening. Some kind of contest between the signals. Some kind of resolution. The cell *handles* the conflict. It just doesn't know that is what it's doing.
-
-#### Beat 9 — No One Is Deciding
-
-**Visual:** Close on the cell. The pace slows further. A side panel opens, showing the molecular cascade — events as dominoes falling, one triggering the next, with no gap, no chooser. The molecules don't know what they're doing. They just react. Inside the cell, no person, no eye, no central seat — just chemistry, all the way down.
-
-**Narration:** And now — here is the part that, if you stop and think about it, is genuinely strange.
-
-It is tempting to say the cell *makes* decisions. To say it *chooses* — to run, to tumble, between food and danger, in the way you and I choose between things.
-
-But if you look closely — at the receptors, at the proteins, at the molecular switch — you find no one in there.
-
-There is no decider.
-
-No little inner self holding the scales. No part of the cell that *knows* it is choosing. The chemistry happens. The switch tips. The cell goes. But there is no one watching it happen. The hidden strengths of those signals — they live in the molecules, set the moment the cell was born, identical for every cell of its kind. Nobody chose those strengths either.
-
-The cell does not make a decision. The cell *is* a decision — running, on autopilot, since the planet was warmer.
-
-And the reason that decision is running — the reason this exact rule, this exact way of doing things, is alive in the ocean today — is just because, a very long time ago, the cells that did it this way lived. And the ones that did it any other way did not.
-
-#### Beat 10 — The Limit
-
-**Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, holding the sense of an enormous, ancient, persistent world. Soft text appears: *Three and a half billion years. And counting.* The image holds.
-
-**Narration:** And so it worked.
-
-For an unimaginably long time, it worked.
-
-Three and a half billion years — almost the entire history of the planet — under the same simple rule, in the same kind of body. No brains. No nervous systems. No decisions, in the sense we mean it. Just chemistry. And it was enough.
-
-The ocean was full. The bacteria thrived — and they still thrive today. By any honest measure, they remain the most successful kind of life that has ever existed on this planet.
-
-That is the story of the simple world. A rule that worked. A body that needed nothing more.
-
-It is, in its way, complete.
 
 ## Part 2 — The Math
 
@@ -275,7 +239,7 @@ The bias term highlights, and a small label points to the inside of the cell: *b
 
 Below the full formula, smaller text appears, each line emphasized in turn: *no central place to weigh. no parameters that can change. no signals from inside the body.*
 
-The image holds. A slow fade-out at the very end, into the dark water that opens Chapter 1.
+The image holds. The formula and the see-saw stay together, lit gently, as the camera pulls slowly back.
 
 **Narration:** There is one more thing.
 
@@ -303,19 +267,39 @@ In the cell, the sum was an accident — many tiny if/else mechanisms pushing on
 
 That is the math of the simple world.
 
-## Closing — The Threshold
+## Closing — The Limit of Mechanism
 
-*A final moment, after both story and math. The point where the simple world ends, and something larger begins.*
+*A final section, after both story and math. The mechanism's edge — and what's about to arrive.*
 
-#### Beat C1 — What's About to Arrive
+#### Beat C1 — No One Is Deciding
 
-**Visual:** Cut to black. A single quiet image: the microbial ocean, vast and ancient. Soft text appears: *Three and a half billion years pass.* The image fades. When it returns, the ocean has changed. The water is colder, dimmer. Microbial mats are still there — but among them, for the first time, something larger. Something with a front and a back. A small, soft creature drifts in the distance, just out of focus. The image holds.
+**Visual:** Close on the cell. The pace slows further. A side panel opens, showing the molecular cascade — events as dominoes falling, one triggering the next, with no gap, no chooser. The molecules don't know what they're doing. They just react. Inside the cell, no person, no eye, no central seat — just chemistry, all the way down.
 
-**Narration:** Take a step back for a moment, and look at what we have seen.
+**Narration:** And now — here is the part that, if you stop and think about it, is genuinely strange.
 
-A simple world. A simple rule. And, hidden inside that simple rule, real math — a weighted sum plus a bias, running silently in chemistry for three and a half billion years.
+It is tempting to say the cell *makes* decisions. To say it *chooses* — to run, to tumble, between food and danger, in the way you and I choose between things.
 
-But limits.
+But if you look closely — at the receptors, at the proteins, at the molecular switch — you find no one in there.
+
+There is no decider.
+
+No little inner self holding the scales. No part of the cell that *knows* it is choosing. The chemistry happens. The switch tips. The cell goes. But there is no one watching it happen. The hidden strengths of those signals — they live in the molecules, set the moment the cell was born, identical for every cell of its kind. Nobody chose those strengths either.
+
+The cell does not make a decision. The cell *is* a decision — running, on autopilot, since the planet was warmer.
+
+And the reason that decision is running — the reason this exact rule, this exact way of doing things, is alive in the ocean today — is just because, a very long time ago, the cells that did it this way lived. And the ones that did it any other way did not.
+
+#### Beat C2 — The Threshold
+
+**Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, holding the sense of an enormous, ancient, persistent world. Soft text appears: *Three and a half billion years pass.* The image fades. When it returns, the ocean has changed. The water is colder, dimmer. Microbial mats are still there — but among them, for the first time, something larger. Something with a front and a back. A small, soft creature drifts in the distance, just out of focus. The image holds.
+
+**Narration:** And so it worked.
+
+For an unimaginably long time, it worked.
+
+Three and a half billion years — almost the entire history of the planet — under the same simple rule, in the same kind of body. No brains. No nervous systems. No decisions, in the sense we mean it. Just chemistry. And it was enough.
+
+But there are still things this body cannot do.
 
 In the cell, there was no place inside the body whose only job was to weigh. The weights could not change during a single cell's life — they were set when it was born. The bias could not be tuned. And nothing from *inside* the body could speak.
 
