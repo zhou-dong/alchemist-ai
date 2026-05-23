@@ -24,18 +24,20 @@ The narrative frame is inspired by Max Bennett's *A Brief History of Intelligenc
 - **Duration per chapter**: TBD
 - **Tone**: TBD. Confirmed ingredient: a thread of humor woven through, to keep it attractive without sliding into hype or jokes-per-minute
 
-## 3. Storytelling Approach — Two Registers
+## 3. Storytelling Approach — Two Registers, Two Parts
 
-Each chapter alternates between two visual and narrative registers:
+Each chapter is built from two visual and narrative registers, structured as **two distinct parts**:
 
-- **Evolutionary register** — the biology. Answers *why this algorithm had to exist*: life faced a survival problem, and here's how a creature solved it. Naturalistic, like a nature documentary. Uses biology vocabulary (chemical sensors, swimming, predator-avoidance).
-- **Algorithm register** — the math. Answers *how the algorithm actually works*. Patient, visual, rigorous — diagrams, weights, decision boundaries, gradients. Uses modern AI vocabulary (weight, perceptron, gradient).
+- **Part 1 — The Story** (evolutionary register, biology). Answers *why this algorithm had to exist*: life faced a survival problem, and here's how a creature solved it. Naturalistic, like a nature documentary. Uses biology vocabulary (chemical sensors, swimming, predator-avoidance). No algorithm framing, no formulas, no code.
+- **Part 2 — The Math** (algorithm register). Answers *how the algorithm actually works*. Patient, visual, rigorous — diagrams, weights, decision boundaries, gradients, code. Uses modern AI vocabulary (weight, perceptron, gradient). Explicitly translates the story we just saw into formal terms.
 
-The biology motivates; the math mechanizes. The two registers are not separated into halves of a video — they interleave, each handing off to the other as the chapter progresses.
+The biology motivates; the math mechanizes. **The two parts are separate sections within each chapter, not interleaved.** Part 1 plays first — the full narrative arc, pure storytelling, the audience experiences the discovery emotionally. Part 2 follows — retelling key moments through the algorithm's lens, with code, formulas, and diagrams.
 
-The pedagogical contract: **show behavior first, name the concept second.** The audience builds intuition before they receive vocabulary.
+The pedagogical contract: **show behavior first, name the concept second.** The audience builds full intuition through Part 1's story before receiving vocabulary in Part 2's math.
 
-**Vocabulary rule:** each register stays in its own language. The biology register uses biology terms; the algorithm register uses AI terms. The handoff between registers is where one translates into the other — that's how modern AI vocabulary earns its place without anachronism in the biology.
+**Vocabulary rule:** each part stays in its own language. Part 1 uses biology terms only; Part 2 uses AI/CS terms. The transition from Part 1 to Part 2 is the chapter's central handoff — where the story we just saw gets translated into algorithm form.
+
+**Chapter bridge:** the setup for the next chapter lives at the end of Part 2 — the algorithm framing naturally points to what the next chapter will add (architecture, learning, internal state, etc.).
 
 ## 4. Chapter Beats
 
