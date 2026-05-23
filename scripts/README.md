@@ -38,6 +38,8 @@ Chapter scripts: `chN-kebab-case-title.md` (e.g. `ch2-when-weights-learn.md`). P
 
 ## Chapter script structure
 
+Each chapter is structured as **two parts** — see `series_bible.md` Section 3 for the principle. Part 1 carries the full narrative arc in biology register (the story); Part 2 retells key moments in algorithm register (the math), and ends with the bridge to the next chapter.
+
 ```
 # Chapter N — <title>
 
@@ -45,32 +47,48 @@ Chapter scripts: `chN-kebab-case-title.md` (e.g. `ch2-when-weights-learn.md`). P
 
 ## Overview
 
-## Key Scientific & AI Concepts Introduced in Chapter N
+## Key Concepts Introduced in Chapter N
 
 ### N.1 <name>
 ### N.2 <name>
 …
 
-## Chapter N — Full Act Structure
+## Part 1 — The Story
 
 ### Act 1 — <name>
+
+#### Beat 1 — <name>
+
+**Visual:** ...
+
+**Narration:** ...
+
+#### Beat 2 — <name>
+...
+
 ### Act 2 — <name>
+...
+
 ### Act 3 — <name>
+...
 
-## The Human Parallel — <name>          (history of the AI rediscovery)
+## Part 2 — The Math
 
-## Philosophical Thread — <name>
+#### Algorithm Beat A1 — <name>
 
-## Updated Overall Chapter Arc
+**Visual:** ...
 
-### Conceptual Layer
-### Narrative Layer
-### Philosophical Layer
+**Narration:** ...
 
-## Key Narrative & Pedagogical Decisions for Chapter N
+#### Algorithm Beat A2 — <name>
+...
+
+(end of Part 2 contains the bridge to the next chapter)
 ```
 
-Chapters 2–5 follow this fully. Chapters 0 and 1 are currently abbreviated outlines (Overview + Concepts + Acts only — no Human Parallel, no chapter-specific Updated Arc).
+Beat format: each beat has a **Visual** block (production notes describing what's on screen — what the animator should build) and a **Narration** block (the spoken text — Attenborough-style omniscient voice).
+
+Chapters 0 and 1 follow this two-part beat structure. Chapters 2–5 are still in the older outline format (full Acts, Human Parallel section, Philosophical Thread section) and will be migrated as they are rewritten.
 
 ## Future composition pairing
 
