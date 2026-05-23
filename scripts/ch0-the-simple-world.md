@@ -1,77 +1,84 @@
 # Chapter 0 — The Simple World
 
-*The rule under everything Bila does.*
+*Before the brain. Before the first decision. Just a rule, running for three billion years.*
 
 ## Overview
 
-Introduces the Ediacaran ocean, Bila, and the simple rule beneath all of her behavior.
+Introduces life before bilaterality — single-celled bacteria running run-and-tumble — and the if/else rule beneath their behavior. The chapter sits *before* intelligence proper: clever-looking behavior, but no real decision in it. The simplest tool in any programmer's toolbox, used by life billions of years before there was a brain to run it.
 
 ## Key Concepts Introduced in Chapter 0
 
 ### 0.1 Run and Tumble
 
-The fundamental behavior of early bilaterians. When signal improves, keep going (run). When signal worsens, turn randomly (tumble). This is the biological foundation of gradient-following behavior.
+The chemotaxis strategy of bacteria like *E. coli*. When the chemical signal improves, the cell swims in a relatively straight line (run). When it worsens, the cell tumbles, randomizing its direction. Repeat. Over enough cycles, the cell climbs the gradient toward food.
 
-### 0.2 The Good/Bad Sensor
+### 0.2 The Chemical Sensor
 
-Bila's sensor does not know what it is sensing. It only answers one question: is the signal getting better or worse?
+The bacterial cell has no eyes and no nervous system. What it has is chemical receptors on its outer membrane that detect whether the signal — a sugar, say — is getting stronger or weaker over time. Better or worse. That's the entire input.
 
-### 0.3 The Underlying Rule
+### 0.3 The If/Else Rule
 
-Underneath both behaviors — food-seeking and danger-fleeing — is the same simple rule:
+Underneath run-and-tumble is the simplest possible decision rule:
 
-> if the world is getting better → keep going (run)
+> if signal is getting better → run
 >
-> if the world is getting worse → turn (tumble)
+> else → tumble
 
-The signal type does not matter. The logic is always the same.
+This is the same shape as the if/else construct in every programming language ever written. Life ran it first, in proteins, billions of years before silicon.
 
 ## Beat Outline
 
-### Act 1 — Behavior
+### Act 1 — A Simpler World
 
-#### Beat 1 — The Ancient Ocean
+#### Beat 1 — The First Oceans
 
-**Visual:** A slow, drifting shot across a dim seafloor lit by soft, filtered light from above. The seabed is dotted with strange, motionless creatures — circles, fans, frond-like shapes. None of them moves. Sediment particles drift in the current. The mood is patient and ancient.
+**Visual:** An ancient ocean, far older than the Ediacaran world we'll see later — warm, shallow, sunlit from above. The seabed is covered in vast, slimy microbial mats: layers of pink, green, and deep purple. No fish. No worms. No plants. No movement except the slow currents. The mood is alien, primordial. The visual style is distinct from later chapters — abstract, almost geological.
 
-**Narration:** Five hundred and fifty million years ago, the ocean was quiet. The creatures that filled it had no front, no back, no left, no right. They sat where the current put them, and they waited for whatever it brought — food, mostly. Sometimes danger. They had been doing it this way for a very long time, and, for the most part, it worked.
+**Narration:** Long before there were animals — long before there were plants, before anything you'd recognize as a creature — there was the ocean. And there was something in it. Something very small, and very simple. Simple enough that you wouldn't call it intelligent. Just alive, in the most basic way it is possible to be alive.
 
-#### Beat 2 — A New Creature
+#### Beat 2 — Meet the Cell
 
-**Visual:** The camera drifts past the radiatans and finds Bila. She is small, soft-bodied, about a centimeter long. Unlike the radial creatures around her, she has a clear front and a clear back. She moves forward — gently, but with intent.
+**Visual:** Zoom in. Past the surface of the water, through a drop, into a microscope's view. A single bacterial cell — rod-shaped, transparent, ringed by long whip-like flagella. Inside it, vague shapes drift: molecules, machinery. No nucleus, no nervous system, no organs. Just a small bag of chemistry.
 
-**Narration:** And then there was Bila. She was tiny — about the length of a fingernail — and she had something the others didn't: a direction. She had a front. She had a back. And once you have a front and a back, you can choose where to go.
-
-#### Beat 3 — The Smell of Food
-
-**Visual:** Bila drifts through dim water. In the distance, a faint chemical glow — invisible at first, then growing brighter as she moves toward it. Her path is loose, almost lazy. She wanders, finds the gradient, leans into it, settles into a small patch of nutrient-rich water. The pace is slow.
-
-**Narration:** Bila doesn't have eyes. But she does have a kind of nose — a chemical sensor on her skin that picks up smells dissolved in the water. When the smell of food gets stronger, she keeps going. When it gets weaker, she turns and tries again. Patient. Unhurried. She has all day.
-
-#### Beat 4 — The Shadow of Danger
-
-**Visual:** Bila is drifting peacefully. Then — a shape. Something large passes overhead. The water around her grows tense. Her body suddenly twitches. She darts, turns, darts again, in sharp jagged motions. Nothing slow about it. Within seconds she is somewhere else, the threat fading.
-
-**Narration:** But sometimes, the water tells her a different story. A predator. A chemical signature of something hungry. The same little body that drifted patiently toward food can — in a heartbeat — explode into motion. Sharp. Sudden. Urgent. Same creature. Completely different energy.
+**Narration:** Meet the cell. A single bag of chemistry, a few micrometers long. It has no eyes. It has no nervous system. It has no brain — because nothing like a brain has been invented yet. What it has, instead, is a few thin whips on its outside — flagella — that it can spin to push itself through the water. And one job: don't die.
 
 ### Act 2 — The Rule
 
-#### Beat 5 — Same Two Moves
+#### Beat 3 — Finding Food
 
-**Visual:** Side-by-side: left, Bila drifting toward food (slow, soft motion); right, Bila darting from danger (sharp, explosive). Below, both clips fade and two stripped-down motion diagrams appear under each — a forward line, a random turn. The same two shapes appear under both behaviors.
+**Visual:** Close on the cell's membrane. A small chemical receptor — a protein structure embedded in the membrane — sits on the surface. Outside the cell, faint glowing dots of sugar molecules drift in the water. One bumps into the receptor. The receptor changes shape. A bright pulse travels from the receptor, through the cell, to the flagella.
 
-**Narration:** Watch what Bila actually does, on either side. Food: drift, drift, drift — pause — turn. Danger: dart, dart, dart — pause — turn. Strip away the speed, the urgency, the color of the water — and underneath, it's the same two moves. Go straight. Turn. Go straight. Turn. Biologists have a name for this. They call it "run and tumble."
+**Narration:** The cell needs food — sugars, mostly, dissolved in the water around it. It can't see them. It can't smell them in any sense you'd recognize. But on its surface, it has tiny chemical receptors. When a sugar molecule bumps into one, the receptor changes shape. That change travels, in milliseconds, to the flagella. And the flagella respond.
 
-#### Beat 6 — The Same Rule Underneath
+#### Beat 4 — Run and Tumble
 
-**Visual:** Two columns side by side. Left header: FOOD. Two rules: *"smell getting stronger → keep going"* / *"smell getting weaker → turn."* Right header: DANGER. *"predator getting closer → turn"* / *"predator getting farther → keep going."* The labels FOOD and DANGER fade. The columns slide together. The four rules collapse into two: *"getting better → keep going"* / *"getting worse → turn."* Camera zooms in on Bila's sensor — the small dot on her skin — and lingers there.
+**Visual:** The cell, swimming through water with a visible (invisible to the cell) gradient of sugar. When the concentration rises, the flagella all spin together in a coordinated bundle, pushing the cell in a relatively straight line — *the run*. When the concentration drops, the flagella unbundle and spin in chaos, tumbling the cell, randomizing where it points — *the tumble*. The cycle plays out: run, tumble, run, tumble. A small overlay traces the cell's path against the gradient: it climbs the gradient over many runs and tumbles, never elegantly, but it gets there.
 
-**Narration:** Now watch the trigger for each behavior, side by side. With food: smell stronger → keep going, smell weaker → turn. With danger: predator closer → turn, predator farther → keep going. Different words. But strip away the labels — *food*, *danger* — and one rule is left. Getting better, keep going. Getting worse, turn. And the strange thing about Bila's sensor? It doesn't even know what it's smelling. It only ever answers one question — *is the world getting better, or worse?* And from that one question, every move she'll ever make follows.
+**Narration:** When the sugar level around it goes up, the flagella spin one way, and the cell swims forward — a *run*. When the sugar level goes down, the flagella spin in chaos, and the cell tumbles — pointing itself somewhere new. Run when things get better. Tumble when things get worse. That's all. Biologists have a name for this. They call it *run and tumble*. And it has been the cell's strategy for finding food for somewhere around three billion years.
 
-### Act 3 — Going Somewhere
+#### Beat 5 — If / Else
 
-#### Beat 7 — A Radiatan, Still
+**Visual:** The cell still swimming, gradient still visible. On the side of the screen, the behavior collapses into a clean little box of code-like text:
 
-**Visual:** Slow fade back to the ancient seafloor. A radiatan, anchored to the seabed, motionless. Far in the distance, Bila — moving. The camera pulls slowly back. The light shifts.
+```
+if signal is getting better → run
+else                        → tumble
+```
 
-**Narration:** Back in the Ediacaran ocean, the radiatans haven't moved. They never will — and they don't need to. They have survived for hundreds of millions of years without any of this. But somewhere inside Bila's tiny body, *better* and *worse* have already begun to mean something. Not yet a feeling. But the first place a feeling could grow from.
+The box pulses gently. Behind it, the cell continues its journey, run and tumble and run and tumble.
+
+**Narration:** And if you spell out what the cell is doing, what comes out is the simplest line of code in the world. *If the signal is getting better, run. Else, tumble.* That's an if/else. Anyone who has written any code, in any language, has typed this exact shape. The cell has been typing it for three billion years. It's the same logic — same rule, same shape — that your laptop runs millions of times a second. Just inscribed in proteins instead of silicon.
+
+### Act 3 — The Limit of Mechanism
+
+#### Beat 6 — No One Is Deciding
+
+**Visual:** Close on the cell as it runs and tumbles. The pace slows. A side panel opens, showing the chain of chemistry inside: receptor activates a protein, protein activates another protein, signal reaches the flagella motor. The events are shown as dominoes falling — one event triggering the next, deterministic, no gap, no chooser.
+
+**Narration:** It is tempting to say the cell is *making* decisions. *Choosing* to run. *Choosing* to tumble. But if you look closely — at the receptors, the proteins, the flagella — there is no one in there. No decider. No weigher of options. Just chemistry — one event triggering the next, like dominoes falling. The cell is not choosing anything. The rule is just running. And the rule is running because, a long time ago, cells that ran this rule survived better than cells that did not.
+
+#### Beat 7 — The Limit
+
+**Visual:** Wide shot of the microbial ocean. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each one driven by the same simple rule. The camera pulls slowly upward, out of the water, to a black sky. Soft text appears: *Billions of years pass.* The image fades. When it returns, the ocean has changed. The water is colder, dimmer. Microbial mats are still there — but among them, for the first time, something larger. Something with a front and a back. A small, soft creature drifts in the distance, just out of focus.
+
+**Narration:** This rule worked. It worked for an unimaginably long time. In a simple world — one signal at a time, getting better or getting worse — there is nothing better than this. But the ocean was about to get more complicated. Food and danger were going to start appearing at the same time, from the same direction. The if/else rule was about to meet its first real problem. And when it did, something genuinely new would be needed. Not just a faster rule. Not just a better rule. But the first thing in the universe that could actually *decide.*
