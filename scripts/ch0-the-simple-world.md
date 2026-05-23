@@ -299,6 +299,10 @@ For an unimaginably long time, it worked.
 
 Three and a half billion years — almost the entire history of the planet — under the same simple rule, in the same kind of body. No brains. No nervous systems. No decisions, in the sense we mean it. Just chemistry. And it was enough.
 
+A simple rule. Crude, even. Far from elegant. Far from perfect. But it *worked* — for as long as there has been life on this planet. The kind of *good enough* that life can build on.
+
+A rough start. But a start — that everything else will, in time, grow from.
+
 But there are still things this body cannot do.
 
 In the cell, there was no place inside the body whose only job was to weigh. The weights could not change during a single cell's life — they were set when it was born. The bias could not be tuned. And nothing from *inside* the body could speak.
