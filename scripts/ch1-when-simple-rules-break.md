@@ -26,9 +26,13 @@ Arousal is a system-wide modifier — it doesn't enter the perceptron as a new i
 
 #### Beat 1 — Meet Bila
 
-**Visual:** A different ocean now — the Ediacaran sea, around 555 million years ago. Cooler and dimmer than the microbial waters of the previous chapter. The seabed is dotted with strange, motionless creatures — radiatans: circles, fans, frond-like shapes. Camera drifts past them and finds Bila. She is small, soft-bodied, about a centimeter long. Unlike the radial creatures around her, she has a clear front and a clear back. She moves forward — gently, with direction.
+**Visual:** A different ocean now — the Ediacaran sea, around 555 million years ago. Cooler and dimmer than the microbial waters of the previous chapter. The seabed is dotted with strange, motionless creatures — radiatans: circles, fans, frond-like shapes. Camera drifts past them and finds Bila. She is small, soft-bodied, about a centimeter long. Unlike the radial creatures around her, she has a clear front and a clear back. She moves forward — gently, with direction. A soft caption can fade in early: *Earth — 555 million years ago. Ediacaran period.*
 
-**Narration:** Hundreds of millions of years pass. The ocean cools. New shapes appear. Anchored to the seabed, strange new creatures — circles, fans, slow blooms of life called radiatans — sit where the current puts them, much the way their ancestors did. But drifting through them is something new. About the length of a fingernail. Soft-bodied. With one detail none of the others have: a front, and a back. Her name, for our purposes, is Bila.
+**Narration:** Three billion years pass. The ocean cools. New shapes appear. Anchored to the seabed, strange new creatures — circles, fans, slow blooms of life called radiatans — sit where the current puts them, much the way their ancestors did.
+
+Five hundred and fifty-five million years ago.
+
+But drifting through them is something new. About the length of a fingernail. Soft-bodied. With one detail none of the others have: a front, and a back. Her name, for our purposes, is Bila.
 
 #### Beat 2 — Bila's Inheritance
 
