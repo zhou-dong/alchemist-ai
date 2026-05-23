@@ -42,9 +42,7 @@ The *bias* is the baseline activity of the central integrating enzyme (CheA in r
 
 **Visual:** Wide shot from space. The early Earth — a different Earth. Volcanically active, mostly ocean, with smaller proto-continents poking up. The sky is hazy, orange-pink with methane. The Moon hangs visibly closer and larger. The Sun is dimmer. Slow montage: a meteor strikes, lava flows, steam rises, the steam cools and falls as rain, the first oceans form. Soft caption: *Earth — 4 billion years ago.* Visual style: abstract, geological, slow.
 
-**Narration:** Earth is younger than we tend to feel.
-
-Four and a half billion years ago, our planet formed — a hot ball of rock, struck by other rocks, surrounded by debris. For half a billion years, it was a place no living thing could have survived. Bombarded by asteroids. Wrapped in steam. With a Moon, just then forming, hanging huge and close in the sky.
+**Narration:** Four and a half billion years ago, our planet formed — a hot ball of rock, struck by other rocks, surrounded by debris. For half a billion years, it was a place no living thing could have survived. Bombarded by asteroids. Wrapped in steam. With a Moon, just then forming, hanging huge and close in the sky.
 
 Then it cooled. The steam fell back to the surface as rain. The first oceans came into existence. The sky was a hazy pink — from methane — and the Sun, still dim, shone through it.
 
