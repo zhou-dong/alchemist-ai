@@ -26,13 +26,13 @@ Underneath both food-seeking and danger-avoidance is the same simple rule:
 
 For attractants, "better" means getting closer. For repellents, "better" means getting farther. The signal type doesn't matter — the rule is the same. This is the same shape as the if/else construct in every programming language ever written. Life ran it first, in proteins, billions of years before silicon.
 
-### 0.4 The Implicit Weighted Sum
+### 0.4 The Implicit Weighted Sum (with Bias)
 
-When attractants and repellents arrive together, the cell handles the conflict at the molecular level: each receptor pushes the same molecular switch with its own strength. The result is an implicit weighted sum:
+When attractants and repellents arrive together, the cell handles the conflict at the molecular level: each receptor pushes the cell's central enzyme with its own strength, and the enzyme itself has a baseline activity that determines what the cell does when no signals are arriving. The combined result:
 
-> decision = Σ ( signal × hidden weight )
+> decision = Σ ( signal × hidden weight ) + hidden bias
 
-This is perceptron-shaped *math*, but without perceptron *architecture* — no central neuron, no tunable weights, no internal-state input. The distinction matters in Chapter 1.
+The *bias* is the baseline activity of the central integrating enzyme (CheA in real bacteria) — what determines the default tumbling rate when no signals are arriving. This is **the same shape as the perceptron formula**. What's missing in bacteria is not the math — it's the *architecture*: no central neuron, no tunable parameters, no internal-state input. That architectural distinction is what Chapter 1 will deliver.
 
 ## Part 1 — The Story
 
@@ -237,13 +237,21 @@ In proteins. In silicon. The shape doesn't care.
 
 #### Algorithm Beat A2 — The Implicit Weighted Sum
 
-**Visual:** Cut to the conflict scene from Beat 7: the cell with both attractant and repellent arriving from the same direction. The molecular see-saw is shown again, but this time alongside a formula appearing in clean, mathematical text:
+**Visual:** Cut to the conflict scene from Beat 7: the cell with both attractant and repellent arriving from the same direction. The molecular see-saw is shown again, but this time alongside a formula appearing in clean, mathematical text. The formula builds in stages.
+
+First, the weighted sum appears:
 
 > decision = Σ ( signal × hidden weight )
 
 Each *signal* and *weight* highlights individually as the narration explains them. The formula and the see-saw animate together, showing the equivalence: the see-saw is just the formula made physical.
 
-Below the formula, smaller text appears, each line struck through as it surfaces: *no central neuron. no tunable weights. no internal-state input.*
+Then — almost as an afterthought — a single new term fades in at the end of the formula:
+
+> decision = Σ ( signal × hidden weight ) + hidden bias
+
+The bias term highlights, and a small label points to the inside of the cell: *baseline activity*. The see-saw shifts slightly in its starting position — visualizing the default tendency before any signals arrive.
+
+Below the full formula, smaller text appears, each line emphasized in turn: *no central neuron. no tunable parameters. no internal-state input.*
 
 The image holds. A slow fade-out at the very end, into the dark water that opens Chapter 1.
 
@@ -251,18 +259,26 @@ The image holds. A slow fade-out at the very end, into the dark water that opens
 
 When the cell faced food and danger at the same time, watch what was *actually* happening, in math.
 
-Each signal arriving — food, danger — had its own strength. Its own weight, baked into the receptor that caught it. The strengths got added together. Whichever side was heavier won. One signal pushing the molecular switch one way, the other pushing the other, with weights determining which push was stronger.
+Each signal arriving — food, danger — had its own strength. Its own weight, baked into the receptor that caught it. The strengths got added together. Whichever side was heavier won.
 
 Spell that out, and you get this:
 
 *decision equals the sum of each signal, times its hidden weight.*
 
-If you have ever seen the formula for a perceptron — the smallest unit of a neural network — this is the same shape. The same equation. *Sum of signal times weight.* Which means — three billion years before Rosenblatt drew the perceptron on paper — the cell was, in some sense, already running one.
+And there is one more piece. The cell's central enzyme — the thing that all the receptors push and pull on — is never completely still. Even with no signals arriving, it has a quiet baseline of activity. A default tendency. A standing instruction for what the flagella do when nothing else is happening.
+
+So the math, written out fully, is:
+
+*decision equals the sum of each signal times its hidden weight — plus a hidden baseline.*
+
+A *bias.*
+
+If you have ever seen the formula for a perceptron — the smallest unit of a neural network — this is the exact same equation. *Signal times weight, plus bias.* Which means — three billion years before Rosenblatt drew the perceptron on paper — the cell was, in some sense, already running one.
 
 But — and this is the catch — only the *math* was there. Not the *machine.*
 
-There was no central neuron where signals met. The weights couldn't be changed during the cell's life — they were fixed in the receptors at birth. And no signal from *inside* the body could join the sum, because there was no inside-the-body signal to join with.
+There was no central neuron where signals met. The weights couldn't be changed during the cell's life — they were fixed in the receptors at birth. The bias couldn't be tuned. And no signal from *inside* the body could join the sum, because there was no inside-the-body signal to join with.
 
-The arithmetic was real. The architecture was missing.
+The math was identical. The architecture was missing. There was no way for any of it to change.
 
-And that is exactly what is about to arrive.
+And that — a body that can change — is exactly what is about to arrive.
