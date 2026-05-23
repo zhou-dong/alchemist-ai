@@ -118,32 +118,42 @@ Two stories. Two completely different problems. The same two moves.
 
 #### Beat 6 — If / Else
 
-**Visual:** The two motion diagrams merge into one. On the side of the screen, a clean little box of code-like text appears:
+**Visual:** On screen, the cell continues its journey — run, tumble, run, tumble. To the side, soft natural-language text fades in, capturing what the cell is doing in plain words:
+
+> When the world gets better — keep going.
+>
+> When the world gets worse — change direction.
+
+The text sits gently next to the dance. A long held beat. Then, near the very end of the narration — at the exact moment the narrator names *if/else* — the natural-language text transforms into code-like text:
 
 ```
 if signal is getting better → run
 else                        → tumble
 ```
 
-The box pulses gently. Behind it, the cell continues its journey — run, tumble, run, tumble.
+The code box holds for a moment. Then quietly fades. Behind it, the cell continues.
 
-**Narration:** There is one more thing.
+**Narration:** Look at what the cell is doing — not in chemistry, not in molecules. Just in plain words.
 
-If you spell out what the cell is actually *doing*, in plain words, look what comes out.
+When the world gets better, the cell keeps going.
 
-*If the signal is getting better — run.*
+When the world gets worse, the cell changes direction.
 
-*Otherwise — tumble.*
+That's it.
 
-That's it. The entire program. The entire decision-making capacity of the cell. Two lines.
+That is the entire cell. The whole story of how it finds food, how it escapes danger, how it has lived in the ocean for three billion years. For food, *better* means getting closer. For danger, *better* means getting farther. The cell never has to know the difference. It only ever has to know whether things are improving, or not.
 
-For food, *better* means getting closer. For danger, *better* means getting farther. The cell doesn't know which is which. It doesn't know the difference. It just knows: keep going, or turn.
+When the world gets better — keep going.
 
-And if you have ever written any code, in any language — Python, JavaScript, C, Lisp, *anything* — you have typed this exact shape. We have a name for it. We call it an *if/else.*
+When the world gets worse — change direction.
 
-It is the simplest line of code in the world. Almost too simple to bother writing.
+Two lines. Two rules. One little body, drifting through the deep ancient ocean, following them blindly, since long before there was anything alive that could think.
 
-The cell has been running it, in proteins, for three billion years. Three billion years of one of the most fundamental shapes in all of computing — written in chemistry, before there were brains, before there was language, before there was anyone to call it anything at all.
+And — one more thing.
+
+If you've ever written code, in any language, you have already typed this exact shape. The same two lines. The same simple rule. It is so old, and so fundamental, that programmers have a name for it. They call it *if/else.*
+
+Three billion years before there was a programmer to type it, this little cell was running it. In proteins. In the water. In the dark.
 
 ### Act 3 — The Limit of Mechanism
 
