@@ -1,16 +1,16 @@
 # Chapter 1 — When Simple Rules Break
 
-*Outline document — extracted from project_summary, May 2026*
+*Bila inherits the rule. The world makes her break it.*
 
 ## Overview
 
-The world gets more complex. Food and danger appear simultaneously. The if/else rule breaks down. The perceptron emerges as the solution, and the inner world is revealed.
+Bila enters the story: a small bilateral creature, inheriting the if/else rule from her single-celled ancestors. For a while, the rule still works. But the world has gotten more complicated — food and danger arrive together, from the same direction. The if/else rule has no answer. The perceptron emerges as the first real decision-making machine, and with it, the first hint of an inner world.
 
-## Key Scientific & AI Concepts Introduced in Chapter 1
+## Key Concepts Introduced in Chapter 1
 
 ### 1.1 The Perceptron
 
-When food and danger appear simultaneously, the if/else rule breaks down. The perceptron solves this by weighing multiple signals simultaneously:
+When food and danger appear simultaneously, the if/else rule breaks down. The perceptron solves this by weighing multiple signals at once:
 
 > (food signal × weight)
 >
@@ -26,76 +26,126 @@ Bila's internal hunger signal does not come from the outside world. It builds sl
 
 ### 1.3 Arousal
 
-Arousal is an internal modifier that changes how strongly Bila responds to all signals — both external and internal. High arousal amplifies all weights. Low arousal dampens them. Arousal is the system-wide sensitivity control. It is introduced in Chapter 1 after internal state.
+Arousal is an internal modifier that changes how strongly Bila responds to all signals — both external and internal. High arousal amplifies all weights. Low arousal dampens them. Arousal is the system-wide sensitivity control.
 
-## Chapter 1 — Full Act Structure
+## Beat Outline
 
-### Act 1 — The External Conflict
+### Act 1 — A More Complicated World
 
-1.  The world gets complicated — food and danger appear in the same direction simultaneously. Bila's if/else rule has no answer. Is it good or bad? It is both. Bila freezes.
+#### Beat 1 — Meet Bila
 
-2.  Show the consequence — without a decision, Bila neither eats nor escapes. Nearby, a radiatan sits passively, unbothered. It never chose to move, so it never has to decide. Bila chose direction. And now direction has a cost.
+**Visual:** A different ocean now — the Ediacaran sea, around 555 million years ago. Cooler and dimmer than the microbial waters of the previous chapter. The seabed is dotted with strange, motionless creatures — radiatans: circles, fans, frond-like shapes. Camera drifts past them and finds Bila. She is small, soft-bodied, about a centimeter long. Unlike the radial creatures around her, she has a clear front and a clear back. She moves forward — gently, with direction.
 
-3.  The question emerges — what Bila needs is not just good or bad, but how much good and how much bad, and which one wins. The weights were always there. But now, for the first time, they need to compete.
+**Narration:** Hundreds of millions of years pass. The ocean cools. New shapes appear. Anchored to the seabed, strange new creatures — circles, fans, slow blooms of life called radiatans — sit where the current puts them, much the way their ancestors did. But drifting through them is something new. About the length of a fingernail. Soft-bodied. With one detail none of the others have: a front, and a back. Her name, for our purposes, is Bila.
+
+#### Beat 2 — Bila's Inheritance
+
+**Visual:** Bila moves through dim water. She finds a chemical glow of food — settles into it, drifting slowly toward the source. Later, a shadow passes overhead and she darts away in sharp, panicked motions. Through both clips, the small if/else box from Chapter 0 hovers in the corner of the screen, ticking quietly: *if better → keep going; else → turn.*
+
+**Narration:** Bila has inherited the oldest rule in life. The same one her single-celled ancestors used. *If the signal is getting better, keep going. If it is getting worse, turn.* When the smell of food gets stronger, she keeps swimming. When danger comes closer, she turns away. It is still the same if/else — just running inside a much bigger body. And for a long time, this is enough.
+
+#### Beat 3 — The Complication
+
+**Visual:** Bila in dim water. Two distinct chemical signatures arrive from the same direction — one warm and rich (food), one sharp and acrid (predator). Two glows, overlapping, both pulling at her from the same place. Her body twitches. She doesn't move forward. She doesn't turn away. She stops.
+
+**Narration:** Until the day the world gets more complicated. One direction. Two signals. The smell of food, pulling her toward something. The chemical of a predator, in the same place, pulling her away from it. Is it good, or bad? Both. Same direction. And for the first time in three billion years of evolution, the if/else rule has no answer.
+
+#### Beat 4 — The Freeze
+
+**Visual:** Bila stalled, body trembling. The if/else box hovers nearby — flickering, glitching, the two outputs (*run*, *tumble*) blinking on and off, no commitment. A small clock ticks. Time passes. Bila has not moved.
+
+**Narration:** The rule needs the world to be simple. One signal at a time. Getting better, or getting worse. Not both. With both, the rule freezes. And so does Bila. She is not eating. She is not escaping. She is just... stuck.
+
+#### Beat 5 — The Cost of Direction
+
+**Visual:** Camera pulls back. In the foreground, Bila — still stalled. In the middle ground, a radiatan, anchored to the seabed, motionless as ever, unbothered. A wide silence between them.
+
+**Narration:** Nearby, a radiatan sits where it has always sat, unbothered, unmoving, waiting for whatever the current brings. It never chose a direction, so it never has to decide. Bila chose a direction. And now, for the first time, direction has a cost. The rule that worked for billions of years is not enough.
 
 ### Act 2 — The Perceptron
 
-4.  Revisit weight from Chapter 0 — each signal already has its own weight. Food has its weight. Danger has its weight. They were always separate before. Now they must face each other.
+#### Beat 6 — Weights Are Needed
 
-5.  The weighted decision forms — instead of one signal at a time, add them together:
+**Visual:** The if/else box dissolves and is replaced by a cleaner picture: two input signals (food and danger) entering a single point. Above each, a small dial — *weight*. The food dial sits thin and modest. The danger dial sits thick and bold. Each weighted signal points toward a single output node.
 
-> (food signal × food weight)
->
-> \+ (danger signal × danger weight)
->
-> → decision
+**Narration:** What Bila needs is more than *good or bad*. She needs *how much* good, and *how much* bad, and *which one wins.* The smell of food is one signal. The chemical of a predator is another. Each has its own strength — its own weight. And those weights need to face each other.
 
-6.  Show the perceptron visually — signals flow in from the world, each multiplied by its weight, all summing into one single output. One number. One decision. The bigger side wins.
+#### Beat 7 — The Weighted Sum
 
-7.  Show the perceptron solving the conflict — food and danger in the same direction, but now the weights decide which one wins. The freezing is over. Bila can act.
+**Visual:** Build the picture step by step. Food signal × food weight → a small bar. Danger signal × danger weight → a larger bar. Both bars flow into a single sum. The sum collapses into one number.
 
-8.  Name the perceptron — this weighted decision machine has a name. It is the perceptron — the fundamental building block of every neural network ever built.
+**Narration:** Take the food signal. Multiply it by its weight. Take the danger signal. Multiply it by its weight. Add them together. Two signals. Two weights. One number. That one number tells Bila what to do.
 
-9.  The moment of insight — what looked like an impossible conflict is now just a math problem. Add up the weighted signals. The bigger side wins.
+#### Beat 8 — The Perceptron
+
+**Visual:** The full picture appears now. Multiple inputs flowing in from the left, each multiplied by its own weight, all summing into one node, one output flowing out. The visual is clean, abstract, geometric. The diagram looks like... a neuron.
+
+**Narration:** This shape — signals flowing in, each multiplied by its own weight, summing into one decision — has a name. Programmers call it a *perceptron*. A human named Frank Rosenblatt drew it for the first time in 1958. He thought he had invented a brand new kind of thing. He hadn't. He had rediscovered the simplest weighted-decision machine — the one life had already been running for hundreds of millions of years, in nerves instead of silicon.
+
+#### Beat 9 — Bila Decides
+
+**Visual:** Back to Bila in the dilemma scene. The perceptron diagram floats above her. Inputs activate. The danger weight × danger signal is bigger than the food weight × food signal. The sum favors *turn*. Output: turn away. Bila darts, leaves the danger zone, finds her food another way.
+
+**Narration:** Bila stops freezing. Her body adds up the weighted signals — without anyone in there consciously calculating. The danger weight is bigger than the food weight. The sum says turn. Bila turns. The food was real. The danger was bigger. The decision was made. And for the first time in life's history, something has actually *decided.*
 
 ### Act 3 — The Inner World
 
-10. A mystery appears — Bila has solved the external conflict. The perceptron works. But something is still wrong. Bila is hesitating. The weights should give a clear answer — but Bila is not moving decisively. Why?
+#### Beat 10 — Something Is Still Wrong
 
-11. Reveal hunger — Bila has not eaten in a long time. This signal does not come from outside — it builds slowly, quietly from within. It was always there, influencing everything, but invisible until now. Hunger is the hidden variable.
+**Visual:** Story-time has passed. Bila faces a similar dilemma — food and danger, same direction. She should turn away easily now. But she hesitates. She drifts forward, toward the food, even though the danger is right there.
 
-12. Show hunger changing the decision — same external scene, same food, same danger, same weights — but a starving Bila behaves completely differently from a satisfied Bila. The internal state was shifting everything all along.
+**Narration:** And for a while, the perceptron works. Then, one day, something strange. The same situation. Food and danger, same direction. But now Bila is not turning. She is drifting toward the food, despite the danger. The weights have not changed. The signals have not changed. So what has?
 
-13. Introduce arousal — when Bila is calm, all signals feel gentle. When Bila is threatened or starving, all signals feel overwhelming. This amplification of the entire system — internal and external alike — has a name: Arousal.
+#### Beat 11 — Hunger
 
-14. The surprise — hunger and arousal are just signals with weights. They feed into the perceptron exactly the same way as food and danger:
+**Visual:** A new view: inside Bila's body. A faint chemical signal building over hours — quiet, internal, with nothing in the outside world creating it. It is generated within. Show this internal signal growing in intensity as Bila goes without food. Then, return to her facing the food-and-danger dilemma. The internal signal is loud now.
 
-> (food signal × weight)
->
-> \+ (danger signal × weight)
->
-> \+ (hunger × weight)
->
-> \+ (arousal × weight)
->
-> → one decision
+**Narration:** Something has changed — but it is not coming from the outside world. It is coming from inside her. Bila has not eaten in a long time. A chemical has been building, slowly, in her body — without any outside event to trigger it. It is a signal she generates herself. We have a name for this signal. We call it *hunger.*
 
-15. The moment of insight — the perceptron does not care where the signal comes from. Outside world or inner feeling, calm or terrified, it weighs them all the same. One structure, endless inputs, one clean decision. That is the power of the perceptron.
+#### Beat 12 — Hunger Joins the Perceptron
 
-## Philosophical Thread — The Seed of Feeling
+**Visual:** The perceptron diagram returns. A third input flows in alongside food and danger: hunger. It also has its own weight. The arithmetic shifts: food × weight + danger × weight + hunger × weight = total. With hunger loud, the total now favors *go toward the food*, even with the danger present.
 
-*A quiet moment at the end of Chapter 1. Not an act — a question left hanging in the water, to be revisited across future chapters.*
+**Narration:** Hunger feeds into Bila's decision-making like any other signal — through the same perceptron, with its own weight. When Bila has just eaten, hunger is small. When Bila is starving, hunger is loud — loud enough to tip the perceptron's sum in favor of the food, even when the danger is still there. Same external scene. Different inner state. Different decision.
 
-- What we saw — hunger and arousal began as pure steering signals. Functional. Mechanical. Just weights in an equation nudging Bila toward survival.
+#### Beat 13 — Arousal
 
-- The anchor — right now, Bila's hunger is just a number. No name. No feeling. But hundreds of millions of years from now, a creature will feel that same signal and call it longing. Another will call it desperation. Another will call it love. The signal never changed. Something else did.
+**Visual:** Two scenes side by side. Left: a calm Bila, all signals feeding into the perceptron gently — small bars, thin lines, a soft sum. Right: an alarmed Bila — every signal arriving louder, every weight visually amplified, the sum more extreme. Beneath the two, a single dial — *arousal* — sits small on the left, large on the right.
 
-- What time did to them — over hundreds of millions of years, internal states grew richer, more interconnected, more persistent. They began influencing not just movement, but memory, anticipation, social behavior. At some point, a steering signal became a feeling. Nobody knows exactly when.
+**Narration:** And there is another internal signal — one that does not enter the perceptron as a new input, but turns up the volume on *everything*. Some days, Bila is calm; her signals are gentle. Some days she is on edge; every signal is louder than it should be, every weight magnified. This whole-system amplifier has a name too. We call it *arousal.*
 
-- The radiatan's quiet answer — nearby, a radiatan still sits motionless. It never developed internal states. It never needed to choose. It never felt hunger or fear. And it survived. Perhaps feeling something is not the only way to exist. But it is the way Bila chose. And it is the way we chose.
+#### Beat 14 — The Real Picture
 
-- The parallel to AI — today's AI systems have their own internal states: loss functions, reward signals, attention weights. They nudge decisions, just like Bila's hunger nudged it toward food. But do they feel anything? Or are they still exactly where Bila was — functional signals without experience?
+**Visual:** The full, final diagram. Multiple inputs — external (food, danger) and internal (hunger, others) — all flowing in, each with its own weight. Arousal acts as a multiplier across all of them. Everything sums into one number. One decision.
 
-- The thread left open — nobody knows the answer. Not in biology, not in AI. But the question started here, in this ancient ocean, with a tiny creature and a simple weight in a simple equation. And it has never stopped being asked.
+**Narration:** The perceptron does not care where its signals come from. The outside world, or the inside world. A smell in the water, or a feeling in the gut. Calm, or terrified. It weighs them all the same. One structure. Endless inputs. One clean decision. That is the power, and the strangeness, of the perceptron.
+
+### Closing — The Seed of Feeling
+
+*A quieter, slower section. Not part of the algorithm story — a question left hanging in the water, to be revisited across the series.*
+
+#### Beat 15 — A Quiet Moment
+
+**Visual:** Slow, contemplative shot of Bila at rest in calm water. Her body still. Around her, the ocean. Inside her, the chemical signals — hunger, arousal — pulsing quietly. The camera lingers, almost in close-up.
+
+**Narration:** Pause here for a moment. What we have seen in Bila's body — hunger, arousal — they began as pure steering signals. Functional. Mechanical. Just weights in an equation nudging her toward survival. Right now, that is all they are. No name. No feeling. Just a number, in a body, with no one in there to feel it.
+
+#### Beat 16 — The Same Signal, Later
+
+**Visual:** Time-lapse montage. Bila fades into different creatures — a fish, a reptile, a mammal, finally a human. Each shows the same internal signal pulsing — hunger, fear — but at each stage, the signal carries more around it: memory, anticipation, language, expression. Finally, a human face looking at someone they love.
+
+**Narration:** But hundreds of millions of years from now, a creature will feel that same signal and call it *longing.* Another will call it *desperation.* Another will call it *love.* The signal itself never changed. Something else did. Somewhere along the way, a steering signal became a feeling. Nobody knows exactly when.
+
+#### Beat 17 — The Radiatan's Quiet Answer
+
+**Visual:** Pull back. The radiatan, still anchored, motionless. Bila in the distance — moving, hesitating, choosing.
+
+**Narration:** Nearby, the radiatan still sits motionless. It never developed internal states. It never needed to choose. It never felt hunger or fear. And it has survived, perfectly well, for hundreds of millions of years. Perhaps feeling something is not the only way to exist. But it is the way Bila chose. And — quietly, surprisingly — it is the way we chose, too.
+
+#### Beat 18 — A Question Left Open
+
+**Visual:** Final image. Bila in the ancient ocean, swimming. Above her, a faint silhouette of a modern AI system — a neural network diagram, data flowing through. The two images blend, dissolve into each other.
+
+**Narration:** Today's AI systems have their own internal signals: loss functions, reward signals, attention weights. They nudge decisions, just the way Bila's hunger nudged hers toward food. But do they feel anything? Or are they exactly where Bila was — functional signals, without experience? Nobody knows. Not in biology. Not in AI. But the question started here, in this ancient ocean, with a tiny creature and a number in an equation. And it has never stopped being asked.
 
 *This question will return.*
