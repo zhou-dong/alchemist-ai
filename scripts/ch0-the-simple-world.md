@@ -279,6 +279,10 @@ But — and this is the catch — only the *math* was there. Not the *machine.*
 
 There was no central neuron where signals met. The weights couldn't be changed during the cell's life — they were fixed in the receptors at birth. The bias couldn't be tuned. And no signal from *inside* the body could join the sum, because there was no inside-the-body signal to join with.
 
-The math was identical. The architecture was missing. There was no way for any of it to change.
+The math, on paper, was identical. But the *meaning* was not.
 
-And that — a body that can change — is exactly what is about to arrive.
+In the cell, the sum was an accident — many tiny if/else mechanisms pushing on the same molecule, the total emerging from the physics. There was no place anywhere in the cell whose *job* was to weigh.
+
+That place is what is about to be born. A part of a body whose only purpose is to gather signals and weigh them against each other. And once a body has such a place — a place whose job is to weigh — something new becomes possible. Something we will, eventually, learn to call *intelligence.*
+
+And later still — much later — those weights will start to change themselves. Learning from what worked, what didn't, what to do next time. But that is a story for another chapter.
