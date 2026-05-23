@@ -34,7 +34,7 @@ When attractants and repellents arrive together, the cell handles the conflict a
 
 This is perceptron-shaped *math*, but without perceptron *architecture* — no central neuron, no tunable weights, no internal-state input. The distinction matters in Chapter 1.
 
-## Beat Outline
+## Part 1 — The Story
 
 ### Act 1 — A Simpler World
 
@@ -116,7 +116,9 @@ Two stories. Two completely different problems. The same two moves.
 
 *Swim. Spin.* That is all. The cell's entire vocabulary. Two motions, used for every problem it has ever faced, for three billion years. Biologists have a name for the swim. They call it a *run.* They have a name for the spin too. They call it a *tumble.* Together — *run and tumble.* The oldest dance in the world.
 
-#### Beat 6 — If / Else
+### Act 3 — The Limit of Mechanism
+
+#### Beat 6 — The Simple Rule
 
 **Visual:** On screen, the cell continues its journey — run, tumble, run, tumble. To the side, soft natural-language text fades in, capturing what the cell is doing in plain words:
 
@@ -124,14 +126,7 @@ Two stories. Two completely different problems. The same two moves.
 >
 > When the world gets worse — change direction.
 
-The text sits gently next to the dance. A long held beat. Then, near the very end of the narration — at the exact moment the narrator names *if/else* — the natural-language text transforms into code-like text:
-
-```
-if signal is getting better → run
-else                        → tumble
-```
-
-The code box holds for a moment. Then quietly fades. Behind it, the cell continues.
+The text sits gently next to the dance. A long held beat. The text remains as the narration repeats the rule. The image is contemplative.
 
 **Narration:** Look at what the cell is doing — not in chemistry, not in molecules. Just in plain words.
 
@@ -149,19 +144,9 @@ When the world gets worse — change direction.
 
 Two lines. Two rules. One little body, drifting through the deep ancient ocean, following them blindly, since long before there was anything alive that could think.
 
-And — one more thing.
-
-If you've ever written code, in any language, you have already typed this exact shape. The same two lines. The same simple rule. It is so old, and so fundamental, that programmers have a name for it. They call it *if/else.*
-
-Three billion years before there was a programmer to type it, this little cell was running it. In proteins. In the water. In the dark.
-
-### Act 3 — The Limit of Mechanism
-
 #### Beat 7 — When Food and Danger Collide
 
-**Visual:** A new scene. The cell drifts in water where both an attractant and a repellent are arriving from the same direction — a sugar molecule and a toxin appearing together. On the cell's surface, both receptor types fire at once. Inside the cell, the molecular switch is shown as a see-saw — the attractant signal pushes it one way (toward *run*), the repellent signal pushes it the other (toward *tumble*). The see-saw tips. Whichever side is heavier wins. The cell either swims forward toward the food (if the attractant pull is stronger) or spins and turns away (if the repellent push is stronger). At the bottom of the screen, a formula appears, ghostly at first, then clearer:
-
-> decision = Σ ( signal × hidden weight )
+**Visual:** A new scene. The cell drifts in water where both an attractant and a repellent are arriving from the same direction — a sugar molecule and a toxin appearing together. On the cell's surface, both receptor types fire at once. Inside the cell, the molecular switch is shown as a see-saw — the attractant signal pushes it one way (toward *run*), the repellent signal pushes it the other (toward *tumble*). The see-saw tips. Whichever side is heavier wins. The cell either runs toward the food (if the attractant pull is stronger) or tumbles away (if the repellent push is stronger).
 
 **Narration:** Most of the time, the cell faces one thing at a time. Food today. Toxin tomorrow. A simple world. A simple rule.
 
@@ -171,19 +156,15 @@ Sometimes the food and the danger are *in the same direction*. The smell of suga
 
 What does the cell do?
 
-You might think it freezes. After all, the rule says *if better, go. If worse, turn.* And right now, the world is both. Better, and worse, in the same place. There is no answer.
+You might think it freezes. After all, the rule says *when things get better, keep going; when they get worse, change direction.* And right now, the world is both. Better, and worse, in the same place. There is no answer.
 
 But watch.
 
-Inside the cell, the attractant receptor pulls the molecular switch one way — *go.* The repellent receptor pushes it the other — *turn.* The switch tips toward whichever side is heavier. If the food signal is louder, the cell goes — danger and all. If the danger signal is louder, the cell spins, turns away, leaves the food behind.
+Inside the cell, two receptors fire at once. One pushes the molecular switch one way — keep going. The other pushes it the other — turn away. The switch tips toward whichever side is heavier. If the food signal is louder, the cell goes — danger and all. If the danger signal is louder, the cell spins, turns away, leaves the food behind.
 
-The cell doesn't freeze. It just — adds them up.
+The cell doesn't freeze. It just — somehow — works it out.
 
-There is *arithmetic* happening, in the chemistry of this little body. Every signal, with its own quiet weight buried inside the molecules. Every signal, being summed. One number, coming out the other side. One decision.
-
-> decision = Σ ( signal × hidden weight )
-
-The cell *handles* conflict. It just doesn't know that's what it's doing.
+Quietly, inside this tiny body, something is happening. Some kind of contest between the signals. Some kind of resolution. The cell *handles* the conflict. It just doesn't know that is what it's doing.
 
 #### Beat 8 — No One Is Deciding
 
@@ -197,7 +178,7 @@ But if you look closely — at the receptors, at the proteins, at the molecular 
 
 There is no decider.
 
-No little inner self holding the scales. No part of the cell that *knows* it is choosing. The arithmetic happens. The sum tips. The cell goes. But there is no one watching it happen. The weights are real — but they live in the molecules, set the moment the cell was born, identical for every cell of its kind. Nobody chose those weights either.
+No little inner self holding the scales. No part of the cell that *knows* it is choosing. The chemistry happens. The switch tips. The cell goes. But there is no one watching it happen. The hidden strengths of those signals — they live in the molecules, set the moment the cell was born, identical for every cell of its kind. Nobody chose those strengths either.
 
 The cell does not make a decision. The cell *is* a decision — running, on autopilot, since the planet was warmer.
 
@@ -211,20 +192,77 @@ And the reason that decision is running — the reason this exact rule, this exa
 
 For an unimaginably long time, it worked.
 
-Three and a half billion years — almost the entire history of the planet — under the same simple rule, the same hidden arithmetic, in the same kind of body. No brains. No nervous systems. No decisions, in the sense we mean it. Just chemistry. And it was enough. The ocean was full.
+Three and a half billion years — almost the entire history of the planet — under the same simple rule, in the same kind of body. No brains. No nervous systems. No decisions, in the sense we mean it. Just chemistry. And it was enough. The ocean was full.
 
-But — and you must have felt this coming —
+But every story has an edge. A point where the simple stops being enough.
 
-There were limits.
+For three and a half billion years, the cell did everything it would ever do, with whatever it was born with. The world stayed outside. The cell stayed inside. They met only at the gates — and even then, only in chemistry.
 
-The weighing was hidden in chemistry — fixed in receptors, scattered through the membrane, baked in from birth. No way to change. No way for what was happening *inside the body* to speak as loudly as what was happening outside. No central place where things truly *came together*. No room in the design for anything genuinely new.
+That is about to change.
 
-That is what is about to change.
+The ocean is about to grow something larger. Something that will not stay the way it was born. Something where the inside of the body — finally — has a voice. And from it, something new in the world: a real choice.
 
-The ocean is about to grow something new. A body with a front, and a back, and somewhere in the middle — for the first time — a place where signals can actually meet.
+## Part 2 — The Math
 
-A place where weights can shift.
+#### Algorithm Beat A1 — The If/Else
 
-A place where the inside of the body can speak.
+**Visual:** Black background. The cell from earlier scenes appears small and centered, almost iconic. Around it, the rule we saw in Beat 6 reappears in plain English:
 
-A place where something will, for the first time in the history of the universe — actually *decide.*
+> When the world gets better — keep going.
+>
+> When the world gets worse — change direction.
+
+A pause. Then, slowly, the plain-English text transforms — character by character — into code-like text:
+
+```
+if signal is getting better:
+    run
+else:
+    tumble
+```
+
+The code box pulses gently. The cell continues its dance in the background — small, silent, doing what it has always done.
+
+**Narration:** Let's pause the story for a moment, and look at what we just saw — from a different angle.
+
+The cell follows a simple rule. We watched it: *when the world gets better, keep going. When the world gets worse, change direction.* And we saw that this one rule covers everything the cell does — finding food, escaping danger, all of it. Two lines. The cell's whole program.
+
+If you have ever written code, in any language — Python, JavaScript, C, anything — you have already typed this exact shape. We have a name for it. We call it *if/else.*
+
+*If* a condition is true, do one thing. *Else*, do another. It is the simplest decision-making structure in computing. It is also, almost certainly, the first decision-making structure life ever invented. Three billion years before there were programmers. Three billion years before there was language. Three billion years before there was anyone to call it anything at all.
+
+The same shape, in the same kind of role: a tiny rule, deciding what happens next.
+
+In proteins. In silicon. The shape doesn't care.
+
+#### Algorithm Beat A2 — The Implicit Weighted Sum
+
+**Visual:** Cut to the conflict scene from Beat 7: the cell with both attractant and repellent arriving from the same direction. The molecular see-saw is shown again, but this time alongside a formula appearing in clean, mathematical text:
+
+> decision = Σ ( signal × hidden weight )
+
+Each *signal* and *weight* highlights individually as the narration explains them. The formula and the see-saw animate together, showing the equivalence: the see-saw is just the formula made physical.
+
+Below the formula, smaller text appears, each line struck through as it surfaces: *no central neuron. no tunable weights. no internal-state input.*
+
+The image holds. A slow fade-out at the very end, into the dark water that opens Chapter 1.
+
+**Narration:** There is one more thing — the part that, if you know about neural networks, will already sound familiar.
+
+When the cell faced food and danger at the same time, watch what was *actually* happening, in math.
+
+Each signal arriving — food, danger — had its own strength. Its own weight, baked into the receptor that caught it. The strengths got added together. Whichever side was heavier won. One signal pushing the molecular switch one way, the other pushing the other, with weights determining which push was stronger.
+
+Spell that out, and you get this:
+
+*decision equals the sum of each signal, times its hidden weight.*
+
+If you have ever seen the formula for a perceptron — the smallest unit of a neural network — this is the same shape. The same equation. *Sum of signal times weight.* Which means — three billion years before Rosenblatt drew the perceptron on paper — the cell was, in some sense, already running one.
+
+But — and this is the catch — only the *math* was there. Not the *machine.*
+
+There was no central neuron where signals met. The weights couldn't be changed during the cell's life — they were fixed in the receptors at birth. And no signal from *inside* the body could join the sum, because there was no inside-the-body signal to join with.
+
+The arithmetic was real. The architecture was missing.
+
+And that is exactly what is about to arrive.
