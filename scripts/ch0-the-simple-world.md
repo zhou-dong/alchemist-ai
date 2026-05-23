@@ -26,6 +26,14 @@ Underneath both food-seeking and danger-avoidance is the same simple rule:
 
 For attractants, "better" means getting closer. For repellents, "better" means getting farther. The signal type doesn't matter — the rule is the same. This is the same shape as the if/else construct in every programming language ever written. Life ran it first, in proteins, billions of years before silicon.
 
+### 0.4 The Implicit Weighted Sum
+
+When attractants and repellents arrive together, the cell handles the conflict at the molecular level: each receptor pushes the same molecular switch with its own strength. The result is an implicit weighted sum:
+
+> decision = Σ ( signal × hidden weight )
+
+This is perceptron-shaped *math*, but without perceptron *architecture* — no central neuron, no tunable weights, no internal-state input. The distinction matters in Chapter 1.
+
 ## Beat Outline
 
 ### Act 1 — A Simpler World
@@ -77,13 +85,21 @@ The box pulses gently. Behind it, the cell continues its journey — run, tumble
 
 ### Act 3 — The Limit of Mechanism
 
-#### Beat 7 — No One Is Deciding
+#### Beat 7 — When Food and Danger Collide
 
-**Visual:** Close on the cell as it runs and tumbles. The pace slows. A side panel opens, showing the chain of chemistry inside: the attractant receptor *inhibits* a shared enzyme; the repellent receptor *activates* the same enzyme; the enzyme controls the flagella. Events shown as dominoes — one triggering the next, no gap, no chooser. Both receptors push and pull on the same molecular switch.
+**Visual:** A new scene. The cell drifts in water where both an attractant and a repellent are arriving from the same direction — a sugar molecule and a toxin appearing together. On the cell's surface, both receptor types fire at once. Inside the cell, the molecular switch is shown as a see-saw — the attractant signal pushes it one way (toward *run*), the repellent signal pushes it the other (toward *tumble*). The see-saw tips. Whichever side is heavier wins. The cell either swims forward toward the food (if the attractant pull is stronger) or spins and turns away (if the repellent push is stronger). At the bottom of the screen, a formula appears, ghostly at first, then clearer:
 
-**Narration:** It is tempting to say the cell is *making* decisions. *Choosing* to run. *Choosing* to tumble. But if you look closely — at the receptors, the proteins, the flagella — there is no one in there. No decider. No weigher of options. Just chemistry — one event triggering the next, like dominoes falling. The attractants push the switch one way. The repellents push it the other. Whichever pushes harder wins. The cell is not choosing anything. The rule is just running. And the rule is running because, a long time ago, cells that ran this rule survived better than cells that did not.
+> decision = Σ ( signal × hidden weight )
 
-#### Beat 8 — The Limit
+**Narration:** For most of its life, the cell faces one signal at a time. But sometimes — like now — food and danger arrive together. From the same direction. The attractant receptor pulls the molecular switch one way. The repellent receptor pushes it the other. The switch tips toward whichever push is stronger. If the food signal wins, the cell heads toward the food, danger and all. If the danger signal wins, the cell spins, escapes, leaves the food behind. So — there is arithmetic going on. Every signal carries its own weight, hidden inside the molecules. All the signals are quietly being summed. One number comes out the other side. The cell *handles* conflict. It just doesn't know it is handling conflict.
+
+#### Beat 8 — No One Is Deciding
+
+**Visual:** Close on the cell. The pace slows further. A side panel opens, showing the molecular cascade — events as dominoes falling, one triggering the next, with no gap, no chooser. The molecules don't know what they're doing. They just react. Inside the cell, no person, no eye, no central seat — just chemistry, all the way down.
+
+**Narration:** It is tempting to say the cell is *making* decisions — *choosing* to run, *choosing* to tumble, *choosing* between food and danger. But if you look closely — at the receptors, the proteins, the flagella — there is no one in there. No decider. No weigher of options consciously holding the scales. The arithmetic happens. The sums tip. But there is no one watching. The weights live in the molecules — set when the cell was born, the same for every cell of its kind. The cell is not choosing anything. The rule is just running. And it has been running because, a long time ago, cells that ran this rule survived better than cells that did not.
+
+#### Beat 9 — The Limit
 
 **Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, to a black sky. Soft text appears: *Billions of years pass.* The image fades. When it returns, the ocean has changed. The water is colder, dimmer. Microbial mats are still there — but among them, for the first time, something larger. Something with a front and a back. A small, soft creature drifts in the distance, just out of focus.
 
