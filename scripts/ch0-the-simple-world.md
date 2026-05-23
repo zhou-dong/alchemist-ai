@@ -44,7 +44,7 @@ The *bias* is the baseline activity of the central integrating enzyme (CheA in r
 
 **Narration:** Long before there were animals — long before there were plants, long before there was anything you'd call a creature — there was the ocean. And there was something in it.
 
-Three and a half billion years ago.
+Three and a half billion years ago. The Archean era.
 
 Something so small you'd need a microscope to see it. So simple, you wouldn't call it intelligent. You might not even call it alive. But it was. Just barely. In the most basic way anything has ever been alive.
 
