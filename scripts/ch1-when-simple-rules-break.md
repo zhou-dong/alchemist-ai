@@ -24,35 +24,49 @@ Arousal is a system-wide modifier — it doesn't enter the perceptron as a new i
 
 ### Act 1 — A More Complicated World
 
-#### Beat 1 — Meet Bila
+#### Beat 1 — After the Long Sleep
 
-**Visual:** A different ocean now — the Ediacaran sea, around 555 million years ago. Cooler and dimmer than the microbial waters of the previous chapter. The seabed is dotted with strange, motionless creatures — radiatans: circles, fans, frond-like shapes. Camera drifts past them and finds Bila. She is small, soft-bodied, about a centimeter long. Unlike the radial creatures around her, she has a clear front and a clear back. She moves forward — gently, with direction. A soft caption can fade in early: *Earth — 555 million years ago. Ediacaran period.*
+**Visual:** Wide Earth shot. The planet looks more familiar now — recognizable proto-continents, blue oceans, oxygen-rich atmosphere (no longer methane-pink). A montage of geological change: ice sheets covering the whole Earth, then melting; vast bacterial mats; the first faint hints of multicellular life — small green-purple smudges in the water. Soft caption: *Earth — 600 million years ago. End of the Proterozoic.*
 
-**Narration:** Three billion years pass. The ocean cools. New shapes appear. Anchored to the seabed, strange new creatures — circles, fans, slow blooms of life called radiatans — sit where the current puts them, much the way their ancestors did.
+**Narration:** Three billion years pass.
+
+The Earth has changed. The methane sky is gone — replaced, slowly, by oxygen, breathed out by bacteria for billions of years until it filled the air. The Moon has drifted farther away. The continents have shifted, collided, broken apart. The whole planet has frozen, completely, more than once — and thawed again.
+
+By six hundred million years ago, the oceans are blue. The sky is blue. The bacteria are still here — they will always be here — but they are no longer alone.
+
+A new chapter in the planet's history begins. Geologists call it the *Ediacaran period.*
+
+And in its shallow, cool waters — something is about to wake up.
+
+#### Beat 2 — Meet Bila
+
+**Visual:** A different ocean now — the Ediacaran sea, around 555 million years ago. Cooler and dimmer than the microbial waters of the previous chapter. The seabed is dotted with strange, motionless creatures — radiatans: circles, fans, frond-like shapes. Camera drifts past them and finds Bila. She is small, soft-bodied, about a centimeter long. Unlike the radial creatures around her, she has a clear front and a clear back. She moves forward — gently, with direction. A soft caption can fade in early: *Earth — 555 million years ago.*
+
+**Narration:** The ocean cools. New shapes appear. Anchored to the seabed, strange new creatures — circles, fans, slow blooms of life called radiatans — sit where the current puts them, much the way their ancestors did.
 
 Five hundred and fifty-five million years ago.
 
 But drifting through them is something new. About the length of a fingernail. Soft-bodied. With one detail none of the others have: a front, and a back. Her name, for our purposes, is Bila.
 
-#### Beat 2 — Bila's Inheritance
+#### Beat 3 — Bila's Inheritance
 
 **Visual:** Bila moves through dim water. She finds a chemical glow of food — settles into it, drifting slowly toward the source. Later, a shadow passes overhead and she darts away in sharp, panicked motions. Through both clips, the simple rule from Chapter 0 hovers softly in the corner of the screen: *when the world gets better — keep going; when the world gets worse — change direction.*
 
 **Narration:** Bila has inherited the oldest rule in life. The same one her single-celled ancestors used. *When the world gets better, keep going. When the world gets worse, change direction.* When the smell of food gets stronger, she keeps swimming. When danger comes closer, she turns away. The rule is still the same — just running inside a much bigger body. And for a long time, this is enough.
 
-#### Beat 3 — The Complication
+#### Beat 4 — The Complication
 
 **Visual:** Bila in dim water. Two distinct chemical signatures arrive from the same direction — one warm and rich (food), one sharp and acrid (predator). Two glows, overlapping, both pulling at her from the same place. Her body twitches. She doesn't move forward. She doesn't turn away. She stops.
 
 **Narration:** Until the day the world gets more complicated. One direction. Two signals. The smell of food, pulling her toward something. The chemical of a predator, in the same place, pulling her away from it. Is it good, or bad? Both. Same direction. And for the first time in three and a half billion years, the inherited rule has no answer.
 
-#### Beat 4 — The Freeze
+#### Beat 5 — The Freeze
 
 **Visual:** Bila stalled in place, body trembling. The simple rule hovers nearby — flickering, glitching — *better → keep going / worse → change direction* — the two outputs blinking on and off, no commitment. A small clock ticks. Time passes. Bila has not moved.
 
 **Narration:** The rule needs the world to be simple. One signal at a time. Getting better, or getting worse. Not both. With both, the rule freezes. And so does Bila. She is not eating. She is not escaping. She is just... stuck.
 
-#### Beat 5 — The Cost of Direction
+#### Beat 6 — The Cost of Direction
 
 **Visual:** Camera pulls back. In the foreground, Bila — still stalled. In the middle ground, a radiatan, anchored to the seabed, motionless as ever, unbothered. A wide silence between them.
 
@@ -60,7 +74,7 @@ But drifting through them is something new. About the length of a fingernail. So
 
 ### Act 2 — Something New Inside
 
-#### Beat 6 — Something New Inside
+#### Beat 7 — A Knot of Cells
 
 **Visual:** Slowly zoom *into* Bila's body. Past her skin, past muscle tissue, into the interior. We see, near her front, a small cluster of pale, branching cells — neurons — a primitive ganglion. From her skin's surface, thin fibers (sensory nerves) extend inward to this cluster. From the cluster, other fibers (motor nerves) extend outward to her muscles. The cluster pulses faintly with activity. The image holds. This is not a brain. But it is also not nothing.
 
@@ -72,9 +86,9 @@ It is, by any honest measure, primitive. Just a knot of cells. Nothing like a br
 
 But it is the first time, in the entire history of life on Earth, that a body has had *a place inside it whose only job is to gather signals.*
 
-#### Beat 7 — A First Choice
+#### Beat 8 — A First Choice
 
-**Visual:** Back to the food/danger dilemma from Beat 3 — food smell and predator chemical from the same direction. But this time, the camera moves *inside* Bila's body. Signals from her surface receptors travel inward as small pulses, reaching the nervous cluster. Multiple signals — a strong sharp one from the predator, a softer warmer one from the food — gather in the cluster. Patterns of activity ripple through the cells. Then a single signal travels out to her muscles. Outside her body, Bila — for the first time — turns decisively away from the danger.
+**Visual:** Back to the food/danger dilemma from Beat 4 — food smell and predator chemical from the same direction. But this time, the camera moves *inside* Bila's body. Signals from her surface receptors travel inward as small pulses, reaching the nervous cluster. Multiple signals — a strong sharp one from the predator, a softer warmer one from the food — gather in the cluster. Patterns of activity ripple through the cells. Then a single signal travels out to her muscles. Outside her body, Bila — for the first time — turns decisively away from the danger.
 
 **Narration:** Now watch what happens, the next time Bila finds herself in the same dilemma that froze her.
 
@@ -86,7 +100,7 @@ And then, with an action that has never happened in all the history of life befo
 
 For the first time, the body has *chosen.*
 
-#### Beat 8 — A Strange Hesitation
+#### Beat 9 — A Strange Hesitation
 
 **Visual:** Time has passed. Bila has lived through dilemma after dilemma. We see montage glimpses of her resolving conflicts decisively. Then — a new scene. Same kind of dilemma — food smell and predator chemical from the same direction. But this time, instead of turning away, Bila drifts forward, slowly, toward the food, even though the danger is right there.
 
@@ -104,7 +118,7 @@ Nothing outside her body has changed.
 
 But something inside her — has.
 
-#### Beat 9 — Hunger
+#### Beat 10 — Hunger
 
 **Visual:** Inside Bila's body, but not at the surface this time. We are in her gut, or her muscle tissue. A new kind of signal is glowing here — slow, deep, building over hours. Not coming from outside. Not from any chemical in the water. Just... growing inside her body. Time-lapse: the signal becomes thicker, brighter, more insistent, as days pass without food. The signal travels inward, into the cluster, joining the food and danger signals at that same meeting place.
 
@@ -122,7 +136,7 @@ The food signal alone wasn't enough to outweigh the danger. The food signal *plu
 
 Bila has a name for this signal too, in time. We will call it *hunger.*
 
-#### Beat 10 — Calm and Alarmed
+#### Beat 11 — Calm and Alarmed
 
 **Visual:** Two scenes side by side. Left: Bila in calm water, sensing some food, gentle measured response. Right: Bila in dangerous water, alert, alarmed — the same kind of food smell arrives, but her response is enormous. Everything magnified. We see, inside her body, the cluster's activity itself is brighter on the right — not a new signal, but the whole cluster turned up.
 
@@ -136,7 +150,7 @@ This isn't quite a new signal. It is more like a brightness in the cluster itsel
 
 It will, eventually, have a name. We will call it *arousal.*
 
-#### Beat 11 — An Inside That Speaks
+#### Beat 12 — An Inside That Speaks
 
 **Visual:** Slow, contemplative shot. Bila in the water. Around her, the world — food, danger, the radiatan in the distance. Inside her, the cluster, with multiple signals converging — some from outside (food, danger), some from inside (hunger, arousal). The cluster glowing with the integration. The full picture of an early creature with an inner world.
 
@@ -162,7 +176,7 @@ But it is the first place in the history of the universe where the inside of a b
 
 The diagram and the formula animate together. A subtle blueprint-style outline of Bila's nervous cluster overlays the abstract diagram for a moment — to show the equivalence — then fades.
 
-**Narration:** Let's pause the story for a moment, and look at what we just saw — from another angle.
+**Narration:** Let's pause the story for a moment, and look at what just happened — from another angle.
 
 The story we just watched — Bila and her new little cluster of cells — is, on paper, a famous shape.
 
