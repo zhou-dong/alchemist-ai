@@ -289,9 +289,9 @@ The cell does not make a decision. The cell *is* a decision — running, on auto
 
 And the reason that decision is running — the reason this exact rule, this exact way of doing things, is alive in the ocean today — is just because, a very long time ago, the cells that did it this way lived. And the ones that did it any other way did not.
 
-#### Beat C2 — The Threshold
+#### Beat C2 — The Limit
 
-**Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, holding the sense of an enormous, ancient, persistent world. Soft text appears: *Three and a half billion years pass.* The image fades. When it returns, the ocean has changed. The water is colder, dimmer. Microbial mats are still there — but among them, for the first time, something larger. Something with a front and a back. A small, soft creature drifts in the distance, just out of focus. The image holds.
+**Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, holding the sense of an enormous, ancient, persistent world. Soft text appears: *Three and a half billion years.* The image holds, then slowly darkens.
 
 **Narration:** And so it worked.
 
@@ -305,7 +305,11 @@ In the cell, there was no place inside the body whose only job was to weigh. The
 
 The math existed. The machinery did not.
 
-That is what is about to arrive.
+#### Beat C3 — What's About to Arrive
+
+**Visual:** The dark image fades. When it returns, the ocean has changed. The water is colder, dimmer. Microbial mats are still there — but among them, for the first time, something larger. Something with a front and a back. A small, soft creature drifts in the distance, just out of focus. The image holds.
+
+**Narration:** That is what is about to arrive.
 
 The ocean is about to grow something larger. A body with a front, and a back, and somewhere in the middle — for the first time — a place where signals can actually meet. A place where signals can be weighed deliberately. A place where the inside of the body can have a voice in the decision.
 
