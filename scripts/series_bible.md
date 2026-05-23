@@ -41,14 +41,15 @@ The pedagogical contract: **show behavior first, name the concept second.** The 
 
 ## 4. Chapter Beats
 
-Each chapter is built from four kinds of content beats:
+Each chapter is built from five kinds of content beats:
 
-1. **Biology beat** — the creature, its world, its survival problem. *(Core — always present.)*
-2. **Algorithm beat** — the math made visual. *(Core — always present.)*
-3. **Human-history beat** — when and who rediscovered this in AI (e.g., Rosenblatt and the perceptron, 1958). *(Recommended default; optional when no clean human story fits.)*
-4. **Real-world example beat** — where this algorithm lives today (e.g., the iRobot Roomba running the bacterial run-and-tumble strategy). *(Recommended default; content can be filled in later.)*
+1. **Chronicle beat** — a brief opener locating the chapter in Earth's history. Names the era, anchors the date, and notes what changed since the previous chapter (or since Earth's formation, for the first chapter). Includes a wide visual (Earth from space, the era's general look), a soft on-screen caption with era and date, and a short narration. *(Core — always the first beat of Part 1.)*
+2. **Biology beat** — the creature, its world, its survival problem. *(Core — always present in Part 1.)*
+3. **Algorithm beat** — the math made visual. *(Core — always present in Part 2.)*
+4. **Human-history beat** — when and who rediscovered this in AI (e.g., Rosenblatt and the perceptron, 1958). *(Recommended default; optional when no clean human story fits.)*
+5. **Real-world example beat** — where this algorithm lives today (e.g., the iRobot Roomba running the bacterial run-and-tumble strategy). *(Recommended default; content can be filled in later.)*
 
-Beats 1 and 2 map to the two registers in Section 3. Beats 3 and 4 build on the algorithm register's visual language.
+Beats 1 and 2 live in Part 1 (story register). Beat 3 lives in Part 2 (algorithm register). Beats 4 and 5 build on the algorithm register's visual language and typically appear in Part 2.
 
 ## 5. Protagonists
 
