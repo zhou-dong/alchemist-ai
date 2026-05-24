@@ -277,13 +277,27 @@ That is the math of the simple world.
 
 **Narration:** And now — here is the part that, if you stop and think about it, is genuinely strange.
 
-It is tempting to say the cell *makes* decisions. To say it *chooses* — to run, to tumble, between food and danger, in the way you and I choose between things.
+Watch the cell from the outside. It looks like it is *seeking* food. Hunting, even. Strategizing. When you watch it climb the gradient toward a sugar, it is hard not to read intention into it. *The cell is looking for food.*
 
-But if you look closely — at the receptors, at the proteins, at the molecular switch — you find no one in there.
+Watch it flee from a toxin. *It knows. It is escaping.*
+
+But the cell does not know.
+
+Look closely — at the receptors, at the proteins, at the molecular switch — and you find no one in there.
 
 There is no decider.
 
-No little inner self holding the scales. No part of the cell that *knows* it is choosing. The chemistry happens. The switch tips. The cell goes. But there is no one watching it happen. The hidden strengths of those signals — they live in the molecules, set the moment the cell was born, identical for every cell of its kind. Nobody chose those strengths either.
+No little inner self holding the scales. No part of the cell that *knows* it is choosing.
+
+The cell is not *looking* for anything. It is not *fleeing* anything. It is a chemical response. The receptors fire. The flagella respond. A simple rule. A simple sum. The chemistry happens. The switch tips. The cell goes. But there is no one watching it happen.
+
+And from the outside, all of it — looks remarkably like intelligence.
+
+Behavior that looks intelligent need not be intelligent. A creature can spend three and a half billion years doing things that *look* like intention — finding food, fleeing danger, handling complex situations — without anyone in there to intend them.
+
+This is one of the strangest patterns in all of biology. And — as the rest of this series will show — one of the strangest patterns in AI as well.
+
+The hidden strengths of those signals — they live in the molecules, set the moment the cell was born, identical for every cell of its kind. Nobody chose those strengths either.
 
 The cell does not make a decision. The cell *is* a decision — running, on autopilot, since the planet was warmer.
 
