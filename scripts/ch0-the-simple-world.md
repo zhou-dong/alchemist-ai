@@ -148,13 +148,9 @@ That's it.
 
 That is the entire cell. The whole story of how it finds food, how it escapes danger, how it has lived in the ocean for three billion years. For food, *better* means getting closer. For danger, *better* means getting farther. The cell never has to know the difference. It only ever has to know whether things are improving, or not.
 
-There is something to notice here.
-
 Two behaviors that look completely different — even opposite — turn out to be the same act in disguise. The same rule, running on different signals. The cell did not need a different program for food, and a different program for danger. It needed one rule. *One.* And that one rule covers every survival problem the cell will ever face.
 
-A hidden pattern. One shape doing the work of many.
-
-This is the kind of thing that scientists, mathematicians, programmers — anyone who has ever loved finding the simple rule underneath the complicated picture — spend their lives looking for. Generalizations. Patterns. The shape beneath the surface.
+A hidden pattern. One shape doing the work of many. This is the kind of thing we spend lifetimes looking for — generalizations, the shape beneath the surface.
 
 The cell has been showing it to us, in proteins, for three billion years.
 
@@ -170,7 +166,9 @@ Two lines. Two rules. One little body, drifting through the deep ancient ocean, 
 
 **Visual:** A new scene. The cell drifts in water where both an attractant and a repellent are arriving from the same direction — a sugar molecule and a toxin appearing together. On the cell's surface, both receptor types fire at once. Inside the cell, the molecular switch is shown as a see-saw — the attractant signal pushes it one way (toward *run*), the repellent signal pushes it the other (toward *tumble*). The see-saw tips. Whichever side is heavier wins. The cell either runs toward the food (if the attractant pull is stronger) or tumbles away (if the repellent push is stronger).
 
-**Narration:** Most of the time, the cell faces one thing at a time. Food today. Toxin tomorrow. A simple world. A simple rule.
+**Narration:** And there is one more case worth watching, before we step back.
+
+Most of the time, the cell faces one thing at a time. Food today. Toxin tomorrow. A simple world. A simple rule.
 
 But sometimes — life is not so kind.
 
@@ -334,7 +332,5 @@ The ocean is about to grow something larger. A body with a front, and a back, an
 And once a body has such a place — a place whose only job is to weigh — something new becomes possible.
 
 Something we will, eventually, learn to call *intelligence.*
-
-And later still — much later — those weights themselves will start to change. Learning from what worked, what didn't, what to try next time. But that is a story for another chapter.
 
 For now: the threshold. A simple world, complete. Something more, just about to begin.
