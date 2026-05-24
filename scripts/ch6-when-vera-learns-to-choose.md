@@ -1,4 +1,4 @@
-# Chapter 5 — When Vera Learns to Choose
+# Chapter 6 — When Vera Learns to Choose
 
 *Full structure document — developed in session, April 2026*
 

@@ -1,4 +1,4 @@
-# Chapter 2 — When Weights Learn
+# Chapter 5 — When Weights Learn
 
 *Full structure document — developed in session, April 2026*
 

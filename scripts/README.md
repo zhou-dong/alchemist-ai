@@ -6,13 +6,14 @@ Source material for the alchemist-ai video series. **Not code** — these files 
 
 - `series_bible.md` — the series bible: concept, format, storytelling methodology, chapter beats, protagonists, chapter arc, philosophical thread
 - `ch0-the-simple-world.md` — Chapter 0: bacteria, run-and-tumble, if/else as raw mechanism (before intelligence)
-- `ch1-when-simple-rules-break.md` — Chapter 1: Bila enters; the perceptron, internal state, arousal
-- `ch2-when-weights-learn.md` — Chapter 2: neural net, loss, backprop, implicit association
+- `ch1-when-simple-rules-break.md` — Chapter 1 (*When Many Cells Move as One*): Bila enters; multicellular + steering, the perceptron, internal state, arousal
+- *Chapter 2 — to be written:* single-perceptron learning, perceptron rule, linear separability / XOR cliff
 - `ch3-when-time-becomes-a-teacher.md` — Chapter 3: eligibility traces, STDP, TD Learning
 - `ch4-when-structure-becomes-visible.md` — Chapter 4: hierarchy, invariance, CNN (introduces Vera)
-- `ch5-when-vera-learns-to-choose.md` — Chapter 5: actor-critic RL, exploration/exploitation, long-horizon limits
+- `ch5-when-weights-learn.md` — Chapter 5: neural net, loss, backprop, implicit association (currently titled *When Weights Learn* — may rename to *When Learning Goes Deep* to distinguish from new Ch2)
+- `ch6-when-vera-learns-to-choose.md` — Chapter 6: actor-critic RL, exploration/exploitation, long-horizon limits
 
-Chapter 6 (Deep RL convergence) is planned but not yet written.
+Chapter 7 (Deep RL convergence) is planned but not yet written.
 
 ## Scope: what goes in which file
 
