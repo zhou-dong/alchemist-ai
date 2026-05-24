@@ -1,28 +1,24 @@
-# Chapter 1 — When Simple Rules Break
+# Chapter 1 — When Many Cells Move as One
 
-*Bila inherits the rule. The world makes her break it.*
+*Many cells. One body. One decision.*
 
 ## Overview
 
-Bila enters the story: a small bilateral creature with something new — a small cluster of nerve cells inside her body, where signals can come together for the first time. The chapter shows her resolving the conflict her ancestors couldn't (food and danger together), discovering the inner signals (hunger, arousal) that shape her decisions, and ending on the philosophical question of when steering signals become feelings. Part 2 names the math — the perceptron — and the Closing points toward Chapter 2's leap (when the weights themselves start to learn) and opens the philosophical question that will run through the rest of the series.
+Bila enters the story: a small bilateral creature, one of multiple paths multicellular life took out of its single-celled past. Her body moves — and to move with direction, she needs something her bacterial ancestors didn't have: a central place inside her body where signals from many cells can come together. The chapter introduces this place — the primitive nervous cluster — and the math that lives inside it (the perceptron). Internal signals (hunger, arousal) co-evolved with the nervous system and feed into the same cluster with their own weights. Part 2 names the math. The Closing points toward Chapter 2 (when the weights themselves start to learn) and opens the philosophical question of when steering signals become feelings.
 
 ## Key Concepts Introduced in Chapter 1
 
 ### 1.1 The First Nervous System / The Perceptron
 
-Bila is the first creature in our story to have a place inside her body where signals converge to be weighed. Biologically, this is a primitive ganglion — a small cluster of nerve cells, the ancestor of every brain that comes after. Mathematically, this is the structure of a perceptron — multiple weighted inputs, summed, plus a bias, with a binary output. Same idea, two names.
+Bila's lineage is the first to evolve a *central nervous integration place* — a small cluster of nerve cells inside her body where signals from many parts of her body converge to be weighed. Biologically, this is a primitive ganglion. Mathematically, it is a perceptron — multiple weighted inputs, summed, plus a bias, with a binary output. Same idea, two names.
 
-### 1.2 Internal State (Hunger)
+### 1.2 Internal State (Hunger, Arousal) — Co-evolved with the Nervous System
 
-Bila's body generates signals from inside that join the external signals in her nervous cluster — they enter the perceptron with their own weight. Hunger is the first internal state we meet: it builds slowly from inside the body, with no outside trigger, and changes Bila's decisions even when nothing outside has changed.
-
-### 1.3 Arousal
-
-Arousal is a system-wide modifier — it doesn't enter the perceptron as a new input, but turns up the volume on every existing weight. High arousal: signals feel louder, decisions more extreme. Low arousal: gentler, calmer responses.
+Bilaterians did not just evolve a nervous system. They evolved internal signals alongside it — hunger building from the gut, arousal across the body when threats appear. These internal signals feed into the same cluster as external signals, each with their own weight. The perceptron's structure is input-agnostic: signals from outside the body and signals from inside are treated the same way.
 
 ## Part 1 — The Story
 
-### Act 1 — A More Complicated World
+### Act 1 — Two Paths
 
 #### Beat 1 — After the Long Sleep
 
@@ -38,133 +34,81 @@ A new chapter in the planet's history begins. Geologists call it the *Ediacaran 
 
 And in its shallow, cool waters — something is about to wake up.
 
-#### Beat 2 — Meet Bila
+#### Beat 2 — Two Paths from Bacteria
 
-**Visual:** A different ocean now — the Ediacaran sea, around 555 million years ago. Cooler and dimmer than the microbial waters of the previous chapter. The seabed is dotted with strange, motionless creatures — radiatans: circles, fans, frond-like shapes. Camera drifts past them and finds Bila. She is small, soft-bodied, about a centimeter long. Unlike the radial creatures around her, she has a clear front and a clear back. She moves forward — gently, with direction. A soft caption can fade in early: *Earth — 555 million years ago.*
+**Visual:** A slow montage of the diversifying ocean. From the same ancient single-celled ancestors, multiple lineages have emerged. Sponges anchored to rocks. Strange flowering shapes — radiatans (cnidarians) — fans, circles, fronds, sitting on the seabed. Then the camera shifts focus to a small soft creature drifting between them, with a front and a back. The contrast between *still* and *moving* is visible.
 
-**Narration:** The ocean cools. New shapes appear. Anchored to the seabed, strange new creatures — circles, fans, slow blooms of life called radiatans — sit where the current puts them, much the way their ancestors did.
+**Narration:** Multicellular life is taking many forms now — all descendants of those ancient single-celled creatures, but in very different bodies.
+
+Anchored to the seabed, strange new creatures — circles, fans, slow blooms of life called radiatans — sit where the current puts them. This is one path life found out of its single-celled past. *Stay still. Stay simple. Wait for what comes.* It works. They will survive on it for hundreds of millions of years. Their descendants are with us today — corals, sea anemones, jellyfish.
+
+But drifting through them is another path. Soft-bodied. About the length of a fingernail. With one detail none of the radiatans have: a front, and a back.
+
+#### Beat 3 — Meet Bila
+
+**Visual:** Camera on a single small creature. Bila — soft-bodied, multicellular. We see her body has distinguishable parts: a front (chemical sensors), a back, muscle layers, a gut inside her body. She moves forward — gently, with direction. A soft caption fades in: *Earth — 555 million years ago.*
+
+**Narration:** Her name, for our purposes, is Bila.
 
 Five hundred and fifty-five million years ago.
 
-But drifting through them is something new. About the length of a fingernail. Soft-bodied. With one detail none of the others have: a front, and a back. Her name, for our purposes, is Bila.
+She is small — about the length of a fingernail. Like the radiatans, she is multicellular, made of many cells. *Unlike* them, she has a front. And a back. And once you have a front and a back, you have a direction. And once you have a direction, you can choose to move that way.
 
-#### Beat 3 — Bila's Inheritance
+But moving is hard. Especially when your body is many cells, and they all need to act together.
 
-**Visual:** Bila moves through dim water. She finds a chemical glow of food — settles into it, drifting slowly toward the source. Later, a shadow passes overhead and she darts away in sharp, panicked motions. Through both clips, the simple rule from Chapter 0 hovers softly in the corner of the screen: *when the world gets better — keep going; when the world gets worse — change direction.*
+#### Beat 4 — A Body That Moves Needs Coordination
 
-**Narration:** Bila has inherited the oldest rule in life. The same one her single-celled ancestors used. *When the world gets better, keep going. When the world gets worse, change direction.* When the smell of food gets stronger, she keeps swimming. When danger comes closer, she turns away. The rule is still the same — just running inside a much bigger body. And for a long time, this is enough.
+**Visual:** Show Bila's body in detail. Each cell at her surface has its own receptors. Different cells could be receiving different signals at the same moment — food at the front, danger at the side, water current at the back. Without any coordination, each cell would respond locally and the body would have no unified direction. Then cut to a bacterium for contrast: one cell, one molecular switch, one decision.
 
-#### Beat 4 — The Complication
+**Narration:** Her ancestors solved decisions *inside* a single cell. One receptor fires; the cell responds. Simple. Direct. The whole decision happens in one place — in the chemistry of one tiny bag.
 
-**Visual:** Bila in dim water. Two distinct chemical signatures arrive from the same direction — one warm and rich (food), one sharp and acrid (predator). Two glows, overlapping, both pulling at her from the same place. Her body twitches. She doesn't move forward. She doesn't turn away. She stops.
+But Bila is not one cell. She is *many* cells. Cells at her front, where her chemical sensors are. Cells along her sides. Cells in her gut. Cells in her muscles, which have to move her forward, all at once, all in the same direction.
 
-**Narration:** Until the day the world gets more complicated. One direction. Two signals. The smell of food, pulling her toward something. The chemical of a predator, in the same place, pulling her away from it. Is it good, or bad? Both. Same direction. And for the first time in three and a half billion years, the inherited rule has no answer.
+If each of her cells just ran her ancestors' rule on its own, her body would pull in different directions. There would be no coherent *self*. To move with purpose, the signals from across her body have to come together — somewhere — before her muscles act.
 
-#### Beat 5 — The Freeze
+Bacteria solved this *inside* one cell. Bila has to solve it *across* a body.
 
-**Visual:** Bila stalled in place, body trembling. The simple rule hovers nearby — flickering, glitching — *better → keep going / worse → change direction* — the two outputs blinking on and off, no commitment. A small clock ticks. Time passes. Bila has not moved.
+It is a different problem. It needs a different answer.
 
-**Narration:** The rule needs the world to be simple. One signal at a time. Getting better, or getting worse. Not both. With both, the rule freezes. And so does Bila. She is not eating. She is not escaping. She is just... stuck.
+### Act 2 — The Cluster
 
-#### Beat 6 — The Cost of Direction
+#### Beat 5 — A Knot of Cells
 
-**Visual:** Camera pulls back. In the foreground, Bila — still stalled. In the middle ground, a radiatan, anchored to the seabed, motionless as ever, unbothered. A wide silence between them.
+**Visual:** Slowly zoom *into* Bila's body. Past her skin, past muscle tissue, into the interior. We see, near her front, a small cluster of pale, branching cells — neurons — a primitive ganglion. From her skin's surface, thin fibers (sensory nerves) extend inward to this cluster. From the cluster, other fibers (motor nerves) extend outward to her muscles. The cluster pulses faintly with activity.
 
-**Narration:** Nearby, a radiatan sits where it has always sat, unbothered, unmoving, waiting for whatever the current brings. It never chose a direction, so it never has to decide. Bila chose a direction. And now, for the first time, direction has a cost. The rule that worked for billions of years is not enough.
+**Narration:** Inside Bila, near her front, sits a small cluster of cells — pale, branching, alive. Each one stretches thin filaments out to her surface, where her receptors are. And other filaments inward, to her muscles.
 
-### Act 2 — Something New Inside
-
-#### Beat 7 — A Knot of Cells
-
-**Visual:** Slowly zoom *into* Bila's body. Past her skin, past muscle tissue, into the interior. We see, near her front, a small cluster of pale, branching cells — neurons — a primitive ganglion. From her skin's surface, thin fibers (sensory nerves) extend inward to this cluster. From the cluster, other fibers (motor nerves) extend outward to her muscles. The cluster pulses faintly with activity. The image holds. This is not a brain. But it is also not nothing.
-
-**Narration:** But there is something inside Bila that wasn't inside her ancestors. Look closely.
-
-Near her front, where it makes sense for sensing to be concentrated, sits a small cluster of cells — pale, branching, alive. Each one stretches thin filaments out to her surface, where the chemical receptors are. And other filaments inward, to her muscles. Signals from the outside come in. Signals to the body go out. And in the middle — this small cluster, taking it all in.
+Signals from across her body come in. Decisions go out.
 
 It is, by any honest measure, primitive. Just a knot of cells. Nothing like a brain. Not even close.
 
-But it is the first time, in the entire history of life on Earth, that a body has had *a place inside it whose only job is to gather signals.*
+But it is the first time, in the entire history of life on Earth, that a multicellular body has had *a place inside it where signals from many cells can come together to be weighed.*
 
-#### Beat 8 — A First Choice
+#### Beat 6 — Bila Moves with Purpose
 
-**Visual:** Back to the food/danger dilemma from Beat 4 — food smell and predator chemical from the same direction. But this time, the camera moves *inside* Bila's body. Signals from her surface receptors travel inward as small pulses, reaching the nervous cluster. Multiple signals — a strong sharp one from the predator, a softer warmer one from the food — gather in the cluster. Patterns of activity ripple through the cells. Then a single signal travels out to her muscles. Outside her body, Bila — for the first time — turns decisively away from the danger.
+**Visual:** Bila in her world. She drifts forward gently. Her surface receptors detect a chemical gradient — food nearby. Signals from her sensors travel inward as small pulses, reaching the nervous cluster. Inside the cluster, patterns of activity ripple. A single signal travels out to her muscles. Bila turns — coherently, as one creature — toward the food. Later, the same sequence: a faint predator chemical arrives, signals flow to the cluster, output goes to muscles, Bila turns away.
 
-**Narration:** Now watch what happens, the next time Bila finds herself in the same dilemma that froze her.
+**Narration:** And so Bila moves.
 
-Food. Danger. Same direction. She would have frozen, before. But now — something different.
+Not the way her ancestors did — drifting and tumbling, each cell deciding for itself. But as one creature.
 
-The signals from her surface — the chemical of the food, the chemical of the predator — they travel inward, into her body. They reach the cluster. The cluster takes them in, both at once, side by side. The predator signal is sharp, bright, loud. The food signal is quieter. The cluster — for the first time — *weighs them against each other.*
+Her sensors pick up the world. Signals travel inward to the cluster. The cluster takes them in, weighs them, decides. And from one place inside her body, her muscles get one command. The whole body turns — toward food, away from danger, with intent.
 
-And then, with an action that has never happened in all the history of life before this moment — Bila moves. She turns. The food was real. The danger was bigger. She is alive.
+For the first time, a multicellular body has acted as one.
 
-For the first time, the body has *chosen.*
+#### Beat 7 — Inside and Outside Together
 
-#### Beat 9 — A Strange Hesitation
+**Visual:** Bila in her world. External signals (food, danger) flow inward to her cluster from her surface receptors. Then cut inside her body — internal signals also arising: hunger pulsing slowly from her gut, arousal rising across her body when threats appear. All of them, internal and external, flow into the same cluster. Each has its own weight (dial). The cluster integrates them all into one output to her muscles.
 
-**Visual:** Time has passed. Bila has lived through dilemma after dilemma. We see montage glimpses of her resolving conflicts decisively. Then — a new scene. Same kind of dilemma — food smell and predator chemical from the same direction. But this time, instead of turning away, Bila drifts forward, slowly, toward the food, even though the danger is right there.
+**Narration:** There's something else.
 
-**Narration:** And for a while, this works. Bila handles dilemma after dilemma. Food on one side, danger on the other. Her body weighs. Her body chooses.
+Along with the nervous cluster, Bila's lineage also developed signals from *inside* the body — hunger building in her gut, arousal rising across her body when threats are near.
 
-But then — one day — something strange.
+These signals didn't evolve separately from the nervous system. They evolved *with* it. A body that can move toward food needs to know when it's hungry. A body that can flee from danger needs to know when it's threatened. The inside of the body and the wiring that integrates the outside — they came together.
 
-The same kind of scene. Food and danger, same direction. But now Bila is not turning away. She is drifting forward, toward the food, with the predator still right there.
+In Bila's cluster, both kinds of signals arrive. External signals from her surface, internal signals from her gut and her body — each with its own weight, each treated the same way. Inside and outside meet, in one place, in one equation.
 
-The signals from outside are the same. The food smell is just as strong. The danger chemical is just as sharp. The cluster, presumably, is doing what it has always done — weighing.
-
-So what has changed?
-
-Nothing outside her body has changed.
-
-But something inside her — has.
-
-#### Beat 10 — Hunger
-
-**Visual:** Inside Bila's body, but not at the surface this time. We are in her gut, or her muscle tissue. A new kind of signal is glowing here — slow, deep, building over hours. Not coming from outside. Not from any chemical in the water. Just... growing inside her body. Time-lapse: the signal becomes thicker, brighter, more insistent, as days pass without food. The signal travels inward, into the cluster, joining the food and danger signals at that same meeting place.
-
-**Narration:** It has been a long time since she has eaten.
-
-A signal has been building inside her body. Slowly. Quietly. With no chemical from outside triggering it. Just... emerging from inside her, as time passes. From her muscles, perhaps. From her gut. From somewhere her surface receptors can't reach.
-
-And this signal travels inward, like the others. Into the cluster. Joining the food signal and the danger signal at that meeting place.
-
-And the cluster takes it in. As if it were any other signal.
-
-Same external scene. New internal signal. And the weighing — comes out differently.
-
-The food signal alone wasn't enough to outweigh the danger. The food signal *plus this new inner signal* — is.
-
-Bila has a name for this signal too, in time. We will call it *hunger.*
-
-#### Beat 11 — Calm and Alarmed
-
-**Visual:** Two scenes side by side. Left: Bila in calm water, sensing some food, gentle measured response. Right: Bila in dangerous water, alert, alarmed — the same kind of food smell arrives, but her response is enormous. Everything magnified. We see, inside her body, the cluster's activity itself is brighter on the right — not a new signal, but the whole cluster turned up.
-
-**Narration:** And there is another kind of inner signal too.
-
-Sometimes Bila moves through her world calmly — soft, steady, gentle. The signals arriving at her surface produce small responses. Manageable. Quiet.
-
-Other times — when she has been threatened recently, or starved too long, or had a near miss with something much larger — everything is *loud*. The same food smell. The same danger. But her body, somehow, is on edge. Every signal arriving feels bigger than it did before. Her responses are sharper. Her decisions, more extreme.
-
-This isn't quite a new signal. It is more like a brightness in the cluster itself. A turning-up of everything at once.
-
-It will, eventually, have a name. We will call it *arousal.*
-
-#### Beat 12 — An Inside That Speaks
-
-**Visual:** Slow, contemplative shot. Bila in the water. Around her, the world — food, danger, the radiatan in the distance. Inside her, the cluster, with multiple signals converging — some from outside (food, danger), some from inside (hunger, arousal). The cluster glowing with the integration. The full picture of an early creature with an inner world.
-
-**Narration:** Stop here, for a moment.
-
-In her ancestors, the world spoke to the body, and the body responded. There was no inside.
-
-But Bila has an inside that speaks. Her hunger speaks. Her arousal speaks. They join the conversation at the cluster, alongside the chemicals from the water. They carry their own weight. They change what she does.
-
-The body has become a *context.* The same world, outside, can lead to different decisions, depending on what is happening inside.
-
-It is a small thing, this cluster. A handful of cells. Nothing like a brain.
-
-But it is the first place in the history of the universe where the inside of a body got a voice.
+The body's inside has a voice in what the body does — from the very beginning of having a nervous system at all.
 
 ## Part 2 — The Math
 
@@ -180,7 +124,7 @@ The diagram and the formula animate together. A subtle blueprint-style outline o
 
 The story we just watched — Bila and her new little cluster of cells — is, on paper, a famous shape.
 
-When the surface signals arrived at her nervous cluster, the cluster effectively did this: it multiplied each signal by an internal sensitivity, added them all together, added a baseline, and decided what to do based on the result.
+When signals arrived at her nervous cluster, the cluster effectively did this: it multiplied each signal by an internal sensitivity, added them all together, added a baseline, and decided what to do based on the result.
 
 In math:
 
@@ -198,27 +142,19 @@ The perceptron is born.
 
 #### Algorithm Beat A2 — Internal Signals Join the Sum
 
-**Visual:** Back to the perceptron diagram. From the right, new input arrows fade in alongside the original signals — labeled *hunger* and *arousal*. Each has its own weight dial. They sit alongside the external signals (*food*, *danger*) in the same row of inputs, indistinguishable in the math. Then *arousal* shifts visually — instead of being a separate input, it becomes a multiplier across all the weights, brightening every dial at once. The formula updates as the diagram changes:
+**Visual:** Back to the perceptron diagram. From the right, new input arrows fade in alongside the original signals — labeled *hunger* and *arousal*. Each has its own weight dial. They sit alongside the external signals (*food*, *danger*) in the same row of inputs — indistinguishable in the math. The formula stays the same:
 
-> output = step( arousal × Σ ( signal × weight ) + bias )
+> output = step( Σ ( signal × weight ) + bias )
 
-Where the signals include both external (food, danger) and internal (hunger).
+A small caption appears: *the inputs can come from anywhere.*
 
-**Narration:** But there is more.
+**Narration:** And here is the elegance of this shape.
 
-We saw that Bila's nervous cluster doesn't only take in signals from outside her body. It takes in signals from inside, too. Hunger. Arousal. Other internal states.
+The perceptron doesn't care where its inputs come from. A signal from a chemical receptor on Bila's skin. A signal from her gut telling her she's hungry. A signal of arousal across her body. To the math, they are all just inputs. Multiply by a weight. Add to the sum. One equation handles them all.
 
-In the math, this doesn't require anything new. The perceptron doesn't care where its inputs come from. A chemical from the water, or a chemical from inside her body — they are all just numbers, multiplied by weights, added together.
+This is why the perceptron — simple as it is — is the foundational shape of every neural network ever built. It absorbs any kind of input. Outside the body or inside. Tangible or abstract. As long as it's a number, the perceptron can weigh it.
 
-Hunger enters the sum exactly like food does. With its own weight.
-
-Arousal is a little different — it doesn't enter as a new input. It turns up the volume on all the existing weights at once. The same external scene, with high arousal, becomes a louder, sharper version of itself. Same equation, multiplied through.
-
-The full picture, written out:
-
-> output = step( arousal × sum of ( signal × weight ) + bias )
-
-The inside of the body, finally — has a voice in the equation.
+In Bila's body, this means her decisions are shaped by what's happening *inside* her, not just outside. Hunger speaks. Arousal speaks. They get weights, just like food and danger do. The cluster doesn't know the difference.
 
 ## Closing — The Seed of Feeling
 
@@ -230,15 +166,15 @@ The inside of the body, finally — has a voice in the equation.
 
 > ✓ a central place where signals meet
 > ✓ a bias — a default tendency
-> ✓ weights modulated by internal state (hunger)
-> ✓ weights modulated by system-wide arousal
+> ✓ inputs from outside the body
+> ✓ inputs from inside the body
 > ✗ weights that *change from experience*
 
 The last line highlights and stays on screen. The cluster diagram continues to pulse softly.
 
 **Narration:** Bila has, at this point, almost everything you would need to build a real neural network.
 
-She has a central place where signals converge — a body that *integrates*. She has weights that her internal state can modulate. She has inputs from both outside and inside the body. She has arousal that can amplify the whole system.
+She has a central place where signals converge — a body that *integrates*. She has inputs from both outside and inside her body. She has weights that determine how much each signal matters.
 
 But there is one thing she does not have yet.
 
@@ -260,19 +196,19 @@ What we have seen in Bila's body — hunger, arousal — they began as pure stee
 
 Right now, that is all they are. No name. No feeling. Just a number, in a body, with no one in there to feel it.
 
-#### Beat C3 — The Same Signal, Later
+But hundreds of millions of years from now, a creature will feel that same signal and call it *longing.* Another will call it *desperation.* Another will call it *love.* The signal itself never changed. Something else did. Somewhere along the way, a steering signal became a feeling. Nobody knows exactly when.
 
-**Visual:** Time-lapse montage. Bila fades into different creatures — a fish, a reptile, a mammal, finally a human. Each shows the same internal signal pulsing — hunger, fear — but at each stage, the signal carries more around it: memory, anticipation, language, expression. Finally, a human face looking at someone they love.
+#### Beat C3 — The Radiatan's Quiet Answer
 
-**Narration:** But hundreds of millions of years from now, a creature will feel that same signal and call it *longing.* Another will call it *desperation.* Another will call it *love.* The signal itself never changed. Something else did. Somewhere along the way, a steering signal became a feeling. Nobody knows exactly when.
+**Visual:** Pull back. A radiatan, still anchored to the seabed, motionless. Bila in the distance — moving, integrating, weighing.
 
-#### Beat C4 — The Radiatan's Quiet Answer
+**Narration:** Nearby, a radiatan still sits motionless. It took the other path, all those millions of years ago. It never developed a central nervous system. It never developed internal states. It never needed to choose. It never felt hunger or fear.
 
-**Visual:** Pull back. The radiatan, still anchored, motionless. Bila in the distance — moving, hesitating, choosing.
+And it has survived, perfectly well, for hundreds of millions of years.
 
-**Narration:** Nearby, the radiatan still sits motionless. It never developed internal states. It never needed to choose. It never felt hunger or fear. And it has survived, perfectly well, for hundreds of millions of years. Perhaps feeling something is not the only way to exist. But it is the way Bila chose. And — in time — it is the way we chose, too.
+Perhaps feeling something is not the only way to exist. But it is the way Bila's lineage chose. And — in time — it is the way we chose, too.
 
-#### Beat C5 — A Question Left Open
+#### Beat C4 — A Question Left Open
 
 **Visual:** Final image. Bila in the ancient ocean, swimming. Above her, a faint silhouette of a modern AI system — a neural network diagram, data flowing through. The two images blend, dissolve into each other.
 
