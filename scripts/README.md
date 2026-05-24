@@ -6,7 +6,7 @@ Source material for the alchemist-ai video series. **Not code** — these files 
 
 - `series_bible.md` — the series bible: concept, format, storytelling methodology, chapter beats, protagonists, chapter arc, philosophical thread
 - `ch0-the-simple-world.md` — Chapter 0: bacteria, run-and-tumble, if/else as raw mechanism (before intelligence)
-- `ch1-when-simple-rules-break.md` — Chapter 1 (*When Many Cells Move as One*): Bila enters; multicellular + steering, the perceptron, internal state, arousal
+- `ch1-when-many-cells-move-as-one.md` — Chapter 1: Bila enters; multicellular + steering, the perceptron, internal state, arousal
 - *Chapter 2 — to be written:* single-perceptron learning, perceptron rule, linear separability / XOR cliff
 - `ch3-when-time-becomes-a-teacher.md` — Chapter 3: eligibility traces, STDP, TD Learning
 - `ch4-when-structure-becomes-visible.md` — Chapter 4: hierarchy, invariance, CNN (introduces Vera)
