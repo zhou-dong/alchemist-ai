@@ -140,6 +140,8 @@ The same shape. The same equation. And this time — the same architecture, too.
 
 The perceptron is born.
 
+One honest note before we move on: Bila's real cluster isn't a single perceptron. It is a small network of them — several neurons, connected to each other, each doing its own little weighted sum. The *unit* is what we're naming here. The rest of this series is about what happens when you stack many of these together.
+
 #### Algorithm Beat A2 — Internal Signals Join the Sum
 
 **Visual:** Back to the perceptron diagram. From the right, new input arrows fade in alongside the original signals — labeled *hunger* and *arousal*. Each has its own weight dial. They sit alongside the external signals (*food*, *danger*) in the same row of inputs — indistinguishable in the math. The formula stays the same:
