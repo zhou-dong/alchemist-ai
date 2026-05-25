@@ -1,4 +1,4 @@
-# Chapter 5 — When Weights Learn
+# Chapter 5 — When Learning Goes Deep
 
 *Full structure document — developed in session, April 2026*
 
