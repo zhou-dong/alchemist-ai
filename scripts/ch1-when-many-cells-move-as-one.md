@@ -4,7 +4,7 @@
 
 ## Overview
 
-Bila enters the story: a small bilateral creature, one of multiple paths multicellular life took out of its single-celled past. Her body moves — and to move with direction, she needs something her bacterial ancestors didn't have: a central place inside her body where signals from many cells can come together. The chapter introduces this place — the primitive nervous cluster — and the math that lives inside it (the perceptron). Internal signals (hunger, arousal) co-evolved with the nervous system and feed into the same cluster with their own weights. Part 2 names the math. The Closing points toward Chapter 2 (when the weights themselves start to learn) and opens the philosophical question of when steering signals become feelings.
+Bila enters the story: a small bilateral creature, one of multiple paths multicellular life took out of its single-celled past. Her body moves — and to move with direction, she needs something her bacterial ancestors didn't have: a central place inside her body where signals from many cells can come together. The chapter introduces this place — the primitive nervous cluster — and the math that lives inside it (the perceptron). Internal signals (hunger, arousal) co-evolved with the nervous system and feed into the same cluster with their own weights. Part 2 names the math. The Closing points toward Chapter 2: when the weights themselves start to learn.
 
 ## Key Concepts Introduced in Chapter 1
 
@@ -158,11 +158,21 @@ This is why the perceptron — simple as it is — is the foundational shape of 
 
 In Bila's body, this means her decisions are shaped by what's happening *inside* her, not just outside. Hunger speaks. Arousal speaks. They get weights, just like food and danger do. The cluster doesn't know the difference.
 
-## Closing — The Seed of Feeling
+## Closing
 
-*A final section, after both story and math. What Bila's body cannot yet do — and the deeper question her inside has just opened.*
+*A final section, after both story and math. The path Bila took, and what her body still cannot do.*
 
-#### Beat C1 — What's Still Missing
+#### Beat C1 — The Radiatan's Quiet Answer
+
+**Visual:** Pull back. A radiatan, still anchored to the seabed, motionless. Bila in the distance — moving, integrating, weighing.
+
+**Narration:** Nearby, a radiatan still sits motionless. It took the other path, all those millions of years ago. It never developed a central nervous system. It never developed an inside that needed to come together to make a decision.
+
+And it has survived, perfectly well, for hundreds of millions of years.
+
+There was more than one way to live as a multicellular creature. The radiatan's lineage chose one. Bila's chose another. Both worked. But only one of them was on the road to a brain.
+
+#### Beat C2 — What's Still Missing
 
 **Visual:** The perceptron diagram, with all the inputs and weights. To the right of the diagram, a checklist appears, one line at a time, each marked with a check or an X:
 
@@ -187,33 +197,3 @@ That is the next leap.
 When the weights themselves start to change — based on what worked, what didn't, what to try next time — that is when the perceptron becomes something more than a perceptron. That is when the body starts to *learn.*
 
 And that is the next chapter.
-
-#### Beat C2 — A Quiet Moment
-
-**Visual:** Slow, contemplative shot of Bila at rest in calm water. Her body still. Around her, the ocean. Inside her, the chemical signals — hunger, arousal — pulsing quietly. The camera lingers, almost in close-up.
-
-**Narration:** Pause here for a moment.
-
-What we have seen in Bila's body — hunger, arousal — they began as pure steering signals. Functional. Mechanical. Just inputs feeding into a primitive cluster of cells, nudging her body toward survival.
-
-Right now, that is all they are. No name. No feeling. Just a number, in a body, with no one in there to feel it.
-
-But hundreds of millions of years from now, a creature will feel that same signal and call it *longing.* Another will call it *desperation.* Another will call it *love.* The signal itself never changed. Something else did. Somewhere along the way, a steering signal became a feeling. Nobody knows exactly when.
-
-#### Beat C3 — The Radiatan's Quiet Answer
-
-**Visual:** Pull back. A radiatan, still anchored to the seabed, motionless. Bila in the distance — moving, integrating, weighing.
-
-**Narration:** Nearby, a radiatan still sits motionless. It took the other path, all those millions of years ago. It never developed a central nervous system. It never developed internal states. It never needed to choose. It never felt hunger or fear.
-
-And it has survived, perfectly well, for hundreds of millions of years.
-
-Perhaps feeling something is not the only way to exist. But it is the way Bila's lineage chose. And — in time — it is the way we chose, too.
-
-#### Beat C4 — A Question Left Open
-
-**Visual:** Final image. Bila in the ancient ocean, swimming. Above her, a faint silhouette of a modern AI system — a neural network diagram, data flowing through. The two images blend, dissolve into each other.
-
-**Narration:** Today's AI systems have their own internal signals: loss functions, reward signals, attention weights. They nudge decisions, just the way Bila's hunger nudged hers toward food. But do they feel anything? Or are they exactly where Bila was — functional signals, without experience? Nobody knows. Not in biology. Not in AI. But the question started here, in this ancient ocean, with a tiny creature and a number in an equation. And it has never stopped being asked.
-
-*This question will return.*
