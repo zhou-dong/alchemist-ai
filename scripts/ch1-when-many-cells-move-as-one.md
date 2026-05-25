@@ -60,15 +60,13 @@ But moving is hard. Especially when your body is many cells, and they all need t
 
 **Visual:** Show Bila's body in detail. Each cell at her surface has its own receptors. Different cells could be receiving different signals at the same moment — food at the front, danger at the side, water current at the back. Without any coordination, each cell would respond locally and the body would have no unified direction. Then cut to a bacterium for contrast: one cell, one molecular switch, one decision.
 
-**Narration:** Her ancestors solved decisions *inside* a single cell. One receptor fires; the cell responds. Simple. Direct. The whole decision happens in one place — in the chemistry of one tiny bag.
+**Narration:** Her ancestors solved decisions *inside* a single cell. One receptor fires; the cell responds. The whole decision happens in one place — in the chemistry of one tiny bag.
 
 But Bila is not one cell. She is *many* cells. Cells at her front, where her chemical sensors are. Cells along her sides. Cells in her gut. Cells in her muscles, which have to move her forward, all at once, all in the same direction.
 
-If each of her cells just ran her ancestors' rule on its own, her body would pull in different directions. There would be no coherent *self*. To move with purpose, the signals from across her body have to come together — somewhere — before her muscles act.
+If each cell just ran her ancestors' rule on its own, her body would pull in different directions. To move with purpose, the signals from across her body have to come together — somewhere — before her muscles act.
 
-Bacteria solved this *inside* one cell. Bila has to solve it *across* a body.
-
-It is a different problem. It needs a different answer.
+Bacteria solved this *inside* one cell. Bila has to solve it *across* a body. A different problem. A different answer.
 
 ### Act 2 — The Cluster
 
@@ -92,7 +90,7 @@ But it is the first time, in the entire history of life on Earth, that a multice
 
 Not the way her ancestors did — drifting and tumbling, each cell deciding for itself. But as one creature.
 
-Her sensors pick up the world. Signals travel inward to the cluster. The cluster takes them in, weighs them, decides. And from one place inside her body, her muscles get one command. The whole body turns — toward food, away from danger, with intent.
+Her sensors pick up the world. Signals travel inward to the cluster. The cluster takes them in, weighs them, decides. And from one place inside her body, her muscles get one command. The whole body turns — toward food, away from danger.
 
 For the first time, a multicellular body has acted as one.
 
@@ -150,13 +148,13 @@ One honest note before we move on: Bila's real cluster isn't a single perceptron
 
 A small caption appears: *the inputs can come from anywhere.*
 
-**Narration:** And here is the elegance of this shape.
+**Narration:** And here is the elegance of this shape — and its strangeness.
 
-The perceptron doesn't care where its inputs come from. A signal from a chemical receptor on Bila's skin. A signal from her gut telling her she's hungry. A signal of arousal across her body. To the math, they are all just inputs. Multiply by a weight. Add to the sum. One equation handles them all.
+The perceptron does not care what its inputs *are.* To the math, they are just numbers. Each gets a weight. Each is added to the sum. One equation handles them all.
 
-This is why the perceptron — simple as it is — is the foundational shape of every neural network ever built. It absorbs any kind of input. Outside the body or inside. Tangible or abstract. As long as it's a number, the perceptron can weigh it.
+This is why the perceptron — simple as it is — is the foundational shape of every neural network ever built. The world is full of things that can be turned into numbers. The perceptron weighs all of them the same way. It does not need to *know* what the numbers mean.
 
-In Bila's body, this means her decisions are shaped by what's happening *inside* her, not just outside. Hunger speaks. Arousal speaks. They get weights, just like food and danger do. The cluster doesn't know the difference.
+The cluster in Bila's body doesn't know the difference between hunger and food, between danger and arousal. It only knows: each signal has a weight, multiply, add, output. The meaning lives elsewhere — in what her body *does* with the answer. The cluster just does the math.
 
 ## Closing
 
