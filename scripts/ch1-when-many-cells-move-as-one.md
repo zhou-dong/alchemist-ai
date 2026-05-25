@@ -36,9 +36,13 @@ And in its shallow, cool waters — something is about to wake up.
 
 #### Beat 2 — Two Paths from Bacteria
 
-**Visual:** A slow montage of the diversifying ocean. From the same ancient single-celled ancestors, multiple lineages have emerged. Sponges anchored to rocks. Strange flowering shapes — radiatans (cnidarians) — fans, circles, fronds, sitting on the seabed. Then the camera shifts focus to a small soft creature drifting between them, with a front and a back. The contrast between *still* and *moving* is visible.
+**Visual:** A slow montage of the new Ediacaran ocean. Shallow sunlit seas, oxygen-rich water, warm and calm after the long freezes. The water is alive with possibility. Then: from the same ancient single-celled ancestors, multiple lineages have emerged. Sponges anchored to rocks. Strange flowering shapes — radiatans (cnidarians) — fans, circles, fronds, sitting on the seabed. Then the camera shifts focus to a small soft creature drifting between them, with a front and a back. The contrast between *still* and *moving* is visible.
 
-**Narration:** Multicellular life is taking many forms now — all descendants of those ancient single-celled creatures, but in very different bodies.
+**Narration:** The oceans we just saw — warm, rich with oxygen, freshly out of the long freezes — are something the planet has never seen before. Shallow seas full of nutrients spread across the continental shelves. For the first time in the planet's history, the conditions for bodies with many cells — not just one — are everywhere.
+
+And life is taking advantage.
+
+From the same single-celled ancestors that filled the world for three billion years, multiple lineages have emerged — multicellular creatures, taking many different forms.
 
 Anchored to the seabed, strange new creatures — circles, fans, slow blooms of life called radiatans — sit where the current puts them. This is one path life found out of its single-celled past. *Stay still. Stay simple. Wait for what comes.* It works. They will survive on it for hundreds of millions of years. Their descendants are with us today — corals, sea anemones, jellyfish.
 
