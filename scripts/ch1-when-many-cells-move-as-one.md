@@ -162,7 +162,7 @@ The cluster in Bila's body doesn't know the difference between hunger and food, 
 
 ## Closing
 
-*A final section, after both story and math. The path Bila took, and what her body still cannot do.*
+*A final section, after both story and math. The path Bila took, and what we haven't yet watched.*
 
 #### Beat C1 — The Radiatan's Quiet Answer
 
@@ -174,28 +174,16 @@ And it has survived, perfectly well, for hundreds of millions of years.
 
 There was more than one way to live as a multicellular creature. The radiatan's lineage chose one. Bila's chose another. Both worked. But only one of them was on the road to a brain.
 
-#### Beat C2 — What's Still Missing
+#### Beat C2 — Bila Has Been Learning
 
-**Visual:** The perceptron diagram, with all the inputs and weights. To the right of the diagram, a checklist appears, one line at a time, each marked with a check or an X:
-
-> ✓ a central place where signals meet
-> ✓ a bias — a default tendency
-> ✓ inputs from outside the body
-> ✓ inputs from inside the body
-> ✗ weights that *change from experience*
-
-The last line highlights and stays on screen. The cluster diagram continues to pulse softly.
+**Visual:** The perceptron diagram, with all the inputs and weights. The diagram subtly animates: the small dials (weights) are gently shifting over time, in response to the signals flowing through. The changes are slow, almost imperceptible — we had not noticed them before. A soft caption appears below the diagram: *the weights have been changing, all along.*
 
 **Narration:** Bila has, at this point, almost everything you would need to build a real neural network.
 
 She has a central place where signals converge — a body that *integrates*. She has inputs from both outside and inside her body. She has weights that determine how much each signal matters.
 
-But there is one thing she does not have yet.
+But there is one thing we haven't yet looked at: how those weights *change.*
 
-Her weights — the strengths her cluster gives to each kind of signal — were set when she was born. They came from her genes. Bila does not yet learn from experience. If a particular food once made her sick, her cluster doesn't know it. If a particular kind of predator tends to come from a certain direction, her cluster doesn't remember.
+Bila's weights are not fixed for life. They shift, quietly, in response to what she experiences. What worked before becomes stronger. What didn't, becomes weaker. The cluster has been learning, all along — we just haven't watched it happen.
 
-That is the next leap.
-
-When the weights themselves start to change — based on what worked, what didn't, what to try next time — that is when the perceptron becomes something more than a perceptron. That is when the body starts to *learn.*
-
-And that is the next chapter.
+That is the next chapter.
