@@ -1,213 +1,167 @@
 # Chapter 3 — When Time Becomes a Teacher
 
-*Full structure document — developed in session, April 2026*
+*Cause comes before effect.*
 
 ## Overview
 
-Chapter 2 built a network that learns. But that network was blind to time. Every mechanism in it — the weighted inputs, the hidden layers, the backward flow of error — operated on the present moment only. The perceptron is timeless. The neural network is timeless. Backpropagation is timeless. And the real world is not timeless. It is a sequence of events unfolding in order, where causes precede consequences by seconds, minutes, sometimes longer. A system with no sense of time cannot learn from that structure. It can only ever react to what is happening now.
+Bila has been learning, but her learning has been time-blind — Hebb's rule strengthens any connection between cells that fire close together, whether one caused the other or just happened nearby. This chapter introduces the refinement: when the brain notices which signal came *first*, it can tell cause from coincidence. Biologically, this is *spike-timing-dependent plasticity* (STDP). Mathematically, this is *TD Learning* — the founding algorithm of *reinforcement learning*. With *eligibility traces* (the fading memory of recent activity), delayed rewards can reach back through time to update past predictions. The Closing points toward Chapter 4: complex inputs need structure beyond a single cluster.
 
-Chapter 3 introduces the element that was missing from everything that came before: time. The biological solution — eligibility traces and STDP — gives Bila its first crude grip on temporal structure. The AI formalisation of the same logic is Temporal Difference Learning, one of the most important algorithms in the history of artificial intelligence. But this is time as a first crude approximation. A fixed window. A hardcoded decay. Enough to give Bila genuine anticipation. Not enough to generalise, plan, or reason across longer horizons. That reckoning comes later.
+## Key Concepts Introduced in Chapter 3
 
-## Key Scientific & AI Concepts Introduced in Chapter 3
+### 3.1 STDP (Spike-Timing-Dependent Plasticity)
 
-### 3.1 Time — The Missing Element
+The refinement of Hebbian learning that introduces time order as a parameter. When neuron A fires *before* neuron B, the synapse from A to B strengthens (A is a candidate cause of B). When A fires *after* B, the synapse weakens (A is not a cause). Discovered in real brains in the 1990s. It is Hebb's rule with an arrow of time — and it is how nervous systems distinguish cause from coincidence.
 
-Everything Bila built in Chapters 0 through 2 is fundamentally timeless. The perceptron takes simultaneous inputs and produces one output. The neural network adds depth but not sequence. Backpropagation assigns credit across layers at the moment of the outcome — it has no mechanism for reaching back to what happened before. The entire framework assumes the world is a frozen present moment of competing signals.
+### 3.2 TD Learning (Temporal Difference Learning)
 
-The real world is not a frozen moment. It is a sequence. The shadow appears before the predator. The temperature drops before the storm. The chemical trace fades before the danger peaks. Survival depends not just on reading the present correctly, but on understanding what the present means for what comes next. Time is not a detail. It is the dimension in which cause and consequence live.
-
-### 3.2 The Temporal Credit Assignment Problem
-
-When an outcome is delayed — danger arrives seconds after the warning signal — which earlier event deserves the credit? Backpropagation only adjusts what is active at the moment of the outcome. Earlier signals have already faded. This is the temporal credit assignment problem: credit must flow backward not just through layers, but through time.
-
-This is a different problem from Chapter 2's spatial credit assignment — which weight in which layer caused this wrong output now. Chapter 3's problem is temporal — which earlier event in a sequence caused this outcome later.
+An AI algorithm formalized by Richard Sutton in 1988 that learns to predict future outcomes by minimizing the difference between predicted and actual results. The founding algorithm of *reinforcement learning* — the branch of AI that studies how an agent learns to maximize reward through interaction with its world. Modern RL systems all build on TD Learning, including AlphaGo, robotic control, and the RLHF stage of training large language models.
 
 ### 3.3 Eligibility Traces
 
-When a synapse fires, it leaves a fading chemical tag — a temporary marker that says: I was recently active. When the outcome arrives, a neuromodulatory signal washes through the network and finds those traces. Connections that still glow get strengthened or weakened proportional to their brightness. Connections whose traces have faded receive nothing.
+A "fading memory" mechanism that lets delayed rewards reach back through time to update past predictions or actions. Each synapse (in biology) or learning element (in AI) keeps a trace of recent activity. The trace decays over time, but lasts long enough that a reward arriving seconds later — or longer — can identify which past activity to credit. The trace is the bridge across time.
 
-This is the biological solution to temporal credit assignment. But it is hardcoded: the trace decays on a timescale set by biochemistry — typically within seconds. Bila cannot choose how far back to look. The window is fixed by biology, not by experience. Evolution found a workable approximation, not an optimal solution. This limit is introduced quietly here. It will matter later.
+## Part 1 — The Story
 
-### 3.4 Hebbian Learning and STDP
+### Act 1 — A Puzzle
 
-Eligibility traces solve how far back credit reaches. Hebbian learning and STDP solve which direction the association runs. Neurons that fire together wire together — but STDP adds directionality: if neuron A fires just before neuron B, the connection A→B strengthens. If B fires before A, it weakens. Direction encodes causality. Bila learns not just that two signals co-occur, but which one comes first.
+#### Beat 1 — Same Ocean, Same Bila, Same Rule
 
-Combined with eligibility traces, STDP gives Bila something genuinely new: the arrow of time encoded in its synapses. Shadow fires, then predator arrives. Shadow→predator strengthens. Not the reverse. Bila has learned a sequence, a direction, and a delay.
+**Visual:** Brief montage. We are back with Bila in her Ediacaran ocean. We see her body, her cluster, her connections subtly strengthening and weakening — a quick recap of Chapter 2's reveal. A caption appears softly: *fire together, wire together.* Then the camera holds on her, waiting.
 
-### 3.5 Overshadowing, Blocking, and Latent Inhibition
+**Narration:** We are still with Bila.
 
-These three are consequences of the above mechanisms competing in a noisy world. They reveal that association is not passive recording — it is active competition.
+She has been learning, all along — we watched it in the last chapter. Connections strengthen with use. Connections weaken with disuse. *Fire together, wire together.* Her body is a record of her own life.
 
-- Overshadowing — when two signals appear together before an outcome, the stronger takes most of the credit. The weaker is overshadowed, even if it is also genuinely predictive.
+But the rule has a quiet problem. We did not see it the first time, because we were not looking for it.
 
-- Blocking — if signal A already predicts danger, adding signal B alongside A teaches Bila almost nothing about B. Prior learning blocks new learning. The world is already explained.
+Now we look for it.
 
-- Latent inhibition — a signal encountered many times without consequence becomes harder to associate later, even when it genuinely should. Familiarity without outcome breeds associative silence.
+#### Beat 2 — When Hebb Gets It Wrong
 
-Together these three show that association is selective, competitive, and shaped by history. The AI parallel: all three appear in modern reinforcement learning as both failure modes and useful regularisation effects.
+**Visual:** Bila in the water. A small dark patch drifts past her. Moments later, a predator strikes — she escapes, barely. Inside her body, the signals from the dark patch and the strike fire close together. Connections strengthen. *Cause learned.* Good.
 
-### 3.6 Temporal Difference Learning
+But now a different scene: the next time, a strange ripple passes through the water just before another predator strike. The ripple had nothing to do with the predator — pure coincidence. Inside Bila's body, the signals from the ripple and the strike also fire close together. The connection strengthens. *Coincidence treated as cause.*
 
-TD Learning, formalised by Richard Sutton in 1988, is the AI algorithm that captures exactly what eligibility traces do — but precisely, flexibly, and without a hardcoded window. Rather than waiting for a final outcome to assign credit, the system continuously updates its predictions based on the difference between what it expected and what actually happened, step by step through time.
+Show Bila now: she avoids the dark patch (correct). She also avoids strange ripples (false). She is acting on a false alarm.
 
-> TD error = actual outcome − predicted outcome
->
-> adjust previous prediction toward actual by a small step
+**Narration:** Imagine Bila encounters a particular kind of dark patch in the water. Moments later, a predator strikes.
 
-This TD error maps almost perfectly onto the biological eligibility trace mechanism. The trace keeps a record of what was recently active. The TD error is the signal that finds those traces and adjusts them. The key difference: TD Learning has a tunable parameter — lambda — that controls how far back in time credit can reach. Bila's biological traces are TD Learning with a lambda fixed by biochemistry. The AI version can look back as far as needed.
+In her body, the signals fire close in time — the dark patch, then the strike. Hebb's rule strengthens the connection. Now, when Bila sees a dark patch like that one, her cluster says: *strike is coming.* She avoids it. Good.
 
-TD Learning is the foundation of modern reinforcement learning. But it is not yet reinforcement learning itself. TD Learning solves prediction — learning to anticipate future outcomes from current signals. Turning prediction into deliberate action selection requires the full RL framework. That is Chapter 5.
+But what if the dark patch had nothing to do with the strike? What if a strange ripple in the current, or a passing flash of light, happened to fire at the same moment? Hebb's rule strengthens *those* connections too.
 
-### 3.7 Genuine but Narrow Anticipation
+Bila now avoids dark patches. She also avoids strange ripples. She also avoids flashes of light. Some of these are real warnings. Some are coincidence.
 
-With eligibility traces bridging time, STDP encoding sequence direction, and association sharpened by competition — Bila can now act ahead of consequences. The shadow appears. Bila moves. The predator has not arrived yet. This is genuine temporal anticipation — not the implicit prediction of Chapter 2, but a real encoding of sequence and delay.
+To Bila's brain, *simultaneous* and *consecutive* look the same. *Cause* and *coincidence* look the same.
 
-But this anticipation is fundamentally specific. Bila can only anticipate sequences it has actually lived through, exactly as they happened. Association and prediction in Chapter 3 are always about the specific, never the general. The system memorised instances of experience. It did not extract the structure of experience. A new predator — never encountered before, however structurally similar to a known one — is completely invisible to this system. That distinction is what Chapter 4 will address.
+Her learning ignores *time.* Now we see the cost.
 
-## Chapter 3 — Full Act Structure
+### Act 2 — The Refinement
 
-### Act 1 — The Missing Element
+#### Beat 3 — The World Has Order
 
-*Chapter 2's network is working — but something fundamental is absent. The world unfolds in time. The network does not. The cost of timelessness is revealed.*
+**Visual:** Slow shots of cause-effect sequences in the world. The shadow of a predator passes overhead, *then* the strike. The chemical signature of food drifts past, *then* the food itself arrives. The pattern is visible from outside: cause comes first; effect follows.
 
-- Reframe what Chapter 2 built — the neural network learned to weigh signals, detect combinations, and adjust from mistakes. Powerful. But every mechanism in it operates on the present moment only. There is no before. There is no after. The network lives in an eternal now.
+**Narration:** But in the world, things have order. The shadow comes before the strike. The smell comes before the food. *Always.* Causes come first. Effects follow.
 
-- Show the world unfolding in time — the ocean is a sequence of events, not a frozen moment. A chemical trace drifts past — three seconds later, a predator arrives. A temperature drop — ten seconds later, a current shifts. The warning and the danger are never simultaneous. They are always separated by time. And the network has no way to bridge that gap.
+If Bila could notice the *order* — which signal came before which — her brain could tell true warnings from coincidence.
 
-- Show the failure concretely — a shadow passes overhead. Three seconds later, a predator strikes. Bila's network responds to the strike and adjusts — but the shadow is already gone from active processing. The shadow gets no credit. Next time the shadow appears, Bila is just as unprepared. The network learned from the consequence. It did not learn from the cause.
+That requires a different kind of synaptic rule. One that pays attention to time.
 
-- Name the missing element — time. Not as a vague concept, but as a precise missing dimension. The perceptron had no time. The neural network has no time. Backpropagation has no time. Everything Bila has built so far assumes the world is a present moment. The world is not a present moment. It is a sequence. And sequences require a different kind of learning entirely.
+#### Beat 4 — STDP
 
-- The radiatan contrast — nearby, a radiatan is motionless and unhurt. It never tried to track causes across time. It never needed to. It simply waits in the present, as it always has. Bila chose to engage with the world's complexity. And the world keeps revealing new dimensions of that complexity.
+**Visual:** Detailed view of two neurons connected by a synapse. Show them firing in different orders. When A fires *before* B (causal order), the synapse A→B grows brighter and thicker. When A fires *after* B (anti-causal order), the synapse A→B grows dimmer and thinner. The rule made visual. A caption appears: *spike-timing-dependent plasticity.*
 
-### Act 2 — The Trace
+**Narration:** Bila's lineage develops it.
 
-*Eligibility traces and STDP emerge as the biological solution. Synapses leave fading records of their activity. Outcomes find those records and adjust them. For the first time, Bila encodes the arrow of time.*
+A refinement of Hebb's rule. Connections still strengthen with use. But now, the *order* matters.
 
-- Introduce eligibility traces — after a synapse fires, something lingers. A fading chemical tag — a trace of recent activity. It does not persist forever. It decays over seconds. But while it glows, it marks the synapse as eligible: if an outcome arrives while this trace is still active, this connection can be adjusted.
+When two neurons fire close in time, the cluster looks at which came first. If neuron A fired *before* neuron B — A is a candidate cause of B — the connection from A to B grows stronger. If A fired *after* B, the connection from A to B grows weaker.
 
-> Synapse fires → trace glows → outcome arrives → trace still active → connection adjusted
+A small change. A big consequence. The cluster can now distinguish *cause* from *coincidence.*
 
-- Show the trace solving the delay — the shadow appears. Synapses responding to the shadow fire and leave their traces. Three seconds pass. The predator strikes. The punishment signal washes backward through the network — and finds the shadow's traces still glowing. Those connections get strengthened as predictors of danger. The gap between cause and consequence is bridged for the first time.
+In the 1990s, biologists found this rule operating in real brains. They named it after what it depends on: the timing of the spikes. *Spike-timing-dependent plasticity.* STDP.
 
-- Introduce STDP — eligibility traces tell the network how far back to look. STDP tells it which direction the association runs. Shadow fires before predator. Shadow→predator strengthens. Not predator→shadow. Direction encodes causality. Bila has learned not just that two things are related — but which one comes first.
+Hebb's rule, with an arrow of time.
 
-- Introduce TD Learning as the AI formalisation — what eligibility traces do biologically, TD Learning does precisely and flexibly. Rather than a hardcoded decay, TD Learning continuously updates predictions based on the gap between what was expected and what actually happened — the TD error. The trace is the biological version. TD Learning is the mathematical version of the same insight. Richard Sutton formalised this in 1988. It became the foundation of modern reinforcement learning.
+#### Beat 5 — The Dawn of Anticipation
 
-- The moment of insight — Bila is no longer adjusting to what is happening now. It is adjusting to what happened before, in the order it happened. The arrow of time has entered the network. The world is no longer a frozen moment. It is a sequence — and Bila is learning to read it.
+**Visual:** Bila now navigates her world with sharper discrimination. She avoids the dark patch reliably (real warning). She ignores the strange ripple (coincidence). She seeks out smells that consistently precede food. Her behavior begins to *anticipate* — her body starts to act on what is about to happen, not just what is happening.
 
-### Act 3 — The Competition and the Ceiling
+**Narration:** And from this small refinement, something new appears.
 
-*Association becomes competitive. Bila achieves genuine anticipation. And then — quietly — the hard limits of this entire system are revealed.*
+Bila now knows the difference between a cause and a coincidence. She has built, inside her body, a quiet model of what comes before what. She does not just react to what is happening anymore — she *expects* what comes next.
 
-- Show overshadowing — two signals appear together before an attack. One is strong and sharp. One is faint. Both are predictive. But the strong signal dominates the trace competition. The faint signal — genuinely predictive — learns almost nothing. The louder signal steals the credit.
+When she smells a certain chemical, her body starts preparing to eat — before food has arrived. When she senses a particular pattern, her body begins to flee — before danger has struck.
 
-- Show blocking — Bila has already learned that signal A predicts danger. Now signal B always appears alongside A. Bila's network barely adjusts to B. A already explains the outcome. Prior learning blocks new learning. The world was already accounted for.
+The brain has begun to predict.
 
-- Show latent inhibition — a signal that appeared dozens of times without consequence is now genuinely paired with danger. But the associative system resists. Familiarity without outcome has already dampened this signal's ability to form new connections.
+The body is no longer just responding to the present. It is anticipating the future.
 
-- Genuine anticipation — despite the competition, despite the noise, the system works. The shadow appears. Bila moves before the predator arrives. The network has encoded the sequence, the direction, and the delay. This is real anticipation. Bila is living slightly in the future.
+## Part 2 — The Math
 
-- The first ceiling — a new creature appears in Bila's ocean. Never encountered before. It moves differently, smells different, leaves a different chemical trace. But it is a predator — and it shares the deep structural features of predators Bila has encountered before. The eligibility traces are silent. The STDP connections carry no record of this specific sequence. Bila does not flinch. The system only knows what it has seen, exactly as it saw it. Association and prediction are always about the specific. Never the general. That distinction is what Chapter 4 will address.
+#### Algorithm Beat A1 — TD Learning
 
-- The second ceiling — even within sequences Bila knows, the eligibility trace window is fixed at seconds. What about consequences that arrive in minutes? What if the right choice now requires moving toward something that feels dangerous, because it leads to safety later? The hardcoded window has no answer. Bila is trapped in the near future. It can anticipate the next few seconds. It cannot reason about what comes after. That question is left open — for reinforcement learning, much later.
+**Visual:** Cut to an abstract diagram. A simple agent in a world. The agent has internal predictions — bars showing "how good things are about to be." Something happens: a reward arrives (a green flash) or a punishment (a red flash). The actual outcome is compared to the prediction. The prediction is adjusted up or down based on the difference. Math appears below:
 
-- The radiatan's quiet answer — the radiatan is still there. It did not need to anticipate. It did not need to generalise. It never tried to live in the future. It simply waited. It will be here long after this new predator has passed. Bila's system is extraordinary. And it is not enough.
+> update = (what actually happened) − (what was predicted)
 
-## The Human Parallel — Dopamine and the Discovery of the TD Error
+The diagram cycles: predict, observe, adjust. Predictions drift toward reality over time.
 
-*Not an act — a named layer of context sitting between Bila's story and the philosophical thread. The same logic Bila's nervous system discovered in the Ediacaran ocean was found, formalised, and then discovered inside the human brain across the twentieth century. This is that story.*
+**Narration:** In AI, this same idea was formalized in 1988 by a researcher named Richard Sutton.
 
-- The algorithm comes first — in 1988, Richard Sutton published a paper formalising Temporal Difference Learning. The idea: a system should not wait for a final outcome to update its predictions. It should continuously compare what it expected with what actually happened — step by step — and adjust accordingly. The difference between expectation and reality is the TD error. It is the signal that drives all learning. The paper was mathematical and precise. At the time, it was not obvious that anything biological was running the same algorithm.
+He called it *Temporal Difference Learning.* TD Learning.
 
-- The neuroscientist and the monkey — in the 1990s, Wolfram Schultz, a neuroscientist at Cambridge, was recording from dopamine neurons in monkeys while they learned to expect rewards. Dopamine was known to be involved in reward and motivation. But Schultz found something that nobody expected. The dopamine neurons did not fire when the reward arrived. They fired when the reward was better than expected. And when a predicted reward failed to arrive — the neurons went silent, below their baseline firing rate.
+The idea is simple. A learning system has a prediction of how good things are about to be. Something happens — a reward, a punishment, or just the next moment in time. The system compares its prediction to what actually came.
 
-- The pattern nobody expected — early in training, the dopamine neurons fired at the moment of the reward. But as the monkey learned to predict the reward from a preceding cue, something shifted. The neurons stopped firing at the reward itself. They started firing at the cue — the signal that predicted the reward. The reward response had moved backward in time, from the outcome to its predictor. And when a well-predicted reward was omitted, the neurons dipped below baseline at exactly the moment the reward should have arrived.
+If reality was better than the prediction, the prediction should have been higher. Adjust it up.
 
-- The convergence — when Schultz's data reached the computational neuroscience community, the recognition was immediate. The dopamine signal was the TD error. Firing above baseline: better than expected — positive TD error. Firing below baseline: worse than expected — negative TD error. No response: exactly as expected — TD error of zero. The brain was running Sutton's algorithm. Not as a metaphor. Not as an approximation. The mathematical structure of the dopamine signal matched the TD error almost exactly.
+If reality was worse, adjust it down.
 
-- What this meant — the brain did not evolve dopamine as a reward signal. It evolved dopamine as a prediction error signal. What dopamine encodes is not pleasure or reward — it encodes the gap between what was expected and what actually happened. Every time something is better than predicted, dopamine rises. Every time something is worse than predicted, dopamine falls. The brain is continuously updating its model of the world based on prediction errors. Exactly as TD Learning prescribes.
+In math:
 
-- The biological trace revealed — Schultz's discovery also gave new meaning to eligibility traces. For the TD error to reach back and modify the synapses that fired seconds earlier — those synapses needed to still be marked as eligible. The dopamine signal is the neuromodulator that finds those traces and converts them into lasting synaptic change. The trace is the molecular memory. Dopamine is the TD error that writes to it. The two mechanisms — one biological, one mathematical — were describing the same system from different angles.
+> *update = (what actually happened) − (what was predicted)*
 
-- The parallel to Bila — what Schultz found in the monkey brain in the 1990s, and what Sutton formalised mathematically in 1988, is exactly what Bila's nervous system stumbled toward in the Ediacaran ocean. Eligibility traces as fading molecular tags. A neuromodulatory signal as the prediction error. Synaptic strengthening proportional to the gap between expectation and reality. The algorithm did not appear in 1988. It appeared five hundred and fifty million years ago, in a creature one centimetre long, trying to survive in an ancient ocean. Sutton gave it a name. Schultz found it in the brain. Evolution had already solved it.
+That's the whole idea. Predictions chase reality, over time.
 
-*The algorithms did not appear from nowhere. They are the same logic that life discovered hundreds of millions of years ago — just running on silicon instead of cells.*
+This is the founding algorithm of *reinforcement learning* — the branch of AI that studies how an agent learns through reward. Bila's lineage had been running a biological version of it for hundreds of millions of years.
 
-## Philosophical Thread — The Gap Between Signal and Event
+What we just described is the simplest form. AI has many variants in practice, each tuned for different cases. The core shape is the same: update predictions to chase reality.
 
-*A quiet moment at the end of Chapter 3. Not an act — a question left in the water, continuing the thread from Chapters 1 and 2.*
+#### Algorithm Beat A2 — Eligibility Traces
 
-- What we saw — for the first time, Bila inhabits a temporal gap. The warning has arrived. The danger has not. The network is active in the space between them — oriented toward what has not yet happened. That gap is not empty. Something is happening in it.
+**Visual:** A sequence of events spread out in time. A creature takes Action 1, then Action 2, then Action 3, and finally a reward arrives many seconds later. Each action leaves a faint glowing "trace" behind it that slowly fades. When the reward arrives, the trace from each past action determines how much credit it gets. Earlier actions have weaker traces (more faded); recent actions have stronger traces. The trace is the bridge from the reward back through time.
 
-- The question — is there something it is like to wait for danger? The eligibility traces are glowing. The STDP connections are primed. Functionally, this is anticipation. But does Bila experience anything in that gap? Is the space between signal and consequence the first shadow of dread? Nobody knows. Not in biology, not in AI.
+**Narration:** But there is still a problem.
 
-- The limit of the specific — Bila's entire anticipatory system is built from instances. Real events that actually happened, encoded with their exact timing. It knows the world it has lived in. It does not know the world it has not yet encountered. Memory of instances is powerful. It is not generalisation. And the world keeps producing novelty.
+What if the reward comes much later than the action that caused it?
 
-- The dopamine parallel — what Schultz found is that the human brain runs the same prediction error signal. When something is better than expected, dopamine rises. When something is worse than expected, dopamine falls. We experience these signals as surprise, disappointment, relief, delight. Bila's equivalent signal has no name yet. But the structure is the same. At what point did a prediction error signal become something felt?
+Say Bila swims down a particular current. Some time later — seconds, or minutes — she finds food at the end of it. Her cluster needs to figure out: which actions led to this food?
 
-- The thread deepens — Chapter 1 asked: when does a steering signal become a feeling? Chapter 2 asked: when does a changed weight become a memory? Chapter 3 asks: when does anticipation become dread? And now: when does a prediction error become disappointment? The questions are accumulating. None of them have answers. But they are converging on something.
+Hebb's rule only sees what fires nearly simultaneously. STDP only operates on the millisecond scale. But *real* cause-and-effect in the world can take seconds, minutes, even longer.
 
-*This question will return.*
+Biology's answer: every action Bila takes leaves a faint *trace* in her cluster — a chemical mark on the synapses that were just active. The trace fades over time, but it lasts long enough that a delayed reward can find its way back.
 
-## Updated Overall Chapter Arc
+In AI, this idea was formalized as the *eligibility trace.* Each synapse keeps a trace that says: *"I was recently active."* When reward arrives, the trace tells the learning rule which synapse to credit. The longer ago the synapse fired, the weaker the trace — and the smaller the credit.
 
-### Conceptual Layer
+This is how the brain — and AI — learns from rewards that don't arrive immediately. The trace is the bridge across time.
 
-- Chapter 0 — if/else, run and tumble, good/bad sensor, weight
+## Closing
 
-- Chapter 1 — external conflict, perceptron, internal state, arousal
+*A final section, after both story and math. What Bila's brain still cannot do.*
 
-- Chapter 2 — neural network, loss, backpropagation, implicit association
+#### Beat C1 — But Not Structure
 
-- Chapter 3 — time as missing element, temporal credit assignment, eligibility traces, STDP, TD Learning, genuine but narrow anticipation
+**Visual:** Bila in her world, now predicting and anticipating. She moves with quiet skill through her familiar landscape — chemical gradients, single signals, simple textures. Then the camera widens. We glimpse, far off in the distance, a different kind of creature — one with eyes. The world that creature sees is not chemical gradients but *shapes.* Light bouncing off forms. A fish that must be recognized regardless of where it appears in the visual field, regardless of size or distance. Bila's single cluster could not hold that. The creature with eyes is going to need something new.
 
-- Chapter 4 — pattern recognition, generalisation, convolutional features, structural abstraction
+**Narration:** Bila has come far.
 
-- Chapter 5 — reinforcement learning, policy, long-horizon credit, deliberate action, TD Learning + neural network converge
+She has a body that integrates signals. She has a cluster that learns. She has time-aware learning that can tell cause from coincidence. She has memory traces that let delayed rewards find their way home.
 
-### Narrative Layer
+But her world is still simple — a few kinds of chemicals, a few kinds of actions, a world her single cluster can hold.
 
-- Radiatans as recurring contrast — passive survival vs. active choice vs. learned adaptation vs. anticipation vs. generalisation
+In a different kind of world — a world where light bounces off everything, where shapes appear and move, where a fish-form must be recognized regardless of size or position or distance — a single cluster is not enough.
 
-- Bila now lives slightly in the future — but only in futures it has already seen
+The brain needs to build *features.* It needs *layers.* It needs *structure.*
 
-- The new predator — never seen before, structurally familiar, completely invisible to Bila's current system. The narrative engine of Chapter 4.
-
-- The fixed window — Bila is trapped in the near future. The seed for reinforcement learning, planted quietly.
-
-### Philosophical Layer
-
-- A steering signal is born — Chapter 0
-
-- It will one day become emotion — Chapter 1
-
-- Experience leaves a physical trace in the weights — Chapter 2
-
-- Anticipation opens a gap between signal and event — is that gap felt? — Chapter 3
-
-- When does a prediction error become disappointment? — Chapter 3
-
-- Memory of instances is not knowledge of structure — Chapter 3 into 4
-
-- Does AI face the same wall? Its weights encode training. Can they generalise beyond it?
-
-## Key Narrative & Pedagogical Decisions for Chapter 3
-
-- Open with the missing element, not the failure — unlike Chapters 1 and 2 which opened with a specific behavioral failure, Chapter 3 opens with a conceptual reframe: everything built so far is timeless. The failure is a consequence of that, not the starting point.
-
-- Show the world as a sequence before introducing the mechanism — the ocean unfolding in time must feel real before eligibility traces are introduced. The audience needs to feel the gap between cause and consequence before they care about bridging it.
-
-- Eligibility traces shown visually before named — synapses glowing and fading, the outcome signal finding them. The biological metaphor carries the concept before the vocabulary arrives.
-
-- TD Learning named and given weight — it is introduced as the AI formalisation of eligibility traces, not as a footnote. It deserves the same standing as backpropagation in Chapter 2 and the perceptron in Chapter 1.
-
-- Overshadowing, blocking, and latent inhibition shown as behaviour, not theory — the audience watches Bila fail to learn what it should. The reason is revealed afterward.
-
-- Genuine anticipation is the triumphant moment — it must feel earned. The flinch before the predator arrives is the payoff of everything the audience has watched build piece by piece.
-
-- The two ceilings land in immediate contrast with the triumph — the new predator scene follows the anticipation triumph directly. The fixed window seed follows quietly. Both are planted without fanfare.
-
-- The Human Parallel carries the same weight as Chapter 2's — Schultz and dopamine is as dramatic a convergence as Minsky and Hinton. A neuroscientist recording from monkey brains discovers that the brain runs a mathematical algorithm published the same decade. That story deserves full treatment.
-
-- The philosophical thread adds a new question to the accumulating pile — when does a prediction error become disappointment? The audience is now holding four open questions simultaneously. That accumulation is intentional and structural.
+That is the next chapter — when structure becomes visible.
