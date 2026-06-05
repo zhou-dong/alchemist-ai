@@ -1,21 +1,28 @@
 import { Series } from "remotion";
-import { Act1Behavior } from "./acts/Act1Behavior";
-import { Act2TheRule } from "./acts/Act2TheRule";
-import { Act3Weight } from "./acts/Act3Weight";
-import { ACT_DURATIONS_FRAMES } from "./timing";
+import { Part1Story } from "./parts/Part1Story";
+import { Part2Math } from "./parts/Part2Math";
+import { ClosingLimit } from "./parts/ClosingLimit";
+import {
+  PART1_DURATION_FRAMES,
+  PART2_DURATION_FRAMES,
+  CLOSING_DURATION_FRAMES,
+} from "./timing";
 
-export const Ch0: React.FC = () => {
-  return (
-    <Series>
-      <Series.Sequence durationInFrames={ACT_DURATIONS_FRAMES[0]}>
-        <Act1Behavior />
-      </Series.Sequence>
-      <Series.Sequence durationInFrames={ACT_DURATIONS_FRAMES[1]}>
-        <Act2TheRule />
-      </Series.Sequence>
-      <Series.Sequence durationInFrames={ACT_DURATIONS_FRAMES[2]}>
-        <Act3Weight />
-      </Series.Sequence>
-    </Series>
-  );
-};
+/**
+ * Chapter 0 — The Simple World.
+ * Three structural sections, played in order and never interleaved:
+ * Part 1 (the story) → Part 2 (the math) → Closing (the limit of mechanism).
+ */
+export const Ch0: React.FC = () => (
+  <Series>
+    <Series.Sequence durationInFrames={PART1_DURATION_FRAMES}>
+      <Part1Story />
+    </Series.Sequence>
+    <Series.Sequence durationInFrames={PART2_DURATION_FRAMES}>
+      <Part2Math />
+    </Series.Sequence>
+    <Series.Sequence durationInFrames={CLOSING_DURATION_FRAMES}>
+      <ClosingLimit />
+    </Series.Sequence>
+  </Series>
+);

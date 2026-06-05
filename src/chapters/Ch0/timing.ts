@@ -1,18 +1,40 @@
 export const FPS = 30;
 
-// Per-beat durations for Act 1 (one entry per implemented beat).
-export const ACT_1_BEAT_DURATIONS_FRAMES = [240, 240, 240] as const;
+// Per-beat durations in frames, grouped by structural part of the chapter.
+// Order matches the finalized ch0 script (Part 1 → Part 2 → Closing).
 
-export const ACT_2_DURATION_FRAMES = 150;
-export const ACT_3_DURATION_FRAMES = 150;
-
-export const ACT_DURATIONS_FRAMES = [
-  ACT_1_BEAT_DURATIONS_FRAMES.reduce((a, b) => a + b, 0),
-  ACT_2_DURATION_FRAMES,
-  ACT_3_DURATION_FRAMES,
+// Part 1 — The Story
+//   Act 1 — A Simpler World            (beats 1–3)
+//   Act 2 — Two Behaviors, One Mechanism (beats 4–8)
+export const PART1_BEAT_DURATIONS_FRAMES = [
+  300, // Beat 1 — The Young Earth (Chronicle)
+  240, // Beat 2 — The First Oceans
+  270, // Beat 3 — Meet the Cell
+  300, // Beat 4 — Finding Food
+  270, // Beat 5 — Avoiding Danger
+  300, // Beat 6 — Same Two Moves
+  270, // Beat 7 — The Simple Rule
+  300, // Beat 8 — When Food and Danger Collide
 ] as const;
 
-export const CHAPTER_DURATION_FRAMES = ACT_DURATIONS_FRAMES.reduce(
-  (a, b) => a + b,
-  0,
-);
+// Part 2 — The Math
+export const PART2_BEAT_DURATIONS_FRAMES = [
+  270, // A1 — The If/Else
+  330, // A2 — The Implicit Weighted Sum
+] as const;
+
+// Closing — The Limit of Mechanism
+export const CLOSING_BEAT_DURATIONS_FRAMES = [
+  270, // C1 — No One Is Deciding
+  240, // C2 — The Limit
+  240, // C3 — What's About to Arrive
+] as const;
+
+const sum = (xs: readonly number[]) => xs.reduce((a, b) => a + b, 0);
+
+export const PART1_DURATION_FRAMES = sum(PART1_BEAT_DURATIONS_FRAMES);
+export const PART2_DURATION_FRAMES = sum(PART2_BEAT_DURATIONS_FRAMES);
+export const CLOSING_DURATION_FRAMES = sum(CLOSING_BEAT_DURATIONS_FRAMES);
+
+export const CHAPTER_DURATION_FRAMES =
+  PART1_DURATION_FRAMES + PART2_DURATION_FRAMES + CLOSING_DURATION_FRAMES;
