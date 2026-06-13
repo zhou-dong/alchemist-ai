@@ -12,6 +12,8 @@ Introduces life before bilaterality — single-celled bacteria running run-and-t
 
 The chemotaxis strategy of bacteria like *E. coli*. The cell alternates between two motions: swimming in a relatively straight line (*run*), and randomly reorienting in place (*tumble*). The same two-motion strategy is used for both food-seeking and danger-avoidance — only the trigger is inverted.
 
+Crucially, run and tumble are *mutually exclusive* — a binary switch. The mechanism enforces it: the flagellar motors spin counterclockwise, twisting the flagella into a single coherent bundle (run), or clockwise, flinging the bundle apart (tumble). The flagella can be gathered or scattered, but not both at once. At every instant the cell is doing exactly one of the two motions, never a blend. This exclusivity is precisely the shape of if/else — one branch or the other, never both — which is what makes the if/else mapping in 0.3 faithful biology rather than loose analogy.
+
 ### 0.2 Chemical Sensors
 
 Bacteria have multiple types of chemical receptors on their outer membrane. Different receptors detect different molecules — attractants like sugars, repellents like toxins. The cell has no eyes and no nervous system; its entire input is whether a chemical is getting stronger or weaker over time. All receptors feed into the same downstream machinery that controls the flagella.
@@ -42,33 +44,43 @@ The *bias* is the baseline activity of the central integrating enzyme (CheA in r
 
 **Visual:** Wide shot from space. The early Earth — a different Earth. Volcanically active, mostly ocean, with smaller proto-continents poking up. The sky is hazy, orange-pink with methane. The Moon hangs visibly closer and larger. The Sun is dimmer. Slow montage: a meteor strikes, lava flows, steam rises, the steam cools and falls as rain, the first oceans form. Soft caption: *Earth — 4 billion years ago.* Visual style: abstract, geological, slow.
 
-**Narration:** Four and a half billion years ago, our planet formed — a hot ball of rock, struck by other rocks, surrounded by debris. For half a billion years, it was a place no living thing could have survived. Bombarded by asteroids. Wrapped in steam. With a Moon, just then forming, hanging huge and close in the sky.
+**Narration:** Let's go back. Not a little back — all the way back. Four and a half billion years, to a planet you would not recognize as home.
 
-Then it cooled. The steam fell back to the surface as rain. The first oceans came into existence. The sky was a hazy pink — from methane — and the Sun, still dim, shone through it.
+No oceans. No life. No ground you could stand on without bursting into flame. Just a hot ball of rock, getting hit by other rocks, over and over, for half a billion years. A Moon hanging so close it swallows the sky. A dim sun. Air that would kill you in a breath.
 
-A new chapter in the planet's history begins. Geologists call it the *Archean.*
+And then — slowly — it cools. The rock hardens. The steam in the air falls back down as rain, and keeps falling, for thousands of years, until it pools in the low places and becomes the first oceans. The sky stays a hazy pink, full of methane, the dim Sun glowing through it.
 
-And in those warm, shallow Archean seas, something happens.
+Geologists have a name for this stretch of time. They call it the *Archean.* Nothing alive yet. But the stage is set.
+
+And in those warm, shallow seas — something happens.
 
 #### Beat 2 — The First Oceans
 
 **Visual:** The Archean ocean, around 3.5 billion years ago — warm, shallow, sunlit from above. The seabed is covered in vast, slimy microbial mats: layers of pink, green, and deep purple. No fish. No worms. No plants. No movement except the slow currents. The mood is alien, primordial. The visual style is distinct from later chapters — abstract, almost geological. A soft caption can fade in early: *Earth — 3.5 billion years ago.*
 
-**Narration:** Long before there were animals — long before there were plants, long before there was anything you'd call a creature — there was the ocean. And there was something in it.
+**Narration:** Here's the thing about this ocean: it's empty.
 
-Something so small you'd need a microscope to see it. So simple, you wouldn't call it intelligent. You might not even call it alive. But it was. Just barely. In the most basic way anything has ever been alive.
+No fish. No plants. No coral, no crabs, nothing with a face. Just water, and sunlight, and a slow film of slime on the seabed. If you went for a swim, you'd be the most complicated thing for a billion years in any direction.
+
+But it isn't *quite* empty.
+
+There's something in the water. Something so small you'd need a microscope to find it. So simple you wouldn't call it intelligent. So basic you might not even call it alive.
+
+But it is. Just barely. In the most stripped-down way anything has ever managed to be alive.
 
 #### Beat 3 — Meet the Cell
 
 **Visual:** Zoom in. Past the surface of the water, through a drop, into a microscope's view. A single bacterial cell — rod-shaped, transparent, ringed by long whip-like flagella. Inside it, vague shapes drift: molecules, machinery. No nucleus, no nervous system, no organs. Just a small bag of chemistry.
 
-**Narration:** Meet the cell.
+**Narration:** So — meet the hero of our story.
 
-A single bag of chemistry, a few micrometers long. No eyes. No nervous system. No brain — because nothing like a brain has been invented yet. What it has is a few thin whips on its outside — *flagella* — that it can spin to push itself through the water.
+And honestly, it's not much to look at. It's a blob. A few specks of goo, a couple micrometers long, with some threads stuck on the outside. No eyes. No brain — brains haven't been invented yet, anywhere on the planet. No plan. If you met it, you wouldn't even be sure it was alive.
 
-And one job: don't die.
+Those threads are the one good trick. They're called *flagella,* and the cell can spin them like tiny propellers to shove itself through the water. That's it. That's the whole toolkit.
 
-That is the whole story for the next three billion years. One cell, alone in the ocean, with one job. It doesn't know it has the job. It just has it.
+And it has exactly one job — the same job as every living thing that comes after it, including you: don't die.
+
+That's the entire story for the next three billion years. One cell. One job. It doesn't know it has the job. Nobody told it. It just has it.
 
 ### Act 2 — Two Behaviors, One Mechanism
 
@@ -76,57 +88,57 @@ That is the whole story for the next three billion years. One cell, alone in the
 
 **Visual:** Close on the cell's outer membrane. A small attractant receptor sits on the surface. Faint glowing dots of sugar molecules drift through the water. One bumps the receptor — the receptor changes shape, a pulse travels inward. Pull back to the cell's path: when the sugar gradient rises, the flagella bundle together and the cell swims forward in a straight line. When the gradient drops, the flagella unbundle, the cell spins in place, randomly reorienting, then settles, pointing somewhere new. Over many cycles, the cell climbs the gradient toward the food.
 
-**Narration:** First, the cell has to find food.
+**Narration:** Job number one: find food.
 
-*Find* is a generous word. The cell has no eyes. No sense of where anything is. It can't aim. What it has, on its outer surface, are tiny chemical receptors — small protein gates, sensitive to passing sugar molecules.
+Though *find* is a generous word. Remember — no eyes. The cell has no idea where anything is. It can't look around. It can't aim. So how does a blob with no senses track down lunch?
 
-When sugar bumps a gate, the gate shifts. A signal travels inward. The flagella respond.
+It cheats. Sort of.
 
-When the sugar gets stronger, the flagella bundle. The cell swims forward — gentle, steady, in a straight line.
+Scattered across its surface are tiny chemical sensors — little protein gates that twitch when the right molecule drifts past. A bit of sugar bumps one, the gate shifts, and a signal runs inward to the propellers.
 
-When the sugar gets weaker, the flagella scatter. The cell stops and spins. Randomly. Pointing nowhere in particular. And then sets off again.
+And the rule is dead simple. Sugar getting *stronger* — the propellers bundle together, and the cell swims forward. Smooth, steady, straight ahead. Sugar getting *weaker* — the propellers fly apart, and the cell just… spins. In place. Pointing nowhere. Then it stops, facing some random new direction, and tries again.
 
 Forward. Spin. Forward. Spin.
 
-And — somehow — over thousands of these forwards-and-spins — it finds its way to the food. Not gracefully. Not knowingly. Just — eventually. The way water finds its way down.
+And somehow — over thousands of these — it ends up at the food. Not gracefully. Not on purpose. Just, eventually. The way water finds its way downhill.
 
 #### Beat 5 — Avoiding Danger
 
 **Visual:** A different scene. The water is darker. A toxic chemical drifts in from one side — visualized as a sickly green cloud. On the cell's surface, a *different* receptor — a repellent receptor — picks up the toxin. The cell's behavior: when the toxic concentration rises (the cloud getting closer), the cell spins chaotically in place, with no committed direction. When the concentration falls (the cloud receding), the cell swims forward in a straight line. Over many cycles, the cell escapes the toxic zone.
 
-**Narration:** Second, sometimes — the cell has to escape.
+**Narration:** Job number two: don't get poisoned.
 
-Different chemical this time. Not food. Something the cell doesn't want any part of. A toxin in the water.
+Different molecule this time. Not food — a toxin. Something drifting through the water that the cell really, *really* does not want to swim into.
 
-It has a different receptor for this — a different gate, tuned to a different molecule. The gate catches the toxin. A signal travels inward. The flagella respond.
+It's got a sensor for that too. A different gate, tuned to a different molecule. The toxin bumps it, a signal runs inward, the propellers respond — same machinery as before.
 
-But this time — watch closely — the response *looks* different.
+But watch closely, because this time the behavior looks backwards.
 
-When the toxin gets stronger, the flagella scatter. The cell stops and spins. Chaos, no commitment.
-
-When the toxin gets weaker — the threat fading — the flagella bundle. The cell swims forward. Out of the danger zone.
+Toxin getting *stronger* — the propellers scatter, and the cell spins in place. Chaos. No commitment. Toxin getting *weaker* — the threat falling away behind it — the propellers bundle, and the cell swims, hard, in a straight line. Out.
 
 Spin. Forward. Spin. Forward.
 
-A completely different strategy for a completely different problem.
+Totally different strategy. Totally different problem.
 
-Or so it would seem.
+Or so it looks.
 
 #### Beat 6 — Same Two Moves
 
 **Visual:** Split screen, slowed down. Left: the cell in the sugar gradient — long, gentle forward swims, punctuated by tight spins. Right: the cell in the toxin cloud — tight spins, punctuated by long, urgent forward swims. The two scenes play in parallel for several beats. Then they fade away. And underneath, in empty black space, two stripped-down motion diagrams emerge: a straight forward arrow, and a chaotic spin. Unlabeled. The same two shapes, identical, sitting beneath both behaviors. A long held silence. Then, slowly — as the narration names them — soft labels fade in: *Run* (beneath the arrow), *Tumble* (beneath the spin).
 
-**Narration:** But forget, for a moment, *what* the cell is chasing or fleeing. Forget the sugar. Forget the toxin. Just look at what the cell is *doing.*
+**Narration:** Now forget the sugar. Forget the toxin. Stop watching *what* the cell is chasing or running from — and just watch what its body is actually *doing.*
 
-In the food story — sugar getting stronger — the cell swims forward. Forward. Forward. Then it pauses, spins, points somewhere new. Then forward again.
+Food story: forward, forward, forward — then pause, spin, point somewhere new — then forward again.
 
-Now the danger story. Toxin getting stronger. And the cell — pauses. Spins. Points somewhere new. Then, when the danger fades — forward. Forward. Forward.
+Danger story: pause, spin, point somewhere new — then, once the danger's behind it, forward, forward, forward.
 
-Did you see it?
+See it yet?
 
-Two stories. Two completely different problems. The same two moves.
+There. *That's* the thing — and honestly, it still gets me every time. Two completely different problems, food and poison, opposites — and underneath, the cell is doing the exact same two moves. The identical dance, both times.
 
-*Swim. Spin.* That is all. The cell's entire vocabulary. Two motions, used for every problem it has ever faced, for three billion years. Biologists have a name for the swim. They call it a *run.* They have a name for the spin too. They call it a *tumble.* Together — *run and tumble.* The oldest dance in the world.
+*Swim. Spin.* That's the whole vocabulary. And here's the part to hang onto: it's never both at once. At any instant, the cell is doing exactly one of them. Those threads can gather into a single bundle and push — or fly apart and stir the water — but not both. There's no half-swim, no swim-and-spin. One, or the other. Always.
+
+Two moves, for every problem this thing will face in three billion years. Biologists gave them names. The swim, they call a *run.* The spin, they call a *tumble.* Put them together — *run and tumble.* The oldest dance on Earth.
 
 #### Beat 7 — The Simple Rule
 
@@ -138,21 +150,21 @@ Two stories. Two completely different problems. The same two moves.
 
 The text sits gently next to the dance. A long held beat. The text remains as the narration repeats the rule. The image is contemplative.
 
-**Narration:** Look at what the cell is doing — not in chemistry, not in molecules. Just in plain words.
+**Narration:** Let's say what the cell is doing out loud. Not in chemistry. Not in molecules. Just plain words.
 
-When the world gets better, the cell keeps going.
+When the world gets better — keep going.
 
-When the world gets worse, the cell changes direction.
+When the world gets worse — change direction.
 
-That's it.
+That's it. That's the whole animal.
 
-That is the entire cell. The whole story of how it finds food, how it escapes danger, how it has lived in the ocean for three billion years. For food, *better* means getting closer. For danger, *better* means getting farther. The cell never has to know the difference. It only ever has to know whether things are improving, or not.
+That's how it finds food. That's how it dodges poison. That's how it's stayed alive in this ocean since before the ocean had a name. For food, *better* means getting closer. For danger, *better* means getting farther. The cell never has to know which is which. It only ever has to know one thing: are things getting better, or not?
 
-Two behaviors that look completely different — even opposite — turn out to be the same act in disguise. The same rule, running on different signals. The cell did not need a different program for food, and a different program for danger. It needed one rule. *One.* And that one rule covers every survival problem the cell will ever face.
+Sit with that for a second. Two behaviors that look like total opposites — seeking and fleeing — turn out to be the same move in a different costume. The cell didn't need a program for food and a separate program for danger. It needed one rule. *One.* And that one rule handles every survival problem it will ever meet.
 
-A hidden pattern. One shape doing the work of many. This is the kind of thing we spend lifetimes looking for — generalizations, the shape beneath the surface.
+One shape, quietly doing the work of many. That's the kind of thing we spend whole careers hunting for — the hidden pattern, the simple thing underneath the complicated thing.
 
-The cell has been showing it to us, in proteins, for three billion years.
+This cell has been showing it to us, in proteins, for three billion years.
 
 We just had to look.
 
@@ -160,31 +172,31 @@ When the world gets better — keep going.
 
 When the world gets worse — change direction.
 
-Two lines. Two rules. One little body, drifting through the deep ancient ocean, following them blindly, since long before there was anything alive that could think.
+Two lines. One tiny body, drifting through the dark, following them blindly, since long before anything on Earth could think a single thought.
 
 #### Beat 8 — When Food and Danger Collide
 
 **Visual:** A new scene. The cell drifts in water where both an attractant and a repellent are arriving from the same direction — a sugar molecule and a toxin appearing together. On the cell's surface, both receptor types fire at once. Inside the cell, the molecular switch is shown as a see-saw — the attractant signal pushes it one way (toward *run*), the repellent signal pushes it the other (toward *tumble*). The see-saw tips. Whichever side is heavier wins. The cell either runs toward the food (if the attractant pull is stronger) or tumbles away (if the repellent push is stronger).
 
-**Narration:** And there is one more case worth watching, before we step back.
+**Narration:** One more situation before we zoom out. And it's a tricky one.
 
-Most of the time, the cell faces one thing at a time. Food today. Toxin tomorrow. A simple world. A simple rule.
+Most of the time, life is kind enough to hand the cell one thing at a time. Food today. Toxin tomorrow. Simple world, simple rule.
 
-But sometimes — life is not so kind.
+But not always.
 
-Sometimes the food and the danger are *in the same direction*. The smell of sugar, and the chemical signature of something poisonous, arriving from the same place, at the same time.
+Sometimes the food and the poison come from the *same direction.* The smell of sugar and the stink of something deadly, arriving together, from the same spot, at the same moment.
 
-What does the cell do?
+So now what?
 
-You might think it freezes. After all, the rule says *when things get better, keep going; when they get worse, change direction.* And right now, the world is both. Better, and worse, in the same place. There is no answer.
+You'd think it just freezes. The rule says keep going when things get better, change direction when they get worse — and right now it's both. Better *and* worse, same place. The rule seems to have no answer. You'd think that's it for our little blob.
 
 But watch.
 
-Inside the cell, two receptors fire at once. One pushes the molecular switch one way — keep going. The other pushes it the other — turn away. The switch tips toward whichever side is heavier. If the food signal is louder, the cell goes — danger and all. If the danger signal is louder, the cell spins, turns away, leaves the food behind.
+Inside the cell, two sensors fire at once. One shoves the molecular switch toward *go.* The other shoves it toward *turn away.* And the switch just… tips — toward whichever shove is stronger. Louder food signal? It goes. Toxin and all. Louder danger signal? It spins, turns, and leaves the meal behind.
 
-The cell doesn't freeze. It just — somehow — works it out.
+The cell doesn't freeze. It doesn't agonize. It just — somehow — settles it.
 
-Quietly, inside this tiny body, something is happening. Some kind of contest between the signals. Some kind of resolution. The cell *handles* the conflict. It just doesn't know that is what it's doing.
+Something is happening in there. Some quiet little contest between the signals, with a winner and a loser. The cell *handles* the conflict. It just has no idea that's what it's doing.
 
 ## Part 2 — The Math
 
@@ -205,19 +217,23 @@ else:
     tumble
 ```
 
-The code box pulses gently. The cell continues its dance in the background — small, silent, doing what it has always done.
+The code box pulses gently. The cell continues its dance in the background — small, silent, doing what it has always done. Then, as the narration reaches the "never both" point, the code animates: when the cell runs, the `run` line lights and the `else: tumble` branch dims to near-black — visibly *not taken*. When the cell tumbles, it flips — `tumble` lights, the `run` branch goes dark. Only ever one branch lit at a time, in lockstep with the cell's flagella bundling or scattering. The two are shown as the same event in two languages: the lit branch and the cell's current motion.
 
-**Narration:** Let's pause the story for a moment, and look at what we just saw — from a different angle.
+**Narration:** Okay, let's pause the story for a second — because I want to show you what we just watched from a completely different angle.
 
-The cell follows a simple rule. We watched it: *when the world gets better, keep going. When the world gets worse, change direction.* And we saw that this one rule covers everything the cell does — finding food, escaping danger, all of it. Two lines. The cell's whole program.
+The cell follows one rule. We saw it: *when the world gets better, keep going; when it gets worse, change direction.* Two lines. And those two lines handle everything — food, poison, all of it.
 
-If you have ever written code, in any language — Python, JavaScript, C, anything — you have already typed this exact shape. We have a name for it. We call it *if/else.*
+Here's the part I love. If you've ever written even a single line of code — any language, doesn't matter — you've already written this exact shape. It even has a name. We call it *if/else.*
 
-*If* a condition is true, do one thing. *Else*, do another. It is the simplest decision-making structure in computing. It is also, almost certainly, the first decision-making structure life ever invented. Three billion years before there were programmers. Three billion years before there was language. Three billion years before there was anyone to call it anything at all.
+*If* something is true, do one thing. *Else,* do the other. It's the simplest decision in all of computing.
 
-The same shape, in the same kind of role: a tiny rule, deciding what happens next.
+And notice what if/else never does: it never does *both.* The `if` branch runs, or the `else` branch runs. One, or the other. Never a little of each.
 
-In proteins. In silicon. The shape doesn't care.
+Which is exactly what we just saw, right? The cell runs, or it tumbles — never both. Its threads bundle, or they fly apart — never both. And the part that gets me: nobody set it up that way to make the comparison work. The cell was already built like this, three billion years before anyone wrote the word 'else.' That either-or lives in its body — the same either-or that lives in the code. So this isn't a metaphor we're draping over the cell to sound clever. It really is the shape the cell already is.
+
+Which means if/else isn't just the simplest decision in computing. It might be the *first* decision life ever made. Three billion years before there were programmers. Before there was language. Before there was anyone around to give it a name.
+
+Same shape, same job — deciding what happens next. In proteins, in silicon. The shape doesn't care.
 
 #### Algorithm Beat A2 — The Implicit Weighted Sum
 
@@ -239,31 +255,31 @@ Below the full formula, smaller text appears, each line emphasized in turn: *no 
 
 The image holds. The formula and the see-saw stay together, lit gently, as the camera pulls slowly back.
 
-**Narration:** There is one more thing.
+**Narration:** There's one more thing hiding in here — and it's the one that matters most for everything coming next. So stick with me.
 
-When the cell faced food and danger at the same time, watch what was *actually* happening, in math.
+Go back to that moment the cell faced food and danger at the same time. Watch what was really going on underneath — in plain math.
 
-Each signal arriving — food, danger — had its own strength. Its own weight, baked into the receptor that caught it. The strengths got added together. Whichever side was heavier won.
+Each signal showed up with its own strength. Its own weight, baked right into the sensor that caught it. Those strengths got added together. Heavier side wins.
 
-Spell that out, and you get this:
+Write that out, and you get:
 
 *decision equals the sum of each signal, times its hidden weight.*
 
-And there is one more piece. The cell's central enzyme — the thing that all the receptors push and pull on — is never completely still. Even with no signals arriving, it has a quiet baseline of activity. A default tendency. A standing instruction for what the flagella do when nothing else is happening.
+And there's one last piece. The cell's central switch — the thing every sensor pushes and pulls on — is never totally still. Even when nothing's arriving, no food, no poison, it keeps a low background hum. A default. A standing answer to the question, *what do I do when nothing's happening?*
 
-So the math, written out fully, is:
+So the whole thing, written out, is:
 
 *decision equals the sum of each signal times its hidden weight — plus a hidden baseline.*
 
-A *bias.*
+That baseline has a name too. We call it a *bias.*
 
-This shape — weighted sum, plus bias — is the simplest possible model of a decision-making cell. And the bacterium has been running it, in chemistry, for three billion years.
+Weighted sum, plus bias. That's about the simplest recipe there is for something that makes decisions. And this little bacterium has been running it, in pure chemistry, for three billion years.
 
-The arithmetic was real. Hidden in molecules. Three billion years of weighted sums, every moment of every day, without anyone to know that's what they were.
+The math was real. Real numbers, hidden in molecules, quietly adding themselves up every second of every day — with nobody around who knew that's what they were.
 
-In the cell, the sum was an accident — many tiny if/else mechanisms pushing on the same molecule, the total emerging from the physics. There was no place anywhere in the cell whose *job* was to weigh.
+Though here's the catch — and it's worth holding onto, because the next chapter is built on it. In the cell, that sum was kind of an accident. A bunch of tiny switches all shoving the same molecule, and the total just… fell out of the physics. There was no spot anywhere in the cell whose actual *job* was to add things up.
 
-That is the math of the simple world.
+That's the math of the simple world.
 
 ## Closing — The Limit of Mechanism
 
@@ -273,64 +289,58 @@ That is the math of the simple world.
 
 **Visual:** Close on the cell. The pace slows further. A side panel opens, showing the molecular cascade — events as dominoes falling, one triggering the next, with no gap, no chooser. The molecules don't know what they're doing. They just react. Inside the cell, no person, no eye, no central seat — just chemistry, all the way down.
 
-**Narration:** And now — here is the part that, if you stop and think about it, is genuinely strange.
+**Narration:** And now the part that genuinely gets to me. The part that, if you actually sit with it, is a little hard to shake.
 
-Watch the cell from the outside. It looks like it is *seeking* food. Hunting, even. Strategizing. When you watch it climb the gradient toward a sugar, it is hard not to read intention into it. *The cell is looking for food.*
+Watch the cell from the outside, and it looks like it's hunting. It climbs toward the sugar, closing in, and honestly — it's hard not to think, *the cell is looking for food.* Watch it bolt away from a toxin and you'd swear it knows. It's scared. It's running for its life.
 
-Watch it flee from a toxin. *It knows. It is escaping.*
+But it doesn't know. Anything.
 
-But the cell does not know.
+Go in close — right down to the sensors, the proteins, the molecular switch — and look for whoever's making the call.
 
-Look closely — at the receptors, at the proteins, at the molecular switch — and you find no one in there.
+There's nobody in there.
 
-There is no decider.
+No decider. No little self holding the scales. No part of the cell that knows it's choosing — because there's no part of the cell that knows anything at all. It isn't *looking* for food. It isn't *fleeing* the toxin. It's a chemical reaction. Sensors fire, propellers answer, the switch tips, the cell moves. And nobody's home to see it happen.
 
-No little inner self holding the scales. No part of the cell that *knows* it is choosing.
+And from the outside? It looks exactly like intelligence.
 
-The cell is not *looking* for anything. It is not *fleeing* anything. It is a chemical response. The receptors fire. The flagella respond. A simple rule. A simple sum. The chemistry happens. The switch tips. The cell goes. But there is no one watching it happen.
+That's the thing I keep coming back to: behavior that looks intelligent doesn't have to *be* intelligent. Something can spend three and a half billion years finding food, escaping danger, working out hard situations — looking, the whole time, like it means to — with no one inside who means anything by it.
 
-And from the outside, all of it — looks remarkably like intelligence.
+It's one of the strangest things in all of biology. And — I'll just say it now — it turns out to be one of the strangest things in AI, too.
 
-Behavior that looks intelligent need not be intelligent. A creature can spend three and a half billion years doing things that *look* like intention — finding food, fleeing danger, handling complex situations — without anyone in there to intend them.
+Even those hidden weights, the strengths of the signals — they were set the moment the cell was born. Same for every cell of its kind. Nobody chose them either.
 
-This is one of the strangest patterns in all of biology. And — as the rest of this series will show — one of the strangest patterns in AI as well.
+So the cell doesn't really make a decision. The cell *is* a decision — running on autopilot since the planet was warmer.
 
-The hidden strengths of those signals — they live in the molecules, set the moment the cell was born, identical for every cell of its kind. Nobody chose those strengths either.
-
-The cell does not make a decision. The cell *is* a decision — running, on autopilot, since the planet was warmer.
-
-And the reason that decision is running — the reason this exact rule, this exact way of doing things, is alive in the ocean today — is just because, a very long time ago, the cells that did it this way lived. And the ones that did it any other way did not.
+And if you ask why this exact rule is still here, still running in the ocean today, the answer is almost embarrassingly simple: a very long time ago, the cells that did it this way lived. And the ones that did it any other way didn't.
 
 #### Beat C2 — The Limit
 
 **Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, holding the sense of an enormous, ancient, persistent world. Soft text appears: *Three and a half billion years.* The image holds, then slowly darkens.
 
-**Narration:** And so it worked.
+**Narration:** And it worked.
 
-For an unimaginably long time, it worked.
+For an almost unimaginable stretch of time, it just… worked. Three and a half billion years — basically the entire history of the planet — same simple rule, same kind of body. No brains. No nerves. No decisions, not in the way we usually mean the word. Just chemistry. And it was enough.
 
-Three and a half billion years — almost the entire history of the planet — under the same simple rule, in the same kind of body. No brains. No nervous systems. No decisions, in the sense we mean it. Just chemistry. And it was enough.
+A crude rule. Not elegant. Not even close to perfect. But it worked, for as long as there's been anything alive on Earth. And that's the good kind of *good enough* — the kind everything else gets to build on top of.
 
-A simple rule. Crude, even. Far from elegant. Far from perfect. But it *worked* — for as long as there has been life on this planet. The kind of *good enough* that life can build on.
+A rough start. But a start.
 
-A rough start. But a start — that everything else will, in time, grow from.
+Still — there are things this little body just can't do. There's no place inside it whose only job is to weigh the options. The weights can't change while it's alive — they're locked in at birth. The bias can't be tuned. And nothing from *inside* the body ever gets a say.
 
-But there are still things this body cannot do.
+The math was there. The machinery to really use it wasn't.
 
-In the cell, there was no place inside the body whose only job was to weigh. The weights could not change during a single cell's life — they were set when it was born. The bias could not be tuned. And nothing from *inside* the body could speak.
-
-The math existed. The machinery did not.
+Not yet.
 
 #### Beat C3 — What's About to Arrive
 
 **Visual:** The dark image fades. When it returns, the ocean has changed. The water is colder, dimmer. Microbial mats are still there — but among them, for the first time, something larger. Something with a front and a back. A small, soft creature drifts in the distance, just out of focus. The image holds.
 
-**Narration:** That is what is about to arrive.
+**Narration:** Which is exactly what's about to show up.
 
-The ocean is about to grow something larger. A body with a front, and a back, and somewhere in the middle — for the first time — a place where signals can actually meet. A place where signals can be weighed deliberately. A place where the inside of the body can have a voice in the decision.
+The ocean is about to grow something bigger. A body with a front and a back — and somewhere in between, for the very first time, a place where signals can actually meet. A place that can weigh them on purpose. A place where the inside of the body finally gets a voice in what happens next.
 
-And once a body has such a place — a place whose only job is to weigh — something new becomes possible.
+And once you've got a place like that — a place whose whole job is to weigh — something new becomes possible.
 
-Something we will, eventually, learn to call *intelligence.*
+Something we'll eventually learn to call *intelligence.*
 
-For now: the threshold. A simple world, complete. Something more, just about to begin.
+But that's next. For now: one simple world, running one simple rule. Complete. And something more, just about to begin.
