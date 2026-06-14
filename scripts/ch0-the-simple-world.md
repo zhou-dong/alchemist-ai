@@ -100,7 +100,7 @@ That's the entire story for the next three billion years. One cell. One job. It 
 
 #### Beat 4 — Finding Food
 
-**Visual:** Close on the cell's outer membrane. A small attractant receptor sits on the surface. Faint glowing dots of sugar molecules drift through the water. One bumps the receptor — the receptor changes shape, a pulse travels inward. Pull back to the cell's path: when the sugar gradient rises, the flagella bundle together and the cell swims forward in a straight line. When the gradient drops, the flagella unbundle, the cell spins in place, randomly reorienting, then settles, pointing somewhere new. Over many cycles, the cell climbs the gradient toward the food.
+**Visual:** Open on a close-up of the cell's rear, where the flagella attach — each whip driven by a tiny rotary motor sunk into the cell wall. Turn the motors one way and the whips wind into a single bundle, a propeller, and the cell glides smoothly forward; turn them the other way and the bundle bursts apart, whips thrashing, and the cell spins in place. Then pull back to the cell's path in a sugar gradient: when the gradient rises, the flagella bundle and the cell swims forward in a straight line; when it drops, the flagella unbundle, the cell spins in place, randomly reorienting, then settles, pointing somewhere new. Over many cycles, the cell climbs the gradient toward the food. *(Keep the mechanism to the motor and the bundle — no chemical-cascade detail; that would overwhelm the if/else point.)*
 
 **Narration:** Job number one: find food.
 
@@ -110,7 +110,9 @@ It cheats. Sort of.
 
 Scattered across its surface are tiny chemical sensors — little protein gates that twitch when the right molecule drifts past. A bit of sugar bumps one, the gate shifts, and a signal runs inward to the propellers.
 
-And the rule is dead simple. Sugar getting *stronger* — the propellers bundle together, and the cell swims forward. Smooth, steady, straight ahead. Sugar getting *weaker* — the propellers fly apart, and the cell just… spins. In place. Pointing nowhere. Then it stops, facing some random new direction, and tries again.
+But how do those propellers actually move the cell? Here's the part I love. Each whip is spun by its own tiny motor, sunk into the cell wall — a real, turning motor, one of the only ones nature ever built. And it runs both ways. Spin the whips one direction, and they wind together into a single bundle that drives the cell smoothly forward. Spin them the other way, and the bundle bursts apart — each whip thrashing on its own — and the cell just spins in place, pointing nowhere.
+
+So which way do the motors turn? That's the dead-simple part. When the sugar is getting *stronger* — they bundle, and the cell glides forward. When it's getting *weaker* — they scatter, and the cell spins, until it's aimed somewhere new. Then it sets off again.
 
 Forward. Spin. Forward. Spin.
 
