@@ -116,29 +116,34 @@ export const Beat0Welcome: React.FC = () => {
       <TimedCaptions
         cues={[
           {
-            text: "Let's learn how modern AI really works — the intuitive way.",
-            from: 60,
-            to: 150,
+            text: "Welcome. Let's learn how AI works.",
+            from: 50,
+            to: 145,
           },
           {
-            text: "A formula is just an idea wearing symbols — easier to see in the real world.",
-            from: 155,
-            to: 240,
+            text: "It turns out almost every idea inside AI has a mirror in something alive.",
+            from: 153,
+            to: 268,
           },
           {
-            text: "So that's where we'll look: almost every AI idea has a mirror in something alive.",
-            from: 245,
-            to: 330,
+            text: "And what really surprised me — some came straight from life.",
+            from: 276,
+            to: 366,
           },
           {
-            text: "The surprise? Some came straight from life. Life got there first — and we copied.",
-            from: 335,
-            to: 425,
+            text: "We studied how a living thing did it, then turned it into an algorithm.",
+            from: 374,
+            to: 470,
           },
           {
-            text: "So let's start where life did. The very beginning.",
-            from: 430,
-            to: 510,
+            text: "So let's start at the very beginning of life.",
+            from: 478,
+            to: 555,
+          },
+          {
+            text: "And I mean the very beginning.",
+            from: 563,
+            to: 610,
           },
         ]}
       />
