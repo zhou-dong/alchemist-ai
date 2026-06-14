@@ -36,6 +36,22 @@ When attractants and repellents arrive together, the cell handles the conflict a
 
 The *bias* is the baseline activity of the central integrating enzyme (CheA in real bacteria) — what determines the default tumbling rate when no signals are arriving. This shape — weighted sum plus bias — is the same math the next chapter will name and explain. What's missing in bacteria is not the math but the *architecture*: no central place where signals meet, no parameters that can change, no signals from inside the body. That architectural distinction is what Chapter 1 will deliver.
 
+## Prologue — Welcome
+
+*Chapter 0 only — the series' front door. States the goal (you'll understand how modern AI works) and the method (learn it the intuitive way — through the real world, not formulas on a whiteboard — because almost every AI idea has a mirror in something alive). Then hands off to the Young Earth Chronicle beat. Keep it brief (~20s): promise, method, surprise, go. Later chapters do not repeat this.*
+
+#### Beat 0 — Welcome
+
+**Visual:** Near-black, with a faint drifting field of motes — quiet, alive, almost cosmic. The series title fades in, centered: *A Brief History of Intelligence, in Algorithms*, then softens to a dim backdrop as the welcome plays. No Earth yet, no ocean — just the dark before the story. The beat eases toward the wide shot of the young Earth that opens Beat 1.
+
+**Narration:** Welcome. Let's learn how modern AI really works — and let's do it the intuitive way.
+
+Because a formula is just an idea wearing symbols — and those ideas are far easier to *see* out in the real world. So that's where we'll look — because almost every idea inside modern AI has a mirror in something alive.
+
+And here's the part that genuinely surprised me: it's not just a clever analogy. Some of these algorithms came *straight* from life — life got there first, and we copied.
+
+So let's start where life did. At the very beginning. And I mean the *very* beginning.
+
 ## Part 1 — The Story
 
 ### Act 1 — A Simpler World
