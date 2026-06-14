@@ -1,7 +1,7 @@
 export const FPS = 30;
 
 // Prologue — Welcome (Chapter 0 only: the series' front door, before Part 1).
-export const PROLOGUE_DURATION_FRAMES = 510;
+export const PROLOGUE_DURATION_FRAMES = 610;
 
 // Per-beat durations in frames, grouped by structural part of the chapter.
 // Order matches the finalized ch0 script (Prologue → Part 1 → Part 2 → Closing).
