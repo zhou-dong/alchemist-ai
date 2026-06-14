@@ -10,6 +10,17 @@ The core thesis:
 
 *"The algorithms powering modern AI did not appear from nowhere. They are the same logic that life stumbled upon hundreds of millions of years ago — just running on silicon instead of cells."*
 
+### The Spirit — why this series exists
+
+This is the soul of the project; everything else serves it.
+
+- **The goal is understanding, not trivia.** By the end, the viewer — and the creator — should genuinely understand how modern AI algorithms *work*. Teaching real comprehension is the product.
+- **It's a deliberate rejection of how algorithms are usually taught.** We live in the AI era, yet we still learn its ideas the old way: symbols chalked on a whiteboard, formulas to memorize. That hides the idea. *A formula is just an idea wearing symbols.* Math is not only equations — it is pictures, language, and ideas you can *see*. So the series teaches the **intuitive way**: ground every algorithm in the real world, where the idea is easy to see.
+- **The bridge that makes this work has two distinct layers — never blur them:**
+  1. *Almost every idea inside modern AI can be mapped onto something alive.* This mapping is the teaching device — always available, the lens that makes the math intuitive.
+  2. *Some of these algorithms were genuinely inspired by life — life got there first, and we copied.* This is the rarer, more surprising truth, and it only lands if it stays distinct from layer 1. "It's a useful analogy" is mildly interesting; "we literally copied this from life" makes someone lean in. **Never overclaim layer 2 as if it covered every algorithm.**
+- **Honesty guardrail.** The biology earns intuition, but each chapter's math section must still teach the real algorithm rigorously and be candid about where life and the algorithm diverge. The analogy serves the algorithm; it never distorts it.
+
 The series traces an arc from *mechanism* to *intelligence proper*. The earliest chapter shows pre-bilateral life — bacteria and molecular conditionals running on rule-based logic; clever-looking, but with no real decision in them. From bilaterality onward (and from Rosenblatt's perceptron onward in AI history), the series follows intelligence in a stricter sense: integrated weighted decisions, learning, and eventually feeling.
 
 The narrative frame is inspired by Max Bennett's *A Brief History of Intelligence*; the algorithm explanations aim for the rigor and visual clarity of 3Blue1Brown.
