@@ -61,11 +61,11 @@ export const Beat4FindingFood: React.FC = () => {
 
       <TimedCaptions
         cues={[
-          { text: "First, the cell has to find food.", from: 15, to: 90 },
+          { text: "Job number one: find food.", from: 15, to: 90 },
           { text: "Sugar getting stronger → run.", from: 95, to: 175 },
           { text: "Sugar getting weaker → tumble.", from: 180, to: 245 },
           {
-            text: "Not gracefully. Not knowingly. Just — eventually.",
+            text: "Not gracefully. Not on purpose. Just — eventually.",
             from: 250,
             to: 300,
           },

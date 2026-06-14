@@ -46,11 +46,11 @@ export const Beat2FirstOceans: React.FC = () => {
       <TimedCaptions
         cues={[
           {
-            text: "Long before animals — long before plants — there was the ocean.",
+            text: "Here's the thing about this ocean: it's empty.",
             from: 25,
             to: 110,
           },
-          { text: "And there was something in it.", from: 110, to: 175 },
+          { text: "But it isn't quite empty. There's something in the water.", from: 110, to: 175 },
           {
             text: "So small you'd need a microscope. So simple you'd barely call it alive.",
             from: 175,

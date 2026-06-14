@@ -74,7 +74,7 @@ export const Beat7SimpleRule: React.FC = () => {
       <TimedCaptions
         cues={[
           {
-            text: "That's the entire cell. One rule, for every problem it will ever face.",
+            text: "That's the whole animal. One rule — every survival problem it'll ever meet.",
             from: 160,
             to: 270,
           },

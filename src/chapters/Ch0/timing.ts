@@ -1,7 +1,10 @@
 export const FPS = 30;
 
+// Prologue — Welcome (Chapter 0 only: the series' front door, before Part 1).
+export const PROLOGUE_DURATION_FRAMES = 510;
+
 // Per-beat durations in frames, grouped by structural part of the chapter.
-// Order matches the finalized ch0 script (Part 1 → Part 2 → Closing).
+// Order matches the finalized ch0 script (Prologue → Part 1 → Part 2 → Closing).
 
 // Part 1 — The Story
 //   Act 1 — A Simpler World            (beats 1–3)
@@ -37,4 +40,7 @@ export const PART2_DURATION_FRAMES = sum(PART2_BEAT_DURATIONS_FRAMES);
 export const CLOSING_DURATION_FRAMES = sum(CLOSING_BEAT_DURATIONS_FRAMES);
 
 export const CHAPTER_DURATION_FRAMES =
-  PART1_DURATION_FRAMES + PART2_DURATION_FRAMES + CLOSING_DURATION_FRAMES;
+  PROLOGUE_DURATION_FRAMES +
+  PART1_DURATION_FRAMES +
+  PART2_DURATION_FRAMES +
+  CLOSING_DURATION_FRAMES;

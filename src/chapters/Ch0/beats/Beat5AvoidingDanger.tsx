@@ -70,10 +70,10 @@ export const Beat5AvoidingDanger: React.FC = () => {
 
       <TimedCaptions
         cues={[
-          { text: "Second, sometimes — the cell has to escape.", from: 15, to: 95 },
-          { text: "Threat getting stronger → tumble. Chaos, no commitment.", from: 100, to: 175 },
-          { text: "Threat fading → run. Out of the danger zone.", from: 180, to: 245 },
-          { text: "A different problem. The same two moves.", from: 250, to: 270 },
+          { text: "Job number two: don't get poisoned.", from: 15, to: 95 },
+          { text: "Toxin getting stronger → tumble. Chaos, no commitment.", from: 100, to: 175 },
+          { text: "Toxin fading → run. Out of the danger zone.", from: 180, to: 245 },
+          { text: "A different problem — the same two moves.", from: 250, to: 270 },
         ]}
       />
     </AbsoluteFill>

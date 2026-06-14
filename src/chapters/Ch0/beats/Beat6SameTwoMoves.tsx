@@ -180,12 +180,12 @@ export const Beat6SameTwoMoves: React.FC = () => {
               to: 110,
             },
             {
-              text: "Two stories. Two problems. The same two moves.",
+              text: "There it is — two opposite problems, the exact same two moves!",
               from: 110,
               to: 168,
             },
             {
-              text: "Biologists call them run and tumble. The oldest dance in the world.",
+              text: "Biologists call them run and tumble. The oldest dance on Earth.",
               from: 215,
               to: 300,
             },

@@ -88,9 +88,9 @@ export const BeatC1NoOneDeciding: React.FC = () => {
 
       <TimedCaptions
         cues={[
-          { text: "Look closely — at the proteins, the switch — and you find no one in there.", from: 20, to: 110 },
-          { text: "No decider. No inner self holding the scales.", from: 115, to: 185 },
-          { text: "Just chemistry, all the way down. And from outside, it looks like intelligence.", from: 190, to: 270 },
+          { text: "Look closely — at the proteins, the switch — and there's no one in there.", from: 20, to: 110 },
+          { text: "No decider. No little self holding the scales.", from: 115, to: 185 },
+          { text: "Just chemistry, all the way down. And from outside? It looks like intelligence.", from: 190, to: 270 },
         ]}
       />
     </AbsoluteFill>

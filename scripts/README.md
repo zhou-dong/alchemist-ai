@@ -4,7 +4,7 @@ Source material for the alchemist-ai video series. **Not code** — these files 
 
 ## What's here
 
-- `series_bible.md` — the series bible: concept, format, storytelling methodology, chapter beats, protagonists, chapter arc, philosophical thread
+- `series_bible.md` — the series bible: concept (incl. **The Spirit — why this series exists**, Section 1), format, storytelling methodology, chapter beats, protagonists, chapter arc, philosophical thread
 - `ch0-the-simple-world.md` — Chapter 0: bacteria, run-and-tumble, if/else as raw mechanism (before intelligence)
 - `ch1-when-many-cells-move-as-one.md` — Chapter 1: Bila enters; multicellular + steering, the perceptron, internal state
 - `ch2-when-weights-learn.md` — Chapter 2: synaptic plasticity (Hebbian), the perceptron learning rule, learning from examples
@@ -87,7 +87,7 @@ Each chapter is structured as **two parts** — see `series_bible.md` Section 3 
 (end of Part 2 contains the bridge to the next chapter)
 ```
 
-Beat format: each beat has a **Visual** block (production notes describing what's on screen — what the animator should build) and a **Narration** block (the spoken text — Attenborough-style omniscient voice).
+Beat format: each beat has a **Visual** block (production notes describing what's on screen — what the animator should build) and a **Narration** block (the spoken text). For the narration voice, see `series_bible.md` Section 2: a warm, conversational narrator — a knowledgeable friend sharing what they learned, talking directly to "you", excited at the aha moments — *not* a detached/omniscient documentary voice-over, and never a textbook. Chapter 0 is the reference implementation.
 
 Chapters 0 and 1 follow this two-part beat structure. Chapters 2–5 are still in the older outline format (full Acts, Human Parallel section, Philosophical Thread section) and will be migrated as they are rewritten.
 

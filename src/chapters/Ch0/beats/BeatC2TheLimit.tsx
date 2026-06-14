@@ -78,8 +78,8 @@ export const BeatC2TheLimit: React.FC = () => {
 
       <TimedCaptions
         cues={[
-          { text: "Under the same simple rule, in the same kind of body. And it was enough.", from: 20, to: 95 },
-          { text: "But the weights could not change. Nothing inside could speak.", from: 130, to: 195 },
+          { text: "Same simple rule, same kind of body. And it was enough.", from: 20, to: 95 },
+          { text: "But the weights couldn't change. Nothing inside ever got a say.", from: 130, to: 195 },
         ]}
       />
 

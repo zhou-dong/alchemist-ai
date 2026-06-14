@@ -89,12 +89,12 @@ export const BeatA1IfElse: React.FC = () => {
       <TimedCaptions
         cues={[
           {
-            text: "If a condition is true, do one thing. Else, do another.",
+            text: "If something's true, do one thing. Else, do the other.",
             from: 150,
             to: 215,
           },
           {
-            text: "The simplest decision in computing — and life typed it first.",
+            text: "And never both — run or tumble, if or else. Life typed it first!",
             from: 220,
             to: 270,
           },

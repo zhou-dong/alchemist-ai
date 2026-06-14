@@ -79,16 +79,16 @@ export const Beat8Collide: React.FC = () => {
       <TimedCaptions
         cues={[
           {
-            text: "Sometimes the food and the danger arrive from the same place.",
+            text: "Sometimes food and danger arrive from the same place. So now what?",
             from: 15,
             to: 100,
           },
           {
-            text: "Two receptors fire at once — one says go, one says turn away.",
+            text: "Two sensors fire at once — one says go, one says turn away.",
             from: 105,
             to: 185,
           },
-          { text: "The switch tips toward whichever is heavier.", from: 190, to: 255 },
+          { text: "The switch tips toward whichever shove is stronger.", from: 190, to: 255 },
           { text: "The cell doesn't freeze. It just — works it out.", from: 258, to: 300 },
         ]}
         bottom={60}

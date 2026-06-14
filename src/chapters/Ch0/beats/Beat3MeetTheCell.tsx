@@ -45,13 +45,13 @@ export const Beat3MeetTheCell: React.FC = () => {
 
       <TimedCaptions
         cues={[
-          { text: "Meet the cell.", from: 20, to: 90, size: 56 },
+          { text: "So — meet the hero of our story.", from: 20, to: 90, size: 56 },
           {
-            text: "No eyes. No nervous system. No brain — none has been invented yet.",
+            text: "Honestly, not much to look at. No eyes. No brain — none invented yet.",
             from: 95,
             to: 185,
           },
-          { text: "Just thin whips to push through the water. And one job: don't die.", from: 190, to: 270 },
+          { text: "Just threads to push through the water. And one job: don't die.", from: 190, to: 270 },
         ]}
       />
     </AbsoluteFill>

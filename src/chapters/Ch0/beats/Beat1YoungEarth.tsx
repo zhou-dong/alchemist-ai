@@ -47,17 +47,17 @@ export const Beat1YoungEarth: React.FC = () => {
       <TimedCaptions
         cues={[
           {
-            text: "A hot ball of rock — struck by other rocks, wrapped in steam.",
+            text: "A hot ball of rock, hit by other rocks, for half a billion years.",
             from: 30,
             to: 120,
           },
           {
-            text: "Then it cooled. The steam fell as rain. The first oceans came into being.",
+            text: "Then it cooled. The rain fell, and fell — until it made the first oceans.",
             from: 120,
             to: 210,
           },
           {
-            text: "A new chapter in the planet's history begins. Geologists call it the Archean.",
+            text: "Geologists call this stretch the Archean. Nothing alive yet — but the stage is set.",
             from: 210,
             to: 300,
           },

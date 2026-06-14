@@ -68,9 +68,9 @@ export const BeatC3WhatsAboutToArrive: React.FC = () => {
 
       <TimedCaptions
         cues={[
-          { text: "That is what is about to arrive.", from: 30, to: 95, size: 50 },
+          { text: "Which is exactly what's about to show up.", from: 30, to: 95, size: 50 },
           { text: "A body with a front, a back — and a place where signals can meet.", from: 100, to: 180 },
-          { text: "Something we will, in time, learn to call intelligence.", from: 185, to: 240, size: 50 },
+          { text: "Something we'll, in time, learn to call intelligence.", from: 185, to: 240, size: 50 },
         ]}
       />
     </AbsoluteFill>

@@ -88,9 +88,9 @@ export const BeatA2WeightedSum: React.FC = () => {
 
       <TimedCaptions
         cues={[
-          { text: "Each signal has its own strength — its own hidden weight.", from: 45, to: 135 },
+          { text: "Each signal shows up with its own strength — its own hidden weight.", from: 45, to: 135 },
           { text: "Add the cell's quiet baseline — a bias — and that's the whole decision.", from: 150, to: 245 },
-          { text: "Weighted sum, plus bias. Three billion years of arithmetic in chemistry.", from: 250, to: 330 },
+          { text: "Weighted sum, plus bias. Three billion years of arithmetic, in chemistry.", from: 250, to: 330 },
         ]}
         bottom={56}
       />
