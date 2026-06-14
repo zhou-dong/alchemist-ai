@@ -38,19 +38,17 @@ The *bias* is the baseline activity of the central integrating enzyme (CheA in r
 
 ## Prologue — Welcome
 
-*Chapter 0 only — the series' front door. States the goal (you'll understand how modern AI works) and the method (learn it the intuitive way — through the real world, not formulas on a whiteboard — because almost every AI idea has a mirror in something alive). Then hands off to the Young Earth Chronicle beat. Keep it brief (~20s): promise, method, surprise, go. Later chapters do not repeat this.*
+*Chapter 0 only — the series' front door. Keep it simple and focused so viewers engage fast: orient (we're going to learn how AI works, the intuitive way), hook with the life-mapping surprise, then hand off to the Young Earth Chronicle beat. Deliberately omits the math-anxiety reassurance ("a formula is just an idea wearing symbols") — that is saved for point-of-need, the moment the first real formula appears in Part 2, where it lands as relief; up front it would only plant a worry the viewer doesn't have yet. Also does NOT preach the whiteboard/method manifesto: that's the creator's private motivation, shown not told (see §1 "The Spirit"). Keep it brief (~18s): orient, hook, go. Later chapters do not repeat this.*
 
 #### Beat 0 — Welcome
 
 **Visual:** Near-black, with a faint drifting field of motes — quiet, alive, almost cosmic. The series title fades in, centered: *A Brief History of Intelligence, in Algorithms*, then softens to a dim backdrop as the welcome plays. No Earth yet, no ocean — just the dark before the story. The beat eases toward the wide shot of the young Earth that opens Beat 1.
 
-**Narration:** Welcome. Let's learn how modern AI really works — and let's do it the intuitive way.
+**Narration:** Welcome. Let's learn how AI works — and let's do it the intuitive way.
 
-Because a formula is just an idea wearing symbols — and those ideas are far easier to *see* out in the real world. So that's where we'll look — because almost every idea inside modern AI has a mirror in something alive.
+Because almost every idea inside modern AI has a mirror in something alive. And what really surprised me — some of these algorithms came *straight* from life. Life got there first, and we copied.
 
-And here's the part that genuinely surprised me: it's not just a clever analogy. Some of these algorithms came *straight* from life — life got there first, and we copied.
-
-So let's start where life did. At the very beginning. And I mean the *very* beginning.
+So let's start at the very beginning. And I mean the *very* beginning.
 
 ## Part 1 — The Story
 
