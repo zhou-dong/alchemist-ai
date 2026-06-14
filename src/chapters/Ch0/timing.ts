@@ -13,7 +13,7 @@ export const PART1_BEAT_DURATIONS_FRAMES = [
   300, // Beat 1 — The Young Earth (Chronicle)
   240, // Beat 2 — The First Oceans
   270, // Beat 3 — Meet the Cell
-  300, // Beat 4 — Finding Food
+  630, // Beat 4 — Finding Food (motor close-up + the climb)
   270, // Beat 5 — Avoiding Danger
   300, // Beat 6 — Same Two Moves
   270, // Beat 7 — The Simple Rule
