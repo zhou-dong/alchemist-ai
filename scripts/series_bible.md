@@ -14,6 +14,12 @@ The core thesis:
 
 This is the soul of the project; everything else serves it.
 
+> **This motivation is fuel for the creator — not a speech for the audience.** Show, don't tell. The product demonstrates the intuitive approach by *being* intuitive; it never lectures the viewer about whiteboards, outdated teaching, or "the better way." The conviction that we're in the AI era yet still teach its ideas the old way is exactly what motivates this project — but it stays below the surface. If the product is good, the audience feels it; if it isn't, no manifesto will save it. So the narration never argues for the method — it just uses it.
+>
+> **One exception — reassurance that serves the learner is welcome, and is different from positioning.** Telling the audience "don't be afraid of the math — a formula is just an idea wearing symbols" lowers their guard so they can learn; it's a kindness, not a claim that the creator or method is superior. The test for any such line: does it ask the viewer to *agree the approach is better* (cut it — that's positioning), or does it help the viewer *feel capable* (keep it — that's reassurance)? The math-anxiety reassurance passes; the whiteboard critique does not.
+>
+> **Placement matters as much as permission.** Deliver reassurance at the *point of need* — the moment a real formula first appears on screen — not in the cold open. Up front, before any math is shown, "don't be afraid of the math" answers a worry the viewer doesn't have yet and can even plant it. Keep the opening simple and focused (fewest ideas possible) so viewers engage fast; defuse anxiety exactly when it surfaces.
+
 - **The goal is understanding, not trivia.** By the end, the viewer — and the creator — should genuinely understand how modern AI algorithms *work*. Teaching real comprehension is the product.
 - **It's a deliberate rejection of how algorithms are usually taught.** We live in the AI era, yet we still learn its ideas the old way: symbols chalked on a whiteboard, formulas to memorize. That hides the idea. *A formula is just an idea wearing symbols.* Math is not only equations — it is pictures, language, and ideas you can *see*. So the series teaches the **intuitive way**: ground every algorithm in the real world, where the idea is easy to see.
 - **The bridge that makes this work has two distinct layers — never blur them:**
@@ -48,6 +54,8 @@ Each chapter is built from two visual and narrative registers, structured as **t
 The biology motivates; the math mechanizes; the Closing reflects. **The three sections are separate — not interleaved.** Part 1 plays first: the full narrative arc, pure storytelling, the audience experiences the discovery emotionally. Part 2 follows: retelling key moments through the algorithm's lens. The Closing comes last, after both — the only place where the chapter looks beyond itself.
 
 The pedagogical contract: **show behavior first, name the concept second.** The audience builds full intuition through Part 1's story before receiving vocabulary in Part 2's math.
+
+**Scope of "life leads the algorithm" — it's a chapter rule, not the welcome's.** The biology-first ordering (life leads; Part 1 before Part 2) governs *chapter* structure. It does **not** bind the series-level opening. Chapter 0's Prologue (the welcome) is a meta-introduction, not a chapter, so it may lead with the goal — *"Let's learn how AI works"* — and then bring in life. Don't try to force the welcome to open on biology; the life-first discipline begins once the chapter proper starts (at the Chronicle beat). Confirmed 2026-06-14 while writing the Ch0 welcome.
 
 **Vocabulary rule:** each part stays in its own language. Part 1 uses biology terms only; Part 2 uses AI/CS terms (but only the terms *this* chapter owns — earlier chapters don't preview later chapters' named concepts, even when describing the underlying logic).
 
