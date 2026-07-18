@@ -12,6 +12,8 @@ type Props = {
   scale?: number;
   /** Show the chemical receptors dotting the membrane (default false). */
   showReceptors?: boolean;
+  /** Show the rotating flagellar motor hub at the base of the whips (default false). */
+  showMotor?: boolean;
 };
 
 const FLAGELLA_COUNT = 4;
@@ -54,8 +56,13 @@ export const Bacterium: React.FC<Props> = ({
   heading = 0,
   scale = 1,
   showReceptors = false,
+  showMotor = false,
 }) => {
   const frame = useCurrentFrame();
+
+  // The motor turns one way for a run (flagella bundle), the other for a
+  // tumble (flagella scatter). Direction is what the viewer should read.
+  const motorAngle = frame * 8 * (mode === "run" ? 1 : -1);
 
   return (
     <svg
@@ -97,6 +104,40 @@ export const Bacterium: React.FC<Props> = ({
       {/* Faint interior machinery. */}
       <circle cx={-6} cy={-3} r={4} fill={palette.oceanDeep} fillOpacity={0.35} />
       <circle cx={8} cy={4} r={3} fill={palette.oceanDeep} fillOpacity={0.3} />
+
+      {/* Flagellar motor: a rotor at the base of the whips, spinning one way in
+          "run" (bundled) and the other in "tumble" (scattered). The direction
+          is the point — it's what drives the flagella to bundle or fly apart. */}
+      {showMotor && (
+        <g transform="translate(-30, 0)">
+          <circle
+            r={11}
+            fill={palette.oceanDeep}
+            fillOpacity={0.55}
+            stroke={palette.text}
+            strokeOpacity={0.45}
+            strokeWidth={1.5}
+          />
+          <g transform={`rotate(${motorAngle})`}>
+            <circle r={8} fill={palette.bila} fillOpacity={0.55} />
+            {[0, 90, 180, 270].map((a) => (
+              <line
+                key={a}
+                x1={0}
+                y1={0}
+                x2={Math.cos((a * Math.PI) / 180) * 8}
+                y2={Math.sin((a * Math.PI) / 180) * 8}
+                stroke={palette.text}
+                strokeOpacity={0.7}
+                strokeWidth={1.5}
+                strokeLinecap="round"
+              />
+            ))}
+            {/* Marker dot so the spin direction reads at a glance. */}
+            <circle cx={5.5} cy={0} r={2.2} fill={palette.text} />
+          </g>
+        </g>
+      )}
 
       {showReceptors &&
         [-18, -6, 6, 18].map((cx) => (
