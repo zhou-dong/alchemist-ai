@@ -64,7 +64,9 @@ export const Beat4FindingFood: React.FC = () => {
   const introJx = introRun ? 0 : Math.sin(frame * 0.9) * 14;
   const introJy = introRun ? 0 : Math.cos(frame * 1.1) * 12;
   const introY = 0.46 * height + Math.sin(frame * 0.05) * 8 + introJy;
-  const introHeading = introRun ? 0 : (frame - 280) * 7;
+  // A gentle wobble (not a full spin) during the tumble, so the rotating motor
+  // hub stays readable while the flagella scatter.
+  const introHeading = introRun ? 0 : Math.sin((frame - 280) * 0.35) * 22;
   const phase1Opacity = interpolate(
     frame,
     [0, 20, PHASE1_END - 25, PHASE1_END],
@@ -102,6 +104,7 @@ export const Beat4FindingFood: React.FC = () => {
             heading={introHeading}
             scale={2.3}
             showReceptors
+            showMotor
           />
         </div>
       </AbsoluteFill>
