@@ -1,9 +1,12 @@
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { Bacterium } from "../../../components/characters/Bacterium";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fontFamily } from "../../../theme/fonts";
 import { fadeIn } from "../../../theme/transitions";
+import { narration } from "../narration.generated";
+
+const BEAT = narration.beatC1NoOneDeciding;
 
 const DOMINOES = 7;
 
@@ -16,7 +19,9 @@ export const BeatC1NoOneDeciding: React.FC = () => {
   const frame = useCurrentFrame();
   const { width } = useVideoConfig();
 
-  // A cascade front sweeps the row repeatedly.
+  // A cascade front sweeps the row repeatedly. Left on real frames and looping:
+  // the point is that the chemistry just keeps running, indifferently, for as
+  // long as the narrator talks about it.
   const cyclePos = (frame % 110) / 110; // 0..1 front position
   const drift = Math.sin(frame * 0.03) * 10;
 
@@ -86,13 +91,7 @@ export const BeatC1NoOneDeciding: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      <TimedCaptions
-        cues={[
-          { text: "Look closely — at the proteins, the switch — and there's no one in there.", from: 20, to: 110 },
-          { text: "No decider. No little self holding the scales.", from: 115, to: 185 },
-          { text: "Just chemistry, all the way down. And from outside? It looks like intelligence.", from: 190, to: 270 },
-        ]}
-      />
+      <Narration beat={BEAT} />
     </AbsoluteFill>
   );
 };

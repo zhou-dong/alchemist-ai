@@ -1,9 +1,13 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { EarthFromSpace } from "../../../components/scenes/EarthFromSpace";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fontFamily } from "../../../theme/fonts";
 import { fadeIn } from "../../../theme/transitions";
+import { beatDuration } from "../../../narration/schedule";
+import { narration } from "../narration.generated";
+
+const BEAT = narration.beat1YoungEarth;
 
 /**
  * Part 1 · Act 1 · Beat 1 — The Young Earth. The Chronicle beat: locates the
@@ -12,10 +16,14 @@ import { fadeIn } from "../../../theme/transitions";
  */
 export const Beat1YoungEarth: React.FC = () => {
   const frame = useCurrentFrame();
-  const dateOpacity = interpolate(frame, [15, 45, 270, 300], [0, 1, 1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const total = beatDuration(BEAT);
+  // The date holds for the whole beat, fading out just before the cut.
+  const dateOpacity = interpolate(
+    frame,
+    [15, 45, total - 30, total],
+    [0, 1, 1, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
 
   return (
     <AbsoluteFill style={{ opacity: fadeIn(frame, 25) }}>
@@ -44,25 +52,7 @@ export const Beat1YoungEarth: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      <TimedCaptions
-        cues={[
-          {
-            text: "A hot ball of rock, hit by other rocks, for half a billion years.",
-            from: 30,
-            to: 120,
-          },
-          {
-            text: "Then it cooled. The rain fell, and fell — until it made the first oceans.",
-            from: 120,
-            to: 210,
-          },
-          {
-            text: "Geologists call this stretch the Archean. Nothing alive yet — but the stage is set.",
-            from: 210,
-            to: 300,
-          },
-        ]}
-      />
+      <Narration beat={BEAT} />
     </AbsoluteFill>
   );
 };

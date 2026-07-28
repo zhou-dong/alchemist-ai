@@ -1,15 +1,21 @@
-import {
-  AbsoluteFill,
-  interpolate,
-  useCurrentFrame,
-  useVideoConfig,
-} from "remotion";
+import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import { ArcheanOcean } from "../../../components/scenes/ArcheanOcean";
 import { Bacterium } from "../../../components/characters/Bacterium";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fontFamily } from "../../../theme/fonts";
 import { fadeIn } from "../../../theme/transitions";
+import { cueFrame } from "../../../narration/schedule";
+import { revealAt } from "../../../narration/staging";
+import { narration } from "../narration.generated";
+
+const BEAT = narration.beat7SimpleRule;
+
+// The rule is displayed as a card in the middle of the frame, and the narrator
+// speaks it twice — once when it first appears, and again as the closing refrain.
+// Those four lines go unsubtitled so the viewer isn't reading the same sentence
+// twice at two different sizes.
+const RULE_LINES = [1, 2, 20, 21];
 
 /**
  * Part 1 · Act 2 · Beat 7 — The Simple Rule. The cell keeps dancing while the
@@ -20,7 +26,9 @@ export const Beat7SimpleRule: React.FC = () => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
 
-  // Gentle wander with a tumble every ~75 frames.
+  // Gentle wander with a tumble every ~75 frames. Left on real frames: this is
+  // the cell's idle life, and it should keep dancing at its own pace for as long
+  // as the narration runs.
   const path = (f: number) => ({
     x: (0.5 + 0.26 * Math.sin(f * 0.02)) * width,
     y: (0.28 + 0.05 * Math.sin(f * 0.045)) * height,
@@ -30,14 +38,9 @@ export const Beat7SimpleRule: React.FC = () => {
   const heading = (Math.atan2(next.y - here.y, next.x - here.x) * 180) / Math.PI;
   const tumbling = frame % 75 > 60;
 
-  const line1 = interpolate(frame, [30, 60], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const line2 = interpolate(frame, [85, 115], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  // The two rule lines appear as the narrator speaks them, and stay up.
+  const line1 = revealAt(frame, cueFrame(BEAT, RULE_LINES[0]), 30);
+  const line2 = revealAt(frame, cueFrame(BEAT, RULE_LINES[1]), 30);
 
   const ruleStyle: React.CSSProperties = {
     fontFamily,
@@ -71,15 +74,7 @@ export const Beat7SimpleRule: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      <TimedCaptions
-        cues={[
-          {
-            text: "That's the whole animal. One rule — every survival problem it'll ever meet.",
-            from: 160,
-            to: 270,
-          },
-        ]}
-      />
+      <Narration beat={BEAT} silentLines={RULE_LINES} />
     </AbsoluteFill>
   );
 };

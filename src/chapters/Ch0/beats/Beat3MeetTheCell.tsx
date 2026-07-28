@@ -1,8 +1,15 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { ArcheanOcean } from "../../../components/scenes/ArcheanOcean";
 import { Bacterium } from "../../../components/characters/Bacterium";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { fadeIn } from "../../../theme/transitions";
+import { stagingFrame } from "../../../narration/staging";
+import { narration } from "../narration.generated";
+
+const BEAT = narration.beat3MeetTheCell;
+
+/** Duration this beat's staging was originally choreographed against. */
+const AUTHORED = 270;
 
 /**
  * Part 1 · Act 1 · Beat 3 — Meet the Cell. Zoom past the surface into a
@@ -11,12 +18,15 @@ import { fadeIn } from "../../../theme/transitions";
  */
 export const Beat3MeetTheCell: React.FC = () => {
   const frame = useCurrentFrame();
+  const staged = stagingFrame(frame, BEAT, AUTHORED);
 
-  // Zoom in over the beat.
-  const zoom = interpolate(frame, [0, 90], [0.7, 1.6], {
+  // Zoom in over the beat — stretched to the narration, so it settles about a
+  // third of the way in rather than in the first few seconds.
+  const zoom = interpolate(staged, [0, 90], [0.7, 1.6], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
+  // Drift stays on real frames: it's the cell's own life, not staging.
   const drift = Math.sin(frame * 0.03) * 14;
 
   return (
@@ -43,17 +53,7 @@ export const Beat3MeetTheCell: React.FC = () => {
         <Bacterium mode="run" heading={-8} scale={zoom * 2.4} showReceptors />
       </div>
 
-      <TimedCaptions
-        cues={[
-          { text: "So — meet the hero of our story.", from: 20, to: 90, size: 56 },
-          {
-            text: "Honestly, not much to look at. No eyes. No brain — none invented yet.",
-            from: 95,
-            to: 185,
-          },
-          { text: "Just threads to push through the water. And one job: don't die.", from: 190, to: 270 },
-        ]}
-      />
+      <Narration beat={BEAT} />
     </AbsoluteFill>
   );
 };

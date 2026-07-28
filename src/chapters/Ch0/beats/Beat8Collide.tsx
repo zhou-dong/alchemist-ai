@@ -8,11 +8,27 @@ import { ArcheanOcean } from "../../../components/scenes/ArcheanOcean";
 import { ChemicalSource } from "../../../components/scenes/ChemicalSource";
 import { Bacterium } from "../../../components/characters/Bacterium";
 import { SeeSaw } from "../../../components/diagrams/SeeSaw";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fadeIn } from "../../../theme/transitions";
+import {
+  beatDuration,
+  cueEndFrame,
+  cueFrame,
+} from "../../../narration/schedule";
+import { narration } from "../narration.generated";
 
 const SOURCE = { x: 0.72, y: 0.3 };
+
+const BEAT = narration.beat8Collide;
+
+// The switch starts contesting when the two sensors fire, and has settled by the
+// end of the line that describes it tipping ("...toward whichever shove is
+// stronger. Louder food signal? It goes."). Anchoring the resolve to that line's
+// *end* rather than the next line's start matters: the next line describes the
+// opposite outcome (danger winning), which is not what this see-saw shows.
+const CONTEST_AT = cueFrame(BEAT, 13);
+const RESOLVE_AT = cueEndFrame(BEAT, 14);
 
 /**
  * Part 1 · Act 2 · Beat 8 — When Food and Danger Collide. Attractant and
@@ -23,18 +39,26 @@ const SOURCE = { x: 0.72, y: 0.3 };
 export const Beat8Collide: React.FC = () => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
+  const total = beatDuration(BEAT);
 
-  // The switch wobbles, then settles toward "run" (food signal is louder).
+  // The switch wobbles while the conflict is described, then settles toward
+  // "run" (the food signal is louder).
   const tip = interpolate(
     frame,
-    [50, 110, 145, 185, 245],
+    [
+      CONTEST_AT,
+      CONTEST_AT + 60,
+      CONTEST_AT + 95,
+      RESOLVE_AT,
+      RESOLVE_AT + 60,
+    ],
     [0, -0.32, 0.24, -0.55, -0.72],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
   );
 
   // Once resolved, the cell commits and runs toward the source.
   const cellX =
-    interpolate(frame, [0, 185, 300], [0.2, 0.23, 0.6], {
+    interpolate(frame, [0, RESOLVE_AT, total], [0.2, 0.23, 0.6], {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     }) * width;
@@ -76,23 +100,8 @@ export const Beat8Collide: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      <TimedCaptions
-        cues={[
-          {
-            text: "Sometimes food and danger arrive from the same place. So now what?",
-            from: 15,
-            to: 100,
-          },
-          {
-            text: "Two sensors fire at once — one says go, one says turn away.",
-            from: 105,
-            to: 185,
-          },
-          { text: "The switch tips toward whichever shove is stronger.", from: 190, to: 255 },
-          { text: "The cell doesn't freeze. It just — works it out.", from: 258, to: 300 },
-        ]}
-        bottom={60}
-      />
+      {/* Subtitles sit low here so they clear the see-saw diagram. */}
+      <Narration beat={BEAT} bottom={60} />
     </AbsoluteFill>
   );
 };

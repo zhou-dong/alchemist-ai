@@ -4,10 +4,14 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fontFamily } from "../../../theme/fonts";
 import { fadeIn } from "../../../theme/transitions";
+import { cueFrame } from "../../../narration/schedule";
+import { narration } from "../narration.generated";
+
+const BEAT = narration.beat0Welcome;
 
 // A faint, drifting field of motes — quiet, alive, almost cosmic — behind the
 // welcome. Positions are index-derived (no randomness) so renders stay stable.
@@ -30,11 +34,16 @@ export const Beat0Welcome: React.FC = () => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
 
-  // Title rises, holds, then softens to a dim backdrop as the welcome plays.
-  const titleOpacity = interpolate(frame, [15, 55, 150, 195], [0, 1, 1, 0.18], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  // Title rises, holds through the opening line, then softens to a dim backdrop
+  // as the welcome plays on. Anchored to the second spoken line so the card gets
+  // its full moment regardless of how long the voice takes.
+  const softenAt = cueFrame(BEAT, 1);
+  const titleOpacity = interpolate(
+    frame,
+    [15, 55, softenAt, softenAt + 45],
+    [0, 1, 1, 0.18],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
 
   return (
     <AbsoluteFill
@@ -113,40 +122,7 @@ export const Beat0Welcome: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      <TimedCaptions
-        cues={[
-          {
-            text: "Welcome. Let's learn how AI works.",
-            from: 50,
-            to: 145,
-          },
-          {
-            text: "It turns out almost every idea inside AI has a mirror in something alive.",
-            from: 153,
-            to: 268,
-          },
-          {
-            text: "And what really surprised me — some came straight from life.",
-            from: 276,
-            to: 366,
-          },
-          {
-            text: "We studied how a living thing did it, then turned it into an algorithm.",
-            from: 374,
-            to: 470,
-          },
-          {
-            text: "So let's start at the very beginning of life.",
-            from: 478,
-            to: 555,
-          },
-          {
-            text: "And I mean the very beginning.",
-            from: 563,
-            to: 610,
-          },
-        ]}
-      />
+      <Narration beat={BEAT} />
     </AbsoluteFill>
   );
 };

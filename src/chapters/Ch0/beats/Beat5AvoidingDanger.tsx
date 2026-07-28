@@ -7,10 +7,17 @@ import {
 import { ArcheanOcean } from "../../../components/scenes/ArcheanOcean";
 import { ChemicalSource } from "../../../components/scenes/ChemicalSource";
 import { Bacterium } from "../../../components/characters/Bacterium";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fadeIn } from "../../../theme/transitions";
+import { stagingFrame } from "../../../narration/staging";
+import { narration } from "../narration.generated";
 import { runTumble, type Waypoint, type TumbleWindow } from "./runTumble";
+
+const BEAT = narration.beat5AvoidingDanger;
+
+/** Duration this beat's staging was originally choreographed against. */
+const AUTHORED = 270;
 
 // The same two moves, inverted trigger: the cell tumbles while the toxin
 // strengthens, then runs once it begins to fade — escaping the danger zone.
@@ -28,21 +35,24 @@ const TUMBLES: TumbleWindow[] = [[40, 110]];
 export const Beat5AvoidingDanger: React.FC = () => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
-  const motion = runTumble(frame, WAYPOINTS, TUMBLES, width, height);
+  // The whole beat is one staged escape, so it stretches uniformly to the voice.
+  const staged = stagingFrame(frame, BEAT, AUTHORED);
+  const motion = runTumble(staged, WAYPOINTS, TUMBLES, width, height);
 
-  // Chaotic in-place jitter while tumbling under rising threat.
+  // Chaotic in-place jitter while tumbling under rising threat. On real frames:
+  // the panic should stay frantic even though the escape now takes longer.
   const chaos = motion.mode === "tumble" ? 1 : 0;
   const jx = Math.sin(frame * 0.9) * 16 * chaos;
   const jy = Math.cos(frame * 1.15) * 14 * chaos;
 
   // Toxin sweeps in from the right, peaks, then recedes as the cell flees.
   const toxinX =
-    interpolate(frame, [0, 90, 130, 230], [1.18, 0.66, 0.66, 1.35], {
+    interpolate(staged, [0, 90, 130, 230], [1.18, 0.66, 0.66, 1.35], {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     }) * width;
   const toxinIntensity = interpolate(
-    frame,
+    staged,
     [0, 90, 140, 230],
     [0.2, 1, 1, 0.15],
     { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
@@ -68,14 +78,7 @@ export const Beat5AvoidingDanger: React.FC = () => {
         <Bacterium mode={motion.mode} heading={motion.heading} scale={1.1} />
       </div>
 
-      <TimedCaptions
-        cues={[
-          { text: "Job number two: don't get poisoned.", from: 15, to: 95 },
-          { text: "Toxin getting stronger → tumble. Chaos, no commitment.", from: 100, to: 175 },
-          { text: "Toxin fading → run. Out of the danger zone.", from: 180, to: 245 },
-          { text: "A different problem — the same two moves.", from: 250, to: 270 },
-        ]}
-      />
+      <Narration beat={BEAT} />
     </AbsoluteFill>
   );
 };

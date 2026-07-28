@@ -1,7 +1,11 @@
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fadeIn } from "../../../theme/transitions";
+import { beatDuration, cueFrame } from "../../../narration/schedule";
+import { narration } from "../narration.generated";
+
+const BEAT = narration.beatC3WhatsAboutToArrive;
 
 /**
  * Closing · C3 — What's About to Arrive. The ocean has changed: colder, dimmer.
@@ -11,19 +15,25 @@ import { fadeIn } from "../../../theme/transitions";
 export const BeatC3WhatsAboutToArrive: React.FC = () => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
+  const total = beatDuration(BEAT);
 
   // Reveal from darkness into the new, colder ocean.
   const reveal = fadeIn(frame, 50);
 
-  // The creature drifts slowly across the distant background, out of focus.
-  const creatureX = interpolate(frame, [0, 240], [0.75, 0.45], {
+  // The creature drifts across the distant background for the whole beat, and
+  // surfaces into view as the narration first mentions a body with a front.
+  const creatureX = interpolate(frame, [0, total], [0.75, 0.45], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   }) * width;
-  const creatureOpacity = interpolate(frame, [60, 130], [0, 0.5], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  // "A body with a front and a back — and somewhere in between..."
+  const bodyLine = cueFrame(BEAT, 2);
+  const creatureOpacity = interpolate(
+    frame,
+    [bodyLine - 60, bodyLine + 30],
+    [0, 0.5],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
   const bob = Math.sin(frame * 0.025) * 12;
 
   return (
@@ -66,13 +76,7 @@ export const BeatC3WhatsAboutToArrive: React.FC = () => {
         }}
       />
 
-      <TimedCaptions
-        cues={[
-          { text: "Which is exactly what's about to show up.", from: 30, to: 95, size: 50 },
-          { text: "A body with a front, a back — and a place where signals can meet.", from: 100, to: 180 },
-          { text: "Something we'll, in time, learn to call intelligence.", from: 185, to: 240, size: 50 },
-        ]}
-      />
+      <Narration beat={BEAT} />
     </AbsoluteFill>
   );
 };

@@ -7,10 +7,22 @@ import {
 import { ArcheanOcean } from "../../../components/scenes/ArcheanOcean";
 import { ChemicalSource } from "../../../components/scenes/ChemicalSource";
 import { Bacterium } from "../../../components/characters/Bacterium";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fontFamily } from "../../../theme/fonts";
 import { fadeIn } from "../../../theme/transitions";
+import { cueFrame } from "../../../narration/schedule";
+import { narration } from "../narration.generated";
+
+const BEAT = narration.beat6SameTwoMoves;
+
+/** Frames the split-screen half was originally choreographed over. */
+const SPLIT_AUTHORED = 170;
+
+// The split screen holds while the narration walks through both stories, and
+// gives way to the named diagrams exactly when the names arrive ("Biologists
+// gave them names.").
+const SPLIT_END = cueFrame(BEAT, 15);
 
 /**
  * Part 1 · Act 2 · Beat 6 — Same Two Moves. Split screen: food (gentle runs,
@@ -23,29 +35,38 @@ export const Beat6SameTwoMoves: React.FC = () => {
   const { width, height } = useVideoConfig();
   const half = width / 2;
 
-  const splitOpacity = interpolate(frame, [0, 20, 145, 170], [0, 1, 1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const diagramsOpacity = interpolate(frame, [175, 205], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  // The split-screen choreography, stretched across however long the narration
+  // spends on the two stories.
+  const staged = (frame / Math.max(SPLIT_END, 1)) * SPLIT_AUTHORED;
+
+  const splitOpacity = interpolate(
+    frame,
+    [0, 20, SPLIT_END - 25, SPLIT_END],
+    [0, 1, 1, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
+  const diagramsOpacity = interpolate(
+    frame,
+    [SPLIT_END + 5, SPLIT_END + 35],
+    [0, 1],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
 
   // Left: food-seeking — long gentle run, a tumble, then run again.
-  const leftTumble = frame >= 70 && frame <= 95;
+  const leftTumble = staged >= 70 && staged <= 95;
   const leftX =
-    interpolate(frame, [0, 70, 95, 150], [0.15, 0.6, 0.6, 0.9], {
+    interpolate(staged, [0, 70, 95, 150], [0.15, 0.6, 0.6, 0.9], {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     }) * half;
   const leftY = 0.42 * height + Math.sin(frame * 0.05) * 10;
 
   // Right: danger — tight spins, with one urgent run dart upward.
-  const rightRun = frame >= 80 && frame <= 105;
+  const rightRun = staged >= 80 && staged <= 105;
+  // Jitter and spin stay on real frames — the cell's own motion, not staging.
   const rightJx = rightRun ? 0 : Math.sin(frame * 0.9) * 14;
   const rightJy = rightRun ? 0 : Math.cos(frame * 1.1) * 12;
-  const rightDart = interpolate(frame, [80, 105], [0, -0.18], {
+  const rightDart = interpolate(staged, [80, 105], [0, -0.18], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -172,25 +193,7 @@ export const Beat6SameTwoMoves: React.FC = () => {
       </AbsoluteFill>
 
       <AbsoluteFill style={{ opacity: fadeIn(frame, 12) }}>
-        <TimedCaptions
-          cues={[
-            {
-              text: "Forget the sugar. Forget the toxin. Just watch what the cell does.",
-              from: 20,
-              to: 110,
-            },
-            {
-              text: "There it is — two opposite problems, the exact same two moves!",
-              from: 110,
-              to: 168,
-            },
-            {
-              text: "Biologists call them run and tumble. The oldest dance on Earth.",
-              from: 215,
-              to: 300,
-            },
-          ]}
-        />
+        <Narration beat={BEAT} />
       </AbsoluteFill>
     </AbsoluteFill>
   );

@@ -1,9 +1,21 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { SeeSaw } from "../../../components/diagrams/SeeSaw";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fontFamily } from "../../../theme/fonts";
 import { fadeIn } from "../../../theme/transitions";
+import { cueFrame } from "../../../narration/schedule";
+import { revealAt } from "../../../narration/staging";
+import { narration } from "../narration.generated";
+
+const BEAT = narration.beatA2WeightedSum;
+
+// The formula builds in the order the narration says it: the weighted sum when
+// it's written out, then the bias term when the baseline is named.
+const SUM_AT = cueFrame(BEAT, 8);
+const BIAS_AT = cueFrame(BEAT, 16);
+// The closing caveats — the math was real, but the architecture is missing.
+const MISSING_AT = cueFrame(BEAT, 23);
 
 /**
  * Part 2 · A2 — The Implicit Weighted Sum. The see-saw is the formula made
@@ -13,16 +25,10 @@ import { fadeIn } from "../../../theme/transitions";
 export const BeatA2WeightedSum: React.FC = () => {
   const frame = useCurrentFrame();
 
-  const sumOpacity = interpolate(frame, [30, 60], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const biasOpacity = interpolate(frame, [150, 185], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const sumOpacity = revealAt(frame, SUM_AT, 30);
+  const biasOpacity = revealAt(frame, BIAS_AT, 35);
   // A small standing tilt — the baseline activity before any signal arrives.
-  const tip = interpolate(frame, [150, 200], [0, -0.18], {
+  const tip = interpolate(frame, [BIAS_AT, BIAS_AT + 50], [0, -0.18], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -57,10 +63,7 @@ export const BeatA2WeightedSum: React.FC = () => {
         {/* The architecture that is missing, even though the math is present. */}
         <div style={{ marginTop: 36, display: "flex", flexDirection: "column", gap: 10, alignItems: "center" }}>
           {missing.map((line, i) => {
-            const o = interpolate(frame, [230 + i * 25, 255 + i * 25], [0, 1], {
-              extrapolateLeft: "clamp",
-              extrapolateRight: "clamp",
-            });
+            const o = revealAt(frame, MISSING_AT + i * 55, 25);
             return (
               <div
                 key={i}
@@ -86,14 +89,8 @@ export const BeatA2WeightedSum: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      <TimedCaptions
-        cues={[
-          { text: "Each signal shows up with its own strength — its own hidden weight.", from: 45, to: 135 },
-          { text: "Add the cell's quiet baseline — a bias — and that's the whole decision.", from: 150, to: 245 },
-          { text: "Weighted sum, plus bias. Three billion years of arithmetic, in chemistry.", from: 250, to: 330 },
-        ]}
-        bottom={56}
-      />
+      {/* Subtitles sit low here so they clear the see-saw diagram. */}
+      <Narration beat={BEAT} bottom={56} />
     </AbsoluteFill>
   );
 };

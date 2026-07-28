@@ -22,6 +22,7 @@
   },
   "scripts": {
     "dev": "remotion studio",
+    "narrate": "node scripts/tts/generate.mjs",
     "build": "remotion bundle",
     "upgrade": "remotion upgrade",
     "lint": "tsc && eslint src"

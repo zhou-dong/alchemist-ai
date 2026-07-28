@@ -5,12 +5,20 @@ import {
   useVideoConfig,
 } from "remotion";
 import { Bacterium } from "../../../components/characters/Bacterium";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fontFamily } from "../../../theme/fonts";
 import { fadeIn } from "../../../theme/transitions";
+import { cueFrame } from "../../../narration/schedule";
+import { narration } from "../narration.generated";
 
 const mono = "ui-monospace, SFMono-Regular, Menlo, monospace";
+
+const BEAT = narration.beatA1IfElse;
+
+// The plain-English rule is on screen while the narration recalls it, and gives
+// way to the code form exactly when the name lands ("We call it if/else.").
+const CODE_AT = cueFrame(BEAT, 7);
 
 /**
  * Part 2 · A1 — The If/Else. The plain-English rule from Beat 7 transforms into
@@ -21,11 +29,13 @@ export const BeatA1IfElse: React.FC = () => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
 
-  const plain = interpolate(frame, [20, 50, 95, 120], [0, 1, 1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const code = interpolate(frame, [120, 150], [0, 1], {
+  const plain = interpolate(
+    frame,
+    [20, 50, CODE_AT - 40, CODE_AT - 10],
+    [0, 1, 1, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
+  const code = interpolate(frame, [CODE_AT - 10, CODE_AT + 20], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -86,20 +96,7 @@ export const BeatA1IfElse: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      <TimedCaptions
-        cues={[
-          {
-            text: "If something's true, do one thing. Else, do the other.",
-            from: 150,
-            to: 215,
-          },
-          {
-            text: "And never both — run or tumble, if or else. Life typed it first!",
-            from: 220,
-            to: 270,
-          },
-        ]}
-      />
+      <Narration beat={BEAT} />
     </AbsoluteFill>
   );
 };

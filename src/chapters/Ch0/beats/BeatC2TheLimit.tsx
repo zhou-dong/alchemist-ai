@@ -1,10 +1,14 @@
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import { ArcheanOcean } from "../../../components/scenes/ArcheanOcean";
 import { Bacterium } from "../../../components/characters/Bacterium";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fontFamily } from "../../../theme/fonts";
 import { fadeIn } from "../../../theme/transitions";
+import { beatDuration } from "../../../narration/schedule";
+import { narration } from "../narration.generated";
+
+const BEAT = narration.beatC2TheLimit;
 
 // A scattered population, each cell on its own blind run-and-tumble.
 const CELLS = Array.from({ length: 14 }).map((_, i) => ({
@@ -24,12 +28,16 @@ export const BeatC2TheLimit: React.FC = () => {
   const frame = useCurrentFrame();
   const { width, height } = useVideoConfig();
 
-  // Camera pulls slowly upward and out.
-  const zoom = interpolate(frame, [0, 240], [1.05, 0.9], {
+  const total = beatDuration(BEAT);
+
+  // Camera pulls slowly upward and out across the whole beat — the pull-back is
+  // the beat, so it stretches with the narration.
+  const zoom = interpolate(frame, [0, total], [1.05, 0.9], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const darken = interpolate(frame, [190, 240], [0, 1], {
+  // The fade to dark stays a real-time 50 frames at the very end.
+  const darken = interpolate(frame, [total - 50, total], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
@@ -66,22 +74,19 @@ export const BeatC2TheLimit: React.FC = () => {
             fontSize: 48,
             fontWeight: 300,
             letterSpacing: 4,
-            opacity: interpolate(frame, [70, 110, 200, 240], [0, 1, 1, 0], {
-              extrapolateLeft: "clamp",
-              extrapolateRight: "clamp",
-            }),
+            opacity: interpolate(
+              frame,
+              [70, 110, total - 70, total - 30],
+              [0, 1, 1, 0],
+              { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+            ),
           }}
         >
           Three and a half billion years.
         </div>
       </AbsoluteFill>
 
-      <TimedCaptions
-        cues={[
-          { text: "Same simple rule, same kind of body. And it was enough.", from: 20, to: 95 },
-          { text: "But the weights couldn't change. Nothing inside ever got a say.", from: 130, to: 195 },
-        ]}
-      />
+      <Narration beat={BEAT} />
 
       {/* Slow fade to dark. */}
       <AbsoluteFill style={{ backgroundColor: "#02040a", opacity: darken }} />

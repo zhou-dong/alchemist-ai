@@ -1,9 +1,13 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { ArcheanOcean } from "../../../components/scenes/ArcheanOcean";
-import { TimedCaptions } from "../../../components/Caption";
+import { Narration } from "../../../components/Narration";
 import { palette } from "../../../theme/palette";
 import { fontFamily } from "../../../theme/fonts";
 import { fadeIn } from "../../../theme/transitions";
+import { beatDuration } from "../../../narration/schedule";
+import { narration } from "../narration.generated";
+
+const BEAT = narration.beat2FirstOceans;
 
 /**
  * Part 1 · Act 1 · Beat 2 — The First Oceans. The warm, shallow, sunlit Archean
@@ -12,10 +16,13 @@ import { fadeIn } from "../../../theme/transitions";
  */
 export const Beat2FirstOceans: React.FC = () => {
   const frame = useCurrentFrame();
-  const dateOpacity = interpolate(frame, [15, 45, 210, 240], [0, 1, 1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const total = beatDuration(BEAT);
+  const dateOpacity = interpolate(
+    frame,
+    [15, 45, total - 30, total],
+    [0, 1, 1, 0],
+    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+  );
 
   return (
     <AbsoluteFill style={{ opacity: fadeIn(frame, 25) }}>
@@ -43,21 +50,7 @@ export const Beat2FirstOceans: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      <TimedCaptions
-        cues={[
-          {
-            text: "Here's the thing about this ocean: it's empty.",
-            from: 25,
-            to: 110,
-          },
-          { text: "But it isn't quite empty. There's something in the water.", from: 110, to: 175 },
-          {
-            text: "So small you'd need a microscope. So simple you'd barely call it alive.",
-            from: 175,
-            to: 240,
-          },
-        ]}
-      />
+      <Narration beat={BEAT} />
     </AbsoluteFill>
   );
 };
