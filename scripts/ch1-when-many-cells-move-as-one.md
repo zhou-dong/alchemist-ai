@@ -4,15 +4,29 @@
 
 ## Overview
 
-Bila enters the story: a small bilateral creature, one of multiple paths multicellular life took out of its single-celled past. Her body moves — and to move with direction, she needs something her bacterial ancestors didn't have: a central place inside her body where signals from many cells can come together. The chapter introduces this place — the primitive nervous cluster — and the math that lives inside it (the perceptron). Internal signals (hunger, arousal) co-evolved with the nervous system and feed into the same cluster with their own weights. Part 2 names the math. The Closing points toward Chapter 2: when the weights themselves start to learn.
+Bila enters the story: a small bilateral creature, one of multiple paths multicellular life took out of its single-celled past. Her body moves — and to move with direction, she needs something her bacterial ancestors didn't have: a place where signals from *many cells* can come together before her muscles act. The chapter introduces this place — the primitive nervous cluster — and the math that lives inside it (the perceptron). Internal signals (hunger, arousal) co-evolved with the nervous system and feed into the same cluster with their own weights. Part 2 names the math. The Closing points toward Chapter 2: when the weights themselves start to learn.
+
+**What this chapter must *not* claim.** Chapter 0 already delivered the full arithmetic — Σ(signal × weight) in Beat A2, and the step function as if/else in Beat A1 — and it already showed the bacterium's central integrating enzyme and its capacity to retune its own baseline. So Ch1 cannot present the formula as new math, cannot claim the first place where signals converge, and cannot claim the first adjustable parameter. Ch1's own territory is exactly three things: **scale** (integration across a body of many cells, not within one), **the weight's new address** (out of the sensor, into the connection — a per-input dial that can be turned without rebuilding the detector), and **scope** (signals from inside the body join the same sum). Plus the naming and the human-history beat. Plasticity belongs to Chapter 2; Ch1 shows that the dial *exists*, never that it moves.
 
 ## Key Concepts Introduced in Chapter 1
 
 ### 1.1 The First Nervous System / The Perceptron
 
-Bila's lineage is the first to evolve a *central nervous integration place* — a small cluster of nerve cells inside her body where signals from many parts of her body converge to be weighed. Biologically, this is a primitive ganglion. Mathematically, it is a perceptron — multiple weighted inputs, summed, plus a bias, with a binary output. Same idea, two names.
+Bila's lineage is the first to evolve a nervous cluster — a small knot of nerve cells where signals from *many separate cells across a body* converge to be weighed, producing one command for muscles that must act together. Biologically, this is a primitive ganglion. Mathematically, it is a perceptron — multiple weighted inputs, summed, plus a bias, with a binary output. Same idea, two names.
 
-### 1.2 Internal State (Hunger, Arousal) — Co-evolved with the Nervous System
+The bacterium already had a shared integrating molecule, so convergence itself is not new. What is new is the *scale* of the problem being solved: a single cell has one switch and one body to move, while Bila has thousands of cells with conflicting local readings and a muscle system that fails outright unless the whole body commits to one direction. Integration inside a cell is chemistry. Integration across a body requires wiring.
+
+### 1.2 The Weight Moves Out of the Sensor
+
+The architectural change that matters most, and the one that makes Chapter 2 possible at all.
+
+In the bacterium, a signal's weight *is* its receptor. Sensitivity is a physical property of the detector protein — the strength and the sensing apparatus are one object. To change how much sugar matters, evolution has to change the sugar sensor itself. There is no dial.
+
+In Bila, sensing and weighting come apart. Her surface cells detect; her nervous cluster decides; and *between* them sits a junction — a synapse — whose transmission strength is its own adjustable quantity, separate from the detector that feeds it and separate from every other junction. One input's weight can change while the others hold still, and without touching the sensor at all.
+
+This is what earns the perceptron diagram its per-input dials. The dial is not a drawing convention borrowed from math; it corresponds to a real, separable, physical thing that bacteria do not have. Note the scope limit: this chapter establishes only that the dials *exist* and are independently settable. What makes them *move* — and what makes them move in response to outcome — is Chapter 2.
+
+### 1.3 Internal State (Hunger, Arousal) — Co-evolved with the Nervous System
 
 Bilaterians did not just evolve a nervous system. They evolved internal signals alongside it — hunger building from the gut, arousal across the body when threats appear. These internal signals feed into the same cluster as external signals, each with their own weight. The perceptron's structure is input-agnostic: signals from outside the body and signals from inside are treated the same way.
 
@@ -64,13 +78,21 @@ But moving is hard. Especially when your body is many cells, and they all need t
 
 **Visual:** Show Bila's body in detail. Each cell at her surface has its own receptors. Different cells could be receiving different signals at the same moment — food at the front, danger at the side, water current at the back. Without any coordination, each cell would respond locally and the body would have no unified direction. Then cut to a bacterium for contrast: one cell, one molecular switch, one decision.
 
-**Narration:** Her ancestors solved decisions *inside* a single cell. One receptor fires; the cell responds. The whole decision happens in one place — in the chemistry of one tiny bag.
+**Narration:** Let's be precise about what's actually hard here, because it isn't the arithmetic. Her ancestors had that. Weigh the signals, add them up, add a baseline, pick a side — the bacterium was running that math in pure chemistry for three billion years. Bila inherits it. She doesn't invent it.
 
-But Bila is not one cell. She is *many* cells. Cells at her front, where her chemical sensors are. Cells along her sides. Cells in her gut. Cells in her muscles, which have to move her forward, all at once, all in the same direction.
+What she inherits is a math that worked beautifully *inside one bag of chemistry.* One cell. One switch. One body to shove through the water.
 
-If each cell just ran her ancestors' rule on its own, her body would pull in different directions. To move with purpose, the signals from across her body have to come together — somewhere — before her muscles act.
+Bila is thousands of cells.
 
-Bacteria solved this *inside* one cell. Bila has to solve it *across* a body. A different problem. A different answer.
+And they don't agree. Her front tastes something worth having. A cell on her left flank is picking up something worth avoiding. Her gut is reporting on itself. Her back is just feeling the current. Every one of those cells is reading a *different* world, all at the same instant, all of them right.
+
+Now here's the problem. Her muscles run the length of her body, and to move her anywhere they have to pull *together.* If each cell followed her ancestors' rule for itself — respond locally, respond immediately — some of her would contract while the rest of her relaxed. She wouldn't go the wrong way. She would go nowhere at all. Just a body arguing with itself.
+
+So the signals have to *meet* somewhere. Not because meeting is a new trick — the bacterium's molecules met too, all shoving the same enzyme. But that enzyme was floating in the same tiny room as everything else. Bila needs signals to travel, from cells that may be a thousand body-widths apart, to one place, and arrive as one answer.
+
+Chemistry can't carry that. Chemistry works by bumping into things.
+
+For this, she's going to need wiring.
 
 ### Act 2 — The Cluster
 
@@ -78,13 +100,33 @@ Bacteria solved this *inside* one cell. Bila has to solve it *across* a body. A 
 
 **Visual:** Slowly zoom *into* Bila's body. Past her skin, past muscle tissue, into the interior. We see, near her front, a small cluster of pale, branching cells — neurons — a primitive ganglion. From her skin's surface, thin fibers (sensory nerves) extend inward to this cluster. From the cluster, other fibers (motor nerves) extend outward to her muscles. The cluster pulses faintly with activity.
 
+Then push in much closer, to where one incoming fiber arrives at a cluster cell — and hold on the tiny gap between them. A signal reaches the near side, crosses the gap, and continues. Do it again on a *neighbouring* junction, where the gap is visibly narrower and the arriving signal crosses weaker. Two junctions, side by side, carrying the same kind of pulse with visibly different strength. No dials yet, no labels, no motion in the junctions themselves — they are simply, observably, *set differently from each other.*
+
+Then, for one beat, a split comparison: on one side Bila's junction, a gap standing between detector and decider; on the other, the bacterium's receptor from Ch0, where the weight dial sits welded onto the sensor itself with no gap anywhere. Hold the contrast, then fade.
+
 **Narration:** Inside Bila, near her front, sits a small cluster of cells — pale, branching, alive. Each one stretches thin filaments out to her surface, where her receptors are. And other filaments inward, to her muscles.
 
-Signals from across her body come in. Decisions go out.
+Signals from across her body come in. One decision goes out.
 
 It is, by any honest measure, primitive. Just a knot of cells. Nothing like a brain. Not even close.
 
-But it is the first time, in the entire history of life on Earth, that a multicellular body has had *a place inside it where signals from many cells can come together to be weighed.*
+But go closer. Closer than the cells — to the place where an incoming fiber actually *meets* one of them.
+
+They don't touch. There's a gap.
+
+The signal arrives at one side, crosses that gap, and carries on into the cluster. And how *strongly* it carries on is a property of the gap itself — not of the cell that sent it, not of the sensor out at her skin that started the whole thing. The gap has its own setting.
+
+Look at the one next to it. Same kind of signal arriving. Crosses weaker. A different setting, on a different junction, a hair's width away.
+
+And *that* is the thing I want you to see. Remember the bacterium — every signal's strength was baked into the sensor that caught it. Weight and detector, one object, inseparable. Want sugar to matter less? Rebuild the sugar sensor. There was nowhere else to reach.
+
+Bila has somewhere else to reach. The weight has moved out of the sensor and into the connection. Her sensing and her weighing are, for the first time in the history of life, two different things in two different places — with a gap between them where the number lives.
+
+Biologists call that gap a *synapse.*
+
+And this is what makes it the real turning point, more than the cluster itself: a weight welded inside a detector is a weight nothing can ever adjust. A weight sitting alone in a gap, one of thousands, each independent of the rest — that is a weight something could *change.*
+
+Nothing is changing them yet. Not in this chapter. But for the first time, there is something there that *could* be changed.
 
 #### Beat 6 — Bila Moves with Purpose
 
@@ -116,29 +158,51 @@ The body's inside has a voice in what the body does — from the very beginning 
 
 #### Algorithm Beat A1 — The Perceptron
 
-**Visual:** Cut to a clean, abstract diagram on a dark background. The cluster from inside Bila's body, but stripped of biology, is now shown as a simple geometric figure: multiple input arrows on the left, each multiplied by a small dial labeled *weight*, all converging on a single round node, with a single output arrow on the right. Labels appear: *signal*, *weight*, *+ bias*, *step*, *output*. The formula appears below:
+**Visual:** Cut to a dark background. First, the two Chapter 0 formulas return from memory, in their original styling, stacked apart with space between them:
+
+> decision = Σ ( signal × hidden weight ) + hidden bias
+>
+> `if signal is getting better: run / else: tumble`
+
+Hold. Then the if/else visibly *folds* — collapsing into the compact word `step(` `)` — and slides to wrap itself around the sum. The two Ch0 fragments become one line, assembled in front of the viewer rather than introduced:
 
 > output = step( Σ ( signal × weight ) + bias )
 
-The diagram and the formula animate together. A subtle blueprint-style outline of Bila's nervous cluster overlays the abstract diagram for a moment — to show the equivalence — then fades.
+The word *hidden* drops out of both terms as they merge — a small, deliberate detail: these quantities are no longer buried in molecules.
 
-**Narration:** Let's pause the story for a moment, and look at what just happened — from another angle.
+Then the abstract diagram builds beneath it: multiple input arrows on the left, each passing through a small dial labeled *weight*, all converging on a single round node, one output arrow on the right. Labels appear: *signal*, *weight*, *+ bias*, *step*, *output*. Crucially, each dial is drawn sitting in a small gap on its input line — visually echoing the synapse from Beat 5, not floating abstractly.
 
-The story we just watched — Bila and her new little cluster of cells — is, on paper, a famous shape.
+A subtle blueprint-style outline of Bila's nervous cluster overlays the diagram for a moment — to show the equivalence — then fades. For the closing lines, Rosenblatt's 1958 hand-drawn diagram fades in beside Bila's blueprint, the two layouts aligned so their shared shape is unmistakable.
 
-When signals arrived at her nervous cluster, the cluster effectively did this: it multiplied each signal by an internal sensitivity, added them all together, added a baseline, and decided what to do based on the result.
+**Narration:** Let's pause the story and look at what just happened — from another angle.
 
-In math:
+And I want to start by admitting something, because you may have already noticed it.
+
+We've seen this math before.
+
+Back in the simple world, we watched a bacterium weigh sugar against poison. Each signal times its own hidden strength, all added together, plus a baseline hum. And before that, we watched it commit — run or tumble, one or the other, never both. *If* better, go; *else,* turn.
+
+Put those two halves side by side and just… write them down together.
 
 > output = step( sum of ( signal × weight ) + bias )
 
-This shape — multiple weighted inputs converging on a single node, summed with a bias, with a binary output — has a name. We call it the *perceptron.*
+That's it. That's the whole thing. The sum from one beat, the either-or from the other, stacked into a single line.
+
+So let me be straight with you: the math on this screen is not new. It's three billion years old. We assembled it in the last chapter without naming it.
+
+What changed is *everything underneath it.*
+
+That sum used to happen inside one cell — now it happens across a body, gathering from thousands of cells at once. Those weights used to be welded into the sensors — now each one sits alone in its own synapse, separate, reachable. And the whole arrangement used to be an accident of chemistry — now it's a structure, with wiring, built for exactly this job.
+
+Same equation. Completely different machine running it.
+
+And *that* machine — weighted inputs converging on a single node, summed with a bias, committing to a binary output — has a name. We call it the *perceptron.*
 
 A researcher named Frank Rosenblatt drew the first one on paper in 1958. He called it "the simplest possible model of a neuron," and he built one in hardware to see if it could learn. It could. Barely. But it could.
 
-What Rosenblatt drew that day was, in some sense, what evolution had already discovered hundreds of millions of years before — inside the body of a soft little Ediacaran worm.
+Here's what gets me about that. Rosenblatt wasn't trying to reconstruct an Ediacaran worm. He was trying to draw the simplest thing that could possibly make a decision. And he arrived at the same answer evolution had arrived at, in the dark, hundreds of millions of years earlier — not just the same arithmetic, but the same *layout.* Inputs with their own adjustable strengths. One place that adds them. One commitment out the other end.
 
-The same shape. The same equation. And this time — the same architecture, too. A single place inside a body where signals converge to be weighed.
+Two searches, separated by half a billion years, converging on the same small shape.
 
 The perceptron is born.
 
@@ -157,6 +221,8 @@ A small caption appears: *the inputs can come from anywhere.*
 The perceptron does not care what its inputs *are.* To the math, they are just numbers. Each gets a weight. Each is added to the sum. One equation handles them all.
 
 This is why the perceptron — simple as it is — is the foundational shape of every neural network ever built. The world is full of things that can be turned into numbers. The perceptron weighs all of them the same way. It does not need to *know* what the numbers mean.
+
+And notice this only works because of where the weight now lives. When the strength was welded into the sensor, the sensor had to be *built for* its signal — a sugar detector, with sugar-strength baked in. A synapse isn't built for anything. It's a gap with a number in it. Which means any signal at all can be routed through one, and the math will take it. That's the whole reason this shape generalizes to things evolution never imagined: pixels, words, sounds. The weight stopped being part of the sense organ, and started being part of the wiring.
 
 The cluster in Bila's body doesn't know the difference between hunger and food, between danger and arousal. It only knows: each signal has a weight, multiply, add, output. The meaning lives elsewhere — in what her body *does* with the answer. The cluster just does the math.
 
@@ -180,10 +246,22 @@ There was more than one way to live as a multicellular creature. The radiatan's 
 
 **Narration:** Bila has, at this point, almost everything you would need to build a real neural network.
 
-She has a central place where signals converge — a body that *integrates*. She has inputs from both outside and inside her body. She has weights that determine how much each signal matters.
+She has a place where signals from across a whole body converge. She has inputs from outside *and* inside. And she has weights that live in their own junctions — thousands of little settings, each one independently adjustable.
 
-But there is one thing we haven't yet looked at: how those weights *change.*
+Everything is in place. And nothing has touched it.
 
-Bila's weights are not fixed for life. They shift, quietly, in response to what she experiences. What worked before becomes stronger. What didn't, becomes weaker. The cluster has been learning, all along — we just haven't watched it happen.
+Now — I have to be careful here, because her ancestors could already adjust *something.* The bacterium retuned itself constantly; those chemical tags slid its baseline around every few seconds. That was real. But it only ever moved the zero point, and it moved it the same way every time: back toward the middle. A thermostat. It never asked how anything turned out.
+
+What's sitting in Bila is a different kind of adjustable. Not one baseline drifting toward neutral — thousands of separate strengths, each one able to go its own way, each one about *this signal in particular* mattering more, or less.
+
+And here's the question that chapter is: does anything move them?
+
+Watch a dial. Any one of them. Watch it while she hunts, while she flees, while she eats.
+
+It isn't holding still.
+
+They've been shifting the whole time — every one of them, all through this chapter, under everything we just watched. Not drifting back to neutral. Moving, and *staying* moved. Shaped by what happened to her.
+
+Bila hasn't just been deciding. She's been changing what she'd decide next time.
 
 That is the next chapter.
