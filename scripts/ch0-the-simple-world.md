@@ -6,6 +6,8 @@
 
 Introduces life before bilaterality — single-celled bacteria running run-and-tumble — and the if/else rule beneath both food-seeking and danger-avoidance. Two behaviors that look different from the outside turn out to share a single mechanism underneath. The chapter sits *before* intelligence proper: clever-looking behavior, but no real decision in it. The simplest tool in any programmer's toolbox, used by life billions of years before there was a brain to run it.
 
+The chapter closes on an honest limit that is *not* "nothing changes." The bacterium retunes itself constantly — that's what its short-term memory is — but only ever to re-zero its own baseline, never to change what matters more, and never in response to how things turned out. Weight lives inside the sensor; nothing learns from outcome.
+
 ## Key Concepts Introduced in Chapter 0
 
 ### 0.1 Run and Tumble
@@ -34,7 +36,15 @@ When attractants and repellents arrive together, the cell handles the conflict a
 
 > decision = Σ ( signal × hidden weight ) + hidden bias
 
-The *bias* is the baseline activity of the central integrating enzyme (CheA in real bacteria) — what determines the default tumbling rate when no signals are arriving. This shape — weighted sum plus bias — is the same math the next chapter will name and explain. What's missing in bacteria is not the math but the *architecture*: no central place where signals meet, no parameters that can change, no signals from inside the body. That architectural distinction is what Chapter 1 will deliver.
+The *bias* is the baseline activity of the central integrating enzyme (CheA in real bacteria) — what determines the default tumbling rate when no signals are arriving. This shape — weighted sum plus bias — is the same math the next chapter will name and explain. What's missing in bacteria is not the math but the *architecture*: no parameter belonging to a connection rather than a detector, no adjustment driven by outcome, no signals from inside the body. That architectural distinction is what Chapter 1 will deliver.
+
+### 0.5 Adaptation — The Cell Retunes Its Own Baseline
+
+The bacterium is *not* a fixed machine. Its receptors carry reversible chemical tags (methyl groups, added by the enzyme CheR and removed by CheB) that shift on a timescale of seconds. Sustained attractant raises the tag count, which pushes the receptor back toward its resting signaling state; sustained repellent lowers it. This is what gives the cell its short-term memory — the few seconds of "what was it like a moment ago" that the entire *is it getting better?* comparison depends on. Without it, the cell could only sense absolute concentration, and gradient-climbing would be impossible.
+
+But note carefully what this adjustment is and isn't. It is an *offset* — it re-zeros the baseline so the cell measures change instead of absolute level, across an enormous dynamic range. In the language of the formula, it moves the *bias*, not the weights. It is homeostatic negative feedback: it always drives back toward the resting state. And crucially, nothing about the *outcome* — did the cell find food, did it survive — ever feeds into it. The relative say of one signal against another is set by how many receptors of each type the array carries, which is a matter of gene expression, not experience.
+
+So the honest framing is not that the cell's parameters are frozen. It's that the cell can retune itself only to re-zero — never to change what matters more, and never because of how things turned out. That gap is what Chapter 2 fills.
 
 ## Prologue — Welcome
 
@@ -267,7 +277,7 @@ Then — almost as an afterthought — a single new term fades in at the end of 
 
 The bias term highlights, and a small label points to the inside of the cell: *baseline activity*. The see-saw shifts slightly in its starting position — visualizing the default tendency before any signals arrive.
 
-Below the full formula, smaller text appears, each line emphasized in turn: *no central place to weigh. no parameters that can change. no signals from inside the body.*
+Below the full formula, smaller text appears, each line emphasized in turn: *the weights belong to the sensors. nothing here learns from outcome. no signals from inside the body.*
 
 The image holds. The formula and the see-saw stay together, lit gently, as the camera pulls slowly back.
 
@@ -293,7 +303,7 @@ Weighted sum, plus bias. That's about the simplest recipe there is for something
 
 The math was real. Real numbers, hidden in molecules, quietly adding themselves up every second of every day — with nobody around who knew that's what they were.
 
-Though here's the catch — and it's worth holding onto, because the next chapter is built on it. In the cell, that sum was kind of an accident. A bunch of tiny switches all shoving the same molecule, and the total just… fell out of the physics. There was no spot anywhere in the cell whose actual *job* was to add things up.
+Though here's the catch — and it's worth holding onto, because the next chapter is built on it. Look at where those weights actually *live.* Each one is baked into the sensor that caught the signal — the strength and the detector are the same physical object. You can't reach in and turn one down. There's no dial. To change how much sugar matters to this cell, you'd have to change the sugar sensor itself.
 
 That's the math of the simple world.
 
@@ -323,7 +333,7 @@ That's the thing I keep coming back to: behavior that looks intelligent doesn't 
 
 It's one of the strangest things in all of biology. And — I'll just say it now — it turns out to be one of the strangest things in AI, too.
 
-Even those hidden weights, the strengths of the signals — they were set the moment the cell was born. Same for every cell of its kind. Nobody chose them either.
+Even those hidden weights, the strengths of the signals — nobody chose them either. They're built into the sensors, the same in every cell of its kind, handed down.
 
 So the cell doesn't really make a decision. The cell *is* a decision — running on autopilot since the planet was warmer.
 
@@ -331,7 +341,9 @@ And if you ask why this exact rule is still here, still running in the ocean tod
 
 #### Beat C2 — The Limit
 
-**Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, holding the sense of an enormous, ancient, persistent world. Soft text appears: *Three and a half billion years.* The image holds, then slowly darkens.
+**Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, holding the sense of an enormous, ancient, persistent world. Soft text appears: *Three and a half billion years.*
+
+Then, for the correction beat, push back in on a single cell's surface. On a sensor, small tags visibly attach and detach. As the cell swims into richer water, a faint baseline marker slides along with it — the zero point moving to follow the concentration, so that only *change* still registers. Brief, clean, no chemistry lecture. Then the weight dials from A2 reappear beside it, and stay conspicuously still while the baseline marker keeps sliding: the offset moves, the weights don't. The image holds, then slowly darkens.
 
 **Narration:** And it worked.
 
@@ -341,7 +353,15 @@ A crude rule. Not elegant. Not even close to perfect. But it worked, for as long
 
 A rough start. But a start.
 
-Still — there are things this little body just can't do. There's no place inside it whose only job is to weigh the options. The weights can't change while it's alive — they're locked in at birth. The bias can't be tuned. And nothing from *inside* the body ever gets a say.
+And before we go — I owe this cell one correction. I've been talking about it like a fixed machine, and it isn't. Think about what our rule actually asks: *are things getting better?* Better than *what?* To answer that, the cell needs to know what a moment ago was like. It needs a memory.
+
+And it has one. Its sensors carry little chemical tags that get added and stripped away, second by second — and they quietly slide the cell's own baseline to wherever it's sitting right now. Swim into sweeter water and the sensors turn themselves down until *this* is the new normal. Which is the only reason the next bit of sugar can register as *better.* Four seconds of memory, written in molecules. That's the whole trick behind three billion years of finding food.
+
+So it *can* retune itself. Genuinely.
+
+But watch what that retuning can and can't reach. It only ever moves the zero point — the baseline, the bias. It never changes how much *sugar* matters compared to *poison*; that's fixed by how many of each sensor the cell happens to carry. And it never, not once, asks how things turned out. The cell found food, or it didn't, and either way the tags just drift back toward the middle. It's a thermostat, not a lesson.
+
+That's the real limit. Not that nothing changes — things change constantly. It's that nothing changes *because of what happened.*
 
 The math was there. The machinery to really use it wasn't.
 
@@ -353,9 +373,11 @@ Not yet.
 
 **Narration:** Which is exactly what's about to show up.
 
-The ocean is about to grow something bigger. A body with a front and a back — and somewhere in between, for the very first time, a place where signals can actually meet. A place that can weigh them on purpose. A place where the inside of the body finally gets a voice in what happens next.
+The ocean is about to grow something bigger. A body with a front and a back — many cells, all of which have to move *together.* And to pull that off, it will need something this little cell never had: the weights pulled *out* of the sensors and given a home of their own. Little junctions, sitting between the sensing and the deciding, each one adjustable on its own.
 
-And once you've got a place like that — a place whose whole job is to weigh — something new becomes possible.
+That's what makes the difference. You can't turn down a dial that's welded to a detector. But a junction? A junction you can tune.
+
+And once the weights can be tuned — once what matters can be changed by what happened — something new becomes possible.
 
 Something we'll eventually learn to call *intelligence.*
 
