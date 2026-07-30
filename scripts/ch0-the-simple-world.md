@@ -32,19 +32,41 @@ For attractants, "better" means getting closer. For repellents, "better" means g
 
 ### 0.4 The Implicit Weighted Sum (with Bias)
 
-When attractants and repellents arrive together, the cell handles the conflict at the molecular level: each receptor pushes the cell's central enzyme with its own strength, and the enzyme itself has a baseline activity that determines what the cell does when no signals are arriving. The combined result:
+When attractants and repellents arrive together, the cell handles the conflict at the molecular level. The combined result:
 
 > decision = Σ ( signal × hidden weight ) + hidden bias
 
-The *bias* is the baseline activity of the central integrating enzyme (CheA in real bacteria) — what determines the default tumbling rate when no signals are arriving. This shape — weighted sum plus bias — is the same math the next chapter will name and explain. What's missing in bacteria is not the math but the *architecture*: no parameter belonging to a connection rather than a detector, no adjustment driven by outcome, no signals from inside the body. That architectural distinction is what Chapter 1 will deliver.
+**How the summing physically happens.** There is no single central enzyme doing the adding. Each receptor has its own copies of the *same* enzyme (CheA in real bacteria) clamped to it — thousands of identical copies across the receptor patch, all producing the *same* signalling chemical (CheY-P) into the *same* shared cell interior. A receptor doesn't push a shared object; it only sets the output rate of its own copies. The addition happens **in the shared pool**: the chemical carries no label saying which receptor type produced it, so once it's in the cytoplasm it is simply part of one level.
+
+This is worth stating precisely because it's the strongest thing in the chapter: **the Σ is not a molecular adding machine the cell had to evolve. It is a consequence of sharing one container.** Put many outputs into one space and they add — that's just how volume works.
+
+**Which way each receptor pushes.** Attractant binding *lowers* its enzymes' output rate; repellent binding *raises* it. And a separate enzyme (CheZ) constantly destroys the chemical, so the pool is always draining. Output falls → the drain wins → the level drops. Nothing ever actively removes the chemical on an attractant's behalf; the taps just close.
+
+**Where the bias actually lives.** Not in the enzyme. Detached from receptors, the enzyme is nearly silent — it's the *unliganded receptor array* that holds it active, and attractant binding relieves that activation. So the resting level is a property of **the receptor patch with nothing bound**, not an intrinsic hum of the enzyme.
+
+**Where the if/else physically lives.** Each flagellar motor independently compares the pool's level against a threshold: below → run, above → tumble. The response is steeply sigmoidal — roughly a ~10% change in the level takes a motor from mostly-running to mostly-tumbling. So there is a literal threshold comparator at the base of each whip, reading one number and returning one of two answers. **The comparator cannot tell food from poison — it only sees a level.** That is Beat 7's "the cell never has to know which is which," true of the hardware.
+
+**Run is the resting state.** With the taps closed and the drain running, the level sits low and the cell runs by default. Tumbling is the active intervention — it requires output. Break the enzyme and the cell can never tumble: it swims in a perfectly straight line forever and starves, looking far healthier than a cell spinning in place and just as dead. The ability to interrupt yourself is the whole trick.
+
+This shape — weighted sum plus bias, then a threshold — is the same math the next chapter will name and explain. What's missing in bacteria is not the math but the *architecture*: no parameter belonging to a connection rather than a detector, no adjustment driven by outcome, no signals from inside the body. That architectural distinction is what Chapter 1 will deliver.
 
 ### 0.5 Adaptation — The Cell Retunes Its Own Baseline
 
 The bacterium is *not* a fixed machine. Its receptors carry reversible chemical tags (methyl groups, added by the enzyme CheR and removed by CheB) that shift on a timescale of seconds. Sustained attractant raises the tag count, which pushes the receptor back toward its resting signaling state; sustained repellent lowers it. This is what gives the cell its short-term memory — the few seconds of "what was it like a moment ago" that the entire *is it getting better?* comparison depends on. Without it, the cell could only sense absolute concentration, and gradient-climbing would be impossible.
 
-But note carefully what this adjustment is and isn't. It is an *offset* — it re-zeros the baseline so the cell measures change instead of absolute level, across an enormous dynamic range. In the language of the formula, it moves the *bias*, not the weights. It is homeostatic negative feedback: it always drives back toward the resting state. And crucially, nothing about the *outcome* — did the cell find food, did it survive — ever feeds into it. The relative say of one signal against another is set by how many receptors of each type the array carries, which is a matter of gene expression, not experience.
+But note carefully what this adjustment is and isn't. It re-zeros a receptor so the cell measures change instead of absolute level, across an enormous dynamic range.
 
-So the honest framing is not that the cell's parameters are frozen. It's that the cell can retune itself only to re-zero — never to change what matters more, and never because of how things turned out. That gap is what Chapter 2 fills.
+**Avoid framing this as "it moves the bias, not the weights."** That distinction doesn't survive scrutiny: the tags sit on *specific receptor types*, so adapting to sugar adjusts the sugar channel and leaves the toxin channel alone — which is per-channel, not a global bias shift. And because it slides that receptor along its own S-shaped response curve, it drags the channel's local sensitivity along with it. It is cleanly neither the formula's *b* nor its *wᵢ*, and trying to assign it to one invites exactly the objection a biologist would raise.
+
+The framing that *is* both accurate and pedagogically sharper:
+
+> The adjustment happens only to the channel that received the input, and it only ever drives that channel back toward neutral. Nothing about how things *turned out* — did the cell find food, did it survive — ever reaches it. A thermostat, not a lesson.
+
+That is homeostatic negative feedback: it always drives back toward the resting state. The relative say of one signal against another is set by how many receptors of each type the array carries — a matter of gene expression, not experience.
+
+So the honest framing is not that the cell's parameters are frozen. It's that the cell retunes itself only to re-zero, driven only by its own recent input, never by outcome. The contrast to draw for Chapter 2 is **input-driven homeostasis vs. outcome-driven change** — not bias vs. weights. That gap is what Chapter 2 fills.
+
+Note this leaves the Chapter 1 bridge fully intact: the tags sit on the *detector itself*, so there is still no parameter belonging to a *connection*. "Welded to the detector, versus a junction you can tune" stands exactly as written.
 
 ## Prologue — Welcome
 
@@ -202,7 +224,17 @@ Two lines. One tiny body, drifting through the dark, following them blindly, sin
 
 #### Beat 8 — When Food and Danger Collide
 
-**Visual:** A new scene. The cell drifts in water where both an attractant and a repellent are arriving from the same direction — a sugar molecule and a toxin appearing together. On the cell's surface, both receptor types fire at once. Inside the cell, the molecular switch is shown as a see-saw — the attractant signal pushes it one way (toward *run*), the repellent signal pushes it the other (toward *tumble*). The see-saw tips. Whichever side is heavier wins. The cell either runs toward the food (if the attractant pull is stronger) or tumbles away (if the repellent push is stronger).
+**Visual:** A new scene. The cell drifts in water where both an attractant and a repellent are arriving from the same direction — a sugar molecule and a toxin appearing together. On the cell's surface, both receptor types fire at once.
+
+*Production note — do not draw this as a see-saw with two signals shoving one object.* That staging implies the two signals meet at a single shared switch, which is not what happens and reliably confuses viewers. Stage it as **a level in a shared space**:
+
+- The cell's interior reads as one softly-lit **pool** with a visible level.
+- Each receptor type feeds the pool through **its own inlet** — the sugar receptors and the toxin receptors never touch each other. Sugar arriving makes its inlets *close*; toxin arriving makes its inlets *open*.
+- A steady **drain** runs at the bottom of the pool the whole time, always on. This is why the level can fall when inlets close — nothing actively pumps it out.
+- The pool's level is the sum. Whichever influence dominates sets where the level settles.
+- A single horizontal **threshold line** sits across the pool. Level below the line → the flagella bundle → run. Above → they scatter → tumble. The line is crossed decisively, not gradually.
+
+The key readable idea: the threshold line has no idea whether the level came from sugar or toxin. It only sees height. The conflict is resolved by mixing in one container, not by anything adjudicating.
 
 **Narration:** One more situation before we zoom out. And it's a tricky one.
 
@@ -263,23 +295,23 @@ Same shape, same job — deciding what happens next. In proteins, in silicon. Th
 
 #### Algorithm Beat A2 — The Implicit Weighted Sum
 
-**Visual:** Cut to the conflict scene from Beat 8: the cell with both attractant and repellent arriving from the same direction. The molecular see-saw is shown again, but this time alongside a formula appearing in clean, mathematical text. The formula builds in stages.
+**Visual:** Cut to the conflict scene from Beat 8: the cell with both attractant and repellent arriving from the same direction. The **pool-and-threshold** staging from Beat 8 returns (same visual grammar — separate inlets, always-on drain, one level, one threshold line), this time alongside a formula appearing in clean, mathematical text. The formula builds in stages.
 
 First, the weighted sum appears:
 
 > decision = Σ ( signal × hidden weight )
 
-Each *signal* and *weight* highlights individually as the narration explains them. The formula and the see-saw animate together, showing the equivalence: the see-saw is just the formula made physical.
+Each *signal* and *weight* highlights individually as the narration explains them. The formula and the pool animate together, showing the equivalence: **the Σ is the pool.** As each inlet is named, it lights and the level responds — the addition visibly happening in the shared space rather than at any one point.
 
 Then — almost as an afterthought — a single new term fades in at the end of the formula:
 
 > decision = Σ ( signal × hidden weight ) + hidden bias
 
-The bias term highlights, and a small label points to the inside of the cell: *baseline activity*. The see-saw shifts slightly in its starting position — visualizing the default tendency before any signals arrive.
+The bias term highlights, and a small label points to the resting level in the pool: *the level with nothing arriving*. Critically, that resting level is drawn sitting **just barely under the threshold line** — not down at the bottom of the pool. The staging should make "poised on the edge" legible at a glance, and it sets up the narration's "balanced right on its own tipping point."
 
 Below the full formula, smaller text appears, each line emphasized in turn: *the weights belong to the sensors. nothing here learns from outcome. no signals from inside the body.*
 
-The image holds. The formula and the see-saw stay together, lit gently, as the camera pulls slowly back.
+The image holds. The formula and the pool stay together, lit gently, as the camera pulls slowly back.
 
 **Narration:** There's one more thing hiding in here — and it's the one that matters most for everything coming next. So stick with me.
 
@@ -291,7 +323,9 @@ Write that out, and you get:
 
 *decision equals the sum of each signal, times its hidden weight.*
 
-And there's one last piece. The cell's central switch — the thing every sensor pushes and pulls on — is never totally still. Even when nothing's arriving, no food, no poison, it keeps a low background hum. A default. A standing answer to the question, *what do I do when nothing's happening?*
+And there's one last piece. Even when nothing's arriving — no food, no poison — the cell isn't sitting at zero. There's a resting level in there, always. A default. A standing answer to the question, *what do I do when nothing's happening?*
+
+And here's what I love about where that default sits. It isn't parked down at the bottom, quiet, waiting to be woken up. It sits *balanced right on its own tipping point* — close enough to the edge that the faintest change is enough to throw it. Which is exactly why this thing is so sensitive. It's not resting. It's poised.
 
 So the whole thing, written out, is:
 
