@@ -1,12 +1,18 @@
 # Chapter 0 — The Simple World
 
-*Before the brain. Before the first decision. Just a rule, running for three billion years.*
+*Before the brain. Before the first decision. It looks like nothing — and it's already running the machine.*
 
 ## Overview
 
-Introduces life before bilaterality — single-celled bacteria running run-and-tumble — and the if/else rule beneath both food-seeking and danger-avoidance. Two behaviors that look different from the outside turn out to share a single mechanism underneath. The chapter sits *before* intelligence proper: clever-looking behavior, but no real decision in it. The simplest tool in any programmer's toolbox, used by life billions of years before there was a brain to run it.
+Introduces life before bilaterality — single-celled bacteria running run-and-tumble — and the if/else rule beneath both food-seeking and danger-avoidance. Two behaviors that look different from the outside turn out to share a single mechanism underneath.
 
-The chapter closes on an honest limit that is *not* "nothing changes." The bacterium retunes itself constantly — that's what its short-term memory is — but only ever to re-zero its own baseline, never to change what matters more, and never in response to how things turned out. Weight lives inside the sensor; nothing learns from outcome.
+**The chapter's thesis — and the title's irony.** The *world* is simple: an empty ocean, one job, two moves. The *cell* is not. By the end of Part 2 the viewer has seen it running a weighted sum, a bias, a threshold comparator, and a few seconds of working memory — the whole machine, in chemistry, three billion years early. So the chapter must never land on "just a simple rule." **What's missing in the bacterium is not the math but the architecture.** That single line is the chapter's spine, and every framing choice should serve it.
+
+The arc the viewer travels: *this thing is barely alive* → *wait, it handles conflicting inputs* → *that was arithmetic the whole time* → *and nothing in it can ever change because of what happened.* The title is the naive view they arrive with; the chapter takes it away from them. Don't spend the reveal early — the deflation in Beat 3 ("it's a blob") is load-bearing setup, not a mistake.
+
+Specifically, the bacterium **has**: convergence (one shared pool), per-signal strengths, a bias, a binary threshold, and short-term memory. It **lacks**: weights that live at connections rather than inside detectors, weights that move because of outcome, signals from inside the body, and integration across many cells. Those four absences are the series' runway — the first, third, and fourth belong to Chapter 1, the second to Chapter 2. Ch0's job is to make the viewer *feel* the machine is already there, then feel exactly what it can't do.
+
+The chapter closes on an honest limit that is *not* "nothing changes." The bacterium retunes itself constantly — that's what its short-term memory is — but only ever to re-zero the channel that got the input, never to change what matters more, and never in response to how things turned out. Weight lives inside the sensor; nothing learns from outcome.
 
 ## Key Concepts Introduced in Chapter 0
 
@@ -118,6 +124,8 @@ But it is. Just barely. In the most stripped-down way anything has ever managed 
 
 **Visual:** Zoom in. Past the surface of the water, through a drop, into a microscope's view. A single bacterial cell — rod-shaped, transparent, ringed by long whip-like flagella. Inside it, vague shapes drift: molecules, machinery. No nucleus, no nervous system, no organs. Just a small bag of chemistry.
 
+*Production note — plant the seed here.* The deflation is doing real work and must stay: the viewer should genuinely underestimate this cell, because the chapter's payoff is taking that away from them. But end the beat with one held moment that promises otherwise. As the narration reaches the last line, hold on the cell's interior and let the drifting shapes resolve very slightly — enough that the viewer registers *there is more going on in there than I was told*, without understanding any of it. No labels, no diagram, no formula. A hint, not a preview.
+
 **Narration:** So — meet the hero of our story.
 
 And honestly, it's not much to look at. It's a blob. A few specks of goo, a couple micrometers long, with some threads stuck on the outside. No eyes. No brain — brains haven't been invented yet, anywhere on the planet. No plan. If you met it, you wouldn't even be sure it was alive.
@@ -127,6 +135,10 @@ Those threads are the one good trick. They're called *flagella,* and the cell ca
 And it has exactly one job — the same job as every living thing that comes after it, including you: don't die.
 
 That's the entire story for the next three billion years. One cell. One job. It doesn't know it has the job. Nobody told it. It just has it.
+
+Although — and I should be upfront about this — I've just described this thing as simply as it's possible to describe it. A blob with propellers. That's the version I had in my head too, for a long time.
+
+It's going to turn out I was underselling it. Quite badly.
 
 ### Act 2 — Two Behaviors, One Mechanism
 
@@ -338,6 +350,18 @@ Weighted sum, plus bias. That's about the simplest recipe there is for something
 The math was real. Real numbers, hidden in molecules, quietly adding themselves up every second of every day — with nobody around who knew that's what they were.
 
 Though here's the catch — and it's worth holding onto, because the next chapter is built on it. Look at where those weights actually *live.* Each one is baked into the sensor that caught the signal — the strength and the detector are the same physical object. You can't reach in and turn one down. There's no dial. To change how much sugar matters to this cell, you'd have to change the sugar sensor itself.
+
+*Production note — this is where the title pays off.* The beat must not land on "just a simple rule." Everything the viewer has now been shown — signals with their own strengths, added in a shared space, a resting level poised at a tipping point, a threshold that answers yes or no — is the machine, complete. The reveal is that they were watching arithmetic the whole time and it looked like a blob swimming. Deliver it as a quiet recognition, not a flourish, and let the last line reframe the chapter's own name.
+
+**Narration:** So let's go back and look at what we just built. Signals, each arriving with its own strength. Added together, all in one place. A resting level, sitting balanced on a knife edge. And a switch that reads that level and answers — yes, or no.
+
+Put it together and you have a thing that takes in the world and produces a decision. Which is, more or less, the recipe. Not a simplified version of it. Not a rough sketch that life would clean up later. *The* recipe — running in a blob with no brain, three billion years before anyone wrote it down.
+
+Remember when I said I was underselling this cell? This is what I meant.
+
+I called this chapter *the simple world.* And the world *was* simple — one empty ocean, one job, two moves, for three billion years. But the thing swimming around in it? That was never simple. It was already doing the math.
+
+What it was missing was never the math.
 
 That's the math of the simple world.
 
