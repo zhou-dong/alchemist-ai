@@ -6,17 +6,50 @@
 
 Bila enters the story: a small bilateral creature, one of multiple paths multicellular life took out of its single-celled past. Her body moves — and to move with direction, she needs something her bacterial ancestors didn't have: a place where signals from *many cells* can come together before her muscles act. The chapter introduces this place — the primitive nervous cluster — and the math that lives inside it (the perceptron). Internal signals (hunger, arousal) co-evolved with the nervous system and feed into the same cluster with their own weights. Part 2 names the math. The Closing points toward Chapter 2: when the weights themselves start to learn.
 
-**What this chapter must *not* claim.** Chapter 0 already delivered the full arithmetic — Σ(signal × weight) in Beat A2, and the step function as if/else in Beat A1 — and it already showed the bacterium's central integrating enzyme and its capacity to retune its own baseline. So Ch1 cannot present the formula as new math, cannot claim the first place where signals converge, and cannot claim the first adjustable parameter. Ch1's own territory is exactly three things: **scale** (integration across a body of many cells, not within one), **the weight's new address** (out of the sensor, into the connection — a per-input dial that can be turned without rebuilding the detector), and **scope** (signals from inside the body join the same sum). Plus the naming and the human-history beat. Plasticity belongs to Chapter 2; Ch1 shows that the dial *exists*, never that it moves.
+**What this chapter must *not* claim.** Chapter 0 already delivered the full arithmetic — Σ(signal × weight) in Beat A2, and the step function as if/else in Beat A1 — and it already showed the bacterium's shared signalling pool (*not* a single central enzyme — see Ch0 §0.4, corrected 2026-07-31) and its capacity to retune its own baseline. So Ch1 cannot present the formula as new math, cannot claim the first place where signals converge, and cannot claim the first adjustable parameter. Ch1's own territory is exactly three things: **scale** (integration across a body of many cells, not within one), **the weight's new address** (out of the sensor, into the connection — a per-input dial that can be turned without rebuilding the detector), and **scope** (signals from inside the body join the same sum). Plus the naming and the human-history beat. Plasticity belongs to Chapter 2; Ch1 shows that the dial *exists*, never that it moves.
+
+---
+
+> ## ⚠️ UNRESOLVED — read before writing this chapter
+>
+> *Raised 2026-07-31 while fact-checking Ch0. Two factual claims below do not survive scrutiny. Neither is fixed yet; both need a decision before Part 1 is drafted, because they change what the chapter's central argument is.*
+>
+> **Flag 1 — Bila's lineage did NOT invent nerve cells.** Neurons appeared earlier, in the radiatan (cnidarian) lineage that §Beat 2 already puts on screen. Theirs is a **nerve net**: neurons spread through the body with no center. Poke it anywhere and a wave spreads outward. It coordinates, but nothing *converges* — there is no place where signals from everywhere meet to produce one answer. So §1.1's "first to evolve a nervous cluster" is wrong as written. Bila's innovation is **centralization**, not innervation: the first place where deciding *happens*, with an address.
+>
+> *This is good news.* The radiatan becomes the middle term the series was missing, and it proves the chapter's real point better than the current framing does:
+>
+> | | Bacterium | Radiatan | Bila |
+> |---|---|---|---|
+> | Cells | one | many, specialized | many, specialized |
+> | Signals travel by | drifting in shared space | wires, cell to cell | wires, cell to cell |
+> | Meeting point | one shared pool (free — it's tiny) | **none — signals spread** | **a cluster, rebuilt on purpose** |
+> | Decision | yes (a threshold) | no single one | yes, for a whole body |
+>
+> Note the shape of that middle column: the radiatan **loses** something the bacterium had. The bacterium gets convergence free, purely by being small enough that chemicals reach everywhere instantly. Scale a body up ~1000× and drifting fails badly — travel time goes with the *square* of distance, so a drifting signal needs minutes-to-hours across a real body. Wiring is the workaround for being big; the nerve net is a necessity, not a luxury. But the mesh has nowhere everything arrives. **The radiatan traded the free meeting point for size and speed.** Bila's achievement is rebuilding it deliberately, at a scale where you can't get it for free. Having a nervous system is not the same as having somewhere a decision happens — and a jellyfish is the proof.
+>
+> **Flag 2 — §1.2's "the weight moves out of the sensor" is NOT safe as written.** Radiatans already have real chemical synapses between nerve cells, with varying transmission strength. *(High confidence.)* So the tunable junction predates bilaterians, and Ch1 cannot claim it as Bila's innovation.
+>
+> Ch1's territory therefore narrows from three things to **two**: **convergence** (§1.1) and **internal signals as inputs** (§1.3). Both are genuinely bilaterian and both are safe.
+>
+> The repair for §1.2 — a weight only becomes a *decision's* weight when there is a place doing the weighing. Scattered junctions in a mesh are strengths without a sum. What Bila adds is not the dial; it's the **place where dials are read together**. That still earns the perceptron diagram its per-input dials, and it still sets up Ch2 (which needs the dials to *move*, and never claimed Ch1 invented them).
+>
+> **What is unaffected:** §1.3 entirely. The Ch0→Ch1 bridge in Ch0's C3 ("welded to a detector vs. a junction you can tune") still stands, because methylation tags really do sit on the bacterium's detector — that comparison is bacterium-vs-Bila and does not route through the radiatan.
+
+---
 
 ## Key Concepts Introduced in Chapter 1
 
 ### 1.1 The First Nervous System / The Perceptron
+
+> ⚠️ **See Flag 1 above — the first sentence is factually wrong and the section title overclaims.** Nerve cells predate bilaterians (radiatan nerve nets). Bila's innovation is *centralization*, not the nervous system itself. Retitle toward "The First Place a Decision Happens" or similar when rewriting.
 
 Bila's lineage is the first to evolve a nervous cluster — a small knot of nerve cells where signals from *many separate cells across a body* converge to be weighed, producing one command for muscles that must act together. Biologically, this is a primitive ganglion. Mathematically, it is a perceptron — multiple weighted inputs, summed, plus a bias, with a binary output. Same idea, two names.
 
 The bacterium already had a shared integrating molecule, so convergence itself is not new. What is new is the *scale* of the problem being solved: a single cell has one switch and one body to move, while Bila has thousands of cells with conflicting local readings and a muscle system that fails outright unless the whole body commits to one direction. Integration inside a cell is chemistry. Integration across a body requires wiring.
 
 ### 1.2 The Weight Moves Out of the Sensor
+
+> ⚠️ **See Flag 2 above — this section's central claim is not safe.** Radiatans already have tunable synapses, so the adjustable junction is not Bila's invention. The paragraph beginning "In Bila, sensing and weighting come apart" is true of radiatans too. Repair direction: Bila adds *the place where the dials are read together*, not the dials. Do not draft Part 1 beats that depend on this section as currently written.
 
 The architectural change that matters most, and the one that makes Chapter 2 possible at all.
 
