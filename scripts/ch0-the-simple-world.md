@@ -1,6 +1,8 @@
 # Chapter 0 — The Simple World
 
-*Before the brain. Before the first decision. It looks like nothing — and it's already running the machine.*
+*Before the brain. Before the first decision. Three billion years of a rule that looks like nothing.*
+
+> **On-screen title card:** use the chapter title alone — *The Simple World* — with no subtitle. The subtitle above is a **script header for the creator**, not viewer-facing copy: it hints that the "simple" reading gets overturned, which is the one thing the viewer must not know going in. The title is the naive view they arrive with, and A2 takes it away from them. Putting the hint on screen spends the reveal in the first five seconds.
 
 ## Overview
 
@@ -13,6 +15,31 @@ The arc the viewer travels: *this thing is barely alive* → *wait, it handles c
 Specifically, the bacterium **has**: convergence (one shared pool), per-signal strengths, a bias, a binary threshold, and short-term memory. It **lacks**: weights that live at connections rather than inside detectors, weights that move because of outcome, signals from inside the body, and integration across many cells. Those four absences are the series' runway — the first, third, and fourth belong to Chapter 1, the second to Chapter 2. Ch0's job is to make the viewer *feel* the machine is already there, then feel exactly what it can't do.
 
 The chapter closes on an honest limit that is *not* "nothing changes." The bacterium retunes itself constantly — that's what its short-term memory is — but only ever to re-zero the channel that got the input, never to change what matters more, and never in response to how things turned out. Weight lives inside the sensor; nothing learns from outcome.
+
+## Fact-check status — read before putting any number on screen
+
+*Compiled 2026-08-02. The mechanism sections below mix well-established facts with figures recalled from memory. They read as equally settled on the page; they are not. Verify anything marked ⚠️ before it appears in narration or on a caption.*
+
+**Safe — established, use freely:**
+
+- Run and tumble are mutually exclusive; counterclockwise rotation bundles the flagella (run), clockwise flings them apart (tumble)
+- Attractant binding *lowers* the signalling enzyme's output; repellent binding *raises* it
+- The signalling chemical binds the motor to cause tumbling; its absence means running
+- The motor's response to the chemical is steeply sigmoidal — effectively a threshold, not a dimmer
+- At rest: ~1 s runs, ~0.1 s tumbles (Berg & Brown 1972)
+- Receptors are clustered, not scattered, and neighbours are allosterically coupled — this is the amplifier
+- Methylation tags act per-receptor-type, drive back to a resting state, and carry no outcome information
+- The signalling chemical is destroyed continuously, so the level tracks the present
+
+**⚠️ Verify before use — recalled figures, plausible but unconfirmed:**
+
+- "~10% change in the level swings the motor" — the *steepness* is certain; this exact figure is not
+- "a few thousand receptors" / "a few hundred enzyme copies" — right order of magnitude, exact ratio unverified
+- "roughly a dozen receptors act as a unit" — varies with methylation state
+- "four seconds of memory" — timescale is seconds; the specific number needs a source
+- Overall pathway gain (tens-fold) — commonly quoted, unverified here
+
+Where a ⚠️ figure appears in narration, prefer the qualitative form ("a change too faint to notice") over the number. The chapter's argument never depends on a specific value.
 
 ## Key Concepts Introduced in Chapter 0
 
@@ -42,9 +69,20 @@ When attractants and repellents arrive together, the cell handles the conflict a
 
 > decision = Σ ( signal × hidden weight ) + hidden bias
 
-**How the summing physically happens.** There is no single central enzyme doing the adding. Each receptor has its own copies of the *same* enzyme (CheA in real bacteria) clamped to it — thousands of identical copies across the receptor patch, all producing the *same* signalling chemical (CheY-P) into the *same* shared cell interior. A receptor doesn't push a shared object; it only sets the output rate of its own copies. The addition happens **in the shared pool**: the chemical carries no label saying which receptor type produced it, so once it's in the cytoplasm it is simply part of one level.
+**How the summing physically happens — two stages.** There is no single central enzyme doing the adding, and equally there is no strict one-enzyme-per-receptor pairing. The real anatomy: a few thousand receptors of all types are packed into **one dense cluster at the cell's front**, with a few hundred copies of the *same* enzyme (CheA in real bacteria) woven underneath — so each copy is held by, and responds to, *several neighbouring receptors at once*.
 
-This is worth stating precisely because it's the strongest thing in the chapter: **the Σ is not a molecular adding machine the cell had to evolve. It is a consequence of sharing one container.** Put many outputs into one space and they add — that's just how volume works.
+That geometry means the summing happens twice:
+
+1. **At each enzyme copy (local).** A single copy can have a sugar receptor pushing its output rate *down* and a toxin receptor pushing it *up*, simultaneously. It settles at the net rate. Opposing signals genuinely do meet on one shared object — just on hundreds of them, not one.
+2. **In the shared pool (global).** Every copy produces the *same* signalling chemical (CheY-P) into the *same* cell interior. Those rates add into one level, and the chemical carries no label saying which receptor type produced it.
+
+Stage 2 is the one that matters most, because **it is the only thing the motors can read.** No flagellum has access to any individual enzyme copy; a motor sees the level and nothing else. So the pool remains the single place where the whole cell's sensing becomes one number.
+
+This is worth stating precisely because it's the strongest thing in the chapter: **the Σ is not a molecular adding machine the cell had to evolve. It is largely a consequence of sharing one container.** Put many outputs into one space and they add — that's just how volume works.
+
+**The clustering is also the amplifier.** Because receptors are packed in contact, they are not independent: when one flips, it physically leans on its neighbours and biases them the same way — including ones binding nothing. Roughly a dozen act as a unit. The consequence is that a fraction of a percent of receptors catching sugar produces a swing in output far larger than that fraction should justify, which is how a cell with only a few thousand receptors detects changes far too faint for any single one to notice.
+
+**Where the weights come from.** Different receptor types do not move the output equally: the cell carries different *numbers* of each type (often far more attractant receptors than repellent ones), and different types couple to the enzyme with different firmness. That difference *is* the weight — and note that it is a **headcount**, not a stored value. Which is exactly why the cell cannot change it, and why Beat C1's "nobody chose them either" is literally true.
 
 **Which way each receptor pushes.** Attractant binding *lowers* its enzymes' output rate; repellent binding *raises* it. And a separate enzyme (CheZ) constantly destroys the chemical, so the pool is always draining. Output falls → the drain wins → the level drops. Nothing ever actively removes the chemical on an attractant's behalf; the taps just close.
 
@@ -52,7 +90,7 @@ This is worth stating precisely because it's the strongest thing in the chapter:
 
 **Where the if/else physically lives.** Each flagellar motor independently compares the pool's level against a threshold: below → run, above → tumble. The response is steeply sigmoidal — roughly a ~10% change in the level takes a motor from mostly-running to mostly-tumbling. So there is a literal threshold comparator at the base of each whip, reading one number and returning one of two answers. **The comparator cannot tell food from poison — it only sees a level.** That is Beat 7's "the cell never has to know which is which," true of the hardware.
 
-**Run is the resting state.** With the taps closed and the drain running, the level sits low and the cell runs by default. Tumbling is the active intervention — it requires output. Break the enzyme and the cell can never tumble: it swims in a perfectly straight line forever and starves, looking far healthier than a cell spinning in place and just as dead. The ability to interrupt yourself is the whole trick.
+**Run is the resting state — but the level is not "low."** At rest in uniform conditions the cell runs ~1 s and tumbles ~0.1 s, over and over. So the resting level sits *just below* the threshold — mostly-running, but close enough to the line that it flickers across constantly. Not idling at the bottom of its range: **poised.** That's why a faint change is enough to tip it, and it's the visual A2 depends on. Tumbling is still the active intervention — it requires output. Break the enzyme and the cell can never tumble: it swims in a perfectly straight line forever and starves, looking far healthier than a cell spinning in place and just as dead. The ability to interrupt yourself is the whole trick.
 
 This shape — weighted sum plus bias, then a threshold — is the same math the next chapter will name and explain. What's missing in bacteria is not the math but the *architecture*: no parameter belonging to a connection rather than a detector, no adjustment driven by outcome, no signals from inside the body. That architectural distinction is what Chapter 1 will deliver.
 
@@ -152,7 +190,7 @@ Though *find* is a generous word. Remember — no eyes. The cell has no idea whe
 
 It cheats. Sort of.
 
-Scattered across its surface are tiny chemical sensors — little protein gates that twitch when the right molecule drifts past. A bit of sugar bumps one, the gate shifts, and a signal runs inward to the propellers.
+Studded into its surface are tiny chemical sensors — little protein gates that twitch when the right molecule drifts past. A bit of sugar bumps one, the gate shifts, and a signal runs inward to the propellers.
 
 But how do those propellers actually move the cell? Here's the part I love. Each whip is spun by its own tiny motor, sunk into the cell wall — a real, turning motor, one of the only ones nature ever built. And it runs both ways. Spin the whips one direction, and they wind together into a single bundle that drives the cell smoothly forward. Spin them the other way, and the bundle bursts apart — each whip thrashing on its own — and the cell just spins in place, pointing nowhere.
 
@@ -238,15 +276,18 @@ Two lines. One tiny body, drifting through the dark, following them blindly, sin
 
 **Visual:** A new scene. The cell drifts in water where both an attractant and a repellent are arriving from the same direction — a sugar molecule and a toxin appearing together. On the cell's surface, both receptor types fire at once.
 
-*Production note — do not draw this as a see-saw with two signals shoving one object.* That staging implies the two signals meet at a single shared switch, which is not what happens and reliably confuses viewers. Stage it as **a level in a shared space**:
+*Production note — the summing happens in TWO stages, and the staging must show both.* (Revised 2026-07-31; an earlier version of this note said opposing receptors never touch the same object. That was wrong — see below.) The single-see-saw staging is still wrong, but not for the reason first given: opposing signals *do* meet on shared objects. The problem is that one see-saw implies a *single* meeting point when there are hundreds, and it hides the level that the motors actually read.
 
-- The cell's interior reads as one softly-lit **pool** with a visible level.
-- Each receptor type feeds the pool through **its own inlet** — the sugar receptors and the toxin receptors never touch each other. Sugar arriving makes its inlets *close*; toxin arriving makes its inlets *open*.
-- A steady **drain** runs at the bottom of the pool the whole time, always on. This is why the level can fall when inlets close — nothing actively pumps it out.
-- The pool's level is the sum. Whichever influence dominates sets where the level settles.
-- A single horizontal **threshold line** sits across the pool. Level below the line → the flagella bundle → run. Above → they scatter → tumble. The line is crossed decisively, not gradually.
+Stage it as **a cluster of small see-saws draining into one pool**:
 
-The key readable idea: the threshold line has no idea whether the level came from sugar or toxin. It only sees height. The conflict is resolved by mixing in one container, not by anything adjudicating.
+- **The receptor patch — one dense cluster at the cell's front.** Not receptors scattered over the whole membrane. All types mixed together, side by side, in a single control panel. Sugar and toxin receptors are *adjacent and in contact*.
+- **Stage 1 — local opposition.** Enzyme copies are woven under the patch, each one shared by several neighbouring receptors — so a single copy can have a sugar receptor pushing its output *down* and a toxin receptor pushing it *up*, simultaneously. Draw these as **many small see-saws** across the patch, each settling at its own tilt. Opposition is visible exactly where it physically happens.
+- **Neighbours lean together.** When one receptor flips, it visibly nudges the ones touching it into leaning the same way — including ones holding nothing. This is the cell's amplifier: a fraction of a percent of receptors catching sugar swings the output far more than that fraction should. Worth showing, because it's why something this small can detect changes this faint.
+- **Stage 2 — the shared pool.** Every enzyme copy, whatever its tilt, feeds the *same* softly-lit interior. Their rates add into one visible level. The chemical carries no label saying which receptor produced it.
+- **A steady drain** runs at the bottom of the pool the whole time, always on. This is why the level can fall when output drops — nothing actively pumps it out.
+- **One horizontal threshold line** across the pool. Below → flagella bundle → run. Above → they scatter → tumble. Crossed decisively, not gradually.
+
+The two key readable ideas: **opposing signals cancel wherever they meet — sometimes on the same enzyme, always in the pool.** And **the threshold line has no idea whether the level came from sugar or toxin. It only sees height.** No whip can reach any individual enzyme copy; a motor sees the level and nothing else. That's why the pool remains the place where the whole cell's sensing becomes one number — and why the conflict is settled by mixing in a shared container, not by anything adjudicating.
 
 **Narration:** One more situation before we zoom out. And it's a tricky one.
 
@@ -262,11 +303,27 @@ You'd think it just freezes. The rule says keep going when things get better, ch
 
 But watch.
 
-Inside the cell, two sensors fire at once. One shoves the molecular switch toward *go.* The other shoves it toward *turn away.* And the switch just… tips — toward whichever shove is stronger. Louder food signal? It goes. Toxin and all. Louder danger signal? It spins, turns, and leaves the meal behind.
+And it doesn't. It doesn't even slow down.
 
-The cell doesn't freeze. It doesn't agonize. It just — somehow — settles it.
+Here's what's actually happening in there. Both sensors fire at once — and the signal each one sends isn't a message saying *go* or *turn away.* It's something much dumber than that. Each one just adds a little more, or a little less, of the same substance into the cell.
 
-Something is happening in there. Some quiet little contest between the signals, with a winner and a loser. The cell *handles* the conflict. It just has no idea that's what it's doing.
+That's it. One substance, filling the whole inside of the cell like water in a tub. The food sensors turn their taps down. The poison sensors turn theirs up. Nobody's coordinating — they can't even reach each other. But there's only one tub. So it all just… adds up. Into a level.
+
+And down at the propellers, there's a switch with one job: is the level above the line, or below it? Above, they scatter. Below, they bundle.
+
+Louder food signal? The level drops, and the cell goes — toxin and all. Louder danger signal? The level climbs, and it spins, turns, and leaves the meal behind.
+
+So the cell doesn't freeze. It doesn't agonize. It doesn't weigh anything up. The conflict got settled by two things pouring into the same space and one of them being a bit louder.
+
+And here's the part I didn't expect. Go back and look at what I asked — *what does it do when it can't decide?* The cell doesn't have a "can't decide." Look at its whole vocabulary again: swim, or spin. That's the list. Spinning isn't stopping — it's spinning. There is no standing still. Not as an option it turns down. As a thing its body cannot do.
+
+Which flips the whole thing around. You'd think never freezing makes it decisive. Cool under pressure.
+
+It's the opposite. It never freezes because it isn't complicated enough to.
+
+Think about what hesitating actually takes. Somewhere to hold both options while you turn them over. The ability to do nothing at all while you do it. This cell has neither — its sensors run straight through to its propellers with nothing in between. No room to hold a question. No room to wait.
+
+So it can't get stuck. And it can never wonder whether it got it wrong.
 
 ## Part 2 — The Math
 
@@ -307,13 +364,13 @@ Same shape, same job — deciding what happens next. In proteins, in silicon. Th
 
 #### Algorithm Beat A2 — The Implicit Weighted Sum
 
-**Visual:** Cut to the conflict scene from Beat 8: the cell with both attractant and repellent arriving from the same direction. The **pool-and-threshold** staging from Beat 8 returns (same visual grammar — separate inlets, always-on drain, one level, one threshold line), this time alongside a formula appearing in clean, mathematical text. The formula builds in stages.
+**Visual:** Cut to the conflict scene from Beat 8: the cell with both attractant and repellent arriving from the same direction. The **cluster-and-pool** staging from Beat 8 returns (same visual grammar — the dense receptor patch with its many small see-saws, the always-on drain, one level, one threshold line), this time alongside a formula appearing in clean, mathematical text. The formula builds in stages.
 
 First, the weighted sum appears:
 
 > decision = Σ ( signal × hidden weight )
 
-Each *signal* and *weight* highlights individually as the narration explains them. The formula and the pool animate together, showing the equivalence: **the Σ is the pool.** As each inlet is named, it lights and the level responds — the addition visibly happening in the shared space rather than at any one point.
+Each *signal* and *weight* highlights individually as the narration explains them. The formula and the pool animate together, showing the equivalence: **the Σ is the pool.** As each receptor type is named, its see-saws in the cluster light up and the pool's level responds — the addition visibly completing in the shared space, wherever the individual tilts happened to settle.
 
 Then — almost as an afterthought — a single new term fades in at the end of the formula:
 
@@ -329,7 +386,7 @@ The image holds. The formula and the pool stay together, lit gently, as the came
 
 Go back to that moment the cell faced food and danger at the same time. Watch what was really going on underneath — in plain math.
 
-Each signal showed up with its own strength. Its own weight, baked right into the sensor that caught it. Those strengths got added together. Heavier side wins.
+Each signal showed up with its own strength. Its own weight, baked right into the sensor that caught it. Some pushing the level up, some pushing it down — and all of them adding into the same pool. Where the level lands is just the sum of them.
 
 Write that out, and you get:
 
@@ -383,7 +440,7 @@ Go in close — right down to the sensors, the proteins, the molecular switch �
 
 There's nobody in there.
 
-No decider. No little self holding the scales. No part of the cell that knows it's choosing — because there's no part of the cell that knows anything at all. It isn't *looking* for food. It isn't *fleeing* the toxin. It's a chemical reaction. Sensors fire, propellers answer, the switch tips, the cell moves. And nobody's home to see it happen.
+No decider. No little self holding the scales. No part of the cell that knows it's choosing — because there's no part of the cell that knows anything at all. It isn't *looking* for food. It isn't *fleeing* the toxin. It's a chemical reaction. Sensors fire, a level rises or falls, the propellers answer, the cell moves. And nobody's home to see it happen.
 
 And from the outside? It looks exactly like intelligence.
 
@@ -391,7 +448,7 @@ That's the thing I keep coming back to: behavior that looks intelligent doesn't 
 
 It's one of the strangest things in all of biology. And — I'll just say it now — it turns out to be one of the strangest things in AI, too.
 
-Even those hidden weights, the strengths of the signals — nobody chose them either. They're built into the sensors, the same in every cell of its kind, handed down.
+Even those hidden weights, the strengths of the signals — nobody chose them either. They're built into the sensors it was born with. How much sugar matters to this cell comes down to how many sugar sensors it happens to carry. Nobody picked that number. It was handed down.
 
 So the cell doesn't really make a decision. The cell *is* a decision — running on autopilot since the planet was warmer.
 
@@ -401,7 +458,14 @@ And if you ask why this exact rule is still here, still running in the ocean tod
 
 **Visual:** Wide shot of the microbial ocean, vast and quiet. The water is full of cells, all doing the same thing — running, tumbling, running, tumbling. Each one alone, each driven by the same blind rule. The camera pulls slowly upward, out of the water, holding the sense of an enormous, ancient, persistent world. Soft text appears: *Three and a half billion years.*
 
-Then, for the correction beat, push back in on a single cell's surface. On a sensor, small tags visibly attach and detach. As the cell swims into richer water, a faint baseline marker slides along with it — the zero point moving to follow the concentration, so that only *change* still registers. Brief, clean, no chemistry lecture. Then the weight dials from A2 reappear beside it, and stay conspicuously still while the baseline marker keeps sliding: the offset moves, the weights don't. The image holds, then slowly darkens.
+Then, for the correction beat, push back in on the receptor cluster. On the *sugar* receptors specifically, small tags visibly attach and detach. As the cell swims into richer water, those receptors visibly turn themselves down until their output returns to exactly where it started — the channel re-zeroing itself, so that only *change* still registers. Brief, clean, no chemistry lecture.
+
+*Production note — do NOT stage this as "the offset moves, the weights stay still."* (See §0.5: that framing does not survive scrutiny and should not be dramatized.) The tags sit on *specific receptor types*, so this is per-channel, not a global shift. Stage the honest contrast instead — **two things happening side by side:**
+
+- The **sugar channel** adapts: tags attach, its output slides back to neutral, and the pool's level returns to its resting position just under the threshold line. The cell is ready to detect the *next* change.
+- The **toxin channel**, sitting right beside it in the same cluster, is *untouched*. No tags. Nothing moves. Adapting to sugar taught it nothing about poison.
+
+Then the key absence, shown rather than stated: replay two outcomes of the same run — one where the cell reaches food, one where it finds nothing — and let the tags drift back to exactly the same neutral position in both. Identical end states. The two futures are visually indistinguishable, because nothing about how it *turned out* ever reached the machinery. The image holds, then slowly darkens.
 
 **Narration:** And it worked.
 
@@ -417,7 +481,11 @@ And it has one. Its sensors carry little chemical tags that get added and stripp
 
 So it *can* retune itself. Genuinely.
 
-But watch what that retuning can and can't reach. It only ever moves the zero point — the baseline, the bias. It never changes how much *sugar* matters compared to *poison*; that's fixed by how many of each sensor the cell happens to carry. And it never, not once, asks how things turned out. The cell found food, or it didn't, and either way the tags just drift back toward the middle. It's a thermostat, not a lesson.
+But watch what that retuning can and can't reach. Swim into sweeter water, and the *sugar* sensors turn themselves down — and that's all that happens. The poison sensors, sitting right next to them, don't move at all. Nothing about the sugar taught them anything. Each sensor only ever resets itself, and only ever back to neutral — back to *ready*, never to *different.*
+
+And here's the one that matters. It never, not once, asks how things turned out. Run the same journey twice — one where the cell finds the food, one where it finds nothing at all — and afterwards the two cells are identical. Same sensors, same strengths, same everything. The tags drifted back to the middle either way.
+
+It's a thermostat, not a lesson.
 
 That's the real limit. Not that nothing changes — things change constantly. It's that nothing changes *because of what happened.*
 
