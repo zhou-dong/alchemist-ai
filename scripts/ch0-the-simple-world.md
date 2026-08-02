@@ -6,7 +6,13 @@
 
 ## Overview
 
-Introduces life before bilaterality — single-celled bacteria running run-and-tumble — and the if/else rule beneath both food-seeking and danger-avoidance. Two behaviors that look different from the outside turn out to share a single mechanism underneath.
+Introduces life before bilaterality — single-celled bacteria running run-and-tumble — and the decision machinery beneath both food-seeking and danger-avoidance. Two behaviors that look different from the outside turn out to share a single mechanism underneath.
+
+**What this chapter is *about*.** Not if/else. The subject is the **complete decision device**:
+
+> decision = Σ ( signal × hidden weight ) + hidden bias → compared against a threshold
+
+Two halves of one machine. The **Σ** is how a whole world of signals gets summarized into a single number; the **threshold** is how that number becomes an action. Neither is a decision alone — a weighted sum with no threshold produces a number, not a behaviour; a threshold with nothing to compare has nothing to decide about. If/else is not a separate small idea sitting beside the formula, and it is not the chapter's thesis. It is **the last term of the device** — the click at the end — and Part 2 delivers it in that position, after the viewer has watched the number get built.
 
 **The chapter's thesis — and the title's irony.** The *world* is simple: an empty ocean, one job, two moves. The *cell* is not. By the end of Part 2 the viewer has seen it running a weighted sum, a bias, a threshold comparator, and a few seconds of working memory — the whole machine, in chemistry, three billion years early. So the chapter must never land on "just a simple rule." **What's missing in the bacterium is not the math but the architecture.** That single line is the chapter's spine, and every framing choice should serve it.
 
@@ -47,23 +53,13 @@ Where a ⚠️ figure appears in narration, prefer the qualitative form ("a chan
 
 The chemotaxis strategy of bacteria like *E. coli*. The cell alternates between two motions: swimming in a relatively straight line (*run*), and randomly reorienting in place (*tumble*). The same two-motion strategy is used for both food-seeking and danger-avoidance — only the trigger is inverted.
 
-Crucially, run and tumble are *mutually exclusive* — a binary switch. The mechanism enforces it: the flagellar motors spin counterclockwise, twisting the flagella into a single coherent bundle (run), or clockwise, flinging the bundle apart (tumble). The flagella can be gathered or scattered, but not both at once. At every instant the cell is doing exactly one of the two motions, never a blend. This exclusivity is precisely the shape of if/else — one branch or the other, never both — which is what makes the if/else mapping in 0.3 faithful biology rather than loose analogy.
+Crucially, run and tumble are *mutually exclusive* — a binary switch. The mechanism enforces it: the flagellar motors spin counterclockwise, twisting the flagella into a single coherent bundle (run), or clockwise, flinging the bundle apart (tumble). The flagella can be gathered or scattered, but not both at once. At every instant the cell is doing exactly one of the two motions, never a blend. This exclusivity is precisely the shape of if/else — one branch or the other, never both — which is one of the two reasons the if/else mapping in §0.4 is faithful biology rather than loose analogy (the other being the motor's genuine threshold response).
 
 ### 0.2 Chemical Sensors
 
 Bacteria have multiple types of chemical receptors on their outer membrane. Different receptors detect different molecules — attractants like sugars, repellents like toxins. The cell has no eyes and no nervous system; its entire input is whether a chemical is getting stronger or weaker over time. All receptors feed into the same downstream machinery that controls the flagella.
 
-### 0.3 The If/Else Rule
-
-Underneath both food-seeking and danger-avoidance is the same simple rule:
-
-> if signal is getting better → run
->
-> else → tumble
-
-For attractants, "better" means getting closer. For repellents, "better" means getting farther. The signal type doesn't matter — the rule is the same. This is the same shape as the if/else construct in every programming language ever written. Life ran it first, in proteins, billions of years before silicon.
-
-### 0.4 The Implicit Weighted Sum (with Bias)
+### 0.3 The Implicit Weighted Sum (with Bias)
 
 When attractants and repellents arrive together, the cell handles the conflict at the molecular level. The combined result:
 
@@ -93,6 +89,20 @@ This is worth stating precisely because it's the strongest thing in the chapter:
 **Run is the resting state — but the level is not "low."** At rest in uniform conditions the cell runs ~1 s and tumbles ~0.1 s, over and over. So the resting level sits *just below* the threshold — mostly-running, but close enough to the line that it flickers across constantly. Not idling at the bottom of its range: **poised.** That's why a faint change is enough to tip it, and it's the visual A2 depends on. Tumbling is still the active intervention — it requires output. Break the enzyme and the cell can never tumble: it swims in a perfectly straight line forever and starves, looking far healthier than a cell spinning in place and just as dead. The ability to interrupt yourself is the whole trick.
 
 This shape — weighted sum plus bias, then a threshold — is the same math the next chapter will name and explain. What's missing in bacteria is not the math but the *architecture*: no parameter belonging to a connection rather than a detector, no adjustment driven by outcome, no signals from inside the body. That architectural distinction is what Chapter 1 will deliver.
+
+### 0.4 The If/Else — The Threshold Half of the Device
+
+The second half of the machine in §0.3, and **not** a separate idea. Once the pool holds a single level, each flagellar motor compares it against a threshold:
+
+> if level is below the line → run
+>
+> else → tumble
+
+For attractants, "better" means getting closer; for repellents, "better" means getting farther. The signal type doesn't matter, and the comparator never learns it — **it only sees a level.** That is Beat 7's "the cell never has to know which is which," true of the hardware.
+
+This is the same shape as the if/else construct in every programming language ever written, and the mapping is faithful rather than decorative for two independent reasons: the motor's response is steeply sigmoidal, so it is a genuine threshold comparator and not a dimmer; and run and tumble are mechanically mutually exclusive (§0.1), so the two branches can never both be taken. Life ran it first, in proteins, billions of years before silicon.
+
+**Ordering note.** This is §0.4 and not §0.3 deliberately — it follows the sum, because the comparison needs a number to compare. Part 2 delivers it in that order too (A1 builds the number, A2 turns it into an action). Presenting if/else first makes it look like the chapter's thesis; it isn't. It's the last term of the device.
 
 ### 0.5 Adaptation — The Cell Retunes Its Own Baseline
 
@@ -327,90 +337,114 @@ So it can't get stuck. And it can never wonder whether it got it wrong.
 
 ## Part 2 — The Math
 
-#### Algorithm Beat A1 — The If/Else
+*Part 2's spine — the complete decision device, in two halves.* The chapter's subject is **not** if/else alone; it is the whole device: *gather many signals into one number, then compare that number to a line.* The Σ is how the world gets summarized; the threshold is how a summary becomes an action. Neither half is a decision on its own — a weighted sum with no threshold produces a number, not a behaviour. So Part 2 runs in mechanism order: **A1 builds the number. A2 turns it into an action (and only there does if/else arrive). A3 shows what the device can't do, and pays off the title.** If/else is not the thesis; it is the click at the end of the machine, and it lands harder in that position because the viewer has just watched a number get built and is wondering what becomes of it.
 
-**Visual:** Black background. The cell from earlier scenes appears small and centered, almost iconic. Around it, the rule we saw in Beat 7 reappears in plain English:
+#### Algorithm Beat A1 — Many Signals, One Number
 
-> When the world gets better — keep going.
->
-> When the world gets worse — change direction.
+**Visual:** Cut to the conflict scene from Beat 8: the cell with both attractant and repellent arriving from the same direction. The **cluster-and-pool** staging from Beat 8 returns (same visual grammar — the dense receptor patch with its many small see-saws, the always-on drain, one visible level), this time alongside a formula appearing in clean, mathematical text. Hold the threshold line back for A2; this beat is about the level, not yet the decision.
 
-A pause. Then, slowly, the plain-English text transforms — character by character — into code-like text:
-
-```
-if signal is getting better:
-    run
-else:
-    tumble
-```
-
-The code box pulses gently. The cell continues its dance in the background — small, silent, doing what it has always done. Then, as the narration reaches the "never both" point, the code animates: when the cell runs, the `run` line lights and the `else: tumble` branch dims to near-black — visibly *not taken*. When the cell tumbles, it flips — `tumble` lights, the `run` branch goes dark. Only ever one branch lit at a time, in lockstep with the cell's flagella bundling or scattering. The two are shown as the same event in two languages: the lit branch and the cell's current motion.
-
-**Narration:** Okay, let's pause the story for a second — because I want to show you what we just watched from a completely different angle.
-
-The cell follows one rule. We saw it: *when the world gets better, keep going; when it gets worse, change direction.* Two lines. And those two lines handle everything — food, poison, all of it.
-
-Here's the part I love. If you've ever written even a single line of code — any language, doesn't matter — you've already written this exact shape. It even has a name. We call it *if/else.*
-
-*If* something is true, do one thing. *Else,* do the other. It's the simplest decision in all of computing.
-
-And notice what if/else never does: it never does *both.* The `if` branch runs, or the `else` branch runs. One, or the other. Never a little of each.
-
-Which is exactly what we just saw, right? The cell runs, or it tumbles — never both. Its threads bundle, or they fly apart — never both. And the part that gets me: nobody set it up that way to make the comparison work. The cell was already built like this, three billion years before anyone wrote the word 'else.' That either-or lives in its body — the same either-or that lives in the code. So this isn't a metaphor we're draping over the cell to sound clever. It really is the shape the cell already is.
-
-Which means if/else isn't just the simplest decision in computing. It might be the *first* decision life ever made. Three billion years before there were programmers. Before there was language. Before there was anyone around to give it a name.
-
-Same shape, same job — deciding what happens next. In proteins, in silicon. The shape doesn't care.
-
-#### Algorithm Beat A2 — The Implicit Weighted Sum
-
-**Visual:** Cut to the conflict scene from Beat 8: the cell with both attractant and repellent arriving from the same direction. The **cluster-and-pool** staging from Beat 8 returns (same visual grammar — the dense receptor patch with its many small see-saws, the always-on drain, one level, one threshold line), this time alongside a formula appearing in clean, mathematical text. The formula builds in stages.
-
-First, the weighted sum appears:
+The weighted sum builds a term at a time:
 
 > decision = Σ ( signal × hidden weight )
 
 Each *signal* and *weight* highlights individually as the narration explains them. The formula and the pool animate together, showing the equivalence: **the Σ is the pool.** As each receptor type is named, its see-saws in the cluster light up and the pool's level responds — the addition visibly completing in the shared space, wherever the individual tilts happened to settle.
 
-Then — almost as an afterthought — a single new term fades in at the end of the formula:
+When the weights are named, show where they come from: two receptor types side by side in the cluster, one far more numerous than the other, and the more numerous one visibly moving the level more. **The weight is a headcount, not a stored value** — nothing anywhere is holding a number.
+
+*Production note — the math reassurance is owed HERE.* This is the first real formula on screen in the entire series, which is the point-of-need the Prologue deliberately saved it for (see bible §1: deliver reassurance where anxiety actually surfaces, never in the cold open). One light line as the Σ appears, then move on — it's a kindness, not a thesis, and it must not become a speech about method.
+
+**Narration:** Okay, let's pause the story for a second — because I want to show you what we just watched from a completely different angle.
+
+Go back to that moment the cell faced food and danger at the same time. We watched it settle the conflict by pouring everything into one pool. Now let's write down what that actually is.
+
+And I'm going to put a formula on screen. Don't let it bother you — a formula is just an idea wearing symbols. You already understand this one; you watched it happen. We're only giving it clothes.
+
+Here it is. Each signal arrives with its own strength — its own *weight,* baked right into the sensor that caught it. Some push the level up, some push it down. All of them add into the same pool. And where the level lands is just the sum of them.
+
+*Decision equals the sum of each signal, times its hidden weight.*
+
+That's it. That's the whole first half.
+
+And here's the part I find genuinely lovely. Look at where a weight actually comes from. It's not a number stored anywhere — there's nowhere in a bacterium to store a number. It's a *headcount.* How much sugar matters to this cell is just how many sugar sensors it happens to have. Thousands of them shouting a little, versus a few hundred of something else shouting a little. The strength *is* the crowd size.
+
+So the cell isn't calculating a weighted sum. It's more embarrassing than that. It just has a lot of one kind of sensor and not many of another, and they all empty into the same space — and a weighted sum is what *automatically happens* when you do that.
+
+Nobody had to invent the arithmetic. The arithmetic is what sharing one container looks like from the outside.
+
+#### Algorithm Beat A2 — One Number, One Action
+
+**Visual:** Continue from A1 — same pool, same formula. Two things now enter.
+
+First, the bias term fades in at the end of the formula, almost as an afterthought:
 
 > decision = Σ ( signal × hidden weight ) + hidden bias
 
-The bias term highlights, and a small label points to the resting level in the pool: *the level with nothing arriving*. Critically, that resting level is drawn sitting **just barely under the threshold line** — not down at the bottom of the pool. The staging should make "poised on the edge" legible at a glance, and it sets up the narration's "balanced right on its own tipping point."
+The bias term highlights, and a small label points to the resting level in the pool: *the level with nothing arriving*. Critically, that resting level is drawn sitting **just barely under the threshold line** — not down at the bottom of the pool. The staging should make "poised on the edge" legible at a glance.
 
-Below the full formula, smaller text appears, each line emphasized in turn: *the weights belong to the sensors. nothing here learns from outcome. no signals from inside the body.*
+Second, the **threshold line** appears across the pool — the piece held back from A1. Now the device is complete: level below the line → flagella bundle → run; above → they scatter → tumble. Show the level drifting and crossing decisively, with the flagella answering in lockstep. The resting level flickers just under the line, tipping over it briefly and often — this is the ~1 s run, ~0.1 s tumble rhythm, and it's why "poised" is the right word.
 
-The image holds. The formula and the pool stay together, lit gently, as the camera pulls slowly back.
+Then, and only then, the code appears beside the pool:
 
-**Narration:** There's one more thing hiding in here — and it's the one that matters most for everything coming next. So stick with me.
+```
+if level is below the line:
+    run
+else:
+    tumble
+```
 
-Go back to that moment the cell faced food and danger at the same time. Watch what was really going on underneath — in plain math.
+As the level crosses, the branches light in lockstep: when the cell runs, `run` lights and `else: tumble` dims to near-black — visibly *not taken*; when it tumbles, they swap. Only ever one branch lit at a time, in lockstep with the flagella bundling or scattering. Three things — the level, the flagella, the lit branch — shown as one event in three languages.
 
-Each signal showed up with its own strength. Its own weight, baked right into the sensor that caught it. Some pushing the level up, some pushing it down — and all of them adding into the same pool. Where the level lands is just the sum of them.
+**Narration:** So we have a number. One number, for everything the cell can sense.
 
-Write that out, and you get:
+But a number isn't a decision. Nothing has happened yet. So what turns a level in a pool into a body actually moving?
 
-*decision equals the sum of each signal, times its hidden weight.*
+Two more pieces. Here's the first.
 
-And there's one last piece. Even when nothing's arriving — no food, no poison — the cell isn't sitting at zero. There's a resting level in there, always. A default. A standing answer to the question, *what do I do when nothing's happening?*
+Even when nothing's arriving — no food, no poison — the cell isn't sitting at zero. There's a resting level in there, always. A default. A standing answer to the question, *what do I do when nothing's happening?* That baseline has a name too. We call it a *bias.*
 
 And here's what I love about where that default sits. It isn't parked down at the bottom, quiet, waiting to be woken up. It sits *balanced right on its own tipping point* — close enough to the edge that the faintest change is enough to throw it. Which is exactly why this thing is so sensitive. It's not resting. It's poised.
 
-So the whole thing, written out, is:
+Now the second piece — the one that finally makes something happen.
 
-*decision equals the sum of each signal times its hidden weight — plus a hidden baseline.*
+Down at the base of each propeller, there's a switch. And it does exactly one thing: it looks at the level, and it compares it to a line. Below the line, the threads bundle and the cell swims. Above it, they scatter and the cell spins.
 
-That baseline has a name too. We call it a *bias.*
+That's the whole rest of the machine. A comparison.
 
-Weighted sum, plus bias. That's about the simplest recipe there is for something that makes decisions. And this little bacterium has been running it, in pure chemistry, for three billion years.
+And *this* is the part I've been waiting to show you. If you've ever written even a single line of code — any language, doesn't matter — you have already written this exact shape. It has a name. We call it *if/else.*
+
+*If* something is true, do one thing. *Else,* do the other. The simplest decision in all of computing.
+
+And notice what if/else never does: it never does *both.* The `if` branch runs, or the `else` branch runs. One, or the other. Never a little of each.
+
+Which is exactly what we saw, right? The cell runs, or it tumbles — never both. Its threads bundle, or they fly apart — never both. And the part that gets me: nobody set it up that way to make the comparison work. The cell was already built like this, three billion years before anyone wrote the word 'else.' That either-or lives in its body — the same either-or that lives in the code. So this isn't a metaphor we're draping over the cell to sound clever. It really is the shape the cell already is.
+
+There is a thing down there whose entire job is to compare one number against one line and answer yes or no. Not something that *resembles* that. That *is* that, built out of protein.
+
+Which means if/else isn't just the simplest decision in computing. It might be the *first* decision life ever made. Three billion years before there were programmers. Before there was language. Before there was anyone around to give it a name.
+
+Same shape, same job — deciding what happens next. In proteins, in silicon. The shape doesn't care.
+
+#### Algorithm Beat A3 — The Catch, and What Was Never Missing
+
+**Visual:** The full device holds on screen — cluster, pool, resting level, threshold line, formula:
+
+> decision = Σ ( signal × hidden weight ) + hidden bias
+
+Then the camera pushes in on a single weight. A dial icon tries to appear beside it and **fails to separate** — the dial and the sensor are visibly one object, fused. Attempt to turn it and the whole sensor deforms. There is no dial to reach.
+
+Below the full formula, smaller text appears, each line emphasized in turn: *the weights belong to the sensors. nothing here learns from outcome. no signals from inside the body.*
+
+*Production note — this is where the title pays off.* The beat must not land on "just a simple rule." Everything the viewer has now been shown — signals with their own strengths, added in a shared space, a resting level poised at a tipping point, a threshold that answers yes or no — is the machine, complete. The reveal is that they were watching arithmetic the whole time and it looked like a blob swimming. Deliver it as a quiet recognition, not a flourish, and let the last line reframe the chapter's own name.
+
+The image holds. The formula and the pool stay together, lit gently, as the camera pulls slowly back.
+
+**Narration:** Weighted sum, plus a bias, then a threshold. That's about the simplest recipe there is for something that makes decisions. And this little bacterium has been running it, in pure chemistry, for three billion years.
 
 The math was real. Real numbers, hidden in molecules, quietly adding themselves up every second of every day — with nobody around who knew that's what they were.
 
 Though here's the catch — and it's worth holding onto, because the next chapter is built on it. Look at where those weights actually *live.* Each one is baked into the sensor that caught the signal — the strength and the detector are the same physical object. You can't reach in and turn one down. There's no dial. To change how much sugar matters to this cell, you'd have to change the sugar sensor itself.
 
-*Production note — this is where the title pays off.* The beat must not land on "just a simple rule." Everything the viewer has now been shown — signals with their own strengths, added in a shared space, a resting level poised at a tipping point, a threshold that answers yes or no — is the machine, complete. The reveal is that they were watching arithmetic the whole time and it looked like a blob swimming. Deliver it as a quiet recognition, not a flourish, and let the last line reframe the chapter's own name.
-
-**Narration:** So let's go back and look at what we just built. Signals, each arriving with its own strength. Added together, all in one place. A resting level, sitting balanced on a knife edge. And a switch that reads that level and answers — yes, or no.
+So let's go back and look at what we just built. Signals, each arriving with its own strength. Added together, all in one place. A resting level, sitting balanced on a knife edge. And a switch that reads that level and answers — yes, or no.
 
 Put it together and you have a thing that takes in the world and produces a decision. Which is, more or less, the recipe. Not a simplified version of it. Not a rough sketch that life would clean up later. *The* recipe — running in a blob with no brain, three billion years before anyone wrote it down.
 
