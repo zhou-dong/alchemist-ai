@@ -1,8 +1,10 @@
-# Chapter 0 — The Simple World
+# Chapter 0 — The World Before Learning
 
 *Before the brain. Before the first decision. Three billion years of a rule that looks like nothing.*
 
-> **On-screen title card:** use the chapter title alone — *The Simple World* — with no subtitle. The subtitle above is a **script header for the creator**, not viewer-facing copy: it hints that the "simple" reading gets overturned, which is the one thing the viewer must not know going in. The title is the naive view they arrive with, and A2 takes it away from them. Putting the hint on screen spends the reveal in the first five seconds.
+> **On-screen title card:** use the chapter title alone — *The World Before Learning* — with no subtitle. The subtitle above is a **script header for the creator**, not viewer-facing copy: it hints that the "looks like nothing" reading gets overturned, which is the one thing the viewer must not know going in. Putting the hint on screen spends the reveal in the first five seconds.
+>
+> *Title history: this chapter was "The Simple World" until 2026-08-02. Renamed because the chapter's own thesis is that the cell is **not** simple — defending that irony meant defending a reading the script no longer holds. "The World Before Learning" names the era honestly, and the missing piece it points at (nothing learns from outcome) is exactly what Chapter 2 delivers. Note it says "before learning," not "before AI" — the math was already running, which is the reveal.*
 
 ## Overview
 
@@ -450,11 +452,11 @@ Put it together and you have a thing that takes in the world and produces a deci
 
 Remember when I said I was underselling this cell? This is what I meant.
 
-I called this chapter *the simple world.* And the world *was* simple — one empty ocean, one job, two moves, for three billion years. But the thing swimming around in it? That was never simple. It was already doing the math.
+Because look at what we came here expecting. A blob. Three billion years of an empty ocean, one job, two moves — the world before any of this got interesting. And the world *was* that simple. But the thing swimming around in it never was. It was already doing the math.
 
 What it was missing was never the math.
 
-That's the math of the simple world.
+The math was here the whole time. Running in the dark, in a blob with no brain, in a world before there was anything to learn.
 
 ## Closing — The Limit of Mechanism
 

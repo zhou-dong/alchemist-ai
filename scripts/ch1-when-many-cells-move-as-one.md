@@ -213,7 +213,7 @@ And I want to start by admitting something, because you may have already noticed
 
 We've seen this math before.
 
-Back in the simple world, we watched a bacterium weigh sugar against poison. Each signal times its own hidden strength, all added together, plus a baseline hum. And before that, we watched it commit — run or tumble, one or the other, never both. *If* better, go; *else,* turn.
+Back in that first ocean, we watched a bacterium weigh sugar against poison. Each signal times its own hidden strength, all added together, plus a baseline. And then we watched it commit — run or tumble, one or the other, never both. *If* below the line, go; *else,* turn.
 
 Put those two halves side by side and just… write them down together.
 

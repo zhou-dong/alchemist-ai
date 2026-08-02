@@ -11,7 +11,7 @@ import {
 } from "./timing";
 
 /**
- * Chapter 0 — The Simple World.
+ * Chapter 0 — The World Before Learning.
  * A series-level Prologue (welcome — Chapter 0 only), then three structural
  * sections played in order and never interleaved:
  * Part 1 (the story) → Part 2 (the math) → Closing (the limit of mechanism).
