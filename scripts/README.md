@@ -5,6 +5,8 @@ Source material for the alchemist-ai video series. **Not code** — these files 
 ## What's here
 
 - `series_bible.md` — the series bible: concept (incl. **The Spirit — why this series exists**, Section 1), format, storytelling methodology, chapter beats, protagonists, chapter arc, philosophical thread
+- `facts/` — per-chapter and shared factsheets, kept separate from narration. See **Facts files** below.
+- `ch-the-first-thing-alive.md` — draft chapter, precedes Chapter 0 chronologically: a sessile, surface-attached chemolithoautotroph at a hydrothermal vent, before movement or chemotaxis exist. Numbering/ordering not yet reconciled with the list below.
 - `ch0-the-world-before-learning.md` — Chapter 0: bacteria, run-and-tumble, the complete decision device — weighted sum + bias, then a threshold — running in chemistry before anything could learn (renamed from `ch0-the-simple-world.md`, 2026-08-02)
 - `ch1-when-many-cells-move-as-one.md` — Chapter 1: Bila enters; multicellular + steering, the perceptron, internal state
 - `ch2-when-weights-learn.md` — Chapter 2: synaptic plasticity (Hebbian), the perceptron learning rule, learning from examples
@@ -32,6 +34,37 @@ Chapter 7 (Deep RL convergence) is planned but not yet written.
 - Scene order, act-level staging, within-chapter reveal sequencing
 
 When in doubt, ask: *is this true across the whole project, or only inside one chapter?* If only inside one chapter, it goes in that chapter's script.
+
+## Facts files — separate from narration
+
+Starting with `ch-the-first-thing-alive.md`, each chapter's factual claims (biology, chemistry, dates, evolutionary timing) are tracked in a dedicated factsheet under `scripts/facts/`, not stated inline in the chapter script. This keeps facts easy to scan, verify, and update independently of narration wording.
+
+- `facts/shared.md` — facts more than one chapter depends on (e.g. flagella evolved after LUCA, chemotaxis signaling conservation, early metabolism). Check here before adding a fact to a chapter file — if it's cross-chapter, it belongs here instead.
+- `facts/ch-<slug>.md` — facts specific to one chapter, in the same structure as `shared.md`.
+
+**Structure of a factsheet** (facts only — no narration, no "what to avoid" guardrails; those belong in the chapter script's production notes):
+
+```
+# Facts — <Chapter Name>
+
+## Setting
+- claim (confidence — source note)
+
+## Organism
+- claim (confidence — source note)
+
+## Mechanism
+- claim (confidence — source note)
+
+## Open questions
+- unresolved, flagged for follow-up
+```
+
+Confidence tags: **established** (settled, safe to state plainly), **plausible** (best-supported current model, but not settled consensus — hedge lightly in narration if needed), **speculative** (a narrative simplification or unconfirmed figure — verify before it appears in narration, or keep it vague).
+
+**Workflow going forward:** research and verify facts first, write them into the chapter's factsheet, *then* write narration from the factsheet. If a fact changes later, update the factsheet first and treat any narration built on it as needing review — the factsheet is the source of truth, not the narration.
+
+The chapter script's Overview should reference its factsheet(s) rather than restate facts inline (see `ch-the-first-thing-alive.md` for the pattern).
 
 ## File naming
 
