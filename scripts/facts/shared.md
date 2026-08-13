@@ -1,6 +1,6 @@
 # Facts — Shared Across Chapters
 
-*Facts that more than one chapter script depends on. If a fact is only ever used by one chapter, it belongs in that chapter's own factsheet instead — see `ch-first-thing-alive.md` for the per-chapter pattern.*
+*Facts that more than one chapter script depends on. If a fact is only ever used by one chapter, it belongs in that chapter's own factsheet instead (`ch-<name>.md`).*
 
 ## Motility
 
