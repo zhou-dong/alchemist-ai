@@ -2,7 +2,7 @@
 
 *This file holds facts specific to this chapter.*
 
-## Early Earth (pre-vent)
+## Early Earth (before life)
 
 *General facts about this period live in `geologic-time/hadean-eon.md` and `geologic-time/archean-eon.md` — see those files rather than duplicating here.*
 
