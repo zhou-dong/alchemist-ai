@@ -22,5 +22,8 @@
 ## Open questions
 
 - No specific organism/species is being named or claimed as historically exact — this chapter portrays a plausible generic early chemolithoautotroph, not a documented specific lineage. Needs an explicit framing decision: state this generically, or pick a defensible modern analog (e.g. a vent-dwelling archaeon) to ground the visual.
-- This organism is **LUCA-like, not LUCA itself** — it shares LUCA's best-supported traits (anaerobic chemolithoautotroph, H₂/H₂S-driven, vent-dwelling, sessile, dividing by fission) but the chapter does not claim it *is* LUCA. LUCA's exact identity and traits are a reconstruction from comparative genomics, not direct observation, and remain contested — narration should not name-drop "LUCA" or assert this organism's timing relative to LUCA more precisely than the vague framing already noted below.
+
+## Framing notes
+
+- This organism is **LUCA-like, not LUCA itself** — it shares LUCA's best-supported traits (anaerobic chemolithoautotroph, H₂/H₂S-driven, vent-dwelling, sessile, dividing by fission) but the chapter does not claim it *is* LUCA. LUCA's exact identity and traits are a reconstruction from comparative genomics, not direct observation, and remain contested — narration should not name-drop "LUCA" or assert this organism's timing relative to LUCA more precisely than the vague framing below.
 - Exact timing (how early after LUCA, or before it) is unresolved in the literature and should stay vague in narration ("very early," not a specific number of years) unless a firmer date is found.
