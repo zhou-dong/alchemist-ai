@@ -22,8 +22,15 @@
 
 ## Setting
 
-- No sunlight reaches this environment; it has never depended on solar energy. (established — physical fact of ocean depth and light attenuation)
-- Deep-sea hydrothermal vents are a leading candidate environment for the origin of chemolithoautotrophic life: warm, mineral-rich, chemically reducing, protected from surface UV and volcanic surface instability. Rich in H₂, CO₂, sulfides, iron, nickel, and other transition metals. (plausible — one of several origin-of-life models, not a settled consensus)
+### Location
+
+- Deep-sea hydrothermal vents sit far below the ocean surface, past the depth sunlight penetrates. (established — physical fact of ocean depth and light attenuation)
+- No sunlight reaches this environment; it has never depended on solar energy. (established)
+
+### Vent chemistry
+
+- Deep-sea hydrothermal vents are warm, mineral-rich, and chemically reducing, protected from surface UV and volcanic surface instability. Rich in H₂, CO₂, sulfides, iron, nickel, and other transition metals. (established — general characterization of vent environments)
+- Deep-sea hydrothermal vents are a leading candidate environment for the origin of chemolithoautotrophic life. (plausible — one of several origin-of-life models, not a settled consensus)
 
 ## Organism
 
