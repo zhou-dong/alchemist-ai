@@ -1,6 +1,6 @@
 # Facts — The First Thing Alive
 
-*See `shared.md` for facts this chapter depends on but doesn't own (chemotaxis signaling conservation). This file holds facts specific to this chapter, including motility timing, early metabolism, and vent setting — these were previously in `shared.md` but turned out to be used only here, so they moved.*
+*This file holds facts specific to this chapter.*
 
 ## Early Earth (pre-vent)
 
@@ -14,7 +14,6 @@
 
 ## Setting
 
-- This chapter is set earlier than Chapter 0 — before any free-swimming, chemotaxis-driven organism, at a deep-sea hydrothermal vent rather than a shallow sunlit ocean.
 - No sunlight reaches this environment; it has never depended on solar energy. (established — physical fact of ocean depth and light attenuation)
 - Deep-sea hydrothermal vents are a leading candidate environment for the origin of chemolithoautotrophic life: warm, mineral-rich, chemically reducing, protected from surface UV and volcanic surface instability. Rich in H₂, CO₂, sulfides, iron, nickel, and other transition metals. (plausible — one of several origin-of-life models, not a settled consensus)
 
@@ -26,6 +25,7 @@
 - The organism is sessile — fixed/attached to a rock surface at the vent mouth, not motile. (plausible, consistent with the above)
 - It has no flagella, no motor, no propulsion structure of any kind. (plausible — consistent with flagella being a post-LUCA, lineage-specific innovation, per above)
 - It reproduces by division (splitting into two), the general mechanism by which single-celled life multiplies. (established as a general fact of cellular life; not vent-specific)
+- Narration frames the split as happening because "being two things is more stable than being one" once the organism is big enough. (speculative — a narrative simplification of binary fission's growth-then-division trigger, not a specific claim about a documented biochemical checkpoint)
 
 ## Mechanism
 
@@ -42,5 +42,6 @@
 
 ## Framing notes
 
+- This chapter is set earlier than Chapter 0 — before any free-swimming, chemotaxis-driven organism, at a deep-sea hydrothermal vent rather than a shallow sunlit ocean. (story-ordering decision, not a checkable fact)
 - This organism is **LUCA-like, not LUCA itself** — it shares LUCA's best-supported traits (anaerobic chemolithoautotroph, H₂/H₂S-driven, vent-dwelling, sessile, dividing by fission) but the chapter does not claim it *is* LUCA. LUCA's exact identity and traits are a reconstruction from comparative genomics, not direct observation, and remain contested — narration should not name-drop "LUCA" or assert this organism's timing relative to LUCA more precisely than the vague framing below.
 - Exact timing (how early after LUCA, or before it) is unresolved in the literature and should stay vague in narration ("very early," not a specific number of years) unless a firmer date is found.
