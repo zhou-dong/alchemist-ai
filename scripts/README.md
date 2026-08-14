@@ -39,7 +39,7 @@ When in doubt, ask: *is this true across the whole project, or only inside one c
 
 Starting with `ch-the-first-thing-alive.md`, each chapter's factual claims (biology, chemistry, dates, evolutionary timing) are tracked in a dedicated factsheet under `scripts/facts/`, not stated inline in the chapter script. This keeps facts easy to scan, verify, and update independently of narration wording.
 
-- `facts/shared.md` — facts more than one chapter depends on (e.g. flagella evolved after LUCA, chemotaxis signaling conservation, early metabolism). Check here before adding a fact to a chapter file — if it's cross-chapter, it belongs here instead.
+- `facts/shared.md` — facts more than one chapter depends on (e.g. chemotaxis signaling conservation). Check here before adding a fact to a chapter file — if it's cross-chapter, it belongs here instead.
 - `facts/ch-<slug>.md` — facts specific to one chapter, in the same structure as `shared.md`.
 
 **Structure of a factsheet** (facts only — no narration, no "what to avoid" guardrails; those belong in the chapter script's production notes):
