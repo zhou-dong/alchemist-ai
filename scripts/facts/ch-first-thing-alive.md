@@ -4,7 +4,7 @@
 
 ## Early Earth (before life)
 
-*General facts about this period live in `geologic-time/hadean-eon.md` and `geologic-time/archean-eon.md` — see those files rather than duplicating here.*
+*This chapter's opening is set somewhere around late Hadean / early Archean — deliberately left vague rather than pinned to one eon, per `§ Setting → Timing`. General facts about this period live in `geologic-time/hadean-eon.md` and `geologic-time/archean-eon.md` — see those files rather than duplicating here.*
 
 ## Setting
 
