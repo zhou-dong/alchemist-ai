@@ -13,7 +13,7 @@
 - Earth's earliest atmosphere lacked free oxygen and would not have supported human respiration; likely dominated by CO₂, N₂, some CH₄/H₂, plus volcanic gases. (established — no free O₂ existed until much later, after oxygenic photosynthesis)
 - Liquid-water oceans are inferred to have existed by ~4.4–4.3 Gya, based on zircon mineral evidence, implying relatively rapid cooling and condensation of early steam/water vapor. (plausible — indirect mineralogical evidence, not direct observation)
 
-### Archean era (~4.0–2.5 Gya)
+### Archean eon (~4.0–2.5 Gya)
 
 - Begins after oceans and a stable crust are already in place, following the Hadean. (established — standard geologic timescale definition)
 - Atmosphere still lacked free oxygen; O₂ did not become significant until the Great Oxidation Event, ~2.4 Gya, near the end of the Archean/start of the Proterozoic. (established)
@@ -22,9 +22,9 @@
 
 ## Setting
 
-### Era
+### Timing
 
-- Whether this chapter's vent scene falls in the Hadean or the Archean is unresolved, not settled. Liquid-water oceans are inferred to exist by ~4.4–4.3 Gya (zircon evidence) — still within the Hadean (~4.6–4.0 Gya), not the Archean — so oceans, and therefore seafloor vents, could have existed well before the Archean even starts. (plausible)
+- Whether this chapter's vent scene falls in the Hadean or the Archean is unresolved. Liquid-water oceans are inferred to exist by ~4.4–4.3 Gya (zircon evidence) — still within the Hadean (~4.6–4.0 Gya), not the Archean — so oceans, and therefore seafloor vents, could have existed well before the Archean even starts. (plausible)
 - LUCA is "usually placed earlier than ~3.9 Gya" — right around or before the Hadean/Archean boundary (~4.0 Gya) — and per `§ Organism` / `§ Framing notes`, this organism's timing relative to LUCA is deliberately left vague (could be before, at, or after it). So the vent scene's era should stay vague for the same reason. (plausible)
 
 ### Location
