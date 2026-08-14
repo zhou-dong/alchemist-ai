@@ -10,7 +10,7 @@
 
 ### Timing
 
-- Whether this chapter's vent scene falls in the Hadean or the Archean is unresolved. Liquid-water oceans are inferred to exist by ~4.4–4.3 Gya (zircon evidence, per `hadean-eon.md`) — still within the Hadean, not the Archean — so oceans, and therefore seafloor vents, could have existed well before the Archean even starts. (plausible)
+- Whether this chapter's vent scene falls in the Hadean or the Archean is unresolved. Per `hadean-eon.md`, oceans are inferred to exist within the Hadean itself, not only starting in the Archean — so oceans, and therefore seafloor vents, could have existed well before the Archean even starts. (plausible)
 - LUCA's usual placement (per `domains-of-life.md`) sits right around or before the Hadean/Archean boundary — and per `§ Organism` / `§ Framing notes`, this organism's timing relative to LUCA is deliberately left vague (could be before, at, or after it). So the vent scene's era should stay vague for the same reason. (plausible)
 
 ### Location
@@ -36,7 +36,7 @@
 ## Mechanism
 
 - The best-supported model for the earliest life's energy metabolism is **chemolithoautotrophy**: energy from inorganic redox chemistry (H₂, H₂S, Fe²⁺ as electron donors), carbon fixed from CO₂ — not from organic molecules like sugar. (plausible — converging view across multiple origin-of-life models; no single settled answer for the very first metabolism)
-- Sugars were plausibly present in the Archean ocean in **low concentration**, from abiotic synthesis (e.g. formaldehyde chemistry) and/or meteoritic delivery (confirmed in situ on asteroid Bennu samples: ribose, glucose, and other sugars). (established presence is plausible; concentration and bioavailability in open seawater specifically is doubtful — sugars are chemically fragile and don't concentrate well outside localized settings)
+- Sugars were plausibly present in the early ocean in **low concentration**, from abiotic synthesis (e.g. formaldehyde chemistry) and/or meteoritic delivery (confirmed in situ on asteroid Bennu samples: ribose, glucose, and other sugars). (established presence is plausible; concentration and bioavailability in open seawater specifically is doubtful — sugars are chemically fragile and don't concentrate well outside localized settings)
 - Energy source: hydrogen (H₂) and hydrogen sulfide (H₂S) dissolved in vent fluid, used as electron donors in redox chemistry. (plausible, per above)
 - Carbon source: CO₂ fixed from the surrounding water, not organic molecules. (plausible, per above)
 - The reaction is local and surface-based — chemistry contacting the organism's surface directly, with no evidence for or need of any internal signal propagation across the organism at this stage. (speculative — this is a narrative simplification for pedagogical purposes, not a specific claim about a documented biochemical pathway)
@@ -44,7 +44,7 @@
 ## Open questions
 
 - No specific organism/species is being named or claimed as historically exact — this chapter portrays a plausible generic early chemolithoautotroph, not a documented specific lineage. Needs an explicit framing decision: state this generically, or pick a defensible modern analog (e.g. a vent-dwelling archaeon) to ground the visual.
-- Narration currently labels the opening pre-ocean/bombardment period "the Archean," but per `§ Early Earth (pre-vent)` that period is conventionally the **Hadean** eon — the Archean starts later, after oceans exist. Needs a decision: correct the name to Hadean, or keep "Archean" as a deliberate simplification (and if so, note why).
+- Narration currently labels the opening pre-ocean/bombardment period "the Archean," but per `hadean-eon.md`/`archean-eon.md` that period is conventionally the **Hadean** eon — the Archean starts later, after oceans exist. Needs a decision: correct the name to Hadean, or keep "Archean" as a deliberate simplification (and if so, note why).
 
 ## Framing notes
 
