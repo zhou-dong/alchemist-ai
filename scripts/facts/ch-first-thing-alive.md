@@ -45,3 +45,4 @@
 - This chapter is set earlier than Chapter 0 — before any free-swimming, chemotaxis-driven organism, at a deep-sea hydrothermal vent rather than a shallow sunlit ocean. (story-ordering decision, not a checkable fact)
 - This organism is **LUCA-like, not LUCA itself** — it shares LUCA's best-supported traits (anaerobic chemolithoautotroph, H₂/H₂S-driven, vent-dwelling, sessile, dividing by fission) but the chapter does not claim it *is* LUCA. LUCA's exact identity and traits are a reconstruction from comparative genomics, not direct observation, and remain contested — narration should not name-drop "LUCA" or assert this organism's timing relative to LUCA more precisely than the vague framing below.
 - Exact timing (how early after LUCA, or before it) is unresolved in the literature and should stay vague in narration ("very early," not a specific number of years) unless a firmer date is found.
+
