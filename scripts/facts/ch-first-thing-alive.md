@@ -22,6 +22,11 @@
 
 ## Setting
 
+### Era
+
+- Whether this chapter's vent scene falls in the Hadean or the Archean is unresolved, not settled. Liquid-water oceans are inferred to exist by ~4.4–4.3 Gya (zircon evidence) — still within the Hadean (~4.6–4.0 Gya), not the Archean — so oceans, and therefore seafloor vents, could have existed well before the Archean even starts. (plausible)
+- LUCA is "usually placed earlier than ~3.9 Gya" — right around or before the Hadean/Archean boundary (~4.0 Gya) — and per `§ Organism` / `§ Framing notes`, this organism's timing relative to LUCA is deliberately left vague (could be before, at, or after it). So the vent scene's era should stay vague for the same reason. (plausible)
+
 ### Location
 
 - Deep-sea hydrothermal vents sit far below the ocean surface, past the depth sunlight penetrates. (established — physical fact of ocean depth and light attenuation)
