@@ -12,7 +12,7 @@ This isn't a simplified version of the Chapter 0 bacterium missing its flagella 
 
 The chapter should resist the pull toward "and then it decided to move" — that's a later chapter's story. This one ends with the thing still exactly where it started, alive, having done nothing but react.
 
-**Facts.** All biological and environmental claims in this chapter are tracked separately in `scripts/facts/ch-first-thing-alive.md` (chapter-specific, including motility timing, early metabolism, and vent setting) and `scripts/facts/shared.md` (cross-chapter facts, e.g. chemotaxis signaling conservation). Narration should be checked against those files rather than restating or re-deriving facts inline here — update the factsheets first if a claim changes, then update narration to match.
+**Facts.** All biological and environmental claims in this chapter are tracked separately in `scripts/facts/ch-first-thing-alive.md`. Narration should be checked against that file rather than restating or re-deriving facts inline here — update the factsheet first if a claim changes, then update narration to match.
 
 ## Part 1 — The Story
 
