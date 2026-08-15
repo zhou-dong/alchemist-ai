@@ -4,14 +4,14 @@
 
 ## Early Earth (before life)
 
-*This chapter's backdrop spans from the early Hadean (bombardment, before oceans exist) through to the vent scene itself, whose exact era — late Hadean vs. early Archean — is deliberately left vague per `§ Setting → Timing`. General facts about this period live in `geologic-time/hadean-eon.md` and `geologic-time/archean-eon.md` — see those files rather than duplicating here.*
+*This chapter's backdrop spans from the early Hadean (bombardment, before oceans exist) through to the vent scene itself, whose exact era — late Hadean vs. early Archean — is deliberately left vague per `§ Setting → Timing`. General facts about this period live in `../../facts/geologic-time/hadean-eon.md` and `../../facts/geologic-time/archean-eon.md` — see those files rather than duplicating here.*
 
 ## Setting
 
 ### Timing
 
-- Whether this chapter's vent scene falls in the Hadean or the Archean is unresolved. Per `geologic-time/hadean-eon.md`, oceans are inferred to exist within the Hadean itself, not only starting in the Archean — so oceans, and therefore seafloor vents, could have existed well before the Archean even starts. (plausible)
-- LUCA's usual placement (per `domains-of-life.md`) sits right around or before the Hadean/Archean boundary — and per `§ Organism` / `§ Framing notes`, this organism's timing relative to LUCA is deliberately left vague (could be before, at, or after it). So the vent scene's era should stay vague for the same reason. (plausible)
+- Whether this chapter's vent scene falls in the Hadean or the Archean is unresolved. Per `../../facts/geologic-time/hadean-eon.md`, oceans are inferred to exist within the Hadean itself, not only starting in the Archean — so oceans, and therefore seafloor vents, could have existed well before the Archean even starts. (plausible)
+- LUCA's usual placement (per `../../facts/domains-of-life.md`) sits right around or before the Hadean/Archean boundary — and per `§ Organism` / `§ Framing notes`, this organism's timing relative to LUCA is deliberately left vague (could be before, at, or after it). So the vent scene's era should stay vague for the same reason. (plausible)
 
 ### Location
 
@@ -25,11 +25,11 @@
 
 ## Organism
 
-*General facts about LUCA and flagella/archaella evolving after it live in `domains-of-life.md` — see that file rather than duplicating here.*
+*General facts about LUCA and flagella/archaella evolving after it live in `../../facts/domains-of-life.md` — see that file rather than duplicating here.*
 
 - Many early chemolithoautotrophs were likely **sessile / surface-attached** (biofilms, mats on mineral surfaces) rather than free-swimming — vent chemistry concentrates energy at a fixed location, so there's no need to travel to reach it. (plausible — ecological inference from vent models, not a proven universal rule; early life likely included a mix of lifestyles)
 - The organism is sessile — fixed/attached to a rock surface at the vent mouth, not motile. (plausible, consistent with the above)
-- It has no flagella, no motor, no propulsion structure of any kind. (plausible — consistent with flagella being a post-LUCA, lineage-specific innovation, per `domains-of-life.md`)
+- It has no flagella, no motor, no propulsion structure of any kind. (plausible — consistent with flagella being a post-LUCA, lineage-specific innovation, per `../../facts/domains-of-life.md`)
 - It reproduces by division (splitting into two), the general mechanism by which single-celled life multiplies. (established as a general fact of cellular life; not vent-specific)
 - Narration frames the split as happening because "being two things is more stable than being one" once the organism is big enough. (speculative — a narrative simplification of binary fission's growth-then-division trigger, not a specific claim about a documented biochemical checkpoint)
 
@@ -44,7 +44,7 @@
 ## Open questions
 
 - No specific organism/species is being named or claimed as historically exact — this chapter portrays a plausible generic early chemolithoautotroph, not a documented specific lineage. Needs an explicit framing decision: state this generically, or pick a defensible modern analog (e.g. a vent-dwelling archaeon) to ground the visual.
-- Narration currently labels the opening pre-ocean/bombardment period "the Archean," but per `geologic-time/hadean-eon.md`/`geologic-time/archean-eon.md` that period is conventionally the **Hadean** eon — the Archean starts later, after oceans exist. Needs a decision: correct the name to Hadean, or keep "Archean" as a deliberate simplification (and if so, note why).
+- Narration currently labels the opening pre-ocean/bombardment period "the Archean," but per `../../facts/geologic-time/hadean-eon.md`/`../../facts/geologic-time/archean-eon.md` that period is conventionally the **Hadean** eon — the Archean starts later, after oceans exist. Needs a decision: correct the name to Hadean, or keep "Archean" as a deliberate simplification (and if so, note why).
 
 ## Framing notes
 

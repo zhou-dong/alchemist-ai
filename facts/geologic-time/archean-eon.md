@@ -1,3 +1,11 @@
+---
+topic: Archean Eon
+tags: [geology, deep-time, early-earth]
+sources:
+  - International Commission on Stratigraphy — stratigraphy.org (chronostratigraphic chart)
+last_reviewed: 2026-08-15
+---
+
 # Facts — Archean Eon
 
 *General facts about the Archean eon (~4.0–2.5 Gya), for any chapter to reference. Not chapter-specific — chapter factsheets should point here rather than duplicating.*

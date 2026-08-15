@@ -1,3 +1,11 @@
+---
+topic: Geologic Time Scale (Overview)
+tags: [geology, deep-time]
+sources:
+  - International Commission on Stratigraphy — stratigraphy.org (International Chronostratigraphic Chart)
+last_reviewed: 2026-08-15
+---
+
 # Facts — Geologic Time Scale (Overview)
 
 *General facts about how geologic time is divided, for any chapter to reference. Not chapter-specific.*

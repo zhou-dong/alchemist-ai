@@ -1,3 +1,12 @@
+---
+topic: Domains of Life
+tags: [biology, evolution, LUCA]
+sources:
+  - Weiss et al. 2016, "The physiology and habitat of the last universal common ancestor" (Nature Microbiology)
+  - International Commission on Stratigraphy — stratigraphy.org (for eon-boundary timing context)
+last_reviewed: 2026-08-15
+---
+
 # Facts — Domains of Life
 
 *General facts about LUCA and the domains of life (Bacteria, Archaea, Eukaryotes), for any chapter to reference. Not chapter-specific — chapter factsheets should point here rather than duplicating.*

@@ -1,3 +1,11 @@
+---
+topic: Hadean Eon
+tags: [geology, deep-time, early-earth]
+sources:
+  - International Commission on Stratigraphy — stratigraphy.org (chronostratigraphic chart)
+last_reviewed: 2026-08-15
+---
+
 # Facts — Hadean Eon
 
 *General facts about the Hadean eon (~4.6–4.0 Gya), for any chapter to reference. Not chapter-specific — chapter factsheets should point here rather than duplicating.*
