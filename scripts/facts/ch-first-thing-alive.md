@@ -11,7 +11,7 @@
 ### Timing
 
 - Whether this chapter's vent scene falls in the Hadean or the Archean is unresolved. Per `../../facts/geologic-time/hadean-eon.md`, oceans are inferred to exist within the Hadean itself, not only starting in the Archean — so oceans, and therefore seafloor vents, could have existed well before the Archean even starts. (plausible)
-- LUCA's usual placement (per `../../facts/domains-of-life.md`) sits right around or before the Hadean/Archean boundary — and per `§ Organism` / `§ Framing notes`, this organism's timing relative to LUCA is deliberately left vague (could be before, at, or after it). So the vent scene's era should stay vague for the same reason. (plausible)
+- LUCA's usual placement (per `../../facts/domains-of-life/luca.md`) sits right around or before the Hadean/Archean boundary — and per `§ Organism` / `§ Framing notes`, this organism's timing relative to LUCA is deliberately left vague (could be before, at, or after it). So the vent scene's era should stay vague for the same reason. (plausible)
 
 ### Location
 
@@ -25,11 +25,11 @@
 
 ## Organism
 
-*General facts about LUCA and flagella/archaella evolving after it live in `../../facts/domains-of-life.md` — see that file rather than duplicating here.*
+*General facts about LUCA and flagella/archaella evolving after it live in `../../facts/domains-of-life/luca.md` and `../../facts/domains-of-life/bacteria-and-archaea.md` — see those files rather than duplicating here.*
 
 - Many early chemolithoautotrophs were likely **sessile / surface-attached** (biofilms, mats on mineral surfaces) rather than free-swimming — vent chemistry concentrates energy at a fixed location, so there's no need to travel to reach it. (plausible — ecological inference from vent models, not a proven universal rule; early life likely included a mix of lifestyles)
 - The organism is sessile — fixed/attached to a rock surface at the vent mouth, not motile. (plausible, consistent with the above)
-- It has no flagella, no motor, no propulsion structure of any kind. (plausible — consistent with flagella being a post-LUCA, lineage-specific innovation, per `../../facts/domains-of-life.md`)
+- It has no flagella, no motor, no propulsion structure of any kind. (plausible — consistent with flagella being a post-LUCA, lineage-specific innovation, per `../../facts/domains-of-life/bacteria-and-archaea.md`)
 - It reproduces by division (splitting into two), the general mechanism by which single-celled life multiplies. (established as a general fact of cellular life; not vent-specific)
 - Narration frames the split as happening because "being two things is more stable than being one" once the organism is big enough. (speculative — a narrative simplification of binary fission's growth-then-division trigger, not a specific claim about a documented biochemical checkpoint)
 
