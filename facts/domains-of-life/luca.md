@@ -26,3 +26,19 @@ last_reviewed: 2026-08-16
 - LUCA had ribosomes and core gene-expression machinery (DNA → RNA → protein), since this machinery is universal across all known life. (established — universally conserved, so must predate the split)
 - LUCA had some kind of cell membrane and likely some form of cell envelope/wall, but its exact chemistry is unknown and contested — this is the "lipid divide" problem. Bacteria use one lipid chemistry (ester-linked) and Archaea use a different, chemically incompatible one (ether-linked), and neither is clearly ancestral to the other. (speculative — a genuinely unresolved open question in the literature, not a settled reconstruction)
 - Beyond this, LUCA's appearance is not directly observable — there is no fossil or imaging evidence of LUCA itself; all of the above is inferred from what's conserved across all of today's life. (established as a methodological caveat)
+
+## Scale
+
+- At roughly 1 micrometer across, LUCA would have been invisible to the naked eye — about 1/50th to 1/100th the width of a human hair, and well below the resolution of a standard light microscope's practical detail limit without staining/higher magnification. (plausible, consistent with `§ Appearance`)
+- A single hydrothermal vent chimney, by contrast, can be several meters tall — meaning LUCA-scale cells sat on a mineral structure many millions of times larger than themselves. (established — general scale of known vent chimneys, e.g. black smoker structures)
+
+## Visual environment
+
+- Complete darkness: no light of any kind reaches this depth, so there is nothing to see by except the vent's own heat (infrared, not visible light to a human eye). (established, per ocean depth and light attenuation)
+- Vent fluid is mineral-laden and often visibly cloudy/turbid where it mixes with cold seawater — hot, metal-sulfide-rich fluid precipitates into fine dark particles on contact with cold water, producing the "black smoker" plume appearance at some vents. (established — well-documented at modern sulfide-rich vents)
+- No bioluminescence would be expected at this stage — light-producing biochemistry is a much later, complex innovation, not something LUCA-era chemistry supports. (plausible, by absence of any known mechanism this early)
+
+## Rates and timing
+
+- LUCA's own division rate is not known and cannot be measured directly. (established as a methodological caveat)
+- As a loose modern reference point: hyperthermophilic archaea and bacteria adapted to vent-like conditions today can divide surprisingly fast under optimal lab conditions — on the order of 20–40 minutes per generation for some species — though real vent populations, limited by nutrient supply, likely grew much more slowly than lab-optimized rates. (plausible — modern analog, not a direct measurement of LUCA)
