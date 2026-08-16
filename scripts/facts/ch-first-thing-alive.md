@@ -15,8 +15,7 @@
 
 ### Location
 
-- Deep-sea hydrothermal vents sit far below the ocean surface, past the depth sunlight penetrates. (established — physical fact of ocean depth and light attenuation)
-- No sunlight reaches this environment; it has never depended on solar energy. (established)
+- Deep-sea hydrothermal vents sit far below the ocean surface, past the depth sunlight penetrates; it has never depended on solar energy. General darkness/visual-environment facts live in `../../facts/domains-of-life/luca.md § Visual environment` — see that file rather than duplicating here. (established — physical fact of ocean depth and light attenuation)
 
 ### Vent chemistry
 
