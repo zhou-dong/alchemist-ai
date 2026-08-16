@@ -15,11 +15,24 @@ last_reviewed: 2026-08-16
 - LUCA was very likely sessile (not motile) — flagella/archaella evolved independently after LUCA in each domain, per `bacteria-and-archaea.md`. (plausible)
 - "LUCA" most likely refers to a population or community of gene-sharing cells rather than one single individual organism — a common cell lineage is one model, but an interbreeding/gene-sharing community is at least as well-supported. (plausible — an open interpretive question in the literature, not a settled single-organism claim)
 
-## Location
+## Environment
+
+### Habitat
 
 - LUCA very likely lived at or near a hydrothermal vent environment: anaerobic (no free oxygen available), and dependent on H₂ as an electron donor and CO₂ as a carbon source. (plausible — the best-supported reconstruction, per Weiss et al. 2016, based on genes conserved across Bacteria and Archaea)
 - LUCA was likely thermophilic or hyperthermophilic (adapted to high temperatures), consistent with a vent setting. (plausible — inferred from conserved heat-tolerance-associated genes)
 - LUCA's metabolism likely depended on transition metals (iron, nickel) and FeS (iron-sulfur) clusters as cofactors, which are abundant in vent fluid. (plausible)
+
+### Visual
+
+- Complete darkness: no light of any kind reaches this depth, so there is nothing to see by except the vent's own heat (infrared, not visible light to a human eye). (established, per ocean depth and light attenuation)
+- Vent fluid is mineral-laden and often visibly cloudy/turbid where it mixes with cold seawater — hot, metal-sulfide-rich fluid precipitates into fine dark particles on contact with cold water, producing the "black smoker" plume appearance at some vents. (established — well-documented at modern sulfide-rich vents)
+- No bioluminescence would be expected at this stage — light-producing biochemistry is a much later, complex innovation, not something LUCA-era chemistry supports. (plausible, by absence of any known mechanism this early)
+
+### Sound
+
+- Vent fluid exiting into cold seawater is turbulent and produces continuous, non-biological sound (fluid rushing/hissing), unrelated to LUCA itself — an ambient-environment fact for scenes rather than a claim about LUCA. (established — general property of fluid moving through vent chimneys)
+- No biological sound of any kind would be present — sound production (of any kind, by any organism) is a much later evolutionary innovation, not something LUCA-era life is expected to produce. (plausible, by absence of any known mechanism this early)
 
 ## Appearance
 
