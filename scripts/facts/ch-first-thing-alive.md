@@ -26,8 +26,7 @@
 
 *General facts about LUCA and flagella/archaella evolving after it live in `../../facts/domains-of-life/luca.md` and `../../facts/domains-of-life/bacteria-and-archaea.md` — see those files rather than duplicating here.*
 
-- Many early chemolithoautotrophs were likely **sessile / surface-attached** (biofilms, mats on mineral surfaces) rather than free-swimming — vent chemistry concentrates energy at a fixed location, so there's no need to travel to reach it. (plausible — ecological inference from vent models, not a proven universal rule; early life likely included a mix of lifestyles)
-- The organism is sessile — fixed/attached to a rock surface at the vent mouth, not motile. (plausible, consistent with the above)
+- The organism is sessile — fixed/attached to a rock surface at the vent mouth, not motile — consistent with many early chemolithoautotrophs being surface-attached (biofilms, mats on mineral surfaces) rather than free-swimming, since vent chemistry concentrates energy at a fixed location and there's no need to travel to reach it. (plausible — ecological inference from vent models, not a proven universal rule; early life likely included a mix of lifestyles)
 - It has no flagella, no motor, no propulsion structure of any kind. (plausible — consistent with flagella being a post-LUCA, lineage-specific innovation, per `../../facts/domains-of-life/bacteria-and-archaea.md`)
 - It reproduces by division (splitting into two), the general mechanism by which single-celled life multiplies. (established as a general fact of cellular life; not vent-specific)
 - Narration frames the split as happening because "being two things is more stable than being one" once the organism is big enough. (speculative — a narrative simplification of binary fission's growth-then-division trigger, not a specific claim about a documented biochemical checkpoint)
@@ -36,8 +35,6 @@
 
 - The best-supported model for the earliest life's energy metabolism is **chemolithoautotrophy**: energy from inorganic redox chemistry (H₂, H₂S, Fe²⁺ as electron donors), carbon fixed from CO₂ — not from organic molecules like sugar. (plausible — converging view across multiple origin-of-life models; no single settled answer for the very first metabolism)
 - Sugars were plausibly present in the early ocean in **low concentration**, from abiotic synthesis (e.g. formaldehyde chemistry) and/or meteoritic delivery (confirmed in situ on asteroid Bennu samples: ribose, glucose, and other sugars). (established presence is plausible; concentration and bioavailability in open seawater specifically is doubtful — sugars are chemically fragile and don't concentrate well outside localized settings)
-- Energy source: hydrogen (H₂) and hydrogen sulfide (H₂S) dissolved in vent fluid, used as electron donors in redox chemistry. (plausible, per above)
-- Carbon source: CO₂ fixed from the surrounding water, not organic molecules. (plausible, per above)
 - The reaction is local and surface-based — chemistry contacting the organism's surface directly, with no evidence for or need of any internal signal propagation across the organism at this stage. (speculative — this is a narrative simplification for pedagogical purposes, not a specific claim about a documented biochemical pathway)
 
 ## Open questions
