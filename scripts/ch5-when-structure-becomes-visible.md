@@ -1,4 +1,4 @@
-# Chapter 4 — When Structure Becomes Visible
+# Chapter 5 — When Structure Becomes Visible
 
 *Full structure document — developed in session, April 2026*
 

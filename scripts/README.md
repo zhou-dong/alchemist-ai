@@ -6,16 +6,16 @@ Source material for the alchemist-ai video series. **Not code** — these files 
 
 - `series_bible.md` — the series bible: concept (incl. **The Spirit — why this series exists**, Section 1), format, storytelling methodology, chapter beats, protagonists, chapter arc, philosophical thread
 - `facts/` — per-chapter and shared factsheets, kept separate from narration. See **Facts files** below.
-- `ch-the-first-thing-alive.md` — draft chapter, precedes Chapter 0 chronologically: a sessile, surface-attached chemolithoautotroph at a hydrothermal vent, before movement or chemotaxis exist. Numbering/ordering not yet reconciled with the list below.
-- `ch0-the-world-before-learning.md` — Chapter 0: bacteria, run-and-tumble, the complete decision device — weighted sum + bias, then a threshold — running in chemistry before anything could learn (renamed from `ch0-the-simple-world.md`, 2026-08-02)
-- `ch1-when-many-cells-move-as-one.md` — Chapter 1: Bila enters; multicellular + steering, the perceptron, internal state
-- `ch2-when-weights-learn.md` — Chapter 2: synaptic plasticity (Hebbian), the perceptron learning rule, learning from examples
-- `ch3-when-time-becomes-a-teacher.md` — Chapter 3: eligibility traces, STDP, TD Learning
-- `ch4-when-structure-becomes-visible.md` — Chapter 4: hierarchy, invariance, CNN (introduces Vera)
-- `ch5-when-learning-goes-deep.md` — Chapter 5: neural net, loss, backprop, multi-layer learning
-- `ch6-when-vera-learns-to-choose.md` — Chapter 6: actor-critic RL, exploration/exploitation, long-horizon limits
+- `ch0-first-thing-alive.md` — Chapter 0: a sessile, surface-attached chemolithoautotroph at a hydrothermal vent, before movement or chemotaxis exist
+- `ch1-the-world-before-learning.md` — Chapter 1: bacteria, run-and-tumble, the complete decision device — weighted sum + bias, then a threshold — running in chemistry before anything could learn (renamed from `ch0-the-simple-world.md`, 2026-08-02)
+- `ch2-when-many-cells-move-as-one.md` — Chapter 2: Bila enters; multicellular + steering, the perceptron, internal state
+- `ch3-when-weights-learn.md` — Chapter 3: synaptic plasticity (Hebbian), the perceptron learning rule, learning from examples
+- `ch4-when-time-becomes-a-teacher.md` — Chapter 4: eligibility traces, STDP, TD Learning
+- `ch5-when-structure-becomes-visible.md` — Chapter 5: hierarchy, invariance, CNN (introduces Vera)
+- `ch6-when-learning-goes-deep.md` — Chapter 6: neural net, loss, backprop, multi-layer learning
+- `ch7-when-vera-learns-to-choose.md` — Chapter 7: actor-critic RL, exploration/exploitation, long-horizon limits
 
-Chapter 7 (Deep RL convergence) is planned but not yet written.
+Chapter 8 (Deep RL convergence) is planned but not yet written.
 
 ## Scope: what goes in which file
 
@@ -25,7 +25,7 @@ Chapter 7 (Deep RL convergence) is planned but not yet written.
 
 - Narrative frame, audience, format, tone
 - The principle of how protagonists work (hand-off across evolutionary time; each chosen for the algorithm they embody)
-- Cross-chapter pedagogical bridges — e.g. "weight" is introduced in Ch0 specifically to set up the perceptron in Ch1
+- Cross-chapter pedagogical bridges — e.g. "weight" is introduced in Ch1 specifically to set up the perceptron in Ch2
 
 **Belongs in the chapter script:**
 
@@ -37,7 +37,7 @@ When in doubt, ask: *is this true across the whole project, or only inside one c
 
 ## Facts files — separate from narration
 
-Starting with `ch-the-first-thing-alive.md`, each chapter's factual claims (biology, chemistry, dates, evolutionary timing) are tracked in a dedicated factsheet under `scripts/facts/`, not stated inline in the chapter script. This keeps facts easy to scan, verify, and update independently of narration wording.
+Starting with `ch0-first-thing-alive.md`, each chapter's factual claims (biology, chemistry, dates, evolutionary timing) are tracked in a dedicated factsheet under `scripts/facts/`, not stated inline in the chapter script. This keeps facts easy to scan, verify, and update independently of narration wording.
 
 - `facts/ch-<slug>.md` — facts specific to one chapter. If a fact turns out to be depended on by two or more chapters, add a `facts/shared.md` at that point (removed for now since nothing needed it).
 
@@ -63,11 +63,11 @@ Confidence tags: **established** (settled, safe to state plainly), **plausible**
 
 **Workflow going forward:** research and verify facts first, write them into the chapter's factsheet, *then* write narration from the factsheet. If a fact changes later, update the factsheet first and treat any narration built on it as needing review — the factsheet is the source of truth, not the narration.
 
-The chapter script's Overview should reference its factsheet(s) rather than restate facts inline (see `ch-the-first-thing-alive.md` for the pattern).
+The chapter script's Overview should reference its factsheet(s) rather than restate facts inline (see `ch0-first-thing-alive.md` for the pattern).
 
 ## File naming
 
-Chapter scripts: `chN-kebab-case-title.md` (e.g. `ch2-when-weights-learn.md`). Project-level docs use plain `snake_case.md`.
+Chapter scripts: `chN-kebab-case-title.md` (e.g. `ch3-when-weights-learn.md`). Project-level docs use plain `snake_case.md`.
 
 ## Chapter script structure
 
@@ -119,10 +119,10 @@ Each chapter is structured as **two parts** — see `series_bible.md` Section 3 
 (end of Part 2 contains the bridge to the next chapter)
 ```
 
-Beat format: each beat has a **Visual** block (production notes describing what's on screen — what the animator should build) and a **Narration** block (the spoken text). For the narration voice, see `series_bible.md` Section 2: a warm, conversational narrator — a knowledgeable friend sharing what they learned, talking directly to "you", excited at the aha moments — *not* a detached/omniscient documentary voice-over, and never a textbook. Chapter 0 is the reference implementation.
+Beat format: each beat has a **Visual** block (production notes describing what's on screen — what the animator should build) and a **Narration** block (the spoken text). For the narration voice, see `series_bible.md` Section 2: a warm, conversational narrator — a knowledgeable friend sharing what they learned, talking directly to "you", excited at the aha moments — *not* a detached/omniscient documentary voice-over, and never a textbook. Chapter 1 is the reference implementation.
 
-Chapters 0 and 1 follow this two-part beat structure. Chapters 2–5 are still in the older outline format (full Acts, Human Parallel section, Philosophical Thread section) and will be migrated as they are rewritten.
+Chapters 1 and 2 follow this two-part beat structure. Chapters 3–6 are still in the older outline format (full Acts, Human Parallel section, Philosophical Thread section) and will be migrated as they are rewritten.
 
 ## Future composition pairing
 
-Each chapter script will pair with a Remotion composition under `src/` — e.g. `ch2-when-weights-learn.md` ↔ `src/chapters/Ch2.tsx`. Currently `src/` only has the placeholder `Main` composition.
+Each chapter script will pair with a Remotion composition under `src/` — e.g. `ch3-when-weights-learn.md` ↔ `src/chapters/Ch3.tsx`. Currently `src/` only has the placeholder `Main` composition.

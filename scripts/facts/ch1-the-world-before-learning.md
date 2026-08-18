@@ -1,6 +1,6 @@
 # Facts — The World Before Learning
 
-*This file holds facts specific to Chapter 0.*
+*This file holds facts specific to Chapter 1.*
 
 ## Chemotaxis signaling
 

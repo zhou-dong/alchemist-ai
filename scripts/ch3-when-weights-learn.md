@@ -1,4 +1,4 @@
-# Chapter 2 — When Weights Learn
+# Chapter 3 — When Weights Learn
 
 *When the body remembers what worked.*
 

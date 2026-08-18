@@ -1,4 +1,4 @@
-# Chapter 1 — When Many Cells Move as One
+# Chapter 2 — When Many Cells Move as One
 
 *Many cells. One body. One decision.*
 

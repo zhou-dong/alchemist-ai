@@ -1,4 +1,4 @@
-# Chapter 3 — When Time Becomes a Teacher
+# Chapter 4 — When Time Becomes a Teacher
 
 *Cause comes before effect.*
 

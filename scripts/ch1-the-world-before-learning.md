@@ -1,4 +1,4 @@
-# Chapter 0 — The World Before Learning
+# Chapter 1 — The World Before Learning
 
 *Before the brain. Before the first decision. Three billion years of a rule that looks like nothing.*
 
@@ -18,7 +18,7 @@ Two halves of one machine. The **Σ** is how a whole world of signals gets summa
 
 **The chapter's thesis — and the title's irony.** The *world* is simple: an empty ocean, one job, two moves. The *cell* is not. By the end of Part 2 the viewer has seen it running a weighted sum, a bias, a threshold comparator, and a few seconds of working memory — the whole machine, in chemistry, three billion years early. So the chapter must never land on "just a simple rule." **What's missing in the bacterium is not the math but the architecture.** That single line is the chapter's spine, and every framing choice should serve it.
 
-**Facts.** Biological claims in this chapter are tracked separately in `scripts/facts/ch0-the-world-before-learning.md`. Narration should be checked against that file rather than restating or re-deriving facts inline here.
+**Facts.** Biological claims in this chapter are tracked separately in `scripts/facts/ch1-the-world-before-learning.md`. Narration should be checked against that file rather than restating or re-deriving facts inline here.
 
 The arc the viewer travels: *this thing is barely alive* → *wait, it handles conflicting inputs* → *that was arithmetic the whole time* → *and nothing in it can ever change because of what happened.* The title is the naive view they arrive with; the chapter takes it away from them. Don't spend the reveal early — the deflation in Beat 3 ("it's a blob") is load-bearing setup, not a mistake.
 

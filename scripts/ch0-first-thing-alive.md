@@ -1,18 +1,16 @@
-# Chapter — The First Thing Alive
-
-*Draft — precedes Chapter 0 in story chronology. Chapter numbering/ordering to be reconciled later; see `scripts/README.md`.*
+# Chapter 0 — The First Thing Alive
 
 ## Overview
 
-This is the earliest chapter in the series — before Chapter 0, before anything swims, before there's even a question of finding or chasing anything. The setting is a hydrothermal vent: dark, warm, mineral-rich water pouring out of a crack in the seafloor, no sunlight anywhere near it.
+This is the earliest chapter in the series — before Chapter 1, before anything swims, before there's even a question of finding or chasing anything. The setting is a hydrothermal vent: dark, warm, mineral-rich water pouring out of a crack in the seafloor, no sunlight anywhere near it.
 
 The survival problem here isn't "go get the good stuff." It's simpler and stranger: something is stuck to a rock, chemistry is constantly washing past it, and staying alive means reacting correctly to what's arriving — not going anywhere. No motor, no propeller, no movement at all. Just a surface, and a chemical reaction happening on it, over and over, that either sustains the thing or doesn't.
 
-This isn't a simplified version of the Chapter 0 bacterium missing its flagella — it's a different creature with a different problem. Movement hasn't been invented yet because nothing here has needed it. The energy comes from hydrogen and hydrogen sulfide dissolved in the vent water, not sugar — real Archean chemistry, not a modern organism's diet transplanted backward.
+This isn't a simplified version of the Chapter 1 bacterium missing its flagella — it's a different creature with a different problem. Movement hasn't been invented yet because nothing here has needed it. The energy comes from hydrogen and hydrogen sulfide dissolved in the vent water, not sugar — real Archean chemistry, not a modern organism's diet transplanted backward.
 
 The chapter should resist the pull toward "and then it decided to move" — that's a later chapter's story. This one ends with the thing still exactly where it started, alive, having done nothing but react.
 
-**Facts.** All biological and environmental claims in this chapter are tracked separately in `scripts/facts/ch-first-thing-alive.md`. Narration should be checked against that file rather than restating or re-deriving facts inline here — update the factsheet first if a claim changes, then update narration to match.
+**Facts.** All biological and environmental claims in this chapter are tracked separately in `scripts/facts/ch0-first-thing-alive.md`. Narration should be checked against that file rather than restating or re-deriving facts inline here — update the factsheet first if a claim changes, then update narration to match.
 
 ## Part 1 — The Story
 
