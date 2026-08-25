@@ -16,6 +16,12 @@ export const palette = {
   matGreen: "#5a8f5a",
   matPurple: "#6a4d85",
   moon: "#d8cdbb",
+  // Ch0New (hydrothermal vent) signature colors.
+  ventGlow: "#e8935a",
+  ventPlume: "#c96b3f",
+  hydrogen: "#7ecbe0",
+  sulfide: "#c9a13a",
+  organism: "#8a5a9e",
   text: "#fafafa",
   textMuted: "#a8b8c4",
 } as const;

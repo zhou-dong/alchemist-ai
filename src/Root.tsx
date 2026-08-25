@@ -1,5 +1,6 @@
 import { Composition } from "remotion";
 import { Ch0 } from "./chapters/Ch0/Ch0";
+import { Ch0New } from "./chapters/Ch0New/Ch0New";
 import { Ch1 } from "./chapters/Ch1/Ch1";
 import { Ch2 } from "./chapters/Ch2/Ch2";
 import { Ch3 } from "./chapters/Ch3/Ch3";
@@ -9,6 +10,7 @@ import {
   CHAPTER_DURATION_FRAMES as Ch0Duration,
   FPS,
 } from "./chapters/Ch0/timing";
+import { CHAPTER_DURATION_FRAMES as Ch0NewDuration } from "./chapters/Ch0New/timing";
 import { CHAPTER_DURATION_FRAMES as Ch1Duration } from "./chapters/Ch1/timing";
 import { CHAPTER_DURATION_FRAMES as Ch2Duration } from "./chapters/Ch2/timing";
 import { CHAPTER_DURATION_FRAMES as Ch3Duration } from "./chapters/Ch3/timing";
@@ -25,6 +27,14 @@ export const RemotionRoot: React.FC = () => {
         id="ch0"
         component={Ch0}
         durationInFrames={Ch0Duration}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+      />
+      <Composition
+        id="ch0-new"
+        component={Ch0New}
+        durationInFrames={Ch0NewDuration}
         fps={FPS}
         width={WIDTH}
         height={HEIGHT}
