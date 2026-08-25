@@ -12,6 +12,20 @@ The chapter should resist the pull toward "and then it decided to move" — that
 
 **Facts.** All biological and environmental claims in this chapter are tracked separately in `scripts/facts/ch0-first-thing-alive.md`. Narration should be checked against that file rather than restating or re-deriving facts inline here — update the factsheet first if a claim changes, then update narration to match.
 
+## Prologue — Welcome
+
+*Chapter 0 only — the series' front door. Keep it simple and focused so viewers engage fast: orient (we're going to learn how AI works), hook with the life-mapping surprise — honestly framed (we studied a living thing and turned it into an algorithm, not "copied") — then hand off to the Chronicle beat below. Deliberately omits the math-anxiety reassurance ("a formula is just an idea wearing symbols") — that is saved for point-of-need, the moment the first real formula appears in a later chapter's Part 2, where it lands as relief; up front it would only plant a worry the viewer doesn't have yet. Also does NOT preach the whiteboard/method manifesto: that's the creator's private motivation, shown not told (see series_bible.md §1 "The Spirit"). Keep it brief (~18s): orient, hook, go. Later chapters do not repeat this.*
+
+#### Beat 0 — Welcome
+
+**Visual:** Near-black, with a faint drifting field of motes — quiet, alive, almost cosmic. The series title fades in, centered: *A Brief History of Intelligence, in Algorithms*, then softens to a dim backdrop as the welcome plays. No Earth yet, no ocean — just the dark before the story. The beat eases toward the wide shot of the young, cooling Earth that opens Beat — The Vent below.
+
+**Narration:** Welcome. Let's learn how AI works.
+
+It turns out almost every idea inside AI has a mirror in something alive. And what really surprised me: some of these algorithms came *straight* from life — we studied how a living thing did it, then turned it into an algorithm.
+
+So let's start at the very beginning of life. And I mean the *very* beginning.
+
 ## Part 1 — The Story
 
 #### Beat — The Vent

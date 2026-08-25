@@ -22,7 +22,7 @@ Two halves of one machine. The **Σ** is how a whole world of signals gets summa
 
 The arc the viewer travels: *this thing is barely alive* → *wait, it handles conflicting inputs* → *that was arithmetic the whole time* → *and nothing in it can ever change because of what happened.* The title is the naive view they arrive with; the chapter takes it away from them. Don't spend the reveal early — the deflation in Beat 3 ("it's a blob") is load-bearing setup, not a mistake.
 
-Specifically, the bacterium **has**: convergence (one shared pool), per-signal strengths, a bias, a binary threshold, and short-term memory. It **lacks**: weights that live at connections rather than inside detectors, weights that move because of outcome, signals from inside the body, and integration across many cells. Those four absences are the series' runway — the first, third, and fourth belong to Chapter 1, the second to Chapter 2. Ch0's job is to make the viewer *feel* the machine is already there, then feel exactly what it can't do.
+Specifically, the bacterium **has**: convergence (one shared pool), per-signal strengths, a bias, a binary threshold, and short-term memory. It **lacks**: weights that live at connections rather than inside detectors, weights that move because of outcome, signals from inside the body, and integration across many cells. Those four absences are the series' runway — the first, third, and fourth belong to Chapter 1, the second to Chapter 2. Ch1's job is to make the viewer *feel* the machine is already there, then feel exactly what it can't do.
 
 The chapter closes on an honest limit that is *not* "nothing changes." The bacterium retunes itself constantly — that's what its short-term memory is — but only ever to re-zero the channel that got the input, never to change what matters more, and never in response to how things turned out. Weight lives inside the sensor; nothing learns from outcome.
 
@@ -51,19 +51,19 @@ The chapter closes on an honest limit that is *not* "nothing changes." The bacte
 
 Where a ⚠️ figure appears in narration, prefer the qualitative form ("a change too faint to notice") over the number. The chapter's argument never depends on a specific value.
 
-## Key Concepts Introduced in Chapter 0
+## Key Concepts Introduced in Chapter 1
 
-### 0.1 Run and Tumble
+### 1.1 Run and Tumble
 
 The chemotaxis strategy of bacteria like *E. coli*. The cell alternates between two motions: swimming in a relatively straight line (*run*), and randomly reorienting in place (*tumble*). The same two-motion strategy is used for both food-seeking and danger-avoidance — only the trigger is inverted.
 
-Crucially, run and tumble are *mutually exclusive* — a binary switch. The mechanism enforces it: the flagellar motors spin counterclockwise, twisting the flagella into a single coherent bundle (run), or clockwise, flinging the bundle apart (tumble). The flagella can be gathered or scattered, but not both at once. At every instant the cell is doing exactly one of the two motions, never a blend. This exclusivity is precisely the shape of if/else — one branch or the other, never both — which is one of the two reasons the if/else mapping in §0.4 is faithful biology rather than loose analogy (the other being the motor's genuine threshold response).
+Crucially, run and tumble are *mutually exclusive* — a binary switch. The mechanism enforces it: the flagellar motors spin counterclockwise, twisting the flagella into a single coherent bundle (run), or clockwise, flinging the bundle apart (tumble). The flagella can be gathered or scattered, but not both at once. At every instant the cell is doing exactly one of the two motions, never a blend. This exclusivity is precisely the shape of if/else — one branch or the other, never both — which is one of the two reasons the if/else mapping in §1.4 is faithful biology rather than loose analogy (the other being the motor's genuine threshold response).
 
-### 0.2 Chemical Sensors
+### 1.2 Chemical Sensors
 
 Bacteria have multiple types of chemical receptors on their outer membrane. Different receptors detect different molecules — attractants like sugars, repellents like toxins. The cell has no eyes and no nervous system; its entire input is whether a chemical is getting stronger or weaker over time. All receptors feed into the same downstream machinery that controls the flagella.
 
-### 0.3 The Implicit Weighted Sum (with Bias)
+### 1.3 The Implicit Weighted Sum (with Bias)
 
 When attractants and repellents arrive together, the cell handles the conflict at the molecular level. The combined result:
 
@@ -94,9 +94,9 @@ This is worth stating precisely because it's the strongest thing in the chapter:
 
 This shape — weighted sum plus bias, then a threshold — is the same math the next chapter will name and explain. What's missing in bacteria is not the math but the *architecture*: no parameter belonging to a connection rather than a detector, no adjustment driven by outcome, no signals from inside the body. That architectural distinction is what Chapter 1 will deliver.
 
-### 0.4 The If/Else — The Threshold Half of the Device
+### 1.4 The If/Else — The Threshold Half of the Device
 
-The second half of the machine in §0.3, and **not** a separate idea. Once the pool holds a single level, each flagellar motor compares it against a threshold:
+The second half of the machine in §1.3, and **not** a separate idea. Once the pool holds a single level, each flagellar motor compares it against a threshold:
 
 > if level is below the line → run
 >
@@ -104,11 +104,11 @@ The second half of the machine in §0.3, and **not** a separate idea. Once the p
 
 For attractants, "better" means getting closer; for repellents, "better" means getting farther. The signal type doesn't matter, and the comparator never learns it — **it only sees a level.** That is Beat 7's "the cell never has to know which is which," true of the hardware.
 
-This is the same shape as the if/else construct in every programming language ever written, and the mapping is faithful rather than decorative for two independent reasons: the motor's response is steeply sigmoidal, so it is a genuine threshold comparator and not a dimmer; and run and tumble are mechanically mutually exclusive (§0.1), so the two branches can never both be taken. Life ran it first, in proteins, billions of years before silicon.
+This is the same shape as the if/else construct in every programming language ever written, and the mapping is faithful rather than decorative for two independent reasons: the motor's response is steeply sigmoidal, so it is a genuine threshold comparator and not a dimmer; and run and tumble are mechanically mutually exclusive (§1.1), so the two branches can never both be taken. Life ran it first, in proteins, billions of years before silicon.
 
-**Ordering note.** This is §0.4 and not §0.3 deliberately — it follows the sum, because the comparison needs a number to compare. Part 2 delivers it in that order too (A1 builds the number, A2 turns it into an action). Presenting if/else first makes it look like the chapter's thesis; it isn't. It's the last term of the device.
+**Ordering note.** This is §1.4 and not §1.3 deliberately — it follows the sum, because the comparison needs a number to compare. Part 2 delivers it in that order too (A1 builds the number, A2 turns it into an action). Presenting if/else first makes it look like the chapter's thesis; it isn't. It's the last term of the device.
 
-### 0.5 Adaptation — The Cell Retunes Its Own Baseline
+### 1.5 Adaptation — The Cell Retunes Its Own Baseline
 
 The bacterium is *not* a fixed machine. Its receptors carry reversible chemical tags (methyl groups, added by the enzyme CheR and removed by CheB) that shift on a timescale of seconds. Sustained attractant raises the tag count, which pushes the receptor back toward its resting signaling state; sustained repellent lowers it. This is what gives the cell its short-term memory — the few seconds of "what was it like a moment ago" that the entire *is it getting better?* comparison depends on. Without it, the cell could only sense absolute concentration, and gradient-climbing would be impossible.
 
@@ -125,20 +125,6 @@ That is homeostatic negative feedback: it always drives back toward the resting 
 So the honest framing is not that the cell's parameters are frozen. It's that the cell retunes itself only to re-zero, driven only by its own recent input, never by outcome. The contrast to draw for Chapter 2 is **input-driven homeostasis vs. outcome-driven change** — not bias vs. weights. That gap is what Chapter 2 fills.
 
 Note this leaves the Chapter 1 bridge fully intact: the tags sit on the *detector itself*, so there is still no parameter belonging to a *connection*. "Welded to the detector, versus a junction you can tune" stands exactly as written.
-
-## Prologue — Welcome
-
-*Chapter 0 only — the series' front door. Keep it simple and focused so viewers engage fast: orient (we're going to learn how AI works), hook with the life-mapping surprise — honestly framed (we studied a living thing and turned it into an algorithm, not "copied") — then hand off to the Young Earth Chronicle beat. Deliberately omits the math-anxiety reassurance ("a formula is just an idea wearing symbols") — that is saved for point-of-need, the moment the first real formula appears in Part 2, where it lands as relief; up front it would only plant a worry the viewer doesn't have yet. Also does NOT preach the whiteboard/method manifesto: that's the creator's private motivation, shown not told (see §1 "The Spirit"). Keep it brief (~18s): orient, hook, go. Later chapters do not repeat this.*
-
-#### Beat 0 — Welcome
-
-**Visual:** Near-black, with a faint drifting field of motes — quiet, alive, almost cosmic. The series title fades in, centered: *A Brief History of Intelligence, in Algorithms*, then softens to a dim backdrop as the welcome plays. No Earth yet, no ocean — just the dark before the story. The beat eases toward the wide shot of the young Earth that opens Beat 1.
-
-**Narration:** Welcome. Let's learn how AI works.
-
-It turns out almost every idea inside AI has a mirror in something alive. And what really surprised me: some of these algorithms came *straight* from life — we studied how a living thing did it, then turned it into an algorithm.
-
-So let's start at the very beginning of life. And I mean the *very* beginning.
 
 ## Part 1 — The Story
 
@@ -498,7 +484,7 @@ And if you ask why this exact rule is still here, still running in the ocean tod
 
 Then, for the correction beat, push back in on the receptor cluster. On the *sugar* receptors specifically, small tags visibly attach and detach. As the cell swims into richer water, those receptors visibly turn themselves down until their output returns to exactly where it started — the channel re-zeroing itself, so that only *change* still registers. Brief, clean, no chemistry lecture.
 
-*Production note — do NOT stage this as "the offset moves, the weights stay still."* (See §0.5: that framing does not survive scrutiny and should not be dramatized.) The tags sit on *specific receptor types*, so this is per-channel, not a global shift. Stage the honest contrast instead — **two things happening side by side:**
+*Production note — do NOT stage this as "the offset moves, the weights stay still."* (See §1.5: that framing does not survive scrutiny and should not be dramatized.) The tags sit on *specific receptor types*, so this is per-channel, not a global shift. Stage the honest contrast instead — **two things happening side by side:**
 
 - The **sugar channel** adapts: tags attach, its output slides back to neutral, and the pool's level returns to its resting position just under the threshold line. The cell is ready to detect the *next* change.
 - The **toxin channel**, sitting right beside it in the same cluster, is *untouched*. No tags. Nothing moves. Adapting to sugar taught it nothing about poison.
