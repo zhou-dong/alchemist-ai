@@ -6,6 +6,42 @@
 import type { BeatNarration } from "../../narration/types";
 
 export const narration = {
+  beat0Welcome: {
+    key: "beat0Welcome",
+    heading: "Beat 0 — Welcome",
+    clips: [
+      {
+        id: "beat0Welcome-000",
+        text: "Welcome. Let's learn how AI works.",
+        src: "audio/ch0new/beat0Welcome-000.wav",
+        durationInFrames: 75,
+      },
+      {
+        id: "beat0Welcome-001",
+        text: "It turns out almost every idea inside AI has a mirror in something alive.",
+        src: "audio/ch0new/beat0Welcome-001.wav",
+        durationInFrames: 136,
+      },
+      {
+        id: "beat0Welcome-002",
+        text: "And what really surprised me: some of these algorithms came straight from life — we studied how a living thing did it, then turned it into an algorithm.",
+        src: "audio/ch0new/beat0Welcome-002.wav",
+        durationInFrames: 265,
+      },
+      {
+        id: "beat0Welcome-003",
+        text: "So let's start at the very beginning of life.",
+        src: "audio/ch0new/beat0Welcome-003.wav",
+        durationInFrames: 76,
+      },
+      {
+        id: "beat0Welcome-004",
+        text: "And I mean the very beginning.",
+        src: "audio/ch0new/beat0Welcome-004.wav",
+        durationInFrames: 49,
+      },
+    ],
+  },
   beatTheVent: {
     key: "beatTheVent",
     heading: "Beat — The Vent",
