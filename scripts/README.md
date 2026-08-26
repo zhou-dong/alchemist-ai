@@ -6,6 +6,7 @@ Source material for the alchemist-ai video series. **Not code** — these files 
 
 - `series_bible.md` — the series bible: concept (incl. **The Spirit — why this series exists**, Section 1), format, storytelling methodology, chapter beats, protagonists, chapter arc, philosophical thread
 - `facts/` — per-chapter and shared factsheets, kept separate from narration. See **Facts files** below.
+- `narration/` — per-chapter narration-only extracts (no Visual blocks, no production notes), used for reviewing and drafting the spoken words in isolation. See **Drafting order: facts → narration → script** below.
 - `ch0-first-thing-alive.md` — Chapter 0: a sessile, surface-attached chemolithoautotroph at a hydrothermal vent, before movement or chemotaxis exist
 - `ch1-the-world-before-learning.md` — Chapter 1: bacteria, run-and-tumble, the complete decision device — weighted sum + bias, then a threshold — running in chemistry before anything could learn (renamed from `ch0-the-simple-world.md`, 2026-08-02)
 - `ch2-when-many-cells-move-as-one.md` — Chapter 2: Bila enters; multicellular + steering, the perceptron, internal state
@@ -64,6 +65,18 @@ Confidence tags: **established** (settled, safe to state plainly), **plausible**
 **Workflow going forward:** research and verify facts first, write them into the chapter's factsheet, *then* write narration from the factsheet. If a fact changes later, update the factsheet first and treat any narration built on it as needing review — the factsheet is the source of truth, not the narration.
 
 The chapter script's Overview should reference its factsheet(s) rather than restate facts inline (see `ch0-first-thing-alive.md` for the pattern).
+
+## Drafting order: facts → narration → script
+
+A chapter is drafted or revised in three passes, never all at once:
+
+1. **Facts.** Research and verify claims into `facts/ch-<slug>.md` (see **Facts files** above). This is the source of truth for every factual claim in the chapter.
+2. **Narration.** Draft or revise the spoken words only, in `narration/chN-<slug>.md` — one file per chapter, narration text alone, no Visual blocks, no production notes, no beat-level staging. This is where wording, tone, and pacing get reviewed and iterated, cheaply, without the full script's production detail in the way.
+3. **Script.** Once the narration is approved, fold it back into the full chapter script (`chN-<slug>.md`) alongside its Visual blocks and production notes. The full script is the most expensive layer to redo, so it's finalized last.
+
+**Why this order, and not writing the full script directly:** a full chapter script mixes narration with Visual staging and production notes, which is a lot to hold in your head at once when what you actually want to evaluate is the narration's wording and pacing. Reviewing narration in isolation first keeps that pass fast and focused.
+
+**Keeping `narration/` in sync:** it is a derived, read-only-in-spirit convenience copy — the chapter script remains the actual source of truth once a chapter is past step 2. If narration changes after the script is written, edit the narration file first, get it approved, then port the change into the full script's Narration blocks. Don't let the two drift: a narration file that no longer matches its chapter script's Narration blocks should be re-extracted or deleted.
 
 ## File naming
 
