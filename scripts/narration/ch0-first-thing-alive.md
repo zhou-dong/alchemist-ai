@@ -1,7 +1,5 @@
 # Narration — Chapter 0: The First Thing Alive
 
-*Extracted from `scripts/ch0-first-thing-alive.md` — narration text only, no Visual blocks or production notes. This is a read-only convenience copy for reviewing the spoken line; the chapter script is the source of truth. If narration changes, edit the chapter script first, then re-extract.*
-
 ## Beat 0 — Welcome
 
 Welcome. Let's learn how AI works.
