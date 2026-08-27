@@ -24,9 +24,9 @@ Down here, there's a crack in the seafloor. Hot, mineral-heavy water is forcing 
 
 And right where that water hits the rock — something is alive.
 
-Not swimming nearby. Not approaching. *Stuck* there. Fixed in place, the way a barnacle clings to a piling, except there's no barnacle yet, no shell, no name for what this even is. Just a smear of something, anchored exactly where the vent water arrives.
+I still find that a little startling, every time I picture it. Not swimming nearby. Not approaching. *Stuck* there. Fixed in place, the way a barnacle clings to a piling, except there's no barnacle yet, no shell, no name for what this even is. Just a smear of something, anchored exactly where the vent water arrives.
 
-This is the first thing alive on this planet. And it has no way to move. It doesn't need one — there's nowhere to go and nothing to chase. Everything it needs is already arriving, for free, forever, as long as it stays exactly where it is.
+Sit with that for a second: the first thing alive on this planet, and it has no way to move. It doesn't need one — there's nowhere to go and nothing to chase. Everything it needs is already arriving, for free, forever, as long as it stays exactly where it is.
 
 Let's find out what "alive" even means, for something that never goes anywhere.
 
@@ -42,7 +42,7 @@ And when either one touches this thing's outer surface, something happens. Not a
 
 That's the whole event. No searching. No aiming. No moment where anything is figured out. The chemistry arrives, the surface reacts, and the thing gets very slightly more of itself.
 
-Do that enough times, for long enough, and you don't get a decision. You get something better suited to this question than a decision ever could be: you just get *more of it.*
+And here's the part that gets me. Do that enough times, for long enough, and you don't get a decision. You get something better suited to this question than a decision ever could be: you just get *more of it.*
 
 ## Beat — Splitting
 
@@ -56,7 +56,7 @@ Not on purpose — there's no purpose here yet, remember. It just gets big enoug
 
 Then those two become four. Four become eight. Not spreading out to look for anything new — just filling in more of the same rock, wherever the vent water reaches. A crust of living matter, growing outward from the crack, one identical reaction repeating itself across a thousand points at once.
 
-And here's the part worth sitting with: nothing about this required intelligence. Not a flicker of it. You don't need to sense anything, weigh anything, or choose anything to do what this is doing. You just need to be shaped in a way that a molecule happens to fit into — and then let chemistry do the rest, over and over, for as long as the vent keeps flowing.
+And here's the part that still gets me: nothing about this required intelligence. Not a flicker of it. You don't need to sense anything, weigh anything, or choose anything to do what this is doing. You just need to be shaped in a way that a molecule happens to fit into — and then let chemistry do the rest, over and over, for as long as the vent keeps flowing.
 
 This is as alive as anything gets to be, for a very long time. A reaction, repeating itself, spreading across a rock, in the dark, at the bottom of an ocean nobody would ever see.
 
