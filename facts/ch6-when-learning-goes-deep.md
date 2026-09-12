@@ -2,7 +2,7 @@
 
 *This file holds facts specific to this chapter.*
 
-> **Status note:** like ch2/ch5, this script carries no established/plausible/speculative tagging — the "Human Parallel" section states real AI history with the same confident phrasing as the Bila narrative. This is the densest, most specific AI-history section of any chapter so far, and contains one likely factual error (the 2024 Nobel Prize claim below) that should be corrected before this material reaches narration.
+> **Status note:** like ch2/ch5, this script carries no established/plausible/speculative tagging — the "Human Parallel" section states real AI history with the same confident phrasing as the Bila narrative. This is the densest, most specific AI-history section of any chapter so far. It contained one likely factual error (the 2024 Nobel Prize claim below), **fixed in the script on 2026-09-12** — see the note below.
 
 ## The perceptron and its limits — history
 
@@ -23,9 +23,9 @@
 - The paper's finding that hidden units trained by backpropagation learn internal feature representations not explicitly designed by a human is accurately described. (established)
 - Backpropagation as an algorithm (the chain-rule-based computation of gradients through a computational graph) had actually been described earlier by other researchers in various forms (e.g., work by Paul Werbos in the 1970s, and Seppo Linnainmaa's automatic differentiation work in the 1970s) — the 1986 Rumelhart/Hinton/Williams paper is correctly credited as the paper that made backpropagation's use for training multi-layer neural networks widely known and adopted, but the script's framing ("in 1986... three researchers... demonstrated that backpropagation... could train hidden layers," implying the technique's origin) simplifies a real prior history of independent discovery. (plausible as "the paper that popularized/vindicated the method for neural nets"; overstated if read as "backpropagation's invention")
 
-## The 2024 Nobel Prize claim — likely error
+## The 2024 Nobel Prize claim — corrected
 
-- **The script states: "In 2024, Geoffrey Hinton was awarded the Nobel Prize in Physics for his foundational work on neural networks... He accepted the prize in Stockholm."** This is **incomplete/likely inaccurate as written**: the 2024 Nobel Prize in Physics was awarded jointly to **John J. Hopfield and Geoffrey Hinton**, "for foundational discoveries and inventions that enable machine learning with artificial neural networks." The script's account omits Hopfield entirely and presents the prize as if it were awarded to Hinton alone specifically for the 1986 backpropagation paper — the Nobel citation is broader (covering Hopfield's associative-memory networks and Hinton's Boltzmann-machine-era work), not narrowly "for the 1986 paper and everything that followed from it" as the script states. **This needs correction before moving to narration:** at minimum, Hopfield should be named as co-recipient, and the citation's actual scope (foundational machine-learning-enabling work, not specifically the 1986 backprop paper) should not be misrepresented. (flagged error — needs correction, highest-priority fix in this chapter)
+- The 2024 Nobel Prize in Physics was awarded jointly to **John J. Hopfield and Geoffrey Hinton**, "for foundational discoveries and inventions that enable machine learning with artificial neural networks." The original script omitted Hopfield and framed the prize as awarded to Hinton alone, specifically for the 1986 backpropagation paper — the actual citation is broader (covering Hopfield's associative-memory networks and Hinton's Boltzmann-machine-era work), not narrowly the 1986 paper. **Fixed in the script on 2026-09-12**: the relevant line now names Hopfield as co-recipient and attributes Hinton's share to the broader line of work rather than the 1986 paper specifically. (established, now correctly reflected in the script)
 
 ## Broad lineage claim
 
