@@ -38,7 +38,7 @@ When in doubt, ask: *is this true across the whole project, or only inside one c
 
 ## Facts files — separate from narration
 
-Starting with `ch0-first-thing-alive.md`, each chapter's factual claims (biology, chemistry, dates, evolutionary timing) are tracked in a dedicated factsheet under `scripts/facts/`, not stated inline in the chapter script. This keeps facts easy to scan, verify, and update independently of narration wording.
+Starting with `ch0-first-thing-alive.md`, each chapter's factual claims (biology, chemistry, dates, evolutionary timing) are tracked in a dedicated factsheet under `facts/`, not stated inline in the chapter script. This keeps facts easy to scan, verify, and update independently of narration wording.
 
 - `facts/ch-<slug>.md` — facts specific to one chapter. If a fact turns out to be depended on by two or more chapters, add a `facts/shared.md` at that point (removed for now since nothing needed it).
 
