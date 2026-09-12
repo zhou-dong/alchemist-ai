@@ -10,7 +10,7 @@ This isn't a simplified version of the Chapter 1 bacterium missing its flagella 
 
 The chapter should resist the pull toward "and then it decided to move" — that's a later chapter's story. This one ends with the thing still exactly where it started, alive, having done nothing but react.
 
-**Facts.** All biological and environmental claims in this chapter are tracked separately in `facts/ch0-first-thing-alive.md`. Narration should be checked against that file rather than restating or re-deriving facts inline here — update the factsheet first if a claim changes, then update narration to match.
+**Facts.** All biological and environmental claims in this chapter are tracked separately in the sibling `almanac` repo, `../../almanac/ch0-first-thing-alive.md`. Narration should be checked against that file rather than restating or re-deriving facts inline here — update the factsheet first if a claim changes, then update narration to match.
 
 ## Prologue — Welcome
 

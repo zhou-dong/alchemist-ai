@@ -5,7 +5,6 @@ Source material for the alchemist-ai video series. **Not code** — these files 
 ## What's here
 
 - `series_bible.md` — the series bible: concept (incl. **The Spirit — why this series exists**, Section 1), format, storytelling methodology, chapter beats, protagonists, chapter arc, philosophical thread
-- `facts/` — per-chapter and shared factsheets, kept separate from narration. See **Facts files** below.
 - `narration/` — per-chapter narration-only extracts (no Visual blocks, no production notes), used for reviewing and drafting the spoken words in isolation. See **Drafting order: facts → narration → script** below.
 - `ch0-first-thing-alive.md` — Chapter 0: a sessile, surface-attached chemolithoautotroph at a hydrothermal vent, before movement or chemotaxis exist
 - `ch1-the-world-before-learning.md` — Chapter 1: bacteria, run-and-tumble, the complete decision device — weighted sum + bias, then a threshold — running in chemistry before anything could learn (renamed from `ch0-the-simple-world.md`, 2026-08-02)
@@ -36,11 +35,11 @@ Chapter 8 (Deep RL convergence) is planned but not yet written.
 
 When in doubt, ask: *is this true across the whole project, or only inside one chapter?* If only inside one chapter, it goes in that chapter's script.
 
-## Facts files — separate from narration
+## Facts files — separate from narration, and in a separate repo
 
-Starting with `ch0-first-thing-alive.md`, each chapter's factual claims (biology, chemistry, dates, evolutionary timing) are tracked in a dedicated factsheet under `facts/`, not stated inline in the chapter script. This keeps facts easy to scan, verify, and update independently of narration wording.
+Starting with `ch0-first-thing-alive.md`, each chapter's factual claims (biology, chemistry, dates, evolutionary timing) are tracked in a dedicated factsheet in the sibling `almanac` repo (`../../almanac/ch<N>-<slug>.md`), not stated inline in the chapter script. This keeps facts easy to scan, verify, and update independently of narration wording, and lets a future project reuse the same verified facts.
 
-- `facts/ch-<slug>.md` — facts specific to one chapter. If a fact turns out to be depended on by two or more chapters, add a `facts/shared.md` at that point (removed for now since nothing needed it).
+Facts that are project-agnostic (deep time, domains of life — not specific to this story's chapters) live in the other sibling repo, `grimoire`, instead of `almanac`.
 
 **Structure of a factsheet** (facts only — no narration, no "what to avoid" guardrails; those belong in the chapter script's production notes):
 
@@ -70,7 +69,7 @@ The chapter script's Overview should reference its factsheet(s) rather than rest
 
 A chapter is drafted or revised in three passes, never all at once:
 
-1. **Facts.** Research and verify claims into `facts/ch-<slug>.md` (see **Facts files** above). This is the source of truth for every factual claim in the chapter.
+1. **Facts.** Research and verify claims into `almanac`'s `ch<N>-<slug>.md` (see **Facts files** above). This is the source of truth for every factual claim in the chapter.
 2. **Narration.** Draft or revise the spoken words only, in `narration/chN-<slug>.md` — one file per chapter, narration text alone, no Visual blocks, no production notes, no beat-level staging. This is where wording, tone, and pacing get reviewed and iterated, cheaply, without the full script's production detail in the way.
 3. **Script.** Once the narration is approved, fold it back into the full chapter script (`chN-<slug>.md`) alongside its Visual blocks and production notes. The full script is the most expensive layer to redo, so it's finalized last.
 
